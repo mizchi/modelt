@@ -11,3 +11,9 @@
 - 起動、表の構築・転送、カーネル、JS/Wasm 境界、SUT/オラクル照合を分けて記録する。kernel の速度から、ツール全体の速度向上を結論しない。
 
 判断は移植範囲と利用条件を伴う提案にする。小さいジョブで worker や native 起動が支配的なら単一 worker を選び、長時間・再利用の条件では別に評価する。欠けた結果、打ち切り、意味論の不一致を成功として集計しない。
+
+## クラウド分割と calibration の単位
+
+途中の追加要件として、同じ task manifest を複数ホストへ配る sharding を評価する。source version、payload、case key から task ID を作り、順序や実行ホストに依存させない。4つの独立プロセスへ配り、再試行の重複、欠落、不一致を集約時に判定する。実クラウドへのデプロイやネットワーク費用は測定しない。
+
+profile は workload ごとに分ける。有限カーネルは遷移数/ms、非同期 counter は正常版と故障版を実行する1 schedule の費用を1 visit として測る。後者の planner は prefix 全体を1 schedule 相当で課金する保守的な木の上界を使う。メモリは RSS のスナップショットと prefix 当たり64 byteの概算で、OS の強制上限ではない。worker は利用可能な CPU 数で1/2/4を制限する。deadline は dispatch 間で判定する soft budget とし、進行中の job による超過を記録する。
