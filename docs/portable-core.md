@@ -1,6 +1,6 @@
-# TS / Rust の共通コア
+# TS / Rust / Go の共通コア
 
-`crates/modelt-core` は有限モデル、適合性照合、保存オラクルの再生、縮小、ホストの記録・再生を実装する Rust crate。同じソースを native と Wasm で使う。TS SDK は `@mizchi/modelt/portable`。既存 TS checker は独立した比較対象として残す。[有限モデル・縮小・ホストの使用例](using-models.md) と [配布手順](releasing.md) を参照。
+`crates/modelt-core` は有限モデル、適合性照合、保存オラクルの再生、縮小、ホストの記録・再生を実装する Rust crate。同じソースを native と Wasm で使う。TS SDK は `@mizchi/modelt/portable`、[Go adapter](go-adapter.md) は `adapters/go`。既存 TS checker は独立した比較対象として残す。[有限モデル・縮小・ホストの使用例](using-models.md) と [配布手順](releasing.md) を参照。
 
 ## 実行
 
@@ -85,4 +85,4 @@ TS SDK は state / action / observation の encoding を差し替えられる。
 
 ## 初版の範囲
 
-Rust は値・適合性・再生に加え、観測付きの有限表を読み、縮小と HostTape を検査できる。BFS、モデル合成、fast-check による生成、TLA+、SMT、budget/sharding は既存 TS 経路を使う。任意の TS 関数の変換、汎用の言語 IR、Go SDK は含まない。配布 archive と単独 consumer を検証し、registry の初回公開はユーザー操作として残している。[0004](../evals/plans/0004-portable-core.md) と [0005](../evals/plans/0005-usable-core.md) の計画・評価を参照。
+Rust は値・適合性・再生に加え、観測付きの有限表を読み、縮小と HostTape を検査できる。Go SDK は同じ Wasm を駆動し、Go の Driver とモデル callback を接続する。BFS、モデル合成、fast-check による生成、TLA+、SMT、budget/sharding は既存 TS 経路を使う。任意の TS 関数の変換や汎用の言語 IR は含まない。配布 archive と単独 consumer を検証し、registry の初回公開はユーザー操作として残している。[0004](../evals/plans/0004-portable-core.md)、[0005](../evals/plans/0005-usable-core.md)、[Go の計画](../evals/plans/0006-go-adapter.md) を参照。

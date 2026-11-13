@@ -56,6 +56,15 @@ portable-eval:
 portable-replay run:
   pnpm portable:replay {{quote(run)}}
 
+go-test: portable-build
+  pnpm build
+  node dist/evals/go/prepare.js
+  test -z "$(gofmt -l adapters/go)"
+  cd adapters/go && go vet ./...
+  cd adapters/go && CGO_ENABLED=0 go test -count=1 ./...
+  cd adapters/go && go test -race -count=1 ./...
+  node dist/scripts/go-consumer.js
+
 usable-test:
   pnpm usable:test
 
