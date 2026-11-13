@@ -24,6 +24,19 @@ jobs:
       - run: cargo fmt --manifest-path crates/modelt-core/Cargo.toml -- --check
       - run: cargo clippy --all-targets --locked --manifest-path crates/modelt-core/Cargo.toml -- -D warnings
       - run: pnpm portable:build
+      - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
+        with:
+          go-version: 1.25.x
+          cache-dependency-path: adapters/go/go.sum
+      - run: node dist/evals/go/prepare.js
+      - run: test -z "$(gofmt -l adapters/go)"
+      - run: go mod verify && go vet ./...
+        working-directory: adapters/go
+      - run: CGO_ENABLED=0 go test -count=1 ./...
+        working-directory: adapters/go
+      - run: go test -race -count=1 ./...
+        working-directory: adapters/go
+      - run: node dist/scripts/go-consumer.js
       - run: pnpm portable:test
       - run: pnpm usable:test
       - run: pnpm runtime:build
@@ -51,4 +64,5 @@ jobs:
             .artifacts/evals
             .artifacts/usable-evaluation
             .artifacts/packages
+            .artifacts/go
           if-no-files-found: warn
