@@ -1,8 +1,10 @@
 package modelt_test
 
 import (
+	"bytes"
 	"context"
 	"errors"
+	"os"
 	"testing"
 
 	modelt "github.com/mizchi/modelt/adapters/go"
@@ -232,5 +234,21 @@ func TestInvalidUnicodeDoesNotCollapseModelKeys(t *testing.T) {
 		if err == nil || disposed != 1 {
 			t.Fatalf("invalid Unicode %s was accepted or leaked: %v %d", location, err, disposed)
 		}
+	}
+}
+
+func TestRequiresExportedABIMemory(t *testing.T) {
+	wasm, err := os.ReadFile("../../crates/modelt-core/target/wasm32-unknown-unknown/release/modelt_core.wasm")
+	if err != nil {
+		t.Fatal(err)
+	}
+	export := []byte{6, 'm', 'e', 'm', 'o', 'r', 'y', 2, 0}
+	if bytes.Count(wasm, export) != 1 {
+		t.Fatal("expected exactly one ABI memory export")
+	}
+	wasm = bytes.Replace(wasm, export, []byte{6, 'h', 'i', 'd', 'd', 'e', 'n', 2, 0}, 1)
+	if core, err := modelt.New(context.Background(), wasm); err == nil {
+		_ = core.Close(context.Background())
+		t.Fatal("module without the ABI memory export was accepted")
 	}
 }

@@ -19,6 +19,7 @@ type Core struct {
 	mu      sync.Mutex
 	runtime wazero.Runtime
 	module  api.Module
+	memory  api.Memory
 }
 
 // New loads ABI v1 bytes without WASI, host imports, CGO or subprocesses.
@@ -30,7 +31,7 @@ func New(ctx context.Context, wasm []byte) (*Core, error) {
 		_ = runtime.Close(context.WithoutCancel(ctx))
 		return nil, err
 	}
-	core := &Core{runtime: runtime, module: module}
+	core := &Core{runtime: runtime, module: module, memory: module.ExportedMemory("memory")}
 	for name, signature := range map[string][2]int{
 		"modelt_abi_version": {0, 1}, "modelt_input_resize": {1, 1},
 		"modelt_dispatch": {0, 0}, "modelt_output_ptr": {0, 1}, "modelt_output_len": {0, 1},
@@ -48,7 +49,7 @@ func New(ctx context.Context, wasm []byte) (*Core, error) {
 		}
 	}
 	version, err := core.call(ctx, "modelt_abi_version")
-	if err != nil || version != 1 || module.Memory() == nil {
+	if err != nil || version != 1 || core.memory == nil {
 		_ = core.Close(context.WithoutCancel(ctx))
 		if err != nil {
 			return nil, err
@@ -117,7 +118,7 @@ func (core *Core) exchange(ctx context.Context, request any) (message, error) {
 	if err != nil {
 		return message{}, err
 	}
-	if !core.module.Memory().Write(pointer, input) {
+	if !core.memory.Write(pointer, input) {
 		return message{}, fmt.Errorf("modelt: input outside Wasm memory")
 	}
 	if _, err := core.call(ctx, "modelt_dispatch"); err != nil {
@@ -131,7 +132,7 @@ func (core *Core) exchange(ctx context.Context, request any) (message, error) {
 	if err != nil {
 		return message{}, err
 	}
-	output, ok := core.module.Memory().Read(pointer, length)
+	output, ok := core.memory.Read(pointer, length)
 	if !ok {
 		return message{}, fmt.Errorf("modelt: output outside Wasm memory")
 	}
