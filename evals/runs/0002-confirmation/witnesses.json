@@ -1,0 +1,915 @@
+{
+  "uniform-8/persistence": {
+    "status": "mismatch",
+    "checkedSteps": 7,
+    "actual": {
+      "running": true,
+      "value": 0
+    },
+    "expected": [
+      {
+        "running": true,
+        "value": 1
+      }
+    ],
+    "trace": {
+      "version": 1,
+      "model": "durable-counter",
+      "initial": {
+        "running": true,
+        "value": 0
+      },
+      "steps": [
+        {
+          "action": {
+            "type": "restart"
+          },
+          "observation": {
+            "running": true,
+            "value": 0
+          }
+        },
+        {
+          "action": {
+            "type": "send",
+            "id": "a",
+            "amount": 1
+          },
+          "observation": {
+            "running": true,
+            "value": 0
+          }
+        },
+        {
+          "action": {
+            "type": "add",
+            "id": "a",
+            "amount": 1
+          },
+          "observation": {
+            "running": true,
+            "value": 1
+          }
+        },
+        {
+          "action": {
+            "type": "crash"
+          },
+          "observation": {
+            "running": false,
+            "value": 0
+          }
+        },
+        {
+          "action": {
+            "type": "deliver",
+            "index": 0
+          },
+          "observation": {
+            "running": false,
+            "value": 0
+          }
+        },
+        {
+          "action": {
+            "type": "crash"
+          },
+          "observation": {
+            "running": false,
+            "value": 0
+          }
+        },
+        {
+          "action": {
+            "type": "restart"
+          },
+          "observation": {
+            "running": true,
+            "value": 0
+          }
+        }
+      ]
+    }
+  },
+  "uniform-8/deduplication": {
+    "status": "mismatch",
+    "checkedSteps": 3,
+    "actual": {
+      "running": true,
+      "value": 2
+    },
+    "expected": [
+      {
+        "running": true,
+        "value": 1
+      }
+    ],
+    "trace": {
+      "version": 1,
+      "model": "durable-counter",
+      "initial": {
+        "running": true,
+        "value": 0
+      },
+      "steps": [
+        {
+          "action": {
+            "type": "send",
+            "id": "a",
+            "amount": 1
+          },
+          "observation": {
+            "running": true,
+            "value": 0
+          }
+        },
+        {
+          "action": {
+            "type": "deliver",
+            "index": 0
+          },
+          "observation": {
+            "running": true,
+            "value": 1
+          }
+        },
+        {
+          "action": {
+            "type": "add",
+            "id": "a",
+            "amount": 1
+          },
+          "observation": {
+            "running": true,
+            "value": 2
+          }
+        }
+      ]
+    }
+  },
+  "uniform-8/late-retry": {
+    "status": "mismatch",
+    "checkedSteps": 4,
+    "actual": {
+      "running": true,
+      "value": 2
+    },
+    "expected": [
+      {
+        "running": true,
+        "value": 1
+      }
+    ],
+    "trace": {
+      "version": 1,
+      "model": "durable-counter",
+      "initial": {
+        "running": true,
+        "value": 0
+      },
+      "steps": [
+        {
+          "action": {
+            "type": "add",
+            "id": "b",
+            "amount": 1
+          },
+          "observation": {
+            "running": true,
+            "value": 1
+          }
+        },
+        {
+          "action": {
+            "type": "add",
+            "id": "b",
+            "amount": 1
+          },
+          "observation": {
+            "running": true,
+            "value": 1
+          }
+        },
+        {
+          "action": {
+            "type": "send",
+            "id": "a",
+            "amount": 1
+          },
+          "observation": {
+            "running": true,
+            "value": 1
+          }
+        },
+        {
+          "action": {
+            "type": "add",
+            "id": "b",
+            "amount": 1
+          },
+          "observation": {
+            "running": true,
+            "value": 2
+          }
+        }
+      ]
+    }
+  },
+  "uniform-8/fifo-only": {
+    "status": "mismatch",
+    "checkedSteps": 6,
+    "actual": {
+      "running": true,
+      "value": 2
+    },
+    "expected": [
+      {
+        "running": true,
+        "value": 1
+      }
+    ],
+    "trace": {
+      "version": 1,
+      "model": "durable-counter",
+      "initial": {
+        "running": true,
+        "value": 0
+      },
+      "steps": [
+        {
+          "action": {
+            "type": "add",
+            "id": "b",
+            "amount": 1
+          },
+          "observation": {
+            "running": true,
+            "value": 1
+          }
+        },
+        {
+          "action": {
+            "type": "add",
+            "id": "b",
+            "amount": 1
+          },
+          "observation": {
+            "running": true,
+            "value": 1
+          }
+        },
+        {
+          "action": {
+            "type": "send",
+            "id": "a",
+            "amount": 1
+          },
+          "observation": {
+            "running": true,
+            "value": 1
+          }
+        },
+        {
+          "action": {
+            "type": "add",
+            "id": "b",
+            "amount": 1
+          },
+          "observation": {
+            "running": true,
+            "value": 1
+          }
+        },
+        {
+          "action": {
+            "type": "send",
+            "id": "b",
+            "amount": 1
+          },
+          "observation": {
+            "running": true,
+            "value": 1
+          }
+        },
+        {
+          "action": {
+            "type": "deliver",
+            "index": 1
+          },
+          "observation": {
+            "running": true,
+            "value": 2
+          }
+        }
+      ]
+    }
+  },
+  "uniform-8/drop-ignored": {
+    "status": "mismatch",
+    "checkedSteps": 8,
+    "actual": {
+      "running": true,
+      "value": 2
+    },
+    "expected": [
+      {
+        "running": true,
+        "value": 1
+      }
+    ],
+    "trace": {
+      "version": 1,
+      "model": "durable-counter",
+      "initial": {
+        "running": true,
+        "value": 0
+      },
+      "steps": [
+        {
+          "action": {
+            "type": "send",
+            "id": "b",
+            "amount": 1
+          },
+          "observation": {
+            "running": true,
+            "value": 0
+          }
+        },
+        {
+          "action": {
+            "type": "send",
+            "id": "a",
+            "amount": 1
+          },
+          "observation": {
+            "running": true,
+            "value": 0
+          }
+        },
+        {
+          "action": {
+            "type": "drop",
+            "index": 1
+          },
+          "observation": {
+            "running": true,
+            "value": 0
+          }
+        },
+        {
+          "action": {
+            "type": "add",
+            "id": "b",
+            "amount": 1
+          },
+          "observation": {
+            "running": true,
+            "value": 1
+          }
+        },
+        {
+          "action": {
+            "type": "add",
+            "id": "b",
+            "amount": 1
+          },
+          "observation": {
+            "running": true,
+            "value": 1
+          }
+        },
+        {
+          "action": {
+            "type": "restart"
+          },
+          "observation": {
+            "running": true,
+            "value": 1
+          }
+        },
+        {
+          "action": {
+            "type": "send",
+            "id": "b",
+            "amount": 1
+          },
+          "observation": {
+            "running": true,
+            "value": 1
+          }
+        },
+        {
+          "action": {
+            "type": "deliver",
+            "index": 1
+          },
+          "observation": {
+            "running": true,
+            "value": 2
+          }
+        }
+      ]
+    }
+  },
+  "alternating-8-16/persistence": {
+    "status": "mismatch",
+    "checkedSteps": 15,
+    "actual": {
+      "running": true,
+      "value": 0
+    },
+    "expected": [
+      {
+        "running": true,
+        "value": 1
+      }
+    ],
+    "trace": {
+      "version": 1,
+      "model": "durable-counter",
+      "initial": {
+        "running": true,
+        "value": 0
+      },
+      "steps": [
+        {
+          "action": {
+            "type": "send",
+            "id": "a",
+            "amount": 1
+          },
+          "observation": {
+            "running": true,
+            "value": 0
+          }
+        },
+        {
+          "action": {
+            "type": "deliver",
+            "index": 0
+          },
+          "observation": {
+            "running": true,
+            "value": 1
+          }
+        },
+        {
+          "action": {
+            "type": "add",
+            "id": "a",
+            "amount": 1
+          },
+          "observation": {
+            "running": true,
+            "value": 1
+          }
+        },
+        {
+          "action": {
+            "type": "add",
+            "id": "a",
+            "amount": 1
+          },
+          "observation": {
+            "running": true,
+            "value": 1
+          }
+        },
+        {
+          "action": {
+            "type": "crash"
+          },
+          "observation": {
+            "running": false,
+            "value": 0
+          }
+        },
+        {
+          "action": {
+            "type": "send",
+            "id": "b",
+            "amount": 1
+          },
+          "observation": {
+            "running": false,
+            "value": 0
+          }
+        },
+        {
+          "action": {
+            "type": "send",
+            "id": "a",
+            "amount": 1
+          },
+          "observation": {
+            "running": false,
+            "value": 0
+          }
+        },
+        {
+          "action": {
+            "type": "crash"
+          },
+          "observation": {
+            "running": false,
+            "value": 0
+          }
+        },
+        {
+          "action": {
+            "type": "drop",
+            "index": 1
+          },
+          "observation": {
+            "running": false,
+            "value": 0
+          }
+        },
+        {
+          "action": {
+            "type": "add",
+            "id": "b",
+            "amount": 1
+          },
+          "observation": {
+            "running": false,
+            "value": 0
+          }
+        },
+        {
+          "action": {
+            "type": "deliver",
+            "index": 0
+          },
+          "observation": {
+            "running": false,
+            "value": 0
+          }
+        },
+        {
+          "action": {
+            "type": "add",
+            "id": "a",
+            "amount": 1
+          },
+          "observation": {
+            "running": false,
+            "value": 0
+          }
+        },
+        {
+          "action": {
+            "type": "send",
+            "id": "a",
+            "amount": 1
+          },
+          "observation": {
+            "running": false,
+            "value": 0
+          }
+        },
+        {
+          "action": {
+            "type": "drop",
+            "index": 0
+          },
+          "observation": {
+            "running": false,
+            "value": 0
+          }
+        },
+        {
+          "action": {
+            "type": "restart"
+          },
+          "observation": {
+            "running": true,
+            "value": 0
+          }
+        }
+      ]
+    }
+  },
+  "alternating-8-16/deduplication": {
+    "status": "mismatch",
+    "checkedSteps": 3,
+    "actual": {
+      "running": true,
+      "value": 2
+    },
+    "expected": [
+      {
+        "running": true,
+        "value": 1
+      }
+    ],
+    "trace": {
+      "version": 1,
+      "model": "durable-counter",
+      "initial": {
+        "running": true,
+        "value": 0
+      },
+      "steps": [
+        {
+          "action": {
+            "type": "send",
+            "id": "a",
+            "amount": 1
+          },
+          "observation": {
+            "running": true,
+            "value": 0
+          }
+        },
+        {
+          "action": {
+            "type": "deliver",
+            "index": 0
+          },
+          "observation": {
+            "running": true,
+            "value": 1
+          }
+        },
+        {
+          "action": {
+            "type": "add",
+            "id": "a",
+            "amount": 1
+          },
+          "observation": {
+            "running": true,
+            "value": 2
+          }
+        }
+      ]
+    }
+  },
+  "alternating-8-16/late-retry": {
+    "status": "mismatch",
+    "checkedSteps": 4,
+    "actual": {
+      "running": true,
+      "value": 2
+    },
+    "expected": [
+      {
+        "running": true,
+        "value": 1
+      }
+    ],
+    "trace": {
+      "version": 1,
+      "model": "durable-counter",
+      "initial": {
+        "running": true,
+        "value": 0
+      },
+      "steps": [
+        {
+          "action": {
+            "type": "add",
+            "id": "b",
+            "amount": 1
+          },
+          "observation": {
+            "running": true,
+            "value": 1
+          }
+        },
+        {
+          "action": {
+            "type": "add",
+            "id": "b",
+            "amount": 1
+          },
+          "observation": {
+            "running": true,
+            "value": 1
+          }
+        },
+        {
+          "action": {
+            "type": "send",
+            "id": "a",
+            "amount": 1
+          },
+          "observation": {
+            "running": true,
+            "value": 1
+          }
+        },
+        {
+          "action": {
+            "type": "add",
+            "id": "b",
+            "amount": 1
+          },
+          "observation": {
+            "running": true,
+            "value": 2
+          }
+        }
+      ]
+    }
+  },
+  "alternating-8-16/fifo-only": {
+    "status": "mismatch",
+    "checkedSteps": 6,
+    "actual": {
+      "running": true,
+      "value": 2
+    },
+    "expected": [
+      {
+        "running": true,
+        "value": 1
+      }
+    ],
+    "trace": {
+      "version": 1,
+      "model": "durable-counter",
+      "initial": {
+        "running": true,
+        "value": 0
+      },
+      "steps": [
+        {
+          "action": {
+            "type": "add",
+            "id": "b",
+            "amount": 1
+          },
+          "observation": {
+            "running": true,
+            "value": 1
+          }
+        },
+        {
+          "action": {
+            "type": "add",
+            "id": "b",
+            "amount": 1
+          },
+          "observation": {
+            "running": true,
+            "value": 1
+          }
+        },
+        {
+          "action": {
+            "type": "send",
+            "id": "a",
+            "amount": 1
+          },
+          "observation": {
+            "running": true,
+            "value": 1
+          }
+        },
+        {
+          "action": {
+            "type": "add",
+            "id": "b",
+            "amount": 1
+          },
+          "observation": {
+            "running": true,
+            "value": 1
+          }
+        },
+        {
+          "action": {
+            "type": "send",
+            "id": "b",
+            "amount": 1
+          },
+          "observation": {
+            "running": true,
+            "value": 1
+          }
+        },
+        {
+          "action": {
+            "type": "deliver",
+            "index": 1
+          },
+          "observation": {
+            "running": true,
+            "value": 2
+          }
+        }
+      ]
+    }
+  },
+  "alternating-8-16/drop-ignored": {
+    "status": "mismatch",
+    "checkedSteps": 8,
+    "actual": {
+      "running": true,
+      "value": 2
+    },
+    "expected": [
+      {
+        "running": true,
+        "value": 1
+      }
+    ],
+    "trace": {
+      "version": 1,
+      "model": "durable-counter",
+      "initial": {
+        "running": true,
+        "value": 0
+      },
+      "steps": [
+        {
+          "action": {
+            "type": "send",
+            "id": "b",
+            "amount": 1
+          },
+          "observation": {
+            "running": true,
+            "value": 0
+          }
+        },
+        {
+          "action": {
+            "type": "send",
+            "id": "a",
+            "amount": 1
+          },
+          "observation": {
+            "running": true,
+            "value": 0
+          }
+        },
+        {
+          "action": {
+            "type": "drop",
+            "index": 1
+          },
+          "observation": {
+            "running": true,
+            "value": 0
+          }
+        },
+        {
+          "action": {
+            "type": "add",
+            "id": "b",
+            "amount": 1
+          },
+          "observation": {
+            "running": true,
+            "value": 1
+          }
+        },
+        {
+          "action": {
+            "type": "add",
+            "id": "b",
+            "amount": 1
+          },
+          "observation": {
+            "running": true,
+            "value": 1
+          }
+        },
+        {
+          "action": {
+            "type": "restart"
+          },
+          "observation": {
+            "running": true,
+            "value": 1
+          }
+        },
+        {
+          "action": {
+            "type": "send",
+            "id": "b",
+            "amount": 1
+          },
+          "observation": {
+            "running": true,
+            "value": 1
+          }
+        },
+        {
+          "action": {
+            "type": "deliver",
+            "index": 1
+          },
+          "observation": {
+            "running": true,
+            "value": 2
+          }
+        }
+      ]
+    }
+  }
+}

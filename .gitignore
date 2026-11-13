@@ -5,3 +5,4 @@ dist/
 coverage/
 test-results/
 playwright-report/
+evals/rust-probe/target/

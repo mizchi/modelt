@@ -1,0 +1,2807 @@
+[
+  {
+    "manifestId": "c1f35aee0ee44ac3694854dbd4a989ffd69f7c62a25cc5f07b19b0ef573259f7",
+    "sourceVersion": "e9fc6cafefaab0f27973f82eeeb385e3b99cfa77a7bb58e80164cc8dab5f0ef2",
+    "taskId": "0c3f7d9a4bb8fa953b59306029e3a44c4d9605f370040172a4effd6d9453ce5f",
+    "status": "ok",
+    "result": {
+      "cases": 40,
+      "operations": 512,
+      "steps": 472,
+      "checksum": 3589269486,
+      "trace": []
+    }
+  },
+  {
+    "manifestId": "c1f35aee0ee44ac3694854dbd4a989ffd69f7c62a25cc5f07b19b0ef573259f7",
+    "sourceVersion": "e9fc6cafefaab0f27973f82eeeb385e3b99cfa77a7bb58e80164cc8dab5f0ef2",
+    "taskId": "123aaf5a7880292fc3e93657a60316d2a37a679e478ffb8e047b293f61da4b2a",
+    "status": "ok",
+    "result": {
+      "broken": {
+        "mode": "concurrent",
+        "ordering": [
+          2,
+          1,
+          3,
+          6,
+          5,
+          4
+        ],
+        "history": [
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 4,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 5,
+            "input": 1,
+            "output": 1
+          }
+        ],
+        "events": [
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "b:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      "fixed": {
+        "mode": "concurrent",
+        "ordering": [
+          2,
+          1,
+          3,
+          6,
+          5,
+          4
+        ],
+        "history": [
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 4,
+            "input": 1,
+            "output": 2
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 5,
+            "input": 1,
+            "output": 3
+          }
+        ],
+        "events": [
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "b:write",
+            "status": "resolved"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "manifestId": "c1f35aee0ee44ac3694854dbd4a989ffd69f7c62a25cc5f07b19b0ef573259f7",
+    "sourceVersion": "e9fc6cafefaab0f27973f82eeeb385e3b99cfa77a7bb58e80164cc8dab5f0ef2",
+    "taskId": "15e1304eff65098b3a69376748d7d85f9ffb3927ee39bc302d28fac929a449be",
+    "status": "ok",
+    "result": {
+      "broken": {
+        "mode": "concurrent",
+        "ordering": [
+          1,
+          3,
+          2,
+          5,
+          4,
+          6
+        ],
+        "history": [
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 4,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 5,
+            "input": 1,
+            "output": 1
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "b:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      "fixed": {
+        "mode": "concurrent",
+        "ordering": [
+          1,
+          3,
+          2,
+          5,
+          4,
+          6
+        ],
+        "history": [
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 4,
+            "input": 1,
+            "output": 2
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 5,
+            "input": 1,
+            "output": 3
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "b:write",
+            "status": "resolved"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "manifestId": "c1f35aee0ee44ac3694854dbd4a989ffd69f7c62a25cc5f07b19b0ef573259f7",
+    "sourceVersion": "e9fc6cafefaab0f27973f82eeeb385e3b99cfa77a7bb58e80164cc8dab5f0ef2",
+    "taskId": "1d65c71eaece86db19edebd50a5ce77adbcfa290816612d236e0b420eb65c005",
+    "status": "ok",
+    "result": {
+      "cases": 40,
+      "operations": 512,
+      "steps": 472,
+      "checksum": 2590150449,
+      "trace": []
+    }
+  },
+  {
+    "manifestId": "c1f35aee0ee44ac3694854dbd4a989ffd69f7c62a25cc5f07b19b0ef573259f7",
+    "sourceVersion": "e9fc6cafefaab0f27973f82eeeb385e3b99cfa77a7bb58e80164cc8dab5f0ef2",
+    "taskId": "22f2e55e0f796d7a53fa2b8297fa013b75a0e376693ef7bddbc36776364f8508",
+    "status": "ok",
+    "result": {
+      "broken": {
+        "mode": "concurrent",
+        "ordering": [
+          1,
+          2,
+          4,
+          3
+        ],
+        "history": [
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 2,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "a:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      "fixed": {
+        "mode": "concurrent",
+        "ordering": [
+          1,
+          2,
+          4,
+          3
+        ],
+        "history": [
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 2,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 3,
+            "input": 1,
+            "output": 2
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "a:write",
+            "status": "resolved"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "manifestId": "c1f35aee0ee44ac3694854dbd4a989ffd69f7c62a25cc5f07b19b0ef573259f7",
+    "sourceVersion": "e9fc6cafefaab0f27973f82eeeb385e3b99cfa77a7bb58e80164cc8dab5f0ef2",
+    "taskId": "40b611aa8feb918f2b3fc08c1cd3a6791ab18b5b3256980084aebf33b4063a18",
+    "status": "ok",
+    "result": {
+      "broken": {
+        "mode": "concurrent",
+        "ordering": [
+          2,
+          4,
+          1,
+          3,
+          5,
+          6
+        ],
+        "history": [
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 4,
+            "input": 1,
+            "output": 2
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 5,
+            "input": 1,
+            "output": 2
+          }
+        ],
+        "events": [
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "c:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      "fixed": {
+        "mode": "concurrent",
+        "ordering": [
+          2,
+          4,
+          1,
+          3,
+          5,
+          6
+        ],
+        "history": [
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 4,
+            "input": 1,
+            "output": 2
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 5,
+            "input": 1,
+            "output": 3
+          }
+        ],
+        "events": [
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "c:write",
+            "status": "resolved"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "manifestId": "c1f35aee0ee44ac3694854dbd4a989ffd69f7c62a25cc5f07b19b0ef573259f7",
+    "sourceVersion": "e9fc6cafefaab0f27973f82eeeb385e3b99cfa77a7bb58e80164cc8dab5f0ef2",
+    "taskId": "468d701e19f5fa8fc9a65044c0bffaf662e70d6e3430ed2eb993b606029e53d7",
+    "status": "ok",
+    "result": {
+      "cases": 40,
+      "operations": 512,
+      "steps": 472,
+      "checksum": 2279095867,
+      "trace": []
+    }
+  },
+  {
+    "manifestId": "c1f35aee0ee44ac3694854dbd4a989ffd69f7c62a25cc5f07b19b0ef573259f7",
+    "sourceVersion": "e9fc6cafefaab0f27973f82eeeb385e3b99cfa77a7bb58e80164cc8dab5f0ef2",
+    "taskId": "5ae111260156799eb3b4b749e6ebe884bb281e42156a16fb50485e52f6e3a171",
+    "status": "ok",
+    "result": {
+      "broken": {
+        "mode": "concurrent",
+        "ordering": [
+          2,
+          1,
+          4,
+          3
+        ],
+        "history": [
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 2,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          }
+        ],
+        "events": [
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "b:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      "fixed": {
+        "mode": "concurrent",
+        "ordering": [
+          2,
+          1,
+          4,
+          3
+        ],
+        "history": [
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 2,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 3,
+            "input": 1,
+            "output": 2
+          }
+        ],
+        "events": [
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "b:write",
+            "status": "resolved"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "manifestId": "c1f35aee0ee44ac3694854dbd4a989ffd69f7c62a25cc5f07b19b0ef573259f7",
+    "sourceVersion": "e9fc6cafefaab0f27973f82eeeb385e3b99cfa77a7bb58e80164cc8dab5f0ef2",
+    "taskId": "5ce2c7ea39e84c455acaa05e661c9a0e1aa516cc8886cdefc91a5ab1950fc5f7",
+    "status": "ok",
+    "result": {
+      "broken": {
+        "mode": "concurrent",
+        "ordering": [
+          2,
+          3,
+          4,
+          1,
+          5,
+          6
+        ],
+        "history": [
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 4,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 5,
+            "input": 1,
+            "output": 2
+          }
+        ],
+        "events": [
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "a:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      "fixed": {
+        "mode": "concurrent",
+        "ordering": [
+          2,
+          3,
+          4,
+          1,
+          5,
+          6
+        ],
+        "history": [
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 4,
+            "input": 1,
+            "output": 2
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 5,
+            "input": 1,
+            "output": 3
+          }
+        ],
+        "events": [
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "a:write",
+            "status": "resolved"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "manifestId": "c1f35aee0ee44ac3694854dbd4a989ffd69f7c62a25cc5f07b19b0ef573259f7",
+    "sourceVersion": "e9fc6cafefaab0f27973f82eeeb385e3b99cfa77a7bb58e80164cc8dab5f0ef2",
+    "taskId": "62ffbcee1aeff2431972192f2c9c671a4c0c4059e58e26946a4394d90ce281cf",
+    "status": "ok",
+    "result": {
+      "cases": 40,
+      "operations": 512,
+      "steps": 472,
+      "checksum": 4155147365,
+      "trace": []
+    }
+  },
+  {
+    "manifestId": "c1f35aee0ee44ac3694854dbd4a989ffd69f7c62a25cc5f07b19b0ef573259f7",
+    "sourceVersion": "e9fc6cafefaab0f27973f82eeeb385e3b99cfa77a7bb58e80164cc8dab5f0ef2",
+    "taskId": "65b772028ef613b869349662035713d1e0fa32d26175e32d3011ebbb2d42fc84",
+    "status": "ok",
+    "result": {
+      "broken": {
+        "mode": "concurrent",
+        "ordering": [
+          3,
+          2,
+          4,
+          5,
+          1,
+          6
+        ],
+        "history": [
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 4,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 5,
+            "input": 1,
+            "output": 2
+          }
+        ],
+        "events": [
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "a:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      "fixed": {
+        "mode": "concurrent",
+        "ordering": [
+          3,
+          2,
+          4,
+          5,
+          1,
+          6
+        ],
+        "history": [
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 4,
+            "input": 1,
+            "output": 2
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 5,
+            "input": 1,
+            "output": 3
+          }
+        ],
+        "events": [
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "a:write",
+            "status": "resolved"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "manifestId": "c1f35aee0ee44ac3694854dbd4a989ffd69f7c62a25cc5f07b19b0ef573259f7",
+    "sourceVersion": "e9fc6cafefaab0f27973f82eeeb385e3b99cfa77a7bb58e80164cc8dab5f0ef2",
+    "taskId": "683678465befd51fc615711614b991e45b50290665381e43c60751e143444559",
+    "status": "ok",
+    "result": {
+      "broken": {
+        "mode": "concurrent",
+        "ordering": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "history": [
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 4,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 5,
+            "input": 1,
+            "output": 1
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "c:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      "fixed": {
+        "mode": "concurrent",
+        "ordering": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "history": [
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 4,
+            "input": 1,
+            "output": 2
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 5,
+            "input": 1,
+            "output": 3
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "c:write",
+            "status": "resolved"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "manifestId": "c1f35aee0ee44ac3694854dbd4a989ffd69f7c62a25cc5f07b19b0ef573259f7",
+    "sourceVersion": "e9fc6cafefaab0f27973f82eeeb385e3b99cfa77a7bb58e80164cc8dab5f0ef2",
+    "taskId": "78c8a86290898bf70e0e6608bb27f9b114015142b61b8e60e6c3b38464088053",
+    "status": "ok",
+    "result": {
+      "cases": 40,
+      "operations": 512,
+      "steps": 472,
+      "checksum": 1161477896,
+      "trace": []
+    }
+  },
+  {
+    "manifestId": "c1f35aee0ee44ac3694854dbd4a989ffd69f7c62a25cc5f07b19b0ef573259f7",
+    "sourceVersion": "e9fc6cafefaab0f27973f82eeeb385e3b99cfa77a7bb58e80164cc8dab5f0ef2",
+    "taskId": "89af26fa00b5761b2382dd9b956dca8fbb6409dd3c5f00a0f1162747746def74",
+    "status": "ok",
+    "result": {
+      "broken": {
+        "mode": "concurrent",
+        "ordering": [
+          2,
+          1,
+          5,
+          3,
+          6,
+          4
+        ],
+        "history": [
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 4,
+            "input": 1,
+            "output": 2
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 5,
+            "input": 1,
+            "output": 1
+          }
+        ],
+        "events": [
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "b:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      "fixed": {
+        "mode": "concurrent",
+        "ordering": [
+          2,
+          1,
+          5,
+          3,
+          6,
+          4
+        ],
+        "history": [
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 4,
+            "input": 1,
+            "output": 2
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 5,
+            "input": 1,
+            "output": 3
+          }
+        ],
+        "events": [
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "b:write",
+            "status": "resolved"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "manifestId": "c1f35aee0ee44ac3694854dbd4a989ffd69f7c62a25cc5f07b19b0ef573259f7",
+    "sourceVersion": "e9fc6cafefaab0f27973f82eeeb385e3b99cfa77a7bb58e80164cc8dab5f0ef2",
+    "taskId": "8bdf10c2db3cba031acc2cd7a25079441f5f84161d3efaa1e98af2264f6244c1",
+    "status": "ok",
+    "result": {
+      "broken": {
+        "mode": "concurrent",
+        "ordering": [
+          1,
+          3,
+          4,
+          2,
+          5,
+          6
+        ],
+        "history": [
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 4,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 5,
+            "input": 1,
+            "output": 2
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "b:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      "fixed": {
+        "mode": "concurrent",
+        "ordering": [
+          1,
+          3,
+          4,
+          2,
+          5,
+          6
+        ],
+        "history": [
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 4,
+            "input": 1,
+            "output": 2
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 5,
+            "input": 1,
+            "output": 3
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "b:write",
+            "status": "resolved"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "manifestId": "c1f35aee0ee44ac3694854dbd4a989ffd69f7c62a25cc5f07b19b0ef573259f7",
+    "sourceVersion": "e9fc6cafefaab0f27973f82eeeb385e3b99cfa77a7bb58e80164cc8dab5f0ef2",
+    "taskId": "8d3b9676499483c857119cd7fea1a737053641bf148f5070e280c621bcdb3628",
+    "status": "ok",
+    "result": {
+      "broken": {
+        "mode": "concurrent",
+        "ordering": [
+          3,
+          1,
+          4,
+          2,
+          6,
+          5
+        ],
+        "history": [
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 4,
+            "input": 1,
+            "output": 2
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 5,
+            "input": 1,
+            "output": 1
+          }
+        ],
+        "events": [
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "a:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      "fixed": {
+        "mode": "concurrent",
+        "ordering": [
+          3,
+          1,
+          4,
+          2,
+          6,
+          5
+        ],
+        "history": [
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 4,
+            "input": 1,
+            "output": 2
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 5,
+            "input": 1,
+            "output": 3
+          }
+        ],
+        "events": [
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "a:write",
+            "status": "resolved"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "manifestId": "c1f35aee0ee44ac3694854dbd4a989ffd69f7c62a25cc5f07b19b0ef573259f7",
+    "sourceVersion": "e9fc6cafefaab0f27973f82eeeb385e3b99cfa77a7bb58e80164cc8dab5f0ef2",
+    "taskId": "946dfa5a9ae708181dff5cfefb6f76740ff2df7a77446609b0a74506db874cd0",
+    "status": "ok",
+    "result": {
+      "broken": {
+        "mode": "concurrent",
+        "ordering": [
+          2,
+          3,
+          5,
+          4,
+          1,
+          6
+        ],
+        "history": [
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 4,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 5,
+            "input": 1,
+            "output": 2
+          }
+        ],
+        "events": [
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "a:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      "fixed": {
+        "mode": "concurrent",
+        "ordering": [
+          2,
+          3,
+          5,
+          4,
+          1,
+          6
+        ],
+        "history": [
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 4,
+            "input": 1,
+            "output": 2
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 5,
+            "input": 1,
+            "output": 3
+          }
+        ],
+        "events": [
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "a:write",
+            "status": "resolved"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "manifestId": "c1f35aee0ee44ac3694854dbd4a989ffd69f7c62a25cc5f07b19b0ef573259f7",
+    "sourceVersion": "e9fc6cafefaab0f27973f82eeeb385e3b99cfa77a7bb58e80164cc8dab5f0ef2",
+    "taskId": "95f1b186702dae2c3cfc456e4eb0fad8395a6b6b54ffaf14dba83ab075d2a8dd",
+    "status": "ok",
+    "result": {
+      "broken": {
+        "mode": "concurrent",
+        "ordering": [
+          1,
+          2,
+          3,
+          5,
+          6,
+          4
+        ],
+        "history": [
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 4,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 5,
+            "input": 1,
+            "output": 1
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "a:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      "fixed": {
+        "mode": "concurrent",
+        "ordering": [
+          1,
+          2,
+          3,
+          5,
+          6,
+          4
+        ],
+        "history": [
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 4,
+            "input": 1,
+            "output": 2
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 5,
+            "input": 1,
+            "output": 3
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "a:write",
+            "status": "resolved"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "manifestId": "c1f35aee0ee44ac3694854dbd4a989ffd69f7c62a25cc5f07b19b0ef573259f7",
+    "sourceVersion": "e9fc6cafefaab0f27973f82eeeb385e3b99cfa77a7bb58e80164cc8dab5f0ef2",
+    "taskId": "97b4d59268bca2718ee436d248a86f2f9014e4e76a374c299b569519f85e3029",
+    "status": "ok",
+    "result": {
+      "cases": 40,
+      "operations": 512,
+      "steps": 472,
+      "checksum": 2878209753,
+      "trace": []
+    }
+  },
+  {
+    "manifestId": "c1f35aee0ee44ac3694854dbd4a989ffd69f7c62a25cc5f07b19b0ef573259f7",
+    "sourceVersion": "e9fc6cafefaab0f27973f82eeeb385e3b99cfa77a7bb58e80164cc8dab5f0ef2",
+    "taskId": "992532324b8133fd8626805361471e9ea7734bb7d906f89096f9aa1d68de2b0e",
+    "status": "ok",
+    "result": {
+      "broken": {
+        "mode": "concurrent",
+        "ordering": [
+          2,
+          3,
+          1,
+          5,
+          6,
+          4
+        ],
+        "history": [
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 4,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 5,
+            "input": 1,
+            "output": 1
+          }
+        ],
+        "events": [
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "b:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      "fixed": {
+        "mode": "concurrent",
+        "ordering": [
+          2,
+          3,
+          1,
+          5,
+          6,
+          4
+        ],
+        "history": [
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 4,
+            "input": 1,
+            "output": 2
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 5,
+            "input": 1,
+            "output": 3
+          }
+        ],
+        "events": [
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "b:write",
+            "status": "resolved"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "manifestId": "c1f35aee0ee44ac3694854dbd4a989ffd69f7c62a25cc5f07b19b0ef573259f7",
+    "sourceVersion": "e9fc6cafefaab0f27973f82eeeb385e3b99cfa77a7bb58e80164cc8dab5f0ef2",
+    "taskId": "a13f5a1ae7b39fa571b50ddfe3f94718caeb28a3d658ddf3d68ddd9e4a0df9a3",
+    "status": "ok",
+    "result": {
+      "cases": 40,
+      "operations": 512,
+      "steps": 472,
+      "checksum": 4194029792,
+      "trace": []
+    }
+  },
+  {
+    "manifestId": "c1f35aee0ee44ac3694854dbd4a989ffd69f7c62a25cc5f07b19b0ef573259f7",
+    "sourceVersion": "e9fc6cafefaab0f27973f82eeeb385e3b99cfa77a7bb58e80164cc8dab5f0ef2",
+    "taskId": "b31c36dada7cde534457590291f1afee5ed7e2e7460ecffe116b8bb79408dc91",
+    "status": "ok",
+    "result": {
+      "cases": 40,
+      "operations": 512,
+      "steps": 472,
+      "checksum": 1383189633,
+      "trace": []
+    }
+  },
+  {
+    "manifestId": "c1f35aee0ee44ac3694854dbd4a989ffd69f7c62a25cc5f07b19b0ef573259f7",
+    "sourceVersion": "e9fc6cafefaab0f27973f82eeeb385e3b99cfa77a7bb58e80164cc8dab5f0ef2",
+    "taskId": "b3ce2ab6340b432f4373923ead6aeab86baf25adb39996634aed9033b39f47b4",
+    "status": "ok",
+    "result": {
+      "cases": 40,
+      "operations": 512,
+      "steps": 472,
+      "checksum": 3164822634,
+      "trace": []
+    }
+  },
+  {
+    "manifestId": "c1f35aee0ee44ac3694854dbd4a989ffd69f7c62a25cc5f07b19b0ef573259f7",
+    "sourceVersion": "e9fc6cafefaab0f27973f82eeeb385e3b99cfa77a7bb58e80164cc8dab5f0ef2",
+    "taskId": "b75c62daae484930b0743150ca14695dcc56f0580a518d6751192e3db4051a04",
+    "status": "ok",
+    "result": {
+      "cases": 40,
+      "operations": 512,
+      "steps": 472,
+      "checksum": 4253017717,
+      "trace": []
+    }
+  },
+  {
+    "manifestId": "c1f35aee0ee44ac3694854dbd4a989ffd69f7c62a25cc5f07b19b0ef573259f7",
+    "sourceVersion": "e9fc6cafefaab0f27973f82eeeb385e3b99cfa77a7bb58e80164cc8dab5f0ef2",
+    "taskId": "cbece7123ca24a8acbac9f610b944e019e4e1cd07d5e9a3e9d1a546af5f6209c",
+    "status": "ok",
+    "result": {
+      "cases": 40,
+      "operations": 512,
+      "steps": 472,
+      "checksum": 3365851060,
+      "trace": []
+    }
+  },
+  {
+    "manifestId": "c1f35aee0ee44ac3694854dbd4a989ffd69f7c62a25cc5f07b19b0ef573259f7",
+    "sourceVersion": "e9fc6cafefaab0f27973f82eeeb385e3b99cfa77a7bb58e80164cc8dab5f0ef2",
+    "taskId": "d0b0313604beb2fe3ba0552474b34b9f234cadd2067052cf079d9aaadbc05958",
+    "status": "ok",
+    "result": {
+      "cases": 40,
+      "operations": 512,
+      "steps": 472,
+      "checksum": 1445477746,
+      "trace": []
+    }
+  },
+  {
+    "manifestId": "c1f35aee0ee44ac3694854dbd4a989ffd69f7c62a25cc5f07b19b0ef573259f7",
+    "sourceVersion": "e9fc6cafefaab0f27973f82eeeb385e3b99cfa77a7bb58e80164cc8dab5f0ef2",
+    "taskId": "d7b7db8a12891f703b7c060743e9eca669601d6c180416416e814771308939d4",
+    "status": "ok",
+    "result": {
+      "cases": 40,
+      "operations": 512,
+      "steps": 472,
+      "checksum": 3088556387,
+      "trace": []
+    }
+  },
+  {
+    "manifestId": "c1f35aee0ee44ac3694854dbd4a989ffd69f7c62a25cc5f07b19b0ef573259f7",
+    "sourceVersion": "e9fc6cafefaab0f27973f82eeeb385e3b99cfa77a7bb58e80164cc8dab5f0ef2",
+    "taskId": "dd69c4b24e8c5300fcd2e289e7dd848f7dd6597387d7b04a59cb9553184c48f1",
+    "status": "ok",
+    "result": {
+      "cases": 40,
+      "operations": 512,
+      "steps": 472,
+      "checksum": 14165592,
+      "trace": []
+    }
+  },
+  {
+    "manifestId": "c1f35aee0ee44ac3694854dbd4a989ffd69f7c62a25cc5f07b19b0ef573259f7",
+    "sourceVersion": "e9fc6cafefaab0f27973f82eeeb385e3b99cfa77a7bb58e80164cc8dab5f0ef2",
+    "taskId": "e1425a0e66fb715c92e76c11ab467349db0338409001b45e6ee1e587a0e66c6a",
+    "status": "ok",
+    "result": {
+      "broken": {
+        "mode": "concurrent",
+        "ordering": [
+          1,
+          3,
+          2,
+          4,
+          5,
+          6
+        ],
+        "history": [
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 4,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 5,
+            "input": 1,
+            "output": 1
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "b:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      "fixed": {
+        "mode": "concurrent",
+        "ordering": [
+          1,
+          3,
+          2,
+          4,
+          5,
+          6
+        ],
+        "history": [
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 4,
+            "input": 1,
+            "output": 2
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 5,
+            "input": 1,
+            "output": 3
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "b:write",
+            "status": "resolved"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "manifestId": "c1f35aee0ee44ac3694854dbd4a989ffd69f7c62a25cc5f07b19b0ef573259f7",
+    "sourceVersion": "e9fc6cafefaab0f27973f82eeeb385e3b99cfa77a7bb58e80164cc8dab5f0ef2",
+    "taskId": "e8adea0ad11c56346060bf372bebbee2e30cac66aadfd2540b3621c242a5cfea",
+    "status": "ok",
+    "result": {
+      "broken": {
+        "mode": "concurrent",
+        "ordering": [
+          3,
+          1,
+          5,
+          2,
+          6,
+          4
+        ],
+        "history": [
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 4,
+            "input": 1,
+            "output": 2
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 5,
+            "input": 1,
+            "output": 1
+          }
+        ],
+        "events": [
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "c:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      "fixed": {
+        "mode": "concurrent",
+        "ordering": [
+          3,
+          1,
+          5,
+          2,
+          6,
+          4
+        ],
+        "history": [
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 4,
+            "input": 1,
+            "output": 2
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 5,
+            "input": 1,
+            "output": 3
+          }
+        ],
+        "events": [
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "c:write",
+            "status": "resolved"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "manifestId": "c1f35aee0ee44ac3694854dbd4a989ffd69f7c62a25cc5f07b19b0ef573259f7",
+    "sourceVersion": "e9fc6cafefaab0f27973f82eeeb385e3b99cfa77a7bb58e80164cc8dab5f0ef2",
+    "taskId": "ee17d096276acd6d7bb353e634eb6b8ec9616c54330a6aecccf137e7543e9986",
+    "status": "ok",
+    "result": {
+      "broken": {
+        "mode": "concurrent",
+        "ordering": [
+          1,
+          4,
+          2,
+          3,
+          5,
+          6
+        ],
+        "history": [
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 4,
+            "input": 1,
+            "output": 2
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 5,
+            "input": 1,
+            "output": 2
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "c:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      "fixed": {
+        "mode": "concurrent",
+        "ordering": [
+          1,
+          4,
+          2,
+          3,
+          5,
+          6
+        ],
+        "history": [
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 4,
+            "input": 1,
+            "output": 2
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 5,
+            "input": 1,
+            "output": 3
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "c:write",
+            "status": "resolved"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "manifestId": "c1f35aee0ee44ac3694854dbd4a989ffd69f7c62a25cc5f07b19b0ef573259f7",
+    "sourceVersion": "e9fc6cafefaab0f27973f82eeeb385e3b99cfa77a7bb58e80164cc8dab5f0ef2",
+    "taskId": "f1a4cc3a75f89023a1a84e8817676aff183f88da4f04933552caa929cb31802d",
+    "status": "ok",
+    "result": {
+      "cases": 40,
+      "operations": 512,
+      "steps": 472,
+      "checksum": 3076866719,
+      "trace": []
+    }
+  },
+  {
+    "manifestId": "c1f35aee0ee44ac3694854dbd4a989ffd69f7c62a25cc5f07b19b0ef573259f7",
+    "sourceVersion": "e9fc6cafefaab0f27973f82eeeb385e3b99cfa77a7bb58e80164cc8dab5f0ef2",
+    "taskId": "f9969e16f8a38efb26219ea4369c4d3723cb502066e81514c9b0588baa5d60b7",
+    "status": "ok",
+    "result": {
+      "cases": 40,
+      "operations": 512,
+      "steps": 472,
+      "checksum": 1565361336,
+      "trace": []
+    }
+  },
+  {
+    "manifestId": "c1f35aee0ee44ac3694854dbd4a989ffd69f7c62a25cc5f07b19b0ef573259f7",
+    "sourceVersion": "e9fc6cafefaab0f27973f82eeeb385e3b99cfa77a7bb58e80164cc8dab5f0ef2",
+    "taskId": "fbce1dcad407ac021152d8104c071b24220748035f1371db813e0069e0ee6f22",
+    "status": "ok",
+    "result": {
+      "cases": 40,
+      "operations": 512,
+      "steps": 472,
+      "checksum": 1337671023,
+      "trace": []
+    }
+  },
+  {
+    "manifestId": "c1f35aee0ee44ac3694854dbd4a989ffd69f7c62a25cc5f07b19b0ef573259f7",
+    "sourceVersion": "e9fc6cafefaab0f27973f82eeeb385e3b99cfa77a7bb58e80164cc8dab5f0ef2",
+    "taskId": "fd28c0c6ce983a9e8f70e1486b93b723c062395f7ca145a33ead82ae75f46e90",
+    "status": "ok",
+    "result": {
+      "broken": {
+        "mode": "concurrent",
+        "ordering": [
+          1,
+          3,
+          2,
+          4,
+          6,
+          5
+        ],
+        "history": [
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 4,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 5,
+            "input": 1,
+            "output": 1
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "c:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      "fixed": {
+        "mode": "concurrent",
+        "ordering": [
+          1,
+          3,
+          2,
+          4,
+          6,
+          5
+        ],
+        "history": [
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 4,
+            "input": 1,
+            "output": 2
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 5,
+            "input": 1,
+            "output": 3
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "c:write",
+            "status": "resolved"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "manifestId": "c1f35aee0ee44ac3694854dbd4a989ffd69f7c62a25cc5f07b19b0ef573259f7",
+    "sourceVersion": "e9fc6cafefaab0f27973f82eeeb385e3b99cfa77a7bb58e80164cc8dab5f0ef2",
+    "taskId": "ffbd9d32286cc3f197a19b5260a26d311533389e07b102ae846c4dd0eecd9bc5",
+    "status": "ok",
+    "result": {
+      "broken": {
+        "mode": "concurrent",
+        "ordering": [
+          1,
+          4,
+          3,
+          5,
+          2,
+          6
+        ],
+        "history": [
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 4,
+            "input": 1,
+            "output": 2
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 5,
+            "input": 1,
+            "output": 3
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "b:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      "fixed": {
+        "mode": "concurrent",
+        "ordering": [
+          1,
+          4,
+          3,
+          5,
+          2,
+          6
+        ],
+        "history": [
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 4,
+            "input": 1,
+            "output": 2
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 5,
+            "input": 1,
+            "output": 3
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "b:write",
+            "status": "resolved"
+          }
+        ]
+      }
+    }
+  }
+]

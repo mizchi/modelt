@@ -8,6 +8,8 @@
       "!.artifacts",
       "!test-results",
       "!playwright-report",
+      "!evals/runs",
+      "!evals/rust-probe/target",
       "!pnpm-lock.yaml"
     ]
   },

@@ -1,0 +1,18 @@
+{
+  "status": "planned",
+  "workload": "async-counter-3",
+  "profile": "inline-async-3",
+  "workers": 1,
+  "maxDepth": 5,
+  "maxStates": 364,
+  "estimatedMs": 7.495536533332456,
+  "estimatedMemoryBytes": 90757888,
+  "budget": {
+    "workload": "async-counter-3",
+    "durationMs": 10,
+    "memoryBytes": 1073741824,
+    "maxWorkers": 4,
+    "maxDepth": 6,
+    "branching": 3
+  }
+}

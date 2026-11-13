@@ -1,0 +1,296 @@
+{
+  "version": 1,
+  "date": "2026-11-13T15:38:55.469Z",
+  "node": "v24.22.2",
+  "platform": "darwin-arm64",
+  "seeds": [
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20
+  ],
+  "budget": {
+    "maxOperations": 512,
+    "maxDepth": 8
+  },
+  "scope": "Seeded synthetic faults; not unknown production bugs. Wall-clock timings are descriptive, not performance claims.",
+  "search": {
+    "summaries": [
+      {
+        "strategy": "uniform",
+        "falsePositives": 0,
+        "medianStates": 46.5,
+        "medianEdges": 173,
+        "medianCases": 57,
+        "medianModelSteps": 455,
+        "medianOperations": 512,
+        "medianGenerationMs": 0.6384794999999883,
+        "medianExecutionMs": 0.6768750000000097
+      },
+      {
+        "strategy": "novelty",
+        "falsePositives": 0,
+        "medianStates": 25.5,
+        "medianEdges": 62.5,
+        "medianCases": 101,
+        "medianModelSteps": 101,
+        "medianOperations": 511.5,
+        "medianGenerationMs": 0.15777099999999677,
+        "medianExecutionMs": 0.6680624999999907
+      }
+    ],
+    "comparison": [
+      {
+        "fault": "persistence",
+        "uniform": 20,
+        "novelty": 14,
+        "uniformOnly": 6,
+        "noveltyOnly": 0,
+        "both": 14,
+        "neither": 0,
+        "uniformMedianOperationsWhenDetected": 41.5,
+        "noveltyMedianOperationsWhenDetected": 170
+      },
+      {
+        "fault": "deduplication",
+        "uniform": 20,
+        "novelty": 20,
+        "uniformOnly": 0,
+        "noveltyOnly": 0,
+        "both": 20,
+        "neither": 0,
+        "uniformMedianOperationsWhenDetected": 14.5,
+        "noveltyMedianOperationsWhenDetected": 46
+      },
+      {
+        "fault": "late-retry",
+        "uniform": 20,
+        "novelty": 13,
+        "uniformOnly": 7,
+        "noveltyOnly": 0,
+        "both": 13,
+        "neither": 0,
+        "uniformMedianOperationsWhenDetected": 79,
+        "noveltyMedianOperationsWhenDetected": 146
+      },
+      {
+        "fault": "fifo-only",
+        "uniform": 14,
+        "novelty": 6,
+        "uniformOnly": 10,
+        "noveltyOnly": 2,
+        "both": 4,
+        "neither": 4,
+        "uniformMedianOperationsWhenDetected": 181.5,
+        "noveltyMedianOperationsWhenDetected": 268.5
+      },
+      {
+        "fault": "drop-ignored",
+        "uniform": 14,
+        "novelty": 0,
+        "uniformOnly": 14,
+        "noveltyOnly": 0,
+        "both": 0,
+        "neither": 6,
+        "uniformMedianOperationsWhenDetected": 187,
+        "noveltyMedianOperationsWhenDetected": null
+      }
+    ],
+    "invalid": 0,
+    "replayFailures": 0
+  },
+  "bfs": {
+    "status": "complete",
+    "states": 56,
+    "edges": 432,
+    "traces": 433,
+    "results": [
+      {
+        "fault": "none",
+        "detected": false,
+        "operations": 2153
+      },
+      {
+        "fault": "persistence",
+        "detected": true,
+        "operations": 2153
+      },
+      {
+        "fault": "deduplication",
+        "detected": true,
+        "operations": 2153
+      },
+      {
+        "fault": "late-retry",
+        "detected": false,
+        "operations": 2153
+      },
+      {
+        "fault": "fifo-only",
+        "detected": true,
+        "operations": 2153
+      },
+      {
+        "fault": "drop-ignored",
+        "detected": false,
+        "operations": 2153
+      }
+    ]
+  },
+  "pbt": [
+    {
+      "generator": "raw",
+      "fault": "none",
+      "detected": 0,
+      "exhausted": 0,
+      "medianCases": 196,
+      "medianOperations": 410,
+      "medianSkips": 132,
+      "medianShrunkLengthWhenDetected": null,
+      "replayFailures": 0
+    },
+    {
+      "generator": "raw",
+      "fault": "persistence",
+      "detected": 9,
+      "exhausted": 0,
+      "medianCases": 171.5,
+      "medianOperations": 386,
+      "medianSkips": 104,
+      "medianShrunkLengthWhenDetected": 3,
+      "replayFailures": 0
+    },
+    {
+      "generator": "raw",
+      "fault": "deduplication",
+      "detected": 20,
+      "exhausted": 0,
+      "medianCases": 27,
+      "medianOperations": 69.5,
+      "medianSkips": 7,
+      "medianShrunkLengthWhenDetected": 2,
+      "replayFailures": 0
+    },
+    {
+      "generator": "raw",
+      "fault": "late-retry",
+      "detected": 13,
+      "exhausted": 0,
+      "medianCases": 152.5,
+      "medianOperations": 339,
+      "medianSkips": 86.5,
+      "medianShrunkLengthWhenDetected": 3,
+      "replayFailures": 0
+    },
+    {
+      "generator": "raw",
+      "fault": "fifo-only",
+      "detected": 4,
+      "exhausted": 0,
+      "medianCases": 174.5,
+      "medianOperations": 392,
+      "medianSkips": 110.5,
+      "medianShrunkLengthWhenDetected": 4,
+      "replayFailures": 0
+    },
+    {
+      "generator": "raw",
+      "fault": "drop-ignored",
+      "detected": 3,
+      "exhausted": 0,
+      "medianCases": 196,
+      "medianOperations": 427,
+      "medianSkips": 132,
+      "medianShrunkLengthWhenDetected": 5,
+      "replayFailures": 0
+    },
+    {
+      "generator": "enabled",
+      "fault": "none",
+      "detected": 0,
+      "exhausted": 0,
+      "medianCases": 64,
+      "medianOperations": 307.5,
+      "medianSkips": 0,
+      "medianShrunkLengthWhenDetected": null,
+      "replayFailures": 0
+    },
+    {
+      "generator": "enabled",
+      "fault": "persistence",
+      "detected": 18,
+      "exhausted": 0,
+      "medianCases": 119.5,
+      "medianOperations": 543.5,
+      "medianSkips": 0,
+      "medianShrunkLengthWhenDetected": 3,
+      "replayFailures": 0
+    },
+    {
+      "generator": "enabled",
+      "fault": "deduplication",
+      "detected": 20,
+      "exhausted": 0,
+      "medianCases": 72.5,
+      "medianOperations": 250.5,
+      "medianSkips": 0,
+      "medianShrunkLengthWhenDetected": 2,
+      "replayFailures": 0
+    },
+    {
+      "generator": "enabled",
+      "fault": "late-retry",
+      "detected": 16,
+      "exhausted": 0,
+      "medianCases": 173.5,
+      "medianOperations": 851,
+      "medianSkips": 0,
+      "medianShrunkLengthWhenDetected": 3,
+      "replayFailures": 0
+    },
+    {
+      "generator": "enabled",
+      "fault": "fifo-only",
+      "detected": 10,
+      "exhausted": 0,
+      "medianCases": 83,
+      "medianOperations": 459.5,
+      "medianSkips": 0,
+      "medianShrunkLengthWhenDetected": 4,
+      "replayFailures": 0
+    },
+    {
+      "generator": "enabled",
+      "fault": "drop-ignored",
+      "detected": 3,
+      "exhausted": 0,
+      "medianCases": 64,
+      "medianOperations": 315,
+      "medianSkips": 0,
+      "medianShrunkLengthWhenDetected": 5,
+      "replayFailures": 0
+    }
+  ],
+  "concurrency": {
+    "sequentialBroken": "linearizable",
+    "schedules": 6,
+    "rejectedBroken": 4,
+    "rejectedFixed": 0,
+    "replayFailures": 0
+  },
+  "time": {
+    "withoutClock": "matched",
+    "boundary": {
+      "broken": "mismatch",
+      "fixed": "matched",
+      "executionMs": 0.16216700000006767
+    },
+    "smt": {
+      "initializationMs": 81.04616699999997,
+      "values": {
+        "ttl": "4273",
+        "elapsed": "4273"
+      },
+      "solveMs": 102.40704100000005,
+      "broken": "mismatch",
+      "fixed": "matched"
+    }
+  }
+}

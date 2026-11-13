@@ -1,0 +1,137 @@
+[
+  {
+    "id": "inline-kernel",
+    "workload": "counter-transitions",
+    "workers": 1,
+    "startupMs": 0,
+    "visitsPerMs": 190671.45861586562,
+    "fixedMemoryBytes": 79462400,
+    "bytesPerState": 0
+  },
+  {
+    "id": "inline-async-2",
+    "workload": "async-counter-2",
+    "workers": 1,
+    "startupMs": 0,
+    "visitsPerMs": 58.82352941158218,
+    "fixedMemoryBytes": 79609856,
+    "bytesPerState": 64
+  },
+  {
+    "id": "inline-async-3",
+    "workload": "async-counter-3",
+    "workers": 1,
+    "startupMs": 0,
+    "visitsPerMs": 48.56223412177387,
+    "fixedMemoryBytes": 90734592,
+    "bytesPerState": 64
+  },
+  {
+    "id": "pool-1-kernel",
+    "workload": "counter-transitions",
+    "workers": 1,
+    "startupMs": 20.873333000000002,
+    "visitsPerMs": 180813.82511102402,
+    "fixedMemoryBytes": 110755840,
+    "bytesPerState": 0
+  },
+  {
+    "id": "pool-1-kernel-reused",
+    "workload": "counter-transitions",
+    "workers": 1,
+    "startupMs": 0,
+    "visitsPerMs": 180813.82511102402,
+    "fixedMemoryBytes": 110755840,
+    "bytesPerState": 0
+  },
+  {
+    "id": "pool-1-async-2",
+    "workload": "async-counter-2",
+    "workers": 1,
+    "startupMs": 20.873333000000002,
+    "visitsPerMs": 25.365581442517485,
+    "fixedMemoryBytes": 112541696,
+    "bytesPerState": 64
+  },
+  {
+    "id": "pool-1-async-3",
+    "workload": "async-counter-3",
+    "workers": 1,
+    "startupMs": 20.873333000000002,
+    "visitsPerMs": 23.96166134185394,
+    "fixedMemoryBytes": 112984064,
+    "bytesPerState": 64
+  },
+  {
+    "id": "pool-2-kernel",
+    "workload": "counter-transitions",
+    "workers": 2,
+    "startupMs": 20.54333399999996,
+    "visitsPerMs": 352045.1011593125,
+    "fixedMemoryBytes": 128827392,
+    "bytesPerState": 0
+  },
+  {
+    "id": "pool-2-kernel-reused",
+    "workload": "counter-transitions",
+    "workers": 2,
+    "startupMs": 0,
+    "visitsPerMs": 352045.1011593125,
+    "fixedMemoryBytes": 128827392,
+    "bytesPerState": 0
+  },
+  {
+    "id": "pool-2-async-2",
+    "workload": "async-counter-2",
+    "workers": 2,
+    "startupMs": 20.54333399999996,
+    "visitsPerMs": 35.6790314332419,
+    "fixedMemoryBytes": 132202496,
+    "bytesPerState": 64
+  },
+  {
+    "id": "pool-2-async-3",
+    "workload": "async-counter-3",
+    "workers": 2,
+    "startupMs": 20.54333399999996,
+    "visitsPerMs": 47.928631073084304,
+    "fixedMemoryBytes": 133234688,
+    "bytesPerState": 64
+  },
+  {
+    "id": "pool-4-kernel",
+    "workload": "counter-transitions",
+    "workers": 4,
+    "startupMs": 24.378583000000162,
+    "visitsPerMs": 565998.2585640777,
+    "fixedMemoryBytes": 166985728,
+    "bytesPerState": 0
+  },
+  {
+    "id": "pool-4-kernel-reused",
+    "workload": "counter-transitions",
+    "workers": 4,
+    "startupMs": 0,
+    "visitsPerMs": 565998.2585640777,
+    "fixedMemoryBytes": 166985728,
+    "bytesPerState": 0
+  },
+  {
+    "id": "pool-4-async-2",
+    "workload": "async-counter-2",
+    "workers": 4,
+    "startupMs": 24.378583000000162,
+    "visitsPerMs": 46.707873390640074,
+    "fixedMemoryBytes": 169836544,
+    "bytesPerState": 64
+  },
+  {
+    "id": "pool-4-async-3",
+    "workload": "async-counter-3",
+    "workers": 4,
+    "startupMs": 24.378583000000162,
+    "visitsPerMs": 57.961680888735046,
+    "fixedMemoryBytes": 174391296,
+    "bytesPerState": 64
+  }
+]
