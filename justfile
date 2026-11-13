@@ -65,6 +65,24 @@ go-test: portable-build
   cd adapters/go && go test -race -count=1 ./...
   node dist/scripts/go-consumer.js
 
+cross-build: portable-build
+  pnpm build
+  cargo build --release --locked --manifest-path evals/shared-oracle-rust/Cargo.toml
+  mkdir -p .artifacts/go
+  cd adapters/go && CGO_ENABLED=0 go build -o ../../.artifacts/go/counter-replay ./cmd/counter-replay
+
+cross-test: cross-build
+  cargo fmt --manifest-path evals/shared-oracle-rust/Cargo.toml -- --check
+  cargo clippy --all-targets --locked --manifest-path evals/shared-oracle-rust/Cargo.toml -- -D warnings
+  node --test dist/evals/cross-language/contract-test.js
+
+cross-eval phase run parent="": cross-build
+  node dist/evals/cross-language/evaluate.js {{quote(phase)}} {{quote(run)}} {{quote(parent)}}
+
+cross-replay run:
+  pnpm build
+  node dist/evals/cross-language/replay.js {{quote(run)}}
+
 usable-test:
   pnpm usable:test
 

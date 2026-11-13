@@ -37,6 +37,14 @@ jobs:
       - run: go test -race -count=1 ./...
         working-directory: adapters/go
       - run: node dist/scripts/go-consumer.js
+      - run: cargo fmt --manifest-path evals/shared-oracle-rust/Cargo.toml -- --check
+      - run: cargo clippy --all-targets --locked --manifest-path evals/shared-oracle-rust/Cargo.toml -- -D warnings
+      - run: cargo build --release --locked --manifest-path evals/shared-oracle-rust/Cargo.toml
+      - run: CGO_ENABLED=0 go build -o ../../.artifacts/go/counter-replay ./cmd/counter-replay
+        working-directory: adapters/go
+      - run: node --test dist/evals/cross-language/contract-test.js
+      - run: node dist/evals/cross-language/evaluate.js regression .artifacts/shared-oracle
+      - run: node dist/evals/cross-language/replay.js .artifacts/shared-oracle
       - run: pnpm portable:test
       - run: pnpm usable:test
       - run: pnpm runtime:build
@@ -65,4 +73,5 @@ jobs:
             .artifacts/usable-evaluation
             .artifacts/packages
             .artifacts/go
+            .artifacts/shared-oracle
           if-no-files-found: warn

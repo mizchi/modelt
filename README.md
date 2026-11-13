@@ -29,6 +29,8 @@ just browser
 
 TS / Rust の共通コアは `./portable`。同じ Rust ソースを native と Wasm で使い、適合性照合とトレース再生を行う。[Go adapter](docs/go-adapter.md) は CGO 不要で同じ Wasm に接続する。[値・effect protocol・使用例](docs/portable-core.md) を参照。`just portable-build` / `just portable-test` で Rust と Node・実ブラウザ、`just go-test` で Go の照合と単独 consumer を検査する。
 
+[共通オラクルで3言語の実装を動かす評価](docs/shared-oracle.md) は `just cross-test`。同じ有限モデルと保存 trace を使い、正常版・故障版の TS / Rust / Go を直接操作して比較する。
+
 ```ts
 import { checkConformance, checkModel, checkTrace } from "./src/index.js";
 import { counterModel, createCounter } from "./examples/durable-counter.js";

@@ -1,0 +1,4688 @@
+[
+  {
+    "caseId": "empty",
+    "fault": "none",
+    "status": "matched",
+    "checkedSteps": 0,
+    "calls": {
+      "resets": 1,
+      "steps": 0
+    },
+    "resultSha256": "126f8229395d05dc1f35c9d031b356c4675d928ae4219d209917bb4c136407e7"
+  },
+  {
+    "caseId": "empty",
+    "fault": "persistence",
+    "status": "matched",
+    "checkedSteps": 0,
+    "calls": {
+      "resets": 1,
+      "steps": 0
+    },
+    "resultSha256": "126f8229395d05dc1f35c9d031b356c4675d928ae4219d209917bb4c136407e7"
+  },
+  {
+    "caseId": "empty",
+    "fault": "deduplication",
+    "status": "matched",
+    "checkedSteps": 0,
+    "calls": {
+      "resets": 1,
+      "steps": 0
+    },
+    "resultSha256": "126f8229395d05dc1f35c9d031b356c4675d928ae4219d209917bb4c136407e7"
+  },
+  {
+    "caseId": "empty",
+    "fault": "late-retry",
+    "status": "matched",
+    "checkedSteps": 0,
+    "calls": {
+      "resets": 1,
+      "steps": 0
+    },
+    "resultSha256": "126f8229395d05dc1f35c9d031b356c4675d928ae4219d209917bb4c136407e7"
+  },
+  {
+    "caseId": "empty",
+    "fault": "fifo-only",
+    "status": "matched",
+    "checkedSteps": 0,
+    "calls": {
+      "resets": 1,
+      "steps": 0
+    },
+    "resultSha256": "126f8229395d05dc1f35c9d031b356c4675d928ae4219d209917bb4c136407e7"
+  },
+  {
+    "caseId": "empty",
+    "fault": "drop-ignored",
+    "status": "matched",
+    "checkedSteps": 0,
+    "calls": {
+      "resets": 1,
+      "steps": 0
+    },
+    "resultSha256": "126f8229395d05dc1f35c9d031b356c4675d928ae4219d209917bb4c136407e7"
+  },
+  {
+    "caseId": "persistence",
+    "fault": "none",
+    "status": "matched",
+    "checkedSteps": 3,
+    "calls": {
+      "resets": 1,
+      "steps": 3
+    },
+    "resultSha256": "60a1d322173ea0dc671d88862cb7889e5a6a0c3ca7d1a3788428908092fced67"
+  },
+  {
+    "caseId": "persistence",
+    "fault": "persistence",
+    "status": "mismatch",
+    "checkedSteps": 3,
+    "calls": {
+      "resets": 1,
+      "steps": 3
+    },
+    "resultSha256": "80d8313705351045249c62da1acfddcae7c32344180f7a1f62ea85ae0701c8a7"
+  },
+  {
+    "caseId": "persistence",
+    "fault": "deduplication",
+    "status": "matched",
+    "checkedSteps": 3,
+    "calls": {
+      "resets": 1,
+      "steps": 3
+    },
+    "resultSha256": "60a1d322173ea0dc671d88862cb7889e5a6a0c3ca7d1a3788428908092fced67"
+  },
+  {
+    "caseId": "persistence",
+    "fault": "late-retry",
+    "status": "matched",
+    "checkedSteps": 3,
+    "calls": {
+      "resets": 1,
+      "steps": 3
+    },
+    "resultSha256": "60a1d322173ea0dc671d88862cb7889e5a6a0c3ca7d1a3788428908092fced67"
+  },
+  {
+    "caseId": "persistence",
+    "fault": "fifo-only",
+    "status": "matched",
+    "checkedSteps": 3,
+    "calls": {
+      "resets": 1,
+      "steps": 3
+    },
+    "resultSha256": "60a1d322173ea0dc671d88862cb7889e5a6a0c3ca7d1a3788428908092fced67"
+  },
+  {
+    "caseId": "persistence",
+    "fault": "drop-ignored",
+    "status": "matched",
+    "checkedSteps": 3,
+    "calls": {
+      "resets": 1,
+      "steps": 3
+    },
+    "resultSha256": "60a1d322173ea0dc671d88862cb7889e5a6a0c3ca7d1a3788428908092fced67"
+  },
+  {
+    "caseId": "deduplication",
+    "fault": "none",
+    "status": "matched",
+    "checkedSteps": 2,
+    "calls": {
+      "resets": 1,
+      "steps": 2
+    },
+    "resultSha256": "1da85f9b394d7a6c952579b98d77c37a05ee34f1d600fb96202f235e3d5b3c36"
+  },
+  {
+    "caseId": "deduplication",
+    "fault": "persistence",
+    "status": "matched",
+    "checkedSteps": 2,
+    "calls": {
+      "resets": 1,
+      "steps": 2
+    },
+    "resultSha256": "1da85f9b394d7a6c952579b98d77c37a05ee34f1d600fb96202f235e3d5b3c36"
+  },
+  {
+    "caseId": "deduplication",
+    "fault": "deduplication",
+    "status": "mismatch",
+    "checkedSteps": 2,
+    "calls": {
+      "resets": 1,
+      "steps": 2
+    },
+    "resultSha256": "a48b2d75cc0f07e5e62279dea8c8260e60c5e9608c40987d892e7e4b36f7e213"
+  },
+  {
+    "caseId": "deduplication",
+    "fault": "late-retry",
+    "status": "matched",
+    "checkedSteps": 2,
+    "calls": {
+      "resets": 1,
+      "steps": 2
+    },
+    "resultSha256": "1da85f9b394d7a6c952579b98d77c37a05ee34f1d600fb96202f235e3d5b3c36"
+  },
+  {
+    "caseId": "deduplication",
+    "fault": "fifo-only",
+    "status": "matched",
+    "checkedSteps": 2,
+    "calls": {
+      "resets": 1,
+      "steps": 2
+    },
+    "resultSha256": "1da85f9b394d7a6c952579b98d77c37a05ee34f1d600fb96202f235e3d5b3c36"
+  },
+  {
+    "caseId": "deduplication",
+    "fault": "drop-ignored",
+    "status": "matched",
+    "checkedSteps": 2,
+    "calls": {
+      "resets": 1,
+      "steps": 2
+    },
+    "resultSha256": "1da85f9b394d7a6c952579b98d77c37a05ee34f1d600fb96202f235e3d5b3c36"
+  },
+  {
+    "caseId": "late-retry",
+    "fault": "none",
+    "status": "matched",
+    "checkedSteps": 3,
+    "calls": {
+      "resets": 1,
+      "steps": 3
+    },
+    "resultSha256": "f37de03117ad889b3febdcb09ba9a9e6fbe7fef745c0351ae3796a48fe31026e"
+  },
+  {
+    "caseId": "late-retry",
+    "fault": "persistence",
+    "status": "matched",
+    "checkedSteps": 3,
+    "calls": {
+      "resets": 1,
+      "steps": 3
+    },
+    "resultSha256": "f37de03117ad889b3febdcb09ba9a9e6fbe7fef745c0351ae3796a48fe31026e"
+  },
+  {
+    "caseId": "late-retry",
+    "fault": "deduplication",
+    "status": "mismatch",
+    "checkedSteps": 2,
+    "calls": {
+      "resets": 1,
+      "steps": 2
+    },
+    "resultSha256": "a48b2d75cc0f07e5e62279dea8c8260e60c5e9608c40987d892e7e4b36f7e213"
+  },
+  {
+    "caseId": "late-retry",
+    "fault": "late-retry",
+    "status": "mismatch",
+    "checkedSteps": 3,
+    "calls": {
+      "resets": 1,
+      "steps": 3
+    },
+    "resultSha256": "550cc61cfb9577adade10a30294202a499a3d03bb2071ee52c25b6c2ae164332"
+  },
+  {
+    "caseId": "late-retry",
+    "fault": "fifo-only",
+    "status": "matched",
+    "checkedSteps": 3,
+    "calls": {
+      "resets": 1,
+      "steps": 3
+    },
+    "resultSha256": "f37de03117ad889b3febdcb09ba9a9e6fbe7fef745c0351ae3796a48fe31026e"
+  },
+  {
+    "caseId": "late-retry",
+    "fault": "drop-ignored",
+    "status": "matched",
+    "checkedSteps": 3,
+    "calls": {
+      "resets": 1,
+      "steps": 3
+    },
+    "resultSha256": "f37de03117ad889b3febdcb09ba9a9e6fbe7fef745c0351ae3796a48fe31026e"
+  },
+  {
+    "caseId": "fifo-only",
+    "fault": "none",
+    "status": "matched",
+    "checkedSteps": 5,
+    "calls": {
+      "resets": 1,
+      "steps": 5
+    },
+    "resultSha256": "715f692b14d1cb01acf457f180b7b99d2ecf6acc3caecc89c470d254621b733b"
+  },
+  {
+    "caseId": "fifo-only",
+    "fault": "persistence",
+    "status": "matched",
+    "checkedSteps": 5,
+    "calls": {
+      "resets": 1,
+      "steps": 5
+    },
+    "resultSha256": "715f692b14d1cb01acf457f180b7b99d2ecf6acc3caecc89c470d254621b733b"
+  },
+  {
+    "caseId": "fifo-only",
+    "fault": "deduplication",
+    "status": "matched",
+    "checkedSteps": 5,
+    "calls": {
+      "resets": 1,
+      "steps": 5
+    },
+    "resultSha256": "715f692b14d1cb01acf457f180b7b99d2ecf6acc3caecc89c470d254621b733b"
+  },
+  {
+    "caseId": "fifo-only",
+    "fault": "late-retry",
+    "status": "matched",
+    "checkedSteps": 5,
+    "calls": {
+      "resets": 1,
+      "steps": 5
+    },
+    "resultSha256": "715f692b14d1cb01acf457f180b7b99d2ecf6acc3caecc89c470d254621b733b"
+  },
+  {
+    "caseId": "fifo-only",
+    "fault": "fifo-only",
+    "status": "mismatch",
+    "checkedSteps": 5,
+    "calls": {
+      "resets": 1,
+      "steps": 5
+    },
+    "resultSha256": "5281001d2d0034edd7a4566c2b49f9eb6b45aac520b617889eb42c83b6c7c383"
+  },
+  {
+    "caseId": "fifo-only",
+    "fault": "drop-ignored",
+    "status": "matched",
+    "checkedSteps": 5,
+    "calls": {
+      "resets": 1,
+      "steps": 5
+    },
+    "resultSha256": "715f692b14d1cb01acf457f180b7b99d2ecf6acc3caecc89c470d254621b733b"
+  },
+  {
+    "caseId": "drop-ignored",
+    "fault": "none",
+    "status": "matched",
+    "checkedSteps": 5,
+    "calls": {
+      "resets": 1,
+      "steps": 5
+    },
+    "resultSha256": "ef388c1c178d72dcdd3c3930e0a6b14fb9ce857767f33ee1c3c65f67477cc42e"
+  },
+  {
+    "caseId": "drop-ignored",
+    "fault": "persistence",
+    "status": "matched",
+    "checkedSteps": 5,
+    "calls": {
+      "resets": 1,
+      "steps": 5
+    },
+    "resultSha256": "ef388c1c178d72dcdd3c3930e0a6b14fb9ce857767f33ee1c3c65f67477cc42e"
+  },
+  {
+    "caseId": "drop-ignored",
+    "fault": "deduplication",
+    "status": "mismatch",
+    "checkedSteps": 5,
+    "calls": {
+      "resets": 1,
+      "steps": 5
+    },
+    "resultSha256": "bf759e81261399313f3c2c740ca9664df21136c1dc652bd5fd25e01e90de07f4"
+  },
+  {
+    "caseId": "drop-ignored",
+    "fault": "late-retry",
+    "status": "matched",
+    "checkedSteps": 5,
+    "calls": {
+      "resets": 1,
+      "steps": 5
+    },
+    "resultSha256": "ef388c1c178d72dcdd3c3930e0a6b14fb9ce857767f33ee1c3c65f67477cc42e"
+  },
+  {
+    "caseId": "drop-ignored",
+    "fault": "fifo-only",
+    "status": "matched",
+    "checkedSteps": 5,
+    "calls": {
+      "resets": 1,
+      "steps": 5
+    },
+    "resultSha256": "ef388c1c178d72dcdd3c3930e0a6b14fb9ce857767f33ee1c3c65f67477cc42e"
+  },
+  {
+    "caseId": "drop-ignored",
+    "fault": "drop-ignored",
+    "status": "mismatch",
+    "checkedSteps": 5,
+    "calls": {
+      "resets": 1,
+      "steps": 5
+    },
+    "resultSha256": "bf759e81261399313f3c2c740ca9664df21136c1dc652bd5fd25e01e90de07f4"
+  },
+  {
+    "caseId": "seed-201-0",
+    "fault": "none",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "491cb68e5db89bd48ca98fbec31fcff592f6b851df5eab69b0dfabcaf2afa10e"
+  },
+  {
+    "caseId": "seed-201-0",
+    "fault": "persistence",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "491cb68e5db89bd48ca98fbec31fcff592f6b851df5eab69b0dfabcaf2afa10e"
+  },
+  {
+    "caseId": "seed-201-0",
+    "fault": "deduplication",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "491cb68e5db89bd48ca98fbec31fcff592f6b851df5eab69b0dfabcaf2afa10e"
+  },
+  {
+    "caseId": "seed-201-0",
+    "fault": "late-retry",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "491cb68e5db89bd48ca98fbec31fcff592f6b851df5eab69b0dfabcaf2afa10e"
+  },
+  {
+    "caseId": "seed-201-0",
+    "fault": "fifo-only",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "491cb68e5db89bd48ca98fbec31fcff592f6b851df5eab69b0dfabcaf2afa10e"
+  },
+  {
+    "caseId": "seed-201-0",
+    "fault": "drop-ignored",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "491cb68e5db89bd48ca98fbec31fcff592f6b851df5eab69b0dfabcaf2afa10e"
+  },
+  {
+    "caseId": "seed-201-1",
+    "fault": "none",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "3a6ae1316c34f9eca05444d1ff0a56aeb16fa636814cba97748c6d8b3da64754"
+  },
+  {
+    "caseId": "seed-201-1",
+    "fault": "persistence",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "3a6ae1316c34f9eca05444d1ff0a56aeb16fa636814cba97748c6d8b3da64754"
+  },
+  {
+    "caseId": "seed-201-1",
+    "fault": "deduplication",
+    "status": "mismatch",
+    "checkedSteps": 7,
+    "calls": {
+      "resets": 1,
+      "steps": 7
+    },
+    "resultSha256": "01188777576fdb5b63753bf2783a382f931175ef50c578af546d0fdcb02436cf"
+  },
+  {
+    "caseId": "seed-201-1",
+    "fault": "late-retry",
+    "status": "mismatch",
+    "checkedSteps": 10,
+    "calls": {
+      "resets": 1,
+      "steps": 10
+    },
+    "resultSha256": "f139ccd77393361332a37ca9ef63b6b682531742c7855684faec4c882c5042bb"
+  },
+  {
+    "caseId": "seed-201-1",
+    "fault": "fifo-only",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "3a6ae1316c34f9eca05444d1ff0a56aeb16fa636814cba97748c6d8b3da64754"
+  },
+  {
+    "caseId": "seed-201-1",
+    "fault": "drop-ignored",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "3a6ae1316c34f9eca05444d1ff0a56aeb16fa636814cba97748c6d8b3da64754"
+  },
+  {
+    "caseId": "seed-201-2",
+    "fault": "none",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "bca27cdd61129216d86db3b9934cd7899f7c358c7a25206c39fe2ce1a7e7a931"
+  },
+  {
+    "caseId": "seed-201-2",
+    "fault": "persistence",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "bca27cdd61129216d86db3b9934cd7899f7c358c7a25206c39fe2ce1a7e7a931"
+  },
+  {
+    "caseId": "seed-201-2",
+    "fault": "deduplication",
+    "status": "mismatch",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "d18632849bd74169de0b5a97d4bffda8644838828e4e76e4bba3bfcbb35e3a83"
+  },
+  {
+    "caseId": "seed-201-2",
+    "fault": "late-retry",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "bca27cdd61129216d86db3b9934cd7899f7c358c7a25206c39fe2ce1a7e7a931"
+  },
+  {
+    "caseId": "seed-201-2",
+    "fault": "fifo-only",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "bca27cdd61129216d86db3b9934cd7899f7c358c7a25206c39fe2ce1a7e7a931"
+  },
+  {
+    "caseId": "seed-201-2",
+    "fault": "drop-ignored",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "bca27cdd61129216d86db3b9934cd7899f7c358c7a25206c39fe2ce1a7e7a931"
+  },
+  {
+    "caseId": "seed-201-3",
+    "fault": "none",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "73dc24d8258befeb24a93bd0c4ea7045b43a21c4fa116676e50970356d45054e"
+  },
+  {
+    "caseId": "seed-201-3",
+    "fault": "persistence",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "73dc24d8258befeb24a93bd0c4ea7045b43a21c4fa116676e50970356d45054e"
+  },
+  {
+    "caseId": "seed-201-3",
+    "fault": "deduplication",
+    "status": "mismatch",
+    "checkedSteps": 7,
+    "calls": {
+      "resets": 1,
+      "steps": 7
+    },
+    "resultSha256": "420271c35471e377aef781ed9f8087c2bf161edd7b10aa9465b31e756bcad858"
+  },
+  {
+    "caseId": "seed-201-3",
+    "fault": "late-retry",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "73dc24d8258befeb24a93bd0c4ea7045b43a21c4fa116676e50970356d45054e"
+  },
+  {
+    "caseId": "seed-201-3",
+    "fault": "fifo-only",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "73dc24d8258befeb24a93bd0c4ea7045b43a21c4fa116676e50970356d45054e"
+  },
+  {
+    "caseId": "seed-201-3",
+    "fault": "drop-ignored",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "73dc24d8258befeb24a93bd0c4ea7045b43a21c4fa116676e50970356d45054e"
+  },
+  {
+    "caseId": "seed-201-4",
+    "fault": "none",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "8378b557a73352521cbe0c2985442bcd9c88bf4bb6f1d537f7971a52ecbeab66"
+  },
+  {
+    "caseId": "seed-201-4",
+    "fault": "persistence",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "8378b557a73352521cbe0c2985442bcd9c88bf4bb6f1d537f7971a52ecbeab66"
+  },
+  {
+    "caseId": "seed-201-4",
+    "fault": "deduplication",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "8378b557a73352521cbe0c2985442bcd9c88bf4bb6f1d537f7971a52ecbeab66"
+  },
+  {
+    "caseId": "seed-201-4",
+    "fault": "late-retry",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "8378b557a73352521cbe0c2985442bcd9c88bf4bb6f1d537f7971a52ecbeab66"
+  },
+  {
+    "caseId": "seed-201-4",
+    "fault": "fifo-only",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "8378b557a73352521cbe0c2985442bcd9c88bf4bb6f1d537f7971a52ecbeab66"
+  },
+  {
+    "caseId": "seed-201-4",
+    "fault": "drop-ignored",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "8378b557a73352521cbe0c2985442bcd9c88bf4bb6f1d537f7971a52ecbeab66"
+  },
+  {
+    "caseId": "seed-201-5",
+    "fault": "none",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "3f6a0817befd8c4976fea4d77a7e7bb33c8ca1d81d2b8ee5efb6bacbb2bcc685"
+  },
+  {
+    "caseId": "seed-201-5",
+    "fault": "persistence",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "3f6a0817befd8c4976fea4d77a7e7bb33c8ca1d81d2b8ee5efb6bacbb2bcc685"
+  },
+  {
+    "caseId": "seed-201-5",
+    "fault": "deduplication",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "3f6a0817befd8c4976fea4d77a7e7bb33c8ca1d81d2b8ee5efb6bacbb2bcc685"
+  },
+  {
+    "caseId": "seed-201-5",
+    "fault": "late-retry",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "3f6a0817befd8c4976fea4d77a7e7bb33c8ca1d81d2b8ee5efb6bacbb2bcc685"
+  },
+  {
+    "caseId": "seed-201-5",
+    "fault": "fifo-only",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "3f6a0817befd8c4976fea4d77a7e7bb33c8ca1d81d2b8ee5efb6bacbb2bcc685"
+  },
+  {
+    "caseId": "seed-201-5",
+    "fault": "drop-ignored",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "3f6a0817befd8c4976fea4d77a7e7bb33c8ca1d81d2b8ee5efb6bacbb2bcc685"
+  },
+  {
+    "caseId": "seed-201-6",
+    "fault": "none",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "18a72a23a0349f799594b2c538302246bce422873576fe5591e5197fbd81ca8d"
+  },
+  {
+    "caseId": "seed-201-6",
+    "fault": "persistence",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "18a72a23a0349f799594b2c538302246bce422873576fe5591e5197fbd81ca8d"
+  },
+  {
+    "caseId": "seed-201-6",
+    "fault": "deduplication",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "18a72a23a0349f799594b2c538302246bce422873576fe5591e5197fbd81ca8d"
+  },
+  {
+    "caseId": "seed-201-6",
+    "fault": "late-retry",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "18a72a23a0349f799594b2c538302246bce422873576fe5591e5197fbd81ca8d"
+  },
+  {
+    "caseId": "seed-201-6",
+    "fault": "fifo-only",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "18a72a23a0349f799594b2c538302246bce422873576fe5591e5197fbd81ca8d"
+  },
+  {
+    "caseId": "seed-201-6",
+    "fault": "drop-ignored",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "18a72a23a0349f799594b2c538302246bce422873576fe5591e5197fbd81ca8d"
+  },
+  {
+    "caseId": "seed-201-7",
+    "fault": "none",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "94d42fb05d5ae44260452918c3b9055d7433a0f55d24d13434173ef88829b6b8"
+  },
+  {
+    "caseId": "seed-201-7",
+    "fault": "persistence",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "94d42fb05d5ae44260452918c3b9055d7433a0f55d24d13434173ef88829b6b8"
+  },
+  {
+    "caseId": "seed-201-7",
+    "fault": "deduplication",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "94d42fb05d5ae44260452918c3b9055d7433a0f55d24d13434173ef88829b6b8"
+  },
+  {
+    "caseId": "seed-201-7",
+    "fault": "late-retry",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "94d42fb05d5ae44260452918c3b9055d7433a0f55d24d13434173ef88829b6b8"
+  },
+  {
+    "caseId": "seed-201-7",
+    "fault": "fifo-only",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "94d42fb05d5ae44260452918c3b9055d7433a0f55d24d13434173ef88829b6b8"
+  },
+  {
+    "caseId": "seed-201-7",
+    "fault": "drop-ignored",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "94d42fb05d5ae44260452918c3b9055d7433a0f55d24d13434173ef88829b6b8"
+  },
+  {
+    "caseId": "seed-201-8",
+    "fault": "none",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "598b1d8785c166d66b54e0aa7be142d0bc683cb2b8176406ff176a70a44b37d0"
+  },
+  {
+    "caseId": "seed-201-8",
+    "fault": "persistence",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "598b1d8785c166d66b54e0aa7be142d0bc683cb2b8176406ff176a70a44b37d0"
+  },
+  {
+    "caseId": "seed-201-8",
+    "fault": "deduplication",
+    "status": "mismatch",
+    "checkedSteps": 4,
+    "calls": {
+      "resets": 1,
+      "steps": 4
+    },
+    "resultSha256": "8a90705133e59b3c41a42e95cea8966460a97b0e8f20b9fd85466a76fd44d592"
+  },
+  {
+    "caseId": "seed-201-8",
+    "fault": "late-retry",
+    "status": "mismatch",
+    "checkedSteps": 5,
+    "calls": {
+      "resets": 1,
+      "steps": 5
+    },
+    "resultSha256": "1bd94e6843015e3236474463a19e32b70f0785dd76b55577fb940856715a8f17"
+  },
+  {
+    "caseId": "seed-201-8",
+    "fault": "fifo-only",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "598b1d8785c166d66b54e0aa7be142d0bc683cb2b8176406ff176a70a44b37d0"
+  },
+  {
+    "caseId": "seed-201-8",
+    "fault": "drop-ignored",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "598b1d8785c166d66b54e0aa7be142d0bc683cb2b8176406ff176a70a44b37d0"
+  },
+  {
+    "caseId": "seed-201-9",
+    "fault": "none",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "9be9542cefd40e01c2c6e44536abb73a7a773bfab97481136465e26afe1b3f94"
+  },
+  {
+    "caseId": "seed-201-9",
+    "fault": "persistence",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "9be9542cefd40e01c2c6e44536abb73a7a773bfab97481136465e26afe1b3f94"
+  },
+  {
+    "caseId": "seed-201-9",
+    "fault": "deduplication",
+    "status": "mismatch",
+    "checkedSteps": 3,
+    "calls": {
+      "resets": 1,
+      "steps": 3
+    },
+    "resultSha256": "572fed81654465496c34910d55e0043866d6baf87d98c139f8dd3a1372736c81"
+  },
+  {
+    "caseId": "seed-201-9",
+    "fault": "late-retry",
+    "status": "mismatch",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "2df0ef9f4151f2164f3d07dca52a559caf9980bcd37a249599e09c297575bf76"
+  },
+  {
+    "caseId": "seed-201-9",
+    "fault": "fifo-only",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "9be9542cefd40e01c2c6e44536abb73a7a773bfab97481136465e26afe1b3f94"
+  },
+  {
+    "caseId": "seed-201-9",
+    "fault": "drop-ignored",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "9be9542cefd40e01c2c6e44536abb73a7a773bfab97481136465e26afe1b3f94"
+  },
+  {
+    "caseId": "seed-201-10",
+    "fault": "none",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "8c54f6683cf2c75130eda7add227515ef0463ddd80c1d019424fe03370a708cf"
+  },
+  {
+    "caseId": "seed-201-10",
+    "fault": "persistence",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "8c54f6683cf2c75130eda7add227515ef0463ddd80c1d019424fe03370a708cf"
+  },
+  {
+    "caseId": "seed-201-10",
+    "fault": "deduplication",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "8c54f6683cf2c75130eda7add227515ef0463ddd80c1d019424fe03370a708cf"
+  },
+  {
+    "caseId": "seed-201-10",
+    "fault": "late-retry",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "8c54f6683cf2c75130eda7add227515ef0463ddd80c1d019424fe03370a708cf"
+  },
+  {
+    "caseId": "seed-201-10",
+    "fault": "fifo-only",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "8c54f6683cf2c75130eda7add227515ef0463ddd80c1d019424fe03370a708cf"
+  },
+  {
+    "caseId": "seed-201-10",
+    "fault": "drop-ignored",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "8c54f6683cf2c75130eda7add227515ef0463ddd80c1d019424fe03370a708cf"
+  },
+  {
+    "caseId": "seed-201-11",
+    "fault": "none",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "e1be4bc9088205d9c54627ded4834a5a30108d5b71cf6ee82672b82a7a96a27a"
+  },
+  {
+    "caseId": "seed-201-11",
+    "fault": "persistence",
+    "status": "mismatch",
+    "checkedSteps": 4,
+    "calls": {
+      "resets": 1,
+      "steps": 4
+    },
+    "resultSha256": "53c2c1fe8dcc2e1829529d3eab34e1c206196ef5151b3f2eb8538115f06daf41"
+  },
+  {
+    "caseId": "seed-201-11",
+    "fault": "deduplication",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "e1be4bc9088205d9c54627ded4834a5a30108d5b71cf6ee82672b82a7a96a27a"
+  },
+  {
+    "caseId": "seed-201-11",
+    "fault": "late-retry",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "e1be4bc9088205d9c54627ded4834a5a30108d5b71cf6ee82672b82a7a96a27a"
+  },
+  {
+    "caseId": "seed-201-11",
+    "fault": "fifo-only",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "e1be4bc9088205d9c54627ded4834a5a30108d5b71cf6ee82672b82a7a96a27a"
+  },
+  {
+    "caseId": "seed-201-11",
+    "fault": "drop-ignored",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "e1be4bc9088205d9c54627ded4834a5a30108d5b71cf6ee82672b82a7a96a27a"
+  },
+  {
+    "caseId": "seed-201-12",
+    "fault": "none",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "a0f41dd6ede07f7c2240f2dd10bf539910d28b1d88f9036f1c84017592232948"
+  },
+  {
+    "caseId": "seed-201-12",
+    "fault": "persistence",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "a0f41dd6ede07f7c2240f2dd10bf539910d28b1d88f9036f1c84017592232948"
+  },
+  {
+    "caseId": "seed-201-12",
+    "fault": "deduplication",
+    "status": "mismatch",
+    "checkedSteps": 5,
+    "calls": {
+      "resets": 1,
+      "steps": 5
+    },
+    "resultSha256": "d71534971cecf54757e283ae8a4889e8788a29b416295d3085e6ba934f70d065"
+  },
+  {
+    "caseId": "seed-201-12",
+    "fault": "late-retry",
+    "status": "mismatch",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "50e12140c7f0b7e95b4d09ad5578a5a1f32c1bc9c1710ac4cdb6e228be4cb1f3"
+  },
+  {
+    "caseId": "seed-201-12",
+    "fault": "fifo-only",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "a0f41dd6ede07f7c2240f2dd10bf539910d28b1d88f9036f1c84017592232948"
+  },
+  {
+    "caseId": "seed-201-12",
+    "fault": "drop-ignored",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "a0f41dd6ede07f7c2240f2dd10bf539910d28b1d88f9036f1c84017592232948"
+  },
+  {
+    "caseId": "seed-202-0",
+    "fault": "none",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "725cd745d798ccfdf50dfe5c33ea79d227f5fe8e43e6b3325d00f384824c8a23"
+  },
+  {
+    "caseId": "seed-202-0",
+    "fault": "persistence",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "725cd745d798ccfdf50dfe5c33ea79d227f5fe8e43e6b3325d00f384824c8a23"
+  },
+  {
+    "caseId": "seed-202-0",
+    "fault": "deduplication",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "725cd745d798ccfdf50dfe5c33ea79d227f5fe8e43e6b3325d00f384824c8a23"
+  },
+  {
+    "caseId": "seed-202-0",
+    "fault": "late-retry",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "725cd745d798ccfdf50dfe5c33ea79d227f5fe8e43e6b3325d00f384824c8a23"
+  },
+  {
+    "caseId": "seed-202-0",
+    "fault": "fifo-only",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "725cd745d798ccfdf50dfe5c33ea79d227f5fe8e43e6b3325d00f384824c8a23"
+  },
+  {
+    "caseId": "seed-202-0",
+    "fault": "drop-ignored",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "725cd745d798ccfdf50dfe5c33ea79d227f5fe8e43e6b3325d00f384824c8a23"
+  },
+  {
+    "caseId": "seed-202-1",
+    "fault": "none",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "5ed647ae05001788e68e8740958fb8b4a424d389eccc886be444e766d05ce62c"
+  },
+  {
+    "caseId": "seed-202-1",
+    "fault": "persistence",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "5ed647ae05001788e68e8740958fb8b4a424d389eccc886be444e766d05ce62c"
+  },
+  {
+    "caseId": "seed-202-1",
+    "fault": "deduplication",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "5ed647ae05001788e68e8740958fb8b4a424d389eccc886be444e766d05ce62c"
+  },
+  {
+    "caseId": "seed-202-1",
+    "fault": "late-retry",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "5ed647ae05001788e68e8740958fb8b4a424d389eccc886be444e766d05ce62c"
+  },
+  {
+    "caseId": "seed-202-1",
+    "fault": "fifo-only",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "5ed647ae05001788e68e8740958fb8b4a424d389eccc886be444e766d05ce62c"
+  },
+  {
+    "caseId": "seed-202-1",
+    "fault": "drop-ignored",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "5ed647ae05001788e68e8740958fb8b4a424d389eccc886be444e766d05ce62c"
+  },
+  {
+    "caseId": "seed-202-2",
+    "fault": "none",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "e84bf95ecbc64db1aa266b38ab8020f0a1602d10d8a9f1ffaa48c2f5b8f8860c"
+  },
+  {
+    "caseId": "seed-202-2",
+    "fault": "persistence",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "e84bf95ecbc64db1aa266b38ab8020f0a1602d10d8a9f1ffaa48c2f5b8f8860c"
+  },
+  {
+    "caseId": "seed-202-2",
+    "fault": "deduplication",
+    "status": "mismatch",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "3ddbaca6943a4f8664f1f2d897fd9c948002c2a06c9a3d085526972eb5e156d4"
+  },
+  {
+    "caseId": "seed-202-2",
+    "fault": "late-retry",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "e84bf95ecbc64db1aa266b38ab8020f0a1602d10d8a9f1ffaa48c2f5b8f8860c"
+  },
+  {
+    "caseId": "seed-202-2",
+    "fault": "fifo-only",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "e84bf95ecbc64db1aa266b38ab8020f0a1602d10d8a9f1ffaa48c2f5b8f8860c"
+  },
+  {
+    "caseId": "seed-202-2",
+    "fault": "drop-ignored",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "e84bf95ecbc64db1aa266b38ab8020f0a1602d10d8a9f1ffaa48c2f5b8f8860c"
+  },
+  {
+    "caseId": "seed-202-3",
+    "fault": "none",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "64274dd23a1aaf8f82c85828d1913f241dc476d975175152342a0a27b6a7b8c7"
+  },
+  {
+    "caseId": "seed-202-3",
+    "fault": "persistence",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "64274dd23a1aaf8f82c85828d1913f241dc476d975175152342a0a27b6a7b8c7"
+  },
+  {
+    "caseId": "seed-202-3",
+    "fault": "deduplication",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "64274dd23a1aaf8f82c85828d1913f241dc476d975175152342a0a27b6a7b8c7"
+  },
+  {
+    "caseId": "seed-202-3",
+    "fault": "late-retry",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "64274dd23a1aaf8f82c85828d1913f241dc476d975175152342a0a27b6a7b8c7"
+  },
+  {
+    "caseId": "seed-202-3",
+    "fault": "fifo-only",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "64274dd23a1aaf8f82c85828d1913f241dc476d975175152342a0a27b6a7b8c7"
+  },
+  {
+    "caseId": "seed-202-3",
+    "fault": "drop-ignored",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "64274dd23a1aaf8f82c85828d1913f241dc476d975175152342a0a27b6a7b8c7"
+  },
+  {
+    "caseId": "seed-202-4",
+    "fault": "none",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "f0569a7459537895eb7f6619421143cc8e5dafdeba48c63d97c912c6677129ce"
+  },
+  {
+    "caseId": "seed-202-4",
+    "fault": "persistence",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "f0569a7459537895eb7f6619421143cc8e5dafdeba48c63d97c912c6677129ce"
+  },
+  {
+    "caseId": "seed-202-4",
+    "fault": "deduplication",
+    "status": "mismatch",
+    "checkedSteps": 3,
+    "calls": {
+      "resets": 1,
+      "steps": 3
+    },
+    "resultSha256": "060903cd6e4d9891d0374643778a47d36ca6c0701ca00cfb248a5fd7e44c500f"
+  },
+  {
+    "caseId": "seed-202-4",
+    "fault": "late-retry",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "f0569a7459537895eb7f6619421143cc8e5dafdeba48c63d97c912c6677129ce"
+  },
+  {
+    "caseId": "seed-202-4",
+    "fault": "fifo-only",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "f0569a7459537895eb7f6619421143cc8e5dafdeba48c63d97c912c6677129ce"
+  },
+  {
+    "caseId": "seed-202-4",
+    "fault": "drop-ignored",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "f0569a7459537895eb7f6619421143cc8e5dafdeba48c63d97c912c6677129ce"
+  },
+  {
+    "caseId": "seed-202-5",
+    "fault": "none",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "ac6856f60ce33d35e98949b6a59d9b9167b298093a5053505b22690867809749"
+  },
+  {
+    "caseId": "seed-202-5",
+    "fault": "persistence",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "ac6856f60ce33d35e98949b6a59d9b9167b298093a5053505b22690867809749"
+  },
+  {
+    "caseId": "seed-202-5",
+    "fault": "deduplication",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "ac6856f60ce33d35e98949b6a59d9b9167b298093a5053505b22690867809749"
+  },
+  {
+    "caseId": "seed-202-5",
+    "fault": "late-retry",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "ac6856f60ce33d35e98949b6a59d9b9167b298093a5053505b22690867809749"
+  },
+  {
+    "caseId": "seed-202-5",
+    "fault": "fifo-only",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "ac6856f60ce33d35e98949b6a59d9b9167b298093a5053505b22690867809749"
+  },
+  {
+    "caseId": "seed-202-5",
+    "fault": "drop-ignored",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "ac6856f60ce33d35e98949b6a59d9b9167b298093a5053505b22690867809749"
+  },
+  {
+    "caseId": "seed-202-6",
+    "fault": "none",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "471f56af501266f5ee4677f50f01e83597de3382fb708db861dfdcee0f20725b"
+  },
+  {
+    "caseId": "seed-202-6",
+    "fault": "persistence",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "471f56af501266f5ee4677f50f01e83597de3382fb708db861dfdcee0f20725b"
+  },
+  {
+    "caseId": "seed-202-6",
+    "fault": "deduplication",
+    "status": "mismatch",
+    "checkedSteps": 4,
+    "calls": {
+      "resets": 1,
+      "steps": 4
+    },
+    "resultSha256": "08c0a05cfe33c0414f9d690b267442007daa7791d3c0735d992dd01ca78c3b29"
+  },
+  {
+    "caseId": "seed-202-6",
+    "fault": "late-retry",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "471f56af501266f5ee4677f50f01e83597de3382fb708db861dfdcee0f20725b"
+  },
+  {
+    "caseId": "seed-202-6",
+    "fault": "fifo-only",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "471f56af501266f5ee4677f50f01e83597de3382fb708db861dfdcee0f20725b"
+  },
+  {
+    "caseId": "seed-202-6",
+    "fault": "drop-ignored",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "471f56af501266f5ee4677f50f01e83597de3382fb708db861dfdcee0f20725b"
+  },
+  {
+    "caseId": "seed-202-7",
+    "fault": "none",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "71d351685fa0bc7ec9c990c70b629c1800db9136c7b59b57cad55de417e76206"
+  },
+  {
+    "caseId": "seed-202-7",
+    "fault": "persistence",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "71d351685fa0bc7ec9c990c70b629c1800db9136c7b59b57cad55de417e76206"
+  },
+  {
+    "caseId": "seed-202-7",
+    "fault": "deduplication",
+    "status": "mismatch",
+    "checkedSteps": 8,
+    "calls": {
+      "resets": 1,
+      "steps": 8
+    },
+    "resultSha256": "cb6c7d47ed7cd0e122e18ca9bbc4164eb09b072ac8fec0af5bbce087beb6521f"
+  },
+  {
+    "caseId": "seed-202-7",
+    "fault": "late-retry",
+    "status": "mismatch",
+    "checkedSteps": 10,
+    "calls": {
+      "resets": 1,
+      "steps": 10
+    },
+    "resultSha256": "149a145006a6ef2e0d5d134e77741075462dee126f944504ce081b7c425e2441"
+  },
+  {
+    "caseId": "seed-202-7",
+    "fault": "fifo-only",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "71d351685fa0bc7ec9c990c70b629c1800db9136c7b59b57cad55de417e76206"
+  },
+  {
+    "caseId": "seed-202-7",
+    "fault": "drop-ignored",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "71d351685fa0bc7ec9c990c70b629c1800db9136c7b59b57cad55de417e76206"
+  },
+  {
+    "caseId": "seed-202-8",
+    "fault": "none",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "f760f1a745a6c160e74b26c092ad5fd1ce2822d34f4d1587d2b56d52309e68e3"
+  },
+  {
+    "caseId": "seed-202-8",
+    "fault": "persistence",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "f760f1a745a6c160e74b26c092ad5fd1ce2822d34f4d1587d2b56d52309e68e3"
+  },
+  {
+    "caseId": "seed-202-8",
+    "fault": "deduplication",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "f760f1a745a6c160e74b26c092ad5fd1ce2822d34f4d1587d2b56d52309e68e3"
+  },
+  {
+    "caseId": "seed-202-8",
+    "fault": "late-retry",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "f760f1a745a6c160e74b26c092ad5fd1ce2822d34f4d1587d2b56d52309e68e3"
+  },
+  {
+    "caseId": "seed-202-8",
+    "fault": "fifo-only",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "f760f1a745a6c160e74b26c092ad5fd1ce2822d34f4d1587d2b56d52309e68e3"
+  },
+  {
+    "caseId": "seed-202-8",
+    "fault": "drop-ignored",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "f760f1a745a6c160e74b26c092ad5fd1ce2822d34f4d1587d2b56d52309e68e3"
+  },
+  {
+    "caseId": "seed-202-9",
+    "fault": "none",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "f4299d26494d52dfa9e5bda159e484d909dbfed30c8187b1d44db5c806076fc0"
+  },
+  {
+    "caseId": "seed-202-9",
+    "fault": "persistence",
+    "status": "mismatch",
+    "checkedSteps": 9,
+    "calls": {
+      "resets": 1,
+      "steps": 9
+    },
+    "resultSha256": "078babc8a5987c8e98524e5de807ba01eb8f3c7eb2a26ce56c3643cec6b68942"
+  },
+  {
+    "caseId": "seed-202-9",
+    "fault": "deduplication",
+    "status": "mismatch",
+    "checkedSteps": 2,
+    "calls": {
+      "resets": 1,
+      "steps": 2
+    },
+    "resultSha256": "44694606683488b9e07d879198a944e17d7c3cd610c8d3eca708d2990e84ff16"
+  },
+  {
+    "caseId": "seed-202-9",
+    "fault": "late-retry",
+    "status": "mismatch",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "b94d567c6d2872c8a35581a151da40a3cbb5d0a088fb9a153296bb6c5f1c1e4c"
+  },
+  {
+    "caseId": "seed-202-9",
+    "fault": "fifo-only",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "f4299d26494d52dfa9e5bda159e484d909dbfed30c8187b1d44db5c806076fc0"
+  },
+  {
+    "caseId": "seed-202-9",
+    "fault": "drop-ignored",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "f4299d26494d52dfa9e5bda159e484d909dbfed30c8187b1d44db5c806076fc0"
+  },
+  {
+    "caseId": "seed-202-10",
+    "fault": "none",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "fc200105877abd5ed135ddbd37432b2ae3c608b3deb14b3f414e4bf9fa46ca9f"
+  },
+  {
+    "caseId": "seed-202-10",
+    "fault": "persistence",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "fc200105877abd5ed135ddbd37432b2ae3c608b3deb14b3f414e4bf9fa46ca9f"
+  },
+  {
+    "caseId": "seed-202-10",
+    "fault": "deduplication",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "fc200105877abd5ed135ddbd37432b2ae3c608b3deb14b3f414e4bf9fa46ca9f"
+  },
+  {
+    "caseId": "seed-202-10",
+    "fault": "late-retry",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "fc200105877abd5ed135ddbd37432b2ae3c608b3deb14b3f414e4bf9fa46ca9f"
+  },
+  {
+    "caseId": "seed-202-10",
+    "fault": "fifo-only",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "fc200105877abd5ed135ddbd37432b2ae3c608b3deb14b3f414e4bf9fa46ca9f"
+  },
+  {
+    "caseId": "seed-202-10",
+    "fault": "drop-ignored",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "fc200105877abd5ed135ddbd37432b2ae3c608b3deb14b3f414e4bf9fa46ca9f"
+  },
+  {
+    "caseId": "seed-202-11",
+    "fault": "none",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "39faecabf63820d548321561af483c568134e679af463765c493d735734d14d3"
+  },
+  {
+    "caseId": "seed-202-11",
+    "fault": "persistence",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "39faecabf63820d548321561af483c568134e679af463765c493d735734d14d3"
+  },
+  {
+    "caseId": "seed-202-11",
+    "fault": "deduplication",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "39faecabf63820d548321561af483c568134e679af463765c493d735734d14d3"
+  },
+  {
+    "caseId": "seed-202-11",
+    "fault": "late-retry",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "39faecabf63820d548321561af483c568134e679af463765c493d735734d14d3"
+  },
+  {
+    "caseId": "seed-202-11",
+    "fault": "fifo-only",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "39faecabf63820d548321561af483c568134e679af463765c493d735734d14d3"
+  },
+  {
+    "caseId": "seed-202-11",
+    "fault": "drop-ignored",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "39faecabf63820d548321561af483c568134e679af463765c493d735734d14d3"
+  },
+  {
+    "caseId": "seed-202-12",
+    "fault": "none",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "a8d959a0ad58b1dab6b67747fc12458aa83c0ee266f082eaf4bcc26ec269654f"
+  },
+  {
+    "caseId": "seed-202-12",
+    "fault": "persistence",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "a8d959a0ad58b1dab6b67747fc12458aa83c0ee266f082eaf4bcc26ec269654f"
+  },
+  {
+    "caseId": "seed-202-12",
+    "fault": "deduplication",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "a8d959a0ad58b1dab6b67747fc12458aa83c0ee266f082eaf4bcc26ec269654f"
+  },
+  {
+    "caseId": "seed-202-12",
+    "fault": "late-retry",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "a8d959a0ad58b1dab6b67747fc12458aa83c0ee266f082eaf4bcc26ec269654f"
+  },
+  {
+    "caseId": "seed-202-12",
+    "fault": "fifo-only",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "a8d959a0ad58b1dab6b67747fc12458aa83c0ee266f082eaf4bcc26ec269654f"
+  },
+  {
+    "caseId": "seed-202-12",
+    "fault": "drop-ignored",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "a8d959a0ad58b1dab6b67747fc12458aa83c0ee266f082eaf4bcc26ec269654f"
+  },
+  {
+    "caseId": "seed-203-0",
+    "fault": "none",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "bac5ca7a78af3d1f9371e1a35c048b27ef24c9091f11589dd4c9069168b019ce"
+  },
+  {
+    "caseId": "seed-203-0",
+    "fault": "persistence",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "bac5ca7a78af3d1f9371e1a35c048b27ef24c9091f11589dd4c9069168b019ce"
+  },
+  {
+    "caseId": "seed-203-0",
+    "fault": "deduplication",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "bac5ca7a78af3d1f9371e1a35c048b27ef24c9091f11589dd4c9069168b019ce"
+  },
+  {
+    "caseId": "seed-203-0",
+    "fault": "late-retry",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "bac5ca7a78af3d1f9371e1a35c048b27ef24c9091f11589dd4c9069168b019ce"
+  },
+  {
+    "caseId": "seed-203-0",
+    "fault": "fifo-only",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "bac5ca7a78af3d1f9371e1a35c048b27ef24c9091f11589dd4c9069168b019ce"
+  },
+  {
+    "caseId": "seed-203-0",
+    "fault": "drop-ignored",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "bac5ca7a78af3d1f9371e1a35c048b27ef24c9091f11589dd4c9069168b019ce"
+  },
+  {
+    "caseId": "seed-203-1",
+    "fault": "none",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "1806fea8c3c718780d09951dfa02efe377a8d16f9e20721dc5a5641655a042a3"
+  },
+  {
+    "caseId": "seed-203-1",
+    "fault": "persistence",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "1806fea8c3c718780d09951dfa02efe377a8d16f9e20721dc5a5641655a042a3"
+  },
+  {
+    "caseId": "seed-203-1",
+    "fault": "deduplication",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "1806fea8c3c718780d09951dfa02efe377a8d16f9e20721dc5a5641655a042a3"
+  },
+  {
+    "caseId": "seed-203-1",
+    "fault": "late-retry",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "1806fea8c3c718780d09951dfa02efe377a8d16f9e20721dc5a5641655a042a3"
+  },
+  {
+    "caseId": "seed-203-1",
+    "fault": "fifo-only",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "1806fea8c3c718780d09951dfa02efe377a8d16f9e20721dc5a5641655a042a3"
+  },
+  {
+    "caseId": "seed-203-1",
+    "fault": "drop-ignored",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "1806fea8c3c718780d09951dfa02efe377a8d16f9e20721dc5a5641655a042a3"
+  },
+  {
+    "caseId": "seed-203-2",
+    "fault": "none",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "0caf9da20891cace614ff4e96fdfbfcabcbdff1a17cc66e4e2d62eb95bff44fd"
+  },
+  {
+    "caseId": "seed-203-2",
+    "fault": "persistence",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "0caf9da20891cace614ff4e96fdfbfcabcbdff1a17cc66e4e2d62eb95bff44fd"
+  },
+  {
+    "caseId": "seed-203-2",
+    "fault": "deduplication",
+    "status": "mismatch",
+    "checkedSteps": 4,
+    "calls": {
+      "resets": 1,
+      "steps": 4
+    },
+    "resultSha256": "ebfe163dd5216c85ddf375730d27e2f168e344390f5a60a1a566954e40cd2633"
+  },
+  {
+    "caseId": "seed-203-2",
+    "fault": "late-retry",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "0caf9da20891cace614ff4e96fdfbfcabcbdff1a17cc66e4e2d62eb95bff44fd"
+  },
+  {
+    "caseId": "seed-203-2",
+    "fault": "fifo-only",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "0caf9da20891cace614ff4e96fdfbfcabcbdff1a17cc66e4e2d62eb95bff44fd"
+  },
+  {
+    "caseId": "seed-203-2",
+    "fault": "drop-ignored",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "0caf9da20891cace614ff4e96fdfbfcabcbdff1a17cc66e4e2d62eb95bff44fd"
+  },
+  {
+    "caseId": "seed-203-3",
+    "fault": "none",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "5d8230c5688bad46cd37773822a656e75ea48b653343b5d60bbd7d8c8394d469"
+  },
+  {
+    "caseId": "seed-203-3",
+    "fault": "persistence",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "5d8230c5688bad46cd37773822a656e75ea48b653343b5d60bbd7d8c8394d469"
+  },
+  {
+    "caseId": "seed-203-3",
+    "fault": "deduplication",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "5d8230c5688bad46cd37773822a656e75ea48b653343b5d60bbd7d8c8394d469"
+  },
+  {
+    "caseId": "seed-203-3",
+    "fault": "late-retry",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "5d8230c5688bad46cd37773822a656e75ea48b653343b5d60bbd7d8c8394d469"
+  },
+  {
+    "caseId": "seed-203-3",
+    "fault": "fifo-only",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "5d8230c5688bad46cd37773822a656e75ea48b653343b5d60bbd7d8c8394d469"
+  },
+  {
+    "caseId": "seed-203-3",
+    "fault": "drop-ignored",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "5d8230c5688bad46cd37773822a656e75ea48b653343b5d60bbd7d8c8394d469"
+  },
+  {
+    "caseId": "seed-203-4",
+    "fault": "none",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "47ba6dbc87e0344f95c8242a7ed9c50295eefcb6e3a184e7de9e96c0152bb46e"
+  },
+  {
+    "caseId": "seed-203-4",
+    "fault": "persistence",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "47ba6dbc87e0344f95c8242a7ed9c50295eefcb6e3a184e7de9e96c0152bb46e"
+  },
+  {
+    "caseId": "seed-203-4",
+    "fault": "deduplication",
+    "status": "mismatch",
+    "checkedSteps": 3,
+    "calls": {
+      "resets": 1,
+      "steps": 3
+    },
+    "resultSha256": "78d9906bd5b046cba687544b4b82a08f140b9a2313bc112e98a0f094b032028f"
+  },
+  {
+    "caseId": "seed-203-4",
+    "fault": "late-retry",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "47ba6dbc87e0344f95c8242a7ed9c50295eefcb6e3a184e7de9e96c0152bb46e"
+  },
+  {
+    "caseId": "seed-203-4",
+    "fault": "fifo-only",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "47ba6dbc87e0344f95c8242a7ed9c50295eefcb6e3a184e7de9e96c0152bb46e"
+  },
+  {
+    "caseId": "seed-203-4",
+    "fault": "drop-ignored",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "47ba6dbc87e0344f95c8242a7ed9c50295eefcb6e3a184e7de9e96c0152bb46e"
+  },
+  {
+    "caseId": "seed-203-5",
+    "fault": "none",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "01e4367800a69024314819a12417f0e41854884d43b6de3c40c9d7882482ca02"
+  },
+  {
+    "caseId": "seed-203-5",
+    "fault": "persistence",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "01e4367800a69024314819a12417f0e41854884d43b6de3c40c9d7882482ca02"
+  },
+  {
+    "caseId": "seed-203-5",
+    "fault": "deduplication",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "01e4367800a69024314819a12417f0e41854884d43b6de3c40c9d7882482ca02"
+  },
+  {
+    "caseId": "seed-203-5",
+    "fault": "late-retry",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "01e4367800a69024314819a12417f0e41854884d43b6de3c40c9d7882482ca02"
+  },
+  {
+    "caseId": "seed-203-5",
+    "fault": "fifo-only",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "01e4367800a69024314819a12417f0e41854884d43b6de3c40c9d7882482ca02"
+  },
+  {
+    "caseId": "seed-203-5",
+    "fault": "drop-ignored",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "01e4367800a69024314819a12417f0e41854884d43b6de3c40c9d7882482ca02"
+  },
+  {
+    "caseId": "seed-203-6",
+    "fault": "none",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "5d25024d05667271da0c7eabc110a804ebe45015bd50755556c375c79f1f7e4f"
+  },
+  {
+    "caseId": "seed-203-6",
+    "fault": "persistence",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "5d25024d05667271da0c7eabc110a804ebe45015bd50755556c375c79f1f7e4f"
+  },
+  {
+    "caseId": "seed-203-6",
+    "fault": "deduplication",
+    "status": "mismatch",
+    "checkedSteps": 2,
+    "calls": {
+      "resets": 1,
+      "steps": 2
+    },
+    "resultSha256": "44694606683488b9e07d879198a944e17d7c3cd610c8d3eca708d2990e84ff16"
+  },
+  {
+    "caseId": "seed-203-6",
+    "fault": "late-retry",
+    "status": "mismatch",
+    "checkedSteps": 4,
+    "calls": {
+      "resets": 1,
+      "steps": 4
+    },
+    "resultSha256": "23ec744d613f2dab55342dddb6eb573ba1aca1378804faae34ccb81fbdcb9720"
+  },
+  {
+    "caseId": "seed-203-6",
+    "fault": "fifo-only",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "5d25024d05667271da0c7eabc110a804ebe45015bd50755556c375c79f1f7e4f"
+  },
+  {
+    "caseId": "seed-203-6",
+    "fault": "drop-ignored",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "5d25024d05667271da0c7eabc110a804ebe45015bd50755556c375c79f1f7e4f"
+  },
+  {
+    "caseId": "seed-203-7",
+    "fault": "none",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "7d8dd74deaa547d43bc33ea3de0b46fd8baabf7f0b53649c5578832312286ca8"
+  },
+  {
+    "caseId": "seed-203-7",
+    "fault": "persistence",
+    "status": "mismatch",
+    "checkedSteps": 9,
+    "calls": {
+      "resets": 1,
+      "steps": 9
+    },
+    "resultSha256": "cbc6a4ccd2a9427fa5a5c767e88d43705798c98619266792dc3fe70819d2375e"
+  },
+  {
+    "caseId": "seed-203-7",
+    "fault": "deduplication",
+    "status": "mismatch",
+    "checkedSteps": 3,
+    "calls": {
+      "resets": 1,
+      "steps": 3
+    },
+    "resultSha256": "572fed81654465496c34910d55e0043866d6baf87d98c139f8dd3a1372736c81"
+  },
+  {
+    "caseId": "seed-203-7",
+    "fault": "late-retry",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "7d8dd74deaa547d43bc33ea3de0b46fd8baabf7f0b53649c5578832312286ca8"
+  },
+  {
+    "caseId": "seed-203-7",
+    "fault": "fifo-only",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "7d8dd74deaa547d43bc33ea3de0b46fd8baabf7f0b53649c5578832312286ca8"
+  },
+  {
+    "caseId": "seed-203-7",
+    "fault": "drop-ignored",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "7d8dd74deaa547d43bc33ea3de0b46fd8baabf7f0b53649c5578832312286ca8"
+  },
+  {
+    "caseId": "seed-203-8",
+    "fault": "none",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "afc7c7a0946d25707d7b4bedacf36e4b5076cd9c0c621957a03616f69dfa8aad"
+  },
+  {
+    "caseId": "seed-203-8",
+    "fault": "persistence",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "afc7c7a0946d25707d7b4bedacf36e4b5076cd9c0c621957a03616f69dfa8aad"
+  },
+  {
+    "caseId": "seed-203-8",
+    "fault": "deduplication",
+    "status": "mismatch",
+    "checkedSteps": 4,
+    "calls": {
+      "resets": 1,
+      "steps": 4
+    },
+    "resultSha256": "efa24172551a0012a72dadd92d059b31c56465d1f5b01427fe51e38fac7af11d"
+  },
+  {
+    "caseId": "seed-203-8",
+    "fault": "late-retry",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "afc7c7a0946d25707d7b4bedacf36e4b5076cd9c0c621957a03616f69dfa8aad"
+  },
+  {
+    "caseId": "seed-203-8",
+    "fault": "fifo-only",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "afc7c7a0946d25707d7b4bedacf36e4b5076cd9c0c621957a03616f69dfa8aad"
+  },
+  {
+    "caseId": "seed-203-8",
+    "fault": "drop-ignored",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "afc7c7a0946d25707d7b4bedacf36e4b5076cd9c0c621957a03616f69dfa8aad"
+  },
+  {
+    "caseId": "seed-203-9",
+    "fault": "none",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "af4c9687f599234407f4ebd69ae40ad45f2a3149f555087cca674e095cbe4e27"
+  },
+  {
+    "caseId": "seed-203-9",
+    "fault": "persistence",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "af4c9687f599234407f4ebd69ae40ad45f2a3149f555087cca674e095cbe4e27"
+  },
+  {
+    "caseId": "seed-203-9",
+    "fault": "deduplication",
+    "status": "mismatch",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "9748df79c79d4f69aae49b86a158eaaf7477855ee54ede12cca177ebde87cf90"
+  },
+  {
+    "caseId": "seed-203-9",
+    "fault": "late-retry",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "af4c9687f599234407f4ebd69ae40ad45f2a3149f555087cca674e095cbe4e27"
+  },
+  {
+    "caseId": "seed-203-9",
+    "fault": "fifo-only",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "af4c9687f599234407f4ebd69ae40ad45f2a3149f555087cca674e095cbe4e27"
+  },
+  {
+    "caseId": "seed-203-9",
+    "fault": "drop-ignored",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "af4c9687f599234407f4ebd69ae40ad45f2a3149f555087cca674e095cbe4e27"
+  },
+  {
+    "caseId": "seed-203-10",
+    "fault": "none",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "1dcfd8962314ca55d4cd0a63a1509c8a8a294e98c39670ef123c55c2f987680d"
+  },
+  {
+    "caseId": "seed-203-10",
+    "fault": "persistence",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "1dcfd8962314ca55d4cd0a63a1509c8a8a294e98c39670ef123c55c2f987680d"
+  },
+  {
+    "caseId": "seed-203-10",
+    "fault": "deduplication",
+    "status": "mismatch",
+    "checkedSteps": 4,
+    "calls": {
+      "resets": 1,
+      "steps": 4
+    },
+    "resultSha256": "97c85eb2eb4a4add096f50b6735b3ab479962a34a6afd2011d2c385e33e4845b"
+  },
+  {
+    "caseId": "seed-203-10",
+    "fault": "late-retry",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "1dcfd8962314ca55d4cd0a63a1509c8a8a294e98c39670ef123c55c2f987680d"
+  },
+  {
+    "caseId": "seed-203-10",
+    "fault": "fifo-only",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "1dcfd8962314ca55d4cd0a63a1509c8a8a294e98c39670ef123c55c2f987680d"
+  },
+  {
+    "caseId": "seed-203-10",
+    "fault": "drop-ignored",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "1dcfd8962314ca55d4cd0a63a1509c8a8a294e98c39670ef123c55c2f987680d"
+  },
+  {
+    "caseId": "seed-203-11",
+    "fault": "none",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "96fc4323f22a70c783cdf3e864c15de9d8855314b1bfcec913899528d8ac7e1f"
+  },
+  {
+    "caseId": "seed-203-11",
+    "fault": "persistence",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "96fc4323f22a70c783cdf3e864c15de9d8855314b1bfcec913899528d8ac7e1f"
+  },
+  {
+    "caseId": "seed-203-11",
+    "fault": "deduplication",
+    "status": "mismatch",
+    "checkedSteps": 5,
+    "calls": {
+      "resets": 1,
+      "steps": 5
+    },
+    "resultSha256": "8cd0a619b92f3adac4033ed87dc6fe95eda22162447209da163444780be08bc2"
+  },
+  {
+    "caseId": "seed-203-11",
+    "fault": "late-retry",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "96fc4323f22a70c783cdf3e864c15de9d8855314b1bfcec913899528d8ac7e1f"
+  },
+  {
+    "caseId": "seed-203-11",
+    "fault": "fifo-only",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "96fc4323f22a70c783cdf3e864c15de9d8855314b1bfcec913899528d8ac7e1f"
+  },
+  {
+    "caseId": "seed-203-11",
+    "fault": "drop-ignored",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "96fc4323f22a70c783cdf3e864c15de9d8855314b1bfcec913899528d8ac7e1f"
+  },
+  {
+    "caseId": "seed-203-12",
+    "fault": "none",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "4a8ecfa43186bda974f8ffbfc63ed3008618187d9b59097a7da1a32ef29f4e1e"
+  },
+  {
+    "caseId": "seed-203-12",
+    "fault": "persistence",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "4a8ecfa43186bda974f8ffbfc63ed3008618187d9b59097a7da1a32ef29f4e1e"
+  },
+  {
+    "caseId": "seed-203-12",
+    "fault": "deduplication",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "4a8ecfa43186bda974f8ffbfc63ed3008618187d9b59097a7da1a32ef29f4e1e"
+  },
+  {
+    "caseId": "seed-203-12",
+    "fault": "late-retry",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "4a8ecfa43186bda974f8ffbfc63ed3008618187d9b59097a7da1a32ef29f4e1e"
+  },
+  {
+    "caseId": "seed-203-12",
+    "fault": "fifo-only",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "4a8ecfa43186bda974f8ffbfc63ed3008618187d9b59097a7da1a32ef29f4e1e"
+  },
+  {
+    "caseId": "seed-203-12",
+    "fault": "drop-ignored",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "4a8ecfa43186bda974f8ffbfc63ed3008618187d9b59097a7da1a32ef29f4e1e"
+  },
+  {
+    "caseId": "seed-204-0",
+    "fault": "none",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "f5aeb6ec3e55614acfca6bf5d1a1c281fd4637214cbabe3a669479492ed576cc"
+  },
+  {
+    "caseId": "seed-204-0",
+    "fault": "persistence",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "f5aeb6ec3e55614acfca6bf5d1a1c281fd4637214cbabe3a669479492ed576cc"
+  },
+  {
+    "caseId": "seed-204-0",
+    "fault": "deduplication",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "f5aeb6ec3e55614acfca6bf5d1a1c281fd4637214cbabe3a669479492ed576cc"
+  },
+  {
+    "caseId": "seed-204-0",
+    "fault": "late-retry",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "f5aeb6ec3e55614acfca6bf5d1a1c281fd4637214cbabe3a669479492ed576cc"
+  },
+  {
+    "caseId": "seed-204-0",
+    "fault": "fifo-only",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "f5aeb6ec3e55614acfca6bf5d1a1c281fd4637214cbabe3a669479492ed576cc"
+  },
+  {
+    "caseId": "seed-204-0",
+    "fault": "drop-ignored",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "f5aeb6ec3e55614acfca6bf5d1a1c281fd4637214cbabe3a669479492ed576cc"
+  },
+  {
+    "caseId": "seed-204-1",
+    "fault": "none",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "1cfa1062a19d0f3d4bee4c418e5824dc82c27a2f47e9e6e4274084f3a362afb3"
+  },
+  {
+    "caseId": "seed-204-1",
+    "fault": "persistence",
+    "status": "mismatch",
+    "checkedSteps": 9,
+    "calls": {
+      "resets": 1,
+      "steps": 9
+    },
+    "resultSha256": "75510c162b88b4c06175877f6a0792e5f7c0e3f2963f146927a72e7017573391"
+  },
+  {
+    "caseId": "seed-204-1",
+    "fault": "deduplication",
+    "status": "mismatch",
+    "checkedSteps": 11,
+    "calls": {
+      "resets": 1,
+      "steps": 11
+    },
+    "resultSha256": "ee1d9647c0d9dc1eac78e31a0af0fd1b666d6f8d6778c03dcfed3d357a2084e2"
+  },
+  {
+    "caseId": "seed-204-1",
+    "fault": "late-retry",
+    "status": "mismatch",
+    "checkedSteps": 11,
+    "calls": {
+      "resets": 1,
+      "steps": 11
+    },
+    "resultSha256": "ee1d9647c0d9dc1eac78e31a0af0fd1b666d6f8d6778c03dcfed3d357a2084e2"
+  },
+  {
+    "caseId": "seed-204-1",
+    "fault": "fifo-only",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "1cfa1062a19d0f3d4bee4c418e5824dc82c27a2f47e9e6e4274084f3a362afb3"
+  },
+  {
+    "caseId": "seed-204-1",
+    "fault": "drop-ignored",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "1cfa1062a19d0f3d4bee4c418e5824dc82c27a2f47e9e6e4274084f3a362afb3"
+  },
+  {
+    "caseId": "seed-204-2",
+    "fault": "none",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "6ce1171bd234be6418b424f78eb257fb71697f08f8a8443e0eb78e614951ebf6"
+  },
+  {
+    "caseId": "seed-204-2",
+    "fault": "persistence",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "6ce1171bd234be6418b424f78eb257fb71697f08f8a8443e0eb78e614951ebf6"
+  },
+  {
+    "caseId": "seed-204-2",
+    "fault": "deduplication",
+    "status": "mismatch",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "396cb1e191b7c002c382b24ff62d29bb86b3a18b7233e1aca0967b7f9e451843"
+  },
+  {
+    "caseId": "seed-204-2",
+    "fault": "late-retry",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "6ce1171bd234be6418b424f78eb257fb71697f08f8a8443e0eb78e614951ebf6"
+  },
+  {
+    "caseId": "seed-204-2",
+    "fault": "fifo-only",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "6ce1171bd234be6418b424f78eb257fb71697f08f8a8443e0eb78e614951ebf6"
+  },
+  {
+    "caseId": "seed-204-2",
+    "fault": "drop-ignored",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "6ce1171bd234be6418b424f78eb257fb71697f08f8a8443e0eb78e614951ebf6"
+  },
+  {
+    "caseId": "seed-204-3",
+    "fault": "none",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "f981890bad32c8d814cfcb5ec3ca184ac77c4db0401053bc0230f9b761e43970"
+  },
+  {
+    "caseId": "seed-204-3",
+    "fault": "persistence",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "f981890bad32c8d814cfcb5ec3ca184ac77c4db0401053bc0230f9b761e43970"
+  },
+  {
+    "caseId": "seed-204-3",
+    "fault": "deduplication",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "f981890bad32c8d814cfcb5ec3ca184ac77c4db0401053bc0230f9b761e43970"
+  },
+  {
+    "caseId": "seed-204-3",
+    "fault": "late-retry",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "f981890bad32c8d814cfcb5ec3ca184ac77c4db0401053bc0230f9b761e43970"
+  },
+  {
+    "caseId": "seed-204-3",
+    "fault": "fifo-only",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "f981890bad32c8d814cfcb5ec3ca184ac77c4db0401053bc0230f9b761e43970"
+  },
+  {
+    "caseId": "seed-204-3",
+    "fault": "drop-ignored",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "f981890bad32c8d814cfcb5ec3ca184ac77c4db0401053bc0230f9b761e43970"
+  },
+  {
+    "caseId": "seed-204-4",
+    "fault": "none",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "6a4c1168599a08fd2b7d573b1628d02204e0473cd504befb0ccc42d37a94bf11"
+  },
+  {
+    "caseId": "seed-204-4",
+    "fault": "persistence",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "6a4c1168599a08fd2b7d573b1628d02204e0473cd504befb0ccc42d37a94bf11"
+  },
+  {
+    "caseId": "seed-204-4",
+    "fault": "deduplication",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "6a4c1168599a08fd2b7d573b1628d02204e0473cd504befb0ccc42d37a94bf11"
+  },
+  {
+    "caseId": "seed-204-4",
+    "fault": "late-retry",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "6a4c1168599a08fd2b7d573b1628d02204e0473cd504befb0ccc42d37a94bf11"
+  },
+  {
+    "caseId": "seed-204-4",
+    "fault": "fifo-only",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "6a4c1168599a08fd2b7d573b1628d02204e0473cd504befb0ccc42d37a94bf11"
+  },
+  {
+    "caseId": "seed-204-4",
+    "fault": "drop-ignored",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "6a4c1168599a08fd2b7d573b1628d02204e0473cd504befb0ccc42d37a94bf11"
+  },
+  {
+    "caseId": "seed-204-5",
+    "fault": "none",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "fb5c6f379a9f6bb7c6bb3ce34636fb87af6b73aab5d23b920d1300f7495a79cb"
+  },
+  {
+    "caseId": "seed-204-5",
+    "fault": "persistence",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "fb5c6f379a9f6bb7c6bb3ce34636fb87af6b73aab5d23b920d1300f7495a79cb"
+  },
+  {
+    "caseId": "seed-204-5",
+    "fault": "deduplication",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "fb5c6f379a9f6bb7c6bb3ce34636fb87af6b73aab5d23b920d1300f7495a79cb"
+  },
+  {
+    "caseId": "seed-204-5",
+    "fault": "late-retry",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "fb5c6f379a9f6bb7c6bb3ce34636fb87af6b73aab5d23b920d1300f7495a79cb"
+  },
+  {
+    "caseId": "seed-204-5",
+    "fault": "fifo-only",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "fb5c6f379a9f6bb7c6bb3ce34636fb87af6b73aab5d23b920d1300f7495a79cb"
+  },
+  {
+    "caseId": "seed-204-5",
+    "fault": "drop-ignored",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "fb5c6f379a9f6bb7c6bb3ce34636fb87af6b73aab5d23b920d1300f7495a79cb"
+  },
+  {
+    "caseId": "seed-204-6",
+    "fault": "none",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "06a9b44555381053111a4adcf98315adab5f321c3b26dec341eb72685ff281ca"
+  },
+  {
+    "caseId": "seed-204-6",
+    "fault": "persistence",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "06a9b44555381053111a4adcf98315adab5f321c3b26dec341eb72685ff281ca"
+  },
+  {
+    "caseId": "seed-204-6",
+    "fault": "deduplication",
+    "status": "mismatch",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "703a47783359b49f9a257cf6bcf33f8b35a9a926e5e74f94fc555dfd0ae7e283"
+  },
+  {
+    "caseId": "seed-204-6",
+    "fault": "late-retry",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "06a9b44555381053111a4adcf98315adab5f321c3b26dec341eb72685ff281ca"
+  },
+  {
+    "caseId": "seed-204-6",
+    "fault": "fifo-only",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "06a9b44555381053111a4adcf98315adab5f321c3b26dec341eb72685ff281ca"
+  },
+  {
+    "caseId": "seed-204-6",
+    "fault": "drop-ignored",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "06a9b44555381053111a4adcf98315adab5f321c3b26dec341eb72685ff281ca"
+  },
+  {
+    "caseId": "seed-204-7",
+    "fault": "none",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "a5bf0126a527438ae9ea6586a06e382cb7f89809f549a930e885f9b660330873"
+  },
+  {
+    "caseId": "seed-204-7",
+    "fault": "persistence",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "a5bf0126a527438ae9ea6586a06e382cb7f89809f549a930e885f9b660330873"
+  },
+  {
+    "caseId": "seed-204-7",
+    "fault": "deduplication",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "a5bf0126a527438ae9ea6586a06e382cb7f89809f549a930e885f9b660330873"
+  },
+  {
+    "caseId": "seed-204-7",
+    "fault": "late-retry",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "a5bf0126a527438ae9ea6586a06e382cb7f89809f549a930e885f9b660330873"
+  },
+  {
+    "caseId": "seed-204-7",
+    "fault": "fifo-only",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "a5bf0126a527438ae9ea6586a06e382cb7f89809f549a930e885f9b660330873"
+  },
+  {
+    "caseId": "seed-204-7",
+    "fault": "drop-ignored",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "a5bf0126a527438ae9ea6586a06e382cb7f89809f549a930e885f9b660330873"
+  },
+  {
+    "caseId": "seed-204-8",
+    "fault": "none",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "a22e9dcabfff85a48c1d23faea86d667787c0d3c1f9d4e62a51e63e3206034fa"
+  },
+  {
+    "caseId": "seed-204-8",
+    "fault": "persistence",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "a22e9dcabfff85a48c1d23faea86d667787c0d3c1f9d4e62a51e63e3206034fa"
+  },
+  {
+    "caseId": "seed-204-8",
+    "fault": "deduplication",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "a22e9dcabfff85a48c1d23faea86d667787c0d3c1f9d4e62a51e63e3206034fa"
+  },
+  {
+    "caseId": "seed-204-8",
+    "fault": "late-retry",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "a22e9dcabfff85a48c1d23faea86d667787c0d3c1f9d4e62a51e63e3206034fa"
+  },
+  {
+    "caseId": "seed-204-8",
+    "fault": "fifo-only",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "a22e9dcabfff85a48c1d23faea86d667787c0d3c1f9d4e62a51e63e3206034fa"
+  },
+  {
+    "caseId": "seed-204-8",
+    "fault": "drop-ignored",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "a22e9dcabfff85a48c1d23faea86d667787c0d3c1f9d4e62a51e63e3206034fa"
+  },
+  {
+    "caseId": "seed-204-9",
+    "fault": "none",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "f959e27c2489f914d1672b5e71687dfe9d73e323e4e91ce520773dc5b15accd6"
+  },
+  {
+    "caseId": "seed-204-9",
+    "fault": "persistence",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "f959e27c2489f914d1672b5e71687dfe9d73e323e4e91ce520773dc5b15accd6"
+  },
+  {
+    "caseId": "seed-204-9",
+    "fault": "deduplication",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "f959e27c2489f914d1672b5e71687dfe9d73e323e4e91ce520773dc5b15accd6"
+  },
+  {
+    "caseId": "seed-204-9",
+    "fault": "late-retry",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "f959e27c2489f914d1672b5e71687dfe9d73e323e4e91ce520773dc5b15accd6"
+  },
+  {
+    "caseId": "seed-204-9",
+    "fault": "fifo-only",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "f959e27c2489f914d1672b5e71687dfe9d73e323e4e91ce520773dc5b15accd6"
+  },
+  {
+    "caseId": "seed-204-9",
+    "fault": "drop-ignored",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "f959e27c2489f914d1672b5e71687dfe9d73e323e4e91ce520773dc5b15accd6"
+  },
+  {
+    "caseId": "seed-204-10",
+    "fault": "none",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "aefc86ac5753da48306e5c211df6d22284a5dcccaf514c15c823da71f892d168"
+  },
+  {
+    "caseId": "seed-204-10",
+    "fault": "persistence",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "aefc86ac5753da48306e5c211df6d22284a5dcccaf514c15c823da71f892d168"
+  },
+  {
+    "caseId": "seed-204-10",
+    "fault": "deduplication",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "aefc86ac5753da48306e5c211df6d22284a5dcccaf514c15c823da71f892d168"
+  },
+  {
+    "caseId": "seed-204-10",
+    "fault": "late-retry",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "aefc86ac5753da48306e5c211df6d22284a5dcccaf514c15c823da71f892d168"
+  },
+  {
+    "caseId": "seed-204-10",
+    "fault": "fifo-only",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "aefc86ac5753da48306e5c211df6d22284a5dcccaf514c15c823da71f892d168"
+  },
+  {
+    "caseId": "seed-204-10",
+    "fault": "drop-ignored",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "aefc86ac5753da48306e5c211df6d22284a5dcccaf514c15c823da71f892d168"
+  },
+  {
+    "caseId": "seed-204-11",
+    "fault": "none",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "8b66a9181e38777975c71381ea542eacce2a4f9d35f6d1f005baf740b1b549f9"
+  },
+  {
+    "caseId": "seed-204-11",
+    "fault": "persistence",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "8b66a9181e38777975c71381ea542eacce2a4f9d35f6d1f005baf740b1b549f9"
+  },
+  {
+    "caseId": "seed-204-11",
+    "fault": "deduplication",
+    "status": "mismatch",
+    "checkedSteps": 5,
+    "calls": {
+      "resets": 1,
+      "steps": 5
+    },
+    "resultSha256": "85adfa9044d6246407cb2fc40bb6cdd4f7d738fe103d864a4eff8d2163517f9a"
+  },
+  {
+    "caseId": "seed-204-11",
+    "fault": "late-retry",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "8b66a9181e38777975c71381ea542eacce2a4f9d35f6d1f005baf740b1b549f9"
+  },
+  {
+    "caseId": "seed-204-11",
+    "fault": "fifo-only",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "8b66a9181e38777975c71381ea542eacce2a4f9d35f6d1f005baf740b1b549f9"
+  },
+  {
+    "caseId": "seed-204-11",
+    "fault": "drop-ignored",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "8b66a9181e38777975c71381ea542eacce2a4f9d35f6d1f005baf740b1b549f9"
+  },
+  {
+    "caseId": "seed-204-12",
+    "fault": "none",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "d75a5d9929cd39206a27ef653ce2c03849f2faf7d5cf43907b0185460d24c0c8"
+  },
+  {
+    "caseId": "seed-204-12",
+    "fault": "persistence",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "d75a5d9929cd39206a27ef653ce2c03849f2faf7d5cf43907b0185460d24c0c8"
+  },
+  {
+    "caseId": "seed-204-12",
+    "fault": "deduplication",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "d75a5d9929cd39206a27ef653ce2c03849f2faf7d5cf43907b0185460d24c0c8"
+  },
+  {
+    "caseId": "seed-204-12",
+    "fault": "late-retry",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "d75a5d9929cd39206a27ef653ce2c03849f2faf7d5cf43907b0185460d24c0c8"
+  },
+  {
+    "caseId": "seed-204-12",
+    "fault": "fifo-only",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "d75a5d9929cd39206a27ef653ce2c03849f2faf7d5cf43907b0185460d24c0c8"
+  },
+  {
+    "caseId": "seed-204-12",
+    "fault": "drop-ignored",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "d75a5d9929cd39206a27ef653ce2c03849f2faf7d5cf43907b0185460d24c0c8"
+  },
+  {
+    "caseId": "seed-205-0",
+    "fault": "none",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "bebfd3e2e3f10de3bb68d9b584898d7e4f5749efd034be047465302b441200c4"
+  },
+  {
+    "caseId": "seed-205-0",
+    "fault": "persistence",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "bebfd3e2e3f10de3bb68d9b584898d7e4f5749efd034be047465302b441200c4"
+  },
+  {
+    "caseId": "seed-205-0",
+    "fault": "deduplication",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "bebfd3e2e3f10de3bb68d9b584898d7e4f5749efd034be047465302b441200c4"
+  },
+  {
+    "caseId": "seed-205-0",
+    "fault": "late-retry",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "bebfd3e2e3f10de3bb68d9b584898d7e4f5749efd034be047465302b441200c4"
+  },
+  {
+    "caseId": "seed-205-0",
+    "fault": "fifo-only",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "bebfd3e2e3f10de3bb68d9b584898d7e4f5749efd034be047465302b441200c4"
+  },
+  {
+    "caseId": "seed-205-0",
+    "fault": "drop-ignored",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "bebfd3e2e3f10de3bb68d9b584898d7e4f5749efd034be047465302b441200c4"
+  },
+  {
+    "caseId": "seed-205-1",
+    "fault": "none",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "f46f1c8dc17efcb7dbd17045ef76b096d871b0fd8d301b13b1b1645152976507"
+  },
+  {
+    "caseId": "seed-205-1",
+    "fault": "persistence",
+    "status": "mismatch",
+    "checkedSteps": 9,
+    "calls": {
+      "resets": 1,
+      "steps": 9
+    },
+    "resultSha256": "1fa6fee6b05a38c8be8320009997f8c3e6114239b0f28afb8907acb9fea50d9b"
+  },
+  {
+    "caseId": "seed-205-1",
+    "fault": "deduplication",
+    "status": "mismatch",
+    "checkedSteps": 11,
+    "calls": {
+      "resets": 1,
+      "steps": 11
+    },
+    "resultSha256": "8d336a50005e4cdf785820ee7fb54fe49a7da9477e21a3ef0e7165a03f73b510"
+  },
+  {
+    "caseId": "seed-205-1",
+    "fault": "late-retry",
+    "status": "mismatch",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "86d5b8e19ace3f9bc08449e83c245ad048a365f1d9309d4ca03dd1c67527c93b"
+  },
+  {
+    "caseId": "seed-205-1",
+    "fault": "fifo-only",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "f46f1c8dc17efcb7dbd17045ef76b096d871b0fd8d301b13b1b1645152976507"
+  },
+  {
+    "caseId": "seed-205-1",
+    "fault": "drop-ignored",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "f46f1c8dc17efcb7dbd17045ef76b096d871b0fd8d301b13b1b1645152976507"
+  },
+  {
+    "caseId": "seed-205-2",
+    "fault": "none",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "9583bc131548c4515b5f56b29801c9faf7976de02176fff93d8323ef678f82bd"
+  },
+  {
+    "caseId": "seed-205-2",
+    "fault": "persistence",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "9583bc131548c4515b5f56b29801c9faf7976de02176fff93d8323ef678f82bd"
+  },
+  {
+    "caseId": "seed-205-2",
+    "fault": "deduplication",
+    "status": "mismatch",
+    "checkedSteps": 3,
+    "calls": {
+      "resets": 1,
+      "steps": 3
+    },
+    "resultSha256": "ecd8229a48ed32c5a34d82ce662b1680e64fd4e0aad64b90d09871e6feb675a3"
+  },
+  {
+    "caseId": "seed-205-2",
+    "fault": "late-retry",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "9583bc131548c4515b5f56b29801c9faf7976de02176fff93d8323ef678f82bd"
+  },
+  {
+    "caseId": "seed-205-2",
+    "fault": "fifo-only",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "9583bc131548c4515b5f56b29801c9faf7976de02176fff93d8323ef678f82bd"
+  },
+  {
+    "caseId": "seed-205-2",
+    "fault": "drop-ignored",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "9583bc131548c4515b5f56b29801c9faf7976de02176fff93d8323ef678f82bd"
+  },
+  {
+    "caseId": "seed-205-3",
+    "fault": "none",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "8cbad0ae12d50add410d259385d9b21a0c62bf2b797349e36c52d95e3036ca3e"
+  },
+  {
+    "caseId": "seed-205-3",
+    "fault": "persistence",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "8cbad0ae12d50add410d259385d9b21a0c62bf2b797349e36c52d95e3036ca3e"
+  },
+  {
+    "caseId": "seed-205-3",
+    "fault": "deduplication",
+    "status": "mismatch",
+    "checkedSteps": 5,
+    "calls": {
+      "resets": 1,
+      "steps": 5
+    },
+    "resultSha256": "96a0b47d0e2f32c97f2544ac52c93b42bad7a71fc195c9b72c153e17fc57c922"
+  },
+  {
+    "caseId": "seed-205-3",
+    "fault": "late-retry",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "8cbad0ae12d50add410d259385d9b21a0c62bf2b797349e36c52d95e3036ca3e"
+  },
+  {
+    "caseId": "seed-205-3",
+    "fault": "fifo-only",
+    "status": "mismatch",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "5c280b61c6a585a283d6fcf20591ab23f7be102dea79dc9697b0aec03776fe3e"
+  },
+  {
+    "caseId": "seed-205-3",
+    "fault": "drop-ignored",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "8cbad0ae12d50add410d259385d9b21a0c62bf2b797349e36c52d95e3036ca3e"
+  },
+  {
+    "caseId": "seed-205-4",
+    "fault": "none",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "c1c8012690ea416dd149c50fc3126fb7777888df7322579ef8cf16d34455ee47"
+  },
+  {
+    "caseId": "seed-205-4",
+    "fault": "persistence",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "c1c8012690ea416dd149c50fc3126fb7777888df7322579ef8cf16d34455ee47"
+  },
+  {
+    "caseId": "seed-205-4",
+    "fault": "deduplication",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "c1c8012690ea416dd149c50fc3126fb7777888df7322579ef8cf16d34455ee47"
+  },
+  {
+    "caseId": "seed-205-4",
+    "fault": "late-retry",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "c1c8012690ea416dd149c50fc3126fb7777888df7322579ef8cf16d34455ee47"
+  },
+  {
+    "caseId": "seed-205-4",
+    "fault": "fifo-only",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "c1c8012690ea416dd149c50fc3126fb7777888df7322579ef8cf16d34455ee47"
+  },
+  {
+    "caseId": "seed-205-4",
+    "fault": "drop-ignored",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "c1c8012690ea416dd149c50fc3126fb7777888df7322579ef8cf16d34455ee47"
+  },
+  {
+    "caseId": "seed-205-5",
+    "fault": "none",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "dd2ad316a264d28a98260c50b0180af1d7db4a8f2c955bf2c650b922e2bcdc86"
+  },
+  {
+    "caseId": "seed-205-5",
+    "fault": "persistence",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "dd2ad316a264d28a98260c50b0180af1d7db4a8f2c955bf2c650b922e2bcdc86"
+  },
+  {
+    "caseId": "seed-205-5",
+    "fault": "deduplication",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "dd2ad316a264d28a98260c50b0180af1d7db4a8f2c955bf2c650b922e2bcdc86"
+  },
+  {
+    "caseId": "seed-205-5",
+    "fault": "late-retry",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "dd2ad316a264d28a98260c50b0180af1d7db4a8f2c955bf2c650b922e2bcdc86"
+  },
+  {
+    "caseId": "seed-205-5",
+    "fault": "fifo-only",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "dd2ad316a264d28a98260c50b0180af1d7db4a8f2c955bf2c650b922e2bcdc86"
+  },
+  {
+    "caseId": "seed-205-5",
+    "fault": "drop-ignored",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "dd2ad316a264d28a98260c50b0180af1d7db4a8f2c955bf2c650b922e2bcdc86"
+  },
+  {
+    "caseId": "seed-205-6",
+    "fault": "none",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "b3a7b396ba7e59bc4ea9c8abee3cd343b69cd848ce2f91b440b1e65ef67a96ff"
+  },
+  {
+    "caseId": "seed-205-6",
+    "fault": "persistence",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "b3a7b396ba7e59bc4ea9c8abee3cd343b69cd848ce2f91b440b1e65ef67a96ff"
+  },
+  {
+    "caseId": "seed-205-6",
+    "fault": "deduplication",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "b3a7b396ba7e59bc4ea9c8abee3cd343b69cd848ce2f91b440b1e65ef67a96ff"
+  },
+  {
+    "caseId": "seed-205-6",
+    "fault": "late-retry",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "b3a7b396ba7e59bc4ea9c8abee3cd343b69cd848ce2f91b440b1e65ef67a96ff"
+  },
+  {
+    "caseId": "seed-205-6",
+    "fault": "fifo-only",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "b3a7b396ba7e59bc4ea9c8abee3cd343b69cd848ce2f91b440b1e65ef67a96ff"
+  },
+  {
+    "caseId": "seed-205-6",
+    "fault": "drop-ignored",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "b3a7b396ba7e59bc4ea9c8abee3cd343b69cd848ce2f91b440b1e65ef67a96ff"
+  },
+  {
+    "caseId": "seed-205-7",
+    "fault": "none",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "604ab31e45edc953f4131b176a8a0cf3925c5aaaa223332640874a2ae982b0fa"
+  },
+  {
+    "caseId": "seed-205-7",
+    "fault": "persistence",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "604ab31e45edc953f4131b176a8a0cf3925c5aaaa223332640874a2ae982b0fa"
+  },
+  {
+    "caseId": "seed-205-7",
+    "fault": "deduplication",
+    "status": "mismatch",
+    "checkedSteps": 10,
+    "calls": {
+      "resets": 1,
+      "steps": 10
+    },
+    "resultSha256": "8e4b1924f3490714a8d485393b79313aef79fa4768509c6e0568bdf12c22bde0"
+  },
+  {
+    "caseId": "seed-205-7",
+    "fault": "late-retry",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "604ab31e45edc953f4131b176a8a0cf3925c5aaaa223332640874a2ae982b0fa"
+  },
+  {
+    "caseId": "seed-205-7",
+    "fault": "fifo-only",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "604ab31e45edc953f4131b176a8a0cf3925c5aaaa223332640874a2ae982b0fa"
+  },
+  {
+    "caseId": "seed-205-7",
+    "fault": "drop-ignored",
+    "status": "mismatch",
+    "checkedSteps": 9,
+    "calls": {
+      "resets": 1,
+      "steps": 9
+    },
+    "resultSha256": "8a6737b6ff72896802d46d9483f071dbffe84bd443390bf23187bd0190435fc8"
+  },
+  {
+    "caseId": "seed-205-8",
+    "fault": "none",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "c2215ebea6711d28d80a24dc29463e4be5a78ab0a353a5a575129978c9ecad3c"
+  },
+  {
+    "caseId": "seed-205-8",
+    "fault": "persistence",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "c2215ebea6711d28d80a24dc29463e4be5a78ab0a353a5a575129978c9ecad3c"
+  },
+  {
+    "caseId": "seed-205-8",
+    "fault": "deduplication",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "c2215ebea6711d28d80a24dc29463e4be5a78ab0a353a5a575129978c9ecad3c"
+  },
+  {
+    "caseId": "seed-205-8",
+    "fault": "late-retry",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "c2215ebea6711d28d80a24dc29463e4be5a78ab0a353a5a575129978c9ecad3c"
+  },
+  {
+    "caseId": "seed-205-8",
+    "fault": "fifo-only",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "c2215ebea6711d28d80a24dc29463e4be5a78ab0a353a5a575129978c9ecad3c"
+  },
+  {
+    "caseId": "seed-205-8",
+    "fault": "drop-ignored",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "c2215ebea6711d28d80a24dc29463e4be5a78ab0a353a5a575129978c9ecad3c"
+  },
+  {
+    "caseId": "seed-205-9",
+    "fault": "none",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "3142d8a1055815144f5f9ed5c185128daff4e4e62ae042ba30e8032fec3d6e4e"
+  },
+  {
+    "caseId": "seed-205-9",
+    "fault": "persistence",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "3142d8a1055815144f5f9ed5c185128daff4e4e62ae042ba30e8032fec3d6e4e"
+  },
+  {
+    "caseId": "seed-205-9",
+    "fault": "deduplication",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "3142d8a1055815144f5f9ed5c185128daff4e4e62ae042ba30e8032fec3d6e4e"
+  },
+  {
+    "caseId": "seed-205-9",
+    "fault": "late-retry",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "3142d8a1055815144f5f9ed5c185128daff4e4e62ae042ba30e8032fec3d6e4e"
+  },
+  {
+    "caseId": "seed-205-9",
+    "fault": "fifo-only",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "3142d8a1055815144f5f9ed5c185128daff4e4e62ae042ba30e8032fec3d6e4e"
+  },
+  {
+    "caseId": "seed-205-9",
+    "fault": "drop-ignored",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "3142d8a1055815144f5f9ed5c185128daff4e4e62ae042ba30e8032fec3d6e4e"
+  },
+  {
+    "caseId": "seed-205-10",
+    "fault": "none",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "4ed04eb5a48b06bb9694716c6f8295c52970bc3e870588c4588efebc89494fc7"
+  },
+  {
+    "caseId": "seed-205-10",
+    "fault": "persistence",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "4ed04eb5a48b06bb9694716c6f8295c52970bc3e870588c4588efebc89494fc7"
+  },
+  {
+    "caseId": "seed-205-10",
+    "fault": "deduplication",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "4ed04eb5a48b06bb9694716c6f8295c52970bc3e870588c4588efebc89494fc7"
+  },
+  {
+    "caseId": "seed-205-10",
+    "fault": "late-retry",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "4ed04eb5a48b06bb9694716c6f8295c52970bc3e870588c4588efebc89494fc7"
+  },
+  {
+    "caseId": "seed-205-10",
+    "fault": "fifo-only",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "4ed04eb5a48b06bb9694716c6f8295c52970bc3e870588c4588efebc89494fc7"
+  },
+  {
+    "caseId": "seed-205-10",
+    "fault": "drop-ignored",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "4ed04eb5a48b06bb9694716c6f8295c52970bc3e870588c4588efebc89494fc7"
+  },
+  {
+    "caseId": "seed-205-11",
+    "fault": "none",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "61730bcafbc490c3dc5143cf20bf1276ca5d08caeac15f937832c186b630cf10"
+  },
+  {
+    "caseId": "seed-205-11",
+    "fault": "persistence",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "61730bcafbc490c3dc5143cf20bf1276ca5d08caeac15f937832c186b630cf10"
+  },
+  {
+    "caseId": "seed-205-11",
+    "fault": "deduplication",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "61730bcafbc490c3dc5143cf20bf1276ca5d08caeac15f937832c186b630cf10"
+  },
+  {
+    "caseId": "seed-205-11",
+    "fault": "late-retry",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "61730bcafbc490c3dc5143cf20bf1276ca5d08caeac15f937832c186b630cf10"
+  },
+  {
+    "caseId": "seed-205-11",
+    "fault": "fifo-only",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "61730bcafbc490c3dc5143cf20bf1276ca5d08caeac15f937832c186b630cf10"
+  },
+  {
+    "caseId": "seed-205-11",
+    "fault": "drop-ignored",
+    "status": "matched",
+    "checkedSteps": 12,
+    "calls": {
+      "resets": 1,
+      "steps": 12
+    },
+    "resultSha256": "61730bcafbc490c3dc5143cf20bf1276ca5d08caeac15f937832c186b630cf10"
+  },
+  {
+    "caseId": "seed-205-12",
+    "fault": "none",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "b58039011290d6eac050fe6d4b95dde8d16d31b5b73eb1b862c03594822438f6"
+  },
+  {
+    "caseId": "seed-205-12",
+    "fault": "persistence",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "b58039011290d6eac050fe6d4b95dde8d16d31b5b73eb1b862c03594822438f6"
+  },
+  {
+    "caseId": "seed-205-12",
+    "fault": "deduplication",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "b58039011290d6eac050fe6d4b95dde8d16d31b5b73eb1b862c03594822438f6"
+  },
+  {
+    "caseId": "seed-205-12",
+    "fault": "late-retry",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "b58039011290d6eac050fe6d4b95dde8d16d31b5b73eb1b862c03594822438f6"
+  },
+  {
+    "caseId": "seed-205-12",
+    "fault": "fifo-only",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "b58039011290d6eac050fe6d4b95dde8d16d31b5b73eb1b862c03594822438f6"
+  },
+  {
+    "caseId": "seed-205-12",
+    "fault": "drop-ignored",
+    "status": "matched",
+    "checkedSteps": 6,
+    "calls": {
+      "resets": 1,
+      "steps": 6
+    },
+    "resultSha256": "b58039011290d6eac050fe6d4b95dde8d16d31b5b73eb1b862c03594822438f6"
+  }
+]

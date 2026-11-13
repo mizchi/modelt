@@ -1,0 +1,169 @@
+{
+  "status": "complete",
+  "phase": "development",
+  "sourceVersion": "9877f526a4bd0eb8f221974e7f19bb34eb416b9a05bb92f1fe06831dea0e80a3",
+  "languages": 3,
+  "cases": 71,
+  "states": 56,
+  "edges": 432,
+  "normalControls": 426,
+  "comparisons": 1704,
+  "mismatchesBetweenLanguages": 0,
+  "backendDigests": {
+    "ts": "0b753178c36409d80c37bd9d4333c0a34b7b7505b687e094cd95dd0c5fbe4791",
+    "rust": "0b753178c36409d80c37bd9d4333c0a34b7b7505b687e094cd95dd0c5fbe4791",
+    "go": "0b753178c36409d80c37bd9d4333c0a34b7b7505b687e094cd95dd0c5fbe4791"
+  },
+  "witnesses": 5,
+  "perSeed": [
+    {
+      "seed": 201,
+      "cases": 13,
+      "faults": [
+        {
+          "fault": "persistence",
+          "detected": 1
+        },
+        {
+          "fault": "deduplication",
+          "detected": 6
+        },
+        {
+          "fault": "late-retry",
+          "detected": 4
+        },
+        {
+          "fault": "fifo-only",
+          "detected": 0
+        },
+        {
+          "fault": "drop-ignored",
+          "detected": 0
+        }
+      ]
+    },
+    {
+      "seed": 202,
+      "cases": 13,
+      "faults": [
+        {
+          "fault": "persistence",
+          "detected": 1
+        },
+        {
+          "fault": "deduplication",
+          "detected": 5
+        },
+        {
+          "fault": "late-retry",
+          "detected": 2
+        },
+        {
+          "fault": "fifo-only",
+          "detected": 0
+        },
+        {
+          "fault": "drop-ignored",
+          "detected": 0
+        }
+      ]
+    },
+    {
+      "seed": 203,
+      "cases": 13,
+      "faults": [
+        {
+          "fault": "persistence",
+          "detected": 1
+        },
+        {
+          "fault": "deduplication",
+          "detected": 8
+        },
+        {
+          "fault": "late-retry",
+          "detected": 1
+        },
+        {
+          "fault": "fifo-only",
+          "detected": 0
+        },
+        {
+          "fault": "drop-ignored",
+          "detected": 0
+        }
+      ]
+    },
+    {
+      "seed": 204,
+      "cases": 13,
+      "faults": [
+        {
+          "fault": "persistence",
+          "detected": 1
+        },
+        {
+          "fault": "deduplication",
+          "detected": 4
+        },
+        {
+          "fault": "late-retry",
+          "detected": 1
+        },
+        {
+          "fault": "fifo-only",
+          "detected": 0
+        },
+        {
+          "fault": "drop-ignored",
+          "detected": 0
+        }
+      ]
+    },
+    {
+      "seed": 205,
+      "cases": 13,
+      "faults": [
+        {
+          "fault": "persistence",
+          "detected": 1
+        },
+        {
+          "fault": "deduplication",
+          "detected": 4
+        },
+        {
+          "fault": "late-retry",
+          "detected": 1
+        },
+        {
+          "fault": "fifo-only",
+          "detected": 1
+        },
+        {
+          "fault": "drop-ignored",
+          "detected": 1
+        }
+      ]
+    }
+  ],
+  "elapsedMs": 4913.8979580000005,
+  "files": [
+    {
+      "path": "manifest.json",
+      "sha256": "70f8230020d107830bb4c57e047cb460ef62df6cf069a31d954f66025307509c"
+    },
+    {
+      "path": "suite.json",
+      "sha256": "56f3e231e1b785cbc74851808a674533ba1343d7648361011e4df28efb7552fe"
+    },
+    {
+      "path": "matrix.json",
+      "sha256": "1df18566e4d9abb7508987b2f0760d4b66c4cae65da1ce500bb7e0c09065182e"
+    },
+    {
+      "path": "witnesses.json",
+      "sha256": "2f4d982d1723446c5ebd43a5313081981b753e7d23cd1dd2e2ae951cb1ed558c"
+    }
+  ]
+}

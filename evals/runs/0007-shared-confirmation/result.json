@@ -1,0 +1,299 @@
+{
+  "status": "complete",
+  "phase": "confirmation",
+  "sourceVersion": "9877f526a4bd0eb8f221974e7f19bb34eb416b9a05bb92f1fe06831dea0e80a3",
+  "languages": 3,
+  "cases": 136,
+  "states": 56,
+  "edges": 432,
+  "normalControls": 816,
+  "comparisons": 3264,
+  "mismatchesBetweenLanguages": 0,
+  "backendDigests": {
+    "ts": "812089162c67692be9653fbb77360db401a3af3bcd331c8cc6e2b8346974d1a4",
+    "rust": "812089162c67692be9653fbb77360db401a3af3bcd331c8cc6e2b8346974d1a4",
+    "go": "812089162c67692be9653fbb77360db401a3af3bcd331c8cc6e2b8346974d1a4"
+  },
+  "witnesses": 5,
+  "perSeed": [
+    {
+      "seed": 211,
+      "cases": 13,
+      "faults": [
+        {
+          "fault": "persistence",
+          "detected": 2
+        },
+        {
+          "fault": "deduplication",
+          "detected": 7
+        },
+        {
+          "fault": "late-retry",
+          "detected": 3
+        },
+        {
+          "fault": "fifo-only",
+          "detected": 1
+        },
+        {
+          "fault": "drop-ignored",
+          "detected": 0
+        }
+      ]
+    },
+    {
+      "seed": 212,
+      "cases": 13,
+      "faults": [
+        {
+          "fault": "persistence",
+          "detected": 2
+        },
+        {
+          "fault": "deduplication",
+          "detected": 6
+        },
+        {
+          "fault": "late-retry",
+          "detected": 1
+        },
+        {
+          "fault": "fifo-only",
+          "detected": 1
+        },
+        {
+          "fault": "drop-ignored",
+          "detected": 0
+        }
+      ]
+    },
+    {
+      "seed": 213,
+      "cases": 13,
+      "faults": [
+        {
+          "fault": "persistence",
+          "detected": 3
+        },
+        {
+          "fault": "deduplication",
+          "detected": 5
+        },
+        {
+          "fault": "late-retry",
+          "detected": 2
+        },
+        {
+          "fault": "fifo-only",
+          "detected": 0
+        },
+        {
+          "fault": "drop-ignored",
+          "detected": 1
+        }
+      ]
+    },
+    {
+      "seed": 214,
+      "cases": 13,
+      "faults": [
+        {
+          "fault": "persistence",
+          "detected": 2
+        },
+        {
+          "fault": "deduplication",
+          "detected": 5
+        },
+        {
+          "fault": "late-retry",
+          "detected": 2
+        },
+        {
+          "fault": "fifo-only",
+          "detected": 0
+        },
+        {
+          "fault": "drop-ignored",
+          "detected": 0
+        }
+      ]
+    },
+    {
+      "seed": 215,
+      "cases": 13,
+      "faults": [
+        {
+          "fault": "persistence",
+          "detected": 2
+        },
+        {
+          "fault": "deduplication",
+          "detected": 5
+        },
+        {
+          "fault": "late-retry",
+          "detected": 1
+        },
+        {
+          "fault": "fifo-only",
+          "detected": 0
+        },
+        {
+          "fault": "drop-ignored",
+          "detected": 1
+        }
+      ]
+    },
+    {
+      "seed": 216,
+      "cases": 13,
+      "faults": [
+        {
+          "fault": "persistence",
+          "detected": 2
+        },
+        {
+          "fault": "deduplication",
+          "detected": 6
+        },
+        {
+          "fault": "late-retry",
+          "detected": 1
+        },
+        {
+          "fault": "fifo-only",
+          "detected": 1
+        },
+        {
+          "fault": "drop-ignored",
+          "detected": 1
+        }
+      ]
+    },
+    {
+      "seed": 217,
+      "cases": 13,
+      "faults": [
+        {
+          "fault": "persistence",
+          "detected": 0
+        },
+        {
+          "fault": "deduplication",
+          "detected": 4
+        },
+        {
+          "fault": "late-retry",
+          "detected": 2
+        },
+        {
+          "fault": "fifo-only",
+          "detected": 0
+        },
+        {
+          "fault": "drop-ignored",
+          "detected": 0
+        }
+      ]
+    },
+    {
+      "seed": 218,
+      "cases": 13,
+      "faults": [
+        {
+          "fault": "persistence",
+          "detected": 5
+        },
+        {
+          "fault": "deduplication",
+          "detected": 8
+        },
+        {
+          "fault": "late-retry",
+          "detected": 1
+        },
+        {
+          "fault": "fifo-only",
+          "detected": 0
+        },
+        {
+          "fault": "drop-ignored",
+          "detected": 0
+        }
+      ]
+    },
+    {
+      "seed": 219,
+      "cases": 13,
+      "faults": [
+        {
+          "fault": "persistence",
+          "detected": 1
+        },
+        {
+          "fault": "deduplication",
+          "detected": 4
+        },
+        {
+          "fault": "late-retry",
+          "detected": 2
+        },
+        {
+          "fault": "fifo-only",
+          "detected": 0
+        },
+        {
+          "fault": "drop-ignored",
+          "detected": 1
+        }
+      ]
+    },
+    {
+      "seed": 220,
+      "cases": 13,
+      "faults": [
+        {
+          "fault": "persistence",
+          "detected": 0
+        },
+        {
+          "fault": "deduplication",
+          "detected": 7
+        },
+        {
+          "fault": "late-retry",
+          "detected": 4
+        },
+        {
+          "fault": "fifo-only",
+          "detected": 0
+        },
+        {
+          "fault": "drop-ignored",
+          "detected": 0
+        }
+      ]
+    }
+  ],
+  "elapsedMs": 8902.789834000001,
+  "files": [
+    {
+      "path": "manifest.json",
+      "sha256": "932349c7bd7c6e7917f54a25479b3b619920b909cc890da66c9e7e09e678c072"
+    },
+    {
+      "path": "suite.json",
+      "sha256": "cdd8a39204cf5ac911bb0543661b1ee9fb0f8d167175eb2e22cbac013e83f31f"
+    },
+    {
+      "path": "matrix.json",
+      "sha256": "ebbb9c771180374a0a31988e96e28ad650d8e7055f29fd82f0b76d2fa6ee0da1"
+    },
+    {
+      "path": "witnesses.json",
+      "sha256": "2f4d982d1723446c5ebd43a5313081981b753e7d23cd1dd2e2ae951cb1ed558c"
+    }
+  ]
+}

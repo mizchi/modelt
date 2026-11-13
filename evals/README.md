@@ -47,3 +47,5 @@ pnpm eval:replay evals/runs/my-run-confirmation
 初回の幅広い pilot は `pnpm evaluate` / `pnpm evaluate:replay` で再実行できる。履歴は [0000](iterations/0000-pilot.md)。古い記録には後付けの厳密な provenance を主張せず、`legacy-import` として区別した。
 
 実行時間と Rust 化は [0003](iterations/0003-runtime.md)。[runtime/](runtime/README.md) に budget planner の前提、Rust/Wasm の比較、クラウド分割 CLI を記録している。
+
+[0007 の計画](plans/0007-shared-oracle.md) は、同じ仕様 oracle で TS / Rust / Go の実装を直接操作する。`just cross-test`、`cross-eval` / `cross-replay` と [利用手順](../docs/shared-oracle.md) を参照。
