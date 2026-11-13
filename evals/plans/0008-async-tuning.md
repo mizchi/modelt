@@ -3,9 +3,11 @@
 ## 固定する意味と範囲
 
 - `modelt.concurrent-history` v1 は invoke / return / fail / unknown / cancel を operation id で対応させる。return だけが実時間順序の終端を作る。fail は作用なしを確認した失敗、unknown / cancel / outcome なしは作用した可能性を残す。未完了操作は省略または線形化できる。未完了を成功・失敗へ決め打ちしない。
+- unknown / cancel は不確定の記録であり、後から return / fail が届けばその実際の位置で解決できる。二重 invoke と二重の確定結果は拒否する。この区別を確認実行前に固定する。
 - TS の独立 checker と Rust native / Wasm、Go SDK で同じ有限モデルと履歴を判定する。ノード予算切れは inconclusive、空履歴は empty。availability や無限の liveness を主張しない。
 - 正常・lost-update の並行 counter、commit 後の応答喪失、cancel、確定失敗、重複 id、不正イベント順、予算境界を固定対照にする。
 - 永続値と dedup 情報の分離保存による retry、partition 復旧後の古い fencing token / lease、障害停止後の bounded recovery、retry + queue + storage の合成、対称 id の置換と独立操作交換、緩めたモデルの誤実装受理を追加パターンとして検査する。人工故障・小モデルの範囲を記す。
+- crash 対照は before / value-only / seen-only / committed と ack-before-persist。crash を model 内の epoch 変更として記録し、旧 process の未完了操作を再起動後へ勝手に線形化しない。lease は期限5の直前4・同時5・直後6を比較する。
 
 ## 最適化候補
 

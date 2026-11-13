@@ -113,6 +113,24 @@ export type PortableEffect =
 export interface PortableCommand {
   readonly version: 1;
   readonly request:
+    | { readonly kind: "load-model"; readonly model: FiniteModel }
+    | { readonly kind: "release-model"; readonly handle: number }
+    | {
+        readonly kind: "start-loaded";
+        readonly handle: number;
+        readonly actions: readonly PortableValue[];
+      }
+    | {
+        readonly kind: "check-loaded";
+        readonly handle: number;
+        readonly traces: readonly PortableTrace[];
+      }
+    | {
+        readonly kind: "check-history";
+        readonly handle: number;
+        readonly history: ConcurrentHistory;
+        readonly maxNodes: number;
+      }
     | { readonly kind: "canonicalize"; readonly value: PortableValue }
     | { readonly kind: "replay-host"; readonly tape: HostTape }
     | {
@@ -141,6 +159,9 @@ export interface PortableCommand {
 }
 
 export type PortableOutput =
+  | { readonly kind: "loaded"; readonly handle: number }
+  | { readonly kind: "released" }
+  | { readonly kind: "history"; readonly result: ConcurrentResult }
   | { readonly kind: "host"; readonly snapshot: PortableValue }
   | { readonly kind: "results"; readonly results: readonly PortableResult[] }
   | { readonly kind: "candidates"; readonly ranges: readonly DeletionRange[] }
@@ -176,9 +197,68 @@ export interface FiniteModel {
     }[];
   }[];
 }
+
+export type HistoryEvent =
+  | {
+      readonly kind: "invoke";
+      readonly id: string;
+      readonly action: PortableValue;
+    }
+  | {
+      readonly kind: "return";
+      readonly id: string;
+      readonly observation: PortableValue;
+    }
+  | { readonly kind: "fail" | "unknown" | "cancel"; readonly id: string };
+
+export interface ConcurrentHistory {
+  readonly format: "modelt.concurrent-history";
+  readonly version: 1;
+  readonly model: string;
+  readonly initial: PortableValue;
+  readonly events: readonly HistoryEvent[];
+}
+
+export interface ConcurrentResult {
+  readonly status:
+    | "linearizable"
+    | "not-linearizable"
+    | "inconclusive"
+    | "empty";
+  readonly explored: number;
+  readonly order: readonly string[];
+  readonly omitted: readonly string[];
+  readonly pending: readonly string[];
+}
+
+export interface HistoryRecorder {
+  readonly invoke: (id: string, action: PortableValue) => void;
+  readonly returned: (id: string, observation: PortableValue) => void;
+  readonly end: (id: string, kind: "fail" | "unknown" | "cancel") => void;
+  readonly snapshot: () => ConcurrentHistory;
+}
+
+export interface LoadedFiniteModel {
+  readonly checkHistories: (
+    traces: readonly PortableTrace[],
+  ) => readonly PortableResult[];
+  readonly checkHistory: (
+    history: ConcurrentHistory,
+    maxNodes: number,
+  ) => ConcurrentResult;
+  readonly checkConformance: (
+    driver: Driver<PortableValue, PortableValue>,
+    actions: readonly PortableValue[],
+  ) => Promise<PortableResult>;
+  readonly release: () => void;
+}
 export interface DeletionRange {
   readonly start: number;
   readonly count: number;
+}
+export interface ActionDependency {
+  readonly producer: number;
+  readonly consumer: number;
 }
 export type ShrinkVerdict =
   | { readonly status: "matched" | "invalid" }

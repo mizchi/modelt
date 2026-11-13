@@ -65,6 +65,30 @@ type DeletionRange struct {
 	Count uint32 `json:"count"`
 }
 
+type HistoryEvent struct {
+	Kind        string `json:"kind"`
+	ID          string `json:"id"`
+	Action      Value  `json:"action,omitempty"`
+	Observation Value  `json:"observation,omitempty"`
+}
+
+type ConcurrentHistory struct {
+	Format  string         `json:"format"`
+	Version uint32         `json:"version"`
+	Model   string         `json:"model"`
+	Initial Value          `json:"initial"`
+	Events  []HistoryEvent `json:"events"`
+}
+
+// ConcurrentResult checks the safety of observed history, not eventual completion.
+type ConcurrentResult struct {
+	Status   string   `json:"status"`
+	Explored uint32   `json:"explored"`
+	Order    []string `json:"order"`
+	Omitted  []string `json:"omitted"`
+	Pending  []string `json:"pending"`
+}
+
 // CoreError is a value or protocol rejection from the shared core.
 type CoreError struct {
 	Code    string

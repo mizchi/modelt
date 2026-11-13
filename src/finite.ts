@@ -194,6 +194,23 @@ export const createFiniteModel = (
 ): Model<string, PortableValue, PortableValue> => {
   const model = parseFiniteModel(artifact);
   const states = new Map(model.states.map((state) => [state.key, state]));
+  const indexed = new Map<
+    string,
+    Map<string, FiniteModel["states"][number]["transitions"][number][]>
+  >();
+  for (const state of model.states) {
+    const actions = new Map<
+      string,
+      FiniteModel["states"][number]["transitions"][number][]
+    >();
+    for (const edge of state.transitions) {
+      const key = JSON.stringify(edge.action);
+      const edges = actions.get(key) ?? [];
+      edges.push(edge);
+      actions.set(key, edges);
+    }
+    indexed.set(state.key, actions);
+  }
   const violations = [
     ...new Set(model.states.flatMap((state) => state.violations)),
   ];
@@ -205,22 +222,16 @@ export const createFiniteModel = (
         observation: entry.observation,
       })),
     key: (state) => state,
-    actions: (state) => [
-      ...new Map(
-        (states.get(state)?.transitions ?? []).map((edge) => [
-          JSON.stringify(edge.action),
-          edge.action,
-        ]),
-      ).values(),
-    ],
+    actions: (state) =>
+      [...(indexed.get(state)?.values() ?? [])].flatMap((edges) =>
+        edges[0] ? [edges[0].action] : [],
+      ),
     step: (state, action) =>
-      (states.get(state)?.transitions ?? [])
-        .filter(
-          (edge) =>
-            JSON.stringify(edge.action) ===
-            JSON.stringify(normalizePortableValue(action)),
-        )
-        .map((edge) => ({ state: edge.target, observation: edge.observation })),
+      (
+        indexed
+          .get(state)
+          ?.get(JSON.stringify(normalizePortableValue(action))) ?? []
+      ).map((edge) => ({ state: edge.target, observation: edge.observation })),
     invariants: violations.map((name) => ({
       name,
       check: (state) => !(states.get(state)?.violations.includes(name) ?? true),

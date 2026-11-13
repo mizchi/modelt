@@ -20,3 +20,4 @@
 - portable core を変更したら `just portable-build` / `just portable-test`、crate の cargo fmt / clippy を実行する。値・protocol の互換性は共有 fixture と既存 TS checker への差分比較で検査し、BFS や PBT まで移植済みと解釈しない。
 - Go adapter は `adapters/go` の独立 module。変更時は `just go-test` で CGO 無効・race・vet・TS fixture・別 module の consumer を検査する。照合の意味論は Wasm コアに任せる。
 - 3言語の実 SUT と共通 oracle の比較は `just cross-test`。実験時は `cross-eval` / `cross-replay` で保存したモデル・oracle・反例を使い、SUT の観測を期待値へ転用しない。
+- 非同期履歴・model handle・feedback は `just async-test` と `async-eval` / `async-replay` で検査する。unknown / cancel は未確定の marker、return / fail は確定結果。node budget 切れを linearizable にしない。

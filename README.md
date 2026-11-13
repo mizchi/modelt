@@ -31,6 +31,8 @@ TS / Rust の共通コアは `./portable`。同じ Rust ソースを native と 
 
 [共通オラクルで3言語の実装を動かす評価](docs/shared-oracle.md) は `just cross-test`。同じ有限モデルと保存 trace を使い、正常版・故障版の TS / Rust / Go を直接操作して比較する。
 
+[非同期履歴とモデル再利用](docs/async-history.md) は `./history` と `loadFiniteModel`。未完了・結果不明の操作を含む照合、索引付き handle、依存関係を使う縮小と探索 feedback の評価は `just async-test` から実行できる。
+
 ```ts
 import { checkConformance, checkModel, checkTrace } from "./src/index.js";
 import { counterModel, createCounter } from "./examples/durable-counter.js";

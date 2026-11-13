@@ -1,13 +1,16 @@
 mod finite;
+mod history;
+pub use history::{ConcurrentHistory, ConcurrentResult, ConcurrentStatus, HistoryEvent};
 mod host;
 pub use host::{HostEvent, HostMessage, HostTape, SimulationHost, replay_host};
 mod shrink;
 mod value;
-pub use finite::{Edge, FiniteModel, FiniteState, Initial};
+pub use finite::{Edge, FiniteModel, FiniteState, Initial, PreparedFiniteModel};
 pub use shrink::{
     DeletionRange, ShrinkResult, ShrinkStatus, ShrinkVerdict, deletion_candidates,
     shrink_counterexample,
 };
+use std::{collections::BTreeMap, sync::Arc};
 #[cfg(target_arch = "wasm32")]
 mod wasm;
 use serde::{Deserialize, Serialize};
@@ -109,6 +112,26 @@ pub enum Response {
 #[derive(Clone, Debug, Serialize, Deserialize)]
 #[serde(tag = "kind", rename_all = "kebab-case", deny_unknown_fields)]
 pub enum Request {
+    LoadModel {
+        model: FiniteModel,
+    },
+    ReleaseModel {
+        handle: u32,
+    },
+    StartLoaded {
+        handle: u32,
+        actions: Vec<Value>,
+    },
+    CheckLoaded {
+        handle: u32,
+        traces: Vec<Trace>,
+    },
+    CheckHistory {
+        handle: u32,
+        history: ConcurrentHistory,
+        #[serde(rename = "maxNodes")]
+        max_nodes: u32,
+    },
     ReplayHost {
         tape: HostTape,
     },
@@ -150,6 +173,9 @@ pub struct Command {
 #[derive(Clone, Debug, Serialize, Deserialize)]
 #[serde(tag = "kind", rename_all = "kebab-case", deny_unknown_fields)]
 pub enum Message {
+    Loaded { handle: u32 },
+    Released,
+    History { result: ConcurrentResult },
     Host { snapshot: Value },
     Results { results: Vec<ConformanceResult> },
     Candidates { ranges: Vec<DeletionRange> },
@@ -353,7 +379,10 @@ impl Session {
 
 pub struct Engine {
     session: Option<Session>,
-    finite: Option<FiniteModel>,
+    finite: Option<Arc<PreparedFiniteModel>>,
+    models: BTreeMap<u32, Arc<PreparedFiniteModel>>,
+    active_handle: Option<u32>,
+    next_handle: u32,
     next_id: u32,
 }
 impl Default for Engine {
@@ -361,6 +390,9 @@ impl Default for Engine {
         Self {
             session: None,
             finite: None,
+            models: BTreeMap::new(),
+            active_handle: None,
+            next_handle: 1,
             next_id: 1,
         }
     }
@@ -389,20 +421,81 @@ impl Engine {
             return Err(CoreError::protocol("Unsupported protocol version"));
         }
         match command.request {
+            Request::LoadModel { model } => {
+                let model = Arc::new(model.prepare()?);
+                let next = self
+                    .next_handle
+                    .checked_add(1)
+                    .ok_or_else(|| CoreError::protocol("Model handles exhausted"))?;
+                let handle = self.next_handle;
+                self.models.insert(handle, model);
+                self.next_handle = next;
+                Ok(Message::Loaded { handle })
+            }
+            Request::ReleaseModel { handle } => {
+                if self.active_handle == Some(handle)
+                    && self
+                        .session
+                        .as_ref()
+                        .is_some_and(|session| !matches!(session.phase, Phase::Done(_)))
+                {
+                    return Err(CoreError::protocol("Model handle is in use"));
+                }
+                self.models
+                    .remove(&handle)
+                    .ok_or_else(|| CoreError::protocol("Unknown model handle"))?;
+                if self.active_handle == Some(handle) {
+                    self.finite = None;
+                    self.active_handle = None;
+                }
+                Ok(Message::Released)
+            }
+            Request::StartLoaded { handle, actions } => {
+                let model = self.get_model(handle)?;
+                self.begin(
+                    Session::new(model.name().into(), actions)?,
+                    Some(model),
+                    Some(handle),
+                )
+            }
+            Request::CheckLoaded { handle, traces } => {
+                let model = self.get_model(handle)?;
+                Ok(Message::Results {
+                    results: traces
+                        .into_iter()
+                        .map(|trace| model.check_history(trace))
+                        .collect::<Result<_, _>>()?,
+                })
+            }
+            Request::CheckHistory {
+                handle,
+                history,
+                max_nodes,
+            } => Ok(Message::History {
+                result: self
+                    .get_model(handle)?
+                    .check_concurrent(history, max_nodes)?,
+            }),
             Request::ReplayHost { tape } => Ok(Message::Host {
                 snapshot: replay_host(tape)?,
             }),
             Request::Canonicalize { value } => Ok(Message::Value {
                 value: value.normalize()?,
             }),
-            Request::Start { model, actions } => self.begin(Session::new(model, actions)?, None),
-            Request::Replay { trace } => self.begin(Session::replay(trace)?, None),
+            Request::Start { model, actions } => {
+                self.begin(Session::new(model, actions)?, None, None)
+            }
+            Request::Replay { trace } => self.begin(Session::replay(trace)?, None, None),
             Request::StartFinite { model, actions } => {
-                let model = model.normalize()?;
-                self.begin(Session::new(model.name.clone(), actions)?, Some(model))
+                let model = Arc::new(model.prepare()?);
+                self.begin(
+                    Session::new(model.name().into(), actions)?,
+                    Some(model),
+                    None,
+                )
             }
             Request::CheckFinite { model, traces } => {
-                let model = model.normalize()?;
+                let model = model.prepare()?;
                 Ok(Message::Results {
                     results: traces
                         .into_iter()
@@ -435,6 +528,7 @@ impl Engine {
                     .ok_or_else(|| CoreError::protocol("Request ID exhausted"))?;
                 self.session = None;
                 self.finite = None;
+                self.active_handle = None;
                 Ok(Message::Cancelled)
             }
         }
@@ -442,7 +536,8 @@ impl Engine {
     fn begin(
         &mut self,
         mut session: Session,
-        finite: Option<FiniteModel>,
+        finite: Option<Arc<PreparedFiniteModel>>,
+        handle: Option<u32>,
     ) -> Result<Message, CoreError> {
         if self
             .session
@@ -455,7 +550,14 @@ impl Engine {
         let effect = session.effect();
         self.session = Some(session);
         self.finite = finite;
+        self.active_handle = handle;
         self.drive(effect)
+    }
+    fn get_model(&self, handle: u32) -> Result<Arc<PreparedFiniteModel>, CoreError> {
+        self.models
+            .get(&handle)
+            .cloned()
+            .ok_or_else(|| CoreError::protocol("Unknown model handle"))
     }
     fn drive(&mut self, mut effect: Effect) -> Result<Message, CoreError> {
         while let Some(response) = self

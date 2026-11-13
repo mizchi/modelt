@@ -79,6 +79,8 @@ func main() {
 
 ## API と所有権
 
+モデルの再利用は `Core.LoadModel`。戻り値の `CheckHistory` で並行・未完了の履歴、`CheckHistories` で逐次履歴 batch、`Check` で実 Driver を照合し、最後に `Close` する。保存された並行履歴は `CheckHistoryJSON` に JSON 原文を渡せる。[非同期履歴の意味](async-history.md) を参照。
+
 | API                                            | 用途                                 |
 | ---------------------------------------------- | ------------------------------------ |
 | `Check(ctx, Model, Driver, actions)`           | Go のモデル callback と実装を照合    |
