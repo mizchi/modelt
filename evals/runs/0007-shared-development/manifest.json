@@ -1,0 +1,306 @@
+{
+  "plan": "0007-shared-oracle",
+  "phase": "development",
+  "seeds": [
+    201,
+    202,
+    203,
+    204,
+    205
+  ],
+  "parent": null,
+  "sources": [
+    {
+      "path": ".github/workflows/ci.yml",
+      "sha256": "a77c87c75d22e698692113ece09e9cc697b5a97daf7d74de087345fbe5a95673"
+    },
+    {
+      "path": "adapters/go/LICENSE",
+      "sha256": "c5f6ee341fb447b0b69264d5e304186f1d9cd2e9d1b9d33095d08879888defc1"
+    },
+    {
+      "path": "adapters/go/README.md",
+      "sha256": "d20b784a8cc5a404e0892ff749a48eb486f3b7a05f9715fd1f62f56accce3331"
+    },
+    {
+      "path": "adapters/go/cmd/counter-replay/main.go",
+      "sha256": "5f011b529541d036f91bd9874bbfce8bb6c3efbf5299222d8217e86f2d6227ba"
+    },
+    {
+      "path": "adapters/go/contracts.go",
+      "sha256": "5b4552819587e46185948af56108226a3c106fcd2f834e2ce7158ecfe6fd4b3e"
+    },
+    {
+      "path": "adapters/go/core.go",
+      "sha256": "02fce105de53e6c2bb52cc9ea1f270952723809b80f36a92333409e818d1e73c"
+    },
+    {
+      "path": "adapters/go/go.mod",
+      "sha256": "a76478200fb4d3ea32ab6565aebae950ca3e3e6dfe1ee177732cb83d146df62f"
+    },
+    {
+      "path": "adapters/go/go.sum",
+      "sha256": "cea54d921525fe5bc10db3146d1e25ef004400a3c2386acae505c4b582c0255f"
+    },
+    {
+      "path": "adapters/go/internal/counter/counter.go",
+      "sha256": "53a7392ab2a6f312551ce06974324e4192a6ba0453d691f3df58acd5bc075dbf"
+    },
+    {
+      "path": "adapters/go/interop_test.go",
+      "sha256": "0bc2c8fea3f749599a1e26eafe4d623bdecd6f854484846be33ebcaeeec2398a"
+    },
+    {
+      "path": "adapters/go/lifecycle_test.go",
+      "sha256": "e51038f9e6d5594358f341d46eb3b178d8c260e978b18ce946cbc3575839b0bb"
+    },
+    {
+      "path": "adapters/go/modelt_test.go",
+      "sha256": "b5532b87b358dd6df2050e750423e25dbe6e80789841558c0930b5c4c777611d"
+    },
+    {
+      "path": "adapters/go/run.go",
+      "sha256": "d4872ed4c984d441ecc5df91f2efcf8289c488a18f77c3d8f12edbedbcd4bd76"
+    },
+    {
+      "path": "adapters/go/value.go",
+      "sha256": "76c109a95f330e8330dde456e9fc50d439144d57d0f2f24e6a98f4fb005b958a"
+    },
+    {
+      "path": "adapters/go/value_test.go",
+      "sha256": "3306459e06459e98228d03ebdb2e1205707be7ef246cb0f302c96b5a07a457f6"
+    },
+    {
+      "path": "crates/modelt-core/Cargo.lock",
+      "sha256": "daeb11bade2929f7d6c0a3af17590efe1d5b5174d4690c39c7c130e949a9a566"
+    },
+    {
+      "path": "crates/modelt-core/Cargo.toml",
+      "sha256": "bea8f78ee8c9b7367fb8438ce21a39abe9d1a008f379312f8ab7dc356d95f571"
+    },
+    {
+      "path": "crates/modelt-core/LICENSE",
+      "sha256": "c5f6ee341fb447b0b69264d5e304186f1d9cd2e9d1b9d33095d08879888defc1"
+    },
+    {
+      "path": "crates/modelt-core/README.md",
+      "sha256": "0f408e09a6e709d7ea966efc043559573d9e3bd8e9a9c3fa82b1a3206f386b5a"
+    },
+    {
+      "path": "crates/modelt-core/examples/counter.rs",
+      "sha256": "3aa94037577b84097e51500aaeed122828b3aeaacbe05a0ab28efdfa7b8b4aa9"
+    },
+    {
+      "path": "crates/modelt-core/src/finite.rs",
+      "sha256": "3eca4b5b0d6d2d8148c8341c79b86dd884c7cc6cb12e03348953d77e8f378283"
+    },
+    {
+      "path": "crates/modelt-core/src/host.rs",
+      "sha256": "0813f97b3518e7acffb9f48a5865d96b62d407b684ff110c6c73e83aa4933c6d"
+    },
+    {
+      "path": "crates/modelt-core/src/lib.rs",
+      "sha256": "74ded0ab5b4dd6bd7587d498ddef846b13143cfeca4ad854ae0c81ba2fad1884"
+    },
+    {
+      "path": "crates/modelt-core/src/main.rs",
+      "sha256": "10ff6b25b7cc7dcc5d6c5ecebdbee8b3db813804f214632f121578fac2267809"
+    },
+    {
+      "path": "crates/modelt-core/src/shrink.rs",
+      "sha256": "f74c85b7261bf1e3cbd6400db3fe8712f68d32b9fbcaf129509dc790ab619b36"
+    },
+    {
+      "path": "crates/modelt-core/src/value.rs",
+      "sha256": "4d329ac49de4048421785cdccc4065b759f412edcf9236a80e4a20b5d534bb17"
+    },
+    {
+      "path": "crates/modelt-core/src/wasm.rs",
+      "sha256": "2300b01f5c8540c34dbc4b4d83ea167ae081dd5fcd01c523dac8679b991a0ffe"
+    },
+    {
+      "path": "crates/modelt-core/tests/contract.rs",
+      "sha256": "6e8c3764b7c66d01763dd2f4ca5c07b818d8fc6584d4f7d008776fbd34799dd2"
+    },
+    {
+      "path": "crates/modelt-core/tests/finite.rs",
+      "sha256": "16ca9f676fa4527e91da0f528d0f4c6b83459ea2919d53834f551c7fe755ce5f"
+    },
+    {
+      "path": "crates/modelt-core/tests/host.rs",
+      "sha256": "750af071595cf99aa6985c8ac3737871340244f0245cae344b43ead39587bfaa"
+    },
+    {
+      "path": "crates/modelt-core/tests/shrink.rs",
+      "sha256": "e3c2261646fc54ae99d6c8a8b1a2e4070c1bcfe28e478dbc2542b8b9bb855cc9"
+    },
+    {
+      "path": "evals/cross-language/contract-test.ts",
+      "sha256": "ec7b528b52ffc9b758d2e21f070bb86a998b57d321246f1e7eac7d8928afa25c"
+    },
+    {
+      "path": "evals/cross-language/evaluate.ts",
+      "sha256": "97340114ac185f67423ec4bf00d3103cf462d774e45eb9b11c1220e9b0b9c9ac"
+    },
+    {
+      "path": "evals/cross-language/provenance.ts",
+      "sha256": "5fa7fea47bd29d083c8b0209d764dace34befe996ee60bc48e06210e787d21ca"
+    },
+    {
+      "path": "evals/cross-language/replay.ts",
+      "sha256": "54f256b433f3bdca25afe9dee5d011240b7465695b41699275dcc7243b8b8e08"
+    },
+    {
+      "path": "evals/cross-language/runners.ts",
+      "sha256": "082f60f210e0f03bae273b14b2013aed93cb3e48713b82f2609c87da09d5ac46"
+    },
+    {
+      "path": "evals/cross-language/suite.ts",
+      "sha256": "602f11f996c181aca769026230a3f005bcc32ec059c771d35c107969067b8989"
+    },
+    {
+      "path": "evals/harness/counter-faults.ts",
+      "sha256": "f1a96e52e04deead66e8f04b6fa4a763e5fc9bad88e81db509d9ad2381d434a3"
+    },
+    {
+      "path": "evals/harness/search.ts",
+      "sha256": "b0a051938a87e1175c3b1ee5cb2eb8138498f0134ea705999c672d9a56bae2e0"
+    },
+    {
+      "path": "evals/plans/0007-shared-oracle.md",
+      "sha256": "b82a2e201b48a71b5f670ad70b384ca017600ec0247a6b80256ac16fb4e51a9c"
+    },
+    {
+      "path": "evals/shared-oracle-rust/Cargo.lock",
+      "sha256": "a39ac4cd09cac3faccfcaaf56ddcfb2ade31c6f964279925737d3b5791804932"
+    },
+    {
+      "path": "evals/shared-oracle-rust/Cargo.toml",
+      "sha256": "5e547d05f10cf75ee66a6da4f42d73f4aaf474860931d756b841d193a25c7918"
+    },
+    {
+      "path": "evals/shared-oracle-rust/src/lib.rs",
+      "sha256": "72bd587e1ffebbb36e76a76103453a03132ae70c3a2f5e4be446bfb34adf3636"
+    },
+    {
+      "path": "evals/shared-oracle-rust/src/main.rs",
+      "sha256": "e38d87ab3994046279b928fb7252ff9780b960657aefc6a474195478a500eac5"
+    },
+    {
+      "path": "evals/usable/provenance.ts",
+      "sha256": "d5c4cb1a7033959d99042d9a3cd1d7dd014cd00baab3121bd63084aed500c615"
+    },
+    {
+      "path": "examples/counter-model.ts",
+      "sha256": "8635f088a3fdf9e0b1bf4ea1f96790d56d578766d6e3c3c81a483cd9127f7721"
+    },
+    {
+      "path": "examples/demo.ts",
+      "sha256": "4c42c6701d69d7853add037078137a99174ad80470631c9786867340f8ca9f0d"
+    },
+    {
+      "path": "examples/durable-counter.ts",
+      "sha256": "5f77b4b8dbbb815b71dc31f121d220623484f67e36efad0c4114996ee444521c"
+    },
+    {
+      "path": "justfile",
+      "sha256": "7bae0fc9c3537d99e475eff6d88360acc5990821ee514a6e82a19300749009b9"
+    },
+    {
+      "path": "package.json",
+      "sha256": "36cb1fa42b9b3a5d5a8e54815d6f6877cf841b3791cd3c72bee6949452b77c1b"
+    },
+    {
+      "path": "pnpm-lock.yaml",
+      "sha256": "27d1f2216d738d57e5a7a277158ba006f03e821df60606865915c54884fd6274"
+    },
+    {
+      "path": "src/budget.ts",
+      "sha256": "59239e0c17b0e6670d22c031de983434c9444cdc74f58dde3f4ed42f2e0d2ba8"
+    },
+    {
+      "path": "src/checker.ts",
+      "sha256": "0d3d22b03dddd84e9b523f298a1c111b2a61dc4cec8731b8969d640124692e4b"
+    },
+    {
+      "path": "src/compose.ts",
+      "sha256": "a3fd903ca6dce125b6efb8ac34d77fc92d91640994e14e1a86a313d30c11f4e6"
+    },
+    {
+      "path": "src/conformance.ts",
+      "sha256": "f3bb120449be59bf8bf122016fd35fbd45b81bfe910de3b9436b33ee45c52995"
+    },
+    {
+      "path": "src/contracts.ts",
+      "sha256": "6c039ee82a5ba117c5781889ae6034e8f366eb7d10f22dbcd3118be32f0eaa30"
+    },
+    {
+      "path": "src/finite.ts",
+      "sha256": "82983bf37c7e828810f03c2f8dc11fb16ab4804a083f0fb12fd9cac0bea12a83"
+    },
+    {
+      "path": "src/host.ts",
+      "sha256": "c952e1da81a9c0a1a71a78b2c35a4441b156e087c96a6c1241c712647a0ca30b"
+    },
+    {
+      "path": "src/index.ts",
+      "sha256": "d8219cc54aabba15e4f04c604decdaf61d3f8dbcab9b01b721298e35f047867f"
+    },
+    {
+      "path": "src/portable-value.ts",
+      "sha256": "82569e3d4ff0cccaf81b44d886ec9061d922065420c1e3002acde73378794c5e"
+    },
+    {
+      "path": "src/portable-wasm.ts",
+      "sha256": "05fcdfcafb416ca7757f625e99387cf1c19bf5a3d7bf8ddd2dec1c85db145922"
+    },
+    {
+      "path": "src/portable.ts",
+      "sha256": "7f0b93969b27dac10411f22df7f955c838965afcd95a7ae725a84a2e8cf13a75"
+    },
+    {
+      "path": "src/property.ts",
+      "sha256": "52b5afd86848a425e27423241de275dfe7c67f8bc812119eab8593bcf0f6e60a"
+    },
+    {
+      "path": "src/sharding.ts",
+      "sha256": "ed7b6f23dd4f2ec86a732828990f38f12ee50151788de734b0fd6c3a19f73b19"
+    },
+    {
+      "path": "src/shrink.ts",
+      "sha256": "e144ae39785d481cc9d1e1a39b0b9d9df932e116ea39e8c533e5f721ae3cf68b"
+    },
+    {
+      "path": "src/smt.ts",
+      "sha256": "dafc5153f5880c655296fc9b120572d73dc00b092469c538ec25c1be6f9e1bf0"
+    },
+    {
+      "path": "src/tla.ts",
+      "sha256": "9932c3a5113354e520479ed899d1758ae5accf0875e7cba66bfb449e3c12ddcb"
+    },
+    {
+      "path": "src/trace.ts",
+      "sha256": "0a20a45ba0d84841139bec2dd8178c40585276fffc75e536d33ea1ca2c077cf3"
+    },
+    {
+      "path": "tsconfig.build.json",
+      "sha256": "d4e5348b7e9c8685110feabc9d2ff878d8bf235e0f778a5b230adbffcb7b520f"
+    },
+    {
+      "path": "tsconfig.json",
+      "sha256": "002e2f5c7e99896b3a6853d651b4ee4b3c5a92d5cce156a60ef0c371dd5a6410"
+    }
+  ],
+  "sourceVersion": "9877f526a4bd0eb8f221974e7f19bb34eb416b9a05bb92f1fe06831dea0e80a3",
+  "commit": "42e875a205d3c92997d31032ce8a83b08d1f4dc9",
+  "dirtyPaths": [],
+  "node": "v24.22.2",
+  "go": "go version go1.26.2 darwin/arm64",
+  "rust": "rustc 1.98.0 (88d9e12ae 2026-08-18)",
+  "platform": "darwin",
+  "arch": "arm64",
+  "wasmSha256": "bdab82aa409798a9089096cc92abd823d3bbc0388fcb5e3434f0e919f77d61e4",
+  "nativeSha256": "55595b7a60a136da216204f9b85dbbd93d573d603666e69172a0281bfca705e7",
+  "goSha256": "20d998d47a4c93a5d8357a78ee5ac4abecd09b0184742c7abb2c8d8c0fed2530",
+  "startedAt": "2026-11-13T22:10:01.872Z"
+}

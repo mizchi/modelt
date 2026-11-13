@@ -1,0 +1,2092 @@
+[
+  {
+    "fault": "persistence",
+    "case": {
+      "id": "persistence",
+      "oracle": {
+        "format": "modelt.portable-trace",
+        "version": 1,
+        "model": "durable-counter",
+        "initial": {
+          "type": "record",
+          "value": [
+            [
+              "running",
+              {
+                "type": "bool",
+                "value": true
+              }
+            ],
+            [
+              "value",
+              {
+                "type": "int",
+                "value": "0"
+              }
+            ]
+          ]
+        },
+        "steps": [
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "amount",
+                  {
+                    "type": "int",
+                    "value": "1"
+                  }
+                ],
+                [
+                  "id",
+                  {
+                    "type": "string",
+                    "value": "a"
+                  }
+                ],
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "add"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "running",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ],
+                [
+                  "value",
+                  {
+                    "type": "int",
+                    "value": "1"
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "crash"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "running",
+                  {
+                    "type": "bool",
+                    "value": false
+                  }
+                ],
+                [
+                  "value",
+                  {
+                    "type": "int",
+                    "value": "0"
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "restart"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "running",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ],
+                [
+                  "value",
+                  {
+                    "type": "int",
+                    "value": "1"
+                  }
+                ]
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "result": {
+      "status": "mismatch",
+      "checkedSteps": 3,
+      "actual": {
+        "type": "record",
+        "value": [
+          [
+            "running",
+            {
+              "type": "bool",
+              "value": true
+            }
+          ],
+          [
+            "value",
+            {
+              "type": "int",
+              "value": "0"
+            }
+          ]
+        ]
+      },
+      "expected": [
+        {
+          "type": "record",
+          "value": [
+            [
+              "running",
+              {
+                "type": "bool",
+                "value": true
+              }
+            ],
+            [
+              "value",
+              {
+                "type": "int",
+                "value": "1"
+              }
+            ]
+          ]
+        }
+      ],
+      "trace": {
+        "format": "modelt.portable-trace",
+        "version": 1,
+        "model": "durable-counter",
+        "initial": {
+          "type": "record",
+          "value": [
+            [
+              "running",
+              {
+                "type": "bool",
+                "value": true
+              }
+            ],
+            [
+              "value",
+              {
+                "type": "int",
+                "value": "0"
+              }
+            ]
+          ]
+        },
+        "steps": [
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "amount",
+                  {
+                    "type": "int",
+                    "value": "1"
+                  }
+                ],
+                [
+                  "id",
+                  {
+                    "type": "string",
+                    "value": "a"
+                  }
+                ],
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "add"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "running",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ],
+                [
+                  "value",
+                  {
+                    "type": "int",
+                    "value": "1"
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "crash"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "running",
+                  {
+                    "type": "bool",
+                    "value": false
+                  }
+                ],
+                [
+                  "value",
+                  {
+                    "type": "int",
+                    "value": "0"
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "restart"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "running",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ],
+                [
+                  "value",
+                  {
+                    "type": "int",
+                    "value": "0"
+                  }
+                ]
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "fault": "deduplication",
+    "case": {
+      "id": "deduplication",
+      "oracle": {
+        "format": "modelt.portable-trace",
+        "version": 1,
+        "model": "durable-counter",
+        "initial": {
+          "type": "record",
+          "value": [
+            [
+              "running",
+              {
+                "type": "bool",
+                "value": true
+              }
+            ],
+            [
+              "value",
+              {
+                "type": "int",
+                "value": "0"
+              }
+            ]
+          ]
+        },
+        "steps": [
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "amount",
+                  {
+                    "type": "int",
+                    "value": "1"
+                  }
+                ],
+                [
+                  "id",
+                  {
+                    "type": "string",
+                    "value": "a"
+                  }
+                ],
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "add"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "running",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ],
+                [
+                  "value",
+                  {
+                    "type": "int",
+                    "value": "1"
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "amount",
+                  {
+                    "type": "int",
+                    "value": "1"
+                  }
+                ],
+                [
+                  "id",
+                  {
+                    "type": "string",
+                    "value": "a"
+                  }
+                ],
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "add"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "running",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ],
+                [
+                  "value",
+                  {
+                    "type": "int",
+                    "value": "1"
+                  }
+                ]
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "result": {
+      "status": "mismatch",
+      "checkedSteps": 2,
+      "actual": {
+        "type": "record",
+        "value": [
+          [
+            "running",
+            {
+              "type": "bool",
+              "value": true
+            }
+          ],
+          [
+            "value",
+            {
+              "type": "int",
+              "value": "2"
+            }
+          ]
+        ]
+      },
+      "expected": [
+        {
+          "type": "record",
+          "value": [
+            [
+              "running",
+              {
+                "type": "bool",
+                "value": true
+              }
+            ],
+            [
+              "value",
+              {
+                "type": "int",
+                "value": "1"
+              }
+            ]
+          ]
+        }
+      ],
+      "trace": {
+        "format": "modelt.portable-trace",
+        "version": 1,
+        "model": "durable-counter",
+        "initial": {
+          "type": "record",
+          "value": [
+            [
+              "running",
+              {
+                "type": "bool",
+                "value": true
+              }
+            ],
+            [
+              "value",
+              {
+                "type": "int",
+                "value": "0"
+              }
+            ]
+          ]
+        },
+        "steps": [
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "amount",
+                  {
+                    "type": "int",
+                    "value": "1"
+                  }
+                ],
+                [
+                  "id",
+                  {
+                    "type": "string",
+                    "value": "a"
+                  }
+                ],
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "add"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "running",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ],
+                [
+                  "value",
+                  {
+                    "type": "int",
+                    "value": "1"
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "amount",
+                  {
+                    "type": "int",
+                    "value": "1"
+                  }
+                ],
+                [
+                  "id",
+                  {
+                    "type": "string",
+                    "value": "a"
+                  }
+                ],
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "add"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "running",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ],
+                [
+                  "value",
+                  {
+                    "type": "int",
+                    "value": "2"
+                  }
+                ]
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "fault": "late-retry",
+    "case": {
+      "id": "late-retry",
+      "oracle": {
+        "format": "modelt.portable-trace",
+        "version": 1,
+        "model": "durable-counter",
+        "initial": {
+          "type": "record",
+          "value": [
+            [
+              "running",
+              {
+                "type": "bool",
+                "value": true
+              }
+            ],
+            [
+              "value",
+              {
+                "type": "int",
+                "value": "0"
+              }
+            ]
+          ]
+        },
+        "steps": [
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "amount",
+                  {
+                    "type": "int",
+                    "value": "1"
+                  }
+                ],
+                [
+                  "id",
+                  {
+                    "type": "string",
+                    "value": "a"
+                  }
+                ],
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "add"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "running",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ],
+                [
+                  "value",
+                  {
+                    "type": "int",
+                    "value": "1"
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "amount",
+                  {
+                    "type": "int",
+                    "value": "1"
+                  }
+                ],
+                [
+                  "id",
+                  {
+                    "type": "string",
+                    "value": "a"
+                  }
+                ],
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "add"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "running",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ],
+                [
+                  "value",
+                  {
+                    "type": "int",
+                    "value": "1"
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "amount",
+                  {
+                    "type": "int",
+                    "value": "1"
+                  }
+                ],
+                [
+                  "id",
+                  {
+                    "type": "string",
+                    "value": "a"
+                  }
+                ],
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "add"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "running",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ],
+                [
+                  "value",
+                  {
+                    "type": "int",
+                    "value": "1"
+                  }
+                ]
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "result": {
+      "status": "mismatch",
+      "checkedSteps": 3,
+      "actual": {
+        "type": "record",
+        "value": [
+          [
+            "running",
+            {
+              "type": "bool",
+              "value": true
+            }
+          ],
+          [
+            "value",
+            {
+              "type": "int",
+              "value": "2"
+            }
+          ]
+        ]
+      },
+      "expected": [
+        {
+          "type": "record",
+          "value": [
+            [
+              "running",
+              {
+                "type": "bool",
+                "value": true
+              }
+            ],
+            [
+              "value",
+              {
+                "type": "int",
+                "value": "1"
+              }
+            ]
+          ]
+        }
+      ],
+      "trace": {
+        "format": "modelt.portable-trace",
+        "version": 1,
+        "model": "durable-counter",
+        "initial": {
+          "type": "record",
+          "value": [
+            [
+              "running",
+              {
+                "type": "bool",
+                "value": true
+              }
+            ],
+            [
+              "value",
+              {
+                "type": "int",
+                "value": "0"
+              }
+            ]
+          ]
+        },
+        "steps": [
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "amount",
+                  {
+                    "type": "int",
+                    "value": "1"
+                  }
+                ],
+                [
+                  "id",
+                  {
+                    "type": "string",
+                    "value": "a"
+                  }
+                ],
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "add"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "running",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ],
+                [
+                  "value",
+                  {
+                    "type": "int",
+                    "value": "1"
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "amount",
+                  {
+                    "type": "int",
+                    "value": "1"
+                  }
+                ],
+                [
+                  "id",
+                  {
+                    "type": "string",
+                    "value": "a"
+                  }
+                ],
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "add"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "running",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ],
+                [
+                  "value",
+                  {
+                    "type": "int",
+                    "value": "1"
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "amount",
+                  {
+                    "type": "int",
+                    "value": "1"
+                  }
+                ],
+                [
+                  "id",
+                  {
+                    "type": "string",
+                    "value": "a"
+                  }
+                ],
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "add"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "running",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ],
+                [
+                  "value",
+                  {
+                    "type": "int",
+                    "value": "2"
+                  }
+                ]
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "fault": "fifo-only",
+    "case": {
+      "id": "fifo-only",
+      "oracle": {
+        "format": "modelt.portable-trace",
+        "version": 1,
+        "model": "durable-counter",
+        "initial": {
+          "type": "record",
+          "value": [
+            [
+              "running",
+              {
+                "type": "bool",
+                "value": true
+              }
+            ],
+            [
+              "value",
+              {
+                "type": "int",
+                "value": "0"
+              }
+            ]
+          ]
+        },
+        "steps": [
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "amount",
+                  {
+                    "type": "int",
+                    "value": "1"
+                  }
+                ],
+                [
+                  "id",
+                  {
+                    "type": "string",
+                    "value": "a"
+                  }
+                ],
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "send"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "running",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ],
+                [
+                  "value",
+                  {
+                    "type": "int",
+                    "value": "0"
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "amount",
+                  {
+                    "type": "int",
+                    "value": "1"
+                  }
+                ],
+                [
+                  "id",
+                  {
+                    "type": "string",
+                    "value": "b"
+                  }
+                ],
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "send"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "running",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ],
+                [
+                  "value",
+                  {
+                    "type": "int",
+                    "value": "0"
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "index",
+                  {
+                    "type": "int",
+                    "value": "1"
+                  }
+                ],
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "deliver"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "running",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ],
+                [
+                  "value",
+                  {
+                    "type": "int",
+                    "value": "1"
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "index",
+                  {
+                    "type": "int",
+                    "value": "0"
+                  }
+                ],
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "drop"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "running",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ],
+                [
+                  "value",
+                  {
+                    "type": "int",
+                    "value": "1"
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "amount",
+                  {
+                    "type": "int",
+                    "value": "1"
+                  }
+                ],
+                [
+                  "id",
+                  {
+                    "type": "string",
+                    "value": "a"
+                  }
+                ],
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "add"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "running",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ],
+                [
+                  "value",
+                  {
+                    "type": "int",
+                    "value": "2"
+                  }
+                ]
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "result": {
+      "status": "mismatch",
+      "checkedSteps": 5,
+      "actual": {
+        "type": "record",
+        "value": [
+          [
+            "running",
+            {
+              "type": "bool",
+              "value": true
+            }
+          ],
+          [
+            "value",
+            {
+              "type": "int",
+              "value": "1"
+            }
+          ]
+        ]
+      },
+      "expected": [
+        {
+          "type": "record",
+          "value": [
+            [
+              "running",
+              {
+                "type": "bool",
+                "value": true
+              }
+            ],
+            [
+              "value",
+              {
+                "type": "int",
+                "value": "2"
+              }
+            ]
+          ]
+        }
+      ],
+      "trace": {
+        "format": "modelt.portable-trace",
+        "version": 1,
+        "model": "durable-counter",
+        "initial": {
+          "type": "record",
+          "value": [
+            [
+              "running",
+              {
+                "type": "bool",
+                "value": true
+              }
+            ],
+            [
+              "value",
+              {
+                "type": "int",
+                "value": "0"
+              }
+            ]
+          ]
+        },
+        "steps": [
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "amount",
+                  {
+                    "type": "int",
+                    "value": "1"
+                  }
+                ],
+                [
+                  "id",
+                  {
+                    "type": "string",
+                    "value": "a"
+                  }
+                ],
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "send"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "running",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ],
+                [
+                  "value",
+                  {
+                    "type": "int",
+                    "value": "0"
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "amount",
+                  {
+                    "type": "int",
+                    "value": "1"
+                  }
+                ],
+                [
+                  "id",
+                  {
+                    "type": "string",
+                    "value": "b"
+                  }
+                ],
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "send"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "running",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ],
+                [
+                  "value",
+                  {
+                    "type": "int",
+                    "value": "0"
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "index",
+                  {
+                    "type": "int",
+                    "value": "1"
+                  }
+                ],
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "deliver"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "running",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ],
+                [
+                  "value",
+                  {
+                    "type": "int",
+                    "value": "1"
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "index",
+                  {
+                    "type": "int",
+                    "value": "0"
+                  }
+                ],
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "drop"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "running",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ],
+                [
+                  "value",
+                  {
+                    "type": "int",
+                    "value": "1"
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "amount",
+                  {
+                    "type": "int",
+                    "value": "1"
+                  }
+                ],
+                [
+                  "id",
+                  {
+                    "type": "string",
+                    "value": "a"
+                  }
+                ],
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "add"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "running",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ],
+                [
+                  "value",
+                  {
+                    "type": "int",
+                    "value": "1"
+                  }
+                ]
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "fault": "drop-ignored",
+    "case": {
+      "id": "drop-ignored",
+      "oracle": {
+        "format": "modelt.portable-trace",
+        "version": 1,
+        "model": "durable-counter",
+        "initial": {
+          "type": "record",
+          "value": [
+            [
+              "running",
+              {
+                "type": "bool",
+                "value": true
+              }
+            ],
+            [
+              "value",
+              {
+                "type": "int",
+                "value": "0"
+              }
+            ]
+          ]
+        },
+        "steps": [
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "amount",
+                  {
+                    "type": "int",
+                    "value": "1"
+                  }
+                ],
+                [
+                  "id",
+                  {
+                    "type": "string",
+                    "value": "a"
+                  }
+                ],
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "send"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "running",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ],
+                [
+                  "value",
+                  {
+                    "type": "int",
+                    "value": "0"
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "amount",
+                  {
+                    "type": "int",
+                    "value": "1"
+                  }
+                ],
+                [
+                  "id",
+                  {
+                    "type": "string",
+                    "value": "b"
+                  }
+                ],
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "send"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "running",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ],
+                [
+                  "value",
+                  {
+                    "type": "int",
+                    "value": "0"
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "index",
+                  {
+                    "type": "int",
+                    "value": "0"
+                  }
+                ],
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "drop"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "running",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ],
+                [
+                  "value",
+                  {
+                    "type": "int",
+                    "value": "0"
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "index",
+                  {
+                    "type": "int",
+                    "value": "0"
+                  }
+                ],
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "deliver"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "running",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ],
+                [
+                  "value",
+                  {
+                    "type": "int",
+                    "value": "1"
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "amount",
+                  {
+                    "type": "int",
+                    "value": "1"
+                  }
+                ],
+                [
+                  "id",
+                  {
+                    "type": "string",
+                    "value": "b"
+                  }
+                ],
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "add"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "running",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ],
+                [
+                  "value",
+                  {
+                    "type": "int",
+                    "value": "1"
+                  }
+                ]
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "result": {
+      "status": "mismatch",
+      "checkedSteps": 5,
+      "actual": {
+        "type": "record",
+        "value": [
+          [
+            "running",
+            {
+              "type": "bool",
+              "value": true
+            }
+          ],
+          [
+            "value",
+            {
+              "type": "int",
+              "value": "2"
+            }
+          ]
+        ]
+      },
+      "expected": [
+        {
+          "type": "record",
+          "value": [
+            [
+              "running",
+              {
+                "type": "bool",
+                "value": true
+              }
+            ],
+            [
+              "value",
+              {
+                "type": "int",
+                "value": "1"
+              }
+            ]
+          ]
+        }
+      ],
+      "trace": {
+        "format": "modelt.portable-trace",
+        "version": 1,
+        "model": "durable-counter",
+        "initial": {
+          "type": "record",
+          "value": [
+            [
+              "running",
+              {
+                "type": "bool",
+                "value": true
+              }
+            ],
+            [
+              "value",
+              {
+                "type": "int",
+                "value": "0"
+              }
+            ]
+          ]
+        },
+        "steps": [
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "amount",
+                  {
+                    "type": "int",
+                    "value": "1"
+                  }
+                ],
+                [
+                  "id",
+                  {
+                    "type": "string",
+                    "value": "a"
+                  }
+                ],
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "send"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "running",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ],
+                [
+                  "value",
+                  {
+                    "type": "int",
+                    "value": "0"
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "amount",
+                  {
+                    "type": "int",
+                    "value": "1"
+                  }
+                ],
+                [
+                  "id",
+                  {
+                    "type": "string",
+                    "value": "b"
+                  }
+                ],
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "send"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "running",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ],
+                [
+                  "value",
+                  {
+                    "type": "int",
+                    "value": "0"
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "index",
+                  {
+                    "type": "int",
+                    "value": "0"
+                  }
+                ],
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "drop"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "running",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ],
+                [
+                  "value",
+                  {
+                    "type": "int",
+                    "value": "0"
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "index",
+                  {
+                    "type": "int",
+                    "value": "0"
+                  }
+                ],
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "deliver"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "running",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ],
+                [
+                  "value",
+                  {
+                    "type": "int",
+                    "value": "1"
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "amount",
+                  {
+                    "type": "int",
+                    "value": "1"
+                  }
+                ],
+                [
+                  "id",
+                  {
+                    "type": "string",
+                    "value": "b"
+                  }
+                ],
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "add"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "running",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ],
+                [
+                  "value",
+                  {
+                    "type": "int",
+                    "value": "2"
+                  }
+                ]
+              ]
+            }
+          }
+        ]
+      }
+    }
+  }
+]

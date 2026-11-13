@@ -9,3 +9,5 @@
 {"runId":"0004-portable-confirmation","kind":"portable-core","status":"complete","sourceRevision":"1f3d9f0","sourceVersion":"3110343577c81a0f65e0a89c13fe08bc9aeff0f61a87fe0d9c319b2207316b26","plan":"0004-portable-core"}
 {"runId":"0005-usable-confirmation","kind":"usable-core","status":"complete","sourceVersion":"dd3f13a1cd6a1f20b4aa82d5c34b73dfaf679026d4689c8053f23afea6c41cc7","plan":"0005-usable-core"}
 {"runId":"0005-fixed-history","kind":"fixed-history-performance","status":"complete","sourceVersion":"fad49e37808e55efa93a308701a5ae2e20181b24ffb49e5c0d0d521fd2b405f9","plan":"0005-usable-core"}
+{"runId":"0007-shared-development","kind":"shared-oracle","phase":"development","status":"complete","sourceVersion":"9877f526a4bd0eb8f221974e7f19bb34eb416b9a05bb92f1fe06831dea0e80a3","plan":"0007-shared-oracle"}
+{"runId":"0007-shared-confirmation","kind":"shared-oracle","phase":"confirmation","status":"complete","sourceVersion":"9877f526a4bd0eb8f221974e7f19bb34eb416b9a05bb92f1fe06831dea0e80a3","plan":"0007-shared-oracle"}
