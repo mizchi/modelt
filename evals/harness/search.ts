@@ -1,4 +1,4 @@
-import type { Model } from "../src/index.js";
+import type { Model } from "../../src/index.js";
 
 export type SearchStrategy = "uniform" | "novelty";
 

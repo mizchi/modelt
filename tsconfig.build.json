@@ -3,7 +3,7 @@
   "include": [
     "src/**/*.ts",
     "examples/**/*.ts",
-    "experiments/**/*.ts",
+    "evals/**/*.ts",
     "tests/*contract.ts",
     "tests/node.test.ts"
   ],

@@ -26,3 +26,9 @@ evaluate:
 
 replay-evaluation:
   pnpm evaluate:replay
+
+eval-loop:
+  pnpm eval:loop
+
+replay-loop:
+  pnpm eval:replay

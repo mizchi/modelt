@@ -1,4 +1,4 @@
-import type { Driver, Model } from "../src/index.js";
+import type { Driver, Model } from "../../src/index.js";
 
 export type TtlAction =
   | { readonly type: "put"; readonly ttl: number }

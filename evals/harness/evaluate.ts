@@ -6,15 +6,15 @@ import {
   type CounterAction,
   type CounterObservation,
   counterModel,
-} from "../examples/durable-counter.js";
+} from "../../examples/durable-counter.js";
 import {
   type ConformanceResult,
   checkConformance,
   checkModel,
   checkTrace,
-} from "../src/index.js";
-import { checkProperty } from "../src/property.js";
-import { createSmtOracle } from "../src/smt.js";
+} from "../../src/index.js";
+import { checkProperty } from "../../src/property.js";
+import { createSmtOracle } from "../../src/smt.js";
 import {
   type CounterFault,
   counterFaults,

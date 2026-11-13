@@ -3,13 +3,13 @@ import {
   counterModel,
   isCounterAction,
   isCounterObservation,
-} from "../examples/durable-counter.js";
+} from "../../examples/durable-counter.js";
 import {
   checkConformance,
   decodeTrace,
   TraceFormatError,
-} from "../src/index.js";
-import { isRecord } from "../src/trace.js";
+} from "../../src/index.js";
+import { isRecord } from "../../src/trace.js";
 import { counterFaults, createFaultyCounter } from "./counter-faults.js";
 import { checkHistory, incrementHistoryModel } from "./history.js";
 import { runScheduledCounter } from "./scheduled-counter.js";

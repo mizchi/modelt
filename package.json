@@ -37,8 +37,10 @@
     "test:browser": "playwright test",
     "test:mutation": "mutator --runner vitest --config vitest.mutation.config.ts --reporter text --reporter json",
     "example": "pnpm build && node dist/examples/demo.js",
-    "evaluate": "pnpm build && node dist/experiments/evaluate.js",
-    "evaluate:replay": "pnpm build && node dist/experiments/replay.js"
+    "evaluate": "pnpm build && node dist/evals/harness/evaluate.js",
+    "evaluate:replay": "pnpm build && node dist/evals/harness/replay.js",
+    "eval:loop": "pnpm build && node dist/evals/loop.js",
+    "eval:replay": "pnpm build && node dist/evals/replay.js"
   },
   "dependencies": {
     "fast-check": "4.10.2",

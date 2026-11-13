@@ -2,8 +2,8 @@ import {
   type CounterAction,
   type CounterObservation,
   createCounter,
-} from "../examples/durable-counter.js";
-import type { Driver } from "../src/index.js";
+} from "../../examples/durable-counter.js";
+import type { Driver } from "../../src/index.js";
 
 export type CounterFault =
   | "none"

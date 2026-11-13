@@ -1,8 +1,8 @@
 # 初回の手法評価
 
-2026-11-14。目的は「動くこと」から「追加で役に立つこと」へ評価軸を変えること。[事前の計画](evaluation-plan.md) に従い、意図的に入れた7種類の故障と正常版を比較した。実プロジェクトの未知バグ発見実績ではない。
+2026-11-14。目的は「動くこと」から「追加で役に立つこと」へ評価軸を変えること。[事前の計画](../plans/0000-pilot.md) に従い、意図的に入れた7種類の故障と正常版を比較した。実プロジェクトの未知バグ発見実績ではない。
 
-実験は `just evaluate`、証拠の再生は `just replay-evaluation`。[集計](evaluation/pilot-2026-11-14/summary.json)、[探索の全試行](evaluation/pilot-2026-11-14/search.csv)、[PBT の全試行と反例](evaluation/pilot-2026-11-14/pbt.csv)、[実装で再現する witness](evaluation/pilot-2026-11-14/witnesses.json) を保存した。時間は macOS / arm64 / Node 24.22.2 での記述的な測定値。
+実験は `just evaluate`、証拠の再生は `just replay-evaluation`。[集計](../runs/0000-pilot/summary.json)、[探索の全試行](../runs/0000-pilot/search.csv)、[PBT の全試行と反例](../runs/0000-pilot/pbt.csv)、[実装で再現する witness](../runs/0000-pilot/witnesses.json) を保存した。時間は macOS / arm64 / Node 24.22.2 での記述的な測定値。
 
 ## 現時点の採用候補
 

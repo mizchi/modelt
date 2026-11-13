@@ -1,10 +1,13 @@
 import assert from "node:assert/strict";
+import { createFaultyCounter } from "../evals/harness/counter-faults.js";
+import {
+  checkHistory,
+  incrementHistoryModel,
+} from "../evals/harness/history.js";
+import { runScheduledCounter } from "../evals/harness/scheduled-counter.js";
+import { enabledActions, generateCorpus } from "../evals/harness/search.js";
+import { createTtlDriver, ttlModel } from "../evals/harness/ttl.js";
 import { counterModel, createCounter } from "../examples/durable-counter.js";
-import { createFaultyCounter } from "../experiments/counter-faults.js";
-import { checkHistory, incrementHistoryModel } from "../experiments/history.js";
-import { runScheduledCounter } from "../experiments/scheduled-counter.js";
-import { enabledActions, generateCorpus } from "../experiments/search.js";
-import { createTtlDriver, ttlModel } from "../experiments/ttl.js";
 import { checkConformance, checkModel, checkTrace } from "../src/index.js";
 
 export const registerEvaluationContract = (

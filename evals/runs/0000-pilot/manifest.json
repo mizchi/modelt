@@ -1,0 +1,8 @@
+{
+  "version": 1,
+  "runId": "0000-pilot",
+  "provenance": "legacy-import",
+  "sourceRevision": "b93d48fc5a26318fe873785b5e5c6f24b94272bb",
+  "plan": "evals/plans/0000-pilot.md",
+  "note": "既存の実験結果を移動した記録。元の実行時に source digest や開発・確認 split は記録していない"
+}

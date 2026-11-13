@@ -7,8 +7,13 @@
   "baseline": { "id": "uniform-8", "strategy": "uniform", "maxDepth": 8 },
   "candidate": { "id": "uniform-16", "strategy": "uniform", "maxDepth": 16 },
   "maxOperations": 512,
-  "developmentSeeds": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
-  "confirmationSeeds": [21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40],
+  "developmentSeeds": [
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20
+  ],
+  "confirmationSeeds": [
+    21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39,
+    40
+  ],
   "decisionRule": "正常対照・有効入力・反例再現を必須にし、故障ごとの検出数、seed ごとの勝敗、初回検出操作数、reset 回数、反例長の増減を記録する。単一スコアで自動採用しない",
   "limitations": "確認用 seed も同じ人工故障集合を使用する。未知故障や実プロジェクトへの一般化の評価ではない"
 }

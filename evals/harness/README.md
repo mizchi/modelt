@@ -18,4 +18,4 @@ just replay-evaluation
 
 探索器や checker の正しさと、対象実装の正しさを区別する。checker は小さい加算履歴192通りで別の必要十分条件と照合したが、汎用ライブラリとしての適格性は未評価。
 
-[実験計画](../docs/evaluation-plan.md) と [初回の結果・採用候補](../docs/evaluation-results.md) を参照。
+[実験計画](../plans/0000-pilot.md) と [初回の結果・採用候補](../iterations/0000-pilot.md) を参照。

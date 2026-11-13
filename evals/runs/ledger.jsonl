@@ -1,0 +1,3 @@
+{"runId":"0001-development","split":"development","planId":"0001-longer-walk","planDigest":"0bc64974004f1adc5db201146924e5c0f932c6109d59619b7edea829a6b6c0ca","sourceDigest":"ab4b8222eaec1eca225a4178a87fccc67fda9dde97cabb4d922809297f24751f","status":"complete","assessment":"mixed"}
+{"runId":"0001-confirmation","split":"confirmation","planId":"0001-longer-walk","planDigest":"0bc64974004f1adc5db201146924e5c0f932c6109d59619b7edea829a6b6c0ca","sourceDigest":"ab4b8222eaec1eca225a4178a87fccc67fda9dde97cabb4d922809297f24751f","status":"complete","assessment":"mixed"}
+{"runId":"0000-pilot","split":"historical","status":"legacy-import","sourceRevision":"b93d48fc5a26318fe873785b5e5c6f24b94272bb"}
