@@ -1,0 +1,30 @@
+name: Release
+on:
+  push:
+    tags: ["v*"]
+permissions:
+  contents: write
+  id-token: write
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: ./.github/actions/setup
+        with:
+          registry-url: https://registry.npmjs.org
+      - run: node dist/scripts/release.js "$GITHUB_REF_NAME"
+      - run: rustup target add wasm32-unknown-unknown
+      - run: pnpm check
+      - run: pnpm typecheck
+      - run: pnpm test
+      - run: pnpm package:prepare
+      - run: pnpm portable:test
+      - run: pnpm usable:test
+      - run: pnpm package:test
+      - run: pnpm exec playwright install --with-deps chromium
+      - run: pnpm portable:browser
+      - run: npm install --global npm@11
+      - run: node dist/scripts/release.js "$GITHUB_REF_NAME" --publish
+        env:
+          GH_TOKEN: ${{ github.token }}

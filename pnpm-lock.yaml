@@ -7,19 +7,6 @@ settings:
 importers:
 
   .:
-    dependencies:
-      fast-check:
-        specifier: 4.10.2
-        version: 4.10.2
-      fflate:
-        specifier: 0.8.3
-        version: 0.8.3
-      tla-ts:
-        specifier: 0.0.10
-        version: 0.0.10
-      z3-solver:
-        specifier: 5.4.1
-        version: 5.4.1
     devDependencies:
       '@biomejs/biome':
         specifier: ^2.4.0
@@ -36,12 +23,24 @@ importers:
       esbuild:
         specifier: ^0.27.0
         version: 0.27.7
+      fast-check:
+        specifier: 4.10.2
+        version: 4.10.2
+      fflate:
+        specifier: 0.8.3
+        version: 0.8.3
+      tla-ts:
+        specifier: 0.0.10
+        version: 0.0.10
       typescript:
         specifier: 7.0.2
         version: 7.0.2
       vitest:
         specifier: 5.1.0
         version: 5.1.0(@types/node@24.19.2)(vite@8.3.8(@types/node@24.19.2)(esbuild@0.27.7))
+      z3-solver:
+        specifier: 5.4.1
+        version: 5.4.1
 
 packages:
 

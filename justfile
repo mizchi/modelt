@@ -55,3 +55,16 @@ portable-eval:
 
 portable-replay run:
   pnpm portable:replay {{quote(run)}}
+
+usable-test:
+  pnpm usable:test
+
+usable-eval:
+  pnpm usable:eval
+
+usable-replay run:
+  pnpm usable:replay {{quote(run)}}
+
+package:
+  pnpm package:prepare
+  pnpm package:test

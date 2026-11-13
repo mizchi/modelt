@@ -1,8 +1,7 @@
 {
   "name": "@mizchi/modelt",
-  "version": "0.0.0",
-  "private": true,
-  "description": "Portable model oracles, conformance and property testing for TypeScript",
+  "version": "0.1.0-alpha.0",
+  "description": "Portable finite models, conformance checking and reproducible fault tests for TypeScript and Rust",
   "type": "module",
   "license": "MIT",
   "packageManager": "pnpm@10.12.1",
@@ -37,7 +36,20 @@
     "./smt": {
       "types": "./dist/src/smt.d.ts",
       "default": "./dist/src/smt.js"
-    }
+    },
+    "./finite": {
+      "types": "./dist/src/finite.d.ts",
+      "default": "./dist/src/finite.js"
+    },
+    "./host": {
+      "types": "./dist/src/host.d.ts",
+      "default": "./dist/src/host.js"
+    },
+    "./shrink": {
+      "types": "./dist/src/shrink.d.ts",
+      "default": "./dist/src/shrink.js"
+    },
+    "./core.wasm": "./assets/modelt-core.wasm"
   },
   "scripts": {
     "portable:build": "cargo build --release --locked --manifest-path crates/modelt-core/Cargo.toml && cargo build --release --locked --lib --target wasm32-unknown-unknown --manifest-path crates/modelt-core/Cargo.toml",
@@ -62,13 +74,12 @@
     "runtime:test": "pnpm build && cargo test --manifest-path evals/rust-probe/Cargo.toml && node --test dist/evals/runtime/rust-test.js dist/evals/runtime/system-test.js",
     "runtime:browser": "playwright test --config runtime-playwright.config.ts",
     "runtime:eval": "pnpm build && node dist/evals/runtime/evaluate.js",
-    "eval:shard": "pnpm build && node dist/evals/runtime/shard-cli.js"
-  },
-  "dependencies": {
-    "fast-check": "4.10.2",
-    "fflate": "0.8.3",
-    "tla-ts": "0.0.10",
-    "z3-solver": "5.4.1"
+    "eval:shard": "pnpm build && node dist/evals/runtime/shard-cli.js",
+    "usable:test": "pnpm build && node --test dist/evals/usable/contract-test.js",
+    "usable:eval": "pnpm build && node dist/evals/usable/evaluate.js",
+    "usable:replay": "pnpm build && node dist/evals/usable/replay.js",
+    "package:prepare": "pnpm portable:build && pnpm build && node dist/scripts/package.js",
+    "package:test": "node dist/scripts/package-test.js"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.4.0",
@@ -77,6 +88,49 @@
     "@types/node": "^24.0.0",
     "esbuild": "^0.27.0",
     "typescript": "7.0.2",
-    "vitest": "5.1.0"
+    "vitest": "5.1.0",
+    "fast-check": "4.10.2",
+    "fflate": "0.8.3",
+    "tla-ts": "0.0.10",
+    "z3-solver": "5.4.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mizchi/modelt.git"
+  },
+  "files": [
+    "dist/src",
+    "dist/cli",
+    "assets",
+    "README.md",
+    "LICENSE",
+    "docs"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "tag": "next"
+  },
+  "bin": {
+    "modelt": "dist/cli/modelt.js"
+  },
+  "peerDependencies": {
+    "fast-check": "4.10.2",
+    "fflate": "0.8.3",
+    "tla-ts": "0.0.10",
+    "z3-solver": "5.4.1"
+  },
+  "peerDependenciesMeta": {
+    "fast-check": {
+      "optional": true
+    },
+    "fflate": {
+      "optional": true
+    },
+    "tla-ts": {
+      "optional": true
+    },
+    "z3-solver": {
+      "optional": true
+    }
   }
 }
