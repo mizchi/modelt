@@ -140,7 +140,7 @@ export const createMutexDriver = (
       mutex = factory();
       granted = [];
       disposed = false;
-      return { locked: false, granted: [] };
+      return { locked: mutex.isLocked(), granted: [...granted] };
     },
     step: async (action) => {
       if (action.type === "acquire")
