@@ -25,6 +25,7 @@ export const runScheduledCounter = async (
   lostUpdate: boolean,
   ordering: readonly number[],
   mode: "concurrent" | "sequential" = "concurrent",
+  operations = 2,
 ): Promise<ScheduledRun> => {
   const scheduler = schedulerFor([...ordering]);
   let value = 0;
@@ -39,11 +40,15 @@ export const runScheduledCounter = async (
     const output = value;
     history.push({ id, call, returned: event++, input: 1, output });
   };
+  if (!Number.isSafeInteger(operations) || operations < 1)
+    throw new RangeError("Invalid concurrent operation count");
+  const ids = Array.from({ length: operations }, (_, index) =>
+    index < 26 ? String.fromCharCode(97 + index) : String(index),
+  );
   if (mode === "sequential") {
-    await scheduler.waitFor(increment("a"));
-    await scheduler.waitFor(increment("b"));
+    for (const id of ids) await scheduler.waitFor(increment(id));
   } else {
-    await scheduler.waitFor(Promise.all([increment("a"), increment("b")]));
+    await scheduler.waitFor(Promise.all(ids.map(increment)));
   }
   return {
     mode,

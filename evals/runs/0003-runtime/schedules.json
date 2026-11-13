@@ -1,0 +1,6272 @@
+[
+  {
+    "operations": 2,
+    "durationMs": 0,
+    "status": "budget-exhausted",
+    "plan": {
+      "status": "insufficient-budget",
+      "workload": "async-counter-2",
+      "profile": null,
+      "workers": 0,
+      "maxDepth": 0,
+      "maxStates": 0,
+      "estimatedMs": 0,
+      "estimatedMemoryBytes": 0
+    },
+    "checked": 0,
+    "coverageComplete": false,
+    "counterexamples": [],
+    "elapsedMs": 0.002540999999837368
+  },
+  {
+    "operations": 2,
+    "durationMs": 1,
+    "status": "violation",
+    "plan": {
+      "status": "planned",
+      "workload": "async-counter-2",
+      "profile": "inline-async-2",
+      "workers": 1,
+      "maxDepth": 4,
+      "maxStates": 31,
+      "estimatedMs": 0.5270000000016353,
+      "estimatedMemoryBytes": 79611840
+    },
+    "checked": 6,
+    "coverageComplete": true,
+    "counterexamples": [
+      {
+        "mode": "concurrent",
+        "ordering": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "history": [
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 2,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "b:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          1,
+          2,
+          4,
+          3
+        ],
+        "history": [
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 2,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "a:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          2,
+          1,
+          4,
+          3
+        ],
+        "history": [
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 2,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          }
+        ],
+        "events": [
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "b:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          2,
+          1,
+          3,
+          4
+        ],
+        "history": [
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 2,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          }
+        ],
+        "events": [
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "a:write",
+            "status": "resolved"
+          }
+        ]
+      }
+    ],
+    "remaining": 0,
+    "elapsedMs": 0.5127910000001066
+  },
+  {
+    "operations": 2,
+    "durationMs": 10,
+    "status": "violation",
+    "plan": {
+      "status": "planned",
+      "workload": "async-counter-2",
+      "profile": "inline-async-2",
+      "workers": 1,
+      "maxDepth": 4,
+      "maxStates": 31,
+      "estimatedMs": 0.5270000000016353,
+      "estimatedMemoryBytes": 79611840
+    },
+    "checked": 6,
+    "coverageComplete": true,
+    "counterexamples": [
+      {
+        "mode": "concurrent",
+        "ordering": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "history": [
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 2,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "b:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          1,
+          2,
+          4,
+          3
+        ],
+        "history": [
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 2,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "a:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          2,
+          1,
+          4,
+          3
+        ],
+        "history": [
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 2,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          }
+        ],
+        "events": [
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "b:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          2,
+          1,
+          3,
+          4
+        ],
+        "history": [
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 2,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          }
+        ],
+        "events": [
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "a:write",
+            "status": "resolved"
+          }
+        ]
+      }
+    ],
+    "remaining": 0,
+    "elapsedMs": 0.454291000000012
+  },
+  {
+    "operations": 2,
+    "durationMs": 100,
+    "status": "violation",
+    "plan": {
+      "status": "planned",
+      "workload": "async-counter-2",
+      "profile": "inline-async-2",
+      "workers": 1,
+      "maxDepth": 4,
+      "maxStates": 31,
+      "estimatedMs": 0.5270000000016353,
+      "estimatedMemoryBytes": 79611840
+    },
+    "checked": 6,
+    "coverageComplete": true,
+    "counterexamples": [
+      {
+        "mode": "concurrent",
+        "ordering": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "history": [
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 2,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "b:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          1,
+          2,
+          4,
+          3
+        ],
+        "history": [
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 2,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "a:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          2,
+          1,
+          4,
+          3
+        ],
+        "history": [
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 2,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          }
+        ],
+        "events": [
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "b:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          2,
+          1,
+          3,
+          4
+        ],
+        "history": [
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 2,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          }
+        ],
+        "events": [
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "a:write",
+            "status": "resolved"
+          }
+        ]
+      }
+    ],
+    "remaining": 0,
+    "elapsedMs": 0.335790999999972
+  },
+  {
+    "operations": 3,
+    "durationMs": 0,
+    "status": "budget-exhausted",
+    "plan": {
+      "status": "insufficient-budget",
+      "workload": "async-counter-3",
+      "profile": null,
+      "workers": 0,
+      "maxDepth": 0,
+      "maxStates": 0,
+      "estimatedMs": 0,
+      "estimatedMemoryBytes": 0
+    },
+    "checked": 0,
+    "coverageComplete": false,
+    "counterexamples": [],
+    "elapsedMs": 0.0012080000001333246
+  },
+  {
+    "operations": 3,
+    "durationMs": 1,
+    "status": "budget-exhausted",
+    "plan": {
+      "status": "planned",
+      "workload": "async-counter-3",
+      "profile": "inline-async-3",
+      "workers": 1,
+      "maxDepth": 3,
+      "maxStates": 40,
+      "estimatedMs": 0.8236853333332369,
+      "estimatedMemoryBytes": 90737152
+    },
+    "checked": 0,
+    "coverageComplete": false,
+    "counterexamples": [],
+    "remaining": 0,
+    "elapsedMs": 0.22591700000020865
+  },
+  {
+    "operations": 3,
+    "durationMs": 10,
+    "status": "budget-exhausted",
+    "plan": {
+      "status": "planned",
+      "workload": "async-counter-3",
+      "profile": "inline-async-3",
+      "workers": 1,
+      "maxDepth": 5,
+      "maxStates": 364,
+      "estimatedMs": 7.495536533332456,
+      "estimatedMemoryBytes": 90757888
+    },
+    "checked": 0,
+    "coverageComplete": false,
+    "counterexamples": [],
+    "remaining": 0,
+    "elapsedMs": 0.22295800000028976
+  },
+  {
+    "operations": 3,
+    "durationMs": 100,
+    "status": "violation",
+    "plan": {
+      "status": "planned",
+      "workload": "async-counter-3",
+      "profile": "inline-async-3",
+      "workers": 1,
+      "maxDepth": 6,
+      "maxStates": 1093,
+      "estimatedMs": 22.5072017333307,
+      "estimatedMemoryBytes": 90804544
+    },
+    "checked": 90,
+    "coverageComplete": true,
+    "counterexamples": [
+      {
+        "mode": "concurrent",
+        "ordering": [
+          1,
+          4,
+          2,
+          3,
+          5,
+          6
+        ],
+        "history": [
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 4,
+            "input": 1,
+            "output": 2
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 5,
+            "input": 1,
+            "output": 2
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "c:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          1,
+          4,
+          2,
+          3,
+          6,
+          5
+        ],
+        "history": [
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 4,
+            "input": 1,
+            "output": 2
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 5,
+            "input": 1,
+            "output": 2
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "b:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          1,
+          4,
+          3,
+          2,
+          6,
+          5
+        ],
+        "history": [
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 4,
+            "input": 1,
+            "output": 2
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 5,
+            "input": 1,
+            "output": 2
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "c:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          1,
+          4,
+          3,
+          2,
+          5,
+          6
+        ],
+        "history": [
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 4,
+            "input": 1,
+            "output": 2
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 5,
+            "input": 1,
+            "output": 2
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "b:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          1,
+          2,
+          4,
+          5,
+          3,
+          6
+        ],
+        "history": [
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 4,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 5,
+            "input": 1,
+            "output": 2
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "c:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          1,
+          2,
+          4,
+          3,
+          5,
+          6
+        ],
+        "history": [
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 4,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 5,
+            "input": 1,
+            "output": 2
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "c:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          1,
+          2,
+          4,
+          3,
+          6,
+          5
+        ],
+        "history": [
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 4,
+            "input": 1,
+            "output": 2
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 5,
+            "input": 1,
+            "output": 1
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "b:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          1,
+          2,
+          5,
+          4,
+          3,
+          6
+        ],
+        "history": [
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 4,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 5,
+            "input": 1,
+            "output": 2
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "c:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          1,
+          2,
+          5,
+          3,
+          4,
+          6
+        ],
+        "history": [
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 4,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 5,
+            "input": 1,
+            "output": 2
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "c:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          1,
+          2,
+          5,
+          3,
+          6,
+          4
+        ],
+        "history": [
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 4,
+            "input": 1,
+            "output": 2
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 5,
+            "input": 1,
+            "output": 1
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "a:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "history": [
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 4,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 5,
+            "input": 1,
+            "output": 1
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "c:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          1,
+          2,
+          3,
+          4,
+          6,
+          5
+        ],
+        "history": [
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 4,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 5,
+            "input": 1,
+            "output": 1
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "b:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          1,
+          2,
+          3,
+          5,
+          4,
+          6
+        ],
+        "history": [
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 4,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 5,
+            "input": 1,
+            "output": 1
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "c:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          1,
+          2,
+          3,
+          5,
+          6,
+          4
+        ],
+        "history": [
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 4,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 5,
+            "input": 1,
+            "output": 1
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "a:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          1,
+          2,
+          3,
+          6,
+          4,
+          5
+        ],
+        "history": [
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 4,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 5,
+            "input": 1,
+            "output": 1
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "b:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          1,
+          2,
+          3,
+          6,
+          5,
+          4
+        ],
+        "history": [
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 4,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 5,
+            "input": 1,
+            "output": 1
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "a:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          1,
+          3,
+          4,
+          2,
+          6,
+          5
+        ],
+        "history": [
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 4,
+            "input": 1,
+            "output": 2
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 5,
+            "input": 1,
+            "output": 1
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "c:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          1,
+          3,
+          4,
+          2,
+          5,
+          6
+        ],
+        "history": [
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 4,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 5,
+            "input": 1,
+            "output": 2
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "b:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          1,
+          3,
+          4,
+          5,
+          2,
+          6
+        ],
+        "history": [
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 4,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 5,
+            "input": 1,
+            "output": 2
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "b:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          1,
+          3,
+          2,
+          4,
+          6,
+          5
+        ],
+        "history": [
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 4,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 5,
+            "input": 1,
+            "output": 1
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "c:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          1,
+          3,
+          2,
+          4,
+          5,
+          6
+        ],
+        "history": [
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 4,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 5,
+            "input": 1,
+            "output": 1
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "b:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          1,
+          3,
+          2,
+          6,
+          4,
+          5
+        ],
+        "history": [
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 4,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 5,
+            "input": 1,
+            "output": 1
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "c:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          1,
+          3,
+          2,
+          6,
+          5,
+          4
+        ],
+        "history": [
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 4,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 5,
+            "input": 1,
+            "output": 1
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "a:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          1,
+          3,
+          2,
+          5,
+          4,
+          6
+        ],
+        "history": [
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 4,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 5,
+            "input": 1,
+            "output": 1
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "b:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          1,
+          3,
+          2,
+          5,
+          6,
+          4
+        ],
+        "history": [
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 4,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 5,
+            "input": 1,
+            "output": 1
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "a:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          1,
+          3,
+          5,
+          4,
+          2,
+          6
+        ],
+        "history": [
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 4,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 5,
+            "input": 1,
+            "output": 2
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "b:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          1,
+          3,
+          5,
+          2,
+          4,
+          6
+        ],
+        "history": [
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 4,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 5,
+            "input": 1,
+            "output": 2
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "b:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          1,
+          3,
+          5,
+          2,
+          6,
+          4
+        ],
+        "history": [
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 4,
+            "input": 1,
+            "output": 2
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 5,
+            "input": 1,
+            "output": 1
+          }
+        ],
+        "events": [
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "a:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          2,
+          1,
+          5,
+          4,
+          3,
+          6
+        ],
+        "history": [
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 4,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 5,
+            "input": 1,
+            "output": 2
+          }
+        ],
+        "events": [
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "c:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          2,
+          1,
+          5,
+          3,
+          4,
+          6
+        ],
+        "history": [
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 4,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 5,
+            "input": 1,
+            "output": 2
+          }
+        ],
+        "events": [
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "c:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          2,
+          1,
+          5,
+          3,
+          6,
+          4
+        ],
+        "history": [
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 4,
+            "input": 1,
+            "output": 2
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 5,
+            "input": 1,
+            "output": 1
+          }
+        ],
+        "events": [
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "b:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          2,
+          1,
+          4,
+          5,
+          3,
+          6
+        ],
+        "history": [
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 4,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 5,
+            "input": 1,
+            "output": 2
+          }
+        ],
+        "events": [
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "c:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          2,
+          1,
+          4,
+          3,
+          5,
+          6
+        ],
+        "history": [
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 4,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 5,
+            "input": 1,
+            "output": 2
+          }
+        ],
+        "events": [
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "c:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          2,
+          1,
+          4,
+          3,
+          6,
+          5
+        ],
+        "history": [
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 4,
+            "input": 1,
+            "output": 2
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 5,
+            "input": 1,
+            "output": 1
+          }
+        ],
+        "events": [
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "a:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          2,
+          1,
+          3,
+          5,
+          4,
+          6
+        ],
+        "history": [
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 4,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 5,
+            "input": 1,
+            "output": 1
+          }
+        ],
+        "events": [
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "c:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          2,
+          1,
+          3,
+          5,
+          6,
+          4
+        ],
+        "history": [
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 4,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 5,
+            "input": 1,
+            "output": 1
+          }
+        ],
+        "events": [
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "b:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          2,
+          1,
+          3,
+          4,
+          5,
+          6
+        ],
+        "history": [
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 4,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 5,
+            "input": 1,
+            "output": 1
+          }
+        ],
+        "events": [
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "c:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          2,
+          1,
+          3,
+          4,
+          6,
+          5
+        ],
+        "history": [
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 4,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 5,
+            "input": 1,
+            "output": 1
+          }
+        ],
+        "events": [
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "a:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          2,
+          1,
+          3,
+          6,
+          5,
+          4
+        ],
+        "history": [
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 4,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 5,
+            "input": 1,
+            "output": 1
+          }
+        ],
+        "events": [
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "b:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          2,
+          1,
+          3,
+          6,
+          4,
+          5
+        ],
+        "history": [
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 4,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 5,
+            "input": 1,
+            "output": 1
+          }
+        ],
+        "events": [
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "a:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          2,
+          4,
+          1,
+          3,
+          5,
+          6
+        ],
+        "history": [
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 4,
+            "input": 1,
+            "output": 2
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 5,
+            "input": 1,
+            "output": 2
+          }
+        ],
+        "events": [
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "c:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          2,
+          4,
+          1,
+          3,
+          6,
+          5
+        ],
+        "history": [
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 4,
+            "input": 1,
+            "output": 2
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 5,
+            "input": 1,
+            "output": 2
+          }
+        ],
+        "events": [
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "a:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          2,
+          4,
+          3,
+          1,
+          6,
+          5
+        ],
+        "history": [
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 4,
+            "input": 1,
+            "output": 2
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 5,
+            "input": 1,
+            "output": 2
+          }
+        ],
+        "events": [
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "c:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          2,
+          4,
+          3,
+          1,
+          5,
+          6
+        ],
+        "history": [
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 4,
+            "input": 1,
+            "output": 2
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 5,
+            "input": 1,
+            "output": 2
+          }
+        ],
+        "events": [
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "a:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          2,
+          3,
+          1,
+          6,
+          4,
+          5
+        ],
+        "history": [
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 4,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 5,
+            "input": 1,
+            "output": 1
+          }
+        ],
+        "events": [
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "c:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          2,
+          3,
+          1,
+          6,
+          5,
+          4
+        ],
+        "history": [
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 4,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 5,
+            "input": 1,
+            "output": 1
+          }
+        ],
+        "events": [
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "b:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          2,
+          3,
+          1,
+          4,
+          6,
+          5
+        ],
+        "history": [
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 4,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 5,
+            "input": 1,
+            "output": 1
+          }
+        ],
+        "events": [
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "c:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          2,
+          3,
+          1,
+          4,
+          5,
+          6
+        ],
+        "history": [
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 4,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 5,
+            "input": 1,
+            "output": 1
+          }
+        ],
+        "events": [
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "a:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          2,
+          3,
+          1,
+          5,
+          6,
+          4
+        ],
+        "history": [
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 4,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 5,
+            "input": 1,
+            "output": 1
+          }
+        ],
+        "events": [
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "b:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          2,
+          3,
+          1,
+          5,
+          4,
+          6
+        ],
+        "history": [
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 4,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 5,
+            "input": 1,
+            "output": 1
+          }
+        ],
+        "events": [
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "a:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          2,
+          3,
+          4,
+          1,
+          6,
+          5
+        ],
+        "history": [
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 4,
+            "input": 1,
+            "output": 2
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 5,
+            "input": 1,
+            "output": 1
+          }
+        ],
+        "events": [
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "c:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          2,
+          3,
+          4,
+          1,
+          5,
+          6
+        ],
+        "history": [
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 4,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 5,
+            "input": 1,
+            "output": 2
+          }
+        ],
+        "events": [
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "a:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          2,
+          3,
+          4,
+          5,
+          1,
+          6
+        ],
+        "history": [
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 4,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 5,
+            "input": 1,
+            "output": 2
+          }
+        ],
+        "events": [
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "a:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          2,
+          3,
+          5,
+          1,
+          6,
+          4
+        ],
+        "history": [
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 4,
+            "input": 1,
+            "output": 2
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 5,
+            "input": 1,
+            "output": 1
+          }
+        ],
+        "events": [
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "b:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          2,
+          3,
+          5,
+          1,
+          4,
+          6
+        ],
+        "history": [
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 4,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 5,
+            "input": 1,
+            "output": 2
+          }
+        ],
+        "events": [
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "a:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          2,
+          3,
+          5,
+          4,
+          1,
+          6
+        ],
+        "history": [
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 4,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 5,
+            "input": 1,
+            "output": 2
+          }
+        ],
+        "events": [
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "a:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          3,
+          1,
+          5,
+          2,
+          6,
+          4
+        ],
+        "history": [
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 4,
+            "input": 1,
+            "output": 2
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 5,
+            "input": 1,
+            "output": 1
+          }
+        ],
+        "events": [
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "c:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          3,
+          1,
+          5,
+          2,
+          4,
+          6
+        ],
+        "history": [
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 4,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 5,
+            "input": 1,
+            "output": 2
+          }
+        ],
+        "events": [
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "b:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          3,
+          1,
+          5,
+          4,
+          2,
+          6
+        ],
+        "history": [
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 4,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 5,
+            "input": 1,
+            "output": 2
+          }
+        ],
+        "events": [
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "b:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          3,
+          1,
+          2,
+          5,
+          6,
+          4
+        ],
+        "history": [
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 4,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 5,
+            "input": 1,
+            "output": 1
+          }
+        ],
+        "events": [
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "c:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          3,
+          1,
+          2,
+          5,
+          4,
+          6
+        ],
+        "history": [
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 4,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 5,
+            "input": 1,
+            "output": 1
+          }
+        ],
+        "events": [
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "b:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          3,
+          1,
+          2,
+          6,
+          5,
+          4
+        ],
+        "history": [
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 4,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 5,
+            "input": 1,
+            "output": 1
+          }
+        ],
+        "events": [
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "c:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          3,
+          1,
+          2,
+          6,
+          4,
+          5
+        ],
+        "history": [
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 4,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 5,
+            "input": 1,
+            "output": 1
+          }
+        ],
+        "events": [
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "a:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          3,
+          1,
+          2,
+          4,
+          5,
+          6
+        ],
+        "history": [
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 4,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 5,
+            "input": 1,
+            "output": 1
+          }
+        ],
+        "events": [
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "b:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          3,
+          1,
+          2,
+          4,
+          6,
+          5
+        ],
+        "history": [
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 4,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 5,
+            "input": 1,
+            "output": 1
+          }
+        ],
+        "events": [
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "a:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          3,
+          1,
+          4,
+          5,
+          2,
+          6
+        ],
+        "history": [
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 4,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 5,
+            "input": 1,
+            "output": 2
+          }
+        ],
+        "events": [
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "b:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          3,
+          1,
+          4,
+          2,
+          5,
+          6
+        ],
+        "history": [
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 4,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 5,
+            "input": 1,
+            "output": 2
+          }
+        ],
+        "events": [
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "b:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          3,
+          1,
+          4,
+          2,
+          6,
+          5
+        ],
+        "history": [
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 4,
+            "input": 1,
+            "output": 2
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 5,
+            "input": 1,
+            "output": 1
+          }
+        ],
+        "events": [
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "a:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          3,
+          2,
+          1,
+          6,
+          5,
+          4
+        ],
+        "history": [
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 4,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 5,
+            "input": 1,
+            "output": 1
+          }
+        ],
+        "events": [
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "c:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          3,
+          2,
+          1,
+          6,
+          4,
+          5
+        ],
+        "history": [
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 4,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 5,
+            "input": 1,
+            "output": 1
+          }
+        ],
+        "events": [
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "b:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          3,
+          2,
+          1,
+          5,
+          6,
+          4
+        ],
+        "history": [
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 4,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 5,
+            "input": 1,
+            "output": 1
+          }
+        ],
+        "events": [
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "c:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          3,
+          2,
+          1,
+          5,
+          4,
+          6
+        ],
+        "history": [
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 4,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 5,
+            "input": 1,
+            "output": 1
+          }
+        ],
+        "events": [
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "a:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          3,
+          2,
+          1,
+          4,
+          6,
+          5
+        ],
+        "history": [
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 4,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 5,
+            "input": 1,
+            "output": 1
+          }
+        ],
+        "events": [
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "b:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          3,
+          2,
+          1,
+          4,
+          5,
+          6
+        ],
+        "history": [
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 4,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 5,
+            "input": 1,
+            "output": 1
+          }
+        ],
+        "events": [
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "a:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          3,
+          2,
+          5,
+          1,
+          6,
+          4
+        ],
+        "history": [
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 4,
+            "input": 1,
+            "output": 2
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 5,
+            "input": 1,
+            "output": 1
+          }
+        ],
+        "events": [
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "c:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          3,
+          2,
+          5,
+          1,
+          4,
+          6
+        ],
+        "history": [
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 4,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 5,
+            "input": 1,
+            "output": 2
+          }
+        ],
+        "events": [
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "a:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          3,
+          2,
+          5,
+          4,
+          1,
+          6
+        ],
+        "history": [
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 4,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 5,
+            "input": 1,
+            "output": 2
+          }
+        ],
+        "events": [
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "a:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          3,
+          2,
+          4,
+          1,
+          6,
+          5
+        ],
+        "history": [
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 4,
+            "input": 1,
+            "output": 2
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 5,
+            "input": 1,
+            "output": 1
+          }
+        ],
+        "events": [
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "b:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          3,
+          2,
+          4,
+          1,
+          5,
+          6
+        ],
+        "history": [
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 4,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 5,
+            "input": 1,
+            "output": 2
+          }
+        ],
+        "events": [
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "a:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          3,
+          2,
+          4,
+          5,
+          1,
+          6
+        ],
+        "history": [
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 4,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 5,
+            "input": 1,
+            "output": 2
+          }
+        ],
+        "events": [
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "a:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          3,
+          4,
+          1,
+          2,
+          5,
+          6
+        ],
+        "history": [
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 4,
+            "input": 1,
+            "output": 2
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 5,
+            "input": 1,
+            "output": 2
+          }
+        ],
+        "events": [
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "b:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          3,
+          4,
+          1,
+          2,
+          6,
+          5
+        ],
+        "history": [
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 4,
+            "input": 1,
+            "output": 2
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 5,
+            "input": 1,
+            "output": 2
+          }
+        ],
+        "events": [
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "a:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          3,
+          4,
+          2,
+          1,
+          6,
+          5
+        ],
+        "history": [
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 4,
+            "input": 1,
+            "output": 2
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 5,
+            "input": 1,
+            "output": 2
+          }
+        ],
+        "events": [
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "a:write",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "b:write",
+            "status": "resolved"
+          }
+        ]
+      },
+      {
+        "mode": "concurrent",
+        "ordering": [
+          3,
+          4,
+          2,
+          1,
+          5,
+          6
+        ],
+        "history": [
+          {
+            "id": "c",
+            "call": 2,
+            "returned": 3,
+            "input": 1,
+            "output": 1
+          },
+          {
+            "id": "b",
+            "call": 1,
+            "returned": 4,
+            "input": 1,
+            "output": 2
+          },
+          {
+            "id": "a",
+            "call": 0,
+            "returned": 5,
+            "input": 1,
+            "output": 2
+          }
+        ],
+        "events": [
+          {
+            "id": 3,
+            "label": "c:read",
+            "status": "resolved"
+          },
+          {
+            "id": 4,
+            "label": "c:write",
+            "status": "resolved"
+          },
+          {
+            "id": 2,
+            "label": "b:read",
+            "status": "resolved"
+          },
+          {
+            "id": 1,
+            "label": "a:read",
+            "status": "resolved"
+          },
+          {
+            "id": 5,
+            "label": "b:write",
+            "status": "resolved"
+          },
+          {
+            "id": 6,
+            "label": "a:write",
+            "status": "resolved"
+          }
+        ]
+      }
+    ],
+    "remaining": 0,
+    "elapsedMs": 3.7427920000000086
+  }
+]

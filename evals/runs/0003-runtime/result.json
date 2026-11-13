@@ -1,0 +1,213 @@
+{
+  "status": "complete",
+  "finishedAt": "2026-11-13T16:53:50.104Z",
+  "semanticChecks": {
+    "seeds": "61..100",
+    "mismatch": 0
+  },
+  "setup": {
+    "compileMs": 4.732333000000011,
+    "wasmSetupMs": 0.831249999999983,
+    "wasmBytes": 21306
+  },
+  "engines": [
+    {
+      "engine": "dynamic-ts",
+      "operations": 512,
+      "repeats": 8,
+      "medianTotalMs": 2.140041999999994,
+      "medianKernelMs": 2.140041999999994
+    },
+    {
+      "engine": "packed-ts",
+      "operations": 512,
+      "repeats": 8,
+      "medianTotalMs": 0.0201669999999865,
+      "medianKernelMs": 0.0201669999999865
+    },
+    {
+      "engine": "rust-wasm",
+      "operations": 512,
+      "repeats": 8,
+      "medianTotalMs": 0.01983300000000554,
+      "medianKernelMs": 0.01983300000000554
+    },
+    {
+      "engine": "rust-native",
+      "operations": 512,
+      "repeats": 8,
+      "medianTotalMs": 1.5498340000000042,
+      "medianKernelMs": 0.013209
+    },
+    {
+      "engine": "dynamic-ts",
+      "operations": 65536,
+      "repeats": 8,
+      "medianTotalMs": 261.35358299999984,
+      "medianKernelMs": 261.35358299999984
+    },
+    {
+      "engine": "packed-ts",
+      "operations": 65536,
+      "repeats": 8,
+      "medianTotalMs": 2.503041999999823,
+      "medianKernelMs": 2.503041999999823
+    },
+    {
+      "engine": "rust-wasm",
+      "operations": 65536,
+      "repeats": 8,
+      "medianTotalMs": 2.274208000000044,
+      "medianKernelMs": 2.274208000000044
+    },
+    {
+      "engine": "rust-native",
+      "operations": 65536,
+      "repeats": 8,
+      "medianTotalMs": 3.544125000000122,
+      "medianKernelMs": 1.582166
+    }
+  ],
+  "endToEnd": [
+    {
+      "engine": "dynamic-ts",
+      "medianTotalMs": 0.9768340000000535,
+      "medianGenerationMs": 0.2535840000000462,
+      "medianDriverAndOracleMs": 0.6748750000001564
+    },
+    {
+      "engine": "packed-ts",
+      "medianTotalMs": 0.6658330000000205,
+      "medianGenerationMs": 0.003957999999784079,
+      "medianDriverAndOracleMs": 0.6577079999997295
+    },
+    {
+      "engine": "rust-wasm",
+      "medianTotalMs": 0.699833000000126,
+      "medianGenerationMs": 0.014292000000295957,
+      "medianDriverAndOracleMs": 0.6737090000001444
+    }
+  ],
+  "allocations": [
+    {
+      "status": "planned",
+      "workload": "counter-transitions",
+      "profile": "pool-4-kernel-reused",
+      "workers": 4,
+      "maxDepth": 21,
+      "maxStates": 4194303,
+      "estimatedMs": 7.410452128670561,
+      "estimatedMemoryBytes": 166985728
+    },
+    {
+      "status": "planned",
+      "workload": "counter-transitions",
+      "profile": "pool-4-kernel-reused",
+      "workers": 4,
+      "maxDepth": 24,
+      "maxStates": 33554431,
+      "estimatedMs": 59.28362939689371,
+      "estimatedMemoryBytes": 166985728
+    },
+    {
+      "status": "planned",
+      "workload": "counter-transitions",
+      "profile": "pool-4-kernel-reused",
+      "workers": 4,
+      "maxDepth": 28,
+      "maxStates": 536870911,
+      "estimatedMs": 948.5380968521476,
+      "estimatedMemoryBytes": 166985728
+    }
+  ],
+  "schedules": [
+    {
+      "operations": 2,
+      "durationMs": 0,
+      "status": "budget-exhausted",
+      "workers": 0,
+      "depth": 0,
+      "checked": 0,
+      "coverageComplete": false,
+      "violations": 0,
+      "elapsedMs": 0.002540999999837368
+    },
+    {
+      "operations": 2,
+      "durationMs": 1,
+      "status": "violation",
+      "workers": 1,
+      "depth": 4,
+      "checked": 6,
+      "coverageComplete": true,
+      "violations": 4,
+      "elapsedMs": 0.5127910000001066
+    },
+    {
+      "operations": 2,
+      "durationMs": 10,
+      "status": "violation",
+      "workers": 1,
+      "depth": 4,
+      "checked": 6,
+      "coverageComplete": true,
+      "violations": 4,
+      "elapsedMs": 0.454291000000012
+    },
+    {
+      "operations": 2,
+      "durationMs": 100,
+      "status": "violation",
+      "workers": 1,
+      "depth": 4,
+      "checked": 6,
+      "coverageComplete": true,
+      "violations": 4,
+      "elapsedMs": 0.335790999999972
+    },
+    {
+      "operations": 3,
+      "durationMs": 0,
+      "status": "budget-exhausted",
+      "workers": 0,
+      "depth": 0,
+      "checked": 0,
+      "coverageComplete": false,
+      "violations": 0,
+      "elapsedMs": 0.0012080000001333246
+    },
+    {
+      "operations": 3,
+      "durationMs": 1,
+      "status": "budget-exhausted",
+      "workers": 1,
+      "depth": 3,
+      "checked": 0,
+      "coverageComplete": false,
+      "violations": 0,
+      "elapsedMs": 0.22591700000020865
+    },
+    {
+      "operations": 3,
+      "durationMs": 10,
+      "status": "budget-exhausted",
+      "workers": 1,
+      "depth": 5,
+      "checked": 0,
+      "coverageComplete": false,
+      "violations": 0,
+      "elapsedMs": 0.22295800000028976
+    },
+    {
+      "operations": 3,
+      "durationMs": 100,
+      "status": "violation",
+      "workers": 1,
+      "depth": 6,
+      "checked": 90,
+      "coverageComplete": true,
+      "violations": 84,
+      "elapsedMs": 3.7427920000000086
+    }
+  ]
+}

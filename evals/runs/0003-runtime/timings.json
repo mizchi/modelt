@@ -1,0 +1,899 @@
+{
+  "timings": [
+    {
+      "round": 0,
+      "engine": "dynamic-ts",
+      "operations": 512,
+      "repeats": 8,
+      "totalMs": 2.210208999999992,
+      "kernelMs": 2.210208999999992,
+      "checksum": 1947230158
+    },
+    {
+      "round": 0,
+      "engine": "packed-ts",
+      "operations": 512,
+      "repeats": 8,
+      "totalMs": 0.021500000000003183,
+      "kernelMs": 0.021500000000003183,
+      "checksum": 1947230158
+    },
+    {
+      "round": 0,
+      "engine": "rust-wasm",
+      "operations": 512,
+      "repeats": 8,
+      "totalMs": 0.021708000000018046,
+      "kernelMs": 0.021708000000018046,
+      "checksum": 1947230158
+    },
+    {
+      "round": 0,
+      "engine": "rust-native",
+      "operations": 512,
+      "repeats": 8,
+      "totalMs": 1.7167079999999828,
+      "kernelMs": 0.01325,
+      "checksum": 1947230158
+    },
+    {
+      "round": 1,
+      "engine": "rust-native",
+      "operations": 512,
+      "repeats": 8,
+      "totalMs": 1.5670829999999967,
+      "kernelMs": 0.014042,
+      "checksum": 1947230158
+    },
+    {
+      "round": 1,
+      "engine": "rust-wasm",
+      "operations": 512,
+      "repeats": 8,
+      "totalMs": 0.02041700000000901,
+      "kernelMs": 0.02041700000000901,
+      "checksum": 1947230158
+    },
+    {
+      "round": 1,
+      "engine": "packed-ts",
+      "operations": 512,
+      "repeats": 8,
+      "totalMs": 0.023333000000008042,
+      "kernelMs": 0.023333000000008042,
+      "checksum": 1947230158
+    },
+    {
+      "round": 1,
+      "engine": "dynamic-ts",
+      "operations": 512,
+      "repeats": 8,
+      "totalMs": 2.1591250000000173,
+      "kernelMs": 2.1591250000000173,
+      "checksum": 1947230158
+    },
+    {
+      "round": 2,
+      "engine": "dynamic-ts",
+      "operations": 512,
+      "repeats": 8,
+      "totalMs": 2.1232499999999845,
+      "kernelMs": 2.1232499999999845,
+      "checksum": 1947230158
+    },
+    {
+      "round": 2,
+      "engine": "packed-ts",
+      "operations": 512,
+      "repeats": 8,
+      "totalMs": 0.019958000000002585,
+      "kernelMs": 0.019958000000002585,
+      "checksum": 1947230158
+    },
+    {
+      "round": 2,
+      "engine": "rust-wasm",
+      "operations": 512,
+      "repeats": 8,
+      "totalMs": 0.019708000000008496,
+      "kernelMs": 0.019708000000008496,
+      "checksum": 1947230158
+    },
+    {
+      "round": 2,
+      "engine": "rust-native",
+      "operations": 512,
+      "repeats": 8,
+      "totalMs": 1.5498340000000042,
+      "kernelMs": 0.017791,
+      "checksum": 1947230158
+    },
+    {
+      "round": 3,
+      "engine": "rust-native",
+      "operations": 512,
+      "repeats": 8,
+      "totalMs": 1.4357910000000231,
+      "kernelMs": 0.013209,
+      "checksum": 1947230158
+    },
+    {
+      "round": 3,
+      "engine": "rust-wasm",
+      "operations": 512,
+      "repeats": 8,
+      "totalMs": 0.01912499999997408,
+      "kernelMs": 0.01912499999997408,
+      "checksum": 1947230158
+    },
+    {
+      "round": 3,
+      "engine": "packed-ts",
+      "operations": 512,
+      "repeats": 8,
+      "totalMs": 0.01895799999999781,
+      "kernelMs": 0.01895799999999781,
+      "checksum": 1947230158
+    },
+    {
+      "round": 3,
+      "engine": "dynamic-ts",
+      "operations": 512,
+      "repeats": 8,
+      "totalMs": 2.1621669999999824,
+      "kernelMs": 2.1621669999999824,
+      "checksum": 1947230158
+    },
+    {
+      "round": 4,
+      "engine": "dynamic-ts",
+      "operations": 512,
+      "repeats": 8,
+      "totalMs": 2.099415999999991,
+      "kernelMs": 2.099415999999991,
+      "checksum": 1947230158
+    },
+    {
+      "round": 4,
+      "engine": "packed-ts",
+      "operations": 512,
+      "repeats": 8,
+      "totalMs": 0.0201669999999865,
+      "kernelMs": 0.0201669999999865,
+      "checksum": 1947230158
+    },
+    {
+      "round": 4,
+      "engine": "rust-wasm",
+      "operations": 512,
+      "repeats": 8,
+      "totalMs": 0.019457999999985987,
+      "kernelMs": 0.019457999999985987,
+      "checksum": 1947230158
+    },
+    {
+      "round": 4,
+      "engine": "rust-native",
+      "operations": 512,
+      "repeats": 8,
+      "totalMs": 1.4853750000000048,
+      "kernelMs": 0.012958,
+      "checksum": 1947230158
+    },
+    {
+      "round": 5,
+      "engine": "rust-native",
+      "operations": 512,
+      "repeats": 8,
+      "totalMs": 1.4112910000000056,
+      "kernelMs": 0.013125,
+      "checksum": 1947230158
+    },
+    {
+      "round": 5,
+      "engine": "rust-wasm",
+      "operations": 512,
+      "repeats": 8,
+      "totalMs": 0.01983300000000554,
+      "kernelMs": 0.01983300000000554,
+      "checksum": 1947230158
+    },
+    {
+      "round": 5,
+      "engine": "packed-ts",
+      "operations": 512,
+      "repeats": 8,
+      "totalMs": 0.020624999999995453,
+      "kernelMs": 0.020624999999995453,
+      "checksum": 1947230158
+    },
+    {
+      "round": 5,
+      "engine": "dynamic-ts",
+      "operations": 512,
+      "repeats": 8,
+      "totalMs": 2.088209000000006,
+      "kernelMs": 2.088209000000006,
+      "checksum": 1947230158
+    },
+    {
+      "round": 6,
+      "engine": "dynamic-ts",
+      "operations": 512,
+      "repeats": 8,
+      "totalMs": 2.140041999999994,
+      "kernelMs": 2.140041999999994,
+      "checksum": 1947230158
+    },
+    {
+      "round": 6,
+      "engine": "packed-ts",
+      "operations": 512,
+      "repeats": 8,
+      "totalMs": 0.019916999999992413,
+      "kernelMs": 0.019916999999992413,
+      "checksum": 1947230158
+    },
+    {
+      "round": 6,
+      "engine": "rust-wasm",
+      "operations": 512,
+      "repeats": 8,
+      "totalMs": 0.024583000000006905,
+      "kernelMs": 0.024583000000006905,
+      "checksum": 1947230158
+    },
+    {
+      "round": 6,
+      "engine": "rust-native",
+      "operations": 512,
+      "repeats": 8,
+      "totalMs": 1.7112500000000068,
+      "kernelMs": 0.013,
+      "checksum": 1947230158
+    },
+    {
+      "round": 0,
+      "engine": "dynamic-ts",
+      "operations": 65536,
+      "repeats": 8,
+      "totalMs": 261.1187080000002,
+      "kernelMs": 261.1187080000002,
+      "checksum": 235818964
+    },
+    {
+      "round": 0,
+      "engine": "packed-ts",
+      "operations": 65536,
+      "repeats": 8,
+      "totalMs": 2.4521250000000236,
+      "kernelMs": 2.4521250000000236,
+      "checksum": 235818964
+    },
+    {
+      "round": 0,
+      "engine": "rust-wasm",
+      "operations": 65536,
+      "repeats": 8,
+      "totalMs": 2.274208000000044,
+      "kernelMs": 2.274208000000044,
+      "checksum": 235818964
+    },
+    {
+      "round": 0,
+      "engine": "rust-native",
+      "operations": 65536,
+      "repeats": 8,
+      "totalMs": 3.544125000000122,
+      "kernelMs": 1.557833,
+      "checksum": 235818964
+    },
+    {
+      "round": 1,
+      "engine": "rust-native",
+      "operations": 65536,
+      "repeats": 8,
+      "totalMs": 3.285250000000133,
+      "kernelMs": 1.628,
+      "checksum": 235818964
+    },
+    {
+      "round": 1,
+      "engine": "rust-wasm",
+      "operations": 65536,
+      "repeats": 8,
+      "totalMs": 2.2666249999999764,
+      "kernelMs": 2.2666249999999764,
+      "checksum": 235818964
+    },
+    {
+      "round": 1,
+      "engine": "packed-ts",
+      "operations": 65536,
+      "repeats": 8,
+      "totalMs": 2.503041999999823,
+      "kernelMs": 2.503041999999823,
+      "checksum": 235818964
+    },
+    {
+      "round": 1,
+      "engine": "dynamic-ts",
+      "operations": 65536,
+      "repeats": 8,
+      "totalMs": 261.35358299999984,
+      "kernelMs": 261.35358299999984,
+      "checksum": 235818964
+    },
+    {
+      "round": 2,
+      "engine": "dynamic-ts",
+      "operations": 65536,
+      "repeats": 8,
+      "totalMs": 261.07287500000007,
+      "kernelMs": 261.07287500000007,
+      "checksum": 235818964
+    },
+    {
+      "round": 2,
+      "engine": "packed-ts",
+      "operations": 65536,
+      "repeats": 8,
+      "totalMs": 2.5953329999999823,
+      "kernelMs": 2.5953329999999823,
+      "checksum": 235818964
+    },
+    {
+      "round": 2,
+      "engine": "rust-wasm",
+      "operations": 65536,
+      "repeats": 8,
+      "totalMs": 2.2802919999999176,
+      "kernelMs": 2.2802919999999176,
+      "checksum": 235818964
+    },
+    {
+      "round": 2,
+      "engine": "rust-native",
+      "operations": 65536,
+      "repeats": 8,
+      "totalMs": 3.586667000000034,
+      "kernelMs": 1.594541,
+      "checksum": 235818964
+    },
+    {
+      "round": 3,
+      "engine": "rust-native",
+      "operations": 65536,
+      "repeats": 8,
+      "totalMs": 3.2666670000000977,
+      "kernelMs": 1.574459,
+      "checksum": 235818964
+    },
+    {
+      "round": 3,
+      "engine": "rust-wasm",
+      "operations": 65536,
+      "repeats": 8,
+      "totalMs": 2.2154579999998987,
+      "kernelMs": 2.2154579999998987,
+      "checksum": 235818964
+    },
+    {
+      "round": 3,
+      "engine": "packed-ts",
+      "operations": 65536,
+      "repeats": 8,
+      "totalMs": 2.4844170000001213,
+      "kernelMs": 2.4844170000001213,
+      "checksum": 235818964
+    },
+    {
+      "round": 3,
+      "engine": "dynamic-ts",
+      "operations": 65536,
+      "repeats": 8,
+      "totalMs": 262.61175000000003,
+      "kernelMs": 262.61175000000003,
+      "checksum": 235818964
+    },
+    {
+      "round": 4,
+      "engine": "dynamic-ts",
+      "operations": 65536,
+      "repeats": 8,
+      "totalMs": 260.49641699999984,
+      "kernelMs": 260.49641699999984,
+      "checksum": 235818964
+    },
+    {
+      "round": 4,
+      "engine": "packed-ts",
+      "operations": 65536,
+      "repeats": 8,
+      "totalMs": 2.547625000000153,
+      "kernelMs": 2.547625000000153,
+      "checksum": 235818964
+    },
+    {
+      "round": 4,
+      "engine": "rust-wasm",
+      "operations": 65536,
+      "repeats": 8,
+      "totalMs": 2.378791999999976,
+      "kernelMs": 2.378791999999976,
+      "checksum": 235818964
+    },
+    {
+      "round": 4,
+      "engine": "rust-native",
+      "operations": 65536,
+      "repeats": 8,
+      "totalMs": 3.7830410000001393,
+      "kernelMs": 1.636459,
+      "checksum": 235818964
+    },
+    {
+      "round": 5,
+      "engine": "rust-native",
+      "operations": 65536,
+      "repeats": 8,
+      "totalMs": 3.2055829999999332,
+      "kernelMs": 1.576833,
+      "checksum": 235818964
+    },
+    {
+      "round": 5,
+      "engine": "rust-wasm",
+      "operations": 65536,
+      "repeats": 8,
+      "totalMs": 2.220459000000119,
+      "kernelMs": 2.220459000000119,
+      "checksum": 235818964
+    },
+    {
+      "round": 5,
+      "engine": "packed-ts",
+      "operations": 65536,
+      "repeats": 8,
+      "totalMs": 2.4372920000000704,
+      "kernelMs": 2.4372920000000704,
+      "checksum": 235818964
+    },
+    {
+      "round": 5,
+      "engine": "dynamic-ts",
+      "operations": 65536,
+      "repeats": 8,
+      "totalMs": 263.130709,
+      "kernelMs": 263.130709,
+      "checksum": 235818964
+    },
+    {
+      "round": 6,
+      "engine": "dynamic-ts",
+      "operations": 65536,
+      "repeats": 8,
+      "totalMs": 264.47629099999995,
+      "kernelMs": 264.47629099999995,
+      "checksum": 235818964
+    },
+    {
+      "round": 6,
+      "engine": "packed-ts",
+      "operations": 65536,
+      "repeats": 8,
+      "totalMs": 2.6410829999999805,
+      "kernelMs": 2.6410829999999805,
+      "checksum": 235818964
+    },
+    {
+      "round": 6,
+      "engine": "rust-wasm",
+      "operations": 65536,
+      "repeats": 8,
+      "totalMs": 2.4011669999999867,
+      "kernelMs": 2.4011669999999867,
+      "checksum": 235818964
+    },
+    {
+      "round": 6,
+      "engine": "rust-native",
+      "operations": 65536,
+      "repeats": 8,
+      "totalMs": 3.61712499999976,
+      "kernelMs": 1.582166,
+      "checksum": 235818964
+    }
+  ],
+  "endToEnd": [
+    {
+      "round": 0,
+      "engine": "dynamic-ts",
+      "generationMs": 0.2535840000000462,
+      "driverAndOracleMs": 1.5790419999998448,
+      "totalMs": 1.9422920000001795
+    },
+    {
+      "round": 0,
+      "engine": "packed-ts",
+      "generationMs": 0.005415999999968335,
+      "driverAndOracleMs": 0.8171250000000327,
+      "totalMs": 0.8391659999997501
+    },
+    {
+      "round": 0,
+      "engine": "rust-wasm",
+      "generationMs": 0.02304099999992104,
+      "driverAndOracleMs": 0.7510420000003251,
+      "totalMs": 0.7802499999997963
+    },
+    {
+      "round": 1,
+      "engine": "rust-wasm",
+      "generationMs": 0.014374999999745341,
+      "driverAndOracleMs": 0.6708340000000135,
+      "totalMs": 0.6917499999999563
+    },
+    {
+      "round": 1,
+      "engine": "packed-ts",
+      "generationMs": 0.0044580000003406894,
+      "driverAndOracleMs": 0.6682079999995949,
+      "totalMs": 0.7325829999999769
+    },
+    {
+      "round": 1,
+      "engine": "dynamic-ts",
+      "generationMs": 0.2941249999998945,
+      "driverAndOracleMs": 0.7238749999996799,
+      "totalMs": 1.0232919999998558
+    },
+    {
+      "round": 2,
+      "engine": "dynamic-ts",
+      "generationMs": 0.24274999999988722,
+      "driverAndOracleMs": 0.6748750000001564,
+      "totalMs": 0.9237499999999272
+    },
+    {
+      "round": 2,
+      "engine": "packed-ts",
+      "generationMs": 0.003957999999784079,
+      "driverAndOracleMs": 0.6600829999997586,
+      "totalMs": 0.6692920000000413
+    },
+    {
+      "round": 2,
+      "engine": "rust-wasm",
+      "generationMs": 0.015666000000237545,
+      "driverAndOracleMs": 0.7451670000000377,
+      "totalMs": 0.7665410000004158
+    },
+    {
+      "round": 3,
+      "engine": "rust-wasm",
+      "generationMs": 0.013707999999951426,
+      "driverAndOracleMs": 0.6737090000001444,
+      "totalMs": 0.699833000000126
+    },
+    {
+      "round": 3,
+      "engine": "packed-ts",
+      "generationMs": 0.004124999999930878,
+      "driverAndOracleMs": 0.6356670000000122,
+      "totalMs": 0.6439159999999902
+    },
+    {
+      "round": 3,
+      "engine": "dynamic-ts",
+      "generationMs": 0.3122920000000704,
+      "driverAndOracleMs": 0.6604999999999563,
+      "totalMs": 0.9768340000000535
+    },
+    {
+      "round": 4,
+      "engine": "dynamic-ts",
+      "generationMs": 0.33124999999972715,
+      "driverAndOracleMs": 0.801792000000205,
+      "totalMs": 1.1375829999997222
+    },
+    {
+      "round": 4,
+      "engine": "packed-ts",
+      "generationMs": 0.0037919999999758147,
+      "driverAndOracleMs": 0.6577079999997295,
+      "totalMs": 0.6658330000000205
+    },
+    {
+      "round": 4,
+      "engine": "rust-wasm",
+      "generationMs": 0.014292000000295957,
+      "driverAndOracleMs": 0.6717079999998532,
+      "totalMs": 0.6902079999999842
+    },
+    {
+      "round": 5,
+      "engine": "rust-wasm",
+      "generationMs": 0.010333000000173342,
+      "driverAndOracleMs": 0.6514170000000377,
+      "totalMs": 0.665625000000091
+    },
+    {
+      "round": 5,
+      "engine": "packed-ts",
+      "generationMs": 0.0032919999998739513,
+      "driverAndOracleMs": 0.631333999999697,
+      "totalMs": 0.6384579999999005
+    },
+    {
+      "round": 5,
+      "engine": "dynamic-ts",
+      "generationMs": 0.24658399999998437,
+      "driverAndOracleMs": 0.6300420000002305,
+      "totalMs": 0.8805419999998776
+    },
+    {
+      "round": 6,
+      "engine": "dynamic-ts",
+      "generationMs": 0.24741599999970276,
+      "driverAndOracleMs": 0.6390830000000278,
+      "totalMs": 0.8902499999999236
+    },
+    {
+      "round": 6,
+      "engine": "packed-ts",
+      "generationMs": 0.003290999999990163,
+      "driverAndOracleMs": 0.6403749999999491,
+      "totalMs": 0.6475409999998192
+    },
+    {
+      "round": 6,
+      "engine": "rust-wasm",
+      "generationMs": 0.010041999999884865,
+      "driverAndOracleMs": 0.689209000000119,
+      "totalMs": 0.7030840000002172
+    }
+  ],
+  "calibration": [
+    {
+      "id": "inline-kernel",
+      "workload": "counter-transitions",
+      "workers": 1,
+      "startupMs": 0,
+      "visitsPerMs": 190671.45861586562,
+      "fixedMemoryBytes": 79462400,
+      "bytesPerState": 0,
+      "samples": [
+        5.076291999999739,
+        5.106333000000177,
+        5.063415999999961,
+        5.077041999999892,
+        5.046666000000187,
+        5.014999999999873,
+        5.1176250000003165
+      ],
+      "visits": 967904,
+      "memoryEstimate": "RSS snapshot; prefix memory estimate is advisory"
+    },
+    {
+      "id": "inline-async-2",
+      "workload": "async-counter-2",
+      "workers": 1,
+      "startupMs": 0,
+      "visitsPerMs": 58.82352941158218,
+      "fixedMemoryBytes": 79609856,
+      "bytesPerState": 64,
+      "samples": [
+        0.0972910000000411,
+        0.1070409999997537,
+        0.09862500000008367,
+        0.10087499999963256,
+        0.1020000000003165,
+        0.15708300000005693,
+        0.10325000000011642
+      ],
+      "visits": 6,
+      "memoryEstimate": "RSS snapshot; prefix memory estimate is advisory"
+    },
+    {
+      "id": "inline-async-3",
+      "workload": "async-counter-3",
+      "workers": 1,
+      "startupMs": 0,
+      "visitsPerMs": 48.56223412177387,
+      "fixedMemoryBytes": 90734592,
+      "bytesPerState": 64,
+      "samples": [
+        1.9750829999998132,
+        1.853291999999783,
+        1.7574580000000424,
+        1.9202500000001237,
+        1.8385830000001988,
+        1.7744169999996302,
+        1.892500000000382
+      ],
+      "visits": 90,
+      "memoryEstimate": "RSS snapshot; prefix memory estimate is advisory"
+    },
+    {
+      "id": "pool-1-kernel",
+      "workload": "counter-transitions",
+      "workers": 1,
+      "startupMs": 20.873333000000002,
+      "visitsPerMs": 180813.82511102402,
+      "fixedMemoryBytes": 110755840,
+      "bytesPerState": 0,
+      "samples": [
+        5.648916000000099,
+        5.551542000000154,
+        5.4050000000002,
+        5.353042000000187,
+        5.247334000000137,
+        5.348791000000347,
+        5.192666999999801
+      ],
+      "visits": 967904,
+      "memoryEstimate": "RSS snapshot; prefix memory estimate is advisory"
+    },
+    {
+      "id": "pool-1-async-2",
+      "workload": "async-counter-2",
+      "workers": 1,
+      "startupMs": 20.873333000000002,
+      "visitsPerMs": 25.365581442517485,
+      "fixedMemoryBytes": 112541696,
+      "bytesPerState": 64,
+      "samples": [
+        0.24712499999986903,
+        0.34604200000012497,
+        0.21670799999992596,
+        0.23654100000021572,
+        0.20737499999995634,
+        0.29520899999988615,
+        0.20062500000040018
+      ],
+      "visits": 6,
+      "memoryEstimate": "RSS snapshot; prefix memory estimate is advisory"
+    },
+    {
+      "id": "pool-1-async-3",
+      "workload": "async-counter-3",
+      "workers": 1,
+      "startupMs": 20.873333000000002,
+      "visitsPerMs": 23.96166134185394,
+      "fixedMemoryBytes": 112984064,
+      "bytesPerState": 64,
+      "samples": [
+        3.887083999999959,
+        3.69399999999996,
+        3.755999999999858,
+        3.637249999999767,
+        3.881582999999864,
+        3.571042000000034,
+        4.591917000000194
+      ],
+      "visits": 90,
+      "memoryEstimate": "RSS snapshot; prefix memory estimate is advisory"
+    },
+    {
+      "id": "pool-2-kernel",
+      "workload": "counter-transitions",
+      "workers": 2,
+      "startupMs": 20.54333399999996,
+      "visitsPerMs": 352045.1011593125,
+      "fixedMemoryBytes": 128827392,
+      "bytesPerState": 0,
+      "samples": [
+        2.7493750000003274,
+        2.8112499999997453,
+        2.7299580000003516,
+        2.758041999999932,
+        2.7130409999999756,
+        2.736457999999857,
+        2.784874999999829
+      ],
+      "visits": 967904,
+      "memoryEstimate": "RSS snapshot; prefix memory estimate is advisory"
+    },
+    {
+      "id": "pool-2-async-2",
+      "workload": "async-counter-2",
+      "workers": 2,
+      "startupMs": 20.54333399999996,
+      "visitsPerMs": 35.6790314332419,
+      "fixedMemoryBytes": 132202496,
+      "bytesPerState": 64,
+      "samples": [
+        0.1327080000000933,
+        0.12454100000013568,
+        0.12891700000000128,
+        0.1892080000002352,
+        0.17554199999995035,
+        0.18683300000020608,
+        0.16816599999992832
+      ],
+      "visits": 6,
+      "memoryEstimate": "RSS snapshot; prefix memory estimate is advisory"
+    },
+    {
+      "id": "pool-2-async-3",
+      "workload": "async-counter-3",
+      "workers": 2,
+      "startupMs": 20.54333399999996,
+      "visitsPerMs": 47.928631073084304,
+      "fixedMemoryBytes": 133234688,
+      "bytesPerState": 64,
+      "samples": [
+        2.1731250000002547,
+        2.015707999999904,
+        2.171791000000212,
+        1.8352500000000873,
+        1.8777920000002268,
+        1.8594579999999041,
+        1.8597500000000764
+      ],
+      "visits": 90,
+      "memoryEstimate": "RSS snapshot; prefix memory estimate is advisory"
+    },
+    {
+      "id": "pool-4-kernel",
+      "workload": "counter-transitions",
+      "workers": 4,
+      "startupMs": 24.378583000000162,
+      "visitsPerMs": 565998.2585640777,
+      "fixedMemoryBytes": 166985728,
+      "bytesPerState": 0,
+      "samples": [
+        1.7199169999998958,
+        1.6412089999998898,
+        1.6716659999997319,
+        1.71612499999992,
+        1.7100829999999405,
+        1.6730830000001333,
+        1.7975000000001273
+      ],
+      "visits": 967904,
+      "memoryEstimate": "RSS snapshot; prefix memory estimate is advisory"
+    },
+    {
+      "id": "pool-4-async-2",
+      "workload": "async-counter-2",
+      "workers": 4,
+      "startupMs": 24.378583000000162,
+      "visitsPerMs": 46.707873390640074,
+      "fixedMemoryBytes": 169836544,
+      "bytesPerState": 64,
+      "samples": [
+        0.3132500000001528,
+        0.20787499999960346,
+        0.13083300000016607,
+        0.12562500000012733,
+        0.12054200000011406,
+        0.12187500000027285,
+        0.12845799999968222
+      ],
+      "visits": 6,
+      "memoryEstimate": "RSS snapshot; prefix memory estimate is advisory"
+    },
+    {
+      "id": "pool-4-async-3",
+      "workload": "async-counter-3",
+      "workers": 4,
+      "startupMs": 24.378583000000162,
+      "visitsPerMs": 57.961680888735046,
+      "fixedMemoryBytes": 174391296,
+      "bytesPerState": 64,
+      "samples": [
+        2.607542000000194,
+        1.5527500000002874,
+        1.4034590000001117,
+        1.3706250000000182,
+        1.3683750000000146,
+        1.70049999999992,
+        1.5787089999998898
+      ],
+      "visits": 90,
+      "memoryEstimate": "RSS snapshot; prefix memory estimate is advisory"
+    }
+  ]
+}

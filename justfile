@@ -32,3 +32,13 @@ eval-loop:
 
 replay-loop:
   pnpm eval:replay
+
+runtime-build:
+  pnpm runtime:build
+
+runtime-test:
+  pnpm runtime:test
+  pnpm runtime:browser
+
+runtime-eval:
+  pnpm runtime:eval

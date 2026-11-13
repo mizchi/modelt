@@ -10,6 +10,14 @@
     "node": ">=24"
   },
   "exports": {
+    "./budget": {
+      "types": "./dist/src/budget.d.ts",
+      "default": "./dist/src/budget.js"
+    },
+    "./sharding": {
+      "types": "./dist/src/sharding.d.ts",
+      "default": "./dist/src/sharding.js"
+    },
     ".": {
       "types": "./dist/src/index.d.ts",
       "default": "./dist/src/index.js"
@@ -40,7 +48,12 @@
     "evaluate": "pnpm build && node dist/evals/harness/evaluate.js",
     "evaluate:replay": "pnpm build && node dist/evals/harness/replay.js",
     "eval:loop": "pnpm build && node dist/evals/loop.js",
-    "eval:replay": "pnpm build && node dist/evals/replay.js"
+    "eval:replay": "pnpm build && node dist/evals/replay.js",
+    "runtime:build": "cargo build --release --manifest-path evals/rust-probe/Cargo.toml && cargo build --release --lib --target wasm32-unknown-unknown --manifest-path evals/rust-probe/Cargo.toml",
+    "runtime:test": "pnpm build && cargo test --manifest-path evals/rust-probe/Cargo.toml && node --test dist/evals/runtime/rust-test.js dist/evals/runtime/system-test.js",
+    "runtime:browser": "playwright test --config runtime-playwright.config.ts",
+    "runtime:eval": "pnpm build && node dist/evals/runtime/evaluate.js",
+    "eval:shard": "pnpm build && node dist/evals/runtime/shard-cli.js"
   },
   "dependencies": {
     "fast-check": "4.10.2",

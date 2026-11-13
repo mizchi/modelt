@@ -1,0 +1,42 @@
+name: Runtime evaluation
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      [
+        "src/budget.ts",
+        "src/sharding.ts",
+        "evals/runtime/**",
+        "evals/rust-probe/**",
+        "tests/runtime*",
+        "package.json",
+        "pnpm-lock.yaml",
+        ".github/actions/setup/**",
+        ".github/workflows/runtime.yml",
+      ]
+permissions:
+  contents: read
+concurrency:
+  group: runtime-${{ github.ref }}
+  cancel-in-progress: true
+env:
+  CI: true
+jobs:
+  evaluate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: ./.github/actions/setup
+      - run: rustup target add wasm32-unknown-unknown
+      - run: cargo fmt --manifest-path evals/rust-probe/Cargo.toml -- --check
+      - run: pnpm runtime:build
+      - run: pnpm runtime:test
+      - run: pnpm exec playwright install --with-deps chromium
+      - run: pnpm runtime:browser
+      - run: pnpm runtime:eval .artifacts/runtime-evaluation
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: ${{ !cancelled() }}
+        with:
+          name: runtime-evaluation
+          path: .artifacts/runtime-evaluation
+          if-no-files-found: error
