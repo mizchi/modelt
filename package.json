@@ -1,0 +1,56 @@
+{
+  "name": "@mizchi/modelt",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Portable model oracles, conformance and property testing for TypeScript",
+  "type": "module",
+  "license": "MIT",
+  "packageManager": "pnpm@10.12.1",
+  "engines": {
+    "node": ">=24"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/src/index.d.ts",
+      "default": "./dist/src/index.js"
+    },
+    "./property": {
+      "types": "./dist/src/property.d.ts",
+      "default": "./dist/src/property.js"
+    },
+    "./tla": {
+      "types": "./dist/src/tla.d.ts",
+      "default": "./dist/src/tla.js"
+    },
+    "./smt": {
+      "types": "./dist/src/smt.d.ts",
+      "default": "./dist/src/smt.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "check": "biome check .",
+    "test": "pnpm test:vitest && pnpm test:node",
+    "test:vitest": "vitest run",
+    "test:node": "pnpm build && node --test dist/tests/node.test.js",
+    "test:browser": "playwright test",
+    "test:mutation": "mutator --runner vitest --config vitest.mutation.config.ts --reporter text --reporter json",
+    "example": "pnpm build && node dist/examples/demo.js"
+  },
+  "dependencies": {
+    "fast-check": "4.10.2",
+    "fflate": "0.8.3",
+    "tla-ts": "0.0.10",
+    "z3-solver": "5.4.1"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.4.0",
+    "@mizchi/mutator": "0.2.0",
+    "@playwright/test": "^1.65.0",
+    "@types/node": "^24.0.0",
+    "esbuild": "^0.27.0",
+    "typescript": "7.0.2",
+    "vitest": "5.1.0"
+  }
+}

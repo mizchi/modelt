@@ -1,0 +1,8 @@
+{
+  "$schema": "./node_modules/@mizchi/mutator/schema/mutator.config.schema.json",
+  "include": ["src/conformance.ts", "examples/durable-counter.ts"],
+  "concurrency": 2,
+  "runner": "vitest",
+  "vitestConfig": "vitest.mutation.config.ts",
+  "reporters": ["text", "json"]
+}
