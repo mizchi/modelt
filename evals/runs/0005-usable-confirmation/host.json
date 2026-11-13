@@ -1,0 +1,386 @@
+{
+  "tape": {
+    "format": "modelt.host-tape",
+    "version": 1,
+    "events": [
+      {
+        "operation": "write",
+        "input": {
+          "type": "record",
+          "value": [
+            [
+              "key",
+              {
+                "type": "string",
+                "value": "counter"
+              }
+            ],
+            [
+              "value",
+              {
+                "type": "int",
+                "value": "1"
+              }
+            ]
+          ]
+        },
+        "output": {
+          "type": "null"
+        }
+      },
+      {
+        "operation": "persist",
+        "input": {
+          "type": "null"
+        },
+        "output": {
+          "type": "null"
+        }
+      },
+      {
+        "operation": "write",
+        "input": {
+          "type": "record",
+          "value": [
+            [
+              "key",
+              {
+                "type": "string",
+                "value": "counter"
+              }
+            ],
+            [
+              "value",
+              {
+                "type": "int",
+                "value": "2"
+              }
+            ]
+          ]
+        },
+        "output": {
+          "type": "null"
+        }
+      },
+      {
+        "operation": "choose",
+        "input": {
+          "type": "record",
+          "value": [
+            [
+              "choices",
+              {
+                "type": "list",
+                "value": [
+                  {
+                    "type": "string",
+                    "value": "x"
+                  },
+                  {
+                    "type": "string",
+                    "value": "y"
+                  }
+                ]
+              }
+            ],
+            [
+              "label",
+              {
+                "type": "string",
+                "value": "nonce"
+              }
+            ]
+          ]
+        },
+        "output": {
+          "type": "int",
+          "value": "1"
+        }
+      },
+      {
+        "operation": "send",
+        "input": {
+          "type": "record",
+          "value": [
+            [
+              "from",
+              {
+                "type": "string",
+                "value": "a"
+              }
+            ],
+            [
+              "payload",
+              {
+                "type": "record",
+                "value": [
+                  [
+                    "nonce",
+                    {
+                      "type": "string",
+                      "value": "y"
+                    }
+                  ],
+                  [
+                    "value",
+                    {
+                      "type": "int",
+                      "value": "1"
+                    }
+                  ]
+                ]
+              }
+            ],
+            [
+              "to",
+              {
+                "type": "string",
+                "value": "b"
+              }
+            ]
+          ]
+        },
+        "output": {
+          "type": "int",
+          "value": "1"
+        }
+      },
+      {
+        "operation": "send",
+        "input": {
+          "type": "record",
+          "value": [
+            [
+              "from",
+              {
+                "type": "string",
+                "value": "b"
+              }
+            ],
+            [
+              "payload",
+              {
+                "type": "record",
+                "value": [
+                  [
+                    "nonce",
+                    {
+                      "type": "string",
+                      "value": "y"
+                    }
+                  ],
+                  [
+                    "value",
+                    {
+                      "type": "int",
+                      "value": "2"
+                    }
+                  ]
+                ]
+              }
+            ],
+            [
+              "to",
+              {
+                "type": "string",
+                "value": "a"
+              }
+            ]
+          ]
+        },
+        "output": {
+          "type": "int",
+          "value": "2"
+        }
+      },
+      {
+        "operation": "choose",
+        "input": {
+          "type": "record",
+          "value": [
+            [
+              "choices",
+              {
+                "type": "list",
+                "value": [
+                  {
+                    "type": "int",
+                    "value": "0"
+                  },
+                  {
+                    "type": "int",
+                    "value": "1"
+                  }
+                ]
+              }
+            ],
+            [
+              "label",
+              {
+                "type": "string",
+                "value": "delivery"
+              }
+            ]
+          ]
+        },
+        "output": {
+          "type": "int",
+          "value": "1"
+        }
+      },
+      {
+        "operation": "deliver",
+        "input": {
+          "type": "record",
+          "value": [
+            [
+              "id",
+              {
+                "type": "int",
+                "value": "2"
+              }
+            ],
+            [
+              "index",
+              {
+                "type": "int",
+                "value": "1"
+              }
+            ]
+          ]
+        },
+        "output": {
+          "type": "record",
+          "value": [
+            [
+              "from",
+              {
+                "type": "string",
+                "value": "b"
+              }
+            ],
+            [
+              "id",
+              {
+                "type": "int",
+                "value": "2"
+              }
+            ],
+            [
+              "payload",
+              {
+                "type": "record",
+                "value": [
+                  [
+                    "nonce",
+                    {
+                      "type": "string",
+                      "value": "y"
+                    }
+                  ],
+                  [
+                    "value",
+                    {
+                      "type": "int",
+                      "value": "2"
+                    }
+                  ]
+                ]
+              }
+            ],
+            [
+              "to",
+              {
+                "type": "string",
+                "value": "a"
+              }
+            ]
+          ]
+        }
+      },
+      {
+        "operation": "drop",
+        "input": {
+          "type": "record",
+          "value": [
+            [
+              "id",
+              {
+                "type": "int",
+                "value": "1"
+              }
+            ],
+            [
+              "index",
+              {
+                "type": "int",
+                "value": "0"
+              }
+            ]
+          ]
+        },
+        "output": {
+          "type": "null"
+        }
+      },
+      {
+        "operation": "advance",
+        "input": {
+          "type": "int",
+          "value": "10"
+        },
+        "output": {
+          "type": "int",
+          "value": "10"
+        }
+      },
+      {
+        "operation": "crash",
+        "input": {
+          "type": "null"
+        },
+        "output": {
+          "type": "null"
+        }
+      },
+      {
+        "operation": "restart",
+        "input": {
+          "type": "null"
+        },
+        "output": {
+          "type": "null"
+        }
+      }
+    ]
+  },
+  "snapshot": {
+    "clock": 10,
+    "durable": 1,
+    "pending": [],
+    "delivery": {
+      "id": 2,
+      "from": "b",
+      "to": "a",
+      "payload": {
+        "type": "record",
+        "value": [
+          [
+            "nonce",
+            {
+              "type": "string",
+              "value": "y"
+            }
+          ],
+          [
+            "value",
+            {
+              "type": "int",
+              "value": "2"
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

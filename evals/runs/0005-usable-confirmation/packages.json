@@ -1,0 +1,15 @@
+{
+  "status": "complete",
+  "node": "packaged TS/Wasm consumer matched without solvers",
+  "rust": "packaged Rust consumer matched",
+  "cliExitCodes": [
+    0,
+    1,
+    2
+  ],
+  "consumer": "/var/folders/_h/_rf455xj4h3_3g6z86pg244c0000gn/T/modelt-consumer-dYJ0eg",
+  "artifacts": [
+    "mizchi-modelt-0.1.0-alpha.0.tgz",
+    "modelt-core-0.1.0-alpha.0.crate"
+  ]
+}

@@ -24,3 +24,5 @@
 - PR の軽い検査は単一 job に集約し、二重 push/PR 起動を避ける。重い独立評価と4 shard は workflow_dispatch / 定期実行に残す。欠落を成功に変えない。
 
 結果・失敗・source digest・upstream provenance・次の判断を evals/runs と iteration に保存する。確認用 seed の CI 再実行は独立した新実験には数えない。
+
+実装中の追加（確認用 seed 実行前）: HostTape の語彙を Rust にも実装し、同じ TS の選択・時計・配送・永続化 tape の最終状態を native / Wasm で照合する。言語間で payload を二重に符号化しないことを共通契約に含める。

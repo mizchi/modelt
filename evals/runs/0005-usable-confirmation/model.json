@@ -1,0 +1,4085 @@
+{
+  "format": "modelt.finite-model",
+  "version": 1,
+  "name": "fifo-mutex",
+  "initial": [
+    {
+      "key": "{\"owner\":null,\"waiting\":[],\"seen\":[],\"granted\":[]}",
+      "observation": {
+        "type": "record",
+        "value": [
+          [
+            "granted",
+            {
+              "type": "list",
+              "value": []
+            }
+          ],
+          [
+            "locked",
+            {
+              "type": "bool",
+              "value": false
+            }
+          ]
+        ]
+      }
+    }
+  ],
+  "states": [
+    {
+      "key": "{\"owner\":null,\"waiting\":[],\"seen\":[],\"granted\":[]}",
+      "violations": [],
+      "transitions": [
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "release"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":null,\"waiting\":[],\"seen\":[],\"granted\":[]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": []
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": false
+                }
+              ]
+            ]
+          }
+        },
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "id",
+                {
+                  "type": "string",
+                  "value": "a"
+                }
+              ],
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "acquire"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":\"a\",\"waiting\":[],\"seen\":[\"a\"],\"granted\":[\"a\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "a"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": true
+                }
+              ]
+            ]
+          }
+        },
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "id",
+                {
+                  "type": "string",
+                  "value": "b"
+                }
+              ],
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "acquire"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":\"b\",\"waiting\":[],\"seen\":[\"b\"],\"granted\":[\"b\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "b"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": true
+                }
+              ]
+            ]
+          }
+        },
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "id",
+                {
+                  "type": "string",
+                  "value": "c"
+                }
+              ],
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "acquire"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":\"c\",\"waiting\":[],\"seen\":[\"c\"],\"granted\":[\"c\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "c"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": true
+                }
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "{\"owner\":\"a\",\"waiting\":[],\"seen\":[\"a\"],\"granted\":[\"a\"]}",
+      "violations": [],
+      "transitions": [
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "release"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":null,\"waiting\":[],\"seen\":[\"a\"],\"granted\":[\"a\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "a"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": false
+                }
+              ]
+            ]
+          }
+        },
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "id",
+                {
+                  "type": "string",
+                  "value": "b"
+                }
+              ],
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "acquire"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":\"a\",\"waiting\":[\"b\"],\"seen\":[\"a\",\"b\"],\"granted\":[\"a\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "a"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": true
+                }
+              ]
+            ]
+          }
+        },
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "id",
+                {
+                  "type": "string",
+                  "value": "c"
+                }
+              ],
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "acquire"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":\"a\",\"waiting\":[\"c\"],\"seen\":[\"a\",\"c\"],\"granted\":[\"a\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "a"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": true
+                }
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "{\"owner\":\"b\",\"waiting\":[],\"seen\":[\"b\"],\"granted\":[\"b\"]}",
+      "violations": [],
+      "transitions": [
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "release"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":null,\"waiting\":[],\"seen\":[\"b\"],\"granted\":[\"b\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "b"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": false
+                }
+              ]
+            ]
+          }
+        },
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "id",
+                {
+                  "type": "string",
+                  "value": "a"
+                }
+              ],
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "acquire"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":\"b\",\"waiting\":[\"a\"],\"seen\":[\"b\",\"a\"],\"granted\":[\"b\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "b"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": true
+                }
+              ]
+            ]
+          }
+        },
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "id",
+                {
+                  "type": "string",
+                  "value": "c"
+                }
+              ],
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "acquire"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":\"b\",\"waiting\":[\"c\"],\"seen\":[\"b\",\"c\"],\"granted\":[\"b\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "b"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": true
+                }
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "{\"owner\":\"c\",\"waiting\":[],\"seen\":[\"c\"],\"granted\":[\"c\"]}",
+      "violations": [],
+      "transitions": [
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "release"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":null,\"waiting\":[],\"seen\":[\"c\"],\"granted\":[\"c\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "c"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": false
+                }
+              ]
+            ]
+          }
+        },
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "id",
+                {
+                  "type": "string",
+                  "value": "a"
+                }
+              ],
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "acquire"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":\"c\",\"waiting\":[\"a\"],\"seen\":[\"c\",\"a\"],\"granted\":[\"c\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "c"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": true
+                }
+              ]
+            ]
+          }
+        },
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "id",
+                {
+                  "type": "string",
+                  "value": "b"
+                }
+              ],
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "acquire"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":\"c\",\"waiting\":[\"b\"],\"seen\":[\"c\",\"b\"],\"granted\":[\"c\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "c"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": true
+                }
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "{\"owner\":null,\"waiting\":[],\"seen\":[\"a\"],\"granted\":[\"a\"]}",
+      "violations": [],
+      "transitions": [
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "release"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":null,\"waiting\":[],\"seen\":[\"a\"],\"granted\":[\"a\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "a"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": false
+                }
+              ]
+            ]
+          }
+        },
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "id",
+                {
+                  "type": "string",
+                  "value": "b"
+                }
+              ],
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "acquire"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":\"b\",\"waiting\":[],\"seen\":[\"a\",\"b\"],\"granted\":[\"a\",\"b\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "a"
+                    },
+                    {
+                      "type": "string",
+                      "value": "b"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": true
+                }
+              ]
+            ]
+          }
+        },
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "id",
+                {
+                  "type": "string",
+                  "value": "c"
+                }
+              ],
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "acquire"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":\"c\",\"waiting\":[],\"seen\":[\"a\",\"c\"],\"granted\":[\"a\",\"c\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "a"
+                    },
+                    {
+                      "type": "string",
+                      "value": "c"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": true
+                }
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "{\"owner\":\"a\",\"waiting\":[\"b\"],\"seen\":[\"a\",\"b\"],\"granted\":[\"a\"]}",
+      "violations": [],
+      "transitions": [
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "release"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":\"b\",\"waiting\":[],\"seen\":[\"a\",\"b\"],\"granted\":[\"a\",\"b\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "a"
+                    },
+                    {
+                      "type": "string",
+                      "value": "b"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": true
+                }
+              ]
+            ]
+          }
+        },
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "id",
+                {
+                  "type": "string",
+                  "value": "c"
+                }
+              ],
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "acquire"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":\"a\",\"waiting\":[\"b\",\"c\"],\"seen\":[\"a\",\"b\",\"c\"],\"granted\":[\"a\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "a"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": true
+                }
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "{\"owner\":\"a\",\"waiting\":[\"c\"],\"seen\":[\"a\",\"c\"],\"granted\":[\"a\"]}",
+      "violations": [],
+      "transitions": [
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "release"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":\"c\",\"waiting\":[],\"seen\":[\"a\",\"c\"],\"granted\":[\"a\",\"c\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "a"
+                    },
+                    {
+                      "type": "string",
+                      "value": "c"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": true
+                }
+              ]
+            ]
+          }
+        },
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "id",
+                {
+                  "type": "string",
+                  "value": "b"
+                }
+              ],
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "acquire"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":\"a\",\"waiting\":[\"c\",\"b\"],\"seen\":[\"a\",\"c\",\"b\"],\"granted\":[\"a\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "a"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": true
+                }
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "{\"owner\":null,\"waiting\":[],\"seen\":[\"b\"],\"granted\":[\"b\"]}",
+      "violations": [],
+      "transitions": [
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "release"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":null,\"waiting\":[],\"seen\":[\"b\"],\"granted\":[\"b\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "b"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": false
+                }
+              ]
+            ]
+          }
+        },
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "id",
+                {
+                  "type": "string",
+                  "value": "a"
+                }
+              ],
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "acquire"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":\"a\",\"waiting\":[],\"seen\":[\"b\",\"a\"],\"granted\":[\"b\",\"a\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "b"
+                    },
+                    {
+                      "type": "string",
+                      "value": "a"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": true
+                }
+              ]
+            ]
+          }
+        },
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "id",
+                {
+                  "type": "string",
+                  "value": "c"
+                }
+              ],
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "acquire"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":\"c\",\"waiting\":[],\"seen\":[\"b\",\"c\"],\"granted\":[\"b\",\"c\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "b"
+                    },
+                    {
+                      "type": "string",
+                      "value": "c"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": true
+                }
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "{\"owner\":\"b\",\"waiting\":[\"a\"],\"seen\":[\"b\",\"a\"],\"granted\":[\"b\"]}",
+      "violations": [],
+      "transitions": [
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "release"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":\"a\",\"waiting\":[],\"seen\":[\"b\",\"a\"],\"granted\":[\"b\",\"a\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "b"
+                    },
+                    {
+                      "type": "string",
+                      "value": "a"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": true
+                }
+              ]
+            ]
+          }
+        },
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "id",
+                {
+                  "type": "string",
+                  "value": "c"
+                }
+              ],
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "acquire"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":\"b\",\"waiting\":[\"a\",\"c\"],\"seen\":[\"b\",\"a\",\"c\"],\"granted\":[\"b\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "b"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": true
+                }
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "{\"owner\":\"b\",\"waiting\":[\"c\"],\"seen\":[\"b\",\"c\"],\"granted\":[\"b\"]}",
+      "violations": [],
+      "transitions": [
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "release"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":\"c\",\"waiting\":[],\"seen\":[\"b\",\"c\"],\"granted\":[\"b\",\"c\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "b"
+                    },
+                    {
+                      "type": "string",
+                      "value": "c"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": true
+                }
+              ]
+            ]
+          }
+        },
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "id",
+                {
+                  "type": "string",
+                  "value": "a"
+                }
+              ],
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "acquire"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":\"b\",\"waiting\":[\"c\",\"a\"],\"seen\":[\"b\",\"c\",\"a\"],\"granted\":[\"b\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "b"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": true
+                }
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "{\"owner\":null,\"waiting\":[],\"seen\":[\"c\"],\"granted\":[\"c\"]}",
+      "violations": [],
+      "transitions": [
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "release"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":null,\"waiting\":[],\"seen\":[\"c\"],\"granted\":[\"c\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "c"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": false
+                }
+              ]
+            ]
+          }
+        },
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "id",
+                {
+                  "type": "string",
+                  "value": "a"
+                }
+              ],
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "acquire"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":\"a\",\"waiting\":[],\"seen\":[\"c\",\"a\"],\"granted\":[\"c\",\"a\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "c"
+                    },
+                    {
+                      "type": "string",
+                      "value": "a"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": true
+                }
+              ]
+            ]
+          }
+        },
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "id",
+                {
+                  "type": "string",
+                  "value": "b"
+                }
+              ],
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "acquire"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":\"b\",\"waiting\":[],\"seen\":[\"c\",\"b\"],\"granted\":[\"c\",\"b\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "c"
+                    },
+                    {
+                      "type": "string",
+                      "value": "b"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": true
+                }
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "{\"owner\":\"c\",\"waiting\":[\"a\"],\"seen\":[\"c\",\"a\"],\"granted\":[\"c\"]}",
+      "violations": [],
+      "transitions": [
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "release"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":\"a\",\"waiting\":[],\"seen\":[\"c\",\"a\"],\"granted\":[\"c\",\"a\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "c"
+                    },
+                    {
+                      "type": "string",
+                      "value": "a"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": true
+                }
+              ]
+            ]
+          }
+        },
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "id",
+                {
+                  "type": "string",
+                  "value": "b"
+                }
+              ],
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "acquire"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":\"c\",\"waiting\":[\"a\",\"b\"],\"seen\":[\"c\",\"a\",\"b\"],\"granted\":[\"c\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "c"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": true
+                }
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "{\"owner\":\"c\",\"waiting\":[\"b\"],\"seen\":[\"c\",\"b\"],\"granted\":[\"c\"]}",
+      "violations": [],
+      "transitions": [
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "release"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":\"b\",\"waiting\":[],\"seen\":[\"c\",\"b\"],\"granted\":[\"c\",\"b\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "c"
+                    },
+                    {
+                      "type": "string",
+                      "value": "b"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": true
+                }
+              ]
+            ]
+          }
+        },
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "id",
+                {
+                  "type": "string",
+                  "value": "a"
+                }
+              ],
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "acquire"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":\"c\",\"waiting\":[\"b\",\"a\"],\"seen\":[\"c\",\"b\",\"a\"],\"granted\":[\"c\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "c"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": true
+                }
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "{\"owner\":\"b\",\"waiting\":[],\"seen\":[\"a\",\"b\"],\"granted\":[\"a\",\"b\"]}",
+      "violations": [],
+      "transitions": [
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "release"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":null,\"waiting\":[],\"seen\":[\"a\",\"b\"],\"granted\":[\"a\",\"b\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "a"
+                    },
+                    {
+                      "type": "string",
+                      "value": "b"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": false
+                }
+              ]
+            ]
+          }
+        },
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "id",
+                {
+                  "type": "string",
+                  "value": "c"
+                }
+              ],
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "acquire"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":\"b\",\"waiting\":[\"c\"],\"seen\":[\"a\",\"b\",\"c\"],\"granted\":[\"a\",\"b\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "a"
+                    },
+                    {
+                      "type": "string",
+                      "value": "b"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": true
+                }
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "{\"owner\":\"c\",\"waiting\":[],\"seen\":[\"a\",\"c\"],\"granted\":[\"a\",\"c\"]}",
+      "violations": [],
+      "transitions": [
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "release"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":null,\"waiting\":[],\"seen\":[\"a\",\"c\"],\"granted\":[\"a\",\"c\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "a"
+                    },
+                    {
+                      "type": "string",
+                      "value": "c"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": false
+                }
+              ]
+            ]
+          }
+        },
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "id",
+                {
+                  "type": "string",
+                  "value": "b"
+                }
+              ],
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "acquire"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":\"c\",\"waiting\":[\"b\"],\"seen\":[\"a\",\"c\",\"b\"],\"granted\":[\"a\",\"c\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "a"
+                    },
+                    {
+                      "type": "string",
+                      "value": "c"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": true
+                }
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "{\"owner\":\"a\",\"waiting\":[\"b\",\"c\"],\"seen\":[\"a\",\"b\",\"c\"],\"granted\":[\"a\"]}",
+      "violations": [],
+      "transitions": [
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "release"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":\"b\",\"waiting\":[\"c\"],\"seen\":[\"a\",\"b\",\"c\"],\"granted\":[\"a\",\"b\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "a"
+                    },
+                    {
+                      "type": "string",
+                      "value": "b"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": true
+                }
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "{\"owner\":\"a\",\"waiting\":[\"c\",\"b\"],\"seen\":[\"a\",\"c\",\"b\"],\"granted\":[\"a\"]}",
+      "violations": [],
+      "transitions": [
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "release"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":\"c\",\"waiting\":[\"b\"],\"seen\":[\"a\",\"c\",\"b\"],\"granted\":[\"a\",\"c\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "a"
+                    },
+                    {
+                      "type": "string",
+                      "value": "c"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": true
+                }
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "{\"owner\":\"a\",\"waiting\":[],\"seen\":[\"b\",\"a\"],\"granted\":[\"b\",\"a\"]}",
+      "violations": [],
+      "transitions": [
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "release"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":null,\"waiting\":[],\"seen\":[\"b\",\"a\"],\"granted\":[\"b\",\"a\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "b"
+                    },
+                    {
+                      "type": "string",
+                      "value": "a"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": false
+                }
+              ]
+            ]
+          }
+        },
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "id",
+                {
+                  "type": "string",
+                  "value": "c"
+                }
+              ],
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "acquire"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":\"a\",\"waiting\":[\"c\"],\"seen\":[\"b\",\"a\",\"c\"],\"granted\":[\"b\",\"a\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "b"
+                    },
+                    {
+                      "type": "string",
+                      "value": "a"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": true
+                }
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "{\"owner\":\"c\",\"waiting\":[],\"seen\":[\"b\",\"c\"],\"granted\":[\"b\",\"c\"]}",
+      "violations": [],
+      "transitions": [
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "release"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":null,\"waiting\":[],\"seen\":[\"b\",\"c\"],\"granted\":[\"b\",\"c\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "b"
+                    },
+                    {
+                      "type": "string",
+                      "value": "c"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": false
+                }
+              ]
+            ]
+          }
+        },
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "id",
+                {
+                  "type": "string",
+                  "value": "a"
+                }
+              ],
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "acquire"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":\"c\",\"waiting\":[\"a\"],\"seen\":[\"b\",\"c\",\"a\"],\"granted\":[\"b\",\"c\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "b"
+                    },
+                    {
+                      "type": "string",
+                      "value": "c"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": true
+                }
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "{\"owner\":\"b\",\"waiting\":[\"a\",\"c\"],\"seen\":[\"b\",\"a\",\"c\"],\"granted\":[\"b\"]}",
+      "violations": [],
+      "transitions": [
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "release"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":\"a\",\"waiting\":[\"c\"],\"seen\":[\"b\",\"a\",\"c\"],\"granted\":[\"b\",\"a\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "b"
+                    },
+                    {
+                      "type": "string",
+                      "value": "a"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": true
+                }
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "{\"owner\":\"b\",\"waiting\":[\"c\",\"a\"],\"seen\":[\"b\",\"c\",\"a\"],\"granted\":[\"b\"]}",
+      "violations": [],
+      "transitions": [
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "release"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":\"c\",\"waiting\":[\"a\"],\"seen\":[\"b\",\"c\",\"a\"],\"granted\":[\"b\",\"c\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "b"
+                    },
+                    {
+                      "type": "string",
+                      "value": "c"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": true
+                }
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "{\"owner\":\"a\",\"waiting\":[],\"seen\":[\"c\",\"a\"],\"granted\":[\"c\",\"a\"]}",
+      "violations": [],
+      "transitions": [
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "release"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":null,\"waiting\":[],\"seen\":[\"c\",\"a\"],\"granted\":[\"c\",\"a\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "c"
+                    },
+                    {
+                      "type": "string",
+                      "value": "a"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": false
+                }
+              ]
+            ]
+          }
+        },
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "id",
+                {
+                  "type": "string",
+                  "value": "b"
+                }
+              ],
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "acquire"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":\"a\",\"waiting\":[\"b\"],\"seen\":[\"c\",\"a\",\"b\"],\"granted\":[\"c\",\"a\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "c"
+                    },
+                    {
+                      "type": "string",
+                      "value": "a"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": true
+                }
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "{\"owner\":\"b\",\"waiting\":[],\"seen\":[\"c\",\"b\"],\"granted\":[\"c\",\"b\"]}",
+      "violations": [],
+      "transitions": [
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "release"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":null,\"waiting\":[],\"seen\":[\"c\",\"b\"],\"granted\":[\"c\",\"b\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "c"
+                    },
+                    {
+                      "type": "string",
+                      "value": "b"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": false
+                }
+              ]
+            ]
+          }
+        },
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "id",
+                {
+                  "type": "string",
+                  "value": "a"
+                }
+              ],
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "acquire"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":\"b\",\"waiting\":[\"a\"],\"seen\":[\"c\",\"b\",\"a\"],\"granted\":[\"c\",\"b\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "c"
+                    },
+                    {
+                      "type": "string",
+                      "value": "b"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": true
+                }
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "{\"owner\":\"c\",\"waiting\":[\"a\",\"b\"],\"seen\":[\"c\",\"a\",\"b\"],\"granted\":[\"c\"]}",
+      "violations": [],
+      "transitions": [
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "release"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":\"a\",\"waiting\":[\"b\"],\"seen\":[\"c\",\"a\",\"b\"],\"granted\":[\"c\",\"a\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "c"
+                    },
+                    {
+                      "type": "string",
+                      "value": "a"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": true
+                }
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "{\"owner\":\"c\",\"waiting\":[\"b\",\"a\"],\"seen\":[\"c\",\"b\",\"a\"],\"granted\":[\"c\"]}",
+      "violations": [],
+      "transitions": [
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "release"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":\"b\",\"waiting\":[\"a\"],\"seen\":[\"c\",\"b\",\"a\"],\"granted\":[\"c\",\"b\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "c"
+                    },
+                    {
+                      "type": "string",
+                      "value": "b"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": true
+                }
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "{\"owner\":null,\"waiting\":[],\"seen\":[\"a\",\"b\"],\"granted\":[\"a\",\"b\"]}",
+      "violations": [],
+      "transitions": [
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "release"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":null,\"waiting\":[],\"seen\":[\"a\",\"b\"],\"granted\":[\"a\",\"b\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "a"
+                    },
+                    {
+                      "type": "string",
+                      "value": "b"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": false
+                }
+              ]
+            ]
+          }
+        },
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "id",
+                {
+                  "type": "string",
+                  "value": "c"
+                }
+              ],
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "acquire"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":\"c\",\"waiting\":[],\"seen\":[\"a\",\"b\",\"c\"],\"granted\":[\"a\",\"b\",\"c\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "a"
+                    },
+                    {
+                      "type": "string",
+                      "value": "b"
+                    },
+                    {
+                      "type": "string",
+                      "value": "c"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": true
+                }
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "{\"owner\":\"b\",\"waiting\":[\"c\"],\"seen\":[\"a\",\"b\",\"c\"],\"granted\":[\"a\",\"b\"]}",
+      "violations": [],
+      "transitions": [
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "release"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":\"c\",\"waiting\":[],\"seen\":[\"a\",\"b\",\"c\"],\"granted\":[\"a\",\"b\",\"c\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "a"
+                    },
+                    {
+                      "type": "string",
+                      "value": "b"
+                    },
+                    {
+                      "type": "string",
+                      "value": "c"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": true
+                }
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "{\"owner\":null,\"waiting\":[],\"seen\":[\"a\",\"c\"],\"granted\":[\"a\",\"c\"]}",
+      "violations": [],
+      "transitions": [
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "release"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":null,\"waiting\":[],\"seen\":[\"a\",\"c\"],\"granted\":[\"a\",\"c\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "a"
+                    },
+                    {
+                      "type": "string",
+                      "value": "c"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": false
+                }
+              ]
+            ]
+          }
+        },
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "id",
+                {
+                  "type": "string",
+                  "value": "b"
+                }
+              ],
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "acquire"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":\"b\",\"waiting\":[],\"seen\":[\"a\",\"c\",\"b\"],\"granted\":[\"a\",\"c\",\"b\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "a"
+                    },
+                    {
+                      "type": "string",
+                      "value": "c"
+                    },
+                    {
+                      "type": "string",
+                      "value": "b"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": true
+                }
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "{\"owner\":\"c\",\"waiting\":[\"b\"],\"seen\":[\"a\",\"c\",\"b\"],\"granted\":[\"a\",\"c\"]}",
+      "violations": [],
+      "transitions": [
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "release"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":\"b\",\"waiting\":[],\"seen\":[\"a\",\"c\",\"b\"],\"granted\":[\"a\",\"c\",\"b\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "a"
+                    },
+                    {
+                      "type": "string",
+                      "value": "c"
+                    },
+                    {
+                      "type": "string",
+                      "value": "b"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": true
+                }
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "{\"owner\":null,\"waiting\":[],\"seen\":[\"b\",\"a\"],\"granted\":[\"b\",\"a\"]}",
+      "violations": [],
+      "transitions": [
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "release"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":null,\"waiting\":[],\"seen\":[\"b\",\"a\"],\"granted\":[\"b\",\"a\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "b"
+                    },
+                    {
+                      "type": "string",
+                      "value": "a"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": false
+                }
+              ]
+            ]
+          }
+        },
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "id",
+                {
+                  "type": "string",
+                  "value": "c"
+                }
+              ],
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "acquire"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":\"c\",\"waiting\":[],\"seen\":[\"b\",\"a\",\"c\"],\"granted\":[\"b\",\"a\",\"c\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "b"
+                    },
+                    {
+                      "type": "string",
+                      "value": "a"
+                    },
+                    {
+                      "type": "string",
+                      "value": "c"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": true
+                }
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "{\"owner\":\"a\",\"waiting\":[\"c\"],\"seen\":[\"b\",\"a\",\"c\"],\"granted\":[\"b\",\"a\"]}",
+      "violations": [],
+      "transitions": [
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "release"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":\"c\",\"waiting\":[],\"seen\":[\"b\",\"a\",\"c\"],\"granted\":[\"b\",\"a\",\"c\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "b"
+                    },
+                    {
+                      "type": "string",
+                      "value": "a"
+                    },
+                    {
+                      "type": "string",
+                      "value": "c"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": true
+                }
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "{\"owner\":null,\"waiting\":[],\"seen\":[\"b\",\"c\"],\"granted\":[\"b\",\"c\"]}",
+      "violations": [],
+      "transitions": [
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "release"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":null,\"waiting\":[],\"seen\":[\"b\",\"c\"],\"granted\":[\"b\",\"c\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "b"
+                    },
+                    {
+                      "type": "string",
+                      "value": "c"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": false
+                }
+              ]
+            ]
+          }
+        },
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "id",
+                {
+                  "type": "string",
+                  "value": "a"
+                }
+              ],
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "acquire"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":\"a\",\"waiting\":[],\"seen\":[\"b\",\"c\",\"a\"],\"granted\":[\"b\",\"c\",\"a\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "b"
+                    },
+                    {
+                      "type": "string",
+                      "value": "c"
+                    },
+                    {
+                      "type": "string",
+                      "value": "a"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": true
+                }
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "{\"owner\":\"c\",\"waiting\":[\"a\"],\"seen\":[\"b\",\"c\",\"a\"],\"granted\":[\"b\",\"c\"]}",
+      "violations": [],
+      "transitions": [
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "release"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":\"a\",\"waiting\":[],\"seen\":[\"b\",\"c\",\"a\"],\"granted\":[\"b\",\"c\",\"a\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "b"
+                    },
+                    {
+                      "type": "string",
+                      "value": "c"
+                    },
+                    {
+                      "type": "string",
+                      "value": "a"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": true
+                }
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "{\"owner\":null,\"waiting\":[],\"seen\":[\"c\",\"a\"],\"granted\":[\"c\",\"a\"]}",
+      "violations": [],
+      "transitions": [
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "release"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":null,\"waiting\":[],\"seen\":[\"c\",\"a\"],\"granted\":[\"c\",\"a\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "c"
+                    },
+                    {
+                      "type": "string",
+                      "value": "a"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": false
+                }
+              ]
+            ]
+          }
+        },
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "id",
+                {
+                  "type": "string",
+                  "value": "b"
+                }
+              ],
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "acquire"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":\"b\",\"waiting\":[],\"seen\":[\"c\",\"a\",\"b\"],\"granted\":[\"c\",\"a\",\"b\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "c"
+                    },
+                    {
+                      "type": "string",
+                      "value": "a"
+                    },
+                    {
+                      "type": "string",
+                      "value": "b"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": true
+                }
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "{\"owner\":\"a\",\"waiting\":[\"b\"],\"seen\":[\"c\",\"a\",\"b\"],\"granted\":[\"c\",\"a\"]}",
+      "violations": [],
+      "transitions": [
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "release"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":\"b\",\"waiting\":[],\"seen\":[\"c\",\"a\",\"b\"],\"granted\":[\"c\",\"a\",\"b\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "c"
+                    },
+                    {
+                      "type": "string",
+                      "value": "a"
+                    },
+                    {
+                      "type": "string",
+                      "value": "b"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": true
+                }
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "{\"owner\":null,\"waiting\":[],\"seen\":[\"c\",\"b\"],\"granted\":[\"c\",\"b\"]}",
+      "violations": [],
+      "transitions": [
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "release"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":null,\"waiting\":[],\"seen\":[\"c\",\"b\"],\"granted\":[\"c\",\"b\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "c"
+                    },
+                    {
+                      "type": "string",
+                      "value": "b"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": false
+                }
+              ]
+            ]
+          }
+        },
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "id",
+                {
+                  "type": "string",
+                  "value": "a"
+                }
+              ],
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "acquire"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":\"a\",\"waiting\":[],\"seen\":[\"c\",\"b\",\"a\"],\"granted\":[\"c\",\"b\",\"a\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "c"
+                    },
+                    {
+                      "type": "string",
+                      "value": "b"
+                    },
+                    {
+                      "type": "string",
+                      "value": "a"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": true
+                }
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "{\"owner\":\"b\",\"waiting\":[\"a\"],\"seen\":[\"c\",\"b\",\"a\"],\"granted\":[\"c\",\"b\"]}",
+      "violations": [],
+      "transitions": [
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "release"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":\"a\",\"waiting\":[],\"seen\":[\"c\",\"b\",\"a\"],\"granted\":[\"c\",\"b\",\"a\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "c"
+                    },
+                    {
+                      "type": "string",
+                      "value": "b"
+                    },
+                    {
+                      "type": "string",
+                      "value": "a"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": true
+                }
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "{\"owner\":\"c\",\"waiting\":[],\"seen\":[\"a\",\"b\",\"c\"],\"granted\":[\"a\",\"b\",\"c\"]}",
+      "violations": [],
+      "transitions": [
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "release"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":null,\"waiting\":[],\"seen\":[\"a\",\"b\",\"c\"],\"granted\":[\"a\",\"b\",\"c\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "a"
+                    },
+                    {
+                      "type": "string",
+                      "value": "b"
+                    },
+                    {
+                      "type": "string",
+                      "value": "c"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": false
+                }
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "{\"owner\":\"b\",\"waiting\":[],\"seen\":[\"a\",\"c\",\"b\"],\"granted\":[\"a\",\"c\",\"b\"]}",
+      "violations": [],
+      "transitions": [
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "release"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":null,\"waiting\":[],\"seen\":[\"a\",\"c\",\"b\"],\"granted\":[\"a\",\"c\",\"b\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "a"
+                    },
+                    {
+                      "type": "string",
+                      "value": "c"
+                    },
+                    {
+                      "type": "string",
+                      "value": "b"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": false
+                }
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "{\"owner\":\"c\",\"waiting\":[],\"seen\":[\"b\",\"a\",\"c\"],\"granted\":[\"b\",\"a\",\"c\"]}",
+      "violations": [],
+      "transitions": [
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "release"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":null,\"waiting\":[],\"seen\":[\"b\",\"a\",\"c\"],\"granted\":[\"b\",\"a\",\"c\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "b"
+                    },
+                    {
+                      "type": "string",
+                      "value": "a"
+                    },
+                    {
+                      "type": "string",
+                      "value": "c"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": false
+                }
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "{\"owner\":\"a\",\"waiting\":[],\"seen\":[\"b\",\"c\",\"a\"],\"granted\":[\"b\",\"c\",\"a\"]}",
+      "violations": [],
+      "transitions": [
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "release"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":null,\"waiting\":[],\"seen\":[\"b\",\"c\",\"a\"],\"granted\":[\"b\",\"c\",\"a\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "b"
+                    },
+                    {
+                      "type": "string",
+                      "value": "c"
+                    },
+                    {
+                      "type": "string",
+                      "value": "a"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": false
+                }
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "{\"owner\":\"b\",\"waiting\":[],\"seen\":[\"c\",\"a\",\"b\"],\"granted\":[\"c\",\"a\",\"b\"]}",
+      "violations": [],
+      "transitions": [
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "release"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":null,\"waiting\":[],\"seen\":[\"c\",\"a\",\"b\"],\"granted\":[\"c\",\"a\",\"b\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "c"
+                    },
+                    {
+                      "type": "string",
+                      "value": "a"
+                    },
+                    {
+                      "type": "string",
+                      "value": "b"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": false
+                }
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "{\"owner\":\"a\",\"waiting\":[],\"seen\":[\"c\",\"b\",\"a\"],\"granted\":[\"c\",\"b\",\"a\"]}",
+      "violations": [],
+      "transitions": [
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "release"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":null,\"waiting\":[],\"seen\":[\"c\",\"b\",\"a\"],\"granted\":[\"c\",\"b\",\"a\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "c"
+                    },
+                    {
+                      "type": "string",
+                      "value": "b"
+                    },
+                    {
+                      "type": "string",
+                      "value": "a"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": false
+                }
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "{\"owner\":null,\"waiting\":[],\"seen\":[\"a\",\"b\",\"c\"],\"granted\":[\"a\",\"b\",\"c\"]}",
+      "violations": [],
+      "transitions": [
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "release"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":null,\"waiting\":[],\"seen\":[\"a\",\"b\",\"c\"],\"granted\":[\"a\",\"b\",\"c\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "a"
+                    },
+                    {
+                      "type": "string",
+                      "value": "b"
+                    },
+                    {
+                      "type": "string",
+                      "value": "c"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": false
+                }
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "{\"owner\":null,\"waiting\":[],\"seen\":[\"a\",\"c\",\"b\"],\"granted\":[\"a\",\"c\",\"b\"]}",
+      "violations": [],
+      "transitions": [
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "release"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":null,\"waiting\":[],\"seen\":[\"a\",\"c\",\"b\"],\"granted\":[\"a\",\"c\",\"b\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "a"
+                    },
+                    {
+                      "type": "string",
+                      "value": "c"
+                    },
+                    {
+                      "type": "string",
+                      "value": "b"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": false
+                }
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "{\"owner\":null,\"waiting\":[],\"seen\":[\"b\",\"a\",\"c\"],\"granted\":[\"b\",\"a\",\"c\"]}",
+      "violations": [],
+      "transitions": [
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "release"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":null,\"waiting\":[],\"seen\":[\"b\",\"a\",\"c\"],\"granted\":[\"b\",\"a\",\"c\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "b"
+                    },
+                    {
+                      "type": "string",
+                      "value": "a"
+                    },
+                    {
+                      "type": "string",
+                      "value": "c"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": false
+                }
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "{\"owner\":null,\"waiting\":[],\"seen\":[\"b\",\"c\",\"a\"],\"granted\":[\"b\",\"c\",\"a\"]}",
+      "violations": [],
+      "transitions": [
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "release"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":null,\"waiting\":[],\"seen\":[\"b\",\"c\",\"a\"],\"granted\":[\"b\",\"c\",\"a\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "b"
+                    },
+                    {
+                      "type": "string",
+                      "value": "c"
+                    },
+                    {
+                      "type": "string",
+                      "value": "a"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": false
+                }
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "{\"owner\":null,\"waiting\":[],\"seen\":[\"c\",\"a\",\"b\"],\"granted\":[\"c\",\"a\",\"b\"]}",
+      "violations": [],
+      "transitions": [
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "release"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":null,\"waiting\":[],\"seen\":[\"c\",\"a\",\"b\"],\"granted\":[\"c\",\"a\",\"b\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "c"
+                    },
+                    {
+                      "type": "string",
+                      "value": "a"
+                    },
+                    {
+                      "type": "string",
+                      "value": "b"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": false
+                }
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "{\"owner\":null,\"waiting\":[],\"seen\":[\"c\",\"b\",\"a\"],\"granted\":[\"c\",\"b\",\"a\"]}",
+      "violations": [],
+      "transitions": [
+        {
+          "action": {
+            "type": "record",
+            "value": [
+              [
+                "type",
+                {
+                  "type": "string",
+                  "value": "release"
+                }
+              ]
+            ]
+          },
+          "target": "{\"owner\":null,\"waiting\":[],\"seen\":[\"c\",\"b\",\"a\"],\"granted\":[\"c\",\"b\",\"a\"]}",
+          "observation": {
+            "type": "record",
+            "value": [
+              [
+                "granted",
+                {
+                  "type": "list",
+                  "value": [
+                    {
+                      "type": "string",
+                      "value": "c"
+                    },
+                    {
+                      "type": "string",
+                      "value": "b"
+                    },
+                    {
+                      "type": "string",
+                      "value": "a"
+                    }
+                  ]
+                }
+              ],
+              [
+                "locked",
+                {
+                  "type": "bool",
+                  "value": false
+                }
+              ]
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
