@@ -1,8 +1,11 @@
 [package]
 name = "modelt-core"
-version = "0.0.0"
+version = "0.1.0-alpha.0"
 edition = "2024"
-publish = false
+description = "Portable finite models, conformance checking and trace replay"
+repository = "https://github.com/mizchi/modelt"
+readme = "README.md"
+include = ["src/**", "examples/counter.rs", "Cargo.toml", "Cargo.lock", "README.md", "LICENSE"]
 license = "MIT"
 
 [lib]

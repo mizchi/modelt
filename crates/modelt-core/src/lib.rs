@@ -1,4 +1,13 @@
+mod finite;
+mod host;
+pub use host::{HostEvent, HostMessage, HostTape, SimulationHost, replay_host};
+mod shrink;
 mod value;
+pub use finite::{Edge, FiniteModel, FiniteState, Initial};
+pub use shrink::{
+    DeletionRange, ShrinkResult, ShrinkStatus, ShrinkVerdict, deletion_candidates,
+    shrink_counterexample,
+};
 #[cfg(target_arch = "wasm32")]
 mod wasm;
 use serde::{Deserialize, Serialize};
@@ -100,11 +109,37 @@ pub enum Response {
 #[derive(Clone, Debug, Serialize, Deserialize)]
 #[serde(tag = "kind", rename_all = "kebab-case", deny_unknown_fields)]
 pub enum Request {
-    Canonicalize { value: Value },
-    Start { model: String, actions: Vec<Value> },
-    Replay { trace: Trace },
-    Resume { id: u32, response: Response },
-    Cancel { id: u32 },
+    ReplayHost {
+        tape: HostTape,
+    },
+    StartFinite {
+        model: FiniteModel,
+        actions: Vec<Value>,
+    },
+    CheckFinite {
+        model: FiniteModel,
+        traces: Vec<Trace>,
+    },
+    ShrinkCandidates {
+        length: u32,
+    },
+    Canonicalize {
+        value: Value,
+    },
+    Start {
+        model: String,
+        actions: Vec<Value>,
+    },
+    Replay {
+        trace: Trace,
+    },
+    Resume {
+        id: u32,
+        response: Response,
+    },
+    Cancel {
+        id: u32,
+    },
 }
 #[derive(Clone, Debug, Serialize, Deserialize)]
 #[serde(deny_unknown_fields)]
@@ -115,6 +150,9 @@ pub struct Command {
 #[derive(Clone, Debug, Serialize, Deserialize)]
 #[serde(tag = "kind", rename_all = "kebab-case", deny_unknown_fields)]
 pub enum Message {
+    Host { snapshot: Value },
+    Results { results: Vec<ConformanceResult> },
+    Candidates { ranges: Vec<DeletionRange> },
     Value { value: Value },
     Effect { effect: Effect },
     Cancelled,
@@ -315,12 +353,14 @@ impl Session {
 
 pub struct Engine {
     session: Option<Session>,
+    finite: Option<FiniteModel>,
     next_id: u32,
 }
 impl Default for Engine {
     fn default() -> Self {
         Self {
             session: None,
+            finite: None,
             next_id: 1,
         }
     }
@@ -349,11 +389,30 @@ impl Engine {
             return Err(CoreError::protocol("Unsupported protocol version"));
         }
         match command.request {
+            Request::ReplayHost { tape } => Ok(Message::Host {
+                snapshot: replay_host(tape)?,
+            }),
             Request::Canonicalize { value } => Ok(Message::Value {
                 value: value.normalize()?,
             }),
-            Request::Start { model, actions } => self.begin(Session::new(model, actions)?),
-            Request::Replay { trace } => self.begin(Session::replay(trace)?),
+            Request::Start { model, actions } => self.begin(Session::new(model, actions)?, None),
+            Request::Replay { trace } => self.begin(Session::replay(trace)?, None),
+            Request::StartFinite { model, actions } => {
+                let model = model.normalize()?;
+                self.begin(Session::new(model.name.clone(), actions)?, Some(model))
+            }
+            Request::CheckFinite { model, traces } => {
+                let model = model.normalize()?;
+                Ok(Message::Results {
+                    results: traces
+                        .into_iter()
+                        .map(|trace| model.check_history(trace))
+                        .collect::<Result<_, _>>()?,
+                })
+            }
+            Request::ShrinkCandidates { length } => Ok(Message::Candidates {
+                ranges: deletion_candidates(length),
+            }),
             Request::Resume { id, response } => {
                 let session = self
                     .session
@@ -361,7 +420,7 @@ impl Engine {
                     .ok_or_else(|| CoreError::protocol("No active session"))?;
                 let effect = session.resume(id, response)?;
                 self.next_id = session.id;
-                Ok(Message::Effect { effect })
+                self.drive(effect)
             }
             Request::Cancel { id } => {
                 let session = self
@@ -375,11 +434,16 @@ impl Engine {
                     .checked_add(1)
                     .ok_or_else(|| CoreError::protocol("Request ID exhausted"))?;
                 self.session = None;
+                self.finite = None;
                 Ok(Message::Cancelled)
             }
         }
     }
-    fn begin(&mut self, mut session: Session) -> Result<Message, CoreError> {
+    fn begin(
+        &mut self,
+        mut session: Session,
+        finite: Option<FiniteModel>,
+    ) -> Result<Message, CoreError> {
         if self
             .session
             .as_ref()
@@ -390,6 +454,28 @@ impl Engine {
         session.id = self.next_id;
         let effect = session.effect();
         self.session = Some(session);
+        self.finite = finite;
+        self.drive(effect)
+    }
+    fn drive(&mut self, mut effect: Effect) -> Result<Message, CoreError> {
+        while let Some(response) = self
+            .finite
+            .as_ref()
+            .map(|model| model.response(&effect))
+            .transpose()?
+            .flatten()
+        {
+            let id = match effect {
+                Effect::ModelInitial { id } | Effect::ModelStep { id, .. } => id,
+                _ => unreachable!(),
+            };
+            let session = self
+                .session
+                .as_mut()
+                .ok_or_else(|| CoreError::protocol("No finite session"))?;
+            effect = session.resume(id, response)?;
+            self.next_id = session.id;
+        }
         Ok(Message::Effect { effect })
     }
 }

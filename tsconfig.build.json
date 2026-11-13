@@ -2,10 +2,12 @@
   "extends": "./tsconfig.json",
   "include": [
     "src/**/*.ts",
+    "cli/**/*.ts",
+    "scripts/**/*.ts",
     "examples/**/*.ts",
     "evals/**/*.ts",
     "tests/*contract.ts",
     "tests/node.test.ts"
   ],
-  "exclude": ["tests/**/*.vitest.test.ts"]
+  "exclude": ["tests/**/*.vitest.test.ts", "evals/fixtures"]
 }

@@ -1,5 +1,8 @@
 import type {
+  DeletionRange,
   Driver,
+  FiniteModel,
+  HostTape,
   Model,
   PortableCommand,
   PortableCore,
@@ -109,6 +112,13 @@ const parseEffect = (value: unknown): PortableEffect => {
   throw new PortableCoreError("protocol", "Unknown effect kind");
 };
 
+export const decodePortableResult = (value: unknown): PortableResult => {
+  const parsed = parseEffect({ kind: "done", result: value });
+  if (parsed.kind !== "done")
+    throw new PortableCoreError("protocol", "Invalid finite result");
+  return parsed.result;
+};
+
 export const createPortableWasm = async (
   bytes: Uint8Array,
 ): Promise<PortableCore> => {
@@ -174,6 +184,45 @@ export const createPortableWasm = async (
       if (output.kind === "value") {
         fields(output, ["kind", "value"]);
         return { kind: "value", value: normalizePortableValue(output.value) };
+      }
+      if (output.kind === "host") {
+        fields(output, ["kind", "snapshot"]);
+        return {
+          kind: "host",
+          snapshot: normalizePortableValue(output.snapshot),
+        };
+      }
+      if (output.kind === "results") {
+        fields(output, ["kind", "results"]);
+        if (!Array.isArray(output.results))
+          throw new PortableCoreError("protocol", "Invalid finite results");
+        return {
+          kind: "results",
+          results: output.results.map((result: unknown) =>
+            decodePortableResult(result),
+          ),
+        };
+      }
+      if (output.kind === "candidates") {
+        fields(output, ["kind", "ranges"]);
+        if (!Array.isArray(output.ranges))
+          throw new PortableCoreError("protocol", "Invalid shrink candidates");
+        return {
+          kind: "candidates",
+          ranges: output.ranges.map((range: unknown) => {
+            const parsed = fields(range, ["start", "count"]);
+            if (
+              typeof parsed.start !== "number" ||
+              !Number.isSafeInteger(parsed.start) ||
+              parsed.start < 0 ||
+              typeof parsed.count !== "number" ||
+              !Number.isSafeInteger(parsed.count) ||
+              parsed.count < 1
+            )
+              throw new PortableCoreError("protocol", "Invalid deletion range");
+            return { start: parsed.start, count: parsed.count };
+          }),
+        };
       }
       fields(output, ["kind", "effect"]);
       if (output.kind !== "effect")
@@ -366,3 +415,73 @@ export const checkPortableTrace = async <Action, Observation>(
     },
     () => driver.dispose?.(),
   );
+
+export const checkFiniteConformance = async (
+  core: PortableCore,
+  model: FiniteModel,
+  driver: Driver<PortableValue, PortableValue>,
+  actions: readonly PortableValue[],
+): Promise<PortableResult> =>
+  runEffects(
+    core,
+    () => ({ version: 1, request: { kind: "start-finite", model, actions } }),
+    async (effect) => {
+      if (effect.kind === "driver-reset")
+        return {
+          kind: "observation",
+          observation: normalizePortableValue(await driver.reset()),
+        };
+      if (effect.kind === "driver-step")
+        return {
+          kind: "observation",
+          observation: normalizePortableValue(await driver.step(effect.action)),
+        };
+      throw new PortableCoreError(
+        "protocol",
+        "Finite core requested a model host",
+      );
+    },
+    () => driver.dispose?.(),
+  );
+
+export const checkFiniteHistories = (
+  core: PortableCore,
+  model: FiniteModel,
+  traces: readonly PortableTrace[],
+): readonly PortableResult[] => {
+  const result = core.request({
+    version: 1,
+    request: { kind: "check-finite", model, traces },
+  });
+  if (result.kind !== "results")
+    throw new PortableCoreError("protocol", "Expected finite results");
+  return result.results;
+};
+
+export const coreDeletionCandidates = (
+  core: PortableCore,
+  length: number,
+): readonly DeletionRange[] => {
+  if (!Number.isSafeInteger(length) || length < 0 || length > 0xffff_ffff)
+    throw new RangeError("Invalid sequence length");
+  const result = core.request({
+    version: 1,
+    request: { kind: "shrink-candidates", length },
+  });
+  if (result.kind !== "candidates")
+    throw new PortableCoreError("protocol", "Expected deletion candidates");
+  return result.ranges;
+};
+
+export const verifyHostTape = (
+  core: PortableCore,
+  tape: HostTape,
+): PortableValue => {
+  const result = core.request({
+    version: 1,
+    request: { kind: "replay-host", tape },
+  });
+  if (result.kind !== "host")
+    throw new PortableCoreError("protocol", "Expected host snapshot");
+  return result.snapshot;
+};

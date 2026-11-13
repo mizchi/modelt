@@ -4,11 +4,13 @@
     "includes": [
       "**",
       "!dist",
+      "!assets",
       "!.mutator",
       "!.artifacts",
       "!test-results",
       "!playwright-report",
       "!evals/runs",
+      "!evals/fixtures",
       "!evals/rust-probe/target",
       "!crates/modelt-core/target",
       "!pnpm-lock.yaml"

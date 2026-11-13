@@ -114,6 +114,18 @@ export interface PortableCommand {
   readonly version: 1;
   readonly request:
     | { readonly kind: "canonicalize"; readonly value: PortableValue }
+    | { readonly kind: "replay-host"; readonly tape: HostTape }
+    | {
+        readonly kind: "start-finite";
+        readonly model: FiniteModel;
+        readonly actions: readonly PortableValue[];
+      }
+    | {
+        readonly kind: "check-finite";
+        readonly model: FiniteModel;
+        readonly traces: readonly PortableTrace[];
+      }
+    | { readonly kind: "shrink-candidates"; readonly length: number }
     | {
         readonly kind: "start";
         readonly model: string;
@@ -129,6 +141,9 @@ export interface PortableCommand {
 }
 
 export type PortableOutput =
+  | { readonly kind: "host"; readonly snapshot: PortableValue }
+  | { readonly kind: "results"; readonly results: readonly PortableResult[] }
+  | { readonly kind: "candidates"; readonly ranges: readonly DeletionRange[] }
   | { readonly kind: "cancelled" }
   | { readonly kind: "value"; readonly value: PortableValue }
   | { readonly kind: "effect"; readonly effect: PortableEffect };
@@ -141,4 +156,69 @@ export interface PortableEncoding<State, Action, Observation> {
   readonly state?: (state: State) => PortableValue;
   readonly action?: (action: Action) => PortableValue;
   readonly observation?: (observation: Observation) => PortableValue;
+}
+
+export interface FiniteModel {
+  readonly format: "modelt.finite-model";
+  readonly version: 1;
+  readonly name: string;
+  readonly initial: readonly {
+    readonly key: string;
+    readonly observation: PortableValue;
+  }[];
+  readonly states: readonly {
+    readonly key: string;
+    readonly violations: readonly string[];
+    readonly transitions: readonly {
+      readonly action: PortableValue;
+      readonly target: string;
+      readonly observation: PortableValue;
+    }[];
+  }[];
+}
+export interface DeletionRange {
+  readonly start: number;
+  readonly count: number;
+}
+export type ShrinkVerdict =
+  | { readonly status: "matched" | "invalid" }
+  | { readonly status: "mismatch"; readonly signature: string };
+export interface ShrinkResult<Action> {
+  readonly status: "minimal" | "bounded" | "not-failing";
+  readonly actions: readonly Action[];
+  readonly checks: number;
+}
+export interface HostTape {
+  readonly format: "modelt.host-tape";
+  readonly version: 1;
+  readonly events: readonly {
+    readonly operation: string;
+    readonly input: PortableValue;
+    readonly output: PortableValue;
+  }[];
+}
+export interface HostMessage {
+  readonly id: number;
+  readonly from: string;
+  readonly to: string;
+  readonly payload: PortableValue;
+}
+export interface SimulationHost {
+  readonly now: () => number;
+  readonly advance: (amount: number) => void;
+  readonly choose: <Choice>(
+    label: string,
+    choices: readonly Choice[],
+  ) => Choice;
+  readonly send: (from: string, to: string, payload: unknown) => number;
+  readonly deliver: (index: number) => HostMessage;
+  readonly drop: (index: number) => void;
+  readonly pending: () => readonly HostMessage[];
+  readonly write: (key: string, value: unknown) => void;
+  readonly read: (key: string) => unknown;
+  readonly persist: () => void;
+  readonly crash: () => void;
+  readonly restart: () => void;
+  readonly trace: () => HostTape;
+  readonly finish: () => void;
 }

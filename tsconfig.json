@@ -13,8 +13,11 @@
     "skipLibCheck": true,
     "types": ["node"]
   },
+  "exclude": ["evals/fixtures"],
   "include": [
     "src/**/*.ts",
+    "cli/**/*.ts",
+    "scripts/**/*.ts",
     "examples/**/*.ts",
     "evals/**/*.ts",
     "tests/**/*.ts",
