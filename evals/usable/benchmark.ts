@@ -47,9 +47,22 @@ export const benchmarkFinite = async (
   const nativeStartupMs = performance.now() - start;
   const batches = [];
   try {
+    const controls = await Promise.all(
+      source.map((trace) => checkFiniteHistory(model, trace)),
+    );
+    assert.deepEqual(checkFiniteHistories(core, artifact, source), controls);
+    assert.deepEqual(
+      decodeResults(
+        await native.request({
+          version: 1,
+          request: { kind: "check-finite", model: artifact, traces: source },
+        }),
+      ),
+      controls,
+    );
     for (const size of [1, 16, 64]) {
-      const traces = Array.from({ length: size }, (_, index) => {
-        const trace = source[index % source.length];
+      const traces = Array.from({ length: size }, () => {
+        const trace = source[0];
         if (!trace) throw new Error("Missing benchmark history");
         return trace;
       });
@@ -132,10 +145,12 @@ export const benchmarkFinite = async (
   return {
     warmupBatches: 3,
     measuredBatches: 9,
+    profiledHistory: source[0],
+    correctnessControls: source.length,
     tsSetupMs,
     nativeStartupMs,
     batches,
     scope:
-      "Identical saved histories and finite model, recording disabled. ts-prepared excludes loading; wire profiles include JSON/model loading, validation and full results. Native uses one persistent process; IPC is included and process startup is separate. Wall times are use costs, not CPU language ratios.",
+      "Every batch size repeats the same first history. Other histories are correctness controls outside timing. Recording disabled. ts-prepared excludes loading; wire profiles include JSON/model loading, validation and full results. Native uses one persistent process; IPC is included and process startup is separate. Wall times are use costs, not CPU language ratios.",
   };
 };

@@ -26,3 +26,7 @@
 結果・失敗・source digest・upstream provenance・次の判断を evals/runs と iteration に保存する。確認用 seed の CI 再実行は独立した新実験には数えない。
 
 実装中の追加（確認用 seed 実行前）: HostTape の語彙を Rust にも実装し、同じ TS の選択・時計・配送・永続化 tape の最終状態を native / Wasm で照合する。言語間で payload を二重に符号化しないことを共通契約に含める。
+
+## 性能測定の補足（確認 run 後、追加測定前）
+
+最初の測定は batch size ごとに4実装へ同じ履歴を渡したが、size1では正常履歴だけ、size16/64では正常・故障・invalidを混在させた。その測定は batch 間の改善率には使わず保存する。追加測定はすべての size で同じ正常履歴を繰り返し、他の履歴は計測外の correctness control にする。元の corpus / seed / bug 条件を変更せず、固定履歴による性能測定を独立したバグ検出実験には数えない。
