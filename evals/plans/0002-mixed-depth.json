@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "id": "0002-mixed-depth",
+  "scope": "synthetic-counter",
+  "hypothesis": "0001 の長い履歴による追加検出を残しつつ、短い履歴との交互実行で配信順序の検出の後退を減らせる",
+  "change": "uniform-8 を基準に、8操作と16操作のケースを交互に生成する。PRNG・モデル・故障・総予算は変更しない",
+  "baseline": { "id": "uniform-8", "strategy": "uniform", "maxDepth": 8 },
+  "candidate": {
+    "id": "alternating-8-16",
+    "strategy": "alternating",
+    "maxDepth": 16
+  },
+  "maxOperations": 512,
+  "developmentSeeds": [
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20
+  ],
+  "confirmationSeeds": [
+    41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59,
+    60
+  ],
+  "decisionRule": "故障別の検出数と seed ごとの勝敗、反例長、reset 数を記録し、追加検出があっても後退と診断費用を隠さない。正常対照と再現の失敗を採用材料にしない",
+  "limitations": "0001 の結果を見て作った探索的な次の仮説。開発用 seed は再利用し、確認用 seed は新規。人工故障の種類は既知のまま"
+}
