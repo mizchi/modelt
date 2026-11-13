@@ -10,4 +10,6 @@
 - タスクは `justfile`。終了前に `just check` と `just browser`。mutation 対象や共有テストを変えたら `just mutation`。
 - `@mizchi/mutator` は Vitest で TS ソースを変異させる。node:test は共通の挙動テストを実行する。
 - ブラウザ対応を変更したら Playwright の実ブラウザテストで確認する。
+- 手法の採用は既存手法に対する追加検出、正常版の対照、実装での反例再現、実行・診断コストで判断する。試作への実装と採用決定を区別し、人工故障の検出を実プロジェクトの未知バグ発見に数えない。
+- 実験は `experiments/` に置き、public API と分離する。条件を結果を見る前に固定し、変更した条件を記録する。実験を変更したら `just evaluate` と `just replay-evaluation` を実行し、未検出・例外・予算切れを合格へ置き換えない。
 - コミットは conventional commits。公開やリリースは依頼の範囲に従う。

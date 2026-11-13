@@ -19,6 +19,8 @@ just browser
 
 `just check` は lint、型検査、Vitest、`node:test` を実行する。共通の挙動テストを両ランナーに登録している。`just mutation` は `@mizchi/mutator` で TS ソースを変異させ、Vitest で検査する。
 
+採用判断のための比較は `just evaluate`、保存した故障の再現は `just replay-evaluation`。[初回の結果](docs/evaluation-results.md) には、追加検出、見逃し、正常版の対照、実行コストと採用候補を記録している。実験用の探索器・履歴 checker は public API に含めない。
+
 ## モデルと実装の比較
 
 ```ts

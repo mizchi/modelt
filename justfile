@@ -20,3 +20,9 @@ browser:
 
 demo:
   pnpm example
+
+evaluate:
+  pnpm evaluate
+
+replay-evaluation:
+  pnpm evaluate:replay

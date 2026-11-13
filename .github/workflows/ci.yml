@@ -28,9 +28,17 @@ jobs:
       - run: pnpm exec playwright install --with-deps chromium
       - run: pnpm test:browser
       - run: pnpm test:mutation
+      - run: pnpm evaluate
+      - run: pnpm evaluate:replay
       - uses: actions/upload-artifact@v7.0.2
         if: always()
         with:
           name: mutation-report
           path: .mutator/report
+          if-no-files-found: ignore
+      - uses: actions/upload-artifact@v7.0.2
+        if: always()
+        with:
+          name: method-evaluation
+          path: .artifacts/evaluation
           if-no-files-found: ignore

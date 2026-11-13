@@ -36,7 +36,9 @@
     "test:node": "pnpm build && node --test dist/tests/node.test.js",
     "test:browser": "playwright test",
     "test:mutation": "mutator --runner vitest --config vitest.mutation.config.ts --reporter text --reporter json",
-    "example": "pnpm build && node dist/examples/demo.js"
+    "example": "pnpm build && node dist/examples/demo.js",
+    "evaluate": "pnpm build && node dist/experiments/evaluate.js",
+    "evaluate:replay": "pnpm build && node dist/experiments/replay.js"
   },
   "dependencies": {
     "fast-check": "4.10.2",
