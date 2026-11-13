@@ -1,22 +1,6 @@
 name: Runtime evaluation
 on:
   workflow_dispatch:
-  pull_request:
-    paths:
-      [
-        "src/budget.ts",
-        "src/sharding.ts",
-        "src/**",
-        "examples/**",
-        "evals/harness/**",
-        "evals/runtime/**",
-        "evals/rust-probe/**",
-        "tests/runtime*",
-        "package.json",
-        "pnpm-lock.yaml",
-        ".github/actions/setup/**",
-        ".github/workflows/runtime.yml",
-      ]
 permissions:
   contents: read
 concurrency:

@@ -55,3 +55,20 @@ portable-eval:
 
 portable-replay run:
   pnpm portable:replay {{quote(run)}}
+
+usable-test:
+  pnpm usable:test
+
+usable-eval:
+  pnpm usable:eval
+
+usable-replay run:
+  pnpm usable:replay {{quote(run)}}
+
+usable-benchmark input output:
+  pnpm build
+  node dist/evals/usable/benchmark-run.js {{quote(input)}} {{quote(output)}}
+
+package:
+  pnpm package:prepare
+  pnpm package:test

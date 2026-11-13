@@ -1,0 +1,5702 @@
+[
+  {
+    "seed": 161,
+    "actions": [
+      {
+        "type": "acquire",
+        "id": "a"
+      },
+      {
+        "type": "acquire",
+        "id": "b"
+      },
+      {
+        "type": "release"
+      },
+      {
+        "type": "release"
+      }
+    ],
+    "originalLength": 5,
+    "checks": 16,
+    "sutOperations": 60,
+    "invalidCandidates": 0,
+    "result": {
+      "status": "mismatch",
+      "checkedSteps": 4,
+      "actual": {
+        "type": "record",
+        "value": [
+          [
+            "granted",
+            {
+              "type": "list",
+              "value": [
+                {
+                  "type": "string",
+                  "value": "a"
+                },
+                {
+                  "type": "string",
+                  "value": "b"
+                }
+              ]
+            }
+          ],
+          [
+            "locked",
+            {
+              "type": "bool",
+              "value": true
+            }
+          ]
+        ]
+      },
+      "expected": [
+        {
+          "type": "record",
+          "value": [
+            [
+              "granted",
+              {
+                "type": "list",
+                "value": [
+                  {
+                    "type": "string",
+                    "value": "a"
+                  },
+                  {
+                    "type": "string",
+                    "value": "b"
+                  }
+                ]
+              }
+            ],
+            [
+              "locked",
+              {
+                "type": "bool",
+                "value": false
+              }
+            ]
+          ]
+        }
+      ],
+      "trace": {
+        "format": "modelt.portable-trace",
+        "version": 1,
+        "model": "fifo-mutex",
+        "initial": {
+          "type": "record",
+          "value": [
+            [
+              "granted",
+              {
+                "type": "list",
+                "value": []
+              }
+            ],
+            [
+              "locked",
+              {
+                "type": "bool",
+                "value": false
+              }
+            ]
+          ]
+        },
+        "steps": [
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "id",
+                  {
+                    "type": "string",
+                    "value": "a"
+                  }
+                ],
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "acquire"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "a"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "id",
+                  {
+                    "type": "string",
+                    "value": "b"
+                  }
+                ],
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "acquire"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "a"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "release"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "a"
+                      },
+                      {
+                        "type": "string",
+                        "value": "b"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "release"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "a"
+                      },
+                      {
+                        "type": "string",
+                        "value": "b"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "seed": 162,
+    "actions": [
+      {
+        "type": "acquire",
+        "id": "a"
+      },
+      {
+        "type": "acquire",
+        "id": "b"
+      },
+      {
+        "type": "release"
+      },
+      {
+        "type": "release"
+      }
+    ],
+    "originalLength": 5,
+    "checks": 16,
+    "sutOperations": 60,
+    "invalidCandidates": 0,
+    "result": {
+      "status": "mismatch",
+      "checkedSteps": 4,
+      "actual": {
+        "type": "record",
+        "value": [
+          [
+            "granted",
+            {
+              "type": "list",
+              "value": [
+                {
+                  "type": "string",
+                  "value": "a"
+                },
+                {
+                  "type": "string",
+                  "value": "b"
+                }
+              ]
+            }
+          ],
+          [
+            "locked",
+            {
+              "type": "bool",
+              "value": true
+            }
+          ]
+        ]
+      },
+      "expected": [
+        {
+          "type": "record",
+          "value": [
+            [
+              "granted",
+              {
+                "type": "list",
+                "value": [
+                  {
+                    "type": "string",
+                    "value": "a"
+                  },
+                  {
+                    "type": "string",
+                    "value": "b"
+                  }
+                ]
+              }
+            ],
+            [
+              "locked",
+              {
+                "type": "bool",
+                "value": false
+              }
+            ]
+          ]
+        }
+      ],
+      "trace": {
+        "format": "modelt.portable-trace",
+        "version": 1,
+        "model": "fifo-mutex",
+        "initial": {
+          "type": "record",
+          "value": [
+            [
+              "granted",
+              {
+                "type": "list",
+                "value": []
+              }
+            ],
+            [
+              "locked",
+              {
+                "type": "bool",
+                "value": false
+              }
+            ]
+          ]
+        },
+        "steps": [
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "id",
+                  {
+                    "type": "string",
+                    "value": "a"
+                  }
+                ],
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "acquire"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "a"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "id",
+                  {
+                    "type": "string",
+                    "value": "b"
+                  }
+                ],
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "acquire"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "a"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "release"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "a"
+                      },
+                      {
+                        "type": "string",
+                        "value": "b"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "release"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "a"
+                      },
+                      {
+                        "type": "string",
+                        "value": "b"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "seed": 163,
+    "actions": [
+      {
+        "type": "acquire",
+        "id": "a"
+      },
+      {
+        "type": "acquire",
+        "id": "c"
+      },
+      {
+        "type": "release"
+      },
+      {
+        "type": "release"
+      }
+    ],
+    "originalLength": 5,
+    "checks": 16,
+    "sutOperations": 60,
+    "invalidCandidates": 0,
+    "result": {
+      "status": "mismatch",
+      "checkedSteps": 4,
+      "actual": {
+        "type": "record",
+        "value": [
+          [
+            "granted",
+            {
+              "type": "list",
+              "value": [
+                {
+                  "type": "string",
+                  "value": "a"
+                },
+                {
+                  "type": "string",
+                  "value": "c"
+                }
+              ]
+            }
+          ],
+          [
+            "locked",
+            {
+              "type": "bool",
+              "value": true
+            }
+          ]
+        ]
+      },
+      "expected": [
+        {
+          "type": "record",
+          "value": [
+            [
+              "granted",
+              {
+                "type": "list",
+                "value": [
+                  {
+                    "type": "string",
+                    "value": "a"
+                  },
+                  {
+                    "type": "string",
+                    "value": "c"
+                  }
+                ]
+              }
+            ],
+            [
+              "locked",
+              {
+                "type": "bool",
+                "value": false
+              }
+            ]
+          ]
+        }
+      ],
+      "trace": {
+        "format": "modelt.portable-trace",
+        "version": 1,
+        "model": "fifo-mutex",
+        "initial": {
+          "type": "record",
+          "value": [
+            [
+              "granted",
+              {
+                "type": "list",
+                "value": []
+              }
+            ],
+            [
+              "locked",
+              {
+                "type": "bool",
+                "value": false
+              }
+            ]
+          ]
+        },
+        "steps": [
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "id",
+                  {
+                    "type": "string",
+                    "value": "a"
+                  }
+                ],
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "acquire"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "a"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "id",
+                  {
+                    "type": "string",
+                    "value": "c"
+                  }
+                ],
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "acquire"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "a"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "release"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "a"
+                      },
+                      {
+                        "type": "string",
+                        "value": "c"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "release"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "a"
+                      },
+                      {
+                        "type": "string",
+                        "value": "c"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "seed": 164,
+    "actions": [
+      {
+        "type": "acquire",
+        "id": "a"
+      },
+      {
+        "type": "acquire",
+        "id": "c"
+      },
+      {
+        "type": "release"
+      },
+      {
+        "type": "release"
+      }
+    ],
+    "originalLength": 5,
+    "checks": 19,
+    "sutOperations": 75,
+    "invalidCandidates": 0,
+    "result": {
+      "status": "mismatch",
+      "checkedSteps": 4,
+      "actual": {
+        "type": "record",
+        "value": [
+          [
+            "granted",
+            {
+              "type": "list",
+              "value": [
+                {
+                  "type": "string",
+                  "value": "a"
+                },
+                {
+                  "type": "string",
+                  "value": "c"
+                }
+              ]
+            }
+          ],
+          [
+            "locked",
+            {
+              "type": "bool",
+              "value": true
+            }
+          ]
+        ]
+      },
+      "expected": [
+        {
+          "type": "record",
+          "value": [
+            [
+              "granted",
+              {
+                "type": "list",
+                "value": [
+                  {
+                    "type": "string",
+                    "value": "a"
+                  },
+                  {
+                    "type": "string",
+                    "value": "c"
+                  }
+                ]
+              }
+            ],
+            [
+              "locked",
+              {
+                "type": "bool",
+                "value": false
+              }
+            ]
+          ]
+        }
+      ],
+      "trace": {
+        "format": "modelt.portable-trace",
+        "version": 1,
+        "model": "fifo-mutex",
+        "initial": {
+          "type": "record",
+          "value": [
+            [
+              "granted",
+              {
+                "type": "list",
+                "value": []
+              }
+            ],
+            [
+              "locked",
+              {
+                "type": "bool",
+                "value": false
+              }
+            ]
+          ]
+        },
+        "steps": [
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "id",
+                  {
+                    "type": "string",
+                    "value": "a"
+                  }
+                ],
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "acquire"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "a"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "id",
+                  {
+                    "type": "string",
+                    "value": "c"
+                  }
+                ],
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "acquire"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "a"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "release"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "a"
+                      },
+                      {
+                        "type": "string",
+                        "value": "c"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "release"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "a"
+                      },
+                      {
+                        "type": "string",
+                        "value": "c"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "seed": 165,
+    "actions": [
+      {
+        "type": "acquire",
+        "id": "a"
+      },
+      {
+        "type": "acquire",
+        "id": "c"
+      },
+      {
+        "type": "release"
+      },
+      {
+        "type": "release"
+      }
+    ],
+    "originalLength": 5,
+    "checks": 16,
+    "sutOperations": 60,
+    "invalidCandidates": 0,
+    "result": {
+      "status": "mismatch",
+      "checkedSteps": 4,
+      "actual": {
+        "type": "record",
+        "value": [
+          [
+            "granted",
+            {
+              "type": "list",
+              "value": [
+                {
+                  "type": "string",
+                  "value": "a"
+                },
+                {
+                  "type": "string",
+                  "value": "c"
+                }
+              ]
+            }
+          ],
+          [
+            "locked",
+            {
+              "type": "bool",
+              "value": true
+            }
+          ]
+        ]
+      },
+      "expected": [
+        {
+          "type": "record",
+          "value": [
+            [
+              "granted",
+              {
+                "type": "list",
+                "value": [
+                  {
+                    "type": "string",
+                    "value": "a"
+                  },
+                  {
+                    "type": "string",
+                    "value": "c"
+                  }
+                ]
+              }
+            ],
+            [
+              "locked",
+              {
+                "type": "bool",
+                "value": false
+              }
+            ]
+          ]
+        }
+      ],
+      "trace": {
+        "format": "modelt.portable-trace",
+        "version": 1,
+        "model": "fifo-mutex",
+        "initial": {
+          "type": "record",
+          "value": [
+            [
+              "granted",
+              {
+                "type": "list",
+                "value": []
+              }
+            ],
+            [
+              "locked",
+              {
+                "type": "bool",
+                "value": false
+              }
+            ]
+          ]
+        },
+        "steps": [
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "id",
+                  {
+                    "type": "string",
+                    "value": "a"
+                  }
+                ],
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "acquire"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "a"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "id",
+                  {
+                    "type": "string",
+                    "value": "c"
+                  }
+                ],
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "acquire"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "a"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "release"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "a"
+                      },
+                      {
+                        "type": "string",
+                        "value": "c"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "release"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "a"
+                      },
+                      {
+                        "type": "string",
+                        "value": "c"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "seed": 166,
+    "actions": [
+      {
+        "type": "acquire",
+        "id": "c"
+      },
+      {
+        "type": "acquire",
+        "id": "a"
+      },
+      {
+        "type": "release"
+      },
+      {
+        "type": "release"
+      }
+    ],
+    "originalLength": 5,
+    "checks": 16,
+    "sutOperations": 60,
+    "invalidCandidates": 0,
+    "result": {
+      "status": "mismatch",
+      "checkedSteps": 4,
+      "actual": {
+        "type": "record",
+        "value": [
+          [
+            "granted",
+            {
+              "type": "list",
+              "value": [
+                {
+                  "type": "string",
+                  "value": "c"
+                },
+                {
+                  "type": "string",
+                  "value": "a"
+                }
+              ]
+            }
+          ],
+          [
+            "locked",
+            {
+              "type": "bool",
+              "value": true
+            }
+          ]
+        ]
+      },
+      "expected": [
+        {
+          "type": "record",
+          "value": [
+            [
+              "granted",
+              {
+                "type": "list",
+                "value": [
+                  {
+                    "type": "string",
+                    "value": "c"
+                  },
+                  {
+                    "type": "string",
+                    "value": "a"
+                  }
+                ]
+              }
+            ],
+            [
+              "locked",
+              {
+                "type": "bool",
+                "value": false
+              }
+            ]
+          ]
+        }
+      ],
+      "trace": {
+        "format": "modelt.portable-trace",
+        "version": 1,
+        "model": "fifo-mutex",
+        "initial": {
+          "type": "record",
+          "value": [
+            [
+              "granted",
+              {
+                "type": "list",
+                "value": []
+              }
+            ],
+            [
+              "locked",
+              {
+                "type": "bool",
+                "value": false
+              }
+            ]
+          ]
+        },
+        "steps": [
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "id",
+                  {
+                    "type": "string",
+                    "value": "c"
+                  }
+                ],
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "acquire"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "c"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "id",
+                  {
+                    "type": "string",
+                    "value": "a"
+                  }
+                ],
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "acquire"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "c"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "release"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "c"
+                      },
+                      {
+                        "type": "string",
+                        "value": "a"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "release"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "c"
+                      },
+                      {
+                        "type": "string",
+                        "value": "a"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "seed": 167,
+    "actions": [
+      {
+        "type": "acquire",
+        "id": "a"
+      },
+      {
+        "type": "acquire",
+        "id": "c"
+      },
+      {
+        "type": "release"
+      },
+      {
+        "type": "release"
+      }
+    ],
+    "originalLength": 5,
+    "checks": 16,
+    "sutOperations": 60,
+    "invalidCandidates": 0,
+    "result": {
+      "status": "mismatch",
+      "checkedSteps": 4,
+      "actual": {
+        "type": "record",
+        "value": [
+          [
+            "granted",
+            {
+              "type": "list",
+              "value": [
+                {
+                  "type": "string",
+                  "value": "a"
+                },
+                {
+                  "type": "string",
+                  "value": "c"
+                }
+              ]
+            }
+          ],
+          [
+            "locked",
+            {
+              "type": "bool",
+              "value": true
+            }
+          ]
+        ]
+      },
+      "expected": [
+        {
+          "type": "record",
+          "value": [
+            [
+              "granted",
+              {
+                "type": "list",
+                "value": [
+                  {
+                    "type": "string",
+                    "value": "a"
+                  },
+                  {
+                    "type": "string",
+                    "value": "c"
+                  }
+                ]
+              }
+            ],
+            [
+              "locked",
+              {
+                "type": "bool",
+                "value": false
+              }
+            ]
+          ]
+        }
+      ],
+      "trace": {
+        "format": "modelt.portable-trace",
+        "version": 1,
+        "model": "fifo-mutex",
+        "initial": {
+          "type": "record",
+          "value": [
+            [
+              "granted",
+              {
+                "type": "list",
+                "value": []
+              }
+            ],
+            [
+              "locked",
+              {
+                "type": "bool",
+                "value": false
+              }
+            ]
+          ]
+        },
+        "steps": [
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "id",
+                  {
+                    "type": "string",
+                    "value": "a"
+                  }
+                ],
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "acquire"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "a"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "id",
+                  {
+                    "type": "string",
+                    "value": "c"
+                  }
+                ],
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "acquire"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "a"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "release"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "a"
+                      },
+                      {
+                        "type": "string",
+                        "value": "c"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "release"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "a"
+                      },
+                      {
+                        "type": "string",
+                        "value": "c"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "seed": 168,
+    "actions": [
+      {
+        "type": "acquire",
+        "id": "b"
+      },
+      {
+        "type": "acquire",
+        "id": "a"
+      },
+      {
+        "type": "release"
+      },
+      {
+        "type": "release"
+      }
+    ],
+    "originalLength": 5,
+    "checks": 19,
+    "sutOperations": 75,
+    "invalidCandidates": 0,
+    "result": {
+      "status": "mismatch",
+      "checkedSteps": 4,
+      "actual": {
+        "type": "record",
+        "value": [
+          [
+            "granted",
+            {
+              "type": "list",
+              "value": [
+                {
+                  "type": "string",
+                  "value": "b"
+                },
+                {
+                  "type": "string",
+                  "value": "a"
+                }
+              ]
+            }
+          ],
+          [
+            "locked",
+            {
+              "type": "bool",
+              "value": true
+            }
+          ]
+        ]
+      },
+      "expected": [
+        {
+          "type": "record",
+          "value": [
+            [
+              "granted",
+              {
+                "type": "list",
+                "value": [
+                  {
+                    "type": "string",
+                    "value": "b"
+                  },
+                  {
+                    "type": "string",
+                    "value": "a"
+                  }
+                ]
+              }
+            ],
+            [
+              "locked",
+              {
+                "type": "bool",
+                "value": false
+              }
+            ]
+          ]
+        }
+      ],
+      "trace": {
+        "format": "modelt.portable-trace",
+        "version": 1,
+        "model": "fifo-mutex",
+        "initial": {
+          "type": "record",
+          "value": [
+            [
+              "granted",
+              {
+                "type": "list",
+                "value": []
+              }
+            ],
+            [
+              "locked",
+              {
+                "type": "bool",
+                "value": false
+              }
+            ]
+          ]
+        },
+        "steps": [
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "id",
+                  {
+                    "type": "string",
+                    "value": "b"
+                  }
+                ],
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "acquire"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "b"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "id",
+                  {
+                    "type": "string",
+                    "value": "a"
+                  }
+                ],
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "acquire"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "b"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "release"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "b"
+                      },
+                      {
+                        "type": "string",
+                        "value": "a"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "release"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "b"
+                      },
+                      {
+                        "type": "string",
+                        "value": "a"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "seed": 169,
+    "actions": [
+      {
+        "type": "acquire",
+        "id": "b"
+      },
+      {
+        "type": "acquire",
+        "id": "a"
+      },
+      {
+        "type": "release"
+      },
+      {
+        "type": "release"
+      }
+    ],
+    "originalLength": 5,
+    "checks": 19,
+    "sutOperations": 75,
+    "invalidCandidates": 0,
+    "result": {
+      "status": "mismatch",
+      "checkedSteps": 4,
+      "actual": {
+        "type": "record",
+        "value": [
+          [
+            "granted",
+            {
+              "type": "list",
+              "value": [
+                {
+                  "type": "string",
+                  "value": "b"
+                },
+                {
+                  "type": "string",
+                  "value": "a"
+                }
+              ]
+            }
+          ],
+          [
+            "locked",
+            {
+              "type": "bool",
+              "value": true
+            }
+          ]
+        ]
+      },
+      "expected": [
+        {
+          "type": "record",
+          "value": [
+            [
+              "granted",
+              {
+                "type": "list",
+                "value": [
+                  {
+                    "type": "string",
+                    "value": "b"
+                  },
+                  {
+                    "type": "string",
+                    "value": "a"
+                  }
+                ]
+              }
+            ],
+            [
+              "locked",
+              {
+                "type": "bool",
+                "value": false
+              }
+            ]
+          ]
+        }
+      ],
+      "trace": {
+        "format": "modelt.portable-trace",
+        "version": 1,
+        "model": "fifo-mutex",
+        "initial": {
+          "type": "record",
+          "value": [
+            [
+              "granted",
+              {
+                "type": "list",
+                "value": []
+              }
+            ],
+            [
+              "locked",
+              {
+                "type": "bool",
+                "value": false
+              }
+            ]
+          ]
+        },
+        "steps": [
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "id",
+                  {
+                    "type": "string",
+                    "value": "b"
+                  }
+                ],
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "acquire"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "b"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "id",
+                  {
+                    "type": "string",
+                    "value": "a"
+                  }
+                ],
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "acquire"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "b"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "release"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "b"
+                      },
+                      {
+                        "type": "string",
+                        "value": "a"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "release"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "b"
+                      },
+                      {
+                        "type": "string",
+                        "value": "a"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "seed": 170,
+    "actions": [
+      {
+        "type": "acquire",
+        "id": "b"
+      },
+      {
+        "type": "acquire",
+        "id": "a"
+      },
+      {
+        "type": "release"
+      },
+      {
+        "type": "release"
+      }
+    ],
+    "originalLength": 5,
+    "checks": 19,
+    "sutOperations": 75,
+    "invalidCandidates": 0,
+    "result": {
+      "status": "mismatch",
+      "checkedSteps": 4,
+      "actual": {
+        "type": "record",
+        "value": [
+          [
+            "granted",
+            {
+              "type": "list",
+              "value": [
+                {
+                  "type": "string",
+                  "value": "b"
+                },
+                {
+                  "type": "string",
+                  "value": "a"
+                }
+              ]
+            }
+          ],
+          [
+            "locked",
+            {
+              "type": "bool",
+              "value": true
+            }
+          ]
+        ]
+      },
+      "expected": [
+        {
+          "type": "record",
+          "value": [
+            [
+              "granted",
+              {
+                "type": "list",
+                "value": [
+                  {
+                    "type": "string",
+                    "value": "b"
+                  },
+                  {
+                    "type": "string",
+                    "value": "a"
+                  }
+                ]
+              }
+            ],
+            [
+              "locked",
+              {
+                "type": "bool",
+                "value": false
+              }
+            ]
+          ]
+        }
+      ],
+      "trace": {
+        "format": "modelt.portable-trace",
+        "version": 1,
+        "model": "fifo-mutex",
+        "initial": {
+          "type": "record",
+          "value": [
+            [
+              "granted",
+              {
+                "type": "list",
+                "value": []
+              }
+            ],
+            [
+              "locked",
+              {
+                "type": "bool",
+                "value": false
+              }
+            ]
+          ]
+        },
+        "steps": [
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "id",
+                  {
+                    "type": "string",
+                    "value": "b"
+                  }
+                ],
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "acquire"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "b"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "id",
+                  {
+                    "type": "string",
+                    "value": "a"
+                  }
+                ],
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "acquire"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "b"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "release"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "b"
+                      },
+                      {
+                        "type": "string",
+                        "value": "a"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "release"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "b"
+                      },
+                      {
+                        "type": "string",
+                        "value": "a"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "seed": 171,
+    "actions": [
+      {
+        "type": "acquire",
+        "id": "b"
+      },
+      {
+        "type": "acquire",
+        "id": "c"
+      },
+      {
+        "type": "release"
+      },
+      {
+        "type": "release"
+      }
+    ],
+    "originalLength": 5,
+    "checks": 19,
+    "sutOperations": 75,
+    "invalidCandidates": 0,
+    "result": {
+      "status": "mismatch",
+      "checkedSteps": 4,
+      "actual": {
+        "type": "record",
+        "value": [
+          [
+            "granted",
+            {
+              "type": "list",
+              "value": [
+                {
+                  "type": "string",
+                  "value": "b"
+                },
+                {
+                  "type": "string",
+                  "value": "c"
+                }
+              ]
+            }
+          ],
+          [
+            "locked",
+            {
+              "type": "bool",
+              "value": true
+            }
+          ]
+        ]
+      },
+      "expected": [
+        {
+          "type": "record",
+          "value": [
+            [
+              "granted",
+              {
+                "type": "list",
+                "value": [
+                  {
+                    "type": "string",
+                    "value": "b"
+                  },
+                  {
+                    "type": "string",
+                    "value": "c"
+                  }
+                ]
+              }
+            ],
+            [
+              "locked",
+              {
+                "type": "bool",
+                "value": false
+              }
+            ]
+          ]
+        }
+      ],
+      "trace": {
+        "format": "modelt.portable-trace",
+        "version": 1,
+        "model": "fifo-mutex",
+        "initial": {
+          "type": "record",
+          "value": [
+            [
+              "granted",
+              {
+                "type": "list",
+                "value": []
+              }
+            ],
+            [
+              "locked",
+              {
+                "type": "bool",
+                "value": false
+              }
+            ]
+          ]
+        },
+        "steps": [
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "id",
+                  {
+                    "type": "string",
+                    "value": "b"
+                  }
+                ],
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "acquire"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "b"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "id",
+                  {
+                    "type": "string",
+                    "value": "c"
+                  }
+                ],
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "acquire"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "b"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "release"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "b"
+                      },
+                      {
+                        "type": "string",
+                        "value": "c"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "release"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "b"
+                      },
+                      {
+                        "type": "string",
+                        "value": "c"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "seed": 172,
+    "actions": [
+      {
+        "type": "acquire",
+        "id": "c"
+      },
+      {
+        "type": "acquire",
+        "id": "b"
+      },
+      {
+        "type": "release"
+      },
+      {
+        "type": "release"
+      }
+    ],
+    "originalLength": 5,
+    "checks": 19,
+    "sutOperations": 75,
+    "invalidCandidates": 0,
+    "result": {
+      "status": "mismatch",
+      "checkedSteps": 4,
+      "actual": {
+        "type": "record",
+        "value": [
+          [
+            "granted",
+            {
+              "type": "list",
+              "value": [
+                {
+                  "type": "string",
+                  "value": "c"
+                },
+                {
+                  "type": "string",
+                  "value": "b"
+                }
+              ]
+            }
+          ],
+          [
+            "locked",
+            {
+              "type": "bool",
+              "value": true
+            }
+          ]
+        ]
+      },
+      "expected": [
+        {
+          "type": "record",
+          "value": [
+            [
+              "granted",
+              {
+                "type": "list",
+                "value": [
+                  {
+                    "type": "string",
+                    "value": "c"
+                  },
+                  {
+                    "type": "string",
+                    "value": "b"
+                  }
+                ]
+              }
+            ],
+            [
+              "locked",
+              {
+                "type": "bool",
+                "value": false
+              }
+            ]
+          ]
+        }
+      ],
+      "trace": {
+        "format": "modelt.portable-trace",
+        "version": 1,
+        "model": "fifo-mutex",
+        "initial": {
+          "type": "record",
+          "value": [
+            [
+              "granted",
+              {
+                "type": "list",
+                "value": []
+              }
+            ],
+            [
+              "locked",
+              {
+                "type": "bool",
+                "value": false
+              }
+            ]
+          ]
+        },
+        "steps": [
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "id",
+                  {
+                    "type": "string",
+                    "value": "c"
+                  }
+                ],
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "acquire"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "c"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "id",
+                  {
+                    "type": "string",
+                    "value": "b"
+                  }
+                ],
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "acquire"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "c"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "release"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "c"
+                      },
+                      {
+                        "type": "string",
+                        "value": "b"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "release"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "c"
+                      },
+                      {
+                        "type": "string",
+                        "value": "b"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "seed": 173,
+    "actions": [
+      {
+        "type": "acquire",
+        "id": "b"
+      },
+      {
+        "type": "acquire",
+        "id": "a"
+      },
+      {
+        "type": "release"
+      },
+      {
+        "type": "release"
+      }
+    ],
+    "originalLength": 5,
+    "checks": 16,
+    "sutOperations": 60,
+    "invalidCandidates": 0,
+    "result": {
+      "status": "mismatch",
+      "checkedSteps": 4,
+      "actual": {
+        "type": "record",
+        "value": [
+          [
+            "granted",
+            {
+              "type": "list",
+              "value": [
+                {
+                  "type": "string",
+                  "value": "b"
+                },
+                {
+                  "type": "string",
+                  "value": "a"
+                }
+              ]
+            }
+          ],
+          [
+            "locked",
+            {
+              "type": "bool",
+              "value": true
+            }
+          ]
+        ]
+      },
+      "expected": [
+        {
+          "type": "record",
+          "value": [
+            [
+              "granted",
+              {
+                "type": "list",
+                "value": [
+                  {
+                    "type": "string",
+                    "value": "b"
+                  },
+                  {
+                    "type": "string",
+                    "value": "a"
+                  }
+                ]
+              }
+            ],
+            [
+              "locked",
+              {
+                "type": "bool",
+                "value": false
+              }
+            ]
+          ]
+        }
+      ],
+      "trace": {
+        "format": "modelt.portable-trace",
+        "version": 1,
+        "model": "fifo-mutex",
+        "initial": {
+          "type": "record",
+          "value": [
+            [
+              "granted",
+              {
+                "type": "list",
+                "value": []
+              }
+            ],
+            [
+              "locked",
+              {
+                "type": "bool",
+                "value": false
+              }
+            ]
+          ]
+        },
+        "steps": [
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "id",
+                  {
+                    "type": "string",
+                    "value": "b"
+                  }
+                ],
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "acquire"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "b"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "id",
+                  {
+                    "type": "string",
+                    "value": "a"
+                  }
+                ],
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "acquire"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "b"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "release"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "b"
+                      },
+                      {
+                        "type": "string",
+                        "value": "a"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "release"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "b"
+                      },
+                      {
+                        "type": "string",
+                        "value": "a"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "seed": 174,
+    "actions": [
+      {
+        "type": "acquire",
+        "id": "c"
+      },
+      {
+        "type": "acquire",
+        "id": "a"
+      },
+      {
+        "type": "release"
+      },
+      {
+        "type": "release"
+      }
+    ],
+    "originalLength": 5,
+    "checks": 19,
+    "sutOperations": 75,
+    "invalidCandidates": 0,
+    "result": {
+      "status": "mismatch",
+      "checkedSteps": 4,
+      "actual": {
+        "type": "record",
+        "value": [
+          [
+            "granted",
+            {
+              "type": "list",
+              "value": [
+                {
+                  "type": "string",
+                  "value": "c"
+                },
+                {
+                  "type": "string",
+                  "value": "a"
+                }
+              ]
+            }
+          ],
+          [
+            "locked",
+            {
+              "type": "bool",
+              "value": true
+            }
+          ]
+        ]
+      },
+      "expected": [
+        {
+          "type": "record",
+          "value": [
+            [
+              "granted",
+              {
+                "type": "list",
+                "value": [
+                  {
+                    "type": "string",
+                    "value": "c"
+                  },
+                  {
+                    "type": "string",
+                    "value": "a"
+                  }
+                ]
+              }
+            ],
+            [
+              "locked",
+              {
+                "type": "bool",
+                "value": false
+              }
+            ]
+          ]
+        }
+      ],
+      "trace": {
+        "format": "modelt.portable-trace",
+        "version": 1,
+        "model": "fifo-mutex",
+        "initial": {
+          "type": "record",
+          "value": [
+            [
+              "granted",
+              {
+                "type": "list",
+                "value": []
+              }
+            ],
+            [
+              "locked",
+              {
+                "type": "bool",
+                "value": false
+              }
+            ]
+          ]
+        },
+        "steps": [
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "id",
+                  {
+                    "type": "string",
+                    "value": "c"
+                  }
+                ],
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "acquire"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "c"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "id",
+                  {
+                    "type": "string",
+                    "value": "a"
+                  }
+                ],
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "acquire"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "c"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "release"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "c"
+                      },
+                      {
+                        "type": "string",
+                        "value": "a"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "release"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "c"
+                      },
+                      {
+                        "type": "string",
+                        "value": "a"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "seed": 175,
+    "actions": [
+      {
+        "type": "acquire",
+        "id": "c"
+      },
+      {
+        "type": "acquire",
+        "id": "a"
+      },
+      {
+        "type": "release"
+      },
+      {
+        "type": "release"
+      }
+    ],
+    "originalLength": 5,
+    "checks": 19,
+    "sutOperations": 75,
+    "invalidCandidates": 0,
+    "result": {
+      "status": "mismatch",
+      "checkedSteps": 4,
+      "actual": {
+        "type": "record",
+        "value": [
+          [
+            "granted",
+            {
+              "type": "list",
+              "value": [
+                {
+                  "type": "string",
+                  "value": "c"
+                },
+                {
+                  "type": "string",
+                  "value": "a"
+                }
+              ]
+            }
+          ],
+          [
+            "locked",
+            {
+              "type": "bool",
+              "value": true
+            }
+          ]
+        ]
+      },
+      "expected": [
+        {
+          "type": "record",
+          "value": [
+            [
+              "granted",
+              {
+                "type": "list",
+                "value": [
+                  {
+                    "type": "string",
+                    "value": "c"
+                  },
+                  {
+                    "type": "string",
+                    "value": "a"
+                  }
+                ]
+              }
+            ],
+            [
+              "locked",
+              {
+                "type": "bool",
+                "value": false
+              }
+            ]
+          ]
+        }
+      ],
+      "trace": {
+        "format": "modelt.portable-trace",
+        "version": 1,
+        "model": "fifo-mutex",
+        "initial": {
+          "type": "record",
+          "value": [
+            [
+              "granted",
+              {
+                "type": "list",
+                "value": []
+              }
+            ],
+            [
+              "locked",
+              {
+                "type": "bool",
+                "value": false
+              }
+            ]
+          ]
+        },
+        "steps": [
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "id",
+                  {
+                    "type": "string",
+                    "value": "c"
+                  }
+                ],
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "acquire"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "c"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "id",
+                  {
+                    "type": "string",
+                    "value": "a"
+                  }
+                ],
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "acquire"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "c"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "release"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "c"
+                      },
+                      {
+                        "type": "string",
+                        "value": "a"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "release"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "c"
+                      },
+                      {
+                        "type": "string",
+                        "value": "a"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "seed": 176,
+    "actions": [
+      {
+        "type": "acquire",
+        "id": "b"
+      },
+      {
+        "type": "acquire",
+        "id": "a"
+      },
+      {
+        "type": "release"
+      },
+      {
+        "type": "release"
+      }
+    ],
+    "originalLength": 4,
+    "checks": 9,
+    "sutOperations": 33,
+    "invalidCandidates": 0,
+    "result": {
+      "status": "mismatch",
+      "checkedSteps": 4,
+      "actual": {
+        "type": "record",
+        "value": [
+          [
+            "granted",
+            {
+              "type": "list",
+              "value": [
+                {
+                  "type": "string",
+                  "value": "b"
+                },
+                {
+                  "type": "string",
+                  "value": "a"
+                }
+              ]
+            }
+          ],
+          [
+            "locked",
+            {
+              "type": "bool",
+              "value": true
+            }
+          ]
+        ]
+      },
+      "expected": [
+        {
+          "type": "record",
+          "value": [
+            [
+              "granted",
+              {
+                "type": "list",
+                "value": [
+                  {
+                    "type": "string",
+                    "value": "b"
+                  },
+                  {
+                    "type": "string",
+                    "value": "a"
+                  }
+                ]
+              }
+            ],
+            [
+              "locked",
+              {
+                "type": "bool",
+                "value": false
+              }
+            ]
+          ]
+        }
+      ],
+      "trace": {
+        "format": "modelt.portable-trace",
+        "version": 1,
+        "model": "fifo-mutex",
+        "initial": {
+          "type": "record",
+          "value": [
+            [
+              "granted",
+              {
+                "type": "list",
+                "value": []
+              }
+            ],
+            [
+              "locked",
+              {
+                "type": "bool",
+                "value": false
+              }
+            ]
+          ]
+        },
+        "steps": [
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "id",
+                  {
+                    "type": "string",
+                    "value": "b"
+                  }
+                ],
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "acquire"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "b"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "id",
+                  {
+                    "type": "string",
+                    "value": "a"
+                  }
+                ],
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "acquire"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "b"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "release"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "b"
+                      },
+                      {
+                        "type": "string",
+                        "value": "a"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "release"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "b"
+                      },
+                      {
+                        "type": "string",
+                        "value": "a"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "seed": 177,
+    "actions": [
+      {
+        "type": "acquire",
+        "id": "c"
+      },
+      {
+        "type": "acquire",
+        "id": "b"
+      },
+      {
+        "type": "release"
+      },
+      {
+        "type": "release"
+      }
+    ],
+    "originalLength": 5,
+    "checks": 16,
+    "sutOperations": 60,
+    "invalidCandidates": 0,
+    "result": {
+      "status": "mismatch",
+      "checkedSteps": 4,
+      "actual": {
+        "type": "record",
+        "value": [
+          [
+            "granted",
+            {
+              "type": "list",
+              "value": [
+                {
+                  "type": "string",
+                  "value": "c"
+                },
+                {
+                  "type": "string",
+                  "value": "b"
+                }
+              ]
+            }
+          ],
+          [
+            "locked",
+            {
+              "type": "bool",
+              "value": true
+            }
+          ]
+        ]
+      },
+      "expected": [
+        {
+          "type": "record",
+          "value": [
+            [
+              "granted",
+              {
+                "type": "list",
+                "value": [
+                  {
+                    "type": "string",
+                    "value": "c"
+                  },
+                  {
+                    "type": "string",
+                    "value": "b"
+                  }
+                ]
+              }
+            ],
+            [
+              "locked",
+              {
+                "type": "bool",
+                "value": false
+              }
+            ]
+          ]
+        }
+      ],
+      "trace": {
+        "format": "modelt.portable-trace",
+        "version": 1,
+        "model": "fifo-mutex",
+        "initial": {
+          "type": "record",
+          "value": [
+            [
+              "granted",
+              {
+                "type": "list",
+                "value": []
+              }
+            ],
+            [
+              "locked",
+              {
+                "type": "bool",
+                "value": false
+              }
+            ]
+          ]
+        },
+        "steps": [
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "id",
+                  {
+                    "type": "string",
+                    "value": "c"
+                  }
+                ],
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "acquire"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "c"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "id",
+                  {
+                    "type": "string",
+                    "value": "b"
+                  }
+                ],
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "acquire"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "c"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "release"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "c"
+                      },
+                      {
+                        "type": "string",
+                        "value": "b"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "release"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "c"
+                      },
+                      {
+                        "type": "string",
+                        "value": "b"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "seed": 178,
+    "actions": [
+      {
+        "type": "acquire",
+        "id": "b"
+      },
+      {
+        "type": "acquire",
+        "id": "a"
+      },
+      {
+        "type": "release"
+      },
+      {
+        "type": "release"
+      }
+    ],
+    "originalLength": 4,
+    "checks": 9,
+    "sutOperations": 33,
+    "invalidCandidates": 0,
+    "result": {
+      "status": "mismatch",
+      "checkedSteps": 4,
+      "actual": {
+        "type": "record",
+        "value": [
+          [
+            "granted",
+            {
+              "type": "list",
+              "value": [
+                {
+                  "type": "string",
+                  "value": "b"
+                },
+                {
+                  "type": "string",
+                  "value": "a"
+                }
+              ]
+            }
+          ],
+          [
+            "locked",
+            {
+              "type": "bool",
+              "value": true
+            }
+          ]
+        ]
+      },
+      "expected": [
+        {
+          "type": "record",
+          "value": [
+            [
+              "granted",
+              {
+                "type": "list",
+                "value": [
+                  {
+                    "type": "string",
+                    "value": "b"
+                  },
+                  {
+                    "type": "string",
+                    "value": "a"
+                  }
+                ]
+              }
+            ],
+            [
+              "locked",
+              {
+                "type": "bool",
+                "value": false
+              }
+            ]
+          ]
+        }
+      ],
+      "trace": {
+        "format": "modelt.portable-trace",
+        "version": 1,
+        "model": "fifo-mutex",
+        "initial": {
+          "type": "record",
+          "value": [
+            [
+              "granted",
+              {
+                "type": "list",
+                "value": []
+              }
+            ],
+            [
+              "locked",
+              {
+                "type": "bool",
+                "value": false
+              }
+            ]
+          ]
+        },
+        "steps": [
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "id",
+                  {
+                    "type": "string",
+                    "value": "b"
+                  }
+                ],
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "acquire"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "b"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "id",
+                  {
+                    "type": "string",
+                    "value": "a"
+                  }
+                ],
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "acquire"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "b"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "release"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "b"
+                      },
+                      {
+                        "type": "string",
+                        "value": "a"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "release"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "b"
+                      },
+                      {
+                        "type": "string",
+                        "value": "a"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "seed": 179,
+    "actions": [
+      {
+        "type": "acquire",
+        "id": "b"
+      },
+      {
+        "type": "acquire",
+        "id": "c"
+      },
+      {
+        "type": "release"
+      },
+      {
+        "type": "release"
+      }
+    ],
+    "originalLength": 4,
+    "checks": 9,
+    "sutOperations": 33,
+    "invalidCandidates": 0,
+    "result": {
+      "status": "mismatch",
+      "checkedSteps": 4,
+      "actual": {
+        "type": "record",
+        "value": [
+          [
+            "granted",
+            {
+              "type": "list",
+              "value": [
+                {
+                  "type": "string",
+                  "value": "b"
+                },
+                {
+                  "type": "string",
+                  "value": "c"
+                }
+              ]
+            }
+          ],
+          [
+            "locked",
+            {
+              "type": "bool",
+              "value": true
+            }
+          ]
+        ]
+      },
+      "expected": [
+        {
+          "type": "record",
+          "value": [
+            [
+              "granted",
+              {
+                "type": "list",
+                "value": [
+                  {
+                    "type": "string",
+                    "value": "b"
+                  },
+                  {
+                    "type": "string",
+                    "value": "c"
+                  }
+                ]
+              }
+            ],
+            [
+              "locked",
+              {
+                "type": "bool",
+                "value": false
+              }
+            ]
+          ]
+        }
+      ],
+      "trace": {
+        "format": "modelt.portable-trace",
+        "version": 1,
+        "model": "fifo-mutex",
+        "initial": {
+          "type": "record",
+          "value": [
+            [
+              "granted",
+              {
+                "type": "list",
+                "value": []
+              }
+            ],
+            [
+              "locked",
+              {
+                "type": "bool",
+                "value": false
+              }
+            ]
+          ]
+        },
+        "steps": [
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "id",
+                  {
+                    "type": "string",
+                    "value": "b"
+                  }
+                ],
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "acquire"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "b"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "id",
+                  {
+                    "type": "string",
+                    "value": "c"
+                  }
+                ],
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "acquire"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "b"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "release"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "b"
+                      },
+                      {
+                        "type": "string",
+                        "value": "c"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "release"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "b"
+                      },
+                      {
+                        "type": "string",
+                        "value": "c"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "seed": 180,
+    "actions": [
+      {
+        "type": "acquire",
+        "id": "c"
+      },
+      {
+        "type": "acquire",
+        "id": "b"
+      },
+      {
+        "type": "release"
+      },
+      {
+        "type": "release"
+      }
+    ],
+    "originalLength": 4,
+    "checks": 9,
+    "sutOperations": 33,
+    "invalidCandidates": 0,
+    "result": {
+      "status": "mismatch",
+      "checkedSteps": 4,
+      "actual": {
+        "type": "record",
+        "value": [
+          [
+            "granted",
+            {
+              "type": "list",
+              "value": [
+                {
+                  "type": "string",
+                  "value": "c"
+                },
+                {
+                  "type": "string",
+                  "value": "b"
+                }
+              ]
+            }
+          ],
+          [
+            "locked",
+            {
+              "type": "bool",
+              "value": true
+            }
+          ]
+        ]
+      },
+      "expected": [
+        {
+          "type": "record",
+          "value": [
+            [
+              "granted",
+              {
+                "type": "list",
+                "value": [
+                  {
+                    "type": "string",
+                    "value": "c"
+                  },
+                  {
+                    "type": "string",
+                    "value": "b"
+                  }
+                ]
+              }
+            ],
+            [
+              "locked",
+              {
+                "type": "bool",
+                "value": false
+              }
+            ]
+          ]
+        }
+      ],
+      "trace": {
+        "format": "modelt.portable-trace",
+        "version": 1,
+        "model": "fifo-mutex",
+        "initial": {
+          "type": "record",
+          "value": [
+            [
+              "granted",
+              {
+                "type": "list",
+                "value": []
+              }
+            ],
+            [
+              "locked",
+              {
+                "type": "bool",
+                "value": false
+              }
+            ]
+          ]
+        },
+        "steps": [
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "id",
+                  {
+                    "type": "string",
+                    "value": "c"
+                  }
+                ],
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "acquire"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "c"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "id",
+                  {
+                    "type": "string",
+                    "value": "b"
+                  }
+                ],
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "acquire"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "c"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "release"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "c"
+                      },
+                      {
+                        "type": "string",
+                        "value": "b"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "action": {
+              "type": "record",
+              "value": [
+                [
+                  "type",
+                  {
+                    "type": "string",
+                    "value": "release"
+                  }
+                ]
+              ]
+            },
+            "observation": {
+              "type": "record",
+              "value": [
+                [
+                  "granted",
+                  {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "c"
+                      },
+                      {
+                        "type": "string",
+                        "value": "b"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "locked",
+                  {
+                    "type": "bool",
+                    "value": true
+                  }
+                ]
+              ]
+            }
+          }
+        ]
+      }
+    }
+  }
+]

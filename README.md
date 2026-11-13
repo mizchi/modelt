@@ -6,6 +6,8 @@ TypeScript のモデルと実装を比較する試作ライブラリ。モデル
 
 ## 実行
 
+観測付きの有限モデルを TS / Rust で共有する方法、反例の縮小、時計・通信・永続化の注入は [利用ガイド](docs/using-models.md) を参照。`just package` で solver を必須にしない npm/Cargo/Wasm archive と CLI を作り、別 consumer で検証できる。[公開手順と CI の分割](docs/releasing.md) は別途記載している。
+
 Node.js 24+、pnpm、just を使う。npm には未公開。
 
 ```sh

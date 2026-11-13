@@ -1,13 +1,18 @@
 import { counterModel } from "../examples/counter-model.js";
 import { createCounter, isCounterAction } from "../examples/durable-counter.js";
 import { checkConformance } from "../src/conformance.js";
+import { compileFiniteModel } from "../src/finite.js";
+import { createSimulationHost } from "../src/host.js";
 import {
+  checkFiniteHistories,
   checkPortableConformance,
   checkPortableTrace,
+  coreDeletionCandidates,
   createPortableWasm,
   fromPortableValue,
   toPortableTrace,
   toPortableValue,
+  verifyHostTape,
 } from "../src/portable.js";
 
 export const run = async (): Promise<Record<string, unknown>> => {
@@ -60,6 +65,39 @@ export const run = async (): Promise<Record<string, unknown>> => {
     JSON.stringify(result.value) !== JSON.stringify(value)
   )
     throw new Error("Browser value semantics differ");
+  const finite = compileFiniteModel(counterModel, {
+    maxDepth: 20,
+    maxStates: 1000,
+  });
+  if (
+    !finite.model ||
+    checkFiniteHistories(core, finite.model, [
+      toPortableTrace(reference.trace),
+    ])[0]?.status !== "matched"
+  )
+    throw new Error("Browser finite artifact differs");
+  if (!coreDeletionCandidates(core, 3).some((range) => range.count === 1))
+    throw new Error("Missing browser shrink candidates");
+  const host = createSimulationHost({ seed: 3 });
+  host.write("value", 1);
+  host.persist();
+  host.write("value", 2);
+  host.crash();
+  host.restart();
+  if (host.read("value") !== 1)
+    throw new Error("Browser storage recovery differs");
+  if (
+    JSON.stringify(verifyHostTape(core, host.trace())) !==
+    JSON.stringify(
+      toPortableValue({
+        clock: 0,
+        running: true,
+        storage: { value: 1 },
+        pending: [],
+      }),
+    )
+  )
+    throw new Error("Rust browser host replay differs");
   return {
     normal: normal.status,
     broken: broken.status,
