@@ -34,7 +34,9 @@ const parseMethod = (value: unknown): Method => {
     !isRecord(value) ||
     typeof value.id !== "string" ||
     !isRunId(value.id) ||
-    (value.strategy !== "uniform" && value.strategy !== "novelty") ||
+    (value.strategy !== "uniform" &&
+      value.strategy !== "novelty" &&
+      value.strategy !== "alternating") ||
     typeof value.maxDepth !== "number" ||
     !Number.isSafeInteger(value.maxDepth) ||
     value.maxDepth < 1

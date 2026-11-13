@@ -1,0 +1,402 @@
+[
+  {
+    "seed": 41,
+    "method": "uniform-8",
+    "generationMs": 0.6209590000000276,
+    "cases": 57,
+    "requestedOperations": 512,
+    "modelSteps": 455,
+    "states": 45,
+    "edges": 166
+  },
+  {
+    "seed": 41,
+    "method": "alternating-8-16",
+    "generationMs": 0.7365420000000427,
+    "cases": 40,
+    "requestedOperations": 512,
+    "modelSteps": 472,
+    "states": 47,
+    "edges": 194
+  },
+  {
+    "seed": 42,
+    "method": "uniform-8",
+    "generationMs": 0.6070409999999811,
+    "cases": 57,
+    "requestedOperations": 512,
+    "modelSteps": 455,
+    "states": 47,
+    "edges": 171
+  },
+  {
+    "seed": 42,
+    "method": "alternating-8-16",
+    "generationMs": 0.6328750000000127,
+    "cases": 40,
+    "requestedOperations": 512,
+    "modelSteps": 472,
+    "states": 48,
+    "edges": 186
+  },
+  {
+    "seed": 43,
+    "method": "uniform-8",
+    "generationMs": 0.9205000000000041,
+    "cases": 57,
+    "requestedOperations": 512,
+    "modelSteps": 455,
+    "states": 49,
+    "edges": 189
+  },
+  {
+    "seed": 43,
+    "method": "alternating-8-16",
+    "generationMs": 0.7352920000000154,
+    "cases": 40,
+    "requestedOperations": 512,
+    "modelSteps": 472,
+    "states": 51,
+    "edges": 208
+  },
+  {
+    "seed": 44,
+    "method": "uniform-8",
+    "generationMs": 0.6977919999999926,
+    "cases": 57,
+    "requestedOperations": 512,
+    "modelSteps": 455,
+    "states": 44,
+    "edges": 169
+  },
+  {
+    "seed": 44,
+    "method": "alternating-8-16",
+    "generationMs": 0.6708750000000236,
+    "cases": 40,
+    "requestedOperations": 512,
+    "modelSteps": 472,
+    "states": 48,
+    "edges": 189
+  },
+  {
+    "seed": 45,
+    "method": "uniform-8",
+    "generationMs": 0.6118749999999977,
+    "cases": 57,
+    "requestedOperations": 512,
+    "modelSteps": 455,
+    "states": 49,
+    "edges": 171
+  },
+  {
+    "seed": 45,
+    "method": "alternating-8-16",
+    "generationMs": 1.1937079999999582,
+    "cases": 40,
+    "requestedOperations": 512,
+    "modelSteps": 472,
+    "states": 47,
+    "edges": 193
+  },
+  {
+    "seed": 46,
+    "method": "uniform-8",
+    "generationMs": 0.6573329999999942,
+    "cases": 57,
+    "requestedOperations": 512,
+    "modelSteps": 455,
+    "states": 50,
+    "edges": 191
+  },
+  {
+    "seed": 46,
+    "method": "alternating-8-16",
+    "generationMs": 0.8390830000000165,
+    "cases": 40,
+    "requestedOperations": 512,
+    "modelSteps": 472,
+    "states": 51,
+    "edges": 199
+  },
+  {
+    "seed": 47,
+    "method": "uniform-8",
+    "generationMs": 0.6512089999999944,
+    "cases": 57,
+    "requestedOperations": 512,
+    "modelSteps": 455,
+    "states": 44,
+    "edges": 158
+  },
+  {
+    "seed": 47,
+    "method": "alternating-8-16",
+    "generationMs": 0.7110000000000127,
+    "cases": 40,
+    "requestedOperations": 512,
+    "modelSteps": 472,
+    "states": 51,
+    "edges": 187
+  },
+  {
+    "seed": 48,
+    "method": "uniform-8",
+    "generationMs": 0.8102499999999964,
+    "cases": 57,
+    "requestedOperations": 512,
+    "modelSteps": 455,
+    "states": 50,
+    "edges": 166
+  },
+  {
+    "seed": 48,
+    "method": "alternating-8-16",
+    "generationMs": 0.725667000000044,
+    "cases": 40,
+    "requestedOperations": 512,
+    "modelSteps": 472,
+    "states": 47,
+    "edges": 190
+  },
+  {
+    "seed": 49,
+    "method": "uniform-8",
+    "generationMs": 0.5853329999999914,
+    "cases": 57,
+    "requestedOperations": 512,
+    "modelSteps": 455,
+    "states": 48,
+    "edges": 174
+  },
+  {
+    "seed": 49,
+    "method": "alternating-8-16",
+    "generationMs": 0.65787499999999,
+    "cases": 40,
+    "requestedOperations": 512,
+    "modelSteps": 472,
+    "states": 51,
+    "edges": 200
+  },
+  {
+    "seed": 50,
+    "method": "uniform-8",
+    "generationMs": 0.6617089999999735,
+    "cases": 57,
+    "requestedOperations": 512,
+    "modelSteps": 455,
+    "states": 44,
+    "edges": 167
+  },
+  {
+    "seed": 50,
+    "method": "alternating-8-16",
+    "generationMs": 0.6617499999999836,
+    "cases": 40,
+    "requestedOperations": 512,
+    "modelSteps": 472,
+    "states": 51,
+    "edges": 191
+  },
+  {
+    "seed": 51,
+    "method": "uniform-8",
+    "generationMs": 0.6485420000000204,
+    "cases": 57,
+    "requestedOperations": 512,
+    "modelSteps": 455,
+    "states": 52,
+    "edges": 183
+  },
+  {
+    "seed": 51,
+    "method": "alternating-8-16",
+    "generationMs": 0.7255000000000109,
+    "cases": 40,
+    "requestedOperations": 512,
+    "modelSteps": 472,
+    "states": 51,
+    "edges": 199
+  },
+  {
+    "seed": 52,
+    "method": "uniform-8",
+    "generationMs": 0.6295420000000149,
+    "cases": 57,
+    "requestedOperations": 512,
+    "modelSteps": 455,
+    "states": 45,
+    "edges": 171
+  },
+  {
+    "seed": 52,
+    "method": "alternating-8-16",
+    "generationMs": 0.6975830000000087,
+    "cases": 40,
+    "requestedOperations": 512,
+    "modelSteps": 472,
+    "states": 47,
+    "edges": 195
+  },
+  {
+    "seed": 53,
+    "method": "uniform-8",
+    "generationMs": 0.5919170000000236,
+    "cases": 57,
+    "requestedOperations": 512,
+    "modelSteps": 455,
+    "states": 45,
+    "edges": 167
+  },
+  {
+    "seed": 53,
+    "method": "alternating-8-16",
+    "generationMs": 0.7040000000000077,
+    "cases": 40,
+    "requestedOperations": 512,
+    "modelSteps": 472,
+    "states": 48,
+    "edges": 187
+  },
+  {
+    "seed": 54,
+    "method": "uniform-8",
+    "generationMs": 0.7191250000000196,
+    "cases": 57,
+    "requestedOperations": 512,
+    "modelSteps": 455,
+    "states": 47,
+    "edges": 164
+  },
+  {
+    "seed": 54,
+    "method": "alternating-8-16",
+    "generationMs": 0.7698750000000132,
+    "cases": 40,
+    "requestedOperations": 512,
+    "modelSteps": 472,
+    "states": 47,
+    "edges": 196
+  },
+  {
+    "seed": 55,
+    "method": "uniform-8",
+    "generationMs": 0.649249999999995,
+    "cases": 57,
+    "requestedOperations": 512,
+    "modelSteps": 455,
+    "states": 50,
+    "edges": 177
+  },
+  {
+    "seed": 55,
+    "method": "alternating-8-16",
+    "generationMs": 0.7864999999999895,
+    "cases": 40,
+    "requestedOperations": 512,
+    "modelSteps": 472,
+    "states": 48,
+    "edges": 192
+  },
+  {
+    "seed": 56,
+    "method": "uniform-8",
+    "generationMs": 0.813083000000006,
+    "cases": 57,
+    "requestedOperations": 512,
+    "modelSteps": 455,
+    "states": 48,
+    "edges": 165
+  },
+  {
+    "seed": 56,
+    "method": "alternating-8-16",
+    "generationMs": 0.6747080000000096,
+    "cases": 40,
+    "requestedOperations": 512,
+    "modelSteps": 472,
+    "states": 46,
+    "edges": 184
+  },
+  {
+    "seed": 57,
+    "method": "uniform-8",
+    "generationMs": 0.9866250000000036,
+    "cases": 57,
+    "requestedOperations": 512,
+    "modelSteps": 455,
+    "states": 45,
+    "edges": 168
+  },
+  {
+    "seed": 57,
+    "method": "alternating-8-16",
+    "generationMs": 0.6533329999999751,
+    "cases": 40,
+    "requestedOperations": 512,
+    "modelSteps": 472,
+    "states": 48,
+    "edges": 184
+  },
+  {
+    "seed": 58,
+    "method": "uniform-8",
+    "generationMs": 0.6524590000000217,
+    "cases": 57,
+    "requestedOperations": 512,
+    "modelSteps": 455,
+    "states": 48,
+    "edges": 168
+  },
+  {
+    "seed": 58,
+    "method": "alternating-8-16",
+    "generationMs": 0.7722909999999956,
+    "cases": 40,
+    "requestedOperations": 512,
+    "modelSteps": 472,
+    "states": 49,
+    "edges": 189
+  },
+  {
+    "seed": 59,
+    "method": "uniform-8",
+    "generationMs": 0.6258330000000001,
+    "cases": 57,
+    "requestedOperations": 512,
+    "modelSteps": 455,
+    "states": 42,
+    "edges": 161
+  },
+  {
+    "seed": 59,
+    "method": "alternating-8-16",
+    "generationMs": 0.690667000000019,
+    "cases": 40,
+    "requestedOperations": 512,
+    "modelSteps": 472,
+    "states": 53,
+    "edges": 200
+  },
+  {
+    "seed": 60,
+    "method": "uniform-8",
+    "generationMs": 0.9915000000000305,
+    "cases": 57,
+    "requestedOperations": 512,
+    "modelSteps": 455,
+    "states": 46,
+    "edges": 168
+  },
+  {
+    "seed": 60,
+    "method": "alternating-8-16",
+    "generationMs": 0.8024159999999938,
+    "cases": 40,
+    "requestedOperations": 512,
+    "modelSteps": 472,
+    "states": 49,
+    "edges": 193
+  }
+]

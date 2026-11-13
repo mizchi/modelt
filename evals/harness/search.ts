@@ -1,6 +1,6 @@
 import type { Model } from "../../src/index.js";
 
-export type SearchStrategy = "uniform" | "novelty";
+export type SearchStrategy = "uniform" | "novelty" | "alternating";
 
 export interface SearchOptions {
   readonly seed: number;
@@ -81,7 +81,9 @@ export const generateCorpus = <State, Action, Observation>(
   let modelSteps = 0;
   while (options.maxOperations - operations >= 2) {
     const depth = Math.min(
-      options.maxDepth,
+      strategy === "alternating" && cases.length % 2 === 0
+        ? Math.max(1, Math.floor(options.maxDepth / 2))
+        : options.maxDepth,
       options.maxOperations - operations - 1,
     );
     const prefix =

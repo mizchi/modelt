@@ -1,0 +1,190 @@
+{
+  "version": 1,
+  "runId": "0002-development",
+  "split": "development",
+  "startedAt": "2026-11-13T16:06:04.272Z",
+  "plan": {
+    "version": 1,
+    "id": "0002-mixed-depth",
+    "scope": "synthetic-counter",
+    "hypothesis": "0001 の長い履歴による追加検出を残しつつ、短い履歴との交互実行で配信順序の検出の後退を減らせる",
+    "change": "uniform-8 を基準に、8操作と16操作のケースを交互に生成する。PRNG・モデル・故障・総予算は変更しない",
+    "baseline": {
+      "id": "uniform-8",
+      "strategy": "uniform",
+      "maxDepth": 8
+    },
+    "candidate": {
+      "id": "alternating-8-16",
+      "strategy": "alternating",
+      "maxDepth": 16
+    },
+    "maxOperations": 512,
+    "developmentSeeds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20
+    ],
+    "confirmationSeeds": [
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60
+    ],
+    "decisionRule": "故障別の検出数と seed ごとの勝敗、反例長、reset 数を記録し、追加検出があっても後退と診断費用を隠さない。正常対照と再現の失敗を採用材料にしない",
+    "limitations": "0001 の結果を見て作った探索的な次の仮説。開発用 seed は再利用し、確認用 seed は新規。人工故障の種類は既知のまま"
+  },
+  "planDigest": "884abe90dcd63100a9003fa8f2c1333847ff08018f4f96420fd1ed6e248fd520",
+  "sourceDigest": "4c6eed5899402ea253a9aa75f7fdfa6ee5cd5c67b51c3861d2751c30dfb53457",
+  "files": [
+    {
+      "path": "evals/benchmark.ts",
+      "sha256": "3ea654b50e1a5b70852d0e3bc89454cf12136329c8bc2087b09ee06b18b9c56d"
+    },
+    {
+      "path": "evals/harness/counter-faults.ts",
+      "sha256": "f1a96e52e04deead66e8f04b6fa4a763e5fc9bad88e81db509d9ad2381d434a3"
+    },
+    {
+      "path": "evals/harness/evaluate.ts",
+      "sha256": "5279a70bf343cdccc657b38bbc3ee40180cbb7668f9030fc66fb07807888d590"
+    },
+    {
+      "path": "evals/harness/history.ts",
+      "sha256": "be84848677987cf72717399ca01e91937b5442671b3ffe85233fc4de8329828c"
+    },
+    {
+      "path": "evals/harness/replay.ts",
+      "sha256": "15cb11f633db10e7b47291cbff2d1ee3935bd66eedfde7e9bda3e2716c9e3cd6"
+    },
+    {
+      "path": "evals/harness/scheduled-counter.ts",
+      "sha256": "a101572f13fcace5382f6834760b2736bed396fe3bb77e51ea6590208fb57893"
+    },
+    {
+      "path": "evals/harness/search.ts",
+      "sha256": "b0a051938a87e1175c3b1ee5cb2eb8138498f0134ea705999c672d9a56bae2e0"
+    },
+    {
+      "path": "evals/harness/ttl.ts",
+      "sha256": "2e4b7d6f934adec10e15e8c95e4785a338163eced63e1a0a82ac511b48c6fd19"
+    },
+    {
+      "path": "evals/loop.ts",
+      "sha256": "e51e0d29204c4392847385b50a07004b65edd5e115575846771b8cd63acaee72"
+    },
+    {
+      "path": "evals/protocol.ts",
+      "sha256": "67b0670784b5cdd1daadfda022ae799783f8584147c4b30f890044770c2faa1f"
+    },
+    {
+      "path": "evals/replay.ts",
+      "sha256": "7c96cd8d82d84c3f251878cd8a2206451de5710031baf87f6d1509a3b38a4b81"
+    },
+    {
+      "path": "evals/runner.ts",
+      "sha256": "9b6d8d89e3a4c03bc39b66710f46cb5877acc2974525046c5f0f322a2d49071f"
+    },
+    {
+      "path": "examples/counter-model.ts",
+      "sha256": "8635f088a3fdf9e0b1bf4ea1f96790d56d578766d6e3c3c81a483cd9127f7721"
+    },
+    {
+      "path": "examples/demo.ts",
+      "sha256": "4c42c6701d69d7853add037078137a99174ad80470631c9786867340f8ca9f0d"
+    },
+    {
+      "path": "examples/durable-counter.ts",
+      "sha256": "5f77b4b8dbbb815b71dc31f121d220623484f67e36efad0c4114996ee444521c"
+    },
+    {
+      "path": "package.json",
+      "sha256": "89b733d7a250dc17985331bae34875b217f38da77af17fa97003a29393413395"
+    },
+    {
+      "path": "pnpm-lock.yaml",
+      "sha256": "6c5e28a9b3702220f97d7a7032a1b6bfc5382e413bf8ae60090d72a074712868"
+    },
+    {
+      "path": "src/checker.ts",
+      "sha256": "0d3d22b03dddd84e9b523f298a1c111b2a61dc4cec8731b8969d640124692e4b"
+    },
+    {
+      "path": "src/compose.ts",
+      "sha256": "a3fd903ca6dce125b6efb8ac34d77fc92d91640994e14e1a86a313d30c11f4e6"
+    },
+    {
+      "path": "src/conformance.ts",
+      "sha256": "f3bb120449be59bf8bf122016fd35fbd45b81bfe910de3b9436b33ee45c52995"
+    },
+    {
+      "path": "src/contracts.ts",
+      "sha256": "c86adeb8fee97c37b48fc0a894d60d755fa6060e54e70dd2e582359336200037"
+    },
+    {
+      "path": "src/index.ts",
+      "sha256": "d8219cc54aabba15e4f04c604decdaf61d3f8dbcab9b01b721298e35f047867f"
+    },
+    {
+      "path": "src/property.ts",
+      "sha256": "52b5afd86848a425e27423241de275dfe7c67f8bc812119eab8593bcf0f6e60a"
+    },
+    {
+      "path": "src/smt.ts",
+      "sha256": "dafc5153f5880c655296fc9b120572d73dc00b092469c538ec25c1be6f9e1bf0"
+    },
+    {
+      "path": "src/tla.ts",
+      "sha256": "9932c3a5113354e520479ed899d1758ae5accf0875e7cba66bfb449e3c12ddcb"
+    },
+    {
+      "path": "src/trace.ts",
+      "sha256": "0a20a45ba0d84841139bec2dd8178c40585276fffc75e536d33ea1ca2c077cf3"
+    }
+  ],
+  "parent": null,
+  "revision": "eb036448f208d504bb9799f02f9355d523ff9513",
+  "dirtyPaths": [
+    "M evals/harness/search.ts",
+    " M evals/protocol.ts",
+    " M tests/evaluation-contract.ts"
+  ],
+  "runtime": {
+    "node": "v24.22.2",
+    "platform": "darwin",
+    "arch": "arm64"
+  }
+}

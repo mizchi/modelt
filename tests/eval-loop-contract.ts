@@ -148,5 +148,42 @@ export const registerEvalLoopContract = (
       () => compareTrials([row, candidate], "baseline", "candidate"),
       /control/,
     );
+    assert.equal(
+      compareTrials(
+        [
+          row,
+          { ...row, method: "candidate" },
+          normal,
+          { ...normal, method: "candidate" },
+        ],
+        "baseline",
+        "candidate",
+      ).assessment,
+      "unchanged",
+    );
+    assert.equal(
+      compareTrials(
+        [
+          row,
+          candidate,
+          normal,
+          { ...normal, method: "candidate" },
+          { ...candidate, method: "baseline", fault: "persistence" },
+          { ...row, method: "candidate", fault: "persistence" },
+        ],
+        "baseline",
+        "candidate",
+      ).assessment,
+      "mixed",
+    );
+    assert.throws(
+      () =>
+        compareTrials(
+          [row, row, candidate, normal, { ...normal, method: "candidate" }],
+          "baseline",
+          "candidate",
+        ),
+      /Duplicate/,
+    );
   });
 };

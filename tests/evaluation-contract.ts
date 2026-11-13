@@ -13,6 +13,23 @@ import { checkConformance, checkModel, checkTrace } from "../src/index.js";
 export const registerEvaluationContract = (
   test: (name: string, run: () => void | Promise<void>) => unknown,
 ): void => {
+  test("mixed-depth search alternates short and long cases under one operation budget", async () => {
+    const corpus = generateCorpus(counterModel, "alternating", {
+      seed: 7,
+      maxOperations: 100,
+      maxDepth: 16,
+    });
+    assert.deepEqual(
+      corpus.cases.slice(0, 2).map((actions) => actions.length),
+      [8, 16],
+    );
+    assert.equal(corpus.operations, 100);
+    for (const actions of corpus.cases)
+      assert.equal(
+        (await checkConformance(counterModel, createCounter(), actions)).status,
+        "matched",
+      );
+  });
   test("complete model coverage can miss a third-retry implementation fault", async () => {
     const oracle = checkModel(counterModel, { maxDepth: 12, maxStates: 1000 });
     assert.equal(oracle.status, "complete");

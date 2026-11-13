@@ -28,7 +28,7 @@ replay-evaluation:
   pnpm evaluate:replay
 
 eval-loop:
-  pnpm eval:loop
+  pnpm eval:loop evals/plans/0002-mixed-depth.json
 
 replay-loop:
   pnpm eval:replay
