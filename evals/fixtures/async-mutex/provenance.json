@@ -1,0 +1,41 @@
+{
+  "repository": "https://github.com/DirtyHairy/async-mutex",
+  "before": "e7bc6a43c9a8f43971150ebd6f51f829d60b97ef",
+  "after": "8331143c133585ae41b35b69dab7404e2f66751e",
+  "fix": "https://github.com/DirtyHairy/async-mutex/commit/8331143c133585ae41b35b69dab7404e2f66751e",
+  "license": "MIT",
+  "files": [
+    {
+      "path": "before/Mutex.ts",
+      "sha256": "14a3e3ff1b66fedb99694cd7c5031329871c4b7cb81b09512ecb730a0cfccf81"
+    },
+    {
+      "path": "before/MutexInterface.ts",
+      "sha256": "261e07fd68edfb1152964e328b57a2988fd060bb5c43b9dca393d454607c3e37"
+    },
+    {
+      "path": "before/Semaphore.ts",
+      "sha256": "5f5a201615518ec346bbdb05afbf6c11105bd2461a032ddfa7cdfc983a28543c"
+    },
+    {
+      "path": "before/SemaphoreInterface.ts",
+      "sha256": "945145928f162a08080846fbebcc83cd3d1b98f6ed3198fa0df597abe05815a9"
+    },
+    {
+      "path": "after/Mutex.ts",
+      "sha256": "14a3e3ff1b66fedb99694cd7c5031329871c4b7cb81b09512ecb730a0cfccf81"
+    },
+    {
+      "path": "after/MutexInterface.ts",
+      "sha256": "261e07fd68edfb1152964e328b57a2988fd060bb5c43b9dca393d454607c3e37"
+    },
+    {
+      "path": "after/Semaphore.ts",
+      "sha256": "b014c003e2971744ec20dcc00a0b01fe60e4e5ea359abb8a68ea5ff69cbfa1c3"
+    },
+    {
+      "path": "after/SemaphoreInterface.ts",
+      "sha256": "945145928f162a08080846fbebcc83cd3d1b98f6ed3198fa0df597abe05815a9"
+    }
+  ]
+}
