@@ -5,6 +5,7 @@ import { registerContract } from "./contract.js";
 import { registerEvalLoopContract } from "./eval-loop-contract.js";
 import { registerEvaluationContract } from "./evaluation-contract.js";
 import { registerIntegrationContract } from "./integration-contract.js";
+import { registerPortableContract } from "./portable-contract.js";
 import { registerPropertyContract } from "./property-contract.js";
 import { registerShardingContract } from "./sharding-contract.js";
 
@@ -30,5 +31,8 @@ registerBudgetContract((name, run) => {
   test(name, run);
 });
 registerShardingContract((name, run) => {
+  test(name, run);
+});
+registerPortableContract((name, run) => {
   test(name, run);
 });

@@ -10,6 +10,7 @@
       "!playwright-report",
       "!evals/runs",
       "!evals/rust-probe/target",
+      "!crates/modelt-core/target",
       "!pnpm-lock.yaml"
     ]
   },

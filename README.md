@@ -25,6 +25,8 @@ just browser
 
 ## モデルと実装の比較
 
+TS / Rust の共通コアは `./portable`。同じ Rust ソースを native と Wasm で使い、適合性照合とトレース再生を行う。[値・effect protocol・使用例](docs/portable-core.md) を参照。`just portable-build` / `just portable-test` で Rust と Node・実ブラウザの照合を検査する。
+
 ```ts
 import { checkConformance, checkModel, checkTrace } from "./src/index.js";
 import { counterModel, createCounter } from "./examples/durable-counter.js";

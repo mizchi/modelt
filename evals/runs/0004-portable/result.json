@@ -1,0 +1,5 @@
+{
+  "status": "error",
+  "reason": "evaluation process exited 137 before producing result; first seed completed with 5890 matching native/Wasm replies; no full-run conclusion",
+  "exitCode": 137
+}
