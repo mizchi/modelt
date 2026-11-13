@@ -5,6 +5,9 @@ on:
     paths:
       [
         "src/sharding.ts",
+        "src/**",
+        "examples/**",
+        "evals/harness/**",
         "evals/runtime/**",
         "package.json",
         "pnpm-lock.yaml",

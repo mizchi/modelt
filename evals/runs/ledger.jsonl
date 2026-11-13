@@ -4,3 +4,4 @@
 {"runId":"0002-development","split":"development","planId":"0002-mixed-depth","planDigest":"884abe90dcd63100a9003fa8f2c1333847ff08018f4f96420fd1ed6e248fd520","sourceDigest":"4c6eed5899402ea253a9aa75f7fdfa6ee5cd5c67b51c3861d2751c30dfb53457","status":"complete","assessment":"improved"}
 {"runId":"0002-confirmation","split":"confirmation","planId":"0002-mixed-depth","planDigest":"884abe90dcd63100a9003fa8f2c1333847ff08018f4f96420fd1ed6e248fd520","sourceDigest":"4c6eed5899402ea253a9aa75f7fdfa6ee5cd5c67b51c3861d2751c30dfb53457","status":"complete","assessment":"improved"}
 {"runId":"0003-runtime","kind":"runtime","status":"complete","sourceVersion":"7b5740547597936b82e54f8a47f633f2a36fc7bb47435ace808b4241dec9f758","plan":"0003-runtime"}
+{"runId":"0003-cloud","kind":"sharding","status":"complete","sourceVersion":"e9fc6cafefaab0f27973f82eeeb385e3b99cfa77a7bb58e80164cc8dab5f0ef2","plan":"0003-runtime"}

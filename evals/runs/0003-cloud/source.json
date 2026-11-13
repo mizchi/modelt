@@ -1,0 +1,175 @@
+{
+  "provenance": "four-local-processes",
+  "recordedAt": "2026-11-13T17:10:24.255Z",
+  "sourceVersion": "e9fc6cafefaab0f27973f82eeeb385e3b99cfa77a7bb58e80164cc8dab5f0ef2",
+  "sources": [
+    {
+      "path": "evals/harness/counter-faults.ts",
+      "sha256": "f1a96e52e04deead66e8f04b6fa4a763e5fc9bad88e81db509d9ad2381d434a3"
+    },
+    {
+      "path": "evals/harness/evaluate.ts",
+      "sha256": "5279a70bf343cdccc657b38bbc3ee40180cbb7668f9030fc66fb07807888d590"
+    },
+    {
+      "path": "evals/harness/history.ts",
+      "sha256": "be84848677987cf72717399ca01e91937b5442671b3ffe85233fc4de8329828c"
+    },
+    {
+      "path": "evals/harness/replay.ts",
+      "sha256": "15cb11f633db10e7b47291cbff2d1ee3935bd66eedfde7e9bda3e2716c9e3cd6"
+    },
+    {
+      "path": "evals/harness/scheduled-counter.ts",
+      "sha256": "660df920aca1c760a1a0fa7b0d87e5ebc3f776b27b1b510e390f5a8c67c6d72f"
+    },
+    {
+      "path": "evals/harness/search.ts",
+      "sha256": "b0a051938a87e1175c3b1ee5cb2eb8138498f0134ea705999c672d9a56bae2e0"
+    },
+    {
+      "path": "evals/harness/ttl.ts",
+      "sha256": "2e4b7d6f934adec10e15e8c95e4785a338163eced63e1a0a82ac511b48c6fd19"
+    },
+    {
+      "path": "evals/runtime/evaluate.ts",
+      "sha256": "f268feb0f2cbea801b85cf4a46df847ee4baf2d1770ff9bef42fa2ed2cba9b21"
+    },
+    {
+      "path": "evals/runtime/native.ts",
+      "sha256": "5d0e3b44333574438e7ffb33fddab370416057c917c0a4206d4a694b3ecdc727"
+    },
+    {
+      "path": "evals/runtime/pool.ts",
+      "sha256": "33e3f35a2e863ca9d89997ce095d599a1dc430bc9889b3676d6b68f0662a83a4"
+    },
+    {
+      "path": "evals/runtime/provenance.ts",
+      "sha256": "8ce1fa0110e6f5d7f6abb675adbc99c942bddc84e24f2229e3f626a3d7e80443"
+    },
+    {
+      "path": "evals/runtime/rust-test.ts",
+      "sha256": "92ba0ceca03cad21016fa642701df6d473efc42fe137cc7e2cc0d6413e42bb01"
+    },
+    {
+      "path": "evals/runtime/scheduler.ts",
+      "sha256": "59fc14b6d224866e1f50befc23e0fe5fb1fc4861bb3d74a92f6adef643c9a92c"
+    },
+    {
+      "path": "evals/runtime/schedules.ts",
+      "sha256": "ec9c2a4f070b9eb3baa04b3c2e3a6398c08b9d82741bb5859a8c2e31d9f7b089"
+    },
+    {
+      "path": "evals/runtime/shard-cli.ts",
+      "sha256": "8069f63651aa085ad7699068780ccb0b5357cb6829b0f33deb77b21a6a9f90e6"
+    },
+    {
+      "path": "evals/runtime/system-test.ts",
+      "sha256": "a4086098abbec98e9cf038f56e2471212a8c9eb7e02b641ef198c65f6a078786"
+    },
+    {
+      "path": "evals/runtime/table.ts",
+      "sha256": "ebe44762c4afd3a16277d8c3a29a035c144bc832a669bd79c613772017fe784b"
+    },
+    {
+      "path": "evals/runtime/wasm.ts",
+      "sha256": "d6dd08b0a86462e3513d614f413d2d06ebe06bd38f07eba30f032a3921682f5f"
+    },
+    {
+      "path": "evals/runtime/work.ts",
+      "sha256": "f09208fafcacc1247057a3585724245a87ce5ad0dc88a74232040ee56bd55eff"
+    },
+    {
+      "path": "evals/runtime/worker.ts",
+      "sha256": "0430a12ba19242d4f3362c8a8f369320c4850bb01b8066f4fc0f1c8eae204abd"
+    },
+    {
+      "path": "evals/rust-probe/Cargo.lock",
+      "sha256": "5f7ab6b514727930eb5a9bbb7da8bd5583ac7301328821c70ad497a74a7c7965"
+    },
+    {
+      "path": "evals/rust-probe/Cargo.toml",
+      "sha256": "7426e6a9bca3e0394a81434ff30b696f9641707dff994c3f547e050f60d387f2"
+    },
+    {
+      "path": "evals/rust-probe/src/lib.rs",
+      "sha256": "33ab0d486abf5e1877c4c93e5002ac4402cbe178261753f70f5640d7bbe408d5"
+    },
+    {
+      "path": "evals/rust-probe/src/main.rs",
+      "sha256": "efd69dd6f775b55d2bbb7a5d3ea31e3882bf8962484739bfdd1fbd9ab23cc5a2"
+    },
+    {
+      "path": "examples/counter-model.ts",
+      "sha256": "8635f088a3fdf9e0b1bf4ea1f96790d56d578766d6e3c3c81a483cd9127f7721"
+    },
+    {
+      "path": "examples/demo.ts",
+      "sha256": "4c42c6701d69d7853add037078137a99174ad80470631c9786867340f8ca9f0d"
+    },
+    {
+      "path": "examples/durable-counter.ts",
+      "sha256": "5f77b4b8dbbb815b71dc31f121d220623484f67e36efad0c4114996ee444521c"
+    },
+    {
+      "path": "package.json",
+      "sha256": "8099158065186c2ef06dbc052be0caedd50282f6b6df22b14df43ac7794db180"
+    },
+    {
+      "path": "pnpm-lock.yaml",
+      "sha256": "6c5e28a9b3702220f97d7a7032a1b6bfc5382e413bf8ae60090d72a074712868"
+    },
+    {
+      "path": "src/budget.ts",
+      "sha256": "59239e0c17b0e6670d22c031de983434c9444cdc74f58dde3f4ed42f2e0d2ba8"
+    },
+    {
+      "path": "src/checker.ts",
+      "sha256": "0d3d22b03dddd84e9b523f298a1c111b2a61dc4cec8731b8969d640124692e4b"
+    },
+    {
+      "path": "src/compose.ts",
+      "sha256": "a3fd903ca6dce125b6efb8ac34d77fc92d91640994e14e1a86a313d30c11f4e6"
+    },
+    {
+      "path": "src/conformance.ts",
+      "sha256": "f3bb120449be59bf8bf122016fd35fbd45b81bfe910de3b9436b33ee45c52995"
+    },
+    {
+      "path": "src/contracts.ts",
+      "sha256": "c86adeb8fee97c37b48fc0a894d60d755fa6060e54e70dd2e582359336200037"
+    },
+    {
+      "path": "src/index.ts",
+      "sha256": "d8219cc54aabba15e4f04c604decdaf61d3f8dbcab9b01b721298e35f047867f"
+    },
+    {
+      "path": "src/property.ts",
+      "sha256": "52b5afd86848a425e27423241de275dfe7c67f8bc812119eab8593bcf0f6e60a"
+    },
+    {
+      "path": "src/sharding.ts",
+      "sha256": "ed7b6f23dd4f2ec86a732828990f38f12ee50151788de734b0fd6c3a19f73b19"
+    },
+    {
+      "path": "src/smt.ts",
+      "sha256": "dafc5153f5880c655296fc9b120572d73dc00b092469c538ec25c1be6f9e1bf0"
+    },
+    {
+      "path": "src/tla.ts",
+      "sha256": "9932c3a5113354e520479ed899d1758ae5accf0875e7cba66bfb449e3c12ddcb"
+    },
+    {
+      "path": "src/trace.ts",
+      "sha256": "0a20a45ba0d84841139bec2dd8178c40585276fffc75e536d33ea1ca2c077cf3"
+    },
+    {
+      "path": "tsconfig.build.json",
+      "sha256": "483dbedb088e4ebe2b350d2eda52cbeab834029850d113e0273816d44e7095d0"
+    },
+    {
+      "path": "tsconfig.json",
+      "sha256": "c04b2e003bace641c05ca2acd2abefe6ec74e5d57ad4f34e8c378b06165badae"
+    }
+  ]
+}

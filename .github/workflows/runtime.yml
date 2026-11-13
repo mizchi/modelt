@@ -6,6 +6,9 @@ on:
       [
         "src/budget.ts",
         "src/sharding.ts",
+        "src/**",
+        "examples/**",
+        "evals/harness/**",
         "evals/runtime/**",
         "evals/rust-probe/**",
         "tests/runtime*",

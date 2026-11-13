@@ -1,0 +1,11 @@
+{
+  "manifestId": "c1f35aee0ee44ac3694854dbd4a989ffd69f7c62a25cc5f07b19b0ef573259f7",
+  "sourceVersion": "e9fc6cafefaab0f27973f82eeeb385e3b99cfa77a7bb58e80164cc8dab5f0ef2",
+  "shardIndex": 0,
+  "shardCount": 4,
+  "workers": 1,
+  "durationMs": 5000,
+  "node": "v24.22.2",
+  "platform": "darwin",
+  "arch": "arm64"
+}

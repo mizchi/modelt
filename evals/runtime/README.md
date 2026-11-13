@@ -15,6 +15,8 @@ Rust は依存 crate のない実験用カーネル。通常の TS ライブラ�
 
 profile の `visitsPerMs` の単位を混ぜない。カーネルは遷移/ms。非同期実装では正常版と故障版を実行する1 schedule を1 visitとして測り、prefix の数を全部 schedule 相当で課金する保守的な上界を使った。実際の SUT、ソルバー、モデルの違いごとに calibration が必要。
 
+今回の非同期 calibration は schedule の実行・結果転送までで、後段の履歴 checker とファイル保存は別費用。カーネルの `bytesPerState = 0` は同じ表を再訪する streaming 処理の設定であり、大量の固有状態を保持する model checker のメモリ見積りには使わない。
+
 `fixedMemoryBytes` は今回 RSS snapshot、`bytesPerState` は探索表現による見積りで、OS の強制メモリ上限ではない。`startupMs = 0` の再利用 profile は既に起動している pool のみを表す。新しい pool を作るときに再利用 profile を流用しない。
 
 検査 worker 数と SUT の同時操作数は別。`scheduler.ts` は2/3同時操作の read/write 順序を制御し、深さ・ノード数・dispatch 時の soft deadline で検査範囲を制限する。進行中の job を強制終了しないため、予算超過はあり得る。Node 本体・CI runner・ネットワークの起動はセッションの外で、必要なら caller の profile に別途含める。
@@ -44,9 +46,20 @@ pnpm eval:shard merge-directory .artifacts/cloud/manifest.json .artifacts/cloud/
 
 各 `run` は独立したホストで実行できる。引数は manifest / shard index / shard count / 出力先 / worker 数 / soft budget ms。worker 数はホストの calibration から planner が選んだ値を渡せる。クラウドのインスタンス数と、インスタンス内の worker 数は別に上限を設ける。
 
+実測 profile からバジェットを決めて準備する場合:
+
+```sh
+pnpm eval:shard plan evals/runs/0003-runtime/profiles.json async-counter-3 100 1073741824 4 6 3 .artifacts/allocation.json
+pnpm eval:shard prepare .artifacts/allocated-manifest.json .artifacts/allocation.json
+```
+
+`plan` の引数は profile / workload / ms / memory bytes / worker上限 / 深さ上限 / branching / 出力先。元の測定と同じホスト・workload で使い、他のインスタンスでは再測定する。`prepare` は選んだ深さ・ノード数を使い、完了する schedule に到達できなければ manifest を作らず `budget-exhausted` で終了する。検査範囲の情報は `.coverage.json` にも保存する。
+
 manifest は source version と入力から task ID を計算し、入力の並び順が変わっても同じ ID を作る。index は0始まり。shard 数を変えて再配置しても task ID は変えない。
 
 集約では欠落を `partial`、異なる manifest / source / 同じ task の異なる結果を `conflict` とする。同じ結果の再試行は重複排除し、失敗後に正常な結果が届いた task は回復できる。未解決の task が残れば完了しない。`complete` は manifest の全 task の完了であり、モデルの安全性を主張する値ではない。
+
+CLI は輸送上の完了に加え、カーネルの結果を TS 参照実装と照合し、schedule の正常版が線形化可能であることも検査する。履歴 checker や集約の費用は shard 内の dispatch 予算とは別。1 worker の shard は Node の main 上で処理し、2 worker 以上の場合に thread pool を作る。
 
 準備した manifest は40 seed のカーネル検査、2同時操作の6順序、3同時操作の90順序を含む。汎用の TS クロージャを JSON 化して送る仕組みではなく、version 管理した task handler を同じコードで配布する。クラウドの runner が失われた場合も、残りの task ID を再配布できる。
 
