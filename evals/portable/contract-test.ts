@@ -30,6 +30,28 @@ import {
   createFaultyCounter,
 } from "../harness/counter-faults.js";
 import { generateCorpus } from "../harness/search.js";
+import { createNativeComparison } from "./transcript.js";
+
+test("independent native and Wasm instances have matching protocol lifetimes", async () => {
+  const bytes = await readFile(
+    "crates/modelt-core/target/wasm32-unknown-unknown/release/modelt_core.wasm",
+  );
+  for (const seed of [1, 2]) {
+    const comparison = await createNativeComparison(bytes);
+    for (const actions of generateCorpus(counterModel, "alternating", {
+      seed,
+      maxOperations: 32,
+      maxDepth: 8,
+    }).cases)
+      await checkPortableConformance(
+        comparison.core,
+        counterModel,
+        createCounter(),
+        actions,
+      );
+    assert.ok(comparison.verify().replies > 0);
+  }
+});
 
 const load = async () =>
   createPortableWasm(

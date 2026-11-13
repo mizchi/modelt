@@ -10,3 +10,9 @@
 - 合格条件: 判定・反例・expected・checkedStepsの不一致0、正常版の誤検出0、既存 TS が検出した故障の欠落0、保存トレースの再現失敗0。Unicode、整数精度、集合・写像の等価性、malformed input を別 fixture で照合する。
 - 実測は startup と検査時間を分ける。ソース digest、toolchain、実行条件、操作列または生成 seed、判定を保存し、run を上書きしない。
 - 初版の対象は適合性と再生。汎用 IR、BFS の Rust 移植、縮小器の共有、Go SDK、実 OS の schedule 制御は後続とする。TS の custom comparator は portable 経路では使用せず、観測を codec で抽象化する。
+
+## 収集処理の修正（最初の run 後、再実行前）
+
+`0004-portable` は seed101 の5890応答の一致後に終了コード137で停止した。最小例で、再利用した Wasm の effect ID が2に進んでも新しい native process は1から始まることを再現した。比較ハーネスの lifecycle が不一致だった。一括の巨大配列の diff 作成がメモリを増やした可能性がある。コア単独の開発 seed 反復では RSS 約72〜78MBに収まった。
+
+native subprocess と対になる Wasm instance を seed ごとに新規作成し、差分は応答ごとに検査する。コアの意味論・探索方式・正常対照・故障条件は変更しない。失敗 run は上書きせず保持し、確認用 seed を121〜140へ変更する。101〜120は今回の確認に再利用しない。startup は初期化した全 instance の合計を記録する。

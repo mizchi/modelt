@@ -26,6 +26,7 @@ import {
 } from "../harness/counter-faults.js";
 import { generateCorpus } from "../harness/search.js";
 import { digest, portableFingerprint } from "./provenance.js";
+import { createNativeComparison } from "./transcript.js";
 
 interface Witness {
   readonly seed: number;
@@ -62,7 +63,7 @@ await write("manifest.json", {
   wasmSha256: digest(bytes),
   wasmBytes: bytes.length,
   startedAt: new Date().toISOString(),
-  seeds: Array.from({ length: 20 }, (_, index) => 101 + index),
+  seeds: Array.from({ length: 20 }, (_, index) => 121 + index),
   maxOperations: 512,
   maxDepth: 16,
 });
@@ -70,7 +71,7 @@ const started = performance.now();
 try {
   const initialization = performance.now();
   const wasm = await createPortableWasm(bytes);
-  const startupMs = performance.now() - initialization;
+  let startupMs = performance.now() - initialization;
   const witnesses = new Map<string, Witness>();
   const rows: {
     seed: number;
@@ -85,17 +86,10 @@ try {
   let nativeTranscriptMs = 0;
   let wireReplies = 0;
   let normalControls = 0;
-  for (let seed = 101; seed <= 120; seed++) {
-    const commands: PortableCommand[] = [];
-    const outputs: PortableOutput[] = [];
-    const core: PortableCore = {
-      request: (command) => {
-        commands.push(structuredClone(command));
-        const output = wasm.request(command);
-        outputs.push(output);
-        return output;
-      },
-    };
+  for (let seed = 121; seed <= 140; seed++) {
+    const comparison = await createNativeComparison(bytes);
+    startupMs += comparison.startupMs;
+    const core = comparison.core;
     const corpus = generateCorpus(counterModel, "alternating", {
       seed,
       maxOperations: 512,
@@ -145,23 +139,11 @@ try {
         });
       }
     }
-    const nativeStart = performance.now();
-    const native = execFileSync(
-      "crates/modelt-core/target/release/modelt-core",
-      {
-        input: commands.map((command) => JSON.stringify(command)).join("\n"),
-        maxBuffer: 64 * 1024 * 1024,
-      },
-    )
-      .toString()
-      .trim()
-      .split("\n")
-      .map((line) => JSON.parse(line));
-    nativeTranscriptMs += performance.now() - nativeStart;
-    assert.deepEqual(native, outputs);
-    wireReplies += native.length;
+    const native = comparison.verify();
+    nativeTranscriptMs += native.elapsedMs;
+    wireReplies += native.replies;
     console.log(
-      `seed ${seed}: ${corpus.cases.length} cases × 6 variants; ${native.length} native/Wasm replies matched`,
+      `seed ${seed}: ${corpus.cases.length} cases × 6 variants; ${native.replies} native/Wasm replies matched`,
     );
   }
   assert.deepEqual([...witnesses.keys()].sort(), [...counterFaults].sort());
