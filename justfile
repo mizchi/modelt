@@ -42,3 +42,16 @@ runtime-test:
 
 runtime-eval:
   pnpm runtime:eval
+
+portable-build:
+  pnpm portable:build
+
+portable-test:
+  pnpm portable:test
+  pnpm portable:browser
+
+portable-eval:
+  pnpm portable:eval
+
+portable-replay run:
+  pnpm portable:replay {{quote(run)}}

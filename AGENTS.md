@@ -16,3 +16,4 @@
 - Rust 実験を変更したら `just runtime-build` / `just runtime-test` と cargo fmt を確認する。言語差と表現の最適化、cold start と再利用、カーネルと SUT/オラクルの費用を分ける。
 - sharding は manifest / source version / task ID を固定し、欠落・再試行・異なる結果を区別する。輸送上の全 task 完了を、モデルの安全性や完全探索の証明として扱わない。
 - コミットは conventional commits。公開やリリースは依頼の範囲に従う。
+- portable core を変更したら `just portable-build` / `just portable-test`、crate の cargo fmt / clippy を実行する。値・protocol の互換性は共有 fixture と既存 TS checker への差分比較で検査し、BFS や PBT まで移植済みと解釈しない。

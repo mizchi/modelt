@@ -1,0 +1,82 @@
+{
+  "valid": [
+    {
+      "name": "null",
+      "input": { "type": "null" },
+      "canonical": "{\"type\":\"null\"}"
+    },
+    {
+      "name": "large integer",
+      "input": { "type": "int", "value": "9007199254740993123456789" },
+      "canonical": "{\"type\":\"int\",\"value\":\"9007199254740993123456789\"}"
+    },
+    {
+      "name": "set equality",
+      "input": {
+        "type": "set",
+        "value": [
+          { "type": "int", "value": "2" },
+          { "type": "int", "value": "1" },
+          { "type": "int", "value": "2" }
+        ]
+      },
+      "canonical": "{\"type\":\"set\",\"value\":[{\"type\":\"int\",\"value\":\"1\"},{\"type\":\"int\",\"value\":\"2\"}]}"
+    },
+    {
+      "name": "unicode scalar ordering",
+      "input": {
+        "type": "record",
+        "value": [
+          ["😀", { "type": "bool", "value": false }],
+          ["", { "type": "bytes", "value": "00ff" }]
+        ]
+      },
+      "canonical": "{\"type\":\"record\",\"value\":[[\"\",{\"type\":\"bytes\",\"value\":\"00ff\"}],[\"😀\",{\"type\":\"bool\",\"value\":false}]]}"
+    },
+    {
+      "name": "map ordering",
+      "input": {
+        "type": "map",
+        "value": [
+          [{ "type": "string", "value": "x" }, { "type": "null" }],
+          [{ "type": "int", "value": "-2" }, { "type": "list", "value": [] }]
+        ]
+      },
+      "canonical": "{\"type\":\"map\",\"value\":[[{\"type\":\"int\",\"value\":\"-2\"},{\"type\":\"list\",\"value\":[]}],[{\"type\":\"string\",\"value\":\"x\"},{\"type\":\"null\"}]]}"
+    }
+  ],
+  "invalid": [
+    { "name": "null with payload", "input": { "type": "null", "value": null } },
+    { "name": "integer newline", "input": { "type": "int", "value": "1\n" } },
+    { "name": "bytes newline", "input": { "type": "bytes", "value": "00\n" } },
+    { "name": "leading zero", "input": { "type": "int", "value": "01" } },
+    { "name": "negative zero", "input": { "type": "int", "value": "-0" } },
+    { "name": "float", "input": { "type": "float", "value": 1.5 } },
+    {
+      "name": "duplicate record",
+      "input": {
+        "type": "record",
+        "value": [["a", { "type": "null" }], ["a", { "type": "null" }]]
+      }
+    },
+    {
+      "name": "duplicate map",
+      "input": {
+        "type": "map",
+        "value": [
+          [{ "type": "int", "value": "1" }, { "type": "null" }],
+          [{ "type": "int", "value": "1" }, { "type": "null" }]
+        ]
+      }
+    },
+    {
+      "name": "extra field",
+      "input": { "type": "bool", "value": true, "extra": 1 }
+    },
+    { "name": "invalid bytes", "input": { "type": "bytes", "value": "FF" } },
+    {
+      "name": "unpaired surrogate",
+      "json": "{\"type\":\"string\",\"value\":\"\\ud800\"}"
+    }
+  ]
+}

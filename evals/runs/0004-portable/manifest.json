@@ -1,0 +1,299 @@
+{
+  "version": 1,
+  "plan": "0004-portable-core",
+  "split": "confirmation",
+  "sources": [
+    {
+      "path": "crates/modelt-core/Cargo.lock",
+      "sha256": "a610464b5d4b5dc8aea314528b36e5695efdbabc58751976a08b4807cdb04b23"
+    },
+    {
+      "path": "crates/modelt-core/Cargo.toml",
+      "sha256": "730b17bd48013cee62ecd9a96680f85a6470746e1e90ece5f44f218a1e4f59b1"
+    },
+    {
+      "path": "crates/modelt-core/examples/counter.rs",
+      "sha256": "3aa94037577b84097e51500aaeed122828b3aeaacbe05a0ab28efdfa7b8b4aa9"
+    },
+    {
+      "path": "crates/modelt-core/src/lib.rs",
+      "sha256": "080c45d5d7280312b5955ec7e4244fd686356bcfcac82d8e62c8bf4f6fc843c7"
+    },
+    {
+      "path": "crates/modelt-core/src/main.rs",
+      "sha256": "10ff6b25b7cc7dcc5d6c5ecebdbee8b3db813804f214632f121578fac2267809"
+    },
+    {
+      "path": "crates/modelt-core/src/value.rs",
+      "sha256": "4d329ac49de4048421785cdccc4065b759f412edcf9236a80e4a20b5d534bb17"
+    },
+    {
+      "path": "crates/modelt-core/src/wasm.rs",
+      "sha256": "2300b01f5c8540c34dbc4b4d83ea167ae081dd5fcd01c523dac8679b991a0ffe"
+    },
+    {
+      "path": "crates/modelt-core/tests/contract.rs",
+      "sha256": "6e8c3764b7c66d01763dd2f4ca5c07b818d8fc6584d4f7d008776fbd34799dd2"
+    },
+    {
+      "path": "evals/plans/0004-portable-core.md",
+      "sha256": "5ac1f71a19c51614ef25488fe2bfd80c962f09b7f80e27b499beab80284f5e29"
+    },
+    {
+      "path": "evals/portable/contract-test.ts",
+      "sha256": "995aeaba3ab3bdc8f896f79587c6bcd0d0b86b43b46b7b1452164b3eff202855"
+    },
+    {
+      "path": "evals/portable/evaluate.ts",
+      "sha256": "b57a7097c14f359db6c997250124f5593e138db9bb232bbb714efe9c0a2fc433"
+    },
+    {
+      "path": "evals/portable/provenance.ts",
+      "sha256": "adb4567e0474f2ea3cea0978581fdb2f6a847a4f646fbb2dec72d682f68996e4"
+    },
+    {
+      "path": "evals/portable/replay.ts",
+      "sha256": "fe9ebd3038fbd8b797d5ecbfe8781106d2958f5f93af8f7ebdc153915211c992"
+    },
+    {
+      "path": "examples/counter-model.ts",
+      "sha256": "8635f088a3fdf9e0b1bf4ea1f96790d56d578766d6e3c3c81a483cd9127f7721"
+    },
+    {
+      "path": "examples/demo.ts",
+      "sha256": "4c42c6701d69d7853add037078137a99174ad80470631c9786867340f8ca9f0d"
+    },
+    {
+      "path": "examples/durable-counter.ts",
+      "sha256": "5f77b4b8dbbb815b71dc31f121d220623484f67e36efad0c4114996ee444521c"
+    },
+    {
+      "path": "fixtures/portable-values.json",
+      "sha256": "d87e362fc186cf42134eb0d5e27d6d24744c3e89f54e93c1a896ff9cd2c89b37"
+    },
+    {
+      "path": "package.json",
+      "sha256": "292f0598ea7259ce86ed526d75810c0c344034df064f1846cf8ee56a0003172d"
+    },
+    {
+      "path": "pnpm-lock.yaml",
+      "sha256": "6c5e28a9b3702220f97d7a7032a1b6bfc5382e413bf8ae60090d72a074712868"
+    },
+    {
+      "path": "src/budget.ts",
+      "sha256": "59239e0c17b0e6670d22c031de983434c9444cdc74f58dde3f4ed42f2e0d2ba8"
+    },
+    {
+      "path": "src/checker.ts",
+      "sha256": "0d3d22b03dddd84e9b523f298a1c111b2a61dc4cec8731b8969d640124692e4b"
+    },
+    {
+      "path": "src/compose.ts",
+      "sha256": "a3fd903ca6dce125b6efb8ac34d77fc92d91640994e14e1a86a313d30c11f4e6"
+    },
+    {
+      "path": "src/conformance.ts",
+      "sha256": "f3bb120449be59bf8bf122016fd35fbd45b81bfe910de3b9436b33ee45c52995"
+    },
+    {
+      "path": "src/contracts.ts",
+      "sha256": "f9909024d31b1463cee99d27989cd6de7036a088545049db8b1c20e99e8dc3cd"
+    },
+    {
+      "path": "src/index.ts",
+      "sha256": "d8219cc54aabba15e4f04c604decdaf61d3f8dbcab9b01b721298e35f047867f"
+    },
+    {
+      "path": "src/portable-value.ts",
+      "sha256": "82569e3d4ff0cccaf81b44d886ec9061d922065420c1e3002acde73378794c5e"
+    },
+    {
+      "path": "src/portable-wasm.ts",
+      "sha256": "904a0d5413e70b0e63cff59e3cdb5f1622ec3298b2c75bed7293b9c9cfccef91"
+    },
+    {
+      "path": "src/portable.ts",
+      "sha256": "a0d2c09d1ab05204d5afb4e36718dddc04ed12dfa61b5002b9cb9a592d64bed5"
+    },
+    {
+      "path": "src/property.ts",
+      "sha256": "52b5afd86848a425e27423241de275dfe7c67f8bc812119eab8593bcf0f6e60a"
+    },
+    {
+      "path": "src/sharding.ts",
+      "sha256": "ed7b6f23dd4f2ec86a732828990f38f12ee50151788de734b0fd6c3a19f73b19"
+    },
+    {
+      "path": "src/smt.ts",
+      "sha256": "dafc5153f5880c655296fc9b120572d73dc00b092469c538ec25c1be6f9e1bf0"
+    },
+    {
+      "path": "src/tla.ts",
+      "sha256": "9932c3a5113354e520479ed899d1758ae5accf0875e7cba66bfb449e3c12ddcb"
+    },
+    {
+      "path": "src/trace.ts",
+      "sha256": "0a20a45ba0d84841139bec2dd8178c40585276fffc75e536d33ea1ca2c077cf3"
+    },
+    {
+      "path": "tests/advanced-contract.ts",
+      "sha256": "1dfdfdf7c8d4b443d1f7faf3f87f535e9ab0e38bab53cb8c76f848f359c61299"
+    },
+    {
+      "path": "tests/browser-entry.ts",
+      "sha256": "624232a455df7d952d626802cfbd1f6f6eeaa0df94b3417f5636fb2f901a10b1"
+    },
+    {
+      "path": "tests/browser.spec.ts",
+      "sha256": "c17dcee0272e9a2aa99b15100a719cab7fe10c29c9cde041bdf2cf5482786c20"
+    },
+    {
+      "path": "tests/budget-contract.ts",
+      "sha256": "5cb46382dba85718b7f668346a3785b40084659688b48f6789d39f36efc88d16"
+    },
+    {
+      "path": "tests/budget.vitest.test.ts",
+      "sha256": "e10039dacf4a580a35a58365b66f81401f3bbfa0afa2ec72ec7f0cad14e93ed3"
+    },
+    {
+      "path": "tests/contract.ts",
+      "sha256": "8449009ea948cb626ebbab14b7fbdd482e5b66da6fbcb3f6046f544027247294"
+    },
+    {
+      "path": "tests/core.vitest.test.ts",
+      "sha256": "fdfc2b6dfec2215074e9baf91dac37d173c2cefd2a6e062676394a0898d78d54"
+    },
+    {
+      "path": "tests/eval-loop-contract.ts",
+      "sha256": "a2b76d4ce7660335b53833fee3e8667f16cccebc4b1e6aa14dea708d31d8965e"
+    },
+    {
+      "path": "tests/eval-loop.vitest.test.ts",
+      "sha256": "dfb3dd54ba2b2dcc729413349646d622cd099fe671239d1c9fbfb91987a5f280"
+    },
+    {
+      "path": "tests/evaluation-contract.ts",
+      "sha256": "22d4da800b571334d805ec90c7708764a7e846666e51f8617c81bf24563c16a4"
+    },
+    {
+      "path": "tests/evaluation.vitest.test.ts",
+      "sha256": "12a1d6f1775991385685bb9c503bfcfcc8b89157b797252692c0729ddd582ab0"
+    },
+    {
+      "path": "tests/integration-contract.ts",
+      "sha256": "7bdd1718a5ff8192444a53774d2c53e632544af90bf4ec8271063eaa0393bb84"
+    },
+    {
+      "path": "tests/integration.vitest.test.ts",
+      "sha256": "6f8451ad66fcce7cc93b952a2c1cab3de535039e2d04458104cf06d91790a0c8"
+    },
+    {
+      "path": "tests/node.test.ts",
+      "sha256": "5de8206f941668ece97f92300a115768226bf151243c561044225e97555788d5"
+    },
+    {
+      "path": "tests/portable-browser-entry.ts",
+      "sha256": "5c8bad469f1b00ea6e3491ae8bc4ddd878493fbaf029195611ea76070677673b"
+    },
+    {
+      "path": "tests/portable-contract.ts",
+      "sha256": "451419d604c7e759969f783ffe2409a52d4a684e408da8ff1647b1ec2fa4e502"
+    },
+    {
+      "path": "tests/portable.browser.spec.ts",
+      "sha256": "68c7983806d4950728b4f30df1c9a8ad2960aafad5a59845083e7d4380a481c2"
+    },
+    {
+      "path": "tests/portable.vitest.test.ts",
+      "sha256": "5f26c1b97eea68da21d665c05a153e9e9db7ba0775730163fbb0fb3933c9992f"
+    },
+    {
+      "path": "tests/property-contract.ts",
+      "sha256": "3e201ec866114524fd5be554fff530a6ab1e090339dd38657b4bab8d73bfb61d"
+    },
+    {
+      "path": "tests/property.vitest.test.ts",
+      "sha256": "711606a5daebbf4cb962e3b6dd0d9d138fb6338984cac7c257450932af955702"
+    },
+    {
+      "path": "tests/runtime-browser-entry.ts",
+      "sha256": "392e555573fba1b26f1c2a722b3ad99ae2a5ff1f3ca40131b6834674a4a653aa"
+    },
+    {
+      "path": "tests/runtime.browser.spec.ts",
+      "sha256": "da38a07572b7441636d1a962feee4d108ac6ac7ae70d1324ad8c8bfaf472d4f5"
+    },
+    {
+      "path": "tests/sharding-contract.ts",
+      "sha256": "0c4bb6e2944c420a49f28960f880b6be0c597ba9770fea8ef2373bcec9d14f3f"
+    },
+    {
+      "path": "tests/sharding.vitest.test.ts",
+      "sha256": "5ff4ff9a0eea0395332c990a6af22aa47109fe68526d2728009dd821be6561a2"
+    },
+    {
+      "path": "tsconfig.build.json",
+      "sha256": "483dbedb088e4ebe2b350d2eda52cbeab834029850d113e0273816d44e7095d0"
+    },
+    {
+      "path": "tsconfig.json",
+      "sha256": "c04b2e003bace641c05ca2acd2abefe6ec74e5d57ad4f34e8c378b06165badae"
+    }
+  ],
+  "sourceVersion": "bc1e2bed61d78f9e31e57ee324b3c2c8aabc092148ed1984c951d404cdb830fd",
+  "node": "v24.22.2",
+  "rust": "rustc 1.98.0 (88d9e12ae 2026-08-18)",
+  "commit": "e9782991f2a1a0b7d0563125437ec8e74b2383bb",
+  "dirtyPaths": [
+    "M .gitignore",
+    " M AGENTS.md",
+    " M README.md",
+    " M biome.json",
+    " M justfile",
+    " M package.json",
+    " M src/contracts.ts",
+    " M tests/node.test.ts",
+    "?? .github/workflows/portable.yml",
+    "?? crates/",
+    "?? docs/portable-core.md",
+    "?? evals/portable/",
+    "?? fixtures/",
+    "?? portable-playwright.config.ts",
+    "?? src/portable-value.ts",
+    "?? src/portable-wasm.ts",
+    "?? src/portable.ts",
+    "?? tests/portable-browser-entry.ts",
+    "?? tests/portable-contract.ts",
+    "?? tests/portable.browser.spec.ts",
+    "?? tests/portable.vitest.test.ts"
+  ],
+  "platform": "darwin",
+  "arch": "arm64",
+  "wasmSha256": "87e5b2cf3ec0e7c6e5dfc4df8ece25e4b5be72bf3513589c6ca1b7ebc81bd44c",
+  "wasmBytes": 254727,
+  "startedAt": "2026-11-13T18:45:05.365Z",
+  "seeds": [
+    101,
+    102,
+    103,
+    104,
+    105,
+    106,
+    107,
+    108,
+    109,
+    110,
+    111,
+    112,
+    113,
+    114,
+    115,
+    116,
+    117,
+    118,
+    119,
+    120
+  ],
+  "maxOperations": 512,
+  "maxDepth": 16
+}
