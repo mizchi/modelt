@@ -89,6 +89,33 @@ const node = execFileSync(process.execPath, [join(consumer, "consumer.mjs")], {
 })
   .toString()
   .trim();
+await writeFile(
+  join(consumer, "consumer.ts"),
+  `import type {Model} from '@mizchi/modelt';
+import {compileFiniteModel,createFiniteModel} from '@mizchi/modelt/finite';
+import {createSimulationHost} from '@mizchi/modelt/host';
+import {createPortableWasm} from '@mizchi/modelt/portable';
+const model:Model<number,'tick',number>={name:'typed',initial:()=>[{state:0,observation:0}],actions:()=>['tick'],step:()=>[{state:0,observation:0}],key:String};
+const compiled=compileFiniteModel(model,{maxDepth:1,maxStates:1});
+if(compiled.model)createFiniteModel(compiled.model);
+createSimulationHost({seed:1});
+void createPortableWasm;
+`,
+);
+execFileSync(
+  process.execPath,
+  [
+    resolve("node_modules/typescript/bin/tsc"),
+    "--noEmit",
+    "--strict",
+    "--target",
+    "ES2023",
+    "--module",
+    "NodeNext",
+    "consumer.ts",
+  ],
+  { cwd: consumer, stdio: "pipe" },
+);
 const cli = join(consumer, "node_modules/@mizchi/modelt/dist/cli/modelt.js");
 const checked = spawnSync(
   process.execPath,
@@ -159,6 +186,7 @@ const rust = execFileSync(
 const result = {
   status: "complete",
   node,
+  typecheck: "passed without solver declarations",
   rust,
   cliExitCodes: [0, 1, 2],
   consumer,
