@@ -19,3 +19,4 @@
 - 有限モデル・縮小・ホストの変更は `just usable-test` と `just usable-eval` / `just usable-replay` で検査する。archive と vendor の原本を編集せず、registry 初回公開やアカウント設定は別途扱う。配布変更は `just package` の単独 consumer まで確認する。
 - portable core を変更したら `just portable-build` / `just portable-test`、crate の cargo fmt / clippy を実行する。値・protocol の互換性は共有 fixture と既存 TS checker への差分比較で検査し、BFS や PBT まで移植済みと解釈しない。
 - Go adapter は `adapters/go` の独立 module。変更時は `just go-test` で CGO 無効・race・vet・TS fixture・別 module の consumer を検査する。照合の意味論は Wasm コアに任せる。
+- 3言語の実 SUT と共通 oracle の比較は `just cross-test`。実験時は `cross-eval` / `cross-replay` で保存したモデル・oracle・反例を使い、SUT の観測を期待値へ転用しない。

@@ -12,6 +12,7 @@
       "!evals/runs",
       "!evals/fixtures",
       "!evals/rust-probe/target",
+      "!evals/shared-oracle-rust/target",
       "!crates/modelt-core/target",
       "!pnpm-lock.yaml"
     ]
