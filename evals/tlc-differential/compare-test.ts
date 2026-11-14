@@ -117,3 +117,18 @@ test("initial invariant failures remain valid when TLC omits aggregate counts", 
     [],
   );
 });
+
+test("a TLC parser crash is infrastructure failure, not rejected model input", () => {
+  const log =
+    "TLC2 Version\nFatal errors while parsing TLA+ spec\njava.lang.NullPointerException: standard module unavailable\nStarting...\nError: Parsing or semantic analysis failed.";
+  assert.equal(
+    classifyTlc({
+      status: "error",
+      exit: 150,
+      states: null,
+      generated: null,
+      log,
+    }),
+    "infrastructure-error",
+  );
+});

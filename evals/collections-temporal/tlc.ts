@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { spawnSync } from "node:child_process";
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir, mkdtemp, rm, writeFile } from "node:fs/promises";
+import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 import type {
   PortableValue,
@@ -49,10 +50,12 @@ export const runTlc = async (
   await writeFile(join(directory, `${moduleName}.cfg`), input.config, {
     flag: "wx",
   });
+  const scratch = await mkdtemp(join(tmpdir(), "modelt-tlc-"));
   const result = spawnSync(
     resolve(java),
     [
       "-XX:+UseParallelGC",
+      `-Djava.io.tmpdir=${scratch}`,
       "-jar",
       resolve(jar),
       "-workers",
@@ -64,6 +67,7 @@ export const runTlc = async (
     ],
     { cwd: directory, encoding: "utf8", maxBuffer: 16 * 1024 * 1024 },
   );
+  await rm(scratch, { recursive: true, force: true });
   if (result.error) throw result.error;
   const log = result.stdout + result.stderr;
   await writeFile(join(directory, "tlc.log"), log, { flag: "wx" });

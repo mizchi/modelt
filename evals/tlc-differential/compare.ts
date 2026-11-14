@@ -14,6 +14,12 @@ export const classifyTlc = (
   if (reference.exit === null || !reference.log.includes("TLC2 Version"))
     return "infrastructure-error";
   if (
+    /^java\.lang\.(NullPointerException|OutOfMemoryError|NoClassDefFoundError)/m.test(
+      reference.log,
+    )
+  )
+    return "infrastructure-error";
+  if (
     /Semantic errors|Lexical error|Parsing or semantic analysis failed|Fatal errors/.test(
       reference.log,
     )

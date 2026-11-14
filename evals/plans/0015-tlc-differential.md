@@ -13,3 +13,5 @@ native と Wasm は結果・trace・work を完全比較する。TLC とは API 
 開発 run の補足: TLC v1.7.4 (`5a47802b5c391f59ecdd44117981f4ff8c0656ba`) の SANY は非BMP文字を含む2つの入力を字句エラーで拒否した。原入力は残し、同じ2入力を明示的な拒否対照にする。Rust frontend も拒否することを検査し、モデルの一致件数には加えない。初期 invariant violation では集計数を出さないため、出力のある数だけ照合し、欠測を0と解釈しない。TLC master と v1.7.4 は String の Head / Append / toTuple の扱いが違うため、jar と同じ tag のソースで修正する。確認 seed は未実行のまま維持する。
 
 初回の確認 seed 0x15B2 は32件一致した。保存結果の replay では、未実行の native 欄を `undefined` 付きで返すと JSON 保存時に欄が消え、比較が失敗する問題を2件の抜粋で再現した。未実行欄を省略する修正だけを行う。モデル検査器・入力の意味・binary は変更しない。元の確認結果を残し、追加確認 seed 0x15C3 をここで予約する。追加確認を従来32件の新しい独立実行として水増ししない。
+
+並列回帰実行中の再実行で、標準モジュール解析の NullPointerException が1件発生した。同一入力は先行 run で型エラーを返していた。v1.7.4 の `SimpleFilenameToStream.read` は `java.io.tmpdir` 内の固定ファイル名へ書き、終了時に削除する。全 TLC 呼び出しに専用の一時ディレクトリを指定し、JVM の解析例外を input error とも model error とも区別する。失敗 run は保持する。検査器の binary・モデル・確認 seed 0x15C3 は変更せず、未実行の追加確認を続ける。
