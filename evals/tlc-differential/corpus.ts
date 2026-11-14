@@ -6,7 +6,7 @@ export interface Input {
   readonly seed?: number;
   readonly expectedRejection?: true;
 }
-export const seeds = { development: 0x15a1, confirmation: 0x15b2 } as const;
+export const seeds = { development: 0x15a1, confirmation: 0x15c3 } as const;
 const value = (name: string, expression: string): Input => ({
   name,
   family: "value",

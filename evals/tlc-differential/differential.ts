@@ -141,7 +141,7 @@ export const differential = async (
     input,
     classification: rejected ? "rejected-input" : "compared",
     ours,
-    native: nativeResult,
+    ...(nativeResult ? { native: nativeResult } : {}),
     reference: {
       status: classifyTlc(reference),
       states: reference.states,
