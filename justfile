@@ -150,3 +150,13 @@ tlc-diff java jar phase run: safety-build
 
 tlc-diff-replay java jar saved run: safety-build
   node dist/evals/tlc-differential/run.js {{quote(java)}} {{quote(jar)}} replay {{quote(run)}} {{quote(saved)}}
+
+checker-bench-test:
+  pnpm build
+  node --test dist/evals/checker-benchmark/contract-test.js
+
+checker-bench java jar archive run: safety-build
+  node dist/evals/checker-benchmark/run.js {{quote(java)}} {{quote(jar)}} {{quote(archive)}} {{quote(run)}}
+
+checker-bench-replay java jar archive saved run: safety-build
+  node dist/evals/checker-benchmark/replay.js {{quote(java)}} {{quote(jar)}} {{quote(archive)}} {{quote(saved)}} {{quote(run)}}
