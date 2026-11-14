@@ -4,7 +4,7 @@ Rust native / Wasm backend は、有限集合・関数・record・sequence、有
 
 ## 判定と反例
 
-[0012 の計画](../plans/0012-collections-temporal.md) を実装前に登録した。49入力は native / Wasm で一致し、予算付き入力と空初期集合を除く46入力は tla-ts と比較する。TLC では予算付き3入力を除く46入力を比較した。返却した反例14件には lasso 7件を含み、state と遷移を固定した別の仕様で再生した。誤った性質を要求する対照は liveness violation になった。
+[0012 の計画](../plans/0012-collections-temporal.md) を実装前に登録した。49入力は native / Wasm で一致し、予算付き入力と空初期集合を除く45入力は tla-ts と比較する。TLC では予算付き3入力を除く46入力を比較した。返却した反例14件には lasso 7件を含み、state と遷移を固定した別の仕様で再生した。誤った性質を要求する対照は liveness violation になった。
 
 49入力の内訳は complete 23、invariant violation 3、property violation 4、liveness violation 7、deadlock 1、empty 1、bounded 2、error 8。error の1件は複合値の深さ64という実装上限の検査で、TLC / tla-ts へ無限モデルの完走を要求する対照には使わない。部分的な探索や型エラーを成功へ置き換えていない。
 
@@ -20,22 +20,22 @@ TLC ソースは `tlaplus/tlaplus` の `d8fb231de4e4b5d02c1b2ed1ac759c086f694021
 
 0012 の複合値は scalar と違って遅かった。[0013](../plans/0013-scalar-comparison.md) で、整数・真偽値の比較がエラー文字列を確保する経路を除いた。[0014](../plans/0014-value-hash.md) では、intern table の整数を直接混ぜる private hasher に変更した。hash が衝突した異なる関数を実際に構成するテストで、値と ID が分離されることも検査する。暗号的 hash の用途には使わず、Cell 全体の Eq を残す。
 
-| 入力 | 0012 native / Wasm | 0013 native / Wasm | 0014 native / Wasm |
-| --- | ---: | ---: | ---: |
-| 集合配送、4096状態 | 37.96 / 31.53 ms | 17.89 / 21.71 ms | 17.31 / 19.45 ms |
-| function、4096状態 | 37.92 / 32.92 ms | 20.80 / 25.22 ms | 17.32 / 20.84 ms |
+| 入力               | 0012 native / Wasm | 0013 native / Wasm | 0014 native / Wasm |
+| ------------------ | -----------------: | -----------------: | -----------------: |
+| 集合配送、4096状態 |   37.96 / 31.53 ms |   17.89 / 21.71 ms |   17.31 / 19.45 ms |
+| function、4096状態 |   37.92 / 32.92 ms |   20.80 / 25.22 ms |   17.32 / 20.84 ms |
 
 各段階の49入力・結果・work・反例・再生仕様は、直前の保存結果と完全一致した。run 間で同時測定の tla-ts も変動するため、小さい時間差を原因の確定や一般的な改善率と解釈しない。
 
 最終0014の中央値は次の通り。全10入力の生サンプルは [保存した benchmark](../runs/0014-value-hash-performance/benchmark.json) にある。
 
-| 入力 | tla-ts | native process | Wasm request |
-| --- | ---: | ---: | ---: |
-| 集合配送、4096状態 | 16.64 ms | 17.31 ms | 19.45 ms |
-| function、4096状態 | 11.89 ms | 17.32 ms | 20.84 ms |
-| queue、2047状態 | 3.67 ms | 4.37 ms | 2.55 ms |
-| fairness ring、128状態 | 1.81 ms | 4.99 ms | 2.17 ms |
-| scalar ring、10万状態 | 40.43 ms | 15.51 ms | 18.74 ms |
+| 入力                   |   tla-ts | native process | Wasm request |
+| ---------------------- | -------: | -------------: | -----------: |
+| 集合配送、4096状態     | 16.64 ms |       17.31 ms |     19.45 ms |
+| function、4096状態     | 11.89 ms |       17.32 ms |     20.84 ms |
+| queue、2047状態        |  3.67 ms |        4.37 ms |      2.55 ms |
+| fairness ring、128状態 |  1.81 ms |        4.99 ms |      2.17 ms |
+| scalar ring、10万状態  | 40.43 ms |       15.51 ms |     18.74 ms |
 
 scalar ring は同時測定の tla-ts に対して native 約2.6倍、Wasm 約2.2倍。queue の Wasm も約1.4倍だった。集合・関数・小さい temporal モデルについて、速度目的の一律切替は採用しない。複合値の対応と再現性のために Rust backend を利用し、比較時の割り当て除去と private hasher は今回の固定入力での改善として採用する。Wasm は983035 bytes、起動測定は約1.36 ms。
 
@@ -43,11 +43,11 @@ scalar ring は同時測定の tla-ts に対して native 約2.6倍、Wasm 約2.
 
 ## 保存と再実行
 
-| 段階 | snapshot | 判定・反例 | 性能 | TLC |
-| --- | --- | --- | --- | --- |
+| 段階 | snapshot  | 判定・反例                                            | 性能                                                            | TLC                                             |
+| ---- | --------- | ----------------------------------------------------- | --------------------------------------------------------------- | ----------------------------------------------- |
 | 0012 | `65d94dc` | [checks](../runs/0012-collections-checks/result.json) | [performance](../runs/0012-collections-performance/result.json) | [TLC](../runs/0012-collections-tlc/result.json) |
-| 0013 | `aadde5d` | [checks](../runs/0013-scalar-checks/result.json) | [performance](../runs/0013-scalar-performance/result.json) | 0012の原本を維持 |
-| 0014 | `1288718` | [checks](../runs/0014-value-hash-checks/result.json) | [performance](../runs/0014-value-hash-performance/result.json) | [TLC](../runs/0014-value-hash-tlc/result.json) |
+| 0013 | `aadde5d` | [checks](../runs/0013-scalar-checks/result.json)      | [performance](../runs/0013-scalar-performance/result.json)      | 0012の原本を維持                                |
+| 0014 | `1288718` | [checks](../runs/0014-value-hash-checks/result.json)  | [performance](../runs/0014-value-hash-performance/result.json)  | [TLC](../runs/0014-value-hash-tlc/result.json)  |
 
 最終 sourceVersion は `53d7adcdbfe8fc0029af08106dbfeb9a7152ba02fed17a44c52582938169acd3`。各 replay は source・Wasm・保存ファイルの digest を検査する。過去 snapshot の run はその snapshot に checkout して再実行する。0013 / 0014 の判定 run は親の digest と全 report も比較する。旧 run は上書きしていない。
 
