@@ -401,17 +401,82 @@ fn set_values(
 }
 
 struct Node {
-    values: Vec<Scalar>,
     parent: Option<usize>,
-    action: Option<String>,
+    action: Option<usize>,
     depth: u32,
+}
+
+#[derive(Clone, Copy)]
+struct BranchCursor<'a> {
+    definition: &'a Branch,
+    index: usize,
+}
+
+struct StateStore {
+    width: usize,
+    values: Vec<Scalar>,
+    heads: HashMap<u64, usize>,
+    links: Vec<Option<usize>>,
+}
+
+impl StateStore {
+    fn new(width: usize) -> Self {
+        Self {
+            width,
+            values: vec![],
+            heads: HashMap::new(),
+            links: vec![],
+        }
+    }
+    fn state(&self, index: usize) -> &[Scalar] {
+        &self.values[index * self.width..(index + 1) * self.width]
+    }
+    fn find(&self, hash: u64, values: &[Option<Scalar>]) -> Option<usize> {
+        if values.len() != self.width {
+            return None;
+        }
+        let mut candidate = self.heads.get(&hash).copied();
+        while let Some(index) = candidate {
+            if self
+                .state(index)
+                .iter()
+                .zip(values)
+                .all(|(stored, actual)| Some(*stored) == *actual)
+            {
+                return Some(index);
+            }
+            candidate = self.links[index];
+        }
+        None
+    }
+    fn push(&mut self, hash: u64, values: &[Option<Scalar>]) -> Result<usize, CoreError> {
+        if values.len() != self.width || values.iter().any(Option::is_none) {
+            return Err(CoreError::protocol("Incomplete safety state"));
+        }
+        let index = self.links.len();
+        self.values.extend(values.iter().flatten().copied());
+        self.links.push(self.heads.insert(hash, index));
+        Ok(index)
+    }
+}
+
+fn get_hash(values: &[Option<Scalar>]) -> Result<u64, CoreError> {
+    values
+        .iter()
+        .try_fold(0xcbf2_9ce4_8422_2325_u64, |hash, value| {
+            let bits = match value.ok_or_else(|| CoreError::protocol("Incomplete safety state"))? {
+                Scalar::Int(value) => u64::from(value as u32) << 1,
+                Scalar::Bool(value) => (u64::from(value) << 1) | 1,
+            };
+            Ok(hash.wrapping_mul(0x0000_0100_0000_01b3) ^ bits)
+        })
 }
 
 struct Search<'a> {
     program: &'a SafetyProgram,
     bounds: SafetyBounds,
     nodes: Vec<Node>,
-    visited: HashMap<Vec<Scalar>, usize>,
+    store: StateStore,
     result: SafetyResult,
 }
 
@@ -475,7 +540,7 @@ impl SafetyProgram {
             program: self,
             bounds,
             nodes: vec![],
-            visited: HashMap::new(),
+            store: StateStore::new(self.variables.len()),
             result: SafetyResult {
                 status: "complete".into(),
                 reason: None,
@@ -486,12 +551,16 @@ impl SafetyProgram {
                 violation: None,
             },
         };
-        for branch in &self.initial {
+        let mut next = vec![None; self.variables.len()];
+        for (index, branch) in self.initial.iter().enumerate() {
             search.walk(
-                branch,
+                BranchCursor {
+                    definition: branch,
+                    index,
+                },
                 0,
                 &[],
-                &mut vec![None; self.variables.len()],
+                &mut next,
                 None,
                 &mut false,
             )?;
@@ -504,15 +573,19 @@ impl SafetyProgram {
             return Ok(search.result);
         }
         let mut index = 0;
+        let mut current = vec![Scalar::Int(0); self.variables.len()];
         while index < search.nodes.len() {
-            let current = search.nodes[index].values.clone();
+            current.copy_from_slice(search.store.state(index));
             let mut enabled = false;
-            for branch in &self.next {
+            for (branch_index, branch) in self.next.iter().enumerate() {
                 search.walk(
-                    branch,
+                    BranchCursor {
+                        definition: branch,
+                        index: branch_index,
+                    },
                     0,
                     &current,
-                    &mut vec![None; self.variables.len()],
+                    &mut next,
                     Some(index),
                     &mut enabled,
                 )?;
@@ -558,7 +631,7 @@ impl Search<'_> {
     }
     fn walk(
         &mut self,
-        branch: &Branch,
+        branch: BranchCursor<'_>,
         position: usize,
         current: &[Scalar],
         next: &mut [Option<Scalar>],
@@ -568,13 +641,9 @@ impl Search<'_> {
         if !self.tick() {
             return Ok(());
         }
-        let Some(step) = branch.steps.get(position) else {
-            let values = next
-                .iter()
-                .map(|value| value.ok_or_else(|| CoreError::protocol("Incomplete safety state")))
-                .collect::<Result<Vec<_>, _>>()?;
+        let Some(step) = branch.definition.steps.get(position) else {
             *enabled = true;
-            self.accept(values, parent, &branch.name)?;
+            self.accept(next, parent, branch.index)?;
             return Ok(());
         };
         match step {
@@ -633,12 +702,13 @@ impl Search<'_> {
     }
     fn accept(
         &mut self,
-        values: Vec<Scalar>,
+        values: &[Option<Scalar>],
         parent: Option<usize>,
-        action: &str,
+        action: usize,
     ) -> Result<(), CoreError> {
+        let hash = get_hash(values)?;
         self.result.generated += 1;
-        if self.visited.contains_key(&values) {
+        if self.store.find(hash, values).is_some() {
             return Ok(());
         }
         let depth = parent.map_or(0, |index| self.nodes[index].depth + 1);
@@ -652,12 +722,10 @@ impl Search<'_> {
             self.result.reason = Some("states".into());
             return Ok(());
         }
-        let index = self.nodes.len();
-        self.visited.insert(values.clone(), index);
+        let index = self.store.push(hash, values)?;
         self.nodes.push(Node {
-            values,
             parent,
-            action: parent.map(|_| action.to_string()),
+            action: parent.map(|_| action),
             depth,
         });
         self.result.states = self.nodes.len();
@@ -665,7 +733,7 @@ impl Search<'_> {
         for predicate in &self.program.invariants {
             if !predicate
                 .expression
-                .eval(&self.nodes[index].values, &[])?
+                .eval(self.store.state(index), &[])?
                 .boolean()?
             {
                 self.result.status = "invariant-violation".into();
@@ -684,8 +752,15 @@ impl Search<'_> {
         loop {
             let node = &self.nodes[index];
             trace.push(SafetyTraceStep {
-                action: node.action.clone(),
-                values: node.values.iter().map(|value| value.portable()).collect(),
+                action: node
+                    .action
+                    .map(|index| self.program.next[index].name.clone()),
+                values: self
+                    .store
+                    .state(index)
+                    .iter()
+                    .map(|value| value.portable())
+                    .collect(),
             });
             match node.parent {
                 Some(parent) => index = parent,
@@ -694,5 +769,31 @@ impl Search<'_> {
         }
         trace.reverse();
         trace
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::{Scalar, StateStore};
+
+    #[test]
+    fn colliding_hashes_keep_distinct_typed_states() {
+        let mut store = StateStore::new(2);
+        let first = [Some(Scalar::Int(0)), Some(Scalar::Int(1))];
+        let second = [Some(Scalar::Int(0)), Some(Scalar::Int(2))];
+        let third = [Some(Scalar::Bool(false)), Some(Scalar::Int(1))];
+        for values in [&first, &second, &third] {
+            store.push(0, values).unwrap();
+        }
+        assert_eq!(store.find(0, &first), Some(0));
+        assert_eq!(store.find(0, &second), Some(1));
+        assert_eq!(store.find(0, &third), Some(2));
+        assert_eq!(
+            store.find(0, &[Some(Scalar::Int(0)), Some(Scalar::Int(3))]),
+            None
+        );
+        assert_eq!(store.find(0, &first[..1]), None);
+        assert!(store.push(0, &[Some(Scalar::Int(0)), None]).is_err());
+        assert_eq!(store.find(0, &third), Some(2));
     }
 }

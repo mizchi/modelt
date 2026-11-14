@@ -63,8 +63,12 @@ const runNative = (
 
 const directory = process.argv[2];
 assert.ok(directory, "Pass a new output directory");
-const plan = process.argv[3] ?? "0010-rust-safety-storage";
-assert.ok(plan === "0009-rust-safety" || plan === "0010-rust-safety-storage");
+const plan = process.argv[3] ?? "0011-rust-safety-arena";
+assert.ok(
+  plan === "0009-rust-safety" ||
+    plan === "0010-rust-safety-storage" ||
+    plan === "0011-rust-safety-arena",
+);
 await mkdir(dirname(directory), { recursive: true });
 await mkdir(directory, { recursive: false });
 const write = (name: string, value: unknown) =>
