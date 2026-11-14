@@ -1,7 +1,11 @@
 import { counterModel } from "../examples/counter-model.js";
 import { createCounter, isCounterAction } from "../examples/durable-counter.js";
 import { checkConformance } from "../src/conformance.js";
-import type { SafetyProgram } from "../src/contracts.js";
+import type {
+  SafetyBounds,
+  SafetyProgram,
+  SafetyResult,
+} from "../src/contracts.js";
 import { compileFiniteModel } from "../src/finite.js";
 import { createSimulationHost } from "../src/host.js";
 import {
@@ -39,6 +43,25 @@ export const run = async (): Promise<Record<string, unknown>> => {
     safety.violation?.trace.length !== 4
   )
     throw new Error("Browser safety backend differs");
+  const complex: {
+    program: SafetyProgram;
+    bounds?: SafetyBounds;
+    expected: SafetyResult["status"];
+  }[] = await (await fetch("/complex.json")).json();
+  for (const input of complex) {
+    const result = checkSafety(
+      core,
+      input.program,
+      input.bounds ?? {
+        maxDepth: 100,
+        maxStates: 10000,
+        maxWork: 2000000,
+        maxTemporalNodes: 50000,
+      },
+    );
+    if (result.status !== input.expected)
+      throw new Error(`Browser complex backend: ${JSON.stringify(result)}`);
+  }
   const reference = await checkConformance(
     counterModel,
     createCounter(),

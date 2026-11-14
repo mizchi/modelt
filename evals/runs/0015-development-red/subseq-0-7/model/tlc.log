@@ -1,0 +1,26 @@
+TLC2 Version 2.19 of 08 August 2024 (rev: 5a47802)
+Running breadth-first search Model-Checking with fp 46 and seed 781184254394723917 with 1 worker on 10 cores with 7282MB heap and 64MB offheap memory [pid: 36703] (Mac OS X 26.6.2 aarch64, Eclipse Adoptium 21.0.13 x86_64, MSBDiskFPSet, DiskStateQueue).
+Parsing file /Users/mz/ghq/github.com/mizchi/modelt/evals/runs/0015-development-red/subseq-0-7/model/Differential.tla
+Parsing file /private/var/folders/_h/_rf455xj4h3_3g6z86pg244c0000gn/T/Integers.tla
+Parsing file /private/var/folders/_h/_rf455xj4h3_3g6z86pg244c0000gn/T/Sequences.tla
+Parsing file /private/var/folders/_h/_rf455xj4h3_3g6z86pg244c0000gn/T/FiniteSets.tla
+Parsing file /private/var/folders/_h/_rf455xj4h3_3g6z86pg244c0000gn/T/Naturals.tla
+Semantic processing of module Naturals
+Semantic processing of module Integers
+Semantic processing of module Sequences
+Semantic processing of module FiniteSets
+Semantic processing of module Differential
+Starting... (2026-11-14 22:49:16)
+Computing initial states...
+Error: The second argument of SubSeq must be in the domain of its first argument:
+<<>>
+, but instead it is
+3
+Error: The error occurred when TLC was evaluating the nested
+expressions at the following positions:
+0. Line 4, column 9 to line 4, column 30 in Differential
+1. Line 4, column 14 to line 4, column 29 in Differential
+
+
+0 states generated, 0 distinct states found, 0 states left on queue.
+Finished in 00s at (2026-11-14 22:49:16)

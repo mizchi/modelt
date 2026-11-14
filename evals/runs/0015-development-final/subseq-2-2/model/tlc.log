@@ -1,0 +1,12 @@
+TLC2 Version 2.19 of 08 August 2024 (rev: 5a47802)
+Running breadth-first search Model-Checking with fp 20 and seed -9121066306875034386 with 1 worker on 10 cores with 7282MB heap and 64MB offheap memory [pid: 89546] (Mac OS X 26.6.2 aarch64, Eclipse Adoptium 21.0.13 x86_64, MSBDiskFPSet, DiskStateQueue).
+Parsing file /Users/mz/ghq/github.com/mizchi/modelt/evals/runs/0015-development-final/subseq-2-2/model/Differential.tla
+Parsing file /private/var/folders/_h/_rf455xj4h3_3g6z86pg244c0000gn/T/Integers.tla
+Parsing file /private/var/folders/_h/_rf455xj4h3_3g6z86pg244c0000gn/T/Sequences.tla
+
+Fatal errors while parsing TLA+ spec in file Differential
+
+java.lang.NullPointerException: Cannot invoke "String.length()" because "str" is null
+Starting... (2026-11-14 23:18:34)
+Error: Parsing or semantic analysis failed. Module-Table lookup failure for module name Differential derived from Differential file name.
+Finished in 00s at (2026-11-14 23:18:34)

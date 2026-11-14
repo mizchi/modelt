@@ -1,0 +1,17 @@
+{
+  "status": "complete",
+  "plan": "0013-scalar-comparison",
+  "sourceVersion": "0c44c9f7c8cc24d5bd3af4234f1bbabd950b545d503d0aad06ba4b20ff16b52e",
+  "files": [
+    {
+      "path": "manifest.json",
+      "sha256": "7b69dbcebe0b57e25712018468cc76cb1bbb18a7719f945b521dd174e2d37c16"
+    },
+    {
+      "path": "benchmark.json",
+      "sha256": "9f2d19a3c14387ce0306b09dc14905cf744d5e8b0c4dea61912ec6c5f51a1a79"
+    }
+  ],
+  "cases": 10,
+  "samples": 280
+}

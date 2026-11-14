@@ -1,0 +1,7 @@
+{
+  "name": "fair-ring-128",
+  "states": 128,
+  "source": "---- MODULE FairRing ----\nEXTENDS Naturals\nVARIABLE x\nInit == x = 0\nNext == x' = IF x < 127 THEN x + 1 ELSE 0\nSpec == Init /\\ [][Next]_x /\\ WF_x(Next)\nP == []<>(x = 127)\n====",
+  "config": "SPECIFICATION Spec\nPROPERTY P",
+  "generated": 129
+}

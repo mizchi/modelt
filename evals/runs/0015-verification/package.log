@@ -1,0 +1,22 @@
+pnpm package:prepare
+
+> @mizchi/modelt@0.1.0-alpha.0 package:prepare /Users/mz/ghq/github.com/mizchi/modelt
+> pnpm portable:build && pnpm build && node dist/scripts/package.js
+
+
+> @mizchi/modelt@0.1.0-alpha.0 portable:build /Users/mz/ghq/github.com/mizchi/modelt
+> cargo build --release --locked --manifest-path crates/modelt-core/Cargo.toml && cargo build --release --locked --lib --target wasm32-unknown-unknown --manifest-path crates/modelt-core/Cargo.toml
+
+    Finished `release` profile [optimized] target(s) in 0.18s
+    Finished `release` profile [optimized] target(s) in 0.05s
+
+> @mizchi/modelt@0.1.0-alpha.0 build /Users/mz/ghq/github.com/mizchi/modelt
+> tsc -p tsconfig.build.json
+
+Verified npm, Cargo and Wasm artifacts: /Users/mz/ghq/github.com/mizchi/modelt/.artifacts/packages
+pnpm package:test
+
+> @mizchi/modelt@0.1.0-alpha.0 package:test /Users/mz/ghq/github.com/mizchi/modelt
+> node dist/scripts/package-test.js
+
+{"status":"complete","node":"packaged TS/Wasm consumer matched without solvers","typecheck":"passed without solver declarations","rust":"packaged Rust consumer matched","cliExitCodes":[0,1,2],"consumer":"/var/folders/_h/_rf455xj4h3_3g6z86pg244c0000gn/T/modelt-consumer-Ifv8pd","artifacts":["mizchi-modelt-0.1.0-alpha.0.tgz","modelt-core-0.1.0-alpha.0.crate"]}

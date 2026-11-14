@@ -1,0 +1,15 @@
+{
+  "route": "modelt-wasm",
+  "iteration": 7,
+  "warmup": false,
+  "milliseconds": 81.37954100000206,
+  "value": {
+    "status": "complete",
+    "reason": null,
+    "states": 400,
+    "generated": 801,
+    "depth": 38,
+    "work": 2403,
+    "violation": null
+  }
+}

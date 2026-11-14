@@ -1,0 +1,12 @@
+{
+  "route": "tla-ts",
+  "iteration": 2,
+  "warmup": false,
+  "value": {
+    "status": "complete",
+    "states": 1000000,
+    "generated": 1000001,
+    "violation": null
+  },
+  "milliseconds": 454.9152909999975
+}

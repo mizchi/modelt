@@ -1,0 +1,7 @@
+pnpm build
+
+> @mizchi/modelt@0.1.0-alpha.0 build /Users/mz/ghq/github.com/mizchi/modelt
+> tsc -p tsconfig.build.json
+
+node dist/evals/rust-safety/replay.js 'evals/runs/0015-regression-performance'
+10 saved TLA programs reproduced in tla-ts, Rust native and Wasm

@@ -1,0 +1,3261 @@
+[
+  {
+    "input": {
+      "name": "graph-15c3-0",
+      "family": "graph",
+      "seed": 5571,
+      "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0,1}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 0 /\\ x' = 3\nA2 == x = 2 /\\ x' = 1\nA3 == x = 0 /\\ x' = 3\nA4 == x = 2 /\\ x' = 1\nA5 == x = 0 /\\ x' = 3\nA6 == x = 2 /\\ x' = 1\nNext == A0 \\/ A1 \\/ A2 \\/ A3 \\/ A4 \\/ A5 \\/ A6\nSpec == Init /\\ [][Next]_x\nProp == [](x < 4)\n====",
+      "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK FALSE"
+    },
+    "classification": "compared",
+    "ours": {
+      "result": {
+        "status": "complete",
+        "reason": null,
+        "states": 3,
+        "generated": 6,
+        "depth": 1,
+        "work": 32,
+        "violation": null
+      }
+    },
+    "native": {
+      "result": {
+        "status": "complete",
+        "reason": null,
+        "states": 3,
+        "generated": 6,
+        "depth": 1,
+        "work": 32,
+        "violation": null
+      }
+    },
+    "reference": {
+      "status": "complete",
+      "states": 3,
+      "generated": 6,
+      "exit": 0
+    },
+    "differences": []
+  },
+  {
+    "input": {
+      "name": "graph-15c3-1",
+      "family": "graph",
+      "seed": 5571,
+      "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 1 /\\ x' = 0\nA2 == x = 3 /\\ x' = 2\nA3 == x = 1 /\\ x' = 0\nA4 == x = 3 /\\ x' = 2\nA5 == x = 1 /\\ x' = 0\nA6 == x = 3 /\\ x' = 2\nA7 == x = 1 /\\ x' = 0\nNext == A0 \\/ A1 \\/ A2 \\/ A3 \\/ A4 \\/ A5 \\/ A6 \\/ A7\nSpec == Init /\\ [][Next]_x\nProp == <>(x = 3)\n====",
+      "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK TRUE"
+    },
+    "classification": "compared",
+    "ours": {
+      "result": {
+        "status": "liveness-violation",
+        "reason": null,
+        "states": 2,
+        "generated": 6,
+        "depth": 1,
+        "work": 77,
+        "violation": {
+          "name": "Prop",
+          "trace": [
+            {
+              "action": null,
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "A0",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "1"
+                }
+              ]
+            }
+          ],
+          "loopStart": 0,
+          "loopAction": "A1"
+        }
+      }
+    },
+    "native": {
+      "result": {
+        "status": "liveness-violation",
+        "reason": null,
+        "states": 2,
+        "generated": 6,
+        "depth": 1,
+        "work": 77,
+        "violation": {
+          "name": "Prop",
+          "trace": [
+            {
+              "action": null,
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "A0",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "1"
+                }
+              ]
+            }
+          ],
+          "loopStart": 0,
+          "loopAction": "A1"
+        }
+      }
+    },
+    "reference": {
+      "status": "liveness-violation",
+      "states": 2,
+      "generated": 6,
+      "exit": 13
+    },
+    "witness": {
+      "input": {
+        "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 1 /\\ x' = 0\nA2 == x = 3 /\\ x' = 2\nA3 == x = 1 /\\ x' = 0\nA4 == x = 3 /\\ x' = 2\nA5 == x = 1 /\\ x' = 0\nA6 == x = 3 /\\ x' = 2\nA7 == x = 1 /\\ x' = 0\nNext == A0 \\/ A1 \\/ A2 \\/ A3 \\/ A4 \\/ A5 \\/ A6 \\/ A7\nSpec == Init /\\ [][Next]_x\nProp == <>(x = 3)\n\nVARIABLE __position\n__TraceInit == Init /\\ __position = 0 /\\ (x = 0)\n__TraceNext == ((__position = 0 /\\ __position' = 1 /\\ (x' = 1)) \\/ (__position = 1 /\\ __position' = 0 /\\ (x' = 0))) /\\ (Next \\/ UNCHANGED <<x>>)\n__TraceSpec == __TraceInit /\\ [][__TraceNext]_<<x,__position>> /\\ WF_<<x,__position>>(__TraceNext)\n__Expected == ~(Prop)\n====",
+        "expected": "complete",
+        "config": "SPECIFICATION __TraceSpec\n\nPROPERTY __Expected\nCHECK_DEADLOCK TRUE"
+      },
+      "status": "complete",
+      "states": 2
+    },
+    "differences": []
+  },
+  {
+    "input": {
+      "name": "graph-15c3-2",
+      "family": "graph",
+      "seed": 5571,
+      "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 1 /\\ x' = 1\nA2 == x = 1 /\\ x' = 2\nA3 == x = 2 /\\ x' = 2\nA4 == x = 2 /\\ x' = 1\nA5 == x = 1 /\\ x' = 1\nA6 == x = 0 /\\ x' = 2\nNext == A0 \\/ A1 \\/ A2 \\/ A3 \\/ A4 \\/ A5 \\/ A6\nSpec == Init /\\ [][Next]_x\nProp == []<>(x = 1)\n====",
+      "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK FALSE"
+    },
+    "classification": "compared",
+    "ours": {
+      "result": {
+        "status": "liveness-violation",
+        "reason": null,
+        "states": 3,
+        "generated": 8,
+        "depth": 1,
+        "work": 210,
+        "violation": {
+          "name": "Prop",
+          "trace": [
+            {
+              "action": null,
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "<stuttering>",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            }
+          ],
+          "loopStart": 1,
+          "loopAction": "<stuttering>"
+        }
+      }
+    },
+    "native": {
+      "result": {
+        "status": "liveness-violation",
+        "reason": null,
+        "states": 3,
+        "generated": 8,
+        "depth": 1,
+        "work": 210,
+        "violation": {
+          "name": "Prop",
+          "trace": [
+            {
+              "action": null,
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "<stuttering>",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            }
+          ],
+          "loopStart": 1,
+          "loopAction": "<stuttering>"
+        }
+      }
+    },
+    "reference": {
+      "status": "liveness-violation",
+      "states": 3,
+      "generated": 8,
+      "exit": 13
+    },
+    "witness": {
+      "input": {
+        "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 1 /\\ x' = 1\nA2 == x = 1 /\\ x' = 2\nA3 == x = 2 /\\ x' = 2\nA4 == x = 2 /\\ x' = 1\nA5 == x = 1 /\\ x' = 1\nA6 == x = 0 /\\ x' = 2\nNext == A0 \\/ A1 \\/ A2 \\/ A3 \\/ A4 \\/ A5 \\/ A6\nSpec == Init /\\ [][Next]_x\nProp == []<>(x = 1)\n\nVARIABLE __position\n__TraceInit == Init /\\ __position = 0 /\\ (x = 0)\n__TraceNext == ((__position = 0 /\\ __position' = 1 /\\ (x' = 0)) \\/ (__position = 1 /\\ __position' = 1 /\\ (x' = 0))) /\\ (Next \\/ UNCHANGED <<x>>)\n__TraceSpec == __TraceInit /\\ [][__TraceNext]_<<x,__position>> /\\ WF_<<x,__position>>(__TraceNext)\n__Expected == ~(Prop)\n====",
+        "expected": "complete",
+        "config": "SPECIFICATION __TraceSpec\n\nPROPERTY __Expected\nCHECK_DEADLOCK TRUE"
+      },
+      "status": "complete",
+      "states": 2
+    },
+    "differences": []
+  },
+  {
+    "input": {
+      "name": "graph-15c3-3",
+      "family": "graph",
+      "seed": 5571,
+      "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0,1}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 2 /\\ x' = 0\nNext == A0 \\/ A1\nSpec == Init /\\ [][Next]_x\nProp == <>[](x = 2)\n====",
+      "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK TRUE"
+    },
+    "classification": "compared",
+    "ours": {
+      "result": {
+        "status": "deadlock",
+        "reason": null,
+        "states": 2,
+        "generated": 3,
+        "depth": 0,
+        "work": 9,
+        "violation": {
+          "name": "deadlock",
+          "trace": [
+            {
+              "action": null,
+              "values": [
+                {
+                  "type": "int",
+                  "value": "1"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "native": {
+      "result": {
+        "status": "deadlock",
+        "reason": null,
+        "states": 2,
+        "generated": 3,
+        "depth": 0,
+        "work": 9,
+        "violation": {
+          "name": "deadlock",
+          "trace": [
+            {
+              "action": null,
+              "values": [
+                {
+                  "type": "int",
+                  "value": "1"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "reference": {
+      "status": "deadlock",
+      "states": 2,
+      "generated": 3,
+      "exit": 11
+    },
+    "witness": {
+      "input": {
+        "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0,1}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 2 /\\ x' = 0\nNext == A0 \\/ A1\nSpec == Init /\\ [][Next]_x\nProp == <>[](x = 2)\n__HasNext == ENABLED Next\n\nVARIABLE __position\n__TraceInit == Init /\\ __position = 0 /\\ (x = 1)\n__TraceNext == ((__position = 0 /\\ __position' = 0 /\\ (x' = 1))) /\\ (Next \\/ UNCHANGED <<x>>)\n__TraceSpec == __TraceInit /\\ [][__TraceNext]_<<x,__position>> /\\ WF_<<x,__position>>(__TraceNext)\n__Expected == <>(~(__HasNext))\n====",
+        "expected": "complete",
+        "config": "SPECIFICATION __TraceSpec\n\nPROPERTY __Expected\nCHECK_DEADLOCK TRUE"
+      },
+      "status": "complete",
+      "states": 1
+    },
+    "differences": []
+  },
+  {
+    "input": {
+      "name": "graph-15c3-4",
+      "family": "graph",
+      "seed": 5571,
+      "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 2 /\\ x' = 1\nA2 == x = 1 /\\ x' = 2\nA3 == x = 0 /\\ x' = 0\nA4 == x = 0 /\\ x' = 2\nNext == A0 \\/ A1 \\/ A2 \\/ A3 \\/ A4\nSpec == Init /\\ [][Next]_x\nProp == (x = 0) ~> (x = 0)\n====",
+      "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK FALSE"
+    },
+    "classification": "compared",
+    "ours": {
+      "result": {
+        "status": "complete",
+        "reason": null,
+        "states": 3,
+        "generated": 6,
+        "depth": 1,
+        "work": 112,
+        "violation": null
+      }
+    },
+    "native": {
+      "result": {
+        "status": "complete",
+        "reason": null,
+        "states": 3,
+        "generated": 6,
+        "depth": 1,
+        "work": 112,
+        "violation": null
+      }
+    },
+    "reference": {
+      "status": "complete",
+      "states": 3,
+      "generated": 6,
+      "exit": 0
+    },
+    "differences": []
+  },
+  {
+    "input": {
+      "name": "graph-15c3-5",
+      "family": "graph",
+      "seed": 5571,
+      "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 1 /\\ x' = 1\nA2 == x = 2 /\\ x' = 1\nA3 == x = 0 /\\ x' = 1\nA4 == x = 0 /\\ x' = 2\nA5 == x = 0 /\\ x' = 1\nNext == A0 \\/ A1 \\/ A2 \\/ A3 \\/ A4 \\/ A5\nSpec == Init /\\ [][Next]_x\nProp == <>[](x = 0) \\/ <>[](x = 0)\n====",
+      "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK TRUE"
+    },
+    "classification": "compared",
+    "ours": {
+      "result": {
+        "status": "liveness-violation",
+        "reason": null,
+        "states": 3,
+        "generated": 7,
+        "depth": 1,
+        "work": 714,
+        "violation": {
+          "name": "Prop",
+          "trace": [
+            {
+              "action": null,
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "A4",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "2"
+                }
+              ]
+            },
+            {
+              "action": "<stuttering>",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "2"
+                }
+              ]
+            },
+            {
+              "action": "<stuttering>",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "2"
+                }
+              ]
+            },
+            {
+              "action": "<stuttering>",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "2"
+                }
+              ]
+            }
+          ],
+          "loopStart": 1,
+          "loopAction": "<stuttering>"
+        }
+      }
+    },
+    "native": {
+      "result": {
+        "status": "liveness-violation",
+        "reason": null,
+        "states": 3,
+        "generated": 7,
+        "depth": 1,
+        "work": 714,
+        "violation": {
+          "name": "Prop",
+          "trace": [
+            {
+              "action": null,
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "A4",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "2"
+                }
+              ]
+            },
+            {
+              "action": "<stuttering>",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "2"
+                }
+              ]
+            },
+            {
+              "action": "<stuttering>",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "2"
+                }
+              ]
+            },
+            {
+              "action": "<stuttering>",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "2"
+                }
+              ]
+            }
+          ],
+          "loopStart": 1,
+          "loopAction": "<stuttering>"
+        }
+      }
+    },
+    "reference": {
+      "status": "liveness-violation",
+      "states": 3,
+      "generated": 7,
+      "exit": 13
+    },
+    "witness": {
+      "input": {
+        "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 1 /\\ x' = 1\nA2 == x = 2 /\\ x' = 1\nA3 == x = 0 /\\ x' = 1\nA4 == x = 0 /\\ x' = 2\nA5 == x = 0 /\\ x' = 1\nNext == A0 \\/ A1 \\/ A2 \\/ A3 \\/ A4 \\/ A5\nSpec == Init /\\ [][Next]_x\nProp == <>[](x = 0) \\/ <>[](x = 0)\n\nVARIABLE __position\n__TraceInit == Init /\\ __position = 0 /\\ (x = 0)\n__TraceNext == ((__position = 0 /\\ __position' = 1 /\\ (x' = 2)) \\/ (__position = 1 /\\ __position' = 2 /\\ (x' = 2)) \\/ (__position = 2 /\\ __position' = 3 /\\ (x' = 2)) \\/ (__position = 3 /\\ __position' = 4 /\\ (x' = 2)) \\/ (__position = 4 /\\ __position' = 1 /\\ (x' = 2))) /\\ (Next \\/ UNCHANGED <<x>>)\n__TraceSpec == __TraceInit /\\ [][__TraceNext]_<<x,__position>> /\\ WF_<<x,__position>>(__TraceNext)\n__Expected == ~(Prop)\n====",
+        "expected": "complete",
+        "config": "SPECIFICATION __TraceSpec\n\nPROPERTY __Expected\nCHECK_DEADLOCK TRUE"
+      },
+      "status": "complete",
+      "states": 5
+    },
+    "differences": []
+  },
+  {
+    "input": {
+      "name": "graph-15c3-6",
+      "family": "graph",
+      "seed": 5571,
+      "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0,1}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 0 /\\ x' = 3\nA2 == x = 2 /\\ x' = 1\nNext == A0 \\/ A1 \\/ A2\nSpec == Init /\\ [][Next]_x\nProp == ~([]<>(x = 0))\n====",
+      "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK FALSE"
+    },
+    "classification": "compared",
+    "ours": {
+      "result": {
+        "status": "liveness-violation",
+        "reason": null,
+        "states": 3,
+        "generated": 4,
+        "depth": 1,
+        "work": 145,
+        "violation": {
+          "name": "Prop",
+          "trace": [
+            {
+              "action": null,
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            }
+          ],
+          "loopStart": 0,
+          "loopAction": "<stuttering>"
+        }
+      }
+    },
+    "native": {
+      "result": {
+        "status": "liveness-violation",
+        "reason": null,
+        "states": 3,
+        "generated": 4,
+        "depth": 1,
+        "work": 145,
+        "violation": {
+          "name": "Prop",
+          "trace": [
+            {
+              "action": null,
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            }
+          ],
+          "loopStart": 0,
+          "loopAction": "<stuttering>"
+        }
+      }
+    },
+    "reference": {
+      "status": "liveness-violation",
+      "states": 3,
+      "generated": 4,
+      "exit": 13
+    },
+    "witness": {
+      "input": {
+        "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0,1}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 0 /\\ x' = 3\nA2 == x = 2 /\\ x' = 1\nNext == A0 \\/ A1 \\/ A2\nSpec == Init /\\ [][Next]_x\nProp == ~([]<>(x = 0))\n\nVARIABLE __position\n__TraceInit == Init /\\ __position = 0 /\\ (x = 0)\n__TraceNext == ((__position = 0 /\\ __position' = 0 /\\ (x' = 0))) /\\ (Next \\/ UNCHANGED <<x>>)\n__TraceSpec == __TraceInit /\\ [][__TraceNext]_<<x,__position>> /\\ WF_<<x,__position>>(__TraceNext)\n__Expected == ~(Prop)\n====",
+        "expected": "complete",
+        "config": "SPECIFICATION __TraceSpec\n\nPROPERTY __Expected\nCHECK_DEADLOCK TRUE"
+      },
+      "status": "complete",
+      "states": 1
+    },
+    "differences": []
+  },
+  {
+    "input": {
+      "name": "graph-15c3-7",
+      "family": "graph",
+      "seed": 5571,
+      "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 1 /\\ x' = 0\nA2 == x = 1 /\\ x' = 0\nA3 == x = 1 /\\ x' = 0\nNext == A0 \\/ A1 \\/ A2 \\/ A3\nSpec == Init /\\ [][Next]_x\nProp == ([]<>(x = 0)) /\\ ([]<>(x = 1))\n====",
+      "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK TRUE"
+    },
+    "classification": "compared",
+    "ours": {
+      "result": {
+        "status": "liveness-violation",
+        "reason": null,
+        "states": 2,
+        "generated": 5,
+        "depth": 1,
+        "work": 270,
+        "violation": {
+          "name": "Prop",
+          "trace": [
+            {
+              "action": null,
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "<stuttering>",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "<stuttering>",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            }
+          ],
+          "loopStart": 1,
+          "loopAction": "<stuttering>"
+        }
+      }
+    },
+    "native": {
+      "result": {
+        "status": "liveness-violation",
+        "reason": null,
+        "states": 2,
+        "generated": 5,
+        "depth": 1,
+        "work": 270,
+        "violation": {
+          "name": "Prop",
+          "trace": [
+            {
+              "action": null,
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "<stuttering>",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "<stuttering>",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            }
+          ],
+          "loopStart": 1,
+          "loopAction": "<stuttering>"
+        }
+      }
+    },
+    "reference": {
+      "status": "liveness-violation",
+      "states": 2,
+      "generated": 5,
+      "exit": 13
+    },
+    "witness": {
+      "input": {
+        "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 1 /\\ x' = 0\nA2 == x = 1 /\\ x' = 0\nA3 == x = 1 /\\ x' = 0\nNext == A0 \\/ A1 \\/ A2 \\/ A3\nSpec == Init /\\ [][Next]_x\nProp == ([]<>(x = 0)) /\\ ([]<>(x = 1))\n\nVARIABLE __position\n__TraceInit == Init /\\ __position = 0 /\\ (x = 0)\n__TraceNext == ((__position = 0 /\\ __position' = 1 /\\ (x' = 0)) \\/ (__position = 1 /\\ __position' = 2 /\\ (x' = 0)) \\/ (__position = 2 /\\ __position' = 1 /\\ (x' = 0))) /\\ (Next \\/ UNCHANGED <<x>>)\n__TraceSpec == __TraceInit /\\ [][__TraceNext]_<<x,__position>> /\\ WF_<<x,__position>>(__TraceNext)\n__Expected == ~(Prop)\n====",
+        "expected": "complete",
+        "config": "SPECIFICATION __TraceSpec\n\nPROPERTY __Expected\nCHECK_DEADLOCK TRUE"
+      },
+      "status": "complete",
+      "states": 3
+    },
+    "differences": []
+  },
+  {
+    "input": {
+      "name": "graph-15c3-8",
+      "family": "graph",
+      "seed": 5571,
+      "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 0 /\\ x' = 1\nA2 == x = 0 /\\ x' = 1\nNext == A0 \\/ A1 \\/ A2\nSpec == Init /\\ [][Next]_x /\\ WF_x(Next)\nProp == [](x < 2)\n====",
+      "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK FALSE"
+    },
+    "classification": "compared",
+    "ours": {
+      "result": {
+        "status": "complete",
+        "reason": null,
+        "states": 2,
+        "generated": 4,
+        "depth": 1,
+        "work": 14,
+        "violation": null
+      }
+    },
+    "native": {
+      "result": {
+        "status": "complete",
+        "reason": null,
+        "states": 2,
+        "generated": 4,
+        "depth": 1,
+        "work": 14,
+        "violation": null
+      }
+    },
+    "reference": {
+      "status": "complete",
+      "states": 2,
+      "generated": 4,
+      "exit": 0
+    },
+    "differences": []
+  },
+  {
+    "input": {
+      "name": "graph-15c3-9",
+      "family": "graph",
+      "seed": 5571,
+      "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0,1}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 1 /\\ x' = 0\nA2 == x = 3 /\\ x' = 2\nA3 == x = 1 /\\ x' = 0\nNext == A0 \\/ A1 \\/ A2 \\/ A3\nSpec == Init /\\ [][Next]_x /\\ WF_x(Next)\nProp == <>(x = 3)\n====",
+      "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK TRUE"
+    },
+    "classification": "compared",
+    "ours": {
+      "result": {
+        "status": "liveness-violation",
+        "reason": null,
+        "states": 2,
+        "generated": 5,
+        "depth": 0,
+        "work": 353,
+        "violation": {
+          "name": "Prop",
+          "trace": [
+            {
+              "action": null,
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "A0",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "action": "A1",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            }
+          ],
+          "loopStart": 1,
+          "loopAction": "A0"
+        }
+      }
+    },
+    "native": {
+      "result": {
+        "status": "liveness-violation",
+        "reason": null,
+        "states": 2,
+        "generated": 5,
+        "depth": 0,
+        "work": 353,
+        "violation": {
+          "name": "Prop",
+          "trace": [
+            {
+              "action": null,
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "A0",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "action": "A1",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            }
+          ],
+          "loopStart": 1,
+          "loopAction": "A0"
+        }
+      }
+    },
+    "reference": {
+      "status": "liveness-violation",
+      "states": 2,
+      "generated": 5,
+      "exit": 13
+    },
+    "witness": {
+      "input": {
+        "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0,1}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 1 /\\ x' = 0\nA2 == x = 3 /\\ x' = 2\nA3 == x = 1 /\\ x' = 0\nNext == A0 \\/ A1 \\/ A2 \\/ A3\nSpec == Init /\\ [][Next]_x /\\ WF_x(Next)\nProp == <>(x = 3)\n\nVARIABLE __position\n__TraceInit == Init /\\ __position = 0 /\\ (x = 0)\n__TraceNext == ((__position = 0 /\\ __position' = 1 /\\ (x' = 1)) \\/ (__position = 1 /\\ __position' = 2 /\\ (x' = 0)) \\/ (__position = 2 /\\ __position' = 1 /\\ (x' = 1))) /\\ (Next \\/ UNCHANGED <<x>>)\n__TraceSpec == __TraceInit /\\ [][__TraceNext]_<<x,__position>> /\\ WF_<<x,__position>>(__TraceNext)\n__OriginalFairness == WF_x(Next)\n__Expected == __OriginalFairness /\\ ~(Prop)\n====",
+        "expected": "complete",
+        "config": "SPECIFICATION __TraceSpec\n\nPROPERTY __Expected\nCHECK_DEADLOCK TRUE"
+      },
+      "status": "complete",
+      "states": 3
+    },
+    "differences": []
+  },
+  {
+    "input": {
+      "name": "graph-15c3-10",
+      "family": "graph",
+      "seed": 5571,
+      "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 0 /\\ x' = 3\nA2 == x = 2 /\\ x' = 1\nNext == A0 \\/ A1 \\/ A2\nSpec == Init /\\ [][Next]_x /\\ WF_x(Next)\nProp == []<>(x = 0)\n====",
+      "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK FALSE"
+    },
+    "classification": "compared",
+    "ours": {
+      "result": {
+        "status": "liveness-violation",
+        "reason": null,
+        "states": 3,
+        "generated": 3,
+        "depth": 1,
+        "work": 432,
+        "violation": {
+          "name": "Prop",
+          "trace": [
+            {
+              "action": null,
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "A1",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "3"
+                }
+              ]
+            },
+            {
+              "action": "<stuttering>",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "3"
+                }
+              ]
+            },
+            {
+              "action": "<stuttering>",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "3"
+                }
+              ]
+            }
+          ],
+          "loopStart": 2,
+          "loopAction": "<stuttering>"
+        }
+      }
+    },
+    "native": {
+      "result": {
+        "status": "liveness-violation",
+        "reason": null,
+        "states": 3,
+        "generated": 3,
+        "depth": 1,
+        "work": 432,
+        "violation": {
+          "name": "Prop",
+          "trace": [
+            {
+              "action": null,
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "A1",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "3"
+                }
+              ]
+            },
+            {
+              "action": "<stuttering>",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "3"
+                }
+              ]
+            },
+            {
+              "action": "<stuttering>",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "3"
+                }
+              ]
+            }
+          ],
+          "loopStart": 2,
+          "loopAction": "<stuttering>"
+        }
+      }
+    },
+    "reference": {
+      "status": "liveness-violation",
+      "states": 3,
+      "generated": 3,
+      "exit": 13
+    },
+    "witness": {
+      "input": {
+        "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 0 /\\ x' = 3\nA2 == x = 2 /\\ x' = 1\nNext == A0 \\/ A1 \\/ A2\nSpec == Init /\\ [][Next]_x /\\ WF_x(Next)\nProp == []<>(x = 0)\n\nVARIABLE __position\n__TraceInit == Init /\\ __position = 0 /\\ (x = 0)\n__TraceNext == ((__position = 0 /\\ __position' = 1 /\\ (x' = 3)) \\/ (__position = 1 /\\ __position' = 2 /\\ (x' = 3)) \\/ (__position = 2 /\\ __position' = 3 /\\ (x' = 3)) \\/ (__position = 3 /\\ __position' = 2 /\\ (x' = 3))) /\\ (Next \\/ UNCHANGED <<x>>)\n__TraceSpec == __TraceInit /\\ [][__TraceNext]_<<x,__position>> /\\ WF_<<x,__position>>(__TraceNext)\n__OriginalFairness == WF_x(Next)\n__Expected == __OriginalFairness /\\ ~(Prop)\n====",
+        "expected": "complete",
+        "config": "SPECIFICATION __TraceSpec\n\nPROPERTY __Expected\nCHECK_DEADLOCK TRUE"
+      },
+      "status": "complete",
+      "states": 4
+    },
+    "differences": []
+  },
+  {
+    "input": {
+      "name": "graph-15c3-11",
+      "family": "graph",
+      "seed": 5571,
+      "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 1 /\\ x' = 0\nNext == A0 \\/ A1\nSpec == Init /\\ [][Next]_x /\\ WF_x(Next)\nProp == <>[](x = 2)\n====",
+      "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK TRUE"
+    },
+    "classification": "compared",
+    "ours": {
+      "result": {
+        "status": "liveness-violation",
+        "reason": null,
+        "states": 2,
+        "generated": 3,
+        "depth": 1,
+        "work": 564,
+        "violation": {
+          "name": "Prop",
+          "trace": [
+            {
+              "action": null,
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "A0",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "action": "A1",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "A0",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "action": "A1",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            }
+          ],
+          "loopStart": 1,
+          "loopAction": "A0"
+        }
+      }
+    },
+    "native": {
+      "result": {
+        "status": "liveness-violation",
+        "reason": null,
+        "states": 2,
+        "generated": 3,
+        "depth": 1,
+        "work": 564,
+        "violation": {
+          "name": "Prop",
+          "trace": [
+            {
+              "action": null,
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "A0",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "action": "A1",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "A0",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "action": "A1",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            }
+          ],
+          "loopStart": 1,
+          "loopAction": "A0"
+        }
+      }
+    },
+    "reference": {
+      "status": "liveness-violation",
+      "states": 2,
+      "generated": 3,
+      "exit": 13
+    },
+    "witness": {
+      "input": {
+        "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 1 /\\ x' = 0\nNext == A0 \\/ A1\nSpec == Init /\\ [][Next]_x /\\ WF_x(Next)\nProp == <>[](x = 2)\n\nVARIABLE __position\n__TraceInit == Init /\\ __position = 0 /\\ (x = 0)\n__TraceNext == ((__position = 0 /\\ __position' = 1 /\\ (x' = 1)) \\/ (__position = 1 /\\ __position' = 2 /\\ (x' = 0)) \\/ (__position = 2 /\\ __position' = 3 /\\ (x' = 1)) \\/ (__position = 3 /\\ __position' = 4 /\\ (x' = 0)) \\/ (__position = 4 /\\ __position' = 1 /\\ (x' = 1))) /\\ (Next \\/ UNCHANGED <<x>>)\n__TraceSpec == __TraceInit /\\ [][__TraceNext]_<<x,__position>> /\\ WF_<<x,__position>>(__TraceNext)\n__OriginalFairness == WF_x(Next)\n__Expected == __OriginalFairness /\\ ~(Prop)\n====",
+        "expected": "complete",
+        "config": "SPECIFICATION __TraceSpec\n\nPROPERTY __Expected\nCHECK_DEADLOCK TRUE"
+      },
+      "status": "complete",
+      "states": 5
+    },
+    "differences": []
+  },
+  {
+    "input": {
+      "name": "graph-15c3-12",
+      "family": "graph",
+      "seed": 5571,
+      "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0,1}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 0 /\\ x' = 3\nA2 == x = 2 /\\ x' = 1\nA3 == x = 0 /\\ x' = 3\nA4 == x = 2 /\\ x' = 1\nA5 == x = 0 /\\ x' = 3\nA6 == x = 2 /\\ x' = 1\nNext == A0 \\/ A1 \\/ A2 \\/ A3 \\/ A4 \\/ A5 \\/ A6\nSpec == Init /\\ [][Next]_x /\\ WF_x(Next)\nProp == (x = 0) ~> (x = 0)\n====",
+      "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK FALSE"
+    },
+    "classification": "compared",
+    "ours": {
+      "result": {
+        "status": "complete",
+        "reason": null,
+        "states": 3,
+        "generated": 6,
+        "depth": 1,
+        "work": 509,
+        "violation": null
+      }
+    },
+    "native": {
+      "result": {
+        "status": "complete",
+        "reason": null,
+        "states": 3,
+        "generated": 6,
+        "depth": 1,
+        "work": 509,
+        "violation": null
+      }
+    },
+    "reference": {
+      "status": "complete",
+      "states": 3,
+      "generated": 6,
+      "exit": 0
+    },
+    "differences": []
+  },
+  {
+    "input": {
+      "name": "graph-15c3-13",
+      "family": "graph",
+      "seed": 5571,
+      "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 1 /\\ x' = 0\nA2 == x = 1 /\\ x' = 0\nA3 == x = 1 /\\ x' = 0\nNext == A0 \\/ A1 \\/ A2 \\/ A3\nSpec == Init /\\ [][Next]_x /\\ WF_x(Next)\nProp == <>[](x = 0) \\/ <>[](x = 1)\n====",
+      "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK TRUE"
+    },
+    "classification": "compared",
+    "ours": {
+      "result": {
+        "status": "liveness-violation",
+        "reason": null,
+        "states": 2,
+        "generated": 5,
+        "depth": 1,
+        "work": 1535,
+        "violation": {
+          "name": "Prop",
+          "trace": [
+            {
+              "action": null,
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "A0",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "action": "A1",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "<stuttering>",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "A0",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "action": "A1",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            }
+          ],
+          "loopStart": 1,
+          "loopAction": "A0"
+        }
+      }
+    },
+    "native": {
+      "result": {
+        "status": "liveness-violation",
+        "reason": null,
+        "states": 2,
+        "generated": 5,
+        "depth": 1,
+        "work": 1535,
+        "violation": {
+          "name": "Prop",
+          "trace": [
+            {
+              "action": null,
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "A0",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "action": "A1",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "<stuttering>",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "A0",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "action": "A1",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            }
+          ],
+          "loopStart": 1,
+          "loopAction": "A0"
+        }
+      }
+    },
+    "reference": {
+      "status": "liveness-violation",
+      "states": 2,
+      "generated": 5,
+      "exit": 13
+    },
+    "witness": {
+      "input": {
+        "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 1 /\\ x' = 0\nA2 == x = 1 /\\ x' = 0\nA3 == x = 1 /\\ x' = 0\nNext == A0 \\/ A1 \\/ A2 \\/ A3\nSpec == Init /\\ [][Next]_x /\\ WF_x(Next)\nProp == <>[](x = 0) \\/ <>[](x = 1)\n\nVARIABLE __position\n__TraceInit == Init /\\ __position = 0 /\\ (x = 0)\n__TraceNext == ((__position = 0 /\\ __position' = 1 /\\ (x' = 1)) \\/ (__position = 1 /\\ __position' = 2 /\\ (x' = 0)) \\/ (__position = 2 /\\ __position' = 3 /\\ (x' = 0)) \\/ (__position = 3 /\\ __position' = 4 /\\ (x' = 1)) \\/ (__position = 4 /\\ __position' = 5 /\\ (x' = 0)) \\/ (__position = 5 /\\ __position' = 1 /\\ (x' = 1))) /\\ (Next \\/ UNCHANGED <<x>>)\n__TraceSpec == __TraceInit /\\ [][__TraceNext]_<<x,__position>> /\\ WF_<<x,__position>>(__TraceNext)\n__OriginalFairness == WF_x(Next)\n__Expected == __OriginalFairness /\\ ~(Prop)\n====",
+        "expected": "complete",
+        "config": "SPECIFICATION __TraceSpec\n\nPROPERTY __Expected\nCHECK_DEADLOCK TRUE"
+      },
+      "status": "complete",
+      "states": 6
+    },
+    "differences": []
+  },
+  {
+    "input": {
+      "name": "graph-15c3-14",
+      "family": "graph",
+      "seed": 5571,
+      "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 1 /\\ x' = 2\nA2 == x = 0 /\\ x' = 0\nA3 == x = 1 /\\ x' = 2\nA4 == x = 2 /\\ x' = 0\nNext == A0 \\/ A1 \\/ A2 \\/ A3 \\/ A4\nSpec == Init /\\ [][Next]_x /\\ WF_x(Next)\nProp == ~([]<>(x = 0))\n====",
+      "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK FALSE"
+    },
+    "classification": "compared",
+    "ours": {
+      "result": {
+        "status": "liveness-violation",
+        "reason": null,
+        "states": 3,
+        "generated": 6,
+        "depth": 2,
+        "work": 834,
+        "violation": {
+          "name": "Prop",
+          "trace": [
+            {
+              "action": null,
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "A0",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "action": "A1",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "2"
+                }
+              ]
+            },
+            {
+              "action": "A4",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "A2",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "A0",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "action": "A1",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "2"
+                }
+              ]
+            },
+            {
+              "action": "A4",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            }
+          ],
+          "loopStart": 1,
+          "loopAction": "A0"
+        }
+      }
+    },
+    "native": {
+      "result": {
+        "status": "liveness-violation",
+        "reason": null,
+        "states": 3,
+        "generated": 6,
+        "depth": 2,
+        "work": 834,
+        "violation": {
+          "name": "Prop",
+          "trace": [
+            {
+              "action": null,
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "A0",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "action": "A1",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "2"
+                }
+              ]
+            },
+            {
+              "action": "A4",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "A2",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "A0",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "action": "A1",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "2"
+                }
+              ]
+            },
+            {
+              "action": "A4",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            }
+          ],
+          "loopStart": 1,
+          "loopAction": "A0"
+        }
+      }
+    },
+    "reference": {
+      "status": "liveness-violation",
+      "states": 3,
+      "generated": 6,
+      "exit": 13
+    },
+    "witness": {
+      "input": {
+        "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 1 /\\ x' = 2\nA2 == x = 0 /\\ x' = 0\nA3 == x = 1 /\\ x' = 2\nA4 == x = 2 /\\ x' = 0\nNext == A0 \\/ A1 \\/ A2 \\/ A3 \\/ A4\nSpec == Init /\\ [][Next]_x /\\ WF_x(Next)\nProp == ~([]<>(x = 0))\n\nVARIABLE __position\n__TraceInit == Init /\\ __position = 0 /\\ (x = 0)\n__TraceNext == ((__position = 0 /\\ __position' = 1 /\\ (x' = 1)) \\/ (__position = 1 /\\ __position' = 2 /\\ (x' = 2)) \\/ (__position = 2 /\\ __position' = 3 /\\ (x' = 0)) \\/ (__position = 3 /\\ __position' = 4 /\\ (x' = 0)) \\/ (__position = 4 /\\ __position' = 5 /\\ (x' = 1)) \\/ (__position = 5 /\\ __position' = 6 /\\ (x' = 2)) \\/ (__position = 6 /\\ __position' = 7 /\\ (x' = 0)) \\/ (__position = 7 /\\ __position' = 1 /\\ (x' = 1))) /\\ (Next \\/ UNCHANGED <<x>>)\n__TraceSpec == __TraceInit /\\ [][__TraceNext]_<<x,__position>> /\\ WF_<<x,__position>>(__TraceNext)\n__OriginalFairness == WF_x(Next)\n__Expected == __OriginalFairness /\\ ~(Prop)\n====",
+        "expected": "complete",
+        "config": "SPECIFICATION __TraceSpec\n\nPROPERTY __Expected\nCHECK_DEADLOCK TRUE"
+      },
+      "status": "complete",
+      "states": 8
+    },
+    "differences": []
+  },
+  {
+    "input": {
+      "name": "graph-15c3-15",
+      "family": "graph",
+      "seed": 5571,
+      "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0,1}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 1 /\\ x' = 1\nNext == A0 \\/ A1\nSpec == Init /\\ [][Next]_x /\\ WF_x(Next)\nProp == ([]<>(x = 0)) /\\ ([]<>(x = 2))\n====",
+      "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK TRUE"
+    },
+    "classification": "compared",
+    "ours": {
+      "result": {
+        "status": "liveness-violation",
+        "reason": null,
+        "states": 2,
+        "generated": 4,
+        "depth": 0,
+        "work": 915,
+        "violation": {
+          "name": "Prop",
+          "trace": [
+            {
+              "action": null,
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "A0",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "action": "A1",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "action": "A1",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "1"
+                }
+              ]
+            }
+          ],
+          "loopStart": 1,
+          "loopAction": "A1"
+        }
+      }
+    },
+    "native": {
+      "result": {
+        "status": "liveness-violation",
+        "reason": null,
+        "states": 2,
+        "generated": 4,
+        "depth": 0,
+        "work": 915,
+        "violation": {
+          "name": "Prop",
+          "trace": [
+            {
+              "action": null,
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "A0",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "action": "A1",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "action": "A1",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "1"
+                }
+              ]
+            }
+          ],
+          "loopStart": 1,
+          "loopAction": "A1"
+        }
+      }
+    },
+    "reference": {
+      "status": "liveness-violation",
+      "states": 2,
+      "generated": 4,
+      "exit": 13
+    },
+    "witness": {
+      "input": {
+        "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0,1}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 1 /\\ x' = 1\nNext == A0 \\/ A1\nSpec == Init /\\ [][Next]_x /\\ WF_x(Next)\nProp == ([]<>(x = 0)) /\\ ([]<>(x = 2))\n\nVARIABLE __position\n__TraceInit == Init /\\ __position = 0 /\\ (x = 0)\n__TraceNext == ((__position = 0 /\\ __position' = 1 /\\ (x' = 1)) \\/ (__position = 1 /\\ __position' = 2 /\\ (x' = 1)) \\/ (__position = 2 /\\ __position' = 3 /\\ (x' = 1)) \\/ (__position = 3 /\\ __position' = 1 /\\ (x' = 1))) /\\ (Next \\/ UNCHANGED <<x>>)\n__TraceSpec == __TraceInit /\\ [][__TraceNext]_<<x,__position>> /\\ WF_<<x,__position>>(__TraceNext)\n__OriginalFairness == WF_x(Next)\n__Expected == __OriginalFairness /\\ ~(Prop)\n====",
+        "expected": "complete",
+        "config": "SPECIFICATION __TraceSpec\n\nPROPERTY __Expected\nCHECK_DEADLOCK TRUE"
+      },
+      "status": "complete",
+      "states": 4
+    },
+    "differences": []
+  },
+  {
+    "input": {
+      "name": "graph-15c3-16",
+      "family": "graph",
+      "seed": 5571,
+      "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 0 /\\ x' = 3\nA2 == x = 2 /\\ x' = 1\nA3 == x = 0 /\\ x' = 3\nA4 == x = 2 /\\ x' = 1\nA5 == x = 0 /\\ x' = 3\nA6 == x = 2 /\\ x' = 1\nNext == A0 \\/ A1 \\/ A2 \\/ A3 \\/ A4 \\/ A5 \\/ A6\nSpec == Init /\\ [][Next]_x /\\ SF_x(A0)\nProp == [](x < 4)\n====",
+      "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK FALSE"
+    },
+    "classification": "compared",
+    "ours": {
+      "result": {
+        "status": "complete",
+        "reason": null,
+        "states": 3,
+        "generated": 5,
+        "depth": 1,
+        "work": 31,
+        "violation": null
+      }
+    },
+    "native": {
+      "result": {
+        "status": "complete",
+        "reason": null,
+        "states": 3,
+        "generated": 5,
+        "depth": 1,
+        "work": 31,
+        "violation": null
+      }
+    },
+    "reference": {
+      "status": "complete",
+      "states": 3,
+      "generated": 5,
+      "exit": 0
+    },
+    "differences": []
+  },
+  {
+    "input": {
+      "name": "graph-15c3-17",
+      "family": "graph",
+      "seed": 5571,
+      "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 1 /\\ x' = 0\nA2 == x = 1 /\\ x' = 0\nA3 == x = 1 /\\ x' = 0\nNext == A0 \\/ A1 \\/ A2 \\/ A3\nSpec == Init /\\ [][Next]_x /\\ SF_x(A0)\nProp == <>(x = 1)\n====",
+      "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK TRUE"
+    },
+    "classification": "compared",
+    "ours": {
+      "result": {
+        "status": "complete",
+        "reason": null,
+        "states": 2,
+        "generated": 5,
+        "depth": 1,
+        "work": 279,
+        "violation": null
+      }
+    },
+    "native": {
+      "result": {
+        "status": "complete",
+        "reason": null,
+        "states": 2,
+        "generated": 5,
+        "depth": 1,
+        "work": 279,
+        "violation": null
+      }
+    },
+    "reference": {
+      "status": "complete",
+      "states": 2,
+      "generated": 5,
+      "exit": 0
+    },
+    "differences": []
+  },
+  {
+    "input": {
+      "name": "graph-15c3-18",
+      "family": "graph",
+      "seed": 5571,
+      "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0,1}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 1 /\\ x' = 0\nA2 == x = 2 /\\ x' = 2\nA3 == x = 0 /\\ x' = 0\nA4 == x = 0 /\\ x' = 1\nNext == A0 \\/ A1 \\/ A2 \\/ A3 \\/ A4\nSpec == Init /\\ [][Next]_x /\\ SF_x(A0)\nProp == []<>(x = 1)\n====",
+      "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK FALSE"
+    },
+    "classification": "compared",
+    "ours": {
+      "result": {
+        "status": "complete",
+        "reason": null,
+        "states": 2,
+        "generated": 6,
+        "depth": 0,
+        "work": 845,
+        "violation": null
+      }
+    },
+    "native": {
+      "result": {
+        "status": "complete",
+        "reason": null,
+        "states": 2,
+        "generated": 6,
+        "depth": 0,
+        "work": 845,
+        "violation": null
+      }
+    },
+    "reference": {
+      "status": "complete",
+      "states": 2,
+      "generated": 6,
+      "exit": 0
+    },
+    "differences": []
+  },
+  {
+    "input": {
+      "name": "graph-15c3-19",
+      "family": "graph",
+      "seed": 5571,
+      "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 1 /\\ x' = 0\nA2 == x = 3 /\\ x' = 2\nA3 == x = 1 /\\ x' = 0\nNext == A0 \\/ A1 \\/ A2 \\/ A3\nSpec == Init /\\ [][Next]_x /\\ SF_x(A0)\nProp == <>[](x = 3)\n====",
+      "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK TRUE"
+    },
+    "classification": "compared",
+    "ours": {
+      "result": {
+        "status": "liveness-violation",
+        "reason": null,
+        "states": 2,
+        "generated": 4,
+        "depth": 1,
+        "work": 862,
+        "violation": {
+          "name": "Prop",
+          "trace": [
+            {
+              "action": null,
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "A0",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "action": "A1",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "A0",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "action": "A1",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            }
+          ],
+          "loopStart": 1,
+          "loopAction": "A0"
+        }
+      }
+    },
+    "native": {
+      "result": {
+        "status": "liveness-violation",
+        "reason": null,
+        "states": 2,
+        "generated": 4,
+        "depth": 1,
+        "work": 862,
+        "violation": {
+          "name": "Prop",
+          "trace": [
+            {
+              "action": null,
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "A0",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "action": "A1",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "A0",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "action": "A1",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            }
+          ],
+          "loopStart": 1,
+          "loopAction": "A0"
+        }
+      }
+    },
+    "reference": {
+      "status": "liveness-violation",
+      "states": 2,
+      "generated": 4,
+      "exit": 13
+    },
+    "witness": {
+      "input": {
+        "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 1 /\\ x' = 0\nA2 == x = 3 /\\ x' = 2\nA3 == x = 1 /\\ x' = 0\nNext == A0 \\/ A1 \\/ A2 \\/ A3\nSpec == Init /\\ [][Next]_x /\\ SF_x(A0)\nProp == <>[](x = 3)\n\nVARIABLE __position\n__TraceInit == Init /\\ __position = 0 /\\ (x = 0)\n__TraceNext == ((__position = 0 /\\ __position' = 1 /\\ (x' = 1)) \\/ (__position = 1 /\\ __position' = 2 /\\ (x' = 0)) \\/ (__position = 2 /\\ __position' = 3 /\\ (x' = 1)) \\/ (__position = 3 /\\ __position' = 4 /\\ (x' = 0)) \\/ (__position = 4 /\\ __position' = 1 /\\ (x' = 1))) /\\ (Next \\/ UNCHANGED <<x>>)\n__TraceSpec == __TraceInit /\\ [][__TraceNext]_<<x,__position>> /\\ WF_<<x,__position>>(__TraceNext)\n__OriginalFairness == SF_x(A0)\n__Expected == __OriginalFairness /\\ ~(Prop)\n====",
+        "expected": "complete",
+        "config": "SPECIFICATION __TraceSpec\n\nPROPERTY __Expected\nCHECK_DEADLOCK TRUE"
+      },
+      "status": "complete",
+      "states": 5
+    },
+    "differences": []
+  },
+  {
+    "input": {
+      "name": "graph-15c3-20",
+      "family": "graph",
+      "seed": 5571,
+      "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 0 /\\ x' = 3\nA2 == x = 2 /\\ x' = 1\nNext == A0 \\/ A1 \\/ A2\nSpec == Init /\\ [][Next]_x /\\ SF_x(A0)\nProp == (x = 0) ~> (x = 0)\n====",
+      "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK FALSE"
+    },
+    "classification": "compared",
+    "ours": {
+      "result": {
+        "status": "complete",
+        "reason": null,
+        "states": 3,
+        "generated": 3,
+        "depth": 1,
+        "work": 388,
+        "violation": null
+      }
+    },
+    "native": {
+      "result": {
+        "status": "complete",
+        "reason": null,
+        "states": 3,
+        "generated": 3,
+        "depth": 1,
+        "work": 388,
+        "violation": null
+      }
+    },
+    "reference": {
+      "status": "complete",
+      "states": 3,
+      "generated": 3,
+      "exit": 0
+    },
+    "differences": []
+  },
+  {
+    "input": {
+      "name": "graph-15c3-21",
+      "family": "graph",
+      "seed": 5571,
+      "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0,1}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 0 /\\ x' = 1\nA2 == x = 0 /\\ x' = 1\nA3 == x = 2 /\\ x' = 1\nNext == A0 \\/ A1 \\/ A2 \\/ A3\nSpec == Init /\\ [][Next]_x /\\ SF_x(A0)\nProp == <>[](x = 0) \\/ <>[](x = 2)\n====",
+      "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK TRUE"
+    },
+    "classification": "compared",
+    "ours": {
+      "result": {
+        "status": "deadlock",
+        "reason": null,
+        "states": 2,
+        "generated": 5,
+        "depth": 0,
+        "work": 17,
+        "violation": {
+          "name": "deadlock",
+          "trace": [
+            {
+              "action": null,
+              "values": [
+                {
+                  "type": "int",
+                  "value": "1"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "native": {
+      "result": {
+        "status": "deadlock",
+        "reason": null,
+        "states": 2,
+        "generated": 5,
+        "depth": 0,
+        "work": 17,
+        "violation": {
+          "name": "deadlock",
+          "trace": [
+            {
+              "action": null,
+              "values": [
+                {
+                  "type": "int",
+                  "value": "1"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "reference": {
+      "status": "deadlock",
+      "states": 2,
+      "generated": 5,
+      "exit": 11
+    },
+    "witness": {
+      "input": {
+        "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0,1}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 0 /\\ x' = 1\nA2 == x = 0 /\\ x' = 1\nA3 == x = 2 /\\ x' = 1\nNext == A0 \\/ A1 \\/ A2 \\/ A3\nSpec == Init /\\ [][Next]_x /\\ SF_x(A0)\nProp == <>[](x = 0) \\/ <>[](x = 2)\n__HasNext == ENABLED Next\n\nVARIABLE __position\n__TraceInit == Init /\\ __position = 0 /\\ (x = 1)\n__TraceNext == ((__position = 0 /\\ __position' = 0 /\\ (x' = 1))) /\\ (Next \\/ UNCHANGED <<x>>)\n__TraceSpec == __TraceInit /\\ [][__TraceNext]_<<x,__position>> /\\ WF_<<x,__position>>(__TraceNext)\n__OriginalFairness == SF_x(A0)\n__Expected == <>(~(__HasNext))\n====",
+        "expected": "complete",
+        "config": "SPECIFICATION __TraceSpec\n\nPROPERTY __Expected\nCHECK_DEADLOCK TRUE"
+      },
+      "status": "complete",
+      "states": 1
+    },
+    "differences": []
+  },
+  {
+    "input": {
+      "name": "graph-15c3-22",
+      "family": "graph",
+      "seed": 5571,
+      "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 0 /\\ x' = 1\nA2 == x = 0 /\\ x' = 1\nNext == A0 \\/ A1 \\/ A2\nSpec == Init /\\ [][Next]_x /\\ SF_x(A0)\nProp == ~([]<>(x = 0))\n====",
+      "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK FALSE"
+    },
+    "classification": "compared",
+    "ours": {
+      "result": {
+        "status": "complete",
+        "reason": null,
+        "states": 2,
+        "generated": 4,
+        "depth": 1,
+        "work": 809,
+        "violation": null
+      }
+    },
+    "native": {
+      "result": {
+        "status": "complete",
+        "reason": null,
+        "states": 2,
+        "generated": 4,
+        "depth": 1,
+        "work": 809,
+        "violation": null
+      }
+    },
+    "reference": {
+      "status": "complete",
+      "states": 2,
+      "generated": 4,
+      "exit": 0
+    },
+    "differences": []
+  },
+  {
+    "input": {
+      "name": "graph-15c3-23",
+      "family": "graph",
+      "seed": 5571,
+      "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 1 /\\ x' = 0\nA2 == x = 3 /\\ x' = 2\nA3 == x = 1 /\\ x' = 0\nNext == A0 \\/ A1 \\/ A2 \\/ A3\nSpec == Init /\\ [][Next]_x /\\ SF_x(A0)\nProp == ([]<>(x = 0)) /\\ ([]<>(x = 3))\n====",
+      "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK TRUE"
+    },
+    "classification": "compared",
+    "ours": {
+      "result": {
+        "status": "liveness-violation",
+        "reason": null,
+        "states": 2,
+        "generated": 4,
+        "depth": 1,
+        "work": 1305,
+        "violation": {
+          "name": "Prop",
+          "trace": [
+            {
+              "action": null,
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "A0",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "action": "A1",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "A0",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "action": "A1",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "A0",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "action": "A1",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            }
+          ],
+          "loopStart": 1,
+          "loopAction": "A0"
+        }
+      }
+    },
+    "native": {
+      "result": {
+        "status": "liveness-violation",
+        "reason": null,
+        "states": 2,
+        "generated": 4,
+        "depth": 1,
+        "work": 1305,
+        "violation": {
+          "name": "Prop",
+          "trace": [
+            {
+              "action": null,
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "A0",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "action": "A1",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "A0",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "action": "A1",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "A0",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "action": "A1",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            }
+          ],
+          "loopStart": 1,
+          "loopAction": "A0"
+        }
+      }
+    },
+    "reference": {
+      "status": "liveness-violation",
+      "states": 2,
+      "generated": 4,
+      "exit": 13
+    },
+    "witness": {
+      "input": {
+        "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 1 /\\ x' = 0\nA2 == x = 3 /\\ x' = 2\nA3 == x = 1 /\\ x' = 0\nNext == A0 \\/ A1 \\/ A2 \\/ A3\nSpec == Init /\\ [][Next]_x /\\ SF_x(A0)\nProp == ([]<>(x = 0)) /\\ ([]<>(x = 3))\n\nVARIABLE __position\n__TraceInit == Init /\\ __position = 0 /\\ (x = 0)\n__TraceNext == ((__position = 0 /\\ __position' = 1 /\\ (x' = 1)) \\/ (__position = 1 /\\ __position' = 2 /\\ (x' = 0)) \\/ (__position = 2 /\\ __position' = 3 /\\ (x' = 1)) \\/ (__position = 3 /\\ __position' = 4 /\\ (x' = 0)) \\/ (__position = 4 /\\ __position' = 5 /\\ (x' = 1)) \\/ (__position = 5 /\\ __position' = 6 /\\ (x' = 0)) \\/ (__position = 6 /\\ __position' = 1 /\\ (x' = 1))) /\\ (Next \\/ UNCHANGED <<x>>)\n__TraceSpec == __TraceInit /\\ [][__TraceNext]_<<x,__position>> /\\ WF_<<x,__position>>(__TraceNext)\n__OriginalFairness == SF_x(A0)\n__Expected == __OriginalFairness /\\ ~(Prop)\n====",
+        "expected": "complete",
+        "config": "SPECIFICATION __TraceSpec\n\nPROPERTY __Expected\nCHECK_DEADLOCK TRUE"
+      },
+      "status": "complete",
+      "states": 7
+    },
+    "differences": []
+  },
+  {
+    "input": {
+      "name": "graph-15c3-24",
+      "family": "graph",
+      "seed": 5571,
+      "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0,1}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 0 /\\ x' = 3\nA2 == x = 2 /\\ x' = 1\nNext == A0 \\/ A1 \\/ A2\nSpec == Init /\\ [][Next]_x /\\ WF_x(Next) /\\ SF_x(A0)\nProp == [](x < 4)\n====",
+      "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK FALSE"
+    },
+    "classification": "compared",
+    "ours": {
+      "result": {
+        "status": "complete",
+        "reason": null,
+        "states": 3,
+        "generated": 4,
+        "depth": 1,
+        "work": 16,
+        "violation": null
+      }
+    },
+    "native": {
+      "result": {
+        "status": "complete",
+        "reason": null,
+        "states": 3,
+        "generated": 4,
+        "depth": 1,
+        "work": 16,
+        "violation": null
+      }
+    },
+    "reference": {
+      "status": "complete",
+      "states": 3,
+      "generated": 4,
+      "exit": 0
+    },
+    "differences": []
+  },
+  {
+    "input": {
+      "name": "graph-15c3-25",
+      "family": "graph",
+      "seed": 5571,
+      "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 1 /\\ x' = 0\nA2 == x = 3 /\\ x' = 2\nA3 == x = 1 /\\ x' = 0\nNext == A0 \\/ A1 \\/ A2 \\/ A3\nSpec == Init /\\ [][Next]_x /\\ WF_x(Next) /\\ SF_x(A0)\nProp == <>(x = 3)\n====",
+      "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK TRUE"
+    },
+    "classification": "compared",
+    "ours": {
+      "result": {
+        "status": "liveness-violation",
+        "reason": null,
+        "states": 2,
+        "generated": 4,
+        "depth": 1,
+        "work": 1208,
+        "violation": {
+          "name": "Prop",
+          "trace": [
+            {
+              "action": null,
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "A0",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "action": "A1",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "A0",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "action": "A1",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "<stuttering>",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            }
+          ],
+          "loopStart": 1,
+          "loopAction": "A0"
+        }
+      }
+    },
+    "native": {
+      "result": {
+        "status": "liveness-violation",
+        "reason": null,
+        "states": 2,
+        "generated": 4,
+        "depth": 1,
+        "work": 1208,
+        "violation": {
+          "name": "Prop",
+          "trace": [
+            {
+              "action": null,
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "A0",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "action": "A1",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "A0",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "action": "A1",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "<stuttering>",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            }
+          ],
+          "loopStart": 1,
+          "loopAction": "A0"
+        }
+      }
+    },
+    "reference": {
+      "status": "liveness-violation",
+      "states": 2,
+      "generated": 4,
+      "exit": 13
+    },
+    "witness": {
+      "input": {
+        "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 1 /\\ x' = 0\nA2 == x = 3 /\\ x' = 2\nA3 == x = 1 /\\ x' = 0\nNext == A0 \\/ A1 \\/ A2 \\/ A3\nSpec == Init /\\ [][Next]_x /\\ WF_x(Next) /\\ SF_x(A0)\nProp == <>(x = 3)\n\nVARIABLE __position\n__TraceInit == Init /\\ __position = 0 /\\ (x = 0)\n__TraceNext == ((__position = 0 /\\ __position' = 1 /\\ (x' = 1)) \\/ (__position = 1 /\\ __position' = 2 /\\ (x' = 0)) \\/ (__position = 2 /\\ __position' = 3 /\\ (x' = 1)) \\/ (__position = 3 /\\ __position' = 4 /\\ (x' = 0)) \\/ (__position = 4 /\\ __position' = 5 /\\ (x' = 0)) \\/ (__position = 5 /\\ __position' = 1 /\\ (x' = 1))) /\\ (Next \\/ UNCHANGED <<x>>)\n__TraceSpec == __TraceInit /\\ [][__TraceNext]_<<x,__position>> /\\ WF_<<x,__position>>(__TraceNext)\n__OriginalFairness == WF_x(Next) /\\ SF_x(A0)\n__Expected == __OriginalFairness /\\ ~(Prop)\n====",
+        "expected": "complete",
+        "config": "SPECIFICATION __TraceSpec\n\nPROPERTY __Expected\nCHECK_DEADLOCK TRUE"
+      },
+      "status": "complete",
+      "states": 6
+    },
+    "differences": []
+  },
+  {
+    "input": {
+      "name": "graph-15c3-26",
+      "family": "graph",
+      "seed": 5571,
+      "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 2 /\\ x' = 1\nA2 == x = 1 /\\ x' = 0\nNext == A0 \\/ A1 \\/ A2\nSpec == Init /\\ [][Next]_x /\\ WF_x(Next) /\\ SF_x(A0)\nProp == []<>(x = 2)\n====",
+      "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK FALSE"
+    },
+    "classification": "compared",
+    "ours": {
+      "result": {
+        "status": "liveness-violation",
+        "reason": null,
+        "states": 2,
+        "generated": 3,
+        "depth": 1,
+        "work": 2054,
+        "violation": {
+          "name": "Prop",
+          "trace": [
+            {
+              "action": null,
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "A0",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "action": "A2",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "A0",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "action": "A2",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "A0",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "action": "A2",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "<stuttering>",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            }
+          ],
+          "loopStart": 1,
+          "loopAction": "A0"
+        }
+      }
+    },
+    "native": {
+      "result": {
+        "status": "liveness-violation",
+        "reason": null,
+        "states": 2,
+        "generated": 3,
+        "depth": 1,
+        "work": 2054,
+        "violation": {
+          "name": "Prop",
+          "trace": [
+            {
+              "action": null,
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "A0",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "action": "A2",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "A0",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "action": "A2",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "A0",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "action": "A2",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "<stuttering>",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            }
+          ],
+          "loopStart": 1,
+          "loopAction": "A0"
+        }
+      }
+    },
+    "reference": {
+      "status": "liveness-violation",
+      "states": 2,
+      "generated": 3,
+      "exit": 13
+    },
+    "witness": {
+      "input": {
+        "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 2 /\\ x' = 1\nA2 == x = 1 /\\ x' = 0\nNext == A0 \\/ A1 \\/ A2\nSpec == Init /\\ [][Next]_x /\\ WF_x(Next) /\\ SF_x(A0)\nProp == []<>(x = 2)\n\nVARIABLE __position\n__TraceInit == Init /\\ __position = 0 /\\ (x = 0)\n__TraceNext == ((__position = 0 /\\ __position' = 1 /\\ (x' = 1)) \\/ (__position = 1 /\\ __position' = 2 /\\ (x' = 0)) \\/ (__position = 2 /\\ __position' = 3 /\\ (x' = 1)) \\/ (__position = 3 /\\ __position' = 4 /\\ (x' = 0)) \\/ (__position = 4 /\\ __position' = 5 /\\ (x' = 1)) \\/ (__position = 5 /\\ __position' = 6 /\\ (x' = 0)) \\/ (__position = 6 /\\ __position' = 7 /\\ (x' = 0)) \\/ (__position = 7 /\\ __position' = 1 /\\ (x' = 1))) /\\ (Next \\/ UNCHANGED <<x>>)\n__TraceSpec == __TraceInit /\\ [][__TraceNext]_<<x,__position>> /\\ WF_<<x,__position>>(__TraceNext)\n__OriginalFairness == WF_x(Next) /\\ SF_x(A0)\n__Expected == __OriginalFairness /\\ ~(Prop)\n====",
+        "expected": "complete",
+        "config": "SPECIFICATION __TraceSpec\n\nPROPERTY __Expected\nCHECK_DEADLOCK TRUE"
+      },
+      "status": "complete",
+      "states": 8
+    },
+    "differences": []
+  },
+  {
+    "input": {
+      "name": "graph-15c3-27",
+      "family": "graph",
+      "seed": 5571,
+      "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0,1}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 1 /\\ x' = 0\nA2 == x = 1 /\\ x' = 0\nA3 == x = 1 /\\ x' = 0\nNext == A0 \\/ A1 \\/ A2 \\/ A3\nSpec == Init /\\ [][Next]_x /\\ WF_x(Next) /\\ SF_x(A0)\nProp == <>[](x = 1)\n====",
+      "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK TRUE"
+    },
+    "classification": "compared",
+    "ours": {
+      "result": {
+        "status": "liveness-violation",
+        "reason": null,
+        "states": 2,
+        "generated": 6,
+        "depth": 0,
+        "work": 3432,
+        "violation": {
+          "name": "Prop",
+          "trace": [
+            {
+              "action": null,
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "A0",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "action": "A1",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "<stuttering>",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "A0",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "action": "A1",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "A0",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "action": "A1",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "<stuttering>",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            }
+          ],
+          "loopStart": 1,
+          "loopAction": "A0"
+        }
+      }
+    },
+    "native": {
+      "result": {
+        "status": "liveness-violation",
+        "reason": null,
+        "states": 2,
+        "generated": 6,
+        "depth": 0,
+        "work": 3432,
+        "violation": {
+          "name": "Prop",
+          "trace": [
+            {
+              "action": null,
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "A0",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "action": "A1",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "<stuttering>",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "A0",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "action": "A1",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "A0",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "action": "A1",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "<stuttering>",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            }
+          ],
+          "loopStart": 1,
+          "loopAction": "A0"
+        }
+      }
+    },
+    "reference": {
+      "status": "liveness-violation",
+      "states": 2,
+      "generated": 6,
+      "exit": 13
+    },
+    "witness": {
+      "input": {
+        "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0,1}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 1 /\\ x' = 0\nA2 == x = 1 /\\ x' = 0\nA3 == x = 1 /\\ x' = 0\nNext == A0 \\/ A1 \\/ A2 \\/ A3\nSpec == Init /\\ [][Next]_x /\\ WF_x(Next) /\\ SF_x(A0)\nProp == <>[](x = 1)\n\nVARIABLE __position\n__TraceInit == Init /\\ __position = 0 /\\ (x = 0)\n__TraceNext == ((__position = 0 /\\ __position' = 1 /\\ (x' = 1)) \\/ (__position = 1 /\\ __position' = 2 /\\ (x' = 0)) \\/ (__position = 2 /\\ __position' = 3 /\\ (x' = 0)) \\/ (__position = 3 /\\ __position' = 4 /\\ (x' = 1)) \\/ (__position = 4 /\\ __position' = 5 /\\ (x' = 0)) \\/ (__position = 5 /\\ __position' = 6 /\\ (x' = 1)) \\/ (__position = 6 /\\ __position' = 7 /\\ (x' = 0)) \\/ (__position = 7 /\\ __position' = 8 /\\ (x' = 0)) \\/ (__position = 8 /\\ __position' = 1 /\\ (x' = 1))) /\\ (Next \\/ UNCHANGED <<x>>)\n__TraceSpec == __TraceInit /\\ [][__TraceNext]_<<x,__position>> /\\ WF_<<x,__position>>(__TraceNext)\n__OriginalFairness == WF_x(Next) /\\ SF_x(A0)\n__Expected == __OriginalFairness /\\ ~(Prop)\n====",
+        "expected": "complete",
+        "config": "SPECIFICATION __TraceSpec\n\nPROPERTY __Expected\nCHECK_DEADLOCK TRUE"
+      },
+      "status": "complete",
+      "states": 9
+    },
+    "differences": []
+  },
+  {
+    "input": {
+      "name": "graph-15c3-28",
+      "family": "graph",
+      "seed": 5571,
+      "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 0 /\\ x' = 1\nA2 == x = 0 /\\ x' = 1\nNext == A0 \\/ A1 \\/ A2\nSpec == Init /\\ [][Next]_x /\\ WF_x(Next) /\\ SF_x(A0)\nProp == (x = 0) ~> (x = 0)\n====",
+      "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK FALSE"
+    },
+    "classification": "compared",
+    "ours": {
+      "result": {
+        "status": "complete",
+        "reason": null,
+        "states": 2,
+        "generated": 4,
+        "depth": 1,
+        "work": 1145,
+        "violation": null
+      }
+    },
+    "native": {
+      "result": {
+        "status": "complete",
+        "reason": null,
+        "states": 2,
+        "generated": 4,
+        "depth": 1,
+        "work": 1145,
+        "violation": null
+      }
+    },
+    "reference": {
+      "status": "complete",
+      "states": 2,
+      "generated": 4,
+      "exit": 0
+    },
+    "differences": []
+  },
+  {
+    "input": {
+      "name": "graph-15c3-29",
+      "family": "graph",
+      "seed": 5571,
+      "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 1 /\\ x' = 0\nA2 == x = 3 /\\ x' = 2\nA3 == x = 1 /\\ x' = 0\nNext == A0 \\/ A1 \\/ A2 \\/ A3\nSpec == Init /\\ [][Next]_x /\\ WF_x(Next) /\\ SF_x(A0)\nProp == <>[](x = 0) \\/ <>[](x = 3)\n====",
+      "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK TRUE"
+    },
+    "classification": "compared",
+    "ours": {
+      "result": {
+        "status": "liveness-violation",
+        "reason": null,
+        "states": 2,
+        "generated": 4,
+        "depth": 1,
+        "work": 8061,
+        "violation": {
+          "name": "Prop",
+          "trace": [
+            {
+              "action": null,
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "A0",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "action": "A1",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "A0",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "action": "A1",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "A0",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "action": "A1",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "A0",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "action": "A1",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "<stuttering>",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            }
+          ],
+          "loopStart": 1,
+          "loopAction": "A0"
+        }
+      }
+    },
+    "native": {
+      "result": {
+        "status": "liveness-violation",
+        "reason": null,
+        "states": 2,
+        "generated": 4,
+        "depth": 1,
+        "work": 8061,
+        "violation": {
+          "name": "Prop",
+          "trace": [
+            {
+              "action": null,
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "A0",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "action": "A1",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "A0",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "action": "A1",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "A0",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "action": "A1",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "A0",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "action": "A1",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "<stuttering>",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            }
+          ],
+          "loopStart": 1,
+          "loopAction": "A0"
+        }
+      }
+    },
+    "reference": {
+      "status": "liveness-violation",
+      "states": 2,
+      "generated": 4,
+      "exit": 13
+    },
+    "witness": {
+      "input": {
+        "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 1 /\\ x' = 0\nA2 == x = 3 /\\ x' = 2\nA3 == x = 1 /\\ x' = 0\nNext == A0 \\/ A1 \\/ A2 \\/ A3\nSpec == Init /\\ [][Next]_x /\\ WF_x(Next) /\\ SF_x(A0)\nProp == <>[](x = 0) \\/ <>[](x = 3)\n\nVARIABLE __position\n__TraceInit == Init /\\ __position = 0 /\\ (x = 0)\n__TraceNext == ((__position = 0 /\\ __position' = 1 /\\ (x' = 1)) \\/ (__position = 1 /\\ __position' = 2 /\\ (x' = 0)) \\/ (__position = 2 /\\ __position' = 3 /\\ (x' = 1)) \\/ (__position = 3 /\\ __position' = 4 /\\ (x' = 0)) \\/ (__position = 4 /\\ __position' = 5 /\\ (x' = 1)) \\/ (__position = 5 /\\ __position' = 6 /\\ (x' = 0)) \\/ (__position = 6 /\\ __position' = 7 /\\ (x' = 1)) \\/ (__position = 7 /\\ __position' = 8 /\\ (x' = 0)) \\/ (__position = 8 /\\ __position' = 9 /\\ (x' = 0)) \\/ (__position = 9 /\\ __position' = 1 /\\ (x' = 1))) /\\ (Next \\/ UNCHANGED <<x>>)\n__TraceSpec == __TraceInit /\\ [][__TraceNext]_<<x,__position>> /\\ WF_<<x,__position>>(__TraceNext)\n__OriginalFairness == WF_x(Next) /\\ SF_x(A0)\n__Expected == __OriginalFairness /\\ ~(Prop)\n====",
+        "expected": "complete",
+        "config": "SPECIFICATION __TraceSpec\n\nPROPERTY __Expected\nCHECK_DEADLOCK TRUE"
+      },
+      "status": "complete",
+      "states": 10
+    },
+    "differences": []
+  },
+  {
+    "input": {
+      "name": "graph-15c3-30",
+      "family": "graph",
+      "seed": 5571,
+      "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0,1}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 0 /\\ x' = 1\nA2 == x = 0 /\\ x' = 1\nNext == A0 \\/ A1 \\/ A2\nSpec == Init /\\ [][Next]_x /\\ WF_x(Next) /\\ SF_x(A0)\nProp == ~([]<>(x = 0))\n====",
+      "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK FALSE"
+    },
+    "classification": "compared",
+    "ours": {
+      "result": {
+        "status": "complete",
+        "reason": null,
+        "states": 2,
+        "generated": 5,
+        "depth": 0,
+        "work": 2144,
+        "violation": null
+      }
+    },
+    "native": {
+      "result": {
+        "status": "complete",
+        "reason": null,
+        "states": 2,
+        "generated": 5,
+        "depth": 0,
+        "work": 2144,
+        "violation": null
+      }
+    },
+    "reference": {
+      "status": "complete",
+      "states": 2,
+      "generated": 5,
+      "exit": 0
+    },
+    "differences": []
+  },
+  {
+    "input": {
+      "name": "graph-15c3-31",
+      "family": "graph",
+      "seed": 5571,
+      "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 1 /\\ x' = 0\nA2 == x = 1 /\\ x' = 0\nA3 == x = 1 /\\ x' = 0\nNext == A0 \\/ A1 \\/ A2 \\/ A3\nSpec == Init /\\ [][Next]_x /\\ WF_x(Next) /\\ SF_x(A0)\nProp == ([]<>(x = 0)) /\\ ([]<>(x = 1))\n====",
+      "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK TRUE"
+    },
+    "classification": "compared",
+    "ours": {
+      "result": {
+        "status": "complete",
+        "reason": null,
+        "states": 2,
+        "generated": 5,
+        "depth": 1,
+        "work": 5307,
+        "violation": null
+      }
+    },
+    "native": {
+      "result": {
+        "status": "complete",
+        "reason": null,
+        "states": 2,
+        "generated": 5,
+        "depth": 1,
+        "work": 5307,
+        "violation": null
+      }
+    },
+    "reference": {
+      "status": "complete",
+      "states": 2,
+      "generated": 5,
+      "exit": 0
+    },
+    "differences": []
+  }
+]

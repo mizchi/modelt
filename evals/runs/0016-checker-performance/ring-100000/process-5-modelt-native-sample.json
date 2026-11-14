@@ -1,0 +1,15 @@
+{
+  "route": "modelt-native",
+  "iteration": 5,
+  "warmup": false,
+  "milliseconds": 89.08845900000597,
+  "value": {
+    "status": "complete",
+    "reason": null,
+    "states": 100000,
+    "generated": 100001,
+    "depth": 99999,
+    "work": 200002,
+    "violation": null
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "name": "ring-100000",
+  "states": 100000,
+  "source": "---- MODULE Ring ----\nEXTENDS Naturals\nCONSTANT N\nVARIABLE x\nInit == x = 0\nNext == x' = IF x < N - 1 THEN x + 1 ELSE 0\nSafe == x \\in 0..(N - 1)\n====",
+  "config": "CONSTANT N = 100000\nINIT Init\nNEXT Next\nINVARIANT Safe",
+  "generated": 100001
+}

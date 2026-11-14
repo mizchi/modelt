@@ -1,0 +1,30 @@
+pnpm portable:build
+
+> @mizchi/modelt@0.1.0-alpha.0 portable:build /Users/mz/ghq/github.com/mizchi/modelt
+> cargo build --release --locked --manifest-path crates/modelt-core/Cargo.toml && cargo build --release --locked --lib --target wasm32-unknown-unknown --manifest-path crates/modelt-core/Cargo.toml
+
+    Finished `release` profile [optimized] target(s) in 0.01s
+    Finished `release` profile [optimized] target(s) in 0.01s
+pnpm build
+
+> @mizchi/modelt@0.1.0-alpha.0 build /Users/mz/ghq/github.com/mizchi/modelt
+> tsc -p tsconfig.build.json
+
+node dist/evals/go/prepare.js
+Prepared 9 TS histories, one host tape and 17 shrink cases for Go
+test -z "$(gofmt -l adapters/go)"
+cd adapters/go && go vet ./...
+cd adapters/go && CGO_ENABLED=0 go test -count=1 ./...
+ok  	github.com/mizchi/modelt/adapters/go	2.644s
+?   	github.com/mizchi/modelt/adapters/go/cmd/counter-replay	[no test files]
+?   	github.com/mizchi/modelt/adapters/go/cmd/finite-bench	[no test files]
+?   	github.com/mizchi/modelt/adapters/go/cmd/history-check	[no test files]
+?   	github.com/mizchi/modelt/adapters/go/internal/counter	[no test files]
+cd adapters/go && go test -race -count=1 ./...
+ok  	github.com/mizchi/modelt/adapters/go	34.609s
+?   	github.com/mizchi/modelt/adapters/go/cmd/counter-replay	[no test files]
+?   	github.com/mizchi/modelt/adapters/go/cmd/finite-bench	[no test files]
+?   	github.com/mizchi/modelt/adapters/go/cmd/history-check	[no test files]
+?   	github.com/mizchi/modelt/adapters/go/internal/counter	[no test files]
+node dist/scripts/go-consumer.js
+{"status":"complete","consumer":"/var/folders/_h/_rf455xj4h3_3g6z86pg244c0000gn/T/modelt-go-consumer-Mf9fC2","cgo":false,"sdk":"copied standalone module","output":"ok  \tmodelt-consumer\t0.567s","exampleOutput":"matched","wasmSha256":"8a64c58ddbb2fa69a77a6abc52654704a1d604cea3262602955344ae48540812"}

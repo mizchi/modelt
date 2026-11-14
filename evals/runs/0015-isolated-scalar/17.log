@@ -1,0 +1,18 @@
+TLC2 Version 2.19 of 08 August 2024 (rev: 5a47802)
+Running breadth-first search Model-Checking with fp 6 and seed 7103703628596009448 with 1 worker on 10 cores with 7282MB heap and 64MB offheap memory [pid: 1725] (Mac OS X 26.6.2 aarch64, Eclipse Adoptium 21.0.13 x86_64, MSBDiskFPSet, DiskStateQueue).
+Parsing file /Users/mz/ghq/github.com/mizchi/modelt/.artifacts/tlc-compare-6cAaBN/Test.tla
+Parsing file /private/var/folders/_h/_rf455xj4h3_3g6z86pg244c0000gn/T/modelt-tlc-sKjR1I/Naturals.tla
+Semantic processing of module Naturals
+Semantic processing of module Test
+Starting... (2026-11-14 23:39:16)
+Computing initial states...
+Finished computing initial states: 1 distinct state generated at 2026-11-14 23:39:16.
+Error: Deadlock reached.
+Error: The behavior up to this point is:
+State 1: <Initial predicate>
+x = 0
+
+1 states generated, 1 distinct states found, 0 states left on queue.
+The depth of the complete state graph search is 1.
+The average outdegree of the complete state graph is 0 (minimum is 0, the maximum 0 and the 95th percentile is 0).
+Finished in 00s at (2026-11-14 23:39:16)

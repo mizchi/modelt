@@ -64,10 +64,14 @@ test("Rust generates TLA states and checks safety in native and Wasm without a m
               Object.fromEntries(
                 program.variables.map((name, index) => {
                   const value = step.values[index];
-                  assert.ok(value);
+                  assert.ok(
+                    value && (value.type === "int" || value.type === "bool"),
+                  );
                   return [
                     name,
-                    value.type === "bool" ? value.value : Number(value.value),
+                    value.type === "bool"
+                      ? value.value
+                      : Number(value.type === "int" ? value.value : NaN),
                   ];
                 }),
               ),
@@ -107,7 +111,9 @@ test("the unmodified upstream DieHard model finds the same shortest solution", a
       assert.equal(actual.violation.trace.length, 7);
       assert.deepEqual(
         actual.violation.trace.map((step) =>
-          step.values.map((value) => Number(value.value)),
+          step.values.map((value) =>
+            Number(value.type === "int" ? value.value : NaN),
+          ),
         ),
         reference.violation?.trace.map((step) => [
           step.state.big,

@@ -1,4 +1,5 @@
 import type { SafetyBounds } from "../../src/contracts.js";
+import { benchmarks } from "../collections-temporal/benchmarks.js";
 
 export interface SafetyCase {
   readonly name: string;
@@ -228,12 +229,15 @@ export const cases: readonly SafetyCase[] = [
   config: `INIT Init\nNEXT Next\nINVARIANT Safe\n${entry.config ?? ""}`,
 }));
 
-export const benchmarkCases = (): readonly {
+export const benchmarkCases = (
+  complex = false,
+): readonly {
   readonly name: string;
   readonly source: string;
   readonly config: string;
   readonly states: number;
 }[] => [
+  ...(complex ? benchmarks() : []),
   ...[10000, 50000, 100000].map((states) => ({
     name: `ring-${states}`,
     states,

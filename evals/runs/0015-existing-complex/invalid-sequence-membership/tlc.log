@@ -1,0 +1,26 @@
+TLC2 Version 2.19 of 08 August 2024 (rev: 5a47802)
+Running breadth-first search Model-Checking with fp 72 and seed -8292016103009983706 with 1 worker on 10 cores with 7282MB heap and 64MB offheap memory [pid: 89503] (Mac OS X 26.6.2 aarch64, Eclipse Adoptium 21.0.13 x86_64, MSBDiskFPSet, DiskStateQueue).
+Parsing file /Users/mz/ghq/github.com/mizchi/modelt/evals/runs/0015-existing-complex/invalid-sequence-membership/Collections.tla
+Parsing file /private/var/folders/_h/_rf455xj4h3_3g6z86pg244c0000gn/T/Integers.tla
+Parsing file /private/var/folders/_h/_rf455xj4h3_3g6z86pg244c0000gn/T/Sequences.tla
+Parsing file /private/var/folders/_h/_rf455xj4h3_3g6z86pg244c0000gn/T/FiniteSets.tla
+Parsing file /private/var/folders/_h/_rf455xj4h3_3g6z86pg244c0000gn/T/Naturals.tla
+Semantic processing of module Naturals
+Semantic processing of module Integers
+Semantic processing of module Sequences
+Semantic processing of module FiniteSets
+Semantic processing of module Collections
+Starting... (2026-11-14 23:18:31)
+Computing initial states...
+Error: Attempted to check if the value:
+1
+is an element of Seq(0..1).
+Error: The error occurred when TLC was evaluating the nested
+expressions at the following positions:
+0. Line 4, column 9 to line 4, column 13 in Collections
+1. Line 6, column 9 to line 6, column 23 in Collections
+
+
+1 states generated, 1 distinct states found, 1 states left on queue.
+Finished in 00s at (2026-11-14 23:18:31)
+Encountered an exception while attempt to validate /var/folders/_h/_rf455xj4h3_3g6z86pg244c0000gn/T/Sequences.tla - /var/folders/_h/_rf455xj4h3_3g6z86pg244c0000gn/T/Sequences.tla (No such file or directory)

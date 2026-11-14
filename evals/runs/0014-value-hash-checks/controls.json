@@ -1,0 +1,9 @@
+{
+  "input": {
+    "source": "---- MODULE Toggle ----\nEXTENDS Naturals\nVARIABLE x\nInit == x = 0\nNext == x' = 1 - x\nSpec == Init /\\ [][Next]_x /\\ WF_x(Next)\nProp == <>[](x = 1)\n\nVARIABLE __position\n__TraceInit == Init /\\ __position = 0 /\\ (x = 0)\n__TraceNext == ((__position = 0 /\\ __position' = 1 /\\ (x' = 1)) \\/ (__position = 1 /\\ __position' = 2 /\\ (x' = 0)) \\/ (__position = 2 /\\ __position' = 3 /\\ (x' = 0)) \\/ (__position = 3 /\\ __position' = 4 /\\ (x' = 1)) \\/ (__position = 4 /\\ __position' = 5 /\\ (x' = 0)) \\/ (__position = 5 /\\ __position' = 1 /\\ (x' = 1))) /\\ (Next \\/ UNCHANGED <<x>>)\n__TraceSpec == __TraceInit /\\ [][__TraceNext]_<<x,__position>> /\\ WF_<<x,__position>>(__TraceNext)\n__OriginalFairness == WF_x(Next)\n__Expected == __OriginalFairness /\\ (Prop)\n====",
+    "expected": "complete",
+    "config": "SPECIFICATION __TraceSpec\n\nPROPERTY __Expected\nCHECK_DEADLOCK TRUE"
+  },
+  "expected": "liveness-violation",
+  "actual": "liveness-violation"
+}

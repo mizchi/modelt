@@ -1,0 +1,108 @@
+{
+  "sourceRun": "0015-development-red",
+  "note": "Original raw TLC logs reclassified with the corrected count handling; original evidence unchanged",
+  "semanticCaseDifferences": [
+    {
+      "name": "membership-0-0",
+      "differences": [
+        "verdict: model-error != invariant-violation"
+      ]
+    },
+    {
+      "name": "membership-1-0",
+      "differences": [
+        "verdict: model-error != invariant-violation"
+      ]
+    },
+    {
+      "name": "membership-2-0",
+      "differences": [
+        "verdict: model-error != invariant-violation"
+      ]
+    },
+    {
+      "name": "subset-short-circuit",
+      "differences": [
+        "verdict: model-error != invariant-violation"
+      ]
+    },
+    {
+      "name": "subset-short-circuit-negated",
+      "differences": [
+        "verdict: model-error != invariant-violation"
+      ]
+    },
+    {
+      "name": "function-empty-range-error",
+      "differences": [
+        "verdict: invariant-violation != model-error"
+      ]
+    },
+    {
+      "name": "function-domain-range-error",
+      "differences": [
+        "verdict: invariant-violation != model-error"
+      ]
+    },
+    {
+      "name": "record-domain-range-error",
+      "differences": [
+        "verdict: invariant-violation != model-error"
+      ]
+    },
+    {
+      "name": "record-later-field-error",
+      "differences": [
+        "verdict: invariant-violation != model-error"
+      ]
+    },
+    {
+      "name": "string-len-empty",
+      "differences": [
+        "verdict: model-error != invariant-violation"
+      ]
+    },
+    {
+      "name": "string-len-ascii",
+      "differences": [
+        "verdict: model-error != invariant-violation"
+      ]
+    },
+    {
+      "name": "string-tail",
+      "differences": [
+        "verdict: model-error != invariant-violation"
+      ]
+    },
+    {
+      "name": "string-head-error",
+      "differences": [
+        "verdict: model-error != invariant-violation"
+      ]
+    },
+    {
+      "name": "string-append-error",
+      "differences": [
+        "verdict: model-error != invariant-violation"
+      ]
+    },
+    {
+      "name": "string-concat",
+      "differences": [
+        "verdict: model-error != invariant-violation"
+      ]
+    },
+    {
+      "name": "string-subseq",
+      "differences": [
+        "verdict: model-error != invariant-violation"
+      ]
+    },
+    {
+      "name": "string-subseq-empty",
+      "differences": [
+        "verdict: model-error != invariant-violation"
+      ]
+    }
+  ]
+}

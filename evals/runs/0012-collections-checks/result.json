@@ -1,0 +1,21 @@
+{
+  "status": "complete",
+  "plan": "0012-collections-temporal",
+  "sourceVersion": "251afc32ba44bd705da959fae923efe7cfb0965bc9e6e86d96468e58a40e5cba",
+  "files": [
+    {
+      "path": "manifest.json",
+      "sha256": "ff4338616cdc949b070003526e6e949016b3386f8e127683728b46a31fbc323a"
+    },
+    {
+      "path": "checks.json",
+      "sha256": "3f58f2f692c9c92c28b70d74b725849282fa9ed86dc4415127b675d17e3cca7d"
+    },
+    {
+      "path": "controls.json",
+      "sha256": "151d320ecd695a120d87af2388b5fe3cbb44da9acc66150e5bc578acc24a9ef9"
+    }
+  ],
+  "cases": 49,
+  "witnesses": 14
+}

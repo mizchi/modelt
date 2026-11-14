@@ -1,0 +1,17 @@
+{
+  "status": "complete",
+  "plan": "0012-collections-temporal",
+  "sourceVersion": "251afc32ba44bd705da959fae923efe7cfb0965bc9e6e86d96468e58a40e5cba",
+  "files": [
+    {
+      "path": "manifest.json",
+      "sha256": "4fda303ebece665f9e7582ead9feac76e780ba9733ba315ccf67b2e76f6c7ab2"
+    },
+    {
+      "path": "benchmark.json",
+      "sha256": "7c9505012a5786c4a7c1a2d2d125f374e1129751fa594d4c7b0c42cd58a47bef"
+    }
+  ],
+  "cases": 10,
+  "samples": 280
+}

@@ -1,7 +1,8 @@
 import assert from "node:assert/strict";
 import { type SpawnSyncReturns, spawnSync } from "node:child_process";
 import { createHash } from "node:crypto";
-import { mkdir, mkdtemp, readFile, writeFile } from "node:fs/promises";
+import { mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
+import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 import type { SafetyResult } from "../../src/contracts.js";
 import { createPortableWasm } from "../../src/portable-wasm.js";
@@ -47,10 +48,12 @@ for (const [index, input] of inputs.entries()) {
   const program = compileTlaSafety(input);
   await writeFile(join(directory, `${program.name}.tla`), input.source);
   await writeFile(join(directory, `${program.name}.cfg`), input.config);
+  const scratch = await mkdtemp(join(tmpdir(), "modelt-tlc-"));
   const processResult: SpawnSyncReturns<string> = spawnSync(
     java.includes("/") ? resolve(java) : java,
     [
       "-XX:+UseParallelGC",
+      `-Djava.io.tmpdir=${scratch}`,
       "-jar",
       resolve(jar),
       "-workers",
@@ -62,6 +65,7 @@ for (const [index, input] of inputs.entries()) {
     ],
     { cwd: directory, encoding: "utf8" },
   );
+  await rm(scratch, { recursive: true, force: true });
   if (processResult.error) throw processResult.error;
   const log: string = processResult.stdout + processResult.stderr;
   await writeFile(join(directory, `${index}.log`), log);
@@ -125,7 +129,9 @@ for (const [index, input] of inputs.entries()) {
     assert.deepEqual(
       ours.violation.trace.map((step) =>
         step.values.map((value) =>
-          value.type === "bool" ? value.value : Number(value.value),
+          value.type === "bool"
+            ? value.value
+            : Number(value.type === "int" ? value.value : NaN),
         ),
       ),
       actualTrace,

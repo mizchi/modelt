@@ -1,0 +1,942 @@
+{
+  "status": "complete",
+  "saved": "evals/runs/0016-checker-performance",
+  "sourceVersion": "0403ee47712888033bcac794c563965d31df5bfb00ce00cfee552cf89218049d",
+  "replayed": [
+    {
+      "name": "set-delivery-12",
+      "route": "tla-ts",
+      "value": {
+        "status": "complete",
+        "states": 4096,
+        "generated": 49153,
+        "violation": null
+      }
+    },
+    {
+      "name": "set-delivery-12",
+      "route": "tlc",
+      "value": {
+        "status": "complete",
+        "states": 4096,
+        "generated": 49153,
+        "violation": null
+      }
+    },
+    {
+      "name": "set-delivery-12",
+      "route": "modelt-wasm",
+      "value": {
+        "status": "complete",
+        "reason": null,
+        "states": 4096,
+        "generated": 49153,
+        "depth": 12,
+        "work": 524290,
+        "violation": null
+      }
+    },
+    {
+      "name": "set-delivery-12",
+      "route": "modelt-native",
+      "value": {
+        "status": "complete",
+        "reason": null,
+        "states": 4096,
+        "generated": 49153,
+        "depth": 12,
+        "work": 524290,
+        "violation": null
+      }
+    },
+    {
+      "name": "set-delivery-12",
+      "route": "tla-ts",
+      "mode": "reused",
+      "value": {
+        "status": "complete",
+        "states": 4096,
+        "generated": 49153,
+        "violation": null
+      }
+    },
+    {
+      "name": "set-delivery-12",
+      "route": "modelt-wasm",
+      "mode": "reused",
+      "value": {
+        "status": "complete",
+        "reason": null,
+        "states": 4096,
+        "generated": 49153,
+        "depth": 12,
+        "work": 524290,
+        "violation": null
+      }
+    },
+    {
+      "name": "set-delivery-12",
+      "route": "modelt-native",
+      "mode": "reused",
+      "value": {
+        "status": "complete",
+        "reason": null,
+        "states": 4096,
+        "generated": 49153,
+        "depth": 12,
+        "work": 524290,
+        "violation": null
+      }
+    },
+    {
+      "name": "function-nodes-12",
+      "route": "tla-ts",
+      "value": {
+        "status": "complete",
+        "states": 4096,
+        "generated": 49153,
+        "violation": null
+      }
+    },
+    {
+      "name": "function-nodes-12",
+      "route": "tlc",
+      "value": {
+        "status": "complete",
+        "states": 4096,
+        "generated": 49153,
+        "violation": null
+      }
+    },
+    {
+      "name": "function-nodes-12",
+      "route": "modelt-wasm",
+      "value": {
+        "status": "complete",
+        "reason": null,
+        "states": 4096,
+        "generated": 49153,
+        "depth": 12,
+        "work": 262160,
+        "violation": null
+      }
+    },
+    {
+      "name": "function-nodes-12",
+      "route": "modelt-native",
+      "value": {
+        "status": "complete",
+        "reason": null,
+        "states": 4096,
+        "generated": 49153,
+        "depth": 12,
+        "work": 262160,
+        "violation": null
+      }
+    },
+    {
+      "name": "function-nodes-12",
+      "route": "tla-ts",
+      "mode": "reused",
+      "value": {
+        "status": "complete",
+        "states": 4096,
+        "generated": 49153,
+        "violation": null
+      }
+    },
+    {
+      "name": "function-nodes-12",
+      "route": "modelt-wasm",
+      "mode": "reused",
+      "value": {
+        "status": "complete",
+        "reason": null,
+        "states": 4096,
+        "generated": 49153,
+        "depth": 12,
+        "work": 262160,
+        "violation": null
+      }
+    },
+    {
+      "name": "function-nodes-12",
+      "route": "modelt-native",
+      "mode": "reused",
+      "value": {
+        "status": "complete",
+        "reason": null,
+        "states": 4096,
+        "generated": 49153,
+        "depth": 12,
+        "work": 262160,
+        "violation": null
+      }
+    },
+    {
+      "name": "sequence-queue-10",
+      "route": "tla-ts",
+      "value": {
+        "status": "complete",
+        "states": 2047,
+        "generated": 3071,
+        "violation": null
+      }
+    },
+    {
+      "name": "sequence-queue-10",
+      "route": "tlc",
+      "value": {
+        "status": "complete",
+        "states": 2047,
+        "generated": 3071,
+        "violation": null
+      }
+    },
+    {
+      "name": "sequence-queue-10",
+      "route": "modelt-wasm",
+      "value": {
+        "status": "complete",
+        "reason": null,
+        "states": 2047,
+        "generated": 3071,
+        "depth": 10,
+        "work": 35835,
+        "violation": null
+      }
+    },
+    {
+      "name": "sequence-queue-10",
+      "route": "modelt-native",
+      "value": {
+        "status": "complete",
+        "reason": null,
+        "states": 2047,
+        "generated": 3071,
+        "depth": 10,
+        "work": 35835,
+        "violation": null
+      }
+    },
+    {
+      "name": "sequence-queue-10",
+      "route": "tla-ts",
+      "mode": "reused",
+      "value": {
+        "status": "complete",
+        "states": 2047,
+        "generated": 3071,
+        "violation": null
+      }
+    },
+    {
+      "name": "sequence-queue-10",
+      "route": "modelt-wasm",
+      "mode": "reused",
+      "value": {
+        "status": "complete",
+        "reason": null,
+        "states": 2047,
+        "generated": 3071,
+        "depth": 10,
+        "work": 35835,
+        "violation": null
+      }
+    },
+    {
+      "name": "sequence-queue-10",
+      "route": "modelt-native",
+      "mode": "reused",
+      "value": {
+        "status": "complete",
+        "reason": null,
+        "states": 2047,
+        "generated": 3071,
+        "depth": 10,
+        "work": 35835,
+        "violation": null
+      }
+    },
+    {
+      "name": "fair-ring-128",
+      "route": "tla-ts",
+      "value": {
+        "status": "complete",
+        "states": 128,
+        "generated": 129,
+        "violation": null
+      }
+    },
+    {
+      "name": "fair-ring-128",
+      "route": "tlc",
+      "value": {
+        "status": "complete",
+        "states": 128,
+        "generated": 129,
+        "violation": null
+      }
+    },
+    {
+      "name": "fair-ring-128",
+      "route": "modelt-wasm",
+      "value": {
+        "status": "complete",
+        "reason": null,
+        "states": 128,
+        "generated": 129,
+        "depth": 127,
+        "work": 27107,
+        "violation": null
+      }
+    },
+    {
+      "name": "fair-ring-128",
+      "route": "modelt-native",
+      "value": {
+        "status": "complete",
+        "reason": null,
+        "states": 128,
+        "generated": 129,
+        "depth": 127,
+        "work": 27107,
+        "violation": null
+      }
+    },
+    {
+      "name": "fair-ring-128",
+      "route": "tla-ts",
+      "mode": "reused",
+      "value": {
+        "status": "complete",
+        "states": 128,
+        "generated": 129,
+        "violation": null
+      }
+    },
+    {
+      "name": "fair-ring-128",
+      "route": "modelt-wasm",
+      "mode": "reused",
+      "value": {
+        "status": "complete",
+        "reason": null,
+        "states": 128,
+        "generated": 129,
+        "depth": 127,
+        "work": 27107,
+        "violation": null
+      }
+    },
+    {
+      "name": "fair-ring-128",
+      "route": "modelt-native",
+      "mode": "reused",
+      "value": {
+        "status": "complete",
+        "reason": null,
+        "states": 128,
+        "generated": 129,
+        "depth": 127,
+        "work": 27107,
+        "violation": null
+      }
+    },
+    {
+      "name": "ring-10000",
+      "route": "tla-ts",
+      "value": {
+        "status": "complete",
+        "states": 10000,
+        "generated": 10001,
+        "violation": null
+      }
+    },
+    {
+      "name": "ring-10000",
+      "route": "tlc",
+      "value": {
+        "status": "complete",
+        "states": 10000,
+        "generated": 10001,
+        "violation": null
+      }
+    },
+    {
+      "name": "ring-10000",
+      "route": "modelt-wasm",
+      "value": {
+        "status": "complete",
+        "reason": null,
+        "states": 10000,
+        "generated": 10001,
+        "depth": 9999,
+        "work": 20002,
+        "violation": null
+      }
+    },
+    {
+      "name": "ring-10000",
+      "route": "modelt-native",
+      "value": {
+        "status": "complete",
+        "reason": null,
+        "states": 10000,
+        "generated": 10001,
+        "depth": 9999,
+        "work": 20002,
+        "violation": null
+      }
+    },
+    {
+      "name": "ring-10000",
+      "route": "tla-ts",
+      "mode": "reused",
+      "value": {
+        "status": "complete",
+        "states": 10000,
+        "generated": 10001,
+        "violation": null
+      }
+    },
+    {
+      "name": "ring-10000",
+      "route": "modelt-wasm",
+      "mode": "reused",
+      "value": {
+        "status": "complete",
+        "reason": null,
+        "states": 10000,
+        "generated": 10001,
+        "depth": 9999,
+        "work": 20002,
+        "violation": null
+      }
+    },
+    {
+      "name": "ring-10000",
+      "route": "modelt-native",
+      "mode": "reused",
+      "value": {
+        "status": "complete",
+        "reason": null,
+        "states": 10000,
+        "generated": 10001,
+        "depth": 9999,
+        "work": 20002,
+        "violation": null
+      }
+    },
+    {
+      "name": "ring-50000",
+      "route": "tla-ts",
+      "value": {
+        "status": "complete",
+        "states": 50000,
+        "generated": 50001,
+        "violation": null
+      }
+    },
+    {
+      "name": "ring-50000",
+      "route": "tlc",
+      "value": {
+        "status": "complete",
+        "states": 50000,
+        "generated": 50001,
+        "violation": null
+      }
+    },
+    {
+      "name": "ring-50000",
+      "route": "modelt-wasm",
+      "value": {
+        "status": "complete",
+        "reason": null,
+        "states": 50000,
+        "generated": 50001,
+        "depth": 49999,
+        "work": 100002,
+        "violation": null
+      }
+    },
+    {
+      "name": "ring-50000",
+      "route": "modelt-native",
+      "value": {
+        "status": "complete",
+        "reason": null,
+        "states": 50000,
+        "generated": 50001,
+        "depth": 49999,
+        "work": 100002,
+        "violation": null
+      }
+    },
+    {
+      "name": "ring-50000",
+      "route": "tla-ts",
+      "mode": "reused",
+      "value": {
+        "status": "complete",
+        "states": 50000,
+        "generated": 50001,
+        "violation": null
+      }
+    },
+    {
+      "name": "ring-50000",
+      "route": "modelt-wasm",
+      "mode": "reused",
+      "value": {
+        "status": "complete",
+        "reason": null,
+        "states": 50000,
+        "generated": 50001,
+        "depth": 49999,
+        "work": 100002,
+        "violation": null
+      }
+    },
+    {
+      "name": "ring-50000",
+      "route": "modelt-native",
+      "mode": "reused",
+      "value": {
+        "status": "complete",
+        "reason": null,
+        "states": 50000,
+        "generated": 50001,
+        "depth": 49999,
+        "work": 100002,
+        "violation": null
+      }
+    },
+    {
+      "name": "ring-100000",
+      "route": "tla-ts",
+      "value": {
+        "status": "complete",
+        "states": 100000,
+        "generated": 100001,
+        "violation": null
+      }
+    },
+    {
+      "name": "ring-100000",
+      "route": "tlc",
+      "value": {
+        "status": "complete",
+        "states": 100000,
+        "generated": 100001,
+        "violation": null
+      }
+    },
+    {
+      "name": "ring-100000",
+      "route": "modelt-wasm",
+      "value": {
+        "status": "complete",
+        "reason": null,
+        "states": 100000,
+        "generated": 100001,
+        "depth": 99999,
+        "work": 200002,
+        "violation": null
+      }
+    },
+    {
+      "name": "ring-100000",
+      "route": "modelt-native",
+      "value": {
+        "status": "complete",
+        "reason": null,
+        "states": 100000,
+        "generated": 100001,
+        "depth": 99999,
+        "work": 200002,
+        "violation": null
+      }
+    },
+    {
+      "name": "ring-100000",
+      "route": "tla-ts",
+      "mode": "reused",
+      "value": {
+        "status": "complete",
+        "states": 100000,
+        "generated": 100001,
+        "violation": null
+      }
+    },
+    {
+      "name": "ring-100000",
+      "route": "modelt-wasm",
+      "mode": "reused",
+      "value": {
+        "status": "complete",
+        "reason": null,
+        "states": 100000,
+        "generated": 100001,
+        "depth": 99999,
+        "work": 200002,
+        "violation": null
+      }
+    },
+    {
+      "name": "ring-100000",
+      "route": "modelt-native",
+      "mode": "reused",
+      "value": {
+        "status": "complete",
+        "reason": null,
+        "states": 100000,
+        "generated": 100001,
+        "depth": 99999,
+        "work": 200002,
+        "violation": null
+      }
+    },
+    {
+      "name": "grid-20",
+      "route": "tla-ts",
+      "value": {
+        "status": "complete",
+        "states": 400,
+        "generated": 801,
+        "violation": null
+      }
+    },
+    {
+      "name": "grid-20",
+      "route": "tlc",
+      "value": {
+        "status": "complete",
+        "states": 400,
+        "generated": 801,
+        "violation": null
+      }
+    },
+    {
+      "name": "grid-20",
+      "route": "modelt-wasm",
+      "value": {
+        "status": "complete",
+        "reason": null,
+        "states": 400,
+        "generated": 801,
+        "depth": 38,
+        "work": 2403,
+        "violation": null
+      }
+    },
+    {
+      "name": "grid-20",
+      "route": "modelt-native",
+      "value": {
+        "status": "complete",
+        "reason": null,
+        "states": 400,
+        "generated": 801,
+        "depth": 38,
+        "work": 2403,
+        "violation": null
+      }
+    },
+    {
+      "name": "grid-20",
+      "route": "tla-ts",
+      "mode": "reused",
+      "value": {
+        "status": "complete",
+        "states": 400,
+        "generated": 801,
+        "violation": null
+      }
+    },
+    {
+      "name": "grid-20",
+      "route": "modelt-wasm",
+      "mode": "reused",
+      "value": {
+        "status": "complete",
+        "reason": null,
+        "states": 400,
+        "generated": 801,
+        "depth": 38,
+        "work": 2403,
+        "violation": null
+      }
+    },
+    {
+      "name": "grid-20",
+      "route": "modelt-native",
+      "mode": "reused",
+      "value": {
+        "status": "complete",
+        "reason": null,
+        "states": 400,
+        "generated": 801,
+        "depth": 38,
+        "work": 2403,
+        "violation": null
+      }
+    },
+    {
+      "name": "grid-50",
+      "route": "tla-ts",
+      "value": {
+        "status": "complete",
+        "states": 2500,
+        "generated": 5001,
+        "violation": null
+      }
+    },
+    {
+      "name": "grid-50",
+      "route": "tlc",
+      "value": {
+        "status": "complete",
+        "states": 2500,
+        "generated": 5001,
+        "violation": null
+      }
+    },
+    {
+      "name": "grid-50",
+      "route": "modelt-wasm",
+      "value": {
+        "status": "complete",
+        "reason": null,
+        "states": 2500,
+        "generated": 5001,
+        "depth": 98,
+        "work": 15003,
+        "violation": null
+      }
+    },
+    {
+      "name": "grid-50",
+      "route": "modelt-native",
+      "value": {
+        "status": "complete",
+        "reason": null,
+        "states": 2500,
+        "generated": 5001,
+        "depth": 98,
+        "work": 15003,
+        "violation": null
+      }
+    },
+    {
+      "name": "grid-50",
+      "route": "tla-ts",
+      "mode": "reused",
+      "value": {
+        "status": "complete",
+        "states": 2500,
+        "generated": 5001,
+        "violation": null
+      }
+    },
+    {
+      "name": "grid-50",
+      "route": "modelt-wasm",
+      "mode": "reused",
+      "value": {
+        "status": "complete",
+        "reason": null,
+        "states": 2500,
+        "generated": 5001,
+        "depth": 98,
+        "work": 15003,
+        "violation": null
+      }
+    },
+    {
+      "name": "grid-50",
+      "route": "modelt-native",
+      "mode": "reused",
+      "value": {
+        "status": "complete",
+        "reason": null,
+        "states": 2500,
+        "generated": 5001,
+        "depth": 98,
+        "work": 15003,
+        "violation": null
+      }
+    },
+    {
+      "name": "grid-100",
+      "route": "tla-ts",
+      "value": {
+        "status": "complete",
+        "states": 10000,
+        "generated": 20001,
+        "violation": null
+      }
+    },
+    {
+      "name": "grid-100",
+      "route": "tlc",
+      "value": {
+        "status": "complete",
+        "states": 10000,
+        "generated": 20001,
+        "violation": null
+      }
+    },
+    {
+      "name": "grid-100",
+      "route": "modelt-wasm",
+      "value": {
+        "status": "complete",
+        "reason": null,
+        "states": 10000,
+        "generated": 20001,
+        "depth": 198,
+        "work": 60003,
+        "violation": null
+      }
+    },
+    {
+      "name": "grid-100",
+      "route": "modelt-native",
+      "value": {
+        "status": "complete",
+        "reason": null,
+        "states": 10000,
+        "generated": 20001,
+        "depth": 198,
+        "work": 60003,
+        "violation": null
+      }
+    },
+    {
+      "name": "grid-100",
+      "route": "tla-ts",
+      "mode": "reused",
+      "value": {
+        "status": "complete",
+        "states": 10000,
+        "generated": 20001,
+        "violation": null
+      }
+    },
+    {
+      "name": "grid-100",
+      "route": "modelt-wasm",
+      "mode": "reused",
+      "value": {
+        "status": "complete",
+        "reason": null,
+        "states": 10000,
+        "generated": 20001,
+        "depth": 198,
+        "work": 60003,
+        "violation": null
+      }
+    },
+    {
+      "name": "grid-100",
+      "route": "modelt-native",
+      "mode": "reused",
+      "value": {
+        "status": "complete",
+        "reason": null,
+        "states": 10000,
+        "generated": 20001,
+        "depth": 198,
+        "work": 60003,
+        "violation": null
+      }
+    },
+    {
+      "name": "ring-1000000",
+      "route": "tla-ts",
+      "value": {
+        "status": "complete",
+        "states": 1000000,
+        "generated": 1000001,
+        "violation": null
+      }
+    },
+    {
+      "name": "ring-1000000",
+      "route": "tlc",
+      "value": {
+        "status": "complete",
+        "states": 1000000,
+        "generated": 1000001,
+        "violation": null
+      }
+    },
+    {
+      "name": "ring-1000000",
+      "route": "modelt-wasm",
+      "value": {
+        "status": "complete",
+        "reason": null,
+        "states": 1000000,
+        "generated": 1000001,
+        "depth": 999999,
+        "work": 2000002,
+        "violation": null
+      }
+    },
+    {
+      "name": "ring-1000000",
+      "route": "modelt-native",
+      "value": {
+        "status": "complete",
+        "reason": null,
+        "states": 1000000,
+        "generated": 1000001,
+        "depth": 999999,
+        "work": 2000002,
+        "violation": null
+      }
+    },
+    {
+      "name": "ring-1000000",
+      "route": "tla-ts",
+      "mode": "reused",
+      "value": {
+        "status": "complete",
+        "states": 1000000,
+        "generated": 1000001,
+        "violation": null
+      }
+    },
+    {
+      "name": "ring-1000000",
+      "route": "modelt-wasm",
+      "mode": "reused",
+      "value": {
+        "status": "complete",
+        "reason": null,
+        "states": 1000000,
+        "generated": 1000001,
+        "depth": 999999,
+        "work": 2000002,
+        "violation": null
+      }
+    },
+    {
+      "name": "ring-1000000",
+      "route": "modelt-native",
+      "mode": "reused",
+      "value": {
+        "status": "complete",
+        "reason": null,
+        "states": 1000000,
+        "generated": 1000001,
+        "depth": 999999,
+        "work": 2000002,
+        "violation": null
+      }
+    }
+  ]
+}

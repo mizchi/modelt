@@ -1,0 +1,4758 @@
+[
+  {
+    "name": "set-delivery-12",
+    "input": {
+      "name": "set-delivery-12",
+      "states": 4096,
+      "source": "---- MODULE Delivery ----\nEXTENDS Naturals, FiniteSets\nVARIABLE delivered\nInit == delivered = {}\nNext == \\E node \\in 1..12: delivered' = delivered \\cup {node}\nSafe == delivered \\subseteq 1..12\n====",
+      "config": "INIT Init\nNEXT Next\nINVARIANT Safe"
+    },
+    "program": {
+      "format": "modelt.safety-program",
+      "version": 1,
+      "name": "Delivery",
+      "variables": [
+        "delivered"
+      ],
+      "initial": [
+        {
+          "name": "Init",
+          "steps": [
+            {
+              "kind": "assign",
+              "slot": 0,
+              "value": {
+                "op": "set",
+                "values": []
+              }
+            }
+          ]
+        }
+      ],
+      "next": [
+        {
+          "name": "Next",
+          "steps": [
+            {
+              "kind": "bind",
+              "slot": 0,
+              "domain": {
+                "kind": "range",
+                "lower": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "1"
+                  }
+                },
+                "upper": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "12"
+                  }
+                }
+              }
+            },
+            {
+              "kind": "assign",
+              "slot": 0,
+              "value": {
+                "op": "cup",
+                "left": {
+                  "op": "read",
+                  "slot": 0,
+                  "next": false
+                },
+                "right": {
+                  "op": "set",
+                  "values": [
+                    {
+                      "op": "bound",
+                      "slot": 0
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "invariants": [
+        {
+          "name": "Safe",
+          "expression": {
+            "op": "subset-eq",
+            "left": {
+              "op": "read",
+              "slot": 0,
+              "next": false
+            },
+            "right": {
+              "op": "map-set",
+              "bounds": [
+                {
+                  "slot": 0,
+                  "domain": {
+                    "kind": "range",
+                    "lower": {
+                      "op": "literal",
+                      "value": {
+                        "type": "int",
+                        "value": "1"
+                      }
+                    },
+                    "upper": {
+                      "op": "literal",
+                      "value": {
+                        "type": "int",
+                        "value": "12"
+                      }
+                    }
+                  }
+                }
+              ],
+              "body": {
+                "op": "bound",
+                "slot": 0
+              }
+            }
+          }
+        }
+      ],
+      "assumptions": [],
+      "checkDeadlock": true
+    },
+    "samples": [
+      {
+        "route": "frontend",
+        "milliseconds": 0.1013749999999618,
+        "result": {
+          "status": "compiled",
+          "states": 0,
+          "generated": 0
+        }
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 19.2666660000001,
+        "result": {
+          "status": "complete",
+          "states": 4096,
+          "generated": 49153
+        }
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 16.025667,
+        "result": {
+          "status": "complete",
+          "states": 4096,
+          "generated": 49153
+        }
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 17.74291699999992,
+        "result": {
+          "status": "complete",
+          "states": 4096,
+          "generated": 49153
+        }
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 24.896624999999972,
+        "result": {
+          "status": "complete",
+          "states": 4096,
+          "generated": 49153
+        }
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 36.219084000000066,
+        "result": {
+          "status": "complete",
+          "states": 4096,
+          "generated": 49153
+        }
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 25.088499999999954,
+        "result": {
+          "status": "complete",
+          "states": 4096,
+          "generated": 49153
+        }
+      },
+      {
+        "route": "frontend",
+        "milliseconds": 0.17070799999999053,
+        "result": {
+          "status": "compiled",
+          "states": 0,
+          "generated": 0
+        }
+      },
+      {
+        "route": "frontend",
+        "milliseconds": 0.38079100000004473,
+        "result": {
+          "status": "compiled",
+          "states": 0,
+          "generated": 0
+        }
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 21.04729199999997,
+        "result": {
+          "status": "complete",
+          "states": 4096,
+          "generated": 49153
+        }
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 17.92420800000002,
+        "result": {
+          "status": "complete",
+          "states": 4096,
+          "generated": 49153
+        }
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 19.21229100000005,
+        "result": {
+          "status": "complete",
+          "states": 4096,
+          "generated": 49153
+        }
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 33.47625000000005,
+        "result": {
+          "status": "complete",
+          "states": 4096,
+          "generated": 49153
+        }
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 34.844291999999996,
+        "result": {
+          "status": "complete",
+          "states": 4096,
+          "generated": 49153
+        }
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 15.506209000000013,
+        "result": {
+          "status": "complete",
+          "states": 4096,
+          "generated": 49153
+        }
+      },
+      {
+        "route": "frontend",
+        "milliseconds": 0.1594159999999647,
+        "result": {
+          "status": "compiled",
+          "states": 0,
+          "generated": 0
+        }
+      },
+      {
+        "route": "frontend",
+        "milliseconds": 0.08608300000003055,
+        "result": {
+          "status": "compiled",
+          "states": 0,
+          "generated": 0
+        }
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 16.14016700000002,
+        "result": {
+          "status": "complete",
+          "states": 4096,
+          "generated": 49153
+        }
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 16.57299999999998,
+        "result": {
+          "status": "complete",
+          "states": 4096,
+          "generated": 49153
+        }
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 19.402333000000112,
+        "result": {
+          "status": "complete",
+          "states": 4096,
+          "generated": 49153
+        }
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 18.266708000000108,
+        "result": {
+          "status": "complete",
+          "states": 4096,
+          "generated": 49153
+        }
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 15.184582999999975,
+        "result": {
+          "status": "complete",
+          "states": 4096,
+          "generated": 49153
+        }
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 19.908707999999933,
+        "result": {
+          "status": "complete",
+          "states": 4096,
+          "generated": 49153
+        }
+      },
+      {
+        "route": "frontend",
+        "milliseconds": 0.18854099999998652,
+        "result": {
+          "status": "compiled",
+          "states": 0,
+          "generated": 0
+        }
+      },
+      {
+        "route": "frontend",
+        "milliseconds": 0.07737500000007458,
+        "result": {
+          "status": "compiled",
+          "states": 0,
+          "generated": 0
+        }
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 13.716750000000047,
+        "result": {
+          "status": "complete",
+          "states": 4096,
+          "generated": 49153
+        }
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 15.617167000000109,
+        "result": {
+          "status": "complete",
+          "states": 4096,
+          "generated": 49153
+        }
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 18.05054199999995,
+        "result": {
+          "status": "complete",
+          "states": 4096,
+          "generated": 49153
+        }
+      }
+    ],
+    "medians": [
+      {
+        "route": "frontend",
+        "milliseconds": 0.1594159999999647
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 19.2666660000001
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 16.57299999999998
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 19.21229100000005
+      }
+    ]
+  },
+  {
+    "name": "function-nodes-12",
+    "input": {
+      "name": "function-nodes-12",
+      "states": 4096,
+      "source": "---- MODULE Nodes ----\nEXTENDS Naturals\nVARIABLE nodes\nInit == nodes = [node \\in 1..12 |-> 0]\nNext == \\E node \\in 1..12: nodes' = [nodes EXCEPT ![node] = 1]\nSafe == nodes \\in [1..12 -> 0..1]\n====",
+      "config": "INIT Init\nNEXT Next\nINVARIANT Safe"
+    },
+    "program": {
+      "format": "modelt.safety-program",
+      "version": 1,
+      "name": "Nodes",
+      "variables": [
+        "nodes"
+      ],
+      "initial": [
+        {
+          "name": "Init",
+          "steps": [
+            {
+              "kind": "assign",
+              "slot": 0,
+              "value": {
+                "op": "function",
+                "bounds": [
+                  {
+                    "slot": 0,
+                    "domain": {
+                      "kind": "range",
+                      "lower": {
+                        "op": "literal",
+                        "value": {
+                          "type": "int",
+                          "value": "1"
+                        }
+                      },
+                      "upper": {
+                        "op": "literal",
+                        "value": {
+                          "type": "int",
+                          "value": "12"
+                        }
+                      }
+                    }
+                  }
+                ],
+                "body": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "0"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "next": [
+        {
+          "name": "Next",
+          "steps": [
+            {
+              "kind": "bind",
+              "slot": 0,
+              "domain": {
+                "kind": "range",
+                "lower": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "1"
+                  }
+                },
+                "upper": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "12"
+                  }
+                }
+              }
+            },
+            {
+              "kind": "assign",
+              "slot": 0,
+              "value": {
+                "op": "update",
+                "target": {
+                  "op": "read",
+                  "slot": 0,
+                  "next": false
+                },
+                "updates": [
+                  {
+                    "path": [
+                      {
+                        "op": "bound",
+                        "slot": 0
+                      }
+                    ],
+                    "value": {
+                      "op": "literal",
+                      "value": {
+                        "type": "int",
+                        "value": "1"
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "invariants": [
+        {
+          "name": "Safe",
+          "expression": {
+            "op": "function-in",
+            "left": {
+              "op": "read",
+              "slot": 0,
+              "next": false
+            },
+            "right": {
+              "op": "function-set",
+              "left": {
+                "op": "map-set",
+                "bounds": [
+                  {
+                    "slot": 0,
+                    "domain": {
+                      "kind": "range",
+                      "lower": {
+                        "op": "literal",
+                        "value": {
+                          "type": "int",
+                          "value": "1"
+                        }
+                      },
+                      "upper": {
+                        "op": "literal",
+                        "value": {
+                          "type": "int",
+                          "value": "12"
+                        }
+                      }
+                    }
+                  }
+                ],
+                "body": {
+                  "op": "bound",
+                  "slot": 0
+                }
+              },
+              "right": {
+                "op": "map-set",
+                "bounds": [
+                  {
+                    "slot": 0,
+                    "domain": {
+                      "kind": "range",
+                      "lower": {
+                        "op": "literal",
+                        "value": {
+                          "type": "int",
+                          "value": "0"
+                        }
+                      },
+                      "upper": {
+                        "op": "literal",
+                        "value": {
+                          "type": "int",
+                          "value": "1"
+                        }
+                      }
+                    }
+                  }
+                ],
+                "body": {
+                  "op": "bound",
+                  "slot": 0
+                }
+              }
+            }
+          }
+        }
+      ],
+      "assumptions": [],
+      "checkDeadlock": true
+    },
+    "samples": [
+      {
+        "route": "frontend",
+        "milliseconds": 0.06266600000003564,
+        "result": {
+          "status": "compiled",
+          "states": 0,
+          "generated": 0
+        }
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 11.444625000000087,
+        "result": {
+          "status": "complete",
+          "states": 4096,
+          "generated": 49153
+        }
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 14.707875000000058,
+        "result": {
+          "status": "complete",
+          "states": 4096,
+          "generated": 49153
+        }
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 25.878584000000046,
+        "result": {
+          "status": "complete",
+          "states": 4096,
+          "generated": 49153
+        }
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 27.663707999999815,
+        "result": {
+          "status": "complete",
+          "states": 4096,
+          "generated": 49153
+        }
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 16.96029199999998,
+        "result": {
+          "status": "complete",
+          "states": 4096,
+          "generated": 49153
+        }
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 13.623707999999851,
+        "result": {
+          "status": "complete",
+          "states": 4096,
+          "generated": 49153
+        }
+      },
+      {
+        "route": "frontend",
+        "milliseconds": 0.1672089999999571,
+        "result": {
+          "status": "compiled",
+          "states": 0,
+          "generated": 0
+        }
+      },
+      {
+        "route": "frontend",
+        "milliseconds": 0.09954199999992852,
+        "result": {
+          "status": "compiled",
+          "states": 0,
+          "generated": 0
+        }
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 13.185542000000169,
+        "result": {
+          "status": "complete",
+          "states": 4096,
+          "generated": 49153
+        }
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 17.421583000000055,
+        "result": {
+          "status": "complete",
+          "states": 4096,
+          "generated": 49153
+        }
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 18.024417000000085,
+        "result": {
+          "status": "complete",
+          "states": 4096,
+          "generated": 49153
+        }
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 17.549125000000004,
+        "result": {
+          "status": "complete",
+          "states": 4096,
+          "generated": 49153
+        }
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 64.05620799999997,
+        "result": {
+          "status": "complete",
+          "states": 4096,
+          "generated": 49153
+        }
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 15.114291999999978,
+        "result": {
+          "status": "complete",
+          "states": 4096,
+          "generated": 49153
+        }
+      },
+      {
+        "route": "frontend",
+        "milliseconds": 0.15066699999988487,
+        "result": {
+          "status": "compiled",
+          "states": 0,
+          "generated": 0
+        }
+      },
+      {
+        "route": "frontend",
+        "milliseconds": 0.0912909999999556,
+        "result": {
+          "status": "compiled",
+          "states": 0,
+          "generated": 0
+        }
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 12.945084000000179,
+        "result": {
+          "status": "complete",
+          "states": 4096,
+          "generated": 49153
+        }
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 26.555624999999964,
+        "result": {
+          "status": "complete",
+          "states": 4096,
+          "generated": 49153
+        }
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 27.504374999999982,
+        "result": {
+          "status": "complete",
+          "states": 4096,
+          "generated": 49153
+        }
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 17.926625000000058,
+        "result": {
+          "status": "complete",
+          "states": 4096,
+          "generated": 49153
+        }
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 15.32833400000004,
+        "result": {
+          "status": "complete",
+          "states": 4096,
+          "generated": 49153
+        }
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 13.089749999999867,
+        "result": {
+          "status": "complete",
+          "states": 4096,
+          "generated": 49153
+        }
+      },
+      {
+        "route": "frontend",
+        "milliseconds": 0.17645800000013878,
+        "result": {
+          "status": "compiled",
+          "states": 0,
+          "generated": 0
+        }
+      },
+      {
+        "route": "frontend",
+        "milliseconds": 0.07416599999987739,
+        "result": {
+          "status": "compiled",
+          "states": 0,
+          "generated": 0
+        }
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 13.212582999999995,
+        "result": {
+          "status": "complete",
+          "states": 4096,
+          "generated": 49153
+        }
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 14.735709000000043,
+        "result": {
+          "status": "complete",
+          "states": 4096,
+          "generated": 49153
+        }
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 18.712999999999965,
+        "result": {
+          "status": "complete",
+          "states": 4096,
+          "generated": 49153
+        }
+      }
+    ],
+    "medians": [
+      {
+        "route": "frontend",
+        "milliseconds": 0.09954199999992852
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 13.185542000000169
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 16.96029199999998
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 18.712999999999965
+      }
+    ]
+  },
+  {
+    "name": "sequence-queue-10",
+    "input": {
+      "name": "sequence-queue-10",
+      "states": 2047,
+      "source": "---- MODULE Queue ----\nEXTENDS Naturals, Sequences\nVARIABLE queue\nInit == queue = <<>>\nNext == IF Len(queue) < 10 THEN \\E message \\in {0,1}: queue' = Append(queue,message) ELSE queue' = Tail(queue)\nSafe == queue \\in Seq(0..1) /\\ Len(queue) <= 10\n====",
+      "config": "INIT Init\nNEXT Next\nINVARIANT Safe"
+    },
+    "program": {
+      "format": "modelt.safety-program",
+      "version": 1,
+      "name": "Queue",
+      "variables": [
+        "queue"
+      ],
+      "initial": [
+        {
+          "name": "Init",
+          "steps": [
+            {
+              "kind": "assign",
+              "slot": 0,
+              "value": {
+                "op": "tuple",
+                "values": []
+              }
+            }
+          ]
+        }
+      ],
+      "next": [
+        {
+          "name": "Next",
+          "steps": [
+            {
+              "kind": "guard",
+              "expression": {
+                "op": "lt",
+                "left": {
+                  "op": "len",
+                  "argument": {
+                    "op": "read",
+                    "slot": 0,
+                    "next": false
+                  }
+                },
+                "right": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "10"
+                  }
+                }
+              }
+            },
+            {
+              "kind": "bind",
+              "slot": 0,
+              "domain": {
+                "kind": "set",
+                "values": [
+                  {
+                    "op": "literal",
+                    "value": {
+                      "type": "int",
+                      "value": "0"
+                    }
+                  },
+                  {
+                    "op": "literal",
+                    "value": {
+                      "type": "int",
+                      "value": "1"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "assign",
+              "slot": 0,
+              "value": {
+                "op": "append",
+                "left": {
+                  "op": "read",
+                  "slot": 0,
+                  "next": false
+                },
+                "right": {
+                  "op": "bound",
+                  "slot": 0
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "Next",
+          "steps": [
+            {
+              "kind": "guard",
+              "expression": {
+                "op": "not",
+                "argument": {
+                  "op": "lt",
+                  "left": {
+                    "op": "len",
+                    "argument": {
+                      "op": "read",
+                      "slot": 0,
+                      "next": false
+                    }
+                  },
+                  "right": {
+                    "op": "literal",
+                    "value": {
+                      "type": "int",
+                      "value": "10"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "kind": "assign",
+              "slot": 0,
+              "value": {
+                "op": "tail",
+                "argument": {
+                  "op": "read",
+                  "slot": 0,
+                  "next": false
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "invariants": [
+        {
+          "name": "Safe",
+          "expression": {
+            "op": "and",
+            "left": {
+              "op": "and",
+              "left": {
+                "op": "literal",
+                "value": {
+                  "type": "bool",
+                  "value": true
+                }
+              },
+              "right": {
+                "op": "sequence-in",
+                "left": {
+                  "op": "read",
+                  "slot": 0,
+                  "next": false
+                },
+                "right": {
+                  "op": "map-set",
+                  "bounds": [
+                    {
+                      "slot": 0,
+                      "domain": {
+                        "kind": "range",
+                        "lower": {
+                          "op": "literal",
+                          "value": {
+                            "type": "int",
+                            "value": "0"
+                          }
+                        },
+                        "upper": {
+                          "op": "literal",
+                          "value": {
+                            "type": "int",
+                            "value": "1"
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "body": {
+                    "op": "bound",
+                    "slot": 0
+                  }
+                }
+              }
+            },
+            "right": {
+              "op": "le",
+              "left": {
+                "op": "len",
+                "argument": {
+                  "op": "read",
+                  "slot": 0,
+                  "next": false
+                }
+              },
+              "right": {
+                "op": "literal",
+                "value": {
+                  "type": "int",
+                  "value": "10"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "assumptions": [],
+      "checkDeadlock": true
+    },
+    "samples": [
+      {
+        "route": "frontend",
+        "milliseconds": 0.06349999999997635,
+        "result": {
+          "status": "compiled",
+          "states": 0,
+          "generated": 0
+        }
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 3.368208999999979,
+        "result": {
+          "status": "complete",
+          "states": 2047,
+          "generated": 3071
+        }
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 5.14774999999986,
+        "result": {
+          "status": "complete",
+          "states": 2047,
+          "generated": 3071
+        }
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 2.373291999999992,
+        "result": {
+          "status": "complete",
+          "states": 2047,
+          "generated": 3071
+        }
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 2.2725829999999405,
+        "result": {
+          "status": "complete",
+          "states": 2047,
+          "generated": 3071
+        }
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 6.72462500000006,
+        "result": {
+          "status": "complete",
+          "states": 2047,
+          "generated": 3071
+        }
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 7.809541999999965,
+        "result": {
+          "status": "complete",
+          "states": 2047,
+          "generated": 3071
+        }
+      },
+      {
+        "route": "frontend",
+        "milliseconds": 0.8604589999999916,
+        "result": {
+          "status": "compiled",
+          "states": 0,
+          "generated": 0
+        }
+      },
+      {
+        "route": "frontend",
+        "milliseconds": 0.15616700000009587,
+        "result": {
+          "status": "compiled",
+          "states": 0,
+          "generated": 0
+        }
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 7.723457999999937,
+        "result": {
+          "status": "complete",
+          "states": 2047,
+          "generated": 3071
+        }
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 15.789334000000053,
+        "result": {
+          "status": "complete",
+          "states": 2047,
+          "generated": 3071
+        }
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 19.44270800000004,
+        "result": {
+          "status": "complete",
+          "states": 2047,
+          "generated": 3071
+        }
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 6.202250000000049,
+        "result": {
+          "status": "complete",
+          "states": 2047,
+          "generated": 3071
+        }
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 9.073249999999916,
+        "result": {
+          "status": "complete",
+          "states": 2047,
+          "generated": 3071
+        }
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 7.474291999999878,
+        "result": {
+          "status": "complete",
+          "states": 2047,
+          "generated": 3071
+        }
+      },
+      {
+        "route": "frontend",
+        "milliseconds": 0.3926249999999527,
+        "result": {
+          "status": "compiled",
+          "states": 0,
+          "generated": 0
+        }
+      },
+      {
+        "route": "frontend",
+        "milliseconds": 0.21816599999988284,
+        "result": {
+          "status": "compiled",
+          "states": 0,
+          "generated": 0
+        }
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 6.563249999999925,
+        "result": {
+          "status": "complete",
+          "states": 2047,
+          "generated": 3071
+        }
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 5.199165999999877,
+        "result": {
+          "status": "complete",
+          "states": 2047,
+          "generated": 3071
+        }
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 2.7558329999999387,
+        "result": {
+          "status": "complete",
+          "states": 2047,
+          "generated": 3071
+        }
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 2.573208999999906,
+        "result": {
+          "status": "complete",
+          "states": 2047,
+          "generated": 3071
+        }
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 4.014292000000069,
+        "result": {
+          "status": "complete",
+          "states": 2047,
+          "generated": 3071
+        }
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 2.592041999999992,
+        "result": {
+          "status": "complete",
+          "states": 2047,
+          "generated": 3071
+        }
+      },
+      {
+        "route": "frontend",
+        "milliseconds": 0.19770900000003166,
+        "result": {
+          "status": "compiled",
+          "states": 0,
+          "generated": 0
+        }
+      },
+      {
+        "route": "frontend",
+        "milliseconds": 0.20216700000014498,
+        "result": {
+          "status": "compiled",
+          "states": 0,
+          "generated": 0
+        }
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 3.7486249999999472,
+        "result": {
+          "status": "complete",
+          "states": 2047,
+          "generated": 3071
+        }
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 4.915749999999889,
+        "result": {
+          "status": "complete",
+          "states": 2047,
+          "generated": 3071
+        }
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 2.8627500000000055,
+        "result": {
+          "status": "complete",
+          "states": 2047,
+          "generated": 3071
+        }
+      }
+    ],
+    "medians": [
+      {
+        "route": "frontend",
+        "milliseconds": 0.20216700000014498
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 6.563249999999925
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 5.199165999999877
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 2.7558329999999387
+      }
+    ]
+  },
+  {
+    "name": "fair-ring-128",
+    "input": {
+      "name": "fair-ring-128",
+      "states": 128,
+      "source": "---- MODULE FairRing ----\nEXTENDS Naturals\nVARIABLE x\nInit == x = 0\nNext == x' = IF x < 127 THEN x + 1 ELSE 0\nSpec == Init /\\ [][Next]_x /\\ WF_x(Next)\nP == []<>(x = 127)\n====",
+      "config": "SPECIFICATION Spec\nPROPERTY P"
+    },
+    "program": {
+      "format": "modelt.safety-program",
+      "version": 1,
+      "name": "FairRing",
+      "variables": [
+        "x"
+      ],
+      "initial": [
+        {
+          "name": "Init",
+          "steps": [
+            {
+              "kind": "assign",
+              "slot": 0,
+              "value": {
+                "op": "literal",
+                "value": {
+                  "type": "int",
+                  "value": "0"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "next": [
+        {
+          "name": "Next",
+          "steps": [
+            {
+              "kind": "assign",
+              "slot": 0,
+              "value": {
+                "op": "if",
+                "condition": {
+                  "op": "lt",
+                  "left": {
+                    "op": "read",
+                    "slot": 0,
+                    "next": false
+                  },
+                  "right": {
+                    "op": "literal",
+                    "value": {
+                      "type": "int",
+                      "value": "127"
+                    }
+                  }
+                },
+                "consequent": {
+                  "op": "add",
+                  "left": {
+                    "op": "read",
+                    "slot": 0,
+                    "next": false
+                  },
+                  "right": {
+                    "op": "literal",
+                    "value": {
+                      "type": "int",
+                      "value": "1"
+                    }
+                  }
+                },
+                "alternative": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "0"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "invariants": [],
+      "assumptions": [],
+      "checkDeadlock": true,
+      "properties": [
+        {
+          "name": "P",
+          "formula": {
+            "kind": "always",
+            "formula": {
+              "kind": "eventually",
+              "formula": {
+                "kind": "atom",
+                "expression": {
+                  "op": "eq",
+                  "left": {
+                    "op": "read",
+                    "slot": 0,
+                    "next": false
+                  },
+                  "right": {
+                    "op": "literal",
+                    "value": {
+                      "type": "int",
+                      "value": "127"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "fairness": [
+        {
+          "kind": "always",
+          "formula": {
+            "kind": "eventually",
+            "formula": {
+              "kind": "or",
+              "left": {
+                "kind": "not",
+                "formula": {
+                  "kind": "atom",
+                  "expression": {
+                    "op": "enabled",
+                    "branches": [
+                      {
+                        "name": "Next",
+                        "steps": [
+                          {
+                            "kind": "assign",
+                            "slot": 0,
+                            "value": {
+                              "op": "if",
+                              "condition": {
+                                "op": "lt",
+                                "left": {
+                                  "op": "read",
+                                  "slot": 0,
+                                  "next": false
+                                },
+                                "right": {
+                                  "op": "literal",
+                                  "value": {
+                                    "type": "int",
+                                    "value": "127"
+                                  }
+                                }
+                              },
+                              "consequent": {
+                                "op": "add",
+                                "left": {
+                                  "op": "read",
+                                  "slot": 0,
+                                  "next": false
+                                },
+                                "right": {
+                                  "op": "literal",
+                                  "value": {
+                                    "type": "int",
+                                    "value": "1"
+                                  }
+                                }
+                              },
+                              "alternative": {
+                                "op": "literal",
+                                "value": {
+                                  "type": "int",
+                                  "value": "0"
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    ],
+                    "subscript": {
+                      "op": "read",
+                      "slot": 0,
+                      "next": false
+                    }
+                  }
+                }
+              },
+              "right": {
+                "kind": "atom",
+                "expression": {
+                  "op": "and",
+                  "left": {
+                    "op": "eq",
+                    "left": {
+                      "op": "read",
+                      "slot": 0,
+                      "next": true
+                    },
+                    "right": {
+                      "op": "if",
+                      "condition": {
+                        "op": "lt",
+                        "left": {
+                          "op": "read",
+                          "slot": 0,
+                          "next": false
+                        },
+                        "right": {
+                          "op": "literal",
+                          "value": {
+                            "type": "int",
+                            "value": "127"
+                          }
+                        }
+                      },
+                      "consequent": {
+                        "op": "add",
+                        "left": {
+                          "op": "read",
+                          "slot": 0,
+                          "next": false
+                        },
+                        "right": {
+                          "op": "literal",
+                          "value": {
+                            "type": "int",
+                            "value": "1"
+                          }
+                        }
+                      },
+                      "alternative": {
+                        "op": "literal",
+                        "value": {
+                          "type": "int",
+                          "value": "0"
+                        }
+                      }
+                    }
+                  },
+                  "right": {
+                    "op": "ne",
+                    "left": {
+                      "op": "read",
+                      "slot": 0,
+                      "next": false
+                    },
+                    "right": {
+                      "op": "prime",
+                      "argument": {
+                        "op": "read",
+                        "slot": 0,
+                        "next": false
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "samples": [
+      {
+        "route": "frontend",
+        "milliseconds": 0.10275000000001455,
+        "result": {
+          "status": "compiled",
+          "states": 0,
+          "generated": 0
+        }
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 1.3344590000001517,
+        "result": {
+          "status": "complete",
+          "states": 128,
+          "generated": 129
+        }
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 3.848666000000094,
+        "result": {
+          "status": "complete",
+          "states": 128,
+          "generated": 129
+        }
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 2.102000000000089,
+        "result": {
+          "status": "complete",
+          "states": 128,
+          "generated": 129
+        }
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 1.8361250000000382,
+        "result": {
+          "status": "complete",
+          "states": 128,
+          "generated": 129
+        }
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 3.609124999999949,
+        "result": {
+          "status": "complete",
+          "states": 128,
+          "generated": 129
+        }
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 1.6675419999999122,
+        "result": {
+          "status": "complete",
+          "states": 128,
+          "generated": 129
+        }
+      },
+      {
+        "route": "frontend",
+        "milliseconds": 0.1344169999999849,
+        "result": {
+          "status": "compiled",
+          "states": 0,
+          "generated": 0
+        }
+      },
+      {
+        "route": "frontend",
+        "milliseconds": 0.08741700000018682,
+        "result": {
+          "status": "compiled",
+          "states": 0,
+          "generated": 0
+        }
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 1.2609580000000733,
+        "result": {
+          "status": "complete",
+          "states": 128,
+          "generated": 129
+        }
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 3.7448750000000928,
+        "result": {
+          "status": "complete",
+          "states": 128,
+          "generated": 129
+        }
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 2.2627500000000964,
+        "result": {
+          "status": "complete",
+          "states": 128,
+          "generated": 129
+        }
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 1.8367920000000595,
+        "result": {
+          "status": "complete",
+          "states": 128,
+          "generated": 129
+        }
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 3.378500000000031,
+        "result": {
+          "status": "complete",
+          "states": 128,
+          "generated": 129
+        }
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 1.227666999999883,
+        "result": {
+          "status": "complete",
+          "states": 128,
+          "generated": 129
+        }
+      },
+      {
+        "route": "frontend",
+        "milliseconds": 0.11245800000006057,
+        "result": {
+          "status": "compiled",
+          "states": 0,
+          "generated": 0
+        }
+      },
+      {
+        "route": "frontend",
+        "milliseconds": 0.05508400000007896,
+        "result": {
+          "status": "compiled",
+          "states": 0,
+          "generated": 0
+        }
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 1.229334000000108,
+        "result": {
+          "status": "complete",
+          "states": 128,
+          "generated": 129
+        }
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 3.413541000000123,
+        "result": {
+          "status": "complete",
+          "states": 128,
+          "generated": 129
+        }
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 1.8652090000000499,
+        "result": {
+          "status": "complete",
+          "states": 128,
+          "generated": 129
+        }
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 1.7799999999999727,
+        "result": {
+          "status": "complete",
+          "states": 128,
+          "generated": 129
+        }
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 3.4462080000000697,
+        "result": {
+          "status": "complete",
+          "states": 128,
+          "generated": 129
+        }
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 1.1245410000001357,
+        "result": {
+          "status": "complete",
+          "states": 128,
+          "generated": 129
+        }
+      },
+      {
+        "route": "frontend",
+        "milliseconds": 0.08745799999996962,
+        "result": {
+          "status": "compiled",
+          "states": 0,
+          "generated": 0
+        }
+      },
+      {
+        "route": "frontend",
+        "milliseconds": 0.0644999999999527,
+        "result": {
+          "status": "compiled",
+          "states": 0,
+          "generated": 0
+        }
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 0.928124999999909,
+        "result": {
+          "status": "complete",
+          "states": 128,
+          "generated": 129
+        }
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 3.271791000000121,
+        "result": {
+          "status": "complete",
+          "states": 128,
+          "generated": 129
+        }
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 2.1009590000001026,
+        "result": {
+          "status": "complete",
+          "states": 128,
+          "generated": 129
+        }
+      }
+    ],
+    "medians": [
+      {
+        "route": "frontend",
+        "milliseconds": 0.08745799999996962
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 1.229334000000108
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 3.4462080000000697
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 1.8652090000000499
+      }
+    ]
+  },
+  {
+    "name": "ring-10000",
+    "input": {
+      "name": "ring-10000",
+      "states": 10000,
+      "source": "---- MODULE Ring ----\nEXTENDS Naturals\nCONSTANT N\nVARIABLE x\nInit == x = 0\nNext == x' = IF x < N - 1 THEN x + 1 ELSE 0\nSafe == x \\in 0..(N - 1)\n====",
+      "config": "CONSTANT N = 10000\nINIT Init\nNEXT Next\nINVARIANT Safe"
+    },
+    "program": {
+      "format": "modelt.safety-program",
+      "version": 1,
+      "name": "Ring",
+      "variables": [
+        "x"
+      ],
+      "initial": [
+        {
+          "name": "Init",
+          "steps": [
+            {
+              "kind": "assign",
+              "slot": 0,
+              "value": {
+                "op": "literal",
+                "value": {
+                  "type": "int",
+                  "value": "0"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "next": [
+        {
+          "name": "Next",
+          "steps": [
+            {
+              "kind": "assign",
+              "slot": 0,
+              "value": {
+                "op": "if",
+                "condition": {
+                  "op": "lt",
+                  "left": {
+                    "op": "read",
+                    "slot": 0,
+                    "next": false
+                  },
+                  "right": {
+                    "op": "sub",
+                    "left": {
+                      "op": "literal",
+                      "value": {
+                        "type": "int",
+                        "value": "10000"
+                      }
+                    },
+                    "right": {
+                      "op": "literal",
+                      "value": {
+                        "type": "int",
+                        "value": "1"
+                      }
+                    }
+                  }
+                },
+                "consequent": {
+                  "op": "add",
+                  "left": {
+                    "op": "read",
+                    "slot": 0,
+                    "next": false
+                  },
+                  "right": {
+                    "op": "literal",
+                    "value": {
+                      "type": "int",
+                      "value": "1"
+                    }
+                  }
+                },
+                "alternative": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "0"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "invariants": [
+        {
+          "name": "Safe",
+          "expression": {
+            "op": "in",
+            "value": {
+              "op": "read",
+              "slot": 0,
+              "next": false
+            },
+            "domain": {
+              "kind": "range",
+              "lower": {
+                "op": "literal",
+                "value": {
+                  "type": "int",
+                  "value": "0"
+                }
+              },
+              "upper": {
+                "op": "sub",
+                "left": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "10000"
+                  }
+                },
+                "right": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "1"
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "assumptions": [],
+      "checkDeadlock": true
+    },
+    "samples": [
+      {
+        "route": "frontend",
+        "milliseconds": 0.04820799999993142,
+        "result": {
+          "status": "compiled",
+          "states": 0,
+          "generated": 0
+        }
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 7.908167000000049,
+        "result": {
+          "status": "complete",
+          "states": 10000,
+          "generated": 10001
+        }
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 3.3159579999999096,
+        "result": {
+          "status": "complete",
+          "states": 10000,
+          "generated": 10001
+        }
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 1.7287079999998696,
+        "result": {
+          "status": "complete",
+          "states": 10000,
+          "generated": 10001
+        }
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 1.6747499999999036,
+        "result": {
+          "status": "complete",
+          "states": 10000,
+          "generated": 10001
+        }
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 2.945791999999983,
+        "result": {
+          "status": "complete",
+          "states": 10000,
+          "generated": 10001
+        }
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 3.0255409999999756,
+        "result": {
+          "status": "complete",
+          "states": 10000,
+          "generated": 10001
+        }
+      },
+      {
+        "route": "frontend",
+        "milliseconds": 0.10954199999991943,
+        "result": {
+          "status": "compiled",
+          "states": 0,
+          "generated": 0
+        }
+      },
+      {
+        "route": "frontend",
+        "milliseconds": 0.05958299999997507,
+        "result": {
+          "status": "compiled",
+          "states": 0,
+          "generated": 0
+        }
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 2.8447080000000824,
+        "result": {
+          "status": "complete",
+          "states": 10000,
+          "generated": 10001
+        }
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 3.05012499999998,
+        "result": {
+          "status": "complete",
+          "states": 10000,
+          "generated": 10001
+        }
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 1.7409170000000813,
+        "result": {
+          "status": "complete",
+          "states": 10000,
+          "generated": 10001
+        }
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 1.6533340000000862,
+        "result": {
+          "status": "complete",
+          "states": 10000,
+          "generated": 10001
+        }
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 3.173583000000008,
+        "result": {
+          "status": "complete",
+          "states": 10000,
+          "generated": 10001
+        }
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 4.927791999999954,
+        "result": {
+          "status": "complete",
+          "states": 10000,
+          "generated": 10001
+        }
+      },
+      {
+        "route": "frontend",
+        "milliseconds": 0.1110839999998916,
+        "result": {
+          "status": "compiled",
+          "states": 0,
+          "generated": 0
+        }
+      },
+      {
+        "route": "frontend",
+        "milliseconds": 0.04245900000000802,
+        "result": {
+          "status": "compiled",
+          "states": 0,
+          "generated": 0
+        }
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 3.429208000000017,
+        "result": {
+          "status": "complete",
+          "states": 10000,
+          "generated": 10001
+        }
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 4.151499999999942,
+        "result": {
+          "status": "complete",
+          "states": 10000,
+          "generated": 10001
+        }
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 1.7039579999998296,
+        "result": {
+          "status": "complete",
+          "states": 10000,
+          "generated": 10001
+        }
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 1.6420829999999569,
+        "result": {
+          "status": "complete",
+          "states": 10000,
+          "generated": 10001
+        }
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 3.1645829999999933,
+        "result": {
+          "status": "complete",
+          "states": 10000,
+          "generated": 10001
+        }
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 3.02087500000016,
+        "result": {
+          "status": "complete",
+          "states": 10000,
+          "generated": 10001
+        }
+      },
+      {
+        "route": "frontend",
+        "milliseconds": 0.0863329999999678,
+        "result": {
+          "status": "compiled",
+          "states": 0,
+          "generated": 0
+        }
+      },
+      {
+        "route": "frontend",
+        "milliseconds": 0.05179099999986647,
+        "result": {
+          "status": "compiled",
+          "states": 0,
+          "generated": 0
+        }
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 2.9037089999999353,
+        "result": {
+          "status": "complete",
+          "states": 10000,
+          "generated": 10001
+        }
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 3.405124999999998,
+        "result": {
+          "status": "complete",
+          "states": 10000,
+          "generated": 10001
+        }
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 1.784750000000031,
+        "result": {
+          "status": "complete",
+          "states": 10000,
+          "generated": 10001
+        }
+      }
+    ],
+    "medians": [
+      {
+        "route": "frontend",
+        "milliseconds": 0.05958299999997507
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 3.0255409999999756
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 3.173583000000008
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 1.7039579999998296
+      }
+    ]
+  },
+  {
+    "name": "ring-50000",
+    "input": {
+      "name": "ring-50000",
+      "states": 50000,
+      "source": "---- MODULE Ring ----\nEXTENDS Naturals\nCONSTANT N\nVARIABLE x\nInit == x = 0\nNext == x' = IF x < N - 1 THEN x + 1 ELSE 0\nSafe == x \\in 0..(N - 1)\n====",
+      "config": "CONSTANT N = 50000\nINIT Init\nNEXT Next\nINVARIANT Safe"
+    },
+    "program": {
+      "format": "modelt.safety-program",
+      "version": 1,
+      "name": "Ring",
+      "variables": [
+        "x"
+      ],
+      "initial": [
+        {
+          "name": "Init",
+          "steps": [
+            {
+              "kind": "assign",
+              "slot": 0,
+              "value": {
+                "op": "literal",
+                "value": {
+                  "type": "int",
+                  "value": "0"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "next": [
+        {
+          "name": "Next",
+          "steps": [
+            {
+              "kind": "assign",
+              "slot": 0,
+              "value": {
+                "op": "if",
+                "condition": {
+                  "op": "lt",
+                  "left": {
+                    "op": "read",
+                    "slot": 0,
+                    "next": false
+                  },
+                  "right": {
+                    "op": "sub",
+                    "left": {
+                      "op": "literal",
+                      "value": {
+                        "type": "int",
+                        "value": "50000"
+                      }
+                    },
+                    "right": {
+                      "op": "literal",
+                      "value": {
+                        "type": "int",
+                        "value": "1"
+                      }
+                    }
+                  }
+                },
+                "consequent": {
+                  "op": "add",
+                  "left": {
+                    "op": "read",
+                    "slot": 0,
+                    "next": false
+                  },
+                  "right": {
+                    "op": "literal",
+                    "value": {
+                      "type": "int",
+                      "value": "1"
+                    }
+                  }
+                },
+                "alternative": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "0"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "invariants": [
+        {
+          "name": "Safe",
+          "expression": {
+            "op": "in",
+            "value": {
+              "op": "read",
+              "slot": 0,
+              "next": false
+            },
+            "domain": {
+              "kind": "range",
+              "lower": {
+                "op": "literal",
+                "value": {
+                  "type": "int",
+                  "value": "0"
+                }
+              },
+              "upper": {
+                "op": "sub",
+                "left": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "50000"
+                  }
+                },
+                "right": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "1"
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "assumptions": [],
+      "checkDeadlock": true
+    },
+    "samples": [
+      {
+        "route": "frontend",
+        "milliseconds": 0.058624999999665306,
+        "result": {
+          "status": "compiled",
+          "states": 0,
+          "generated": 0
+        }
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 24.000499999999647,
+        "result": {
+          "status": "complete",
+          "states": 50000,
+          "generated": 50001
+        }
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 12.623916000000008,
+        "result": {
+          "status": "complete",
+          "states": 50000,
+          "generated": 50001
+        }
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 9.056082999999944,
+        "result": {
+          "status": "complete",
+          "states": 50000,
+          "generated": 50001
+        }
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 10.032083000000057,
+        "result": {
+          "status": "complete",
+          "states": 50000,
+          "generated": 50001
+        }
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 9.541917000000012,
+        "result": {
+          "status": "complete",
+          "states": 50000,
+          "generated": 50001
+        }
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 20.895458000000417,
+        "result": {
+          "status": "complete",
+          "states": 50000,
+          "generated": 50001
+        }
+      },
+      {
+        "route": "frontend",
+        "milliseconds": 0.15529200000037235,
+        "result": {
+          "status": "compiled",
+          "states": 0,
+          "generated": 0
+        }
+      },
+      {
+        "route": "frontend",
+        "milliseconds": 0.050957999999809545,
+        "result": {
+          "status": "compiled",
+          "states": 0,
+          "generated": 0
+        }
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 25.048499999999876,
+        "result": {
+          "status": "complete",
+          "states": 50000,
+          "generated": 50001
+        }
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 11.258958999999777,
+        "result": {
+          "status": "complete",
+          "states": 50000,
+          "generated": 50001
+        }
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 8.386291999999685,
+        "result": {
+          "status": "complete",
+          "states": 50000,
+          "generated": 50001
+        }
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 12.533249999999953,
+        "result": {
+          "status": "complete",
+          "states": 50000,
+          "generated": 50001
+        }
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 9.382666999999856,
+        "result": {
+          "status": "complete",
+          "states": 50000,
+          "generated": 50001
+        }
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 24.50308300000006,
+        "result": {
+          "status": "complete",
+          "states": 50000,
+          "generated": 50001
+        }
+      },
+      {
+        "route": "frontend",
+        "milliseconds": 0.12083299999994779,
+        "result": {
+          "status": "compiled",
+          "states": 0,
+          "generated": 0
+        }
+      },
+      {
+        "route": "frontend",
+        "milliseconds": 0.046833999999762455,
+        "result": {
+          "status": "compiled",
+          "states": 0,
+          "generated": 0
+        }
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 18.561541999999918,
+        "result": {
+          "status": "complete",
+          "states": 50000,
+          "generated": 50001
+        }
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 8.43179199999986,
+        "result": {
+          "status": "complete",
+          "states": 50000,
+          "generated": 50001
+        }
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 8.403249999999844,
+        "result": {
+          "status": "complete",
+          "states": 50000,
+          "generated": 50001
+        }
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 8.427666999999929,
+        "result": {
+          "status": "complete",
+          "states": 50000,
+          "generated": 50001
+        }
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 8.34679099999994,
+        "result": {
+          "status": "complete",
+          "states": 50000,
+          "generated": 50001
+        }
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 14.907333000000108,
+        "result": {
+          "status": "complete",
+          "states": 50000,
+          "generated": 50001
+        }
+      },
+      {
+        "route": "frontend",
+        "milliseconds": 0.12404199999991761,
+        "result": {
+          "status": "compiled",
+          "states": 0,
+          "generated": 0
+        }
+      },
+      {
+        "route": "frontend",
+        "milliseconds": 0.06779099999994287,
+        "result": {
+          "status": "compiled",
+          "states": 0,
+          "generated": 0
+        }
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 15.58862500000032,
+        "result": {
+          "status": "complete",
+          "states": 50000,
+          "generated": 50001
+        }
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 8.3762499999998,
+        "result": {
+          "status": "complete",
+          "states": 50000,
+          "generated": 50001
+        }
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 8.715208999999959,
+        "result": {
+          "status": "complete",
+          "states": 50000,
+          "generated": 50001
+        }
+      }
+    ],
+    "medians": [
+      {
+        "route": "frontend",
+        "milliseconds": 0.06779099999994287
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 20.895458000000417
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 9.382666999999856
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 8.715208999999959
+      }
+    ]
+  },
+  {
+    "name": "ring-100000",
+    "input": {
+      "name": "ring-100000",
+      "states": 100000,
+      "source": "---- MODULE Ring ----\nEXTENDS Naturals\nCONSTANT N\nVARIABLE x\nInit == x = 0\nNext == x' = IF x < N - 1 THEN x + 1 ELSE 0\nSafe == x \\in 0..(N - 1)\n====",
+      "config": "CONSTANT N = 100000\nINIT Init\nNEXT Next\nINVARIANT Safe"
+    },
+    "program": {
+      "format": "modelt.safety-program",
+      "version": 1,
+      "name": "Ring",
+      "variables": [
+        "x"
+      ],
+      "initial": [
+        {
+          "name": "Init",
+          "steps": [
+            {
+              "kind": "assign",
+              "slot": 0,
+              "value": {
+                "op": "literal",
+                "value": {
+                  "type": "int",
+                  "value": "0"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "next": [
+        {
+          "name": "Next",
+          "steps": [
+            {
+              "kind": "assign",
+              "slot": 0,
+              "value": {
+                "op": "if",
+                "condition": {
+                  "op": "lt",
+                  "left": {
+                    "op": "read",
+                    "slot": 0,
+                    "next": false
+                  },
+                  "right": {
+                    "op": "sub",
+                    "left": {
+                      "op": "literal",
+                      "value": {
+                        "type": "int",
+                        "value": "100000"
+                      }
+                    },
+                    "right": {
+                      "op": "literal",
+                      "value": {
+                        "type": "int",
+                        "value": "1"
+                      }
+                    }
+                  }
+                },
+                "consequent": {
+                  "op": "add",
+                  "left": {
+                    "op": "read",
+                    "slot": 0,
+                    "next": false
+                  },
+                  "right": {
+                    "op": "literal",
+                    "value": {
+                      "type": "int",
+                      "value": "1"
+                    }
+                  }
+                },
+                "alternative": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "0"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "invariants": [
+        {
+          "name": "Safe",
+          "expression": {
+            "op": "in",
+            "value": {
+              "op": "read",
+              "slot": 0,
+              "next": false
+            },
+            "domain": {
+              "kind": "range",
+              "lower": {
+                "op": "literal",
+                "value": {
+                  "type": "int",
+                  "value": "0"
+                }
+              },
+              "upper": {
+                "op": "sub",
+                "left": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "100000"
+                  }
+                },
+                "right": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "1"
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "assumptions": [],
+      "checkDeadlock": true
+    },
+    "samples": [
+      {
+        "route": "frontend",
+        "milliseconds": 0.04845800000020972,
+        "result": {
+          "status": "compiled",
+          "states": 0,
+          "generated": 0
+        }
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 32.24924999999985,
+        "result": {
+          "status": "complete",
+          "states": 100000,
+          "generated": 100001
+        }
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 14.486709000000246,
+        "result": {
+          "status": "complete",
+          "states": 100000,
+          "generated": 100001
+        }
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 17.75408299999981,
+        "result": {
+          "status": "complete",
+          "states": 100000,
+          "generated": 100001
+        }
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 23.16079200000013,
+        "result": {
+          "status": "complete",
+          "states": 100000,
+          "generated": 100001
+        }
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 16.77933299999995,
+        "result": {
+          "status": "complete",
+          "states": 100000,
+          "generated": 100001
+        }
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 43.09287499999982,
+        "result": {
+          "status": "complete",
+          "states": 100000,
+          "generated": 100001
+        }
+      },
+      {
+        "route": "frontend",
+        "milliseconds": 0.16245800000024246,
+        "result": {
+          "status": "compiled",
+          "states": 0,
+          "generated": 0
+        }
+      },
+      {
+        "route": "frontend",
+        "milliseconds": 0.056666999999833934,
+        "result": {
+          "status": "compiled",
+          "states": 0,
+          "generated": 0
+        }
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 34.99341600000025,
+        "result": {
+          "status": "complete",
+          "states": 100000,
+          "generated": 100001
+        }
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 14.012208999999984,
+        "result": {
+          "status": "complete",
+          "states": 100000,
+          "generated": 100001
+        }
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 17.119166999999834,
+        "result": {
+          "status": "complete",
+          "states": 100000,
+          "generated": 100001
+        }
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 16.763040999999703,
+        "result": {
+          "status": "complete",
+          "states": 100000,
+          "generated": 100001
+        }
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 13.742749999999887,
+        "result": {
+          "status": "complete",
+          "states": 100000,
+          "generated": 100001
+        }
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 34.29566699999987,
+        "result": {
+          "status": "complete",
+          "states": 100000,
+          "generated": 100001
+        }
+      },
+      {
+        "route": "frontend",
+        "milliseconds": 0.14629199999990306,
+        "result": {
+          "status": "compiled",
+          "states": 0,
+          "generated": 0
+        }
+      },
+      {
+        "route": "frontend",
+        "milliseconds": 0.054874999999810825,
+        "result": {
+          "status": "compiled",
+          "states": 0,
+          "generated": 0
+        }
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 38.989042000000154,
+        "result": {
+          "status": "complete",
+          "states": 100000,
+          "generated": 100001
+        }
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 14.098500000000058,
+        "result": {
+          "status": "complete",
+          "states": 100000,
+          "generated": 100001
+        }
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 17.139541999999892,
+        "result": {
+          "status": "complete",
+          "states": 100000,
+          "generated": 100001
+        }
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 16.39154099999996,
+        "result": {
+          "status": "complete",
+          "states": 100000,
+          "generated": 100001
+        }
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 13.171791000000212,
+        "result": {
+          "status": "complete",
+          "states": 100000,
+          "generated": 100001
+        }
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 31.12529100000029,
+        "result": {
+          "status": "complete",
+          "states": 100000,
+          "generated": 100001
+        }
+      },
+      {
+        "route": "frontend",
+        "milliseconds": 0.1281250000001819,
+        "result": {
+          "status": "compiled",
+          "states": 0,
+          "generated": 0
+        }
+      },
+      {
+        "route": "frontend",
+        "milliseconds": 0.04679100000021208,
+        "result": {
+          "status": "compiled",
+          "states": 0,
+          "generated": 0
+        }
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 32.01329100000021,
+        "result": {
+          "status": "complete",
+          "states": 100000,
+          "generated": 100001
+        }
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 13.831666000000041,
+        "result": {
+          "status": "complete",
+          "states": 100000,
+          "generated": 100001
+        }
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 25.84649999999965,
+        "result": {
+          "status": "complete",
+          "states": 100000,
+          "generated": 100001
+        }
+      }
+    ],
+    "medians": [
+      {
+        "route": "frontend",
+        "milliseconds": 0.056666999999833934
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 34.29566699999987
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 14.012208999999984
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 17.139541999999892
+      }
+    ]
+  },
+  {
+    "name": "grid-20",
+    "input": {
+      "name": "grid-20",
+      "states": 400,
+      "source": "---- MODULE Grid ----\nEXTENDS Naturals\nCONSTANT N\nVARIABLES x, y\nInit == /\\ x = 0\n        /\\ y = 0\nRight == /\\ x' = IF x < N - 1 THEN x + 1 ELSE 0\n         /\\ UNCHANGED y\nUp == /\\ y' = IF y < N - 1 THEN y + 1 ELSE 0\n      /\\ UNCHANGED x\nNext == Right \\/ Up\nSafe == /\\ x \\in 0..(N - 1)\n        /\\ y \\in 0..(N - 1)\n====",
+      "config": "CONSTANT N = 20\nINIT Init\nNEXT Next\nINVARIANT Safe"
+    },
+    "program": {
+      "format": "modelt.safety-program",
+      "version": 1,
+      "name": "Grid",
+      "variables": [
+        "x",
+        "y"
+      ],
+      "initial": [
+        {
+          "name": "Init",
+          "steps": [
+            {
+              "kind": "assign",
+              "slot": 0,
+              "value": {
+                "op": "literal",
+                "value": {
+                  "type": "int",
+                  "value": "0"
+                }
+              }
+            },
+            {
+              "kind": "assign",
+              "slot": 1,
+              "value": {
+                "op": "literal",
+                "value": {
+                  "type": "int",
+                  "value": "0"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "next": [
+        {
+          "name": "Right",
+          "steps": [
+            {
+              "kind": "assign",
+              "slot": 0,
+              "value": {
+                "op": "if",
+                "condition": {
+                  "op": "lt",
+                  "left": {
+                    "op": "read",
+                    "slot": 0,
+                    "next": false
+                  },
+                  "right": {
+                    "op": "sub",
+                    "left": {
+                      "op": "literal",
+                      "value": {
+                        "type": "int",
+                        "value": "20"
+                      }
+                    },
+                    "right": {
+                      "op": "literal",
+                      "value": {
+                        "type": "int",
+                        "value": "1"
+                      }
+                    }
+                  }
+                },
+                "consequent": {
+                  "op": "add",
+                  "left": {
+                    "op": "read",
+                    "slot": 0,
+                    "next": false
+                  },
+                  "right": {
+                    "op": "literal",
+                    "value": {
+                      "type": "int",
+                      "value": "1"
+                    }
+                  }
+                },
+                "alternative": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "0"
+                  }
+                }
+              }
+            },
+            {
+              "kind": "assign",
+              "slot": 1,
+              "value": {
+                "op": "read",
+                "slot": 1,
+                "next": false
+              }
+            }
+          ]
+        },
+        {
+          "name": "Up",
+          "steps": [
+            {
+              "kind": "assign",
+              "slot": 1,
+              "value": {
+                "op": "if",
+                "condition": {
+                  "op": "lt",
+                  "left": {
+                    "op": "read",
+                    "slot": 1,
+                    "next": false
+                  },
+                  "right": {
+                    "op": "sub",
+                    "left": {
+                      "op": "literal",
+                      "value": {
+                        "type": "int",
+                        "value": "20"
+                      }
+                    },
+                    "right": {
+                      "op": "literal",
+                      "value": {
+                        "type": "int",
+                        "value": "1"
+                      }
+                    }
+                  }
+                },
+                "consequent": {
+                  "op": "add",
+                  "left": {
+                    "op": "read",
+                    "slot": 1,
+                    "next": false
+                  },
+                  "right": {
+                    "op": "literal",
+                    "value": {
+                      "type": "int",
+                      "value": "1"
+                    }
+                  }
+                },
+                "alternative": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "0"
+                  }
+                }
+              }
+            },
+            {
+              "kind": "assign",
+              "slot": 0,
+              "value": {
+                "op": "read",
+                "slot": 0,
+                "next": false
+              }
+            }
+          ]
+        }
+      ],
+      "invariants": [
+        {
+          "name": "Safe",
+          "expression": {
+            "op": "and",
+            "left": {
+              "op": "and",
+              "left": {
+                "op": "literal",
+                "value": {
+                  "type": "bool",
+                  "value": true
+                }
+              },
+              "right": {
+                "op": "in",
+                "value": {
+                  "op": "read",
+                  "slot": 0,
+                  "next": false
+                },
+                "domain": {
+                  "kind": "range",
+                  "lower": {
+                    "op": "literal",
+                    "value": {
+                      "type": "int",
+                      "value": "0"
+                    }
+                  },
+                  "upper": {
+                    "op": "sub",
+                    "left": {
+                      "op": "literal",
+                      "value": {
+                        "type": "int",
+                        "value": "20"
+                      }
+                    },
+                    "right": {
+                      "op": "literal",
+                      "value": {
+                        "type": "int",
+                        "value": "1"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "right": {
+              "op": "in",
+              "value": {
+                "op": "read",
+                "slot": 1,
+                "next": false
+              },
+              "domain": {
+                "kind": "range",
+                "lower": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "0"
+                  }
+                },
+                "upper": {
+                  "op": "sub",
+                  "left": {
+                    "op": "literal",
+                    "value": {
+                      "type": "int",
+                      "value": "20"
+                    }
+                  },
+                  "right": {
+                    "op": "literal",
+                    "value": {
+                      "type": "int",
+                      "value": "1"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "assumptions": [],
+      "checkDeadlock": true
+    },
+    "samples": [
+      {
+        "route": "frontend",
+        "milliseconds": 0.21433299999989686,
+        "result": {
+          "status": "compiled",
+          "states": 0,
+          "generated": 0
+        }
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 1.8406250000002728,
+        "result": {
+          "status": "complete",
+          "states": 400,
+          "generated": 801
+        }
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 2.722374999999829,
+        "result": {
+          "status": "complete",
+          "states": 400,
+          "generated": 801
+        }
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 0.4820409999997537,
+        "result": {
+          "status": "complete",
+          "states": 400,
+          "generated": 801
+        }
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 0.3046249999997599,
+        "result": {
+          "status": "complete",
+          "states": 400,
+          "generated": 801
+        }
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 2.4259170000000267,
+        "result": {
+          "status": "complete",
+          "states": 400,
+          "generated": 801
+        }
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 1.1451250000000073,
+        "result": {
+          "status": "complete",
+          "states": 400,
+          "generated": 801
+        }
+      },
+      {
+        "route": "frontend",
+        "milliseconds": 0.2257079999999405,
+        "result": {
+          "status": "compiled",
+          "states": 0,
+          "generated": 0
+        }
+      },
+      {
+        "route": "frontend",
+        "milliseconds": 0.23058399999990797,
+        "result": {
+          "status": "compiled",
+          "states": 0,
+          "generated": 0
+        }
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 1.9906670000000304,
+        "result": {
+          "status": "complete",
+          "states": 400,
+          "generated": 801
+        }
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 4.995875000000069,
+        "result": {
+          "status": "complete",
+          "states": 400,
+          "generated": 801
+        }
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 0.5295000000000982,
+        "result": {
+          "status": "complete",
+          "states": 400,
+          "generated": 801
+        }
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 0.33770800000002055,
+        "result": {
+          "status": "complete",
+          "states": 400,
+          "generated": 801
+        }
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 4.9684580000002825,
+        "result": {
+          "status": "complete",
+          "states": 400,
+          "generated": 801
+        }
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 1.9886670000000777,
+        "result": {
+          "status": "complete",
+          "states": 400,
+          "generated": 801
+        }
+      },
+      {
+        "route": "frontend",
+        "milliseconds": 0.36799999999993815,
+        "result": {
+          "status": "compiled",
+          "states": 0,
+          "generated": 0
+        }
+      },
+      {
+        "route": "frontend",
+        "milliseconds": 0.234958000000006,
+        "result": {
+          "status": "compiled",
+          "states": 0,
+          "generated": 0
+        }
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 2.048540999999659,
+        "result": {
+          "status": "complete",
+          "states": 400,
+          "generated": 801
+        }
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 6.104415999999674,
+        "result": {
+          "status": "complete",
+          "states": 400,
+          "generated": 801
+        }
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 0.594499999999698,
+        "result": {
+          "status": "complete",
+          "states": 400,
+          "generated": 801
+        }
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 0.37670799999978044,
+        "result": {
+          "status": "complete",
+          "states": 400,
+          "generated": 801
+        }
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 5.792249999999967,
+        "result": {
+          "status": "complete",
+          "states": 400,
+          "generated": 801
+        }
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 3.02087500000016,
+        "result": {
+          "status": "complete",
+          "states": 400,
+          "generated": 801
+        }
+      },
+      {
+        "route": "frontend",
+        "milliseconds": 0.16462499999988722,
+        "result": {
+          "status": "compiled",
+          "states": 0,
+          "generated": 0
+        }
+      },
+      {
+        "route": "frontend",
+        "milliseconds": 0.22270799999978408,
+        "result": {
+          "status": "compiled",
+          "states": 0,
+          "generated": 0
+        }
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 2.5979169999995975,
+        "result": {
+          "status": "complete",
+          "states": 400,
+          "generated": 801
+        }
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 5.582957999999962,
+        "result": {
+          "status": "complete",
+          "states": 400,
+          "generated": 801
+        }
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 0.8758750000001783,
+        "result": {
+          "status": "complete",
+          "states": 400,
+          "generated": 801
+        }
+      }
+    ],
+    "medians": [
+      {
+        "route": "frontend",
+        "milliseconds": 0.2257079999999405
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 1.9906670000000304
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 4.995875000000069
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 0.4820409999997537
+      }
+    ]
+  },
+  {
+    "name": "grid-50",
+    "input": {
+      "name": "grid-50",
+      "states": 2500,
+      "source": "---- MODULE Grid ----\nEXTENDS Naturals\nCONSTANT N\nVARIABLES x, y\nInit == /\\ x = 0\n        /\\ y = 0\nRight == /\\ x' = IF x < N - 1 THEN x + 1 ELSE 0\n         /\\ UNCHANGED y\nUp == /\\ y' = IF y < N - 1 THEN y + 1 ELSE 0\n      /\\ UNCHANGED x\nNext == Right \\/ Up\nSafe == /\\ x \\in 0..(N - 1)\n        /\\ y \\in 0..(N - 1)\n====",
+      "config": "CONSTANT N = 50\nINIT Init\nNEXT Next\nINVARIANT Safe"
+    },
+    "program": {
+      "format": "modelt.safety-program",
+      "version": 1,
+      "name": "Grid",
+      "variables": [
+        "x",
+        "y"
+      ],
+      "initial": [
+        {
+          "name": "Init",
+          "steps": [
+            {
+              "kind": "assign",
+              "slot": 0,
+              "value": {
+                "op": "literal",
+                "value": {
+                  "type": "int",
+                  "value": "0"
+                }
+              }
+            },
+            {
+              "kind": "assign",
+              "slot": 1,
+              "value": {
+                "op": "literal",
+                "value": {
+                  "type": "int",
+                  "value": "0"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "next": [
+        {
+          "name": "Right",
+          "steps": [
+            {
+              "kind": "assign",
+              "slot": 0,
+              "value": {
+                "op": "if",
+                "condition": {
+                  "op": "lt",
+                  "left": {
+                    "op": "read",
+                    "slot": 0,
+                    "next": false
+                  },
+                  "right": {
+                    "op": "sub",
+                    "left": {
+                      "op": "literal",
+                      "value": {
+                        "type": "int",
+                        "value": "50"
+                      }
+                    },
+                    "right": {
+                      "op": "literal",
+                      "value": {
+                        "type": "int",
+                        "value": "1"
+                      }
+                    }
+                  }
+                },
+                "consequent": {
+                  "op": "add",
+                  "left": {
+                    "op": "read",
+                    "slot": 0,
+                    "next": false
+                  },
+                  "right": {
+                    "op": "literal",
+                    "value": {
+                      "type": "int",
+                      "value": "1"
+                    }
+                  }
+                },
+                "alternative": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "0"
+                  }
+                }
+              }
+            },
+            {
+              "kind": "assign",
+              "slot": 1,
+              "value": {
+                "op": "read",
+                "slot": 1,
+                "next": false
+              }
+            }
+          ]
+        },
+        {
+          "name": "Up",
+          "steps": [
+            {
+              "kind": "assign",
+              "slot": 1,
+              "value": {
+                "op": "if",
+                "condition": {
+                  "op": "lt",
+                  "left": {
+                    "op": "read",
+                    "slot": 1,
+                    "next": false
+                  },
+                  "right": {
+                    "op": "sub",
+                    "left": {
+                      "op": "literal",
+                      "value": {
+                        "type": "int",
+                        "value": "50"
+                      }
+                    },
+                    "right": {
+                      "op": "literal",
+                      "value": {
+                        "type": "int",
+                        "value": "1"
+                      }
+                    }
+                  }
+                },
+                "consequent": {
+                  "op": "add",
+                  "left": {
+                    "op": "read",
+                    "slot": 1,
+                    "next": false
+                  },
+                  "right": {
+                    "op": "literal",
+                    "value": {
+                      "type": "int",
+                      "value": "1"
+                    }
+                  }
+                },
+                "alternative": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "0"
+                  }
+                }
+              }
+            },
+            {
+              "kind": "assign",
+              "slot": 0,
+              "value": {
+                "op": "read",
+                "slot": 0,
+                "next": false
+              }
+            }
+          ]
+        }
+      ],
+      "invariants": [
+        {
+          "name": "Safe",
+          "expression": {
+            "op": "and",
+            "left": {
+              "op": "and",
+              "left": {
+                "op": "literal",
+                "value": {
+                  "type": "bool",
+                  "value": true
+                }
+              },
+              "right": {
+                "op": "in",
+                "value": {
+                  "op": "read",
+                  "slot": 0,
+                  "next": false
+                },
+                "domain": {
+                  "kind": "range",
+                  "lower": {
+                    "op": "literal",
+                    "value": {
+                      "type": "int",
+                      "value": "0"
+                    }
+                  },
+                  "upper": {
+                    "op": "sub",
+                    "left": {
+                      "op": "literal",
+                      "value": {
+                        "type": "int",
+                        "value": "50"
+                      }
+                    },
+                    "right": {
+                      "op": "literal",
+                      "value": {
+                        "type": "int",
+                        "value": "1"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "right": {
+              "op": "in",
+              "value": {
+                "op": "read",
+                "slot": 1,
+                "next": false
+              },
+              "domain": {
+                "kind": "range",
+                "lower": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "0"
+                  }
+                },
+                "upper": {
+                  "op": "sub",
+                  "left": {
+                    "op": "literal",
+                    "value": {
+                      "type": "int",
+                      "value": "50"
+                    }
+                  },
+                  "right": {
+                    "op": "literal",
+                    "value": {
+                      "type": "int",
+                      "value": "1"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "assumptions": [],
+      "checkDeadlock": true
+    },
+    "samples": [
+      {
+        "route": "frontend",
+        "milliseconds": 0.06645800000023883,
+        "result": {
+          "status": "compiled",
+          "states": 0,
+          "generated": 0
+        }
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 1.9083749999999782,
+        "result": {
+          "status": "complete",
+          "states": 2500,
+          "generated": 5001
+        }
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 3.624749999999949,
+        "result": {
+          "status": "complete",
+          "states": 2500,
+          "generated": 5001
+        }
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 1.0574169999999867,
+        "result": {
+          "status": "complete",
+          "states": 2500,
+          "generated": 5001
+        }
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 0.9528329999998277,
+        "result": {
+          "status": "complete",
+          "states": 2500,
+          "generated": 5001
+        }
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 3.4479590000000826,
+        "result": {
+          "status": "complete",
+          "states": 2500,
+          "generated": 5001
+        }
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 3.3898330000001806,
+        "result": {
+          "status": "complete",
+          "states": 2500,
+          "generated": 5001
+        }
+      },
+      {
+        "route": "frontend",
+        "milliseconds": 0.2808749999999236,
+        "result": {
+          "status": "compiled",
+          "states": 0,
+          "generated": 0
+        }
+      },
+      {
+        "route": "frontend",
+        "milliseconds": 0.11270799999965675,
+        "result": {
+          "status": "compiled",
+          "states": 0,
+          "generated": 0
+        }
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 1.7784590000001117,
+        "result": {
+          "status": "complete",
+          "states": 2500,
+          "generated": 5001
+        }
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 2.9929159999996955,
+        "result": {
+          "status": "complete",
+          "states": 2500,
+          "generated": 5001
+        }
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 1.374916000000212,
+        "result": {
+          "status": "complete",
+          "states": 2500,
+          "generated": 5001
+        }
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 1.0107920000000377,
+        "result": {
+          "status": "complete",
+          "states": 2500,
+          "generated": 5001
+        }
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 2.791500000000269,
+        "result": {
+          "status": "complete",
+          "states": 2500,
+          "generated": 5001
+        }
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 1.94662500000004,
+        "result": {
+          "status": "complete",
+          "states": 2500,
+          "generated": 5001
+        }
+      },
+      {
+        "route": "frontend",
+        "milliseconds": 0.14899999999988722,
+        "result": {
+          "status": "compiled",
+          "states": 0,
+          "generated": 0
+        }
+      },
+      {
+        "route": "frontend",
+        "milliseconds": 0.08937500000001819,
+        "result": {
+          "status": "compiled",
+          "states": 0,
+          "generated": 0
+        }
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 4.544333000000279,
+        "result": {
+          "status": "complete",
+          "states": 2500,
+          "generated": 5001
+        }
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 2.932708000000275,
+        "result": {
+          "status": "complete",
+          "states": 2500,
+          "generated": 5001
+        }
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 1.08462499999996,
+        "result": {
+          "status": "complete",
+          "states": 2500,
+          "generated": 5001
+        }
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 1.604457999999795,
+        "result": {
+          "status": "complete",
+          "states": 2500,
+          "generated": 5001
+        }
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 3.262249999999767,
+        "result": {
+          "status": "complete",
+          "states": 2500,
+          "generated": 5001
+        }
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 1.831416999999874,
+        "result": {
+          "status": "complete",
+          "states": 2500,
+          "generated": 5001
+        }
+      },
+      {
+        "route": "frontend",
+        "milliseconds": 0.12604099999998652,
+        "result": {
+          "status": "compiled",
+          "states": 0,
+          "generated": 0
+        }
+      },
+      {
+        "route": "frontend",
+        "milliseconds": 0.06937500000003638,
+        "result": {
+          "status": "compiled",
+          "states": 0,
+          "generated": 0
+        }
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 2.38083400000005,
+        "result": {
+          "status": "complete",
+          "states": 2500,
+          "generated": 5001
+        }
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 3.672125000000051,
+        "result": {
+          "status": "complete",
+          "states": 2500,
+          "generated": 5001
+        }
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 1.0433330000000751,
+        "result": {
+          "status": "complete",
+          "states": 2500,
+          "generated": 5001
+        }
+      }
+    ],
+    "medians": [
+      {
+        "route": "frontend",
+        "milliseconds": 0.11270799999965675
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 1.94662500000004
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 3.262249999999767
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 1.0574169999999867
+      }
+    ]
+  },
+  {
+    "name": "grid-100",
+    "input": {
+      "name": "grid-100",
+      "states": 10000,
+      "source": "---- MODULE Grid ----\nEXTENDS Naturals\nCONSTANT N\nVARIABLES x, y\nInit == /\\ x = 0\n        /\\ y = 0\nRight == /\\ x' = IF x < N - 1 THEN x + 1 ELSE 0\n         /\\ UNCHANGED y\nUp == /\\ y' = IF y < N - 1 THEN y + 1 ELSE 0\n      /\\ UNCHANGED x\nNext == Right \\/ Up\nSafe == /\\ x \\in 0..(N - 1)\n        /\\ y \\in 0..(N - 1)\n====",
+      "config": "CONSTANT N = 100\nINIT Init\nNEXT Next\nINVARIANT Safe"
+    },
+    "program": {
+      "format": "modelt.safety-program",
+      "version": 1,
+      "name": "Grid",
+      "variables": [
+        "x",
+        "y"
+      ],
+      "initial": [
+        {
+          "name": "Init",
+          "steps": [
+            {
+              "kind": "assign",
+              "slot": 0,
+              "value": {
+                "op": "literal",
+                "value": {
+                  "type": "int",
+                  "value": "0"
+                }
+              }
+            },
+            {
+              "kind": "assign",
+              "slot": 1,
+              "value": {
+                "op": "literal",
+                "value": {
+                  "type": "int",
+                  "value": "0"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "next": [
+        {
+          "name": "Right",
+          "steps": [
+            {
+              "kind": "assign",
+              "slot": 0,
+              "value": {
+                "op": "if",
+                "condition": {
+                  "op": "lt",
+                  "left": {
+                    "op": "read",
+                    "slot": 0,
+                    "next": false
+                  },
+                  "right": {
+                    "op": "sub",
+                    "left": {
+                      "op": "literal",
+                      "value": {
+                        "type": "int",
+                        "value": "100"
+                      }
+                    },
+                    "right": {
+                      "op": "literal",
+                      "value": {
+                        "type": "int",
+                        "value": "1"
+                      }
+                    }
+                  }
+                },
+                "consequent": {
+                  "op": "add",
+                  "left": {
+                    "op": "read",
+                    "slot": 0,
+                    "next": false
+                  },
+                  "right": {
+                    "op": "literal",
+                    "value": {
+                      "type": "int",
+                      "value": "1"
+                    }
+                  }
+                },
+                "alternative": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "0"
+                  }
+                }
+              }
+            },
+            {
+              "kind": "assign",
+              "slot": 1,
+              "value": {
+                "op": "read",
+                "slot": 1,
+                "next": false
+              }
+            }
+          ]
+        },
+        {
+          "name": "Up",
+          "steps": [
+            {
+              "kind": "assign",
+              "slot": 1,
+              "value": {
+                "op": "if",
+                "condition": {
+                  "op": "lt",
+                  "left": {
+                    "op": "read",
+                    "slot": 1,
+                    "next": false
+                  },
+                  "right": {
+                    "op": "sub",
+                    "left": {
+                      "op": "literal",
+                      "value": {
+                        "type": "int",
+                        "value": "100"
+                      }
+                    },
+                    "right": {
+                      "op": "literal",
+                      "value": {
+                        "type": "int",
+                        "value": "1"
+                      }
+                    }
+                  }
+                },
+                "consequent": {
+                  "op": "add",
+                  "left": {
+                    "op": "read",
+                    "slot": 1,
+                    "next": false
+                  },
+                  "right": {
+                    "op": "literal",
+                    "value": {
+                      "type": "int",
+                      "value": "1"
+                    }
+                  }
+                },
+                "alternative": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "0"
+                  }
+                }
+              }
+            },
+            {
+              "kind": "assign",
+              "slot": 0,
+              "value": {
+                "op": "read",
+                "slot": 0,
+                "next": false
+              }
+            }
+          ]
+        }
+      ],
+      "invariants": [
+        {
+          "name": "Safe",
+          "expression": {
+            "op": "and",
+            "left": {
+              "op": "and",
+              "left": {
+                "op": "literal",
+                "value": {
+                  "type": "bool",
+                  "value": true
+                }
+              },
+              "right": {
+                "op": "in",
+                "value": {
+                  "op": "read",
+                  "slot": 0,
+                  "next": false
+                },
+                "domain": {
+                  "kind": "range",
+                  "lower": {
+                    "op": "literal",
+                    "value": {
+                      "type": "int",
+                      "value": "0"
+                    }
+                  },
+                  "upper": {
+                    "op": "sub",
+                    "left": {
+                      "op": "literal",
+                      "value": {
+                        "type": "int",
+                        "value": "100"
+                      }
+                    },
+                    "right": {
+                      "op": "literal",
+                      "value": {
+                        "type": "int",
+                        "value": "1"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "right": {
+              "op": "in",
+              "value": {
+                "op": "read",
+                "slot": 1,
+                "next": false
+              },
+              "domain": {
+                "kind": "range",
+                "lower": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "0"
+                  }
+                },
+                "upper": {
+                  "op": "sub",
+                  "left": {
+                    "op": "literal",
+                    "value": {
+                      "type": "int",
+                      "value": "100"
+                    }
+                  },
+                  "right": {
+                    "op": "literal",
+                    "value": {
+                      "type": "int",
+                      "value": "1"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "assumptions": [],
+      "checkDeadlock": true
+    },
+    "samples": [
+      {
+        "route": "frontend",
+        "milliseconds": 0.06758300000001327,
+        "result": {
+          "status": "compiled",
+          "states": 0,
+          "generated": 0
+        }
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 5.071874999999636,
+        "result": {
+          "status": "complete",
+          "states": 10000,
+          "generated": 20001
+        }
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 8.567250000000058,
+        "result": {
+          "status": "complete",
+          "states": 10000,
+          "generated": 20001
+        }
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 5.749041999999918,
+        "result": {
+          "status": "complete",
+          "states": 10000,
+          "generated": 20001
+        }
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 5.902540999999928,
+        "result": {
+          "status": "complete",
+          "states": 10000,
+          "generated": 20001
+        }
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 7.775916999999936,
+        "result": {
+          "status": "complete",
+          "states": 10000,
+          "generated": 20001
+        }
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 9.621000000000095,
+        "result": {
+          "status": "complete",
+          "states": 10000,
+          "generated": 20001
+        }
+      },
+      {
+        "route": "frontend",
+        "milliseconds": 0.42904200000020865,
+        "result": {
+          "status": "compiled",
+          "states": 0,
+          "generated": 0
+        }
+      },
+      {
+        "route": "frontend",
+        "milliseconds": 0.2820000000001528,
+        "result": {
+          "status": "compiled",
+          "states": 0,
+          "generated": 0
+        }
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 10.080916999999772,
+        "result": {
+          "status": "complete",
+          "states": 10000,
+          "generated": 20001
+        }
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 6.720542000000023,
+        "result": {
+          "status": "complete",
+          "states": 10000,
+          "generated": 20001
+        }
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 7.0319580000000315,
+        "result": {
+          "status": "complete",
+          "states": 10000,
+          "generated": 20001
+        }
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 8.850416000000223,
+        "result": {
+          "status": "complete",
+          "states": 10000,
+          "generated": 20001
+        }
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 8.17108300000018,
+        "result": {
+          "status": "complete",
+          "states": 10000,
+          "generated": 20001
+        }
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 7.706374999999753,
+        "result": {
+          "status": "complete",
+          "states": 10000,
+          "generated": 20001
+        }
+      },
+      {
+        "route": "frontend",
+        "milliseconds": 0.22299999999995634,
+        "result": {
+          "status": "compiled",
+          "states": 0,
+          "generated": 0
+        }
+      },
+      {
+        "route": "frontend",
+        "milliseconds": 0.08000000000038199,
+        "result": {
+          "status": "compiled",
+          "states": 0,
+          "generated": 0
+        }
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 6.48824999999988,
+        "result": {
+          "status": "complete",
+          "states": 10000,
+          "generated": 20001
+        }
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 4.831125000000156,
+        "result": {
+          "status": "complete",
+          "states": 10000,
+          "generated": 20001
+        }
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 4.919999999999618,
+        "result": {
+          "status": "complete",
+          "states": 10000,
+          "generated": 20001
+        }
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 3.7780000000002474,
+        "result": {
+          "status": "complete",
+          "states": 10000,
+          "generated": 20001
+        }
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 5.302292000000307,
+        "result": {
+          "status": "complete",
+          "states": 10000,
+          "generated": 20001
+        }
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 5.490167000000383,
+        "result": {
+          "status": "complete",
+          "states": 10000,
+          "generated": 20001
+        }
+      },
+      {
+        "route": "frontend",
+        "milliseconds": 0.21070800000006784,
+        "result": {
+          "status": "compiled",
+          "states": 0,
+          "generated": 0
+        }
+      },
+      {
+        "route": "frontend",
+        "milliseconds": 0.0801249999999527,
+        "result": {
+          "status": "compiled",
+          "states": 0,
+          "generated": 0
+        }
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 4.868041999999605,
+        "result": {
+          "status": "complete",
+          "states": 10000,
+          "generated": 20001
+        }
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 5.9830839999999625,
+        "result": {
+          "status": "complete",
+          "states": 10000,
+          "generated": 20001
+        }
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 3.663875000000189,
+        "result": {
+          "status": "complete",
+          "states": 10000,
+          "generated": 20001
+        }
+      }
+    ],
+    "medians": [
+      {
+        "route": "frontend",
+        "milliseconds": 0.21070800000006784
+      },
+      {
+        "route": "tla-ts",
+        "milliseconds": 6.48824999999988
+      },
+      {
+        "route": "native-process",
+        "milliseconds": 6.720542000000023
+      },
+      {
+        "route": "wasm",
+        "milliseconds": 5.749041999999918
+      }
+    ]
+  }
+]

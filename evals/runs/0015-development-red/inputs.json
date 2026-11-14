@@ -1,0 +1,724 @@
+[
+  {
+    "name": "subseq-0-0",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = (SubSeq(<<>>,-1,-1))\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "subseq-0-1",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = (SubSeq(<<>>,0,-1))\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "subseq-0-2",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = (SubSeq(<<>>,0,0))\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "subseq-0-3",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = (SubSeq(<<>>,1,0))\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "subseq-0-4",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = (SubSeq(<<>>,1,1))\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "subseq-0-5",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = (SubSeq(<<>>,1,3))\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "subseq-0-6",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = (SubSeq(<<>>,2,1))\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "subseq-0-7",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = (SubSeq(<<>>,3,4))\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "subseq-1-0",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = (SubSeq(<<7>>,-1,-1))\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "subseq-1-1",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = (SubSeq(<<7>>,0,-1))\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "subseq-1-2",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = (SubSeq(<<7>>,0,0))\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "subseq-1-3",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = (SubSeq(<<7>>,1,0))\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "subseq-1-4",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = (SubSeq(<<7>>,1,1))\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "subseq-1-5",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = (SubSeq(<<7>>,1,3))\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "subseq-1-6",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = (SubSeq(<<7>>,2,1))\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "subseq-1-7",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = (SubSeq(<<7>>,3,4))\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "subseq-2-0",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = (SubSeq(<<7,8,9>>,-1,-1))\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "subseq-2-1",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = (SubSeq(<<7,8,9>>,0,-1))\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "subseq-2-2",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = (SubSeq(<<7,8,9>>,0,0))\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "subseq-2-3",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = (SubSeq(<<7,8,9>>,1,0))\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "subseq-2-4",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = (SubSeq(<<7,8,9>>,1,1))\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "subseq-2-5",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = (SubSeq(<<7,8,9>>,1,3))\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "subseq-2-6",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = (SubSeq(<<7,8,9>>,2,1))\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "subseq-2-7",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = (SubSeq(<<7,8,9>>,3,4))\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "membership-0-0",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = (TRUE \\in (1..0))\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "membership-0-1",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = (TRUE \\in (0..0))\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "membership-0-2",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = (TRUE \\in (-1..1))\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "membership-0-3",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = (TRUE \\in ({}))\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "membership-1-0",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = (FALSE \\in (1..0))\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "membership-1-1",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = (FALSE \\in (0..0))\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "membership-1-2",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = (FALSE \\in (-1..1))\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "membership-1-3",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = (FALSE \\in ({}))\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "membership-2-0",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = (\"a\" \\in (1..0))\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "membership-2-1",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = (\"a\" \\in (0..0))\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "membership-2-2",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = (\"a\" \\in (-1..1))\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "membership-2-3",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = (\"a\" \\in ({}))\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "membership-3-0",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = (-1 \\in (1..0))\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "membership-3-1",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = (-1 \\in (0..0))\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "membership-3-2",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = (-1 \\in (-1..1))\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "membership-3-3",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = (-1 \\in ({}))\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "membership-4-0",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = (0 \\in (1..0))\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "membership-4-1",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = (0 \\in (0..0))\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "membership-4-2",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = (0 \\in (-1..1))\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "membership-4-3",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = (0 \\in ({}))\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "membership-5-0",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = (1 \\in (1..0))\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "membership-5-1",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = (1 \\in (0..0))\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "membership-5-2",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = (1 \\in (-1..1))\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "membership-5-3",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = (1 \\in ({}))\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "subset-short-circuit",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = ({{}, {TRUE}} \\subseteq {{0}})\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "subset-short-circuit-negated",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = (~({{}, {TRUE}} \\subseteq {{0}}))\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "subset-empty",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = ({} \\subseteq 0)\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "cap-empty",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = ({} \\cap 0)\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "difference-empty",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = ({} \\ 0)\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "function-empty-range-error",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = (<<>> \\in [{} -> Head(<<>>)])\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "function-domain-range-error",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = (<<1>> \\in [2..3 -> Head(<<>>)])\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "record-domain-range-error",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = ([a |-> 1] \\in [b: Head(<<>>)])\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "record-later-field-error",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = ([a |-> 1] \\in [a: {}, b: Head(<<>>)])\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "nested-seq-membership",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = ([a |-> <<0,1>>] \\in [a: Seq(0..1)])\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "nested-function-membership",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = ([a |-> <<0,1>>] \\in [a: [1..2 -> 0..1]])\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "empty-seq-range",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = (<<>> \\in Seq({}))\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "seq-range-error",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = (<<>> \\in Seq(Head(<<>>)))\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "record-domain-mismatch",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = ([a |-> TRUE] \\in [b: {0}])\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "function-domain-mismatch",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = (<<TRUE>> \\in [2..3 -> 0..1])\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "record-equality-domain",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = ([a |-> TRUE] = [b |-> 1])\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "record-equality-short-circuit",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = ([a |-> 0, b |-> TRUE] = [a |-> 1, b |-> 0])\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "except-missing-field",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = ([ [a |-> 0] EXCEPT !.b = Head(<<>>) ])\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "except-nested-old",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = ([ <<[a |-> 0]>> EXCEPT ![1].a = @+1, ![1].a = @+1 ])\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "string-len-empty",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = (Len(\"\"))\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "string-len-ascii",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = (Len(\"abc\"))\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "string-len-supplementary",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = (Len(\"😀\"))\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "string-tail",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = (Tail(\"abc\"))\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "string-tail-prefix",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = (Tail(\"a😀\"))\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "string-tail-empty",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = (Tail(\"\"))\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "string-head-error",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = (Head(\"abc\"))\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "string-append-error",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = (Append(\"abc\",\"d\"))\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "string-concat",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = (\"ab\" \\o \"cd\")\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "string-subseq",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = (SubSeq(\"abc\",2,3))\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "string-subseq-empty",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = (SubSeq(\"abc\",2,1))\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "empty-quantifier",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = (\\A n \\in {}: Head(<<>>))\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "empty-existential",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = (\\E n \\in {}: Head(<<>>))\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "quantifier-short-circuit",
+    "family": "value",
+    "source": "---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = (\\E n \\in 0..1: IF n = 0 THEN TRUE ELSE Head(<<>>))\nNext == UNCHANGED x\nProp == x # x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "positive-control",
+    "family": "control",
+    "source": "---- MODULE Differential ----\nVARIABLE x\nInit == x = TRUE\nNext == UNCHANGED x\nProp == x\n====",
+    "config": "INIT Init\nNEXT Next\nINVARIANT Prop"
+  },
+  {
+    "name": "error-control",
+    "family": "control",
+    "source": "---- MODULE Differential ----\nEXTENDS Sequences\nVARIABLE x\nInit == x = Head(<<>>)\nNext == UNCHANGED x\n====",
+    "config": "INIT Init\nNEXT Next"
+  },
+  {
+    "name": "graph-15a1-0",
+    "family": "graph",
+    "seed": 5537,
+    "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0,1}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 0 /\\ x' = 1\nA2 == x = 0 /\\ x' = 1\nA3 == x = 0 /\\ x' = 1\nA4 == x = 0 /\\ x' = 1\nNext == A0 \\/ A1 \\/ A2 \\/ A3 \\/ A4\nSpec == Init /\\ [][Next]_x\nProp == [](x < 2)\n====",
+    "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "graph-15a1-1",
+    "family": "graph",
+    "seed": 5537,
+    "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 2 /\\ x' = 0\nNext == A0 \\/ A1\nSpec == Init /\\ [][Next]_x\nProp == <>(x = 0)\n====",
+    "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK TRUE"
+  },
+  {
+    "name": "graph-15a1-2",
+    "family": "graph",
+    "seed": 5537,
+    "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 2 /\\ x' = 1\nA2 == x = 0 /\\ x' = 1\nA3 == x = 1 /\\ x' = 2\nA4 == x = 0 /\\ x' = 2\nNext == A0 \\/ A1 \\/ A2 \\/ A3 \\/ A4\nSpec == Init /\\ [][Next]_x\nProp == []<>(x = 2)\n====",
+    "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "graph-15a1-3",
+    "family": "graph",
+    "seed": 5537,
+    "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0,1}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 1 /\\ x' = 0\nNext == A0 \\/ A1\nSpec == Init /\\ [][Next]_x\nProp == <>[](x = 1)\n====",
+    "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK TRUE"
+  },
+  {
+    "name": "graph-15a1-4",
+    "family": "graph",
+    "seed": 5537,
+    "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 2 /\\ x' = 1\nA2 == x = 0 /\\ x' = 3\nA3 == x = 2 /\\ x' = 1\nA4 == x = 0 /\\ x' = 3\nNext == A0 \\/ A1 \\/ A2 \\/ A3 \\/ A4\nSpec == Init /\\ [][Next]_x\nProp == (x = 0) ~> (x = 2)\n====",
+    "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "graph-15a1-5",
+    "family": "graph",
+    "seed": 5537,
+    "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 2 /\\ x' = 0\nA2 == x = 1 /\\ x' = 2\nA3 == x = 0 /\\ x' = 0\nA4 == x = 1 /\\ x' = 0\nA5 == x = 0 /\\ x' = 0\nNext == A0 \\/ A1 \\/ A2 \\/ A3 \\/ A4 \\/ A5\nSpec == Init /\\ [][Next]_x\nProp == <>[](x = 0) \\/ <>[](x = 0)\n====",
+    "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK TRUE"
+  },
+  {
+    "name": "graph-15a1-6",
+    "family": "graph",
+    "seed": 5537,
+    "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0,1}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 2 /\\ x' = 1\nA2 == x = 0 /\\ x' = 3\nA3 == x = 2 /\\ x' = 1\nA4 == x = 0 /\\ x' = 3\nNext == A0 \\/ A1 \\/ A2 \\/ A3 \\/ A4\nSpec == Init /\\ [][Next]_x\nProp == ~([]<>(x = 2))\n====",
+    "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "graph-15a1-7",
+    "family": "graph",
+    "seed": 5537,
+    "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 0 /\\ x' = 0\nNext == A0 \\/ A1\nSpec == Init /\\ [][Next]_x\nProp == ([]<>(x = 0)) /\\ ([]<>(x = 0))\n====",
+    "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK TRUE"
+  },
+  {
+    "name": "graph-15a1-8",
+    "family": "graph",
+    "seed": 5537,
+    "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 1 /\\ x' = 0\nA2 == x = 2 /\\ x' = 0\nA3 == x = 1 /\\ x' = 0\nA4 == x = 0 /\\ x' = 2\nA5 == x = 0 /\\ x' = 1\nA6 == x = 2 /\\ x' = 0\nNext == A0 \\/ A1 \\/ A2 \\/ A3 \\/ A4 \\/ A5 \\/ A6\nSpec == Init /\\ [][Next]_x /\\ WF_x(Next)\nProp == [](x < 3)\n====",
+    "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "graph-15a1-9",
+    "family": "graph",
+    "seed": 5537,
+    "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0,1}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 3 /\\ x' = 2\nA2 == x = 1 /\\ x' = 0\nA3 == x = 3 /\\ x' = 2\nA4 == x = 1 /\\ x' = 0\nA5 == x = 3 /\\ x' = 2\nNext == A0 \\/ A1 \\/ A2 \\/ A3 \\/ A4 \\/ A5\nSpec == Init /\\ [][Next]_x /\\ WF_x(Next)\nProp == <>(x = 1)\n====",
+    "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK TRUE"
+  },
+  {
+    "name": "graph-15a1-10",
+    "family": "graph",
+    "seed": 5537,
+    "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 0 /\\ x' = 1\nA2 == x = 0 /\\ x' = 1\nA3 == x = 0 /\\ x' = 1\nA4 == x = 0 /\\ x' = 1\nNext == A0 \\/ A1 \\/ A2 \\/ A3 \\/ A4\nSpec == Init /\\ [][Next]_x /\\ WF_x(Next)\nProp == []<>(x = 0)\n====",
+    "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "graph-15a1-11",
+    "family": "graph",
+    "seed": 5537,
+    "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 1 /\\ x' = 0\nNext == A0 \\/ A1\nSpec == Init /\\ [][Next]_x /\\ WF_x(Next)\nProp == <>[](x = 1)\n====",
+    "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK TRUE"
+  },
+  {
+    "name": "graph-15a1-12",
+    "family": "graph",
+    "seed": 5537,
+    "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0,1}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 2 /\\ x' = 1\nA2 == x = 0 /\\ x' = 3\nA3 == x = 2 /\\ x' = 1\nA4 == x = 0 /\\ x' = 3\nA5 == x = 2 /\\ x' = 1\nA6 == x = 0 /\\ x' = 3\nA7 == x = 2 /\\ x' = 1\nA8 == x = 0 /\\ x' = 3\nNext == A0 \\/ A1 \\/ A2 \\/ A3 \\/ A4 \\/ A5 \\/ A6 \\/ A7 \\/ A8\nSpec == Init /\\ [][Next]_x /\\ WF_x(Next)\nProp == (x = 0) ~> (x = 2)\n====",
+    "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "graph-15a1-13",
+    "family": "graph",
+    "seed": 5537,
+    "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 3 /\\ x' = 2\nA2 == x = 1 /\\ x' = 0\nA3 == x = 3 /\\ x' = 2\nA4 == x = 1 /\\ x' = 0\nA5 == x = 3 /\\ x' = 2\nNext == A0 \\/ A1 \\/ A2 \\/ A3 \\/ A4 \\/ A5\nSpec == Init /\\ [][Next]_x /\\ WF_x(Next)\nProp == <>[](x = 0) \\/ <>[](x = 1)\n====",
+    "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK TRUE"
+  },
+  {
+    "name": "graph-15a1-14",
+    "family": "graph",
+    "seed": 5537,
+    "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 0 /\\ x' = 1\nA2 == x = 0 /\\ x' = 1\nA3 == x = 0 /\\ x' = 1\nA4 == x = 0 /\\ x' = 1\nNext == A0 \\/ A1 \\/ A2 \\/ A3 \\/ A4\nSpec == Init /\\ [][Next]_x /\\ WF_x(Next)\nProp == ~([]<>(x = 0))\n====",
+    "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "graph-15a1-15",
+    "family": "graph",
+    "seed": 5537,
+    "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0,1}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 1 /\\ x' = 1\nA2 == x = 0 /\\ x' = 0\nA3 == x = 1 /\\ x' = 2\nA4 == x = 0 /\\ x' = 0\nA5 == x = 1 /\\ x' = 2\nNext == A0 \\/ A1 \\/ A2 \\/ A3 \\/ A4 \\/ A5\nSpec == Init /\\ [][Next]_x /\\ WF_x(Next)\nProp == ([]<>(x = 0)) /\\ ([]<>(x = 1))\n====",
+    "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK TRUE"
+  },
+  {
+    "name": "graph-15a1-16",
+    "family": "graph",
+    "seed": 5537,
+    "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 2 /\\ x' = 1\nA2 == x = 0 /\\ x' = 3\nA3 == x = 2 /\\ x' = 1\nA4 == x = 0 /\\ x' = 3\nA5 == x = 2 /\\ x' = 1\nA6 == x = 0 /\\ x' = 3\nA7 == x = 2 /\\ x' = 1\nA8 == x = 0 /\\ x' = 3\nNext == A0 \\/ A1 \\/ A2 \\/ A3 \\/ A4 \\/ A5 \\/ A6 \\/ A7 \\/ A8\nSpec == Init /\\ [][Next]_x /\\ SF_x(A0)\nProp == [](x < 4)\n====",
+    "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "graph-15a1-17",
+    "family": "graph",
+    "seed": 5537,
+    "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 1 /\\ x' = 0\nNext == A0 \\/ A1\nSpec == Init /\\ [][Next]_x /\\ SF_x(A0)\nProp == <>(x = 1)\n====",
+    "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK TRUE"
+  },
+  {
+    "name": "graph-15a1-18",
+    "family": "graph",
+    "seed": 5537,
+    "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0,1}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 2 /\\ x' = 1\nA2 == x = 0 /\\ x' = 3\nA3 == x = 2 /\\ x' = 1\nA4 == x = 0 /\\ x' = 3\nA5 == x = 2 /\\ x' = 1\nA6 == x = 0 /\\ x' = 3\nA7 == x = 2 /\\ x' = 1\nA8 == x = 0 /\\ x' = 3\nNext == A0 \\/ A1 \\/ A2 \\/ A3 \\/ A4 \\/ A5 \\/ A6 \\/ A7 \\/ A8\nSpec == Init /\\ [][Next]_x /\\ SF_x(A0)\nProp == []<>(x = 2)\n====",
+    "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "graph-15a1-19",
+    "family": "graph",
+    "seed": 5537,
+    "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 2 /\\ x' = 1\nA2 == x = 0 /\\ x' = 1\nA3 == x = 1 /\\ x' = 2\nA4 == x = 1 /\\ x' = 0\nA5 == x = 2 /\\ x' = 2\nNext == A0 \\/ A1 \\/ A2 \\/ A3 \\/ A4 \\/ A5\nSpec == Init /\\ [][Next]_x /\\ SF_x(A0)\nProp == <>[](x = 2)\n====",
+    "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK TRUE"
+  },
+  {
+    "name": "graph-15a1-20",
+    "family": "graph",
+    "seed": 5537,
+    "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 2 /\\ x' = 1\nA2 == x = 0 /\\ x' = 3\nA3 == x = 2 /\\ x' = 1\nA4 == x = 0 /\\ x' = 3\nA5 == x = 2 /\\ x' = 1\nA6 == x = 0 /\\ x' = 3\nA7 == x = 2 /\\ x' = 1\nA8 == x = 0 /\\ x' = 3\nNext == A0 \\/ A1 \\/ A2 \\/ A3 \\/ A4 \\/ A5 \\/ A6 \\/ A7 \\/ A8\nSpec == Init /\\ [][Next]_x /\\ SF_x(A0)\nProp == (x = 0) ~> (x = 2)\n====",
+    "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "graph-15a1-21",
+    "family": "graph",
+    "seed": 5537,
+    "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0,1}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 1 /\\ x' = 1\nNext == A0 \\/ A1\nSpec == Init /\\ [][Next]_x /\\ SF_x(A0)\nProp == <>[](x = 0) \\/ <>[](x = 0)\n====",
+    "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK TRUE"
+  },
+  {
+    "name": "graph-15a1-22",
+    "family": "graph",
+    "seed": 5537,
+    "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 0 /\\ x' = 2\nA2 == x = 2 /\\ x' = 1\nA3 == x = 1 /\\ x' = 0\nA4 == x = 1 /\\ x' = 2\nNext == A0 \\/ A1 \\/ A2 \\/ A3 \\/ A4\nSpec == Init /\\ [][Next]_x /\\ SF_x(A0)\nProp == ~([]<>(x = 1))\n====",
+    "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "graph-15a1-23",
+    "family": "graph",
+    "seed": 5537,
+    "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 1 /\\ x' = 0\nNext == A0 \\/ A1\nSpec == Init /\\ [][Next]_x /\\ SF_x(A0)\nProp == ([]<>(x = 0)) /\\ ([]<>(x = 1))\n====",
+    "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK TRUE"
+  },
+  {
+    "name": "graph-15a1-24",
+    "family": "graph",
+    "seed": 5537,
+    "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0,1}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 0 /\\ x' = 1\nA2 == x = 0 /\\ x' = 2\nNext == A0 \\/ A1 \\/ A2\nSpec == Init /\\ [][Next]_x /\\ WF_x(Next) /\\ SF_x(A0)\nProp == [](x < 3)\n====",
+    "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "graph-15a1-25",
+    "family": "graph",
+    "seed": 5537,
+    "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 0 /\\ x' = 1\nNext == A0 \\/ A1\nSpec == Init /\\ [][Next]_x /\\ WF_x(Next) /\\ SF_x(A0)\nProp == <>(x = 0)\n====",
+    "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK TRUE"
+  },
+  {
+    "name": "graph-15a1-26",
+    "family": "graph",
+    "seed": 5537,
+    "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 0 /\\ x' = 1\nA2 == x = 0 /\\ x' = 1\nA3 == x = 0 /\\ x' = 1\nA4 == x = 0 /\\ x' = 1\nNext == A0 \\/ A1 \\/ A2 \\/ A3 \\/ A4\nSpec == Init /\\ [][Next]_x /\\ WF_x(Next) /\\ SF_x(A0)\nProp == []<>(x = 0)\n====",
+    "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "graph-15a1-27",
+    "family": "graph",
+    "seed": 5537,
+    "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0,1}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 3 /\\ x' = 2\nNext == A0 \\/ A1\nSpec == Init /\\ [][Next]_x /\\ WF_x(Next) /\\ SF_x(A0)\nProp == <>[](x = 1)\n====",
+    "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK TRUE"
+  },
+  {
+    "name": "graph-15a1-28",
+    "family": "graph",
+    "seed": 5537,
+    "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 0 /\\ x' = 1\nA2 == x = 0 /\\ x' = 1\nA3 == x = 0 /\\ x' = 1\nA4 == x = 0 /\\ x' = 1\nNext == A0 \\/ A1 \\/ A2 \\/ A3 \\/ A4\nSpec == Init /\\ [][Next]_x /\\ WF_x(Next) /\\ SF_x(A0)\nProp == (x = 0) ~> (x = 0)\n====",
+    "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "graph-15a1-29",
+    "family": "graph",
+    "seed": 5537,
+    "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 1 /\\ x' = 0\nNext == A0 \\/ A1\nSpec == Init /\\ [][Next]_x /\\ WF_x(Next) /\\ SF_x(A0)\nProp == <>[](x = 0) \\/ <>[](x = 1)\n====",
+    "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK TRUE"
+  },
+  {
+    "name": "graph-15a1-30",
+    "family": "graph",
+    "seed": 5537,
+    "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0,1}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 0 /\\ x' = 1\nA2 == x = 0 /\\ x' = 1\nA3 == x = 0 /\\ x' = 1\nA4 == x = 0 /\\ x' = 1\nNext == A0 \\/ A1 \\/ A2 \\/ A3 \\/ A4\nSpec == Init /\\ [][Next]_x /\\ WF_x(Next) /\\ SF_x(A0)\nProp == ~([]<>(x = 0))\n====",
+    "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "graph-15a1-31",
+    "family": "graph",
+    "seed": 5537,
+    "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 3 /\\ x' = 2\nNext == A0 \\/ A1\nSpec == Init /\\ [][Next]_x /\\ WF_x(Next) /\\ SF_x(A0)\nProp == ([]<>(x = 0)) /\\ ([]<>(x = 1))\n====",
+    "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK TRUE"
+  }
+]

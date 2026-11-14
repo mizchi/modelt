@@ -1,0 +1,434 @@
+✔ TLC differences reject count mismatches and incomplete checking (0.718875ms)
+✔ JVM and syntax failures cannot count as matching model errors (0.388833ms)
+✔ development and confirmation graphs have distinct fixed inputs (0.995917ms)
+✔ initial invariant failures remain valid when TLC omits aggregate counts (0.074542ms)
+✔ TLC regression: subseq-0-0 (23.099708ms)
+✔ TLC regression: subseq-0-1 (11.323333ms)
+✔ TLC regression: subseq-0-2 (3.682833ms)
+✔ TLC regression: subseq-0-3 (5.441ms)
+✔ TLC regression: subseq-0-4 (3.07775ms)
+✔ TLC regression: subseq-0-5 (2.711375ms)
+✔ TLC regression: subseq-0-6 (5.094ms)
+✔ TLC regression: subseq-0-7 (3.668333ms)
+✔ TLC regression: subseq-1-0 (3.39875ms)
+✔ TLC regression: subseq-1-1 (4.045375ms)
+✔ TLC regression: subseq-1-2 (2.865ms)
+✔ TLC regression: subseq-1-3 (4.115666ms)
+✔ TLC regression: subseq-1-4 (4.725542ms)
+✔ TLC regression: subseq-1-5 (2.782875ms)
+✔ TLC regression: subseq-1-6 (4.126583ms)
+✔ TLC regression: subseq-1-7 (2.670833ms)
+✔ TLC regression: subseq-2-0 (2.846416ms)
+✔ TLC regression: subseq-2-1 (4.119542ms)
+✔ TLC regression: subseq-2-2 (2.688125ms)
+✔ TLC regression: subseq-2-3 (4.296ms)
+✔ TLC regression: subseq-2-4 (4.009292ms)
+✔ TLC regression: subseq-2-5 (3.922416ms)
+✔ TLC regression: subseq-2-6 (3.818542ms)
+✔ TLC regression: subseq-2-7 (3.002459ms)
+✖ TLC regression: membership-0-0 (2.124208ms)
+✔ TLC regression: membership-0-1 (3.4075ms)
+✔ TLC regression: membership-0-2 (3.856959ms)
+✔ TLC regression: membership-0-3 (3.817916ms)
+✖ TLC regression: membership-1-0 (0.800292ms)
+✔ TLC regression: membership-1-1 (2.402208ms)
+✔ TLC regression: membership-1-2 (2.497708ms)
+✔ TLC regression: membership-1-3 (3.385167ms)
+✖ TLC regression: membership-2-0 (1.367458ms)
+✔ TLC regression: membership-2-1 (2.94825ms)
+✔ TLC regression: membership-2-2 (2.613833ms)
+✔ TLC regression: membership-2-3 (3.283041ms)
+✔ TLC regression: membership-3-0 (3.442334ms)
+✔ TLC regression: membership-3-1 (6.647791ms)
+✔ TLC regression: membership-3-2 (4.334834ms)
+✔ TLC regression: membership-3-3 (3.762333ms)
+✔ TLC regression: membership-4-0 (3.91975ms)
+✔ TLC regression: membership-4-1 (3.944791ms)
+✔ TLC regression: membership-4-2 (4.103917ms)
+✔ TLC regression: membership-4-3 (3.847167ms)
+✔ TLC regression: membership-5-0 (3.924ms)
+✔ TLC regression: membership-5-1 (3.609875ms)
+✔ TLC regression: membership-5-2 (3.961166ms)
+✔ TLC regression: membership-5-3 (3.598375ms)
+✖ TLC regression: subset-short-circuit (1.300875ms)
+✖ TLC regression: subset-short-circuit-negated (0.779541ms)
+✔ TLC regression: subset-empty (3.5205ms)
+✔ TLC regression: cap-empty (3.848667ms)
+✔ TLC regression: difference-empty (3.797292ms)
+✖ TLC regression: function-empty-range-error (1.606ms)
+✖ TLC regression: function-domain-range-error (0.964375ms)
+✖ TLC regression: record-domain-range-error (1.041625ms)
+✖ TLC regression: record-later-field-error (0.819708ms)
+✔ TLC regression: nested-seq-membership (4.312792ms)
+✔ TLC regression: nested-function-membership (4.239875ms)
+✔ TLC regression: empty-seq-range (3.656792ms)
+✔ TLC regression: seq-range-error (2.516875ms)
+✔ TLC regression: record-domain-mismatch (3.280959ms)
+✔ TLC regression: function-domain-mismatch (3.117875ms)
+✔ TLC regression: record-equality-domain (3.093167ms)
+✔ TLC regression: record-equality-short-circuit (3.225709ms)
+✔ TLC regression: except-missing-field (5.050375ms)
+✔ TLC regression: except-nested-old (4.756458ms)
+✖ TLC regression: string-len-empty (0.886083ms)
+✖ TLC regression: string-len-ascii (0.743042ms)
+✖ TLC regression: string-len-supplementary (0.817625ms)
+✖ TLC regression: string-tail (0.781708ms)
+✖ TLC regression: string-tail-prefix (2.330292ms)
+✔ TLC regression: string-tail-empty (3.143875ms)
+✔ TLC regression: string-head-error (3.20975ms)
+✔ TLC regression: string-append-error (3.074458ms)
+✖ TLC regression: string-concat (1.000209ms)
+✖ TLC regression: string-subseq (0.696458ms)
+✖ TLC regression: string-subseq-empty (0.644333ms)
+✔ TLC regression: empty-quantifier (4.10175ms)
+✔ TLC regression: empty-existential (3.96725ms)
+✔ TLC regression: quantifier-short-circuit (4.203834ms)
+✔ TLC regression: positive-control (2.395834ms)
+✔ TLC regression: error-control (2.450416ms)
+ℹ tests 87
+ℹ suites 0
+ℹ pass 70
+ℹ fail 17
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 365.863792
+
+✖ failing tests:
+
+test at dist/evals/tlc-differential/regression-test.js:16:5
+✖ TLC regression: membership-0-0 (2.124208ms)
+  AssertionError [ERR_ASSERTION]: membership-0-0: {"code":"protocol","name":"PortableCoreError"}
+  + actual - expected
+  
+  + 'error'
+  - 'invariant-violation'
+  
+      at TestContext.<anonymous> (file:///Users/mz/ghq/github.com/mizchi/modelt/dist/evals/tlc-differential/regression-test.js:32:16)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'error',
+    expected: 'invariant-violation',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at dist/evals/tlc-differential/regression-test.js:16:5
+✖ TLC regression: membership-1-0 (0.800292ms)
+  AssertionError [ERR_ASSERTION]: membership-1-0: {"code":"protocol","name":"PortableCoreError"}
+  + actual - expected
+  
+  + 'error'
+  - 'invariant-violation'
+  
+      at TestContext.<anonymous> (file:///Users/mz/ghq/github.com/mizchi/modelt/dist/evals/tlc-differential/regression-test.js:32:16)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'error',
+    expected: 'invariant-violation',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at dist/evals/tlc-differential/regression-test.js:16:5
+✖ TLC regression: membership-2-0 (1.367458ms)
+  AssertionError [ERR_ASSERTION]: membership-2-0: {"code":"protocol","name":"PortableCoreError"}
+  + actual - expected
+  
+  + 'error'
+  - 'invariant-violation'
+  
+      at TestContext.<anonymous> (file:///Users/mz/ghq/github.com/mizchi/modelt/dist/evals/tlc-differential/regression-test.js:32:16)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'error',
+    expected: 'invariant-violation',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at dist/evals/tlc-differential/regression-test.js:16:5
+✖ TLC regression: subset-short-circuit (1.300875ms)
+  AssertionError [ERR_ASSERTION]: subset-short-circuit: {"code":"protocol","name":"PortableCoreError"}
+  + actual - expected
+  
+  + 'error'
+  - 'invariant-violation'
+  
+      at TestContext.<anonymous> (file:///Users/mz/ghq/github.com/mizchi/modelt/dist/evals/tlc-differential/regression-test.js:32:16)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'error',
+    expected: 'invariant-violation',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at dist/evals/tlc-differential/regression-test.js:16:5
+✖ TLC regression: subset-short-circuit-negated (0.779541ms)
+  AssertionError [ERR_ASSERTION]: subset-short-circuit-negated: {"code":"protocol","name":"PortableCoreError"}
+  + actual - expected
+  
+  + 'error'
+  - 'invariant-violation'
+  
+      at TestContext.<anonymous> (file:///Users/mz/ghq/github.com/mizchi/modelt/dist/evals/tlc-differential/regression-test.js:32:16)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'error',
+    expected: 'invariant-violation',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at dist/evals/tlc-differential/regression-test.js:16:5
+✖ TLC regression: function-empty-range-error (1.606ms)
+  AssertionError [ERR_ASSERTION]: function-empty-range-error: {"status":"invariant-violation","reason":null,"states":1,"generated":1,"depth":0,"work":4,"violation":{"name":"Prop","trace":[{"action":null,"values":[{"type":"bool","value":true}]}]}}
+  + actual - expected
+  
+  + 'invariant-violation'
+  - 'error'
+  
+      at TestContext.<anonymous> (file:///Users/mz/ghq/github.com/mizchi/modelt/dist/evals/tlc-differential/regression-test.js:32:16)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'invariant-violation',
+    expected: 'error',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at dist/evals/tlc-differential/regression-test.js:16:5
+✖ TLC regression: function-domain-range-error (0.964375ms)
+  AssertionError [ERR_ASSERTION]: function-domain-range-error: {"status":"invariant-violation","reason":null,"states":1,"generated":1,"depth":0,"work":8,"violation":{"name":"Prop","trace":[{"action":null,"values":[{"type":"bool","value":false}]}]}}
+  + actual - expected
+  
+  + 'invariant-violation'
+  - 'error'
+  
+      at TestContext.<anonymous> (file:///Users/mz/ghq/github.com/mizchi/modelt/dist/evals/tlc-differential/regression-test.js:32:16)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'invariant-violation',
+    expected: 'error',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at dist/evals/tlc-differential/regression-test.js:16:5
+✖ TLC regression: record-domain-range-error (1.041625ms)
+  AssertionError [ERR_ASSERTION]: record-domain-range-error: {"status":"invariant-violation","reason":null,"states":1,"generated":1,"depth":0,"work":9,"violation":{"name":"Prop","trace":[{"action":null,"values":[{"type":"bool","value":false}]}]}}
+  + actual - expected
+  
+  + 'invariant-violation'
+  - 'error'
+  
+      at TestContext.<anonymous> (file:///Users/mz/ghq/github.com/mizchi/modelt/dist/evals/tlc-differential/regression-test.js:32:16)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'invariant-violation',
+    expected: 'error',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at dist/evals/tlc-differential/regression-test.js:16:5
+✖ TLC regression: record-later-field-error (0.819708ms)
+  AssertionError [ERR_ASSERTION]: record-later-field-error: {"status":"invariant-violation","reason":null,"states":1,"generated":1,"depth":0,"work":10,"violation":{"name":"Prop","trace":[{"action":null,"values":[{"type":"bool","value":false}]}]}}
+  + actual - expected
+  
+  + 'invariant-violation'
+  - 'error'
+  
+      at TestContext.<anonymous> (file:///Users/mz/ghq/github.com/mizchi/modelt/dist/evals/tlc-differential/regression-test.js:32:16)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'invariant-violation',
+    expected: 'error',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at dist/evals/tlc-differential/regression-test.js:16:5
+✖ TLC regression: string-len-empty (0.886083ms)
+  AssertionError [ERR_ASSERTION]: string-len-empty: {"code":"protocol","name":"PortableCoreError"}
+  + actual - expected
+  
+  + 'error'
+  - 'invariant-violation'
+  
+      at TestContext.<anonymous> (file:///Users/mz/ghq/github.com/mizchi/modelt/dist/evals/tlc-differential/regression-test.js:32:16)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'error',
+    expected: 'invariant-violation',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at dist/evals/tlc-differential/regression-test.js:16:5
+✖ TLC regression: string-len-ascii (0.743042ms)
+  AssertionError [ERR_ASSERTION]: string-len-ascii: {"code":"protocol","name":"PortableCoreError"}
+  + actual - expected
+  
+  + 'error'
+  - 'invariant-violation'
+  
+      at TestContext.<anonymous> (file:///Users/mz/ghq/github.com/mizchi/modelt/dist/evals/tlc-differential/regression-test.js:32:16)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'error',
+    expected: 'invariant-violation',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at dist/evals/tlc-differential/regression-test.js:16:5
+✖ TLC regression: string-len-supplementary (0.817625ms)
+  AssertionError [ERR_ASSERTION]: string-len-supplementary: {"code":"protocol","name":"PortableCoreError"}
+  + actual - expected
+  
+  + 'error'
+  - 'invariant-violation'
+  
+      at TestContext.<anonymous> (file:///Users/mz/ghq/github.com/mizchi/modelt/dist/evals/tlc-differential/regression-test.js:32:16)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'error',
+    expected: 'invariant-violation',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at dist/evals/tlc-differential/regression-test.js:16:5
+✖ TLC regression: string-tail (0.781708ms)
+  AssertionError [ERR_ASSERTION]: string-tail: {"code":"protocol","name":"PortableCoreError"}
+  + actual - expected
+  
+  + 'error'
+  - 'invariant-violation'
+  
+      at TestContext.<anonymous> (file:///Users/mz/ghq/github.com/mizchi/modelt/dist/evals/tlc-differential/regression-test.js:32:16)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'error',
+    expected: 'invariant-violation',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at dist/evals/tlc-differential/regression-test.js:16:5
+✖ TLC regression: string-tail-prefix (2.330292ms)
+  AssertionError [ERR_ASSERTION]: string-tail-prefix: {"code":"protocol","name":"PortableCoreError"}
+  + actual - expected
+  
+  + 'error'
+  - 'invariant-violation'
+  
+      at TestContext.<anonymous> (file:///Users/mz/ghq/github.com/mizchi/modelt/dist/evals/tlc-differential/regression-test.js:32:16)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'error',
+    expected: 'invariant-violation',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at dist/evals/tlc-differential/regression-test.js:16:5
+✖ TLC regression: string-concat (1.000209ms)
+  AssertionError [ERR_ASSERTION]: string-concat: {"code":"protocol","name":"PortableCoreError"}
+  + actual - expected
+  
+  + 'error'
+  - 'invariant-violation'
+  
+      at TestContext.<anonymous> (file:///Users/mz/ghq/github.com/mizchi/modelt/dist/evals/tlc-differential/regression-test.js:32:16)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'error',
+    expected: 'invariant-violation',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at dist/evals/tlc-differential/regression-test.js:16:5
+✖ TLC regression: string-subseq (0.696458ms)
+  AssertionError [ERR_ASSERTION]: string-subseq: {"code":"protocol","name":"PortableCoreError"}
+  + actual - expected
+  
+  + 'error'
+  - 'invariant-violation'
+  
+      at TestContext.<anonymous> (file:///Users/mz/ghq/github.com/mizchi/modelt/dist/evals/tlc-differential/regression-test.js:32:16)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'error',
+    expected: 'invariant-violation',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at dist/evals/tlc-differential/regression-test.js:16:5
+✖ TLC regression: string-subseq-empty (0.644333ms)
+  AssertionError [ERR_ASSERTION]: string-subseq-empty: {"code":"protocol","name":"PortableCoreError"}
+  + actual - expected
+  
+  + 'error'
+  - 'invariant-violation'
+  
+      at TestContext.<anonymous> (file:///Users/mz/ghq/github.com/mizchi/modelt/dist/evals/tlc-differential/regression-test.js:32:16)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'error',
+    expected: 'invariant-violation',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

@@ -66,3 +66,5 @@ just safety-replay evals/runs/0011-rust-safety-final
 厳密な再生は対応する snapshot を checkout する。CI の同じ入力による反復は回帰確認であり、新しい独立実験には数えない。Vitest / node:test 各67、Rust tests・fmt/clippy、Node native/Wasm 差分、実 Chromium の compiler と IR 実行、solver を入れない npm consumer、Rust consumer、Go consumer を確認した。既存の TS mutation 検査は通過したが、Rust の mutation coverage を測ったものではない。
 
 限定した safety backend と2つの最適化を採用する。公開 IR は変えず、hash collision は完全な値比較で処理する。次は function / record / sequence を含む IR の範囲を決め、TLC の既存仕様を変更せずに差分 corpus を広げる。全 TLA+ 移植の前提で性能値を外挿しない。
+
+上記の対応範囲・測定は0009〜0011時点の記録。複合値・temporal の拡張は [0012 の計画](../plans/0012-collections-temporal.md)、現在の仕様は [対応範囲](../../docs/rust-safety.md) を参照。

@@ -9,3 +9,5 @@ playwright-report/
 evals/rust-probe/target/
 crates/modelt-core/target/
 evals/shared-oracle-rust/target/
+
+evals/runs/**/states/

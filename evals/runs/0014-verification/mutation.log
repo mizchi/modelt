@@ -1,0 +1,21 @@
+pnpm test:mutation
+
+> @mizchi/modelt@0.1.0-alpha.0 test:mutation /Users/mz/ghq/github.com/mizchi/modelt
+> mutator --runner vitest --config vitest.mutation.config.ts --reporter text --reporter json
+
+config: /Users/mz/ghq/github.com/mizchi/modelt/mutator.config.json
+runner: vitest
+dry run: 0/1 test files, 2 source files
+typecheck (TypeScript 7.0.2): 133 mutants in 0.5s
+242 mutants, 0 to run (133 do not type-check)
+mutants: 242 (executed 0, reused 109)
+Killed 104 · Survived 5 · CompileError 133
+score: 95.4% [high]  (0.8s)
+
+not detected - tests run it, but none fails:
+  examples/durable-counter.ts:22:17  Survived   true -> false
+  examples/durable-counter.ts:30:12  Survived   running -> true
+  examples/durable-counter.ts:71:11  Survived   seen.clear(); -> ;
+  examples/durable-counter.ts:101:5  Survived   typeof value.amount === "number" -> true
+  examples/durable-counter.ts:114:3  Survived   typeof value.value === "number" -> true
+report written to /Users/mz/ghq/github.com/mizchi/modelt/.mutator/report

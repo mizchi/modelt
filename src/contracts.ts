@@ -184,9 +184,78 @@ export type SafetyScalar =
   | { readonly type: "bool"; readonly value: boolean };
 
 export type SafetyExpression =
+  | { readonly op: "data"; readonly value: PortableValue }
+  | { readonly op: "bound"; readonly slot: number }
+  | { readonly op: "old" }
+  | {
+      readonly op: "set" | "tuple";
+      readonly values: readonly SafetyExpression[];
+    }
+  | {
+      readonly op: "record" | "record-set";
+      readonly fields: readonly (readonly [string, SafetyExpression])[];
+    }
+  | {
+      readonly op: "at";
+      readonly target: SafetyExpression;
+      readonly key: SafetyExpression;
+    }
+  | {
+      readonly op: "update";
+      readonly target: SafetyExpression;
+      readonly updates: readonly {
+        readonly path: readonly SafetyExpression[];
+        readonly value: SafetyExpression;
+      }[];
+    }
+  | {
+      readonly op: "forall" | "exists" | "function" | "filter" | "map-set";
+      readonly bounds: readonly SafetyBinding[];
+      readonly body: SafetyExpression;
+    }
+  | {
+      readonly op:
+        | "sequence-set"
+        | "domain"
+        | "cardinality"
+        | "len"
+        | "head"
+        | "tail"
+        | "powerset"
+        | "union";
+      readonly argument: SafetyExpression;
+    }
+  | {
+      readonly op:
+        | "cup"
+        | "cap"
+        | "difference"
+        | "subset-eq"
+        | "append"
+        | "concat"
+        | "function-set"
+        | "function-in"
+        | "sequence-in";
+      readonly left: SafetyExpression;
+      readonly right: SafetyExpression;
+    }
+  | {
+      readonly op: "subseq";
+      readonly sequence: SafetyExpression;
+      readonly from: SafetyExpression;
+      readonly to: SafetyExpression;
+    }
+  | {
+      readonly op: "enabled";
+      readonly branches: readonly SafetyBranch[];
+      readonly subscript?: SafetyExpression;
+    }
   | { readonly op: "literal"; readonly value: SafetyScalar }
   | { readonly op: "read"; readonly slot: number; readonly next: boolean }
-  | { readonly op: "not" | "neg"; readonly argument: SafetyExpression }
+  | {
+      readonly op: "not" | "neg" | "prime";
+      readonly argument: SafetyExpression;
+    }
   | {
       readonly op:
         | "add"
@@ -217,6 +286,7 @@ export type SafetyExpression =
     };
 
 export type SafetyDomain =
+  | { readonly kind: "value"; readonly value: SafetyExpression }
   | {
       readonly kind: "range";
       readonly lower: SafetyExpression;
@@ -225,6 +295,12 @@ export type SafetyDomain =
   | { readonly kind: "set"; readonly values: readonly SafetyExpression[] };
 
 export type SafetyStep =
+  | {
+      readonly kind: "bind";
+      readonly slot: number;
+      readonly domain: SafetyDomain;
+      readonly tupleSize?: number;
+    }
   | { readonly kind: "guard"; readonly expression: SafetyExpression }
   | {
       readonly kind: "assign";
@@ -242,6 +318,29 @@ export interface SafetyBranch {
   readonly steps: readonly SafetyStep[];
 }
 
+export interface SafetyBinding {
+  readonly tupleSize?: number;
+  readonly slot: number;
+  readonly domain: SafetyDomain;
+}
+
+export type TemporalFormula =
+  | { readonly kind: "atom"; readonly expression: SafetyExpression }
+  | {
+      readonly kind: "not" | "always" | "eventually";
+      readonly formula: TemporalFormula;
+    }
+  | {
+      readonly kind: "and" | "or";
+      readonly left: TemporalFormula;
+      readonly right: TemporalFormula;
+    };
+
+export interface TemporalProperty {
+  readonly name: string;
+  readonly formula: TemporalFormula;
+}
+
 export interface SafetyPredicate {
   readonly name: string;
   readonly expression: SafetyExpression;
@@ -257,12 +356,17 @@ export interface SafetyProgram {
   readonly invariants: readonly SafetyPredicate[];
   readonly assumptions: readonly SafetyPredicate[];
   readonly checkDeadlock: boolean;
+  readonly initialProperties?: readonly SafetyPredicate[];
+  readonly actionProperties?: readonly SafetyPredicate[];
+  readonly properties?: readonly TemporalProperty[];
+  readonly fairness?: readonly TemporalFormula[];
 }
 
 export interface SafetyBounds {
   readonly maxDepth: number;
   readonly maxStates: number;
   readonly maxWork: number;
+  readonly maxTemporalNodes?: number;
 }
 
 export interface SafetyResult {
@@ -271,9 +375,11 @@ export interface SafetyResult {
     | "bounded"
     | "empty"
     | "invariant-violation"
+    | "property-violation"
+    | "liveness-violation"
     | "deadlock"
     | "assumption-violation";
-  readonly reason: "depth" | "states" | "work" | null;
+  readonly reason: "depth" | "states" | "work" | "temporal" | null;
   readonly states: number;
   readonly generated: number;
   readonly depth: number;
@@ -282,8 +388,10 @@ export interface SafetyResult {
     readonly name: string;
     readonly trace: readonly {
       readonly action: string | null;
-      readonly values: readonly SafetyScalar[];
+      readonly values: readonly PortableValue[];
     }[];
+    readonly loopStart?: number;
+    readonly loopAction?: string;
   } | null;
 }
 

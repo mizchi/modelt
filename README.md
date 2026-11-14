@@ -34,7 +34,7 @@ TS / Rust の共通コアは `./portable`。同じ Rust ソースを native と 
 
 [非同期履歴とモデル再利用](docs/async-history.md) は `./history` と `loadFiniteModel`。未完了・結果不明の操作を含む照合、索引付き handle、依存関係を使う縮小と探索 feedback の評価は `just async-test` から実行できる。
 
-[TLA+ safety の Rust backend](docs/rust-safety.md) は `compileTlaSafety` と `checkSafety`。整数・真偽値の Init / Next / INVARIANT を IR に変換し、状態生成から BFS・反例復元まで native / Wasm 内で実行する。全 TLA+ 互換ではなく、対応外のモデルは既存の tla-ts を使う。
+[TLA+ の Rust backend](docs/rust-safety.md) は `compileTlaSafety` と `checkSafety`。整数・集合・関数・record・sequence の有限モデル、temporal property、WF / SF を IR に変換し、状態生成・BFS・SCC 検査・反例復元を native / Wasm 内で実行する。全 TLA+ 互換ではなく、対応外のモデルは既存の tla-ts を使う。
 
 ```ts
 import { checkConformance, checkModel, checkTrace } from "./src/index.js";

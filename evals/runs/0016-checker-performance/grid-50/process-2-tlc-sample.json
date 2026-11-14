@@ -1,0 +1,12 @@
+{
+  "route": "tlc",
+  "iteration": 2,
+  "warmup": false,
+  "milliseconds": 598.7683340000076,
+  "value": {
+    "status": "complete",
+    "states": 2500,
+    "generated": 5001,
+    "violation": null
+  }
+}

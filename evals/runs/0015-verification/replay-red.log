@@ -1,0 +1,180 @@
+pnpm portable:build
+
+> @mizchi/modelt@0.1.0-alpha.0 portable:build /Users/mz/ghq/github.com/mizchi/modelt
+> cargo build --release --locked --manifest-path crates/modelt-core/Cargo.toml && cargo build --release --locked --lib --target wasm32-unknown-unknown --manifest-path crates/modelt-core/Cargo.toml
+
+    Finished `release` profile [optimized] target(s) in 0.05s
+    Finished `release` profile [optimized] target(s) in 0.01s
+pnpm build
+
+> @mizchi/modelt@0.1.0-alpha.0 build /Users/mz/ghq/github.com/mizchi/modelt
+> tsc -p tsconfig.build.json
+
+node dist/evals/tlc-differential/run.js '.artifacts/tlc/jdk-21.0.13+9-jre/Contents/Home/bin/java' '.artifacts/tlc/tla2tools.jar' replay '.artifacts/tlc-replay-subset-red-0015' '.artifacts/tlc-replay-subset-0015'
+string-len-supplementary matched input-error
+string-tail-prefix matched input-error
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Saved verdicts or witnesses changed
++ actual - expected
+... Skipped lines
+
+  [
+    {
+      classification: 'rejected-input',
+      differences: [],
+      input: {
+...
+      },
++     native: undefined,
+      ours: {
+        error: {
+          code: 'unsupported',
+          message: 'Unsupported TLA input: TLC 1.7.4 string literal contains a character outside the byte range',
+          phase: 'compile'
+...
+      },
++     native: undefined,
+      ours: {
+        error: {
+          code: 'unsupported',
+          message: 'Unsupported TLA input: TLC 1.7.4 string literal contains a character outside the byte range',
+          phase: 'compile'
+
+    at file:///Users/mz/ghq/github.com/mizchi/modelt/dist/evals/tlc-differential/run.js:70:16 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: [
+    {
+      input: {
+        name: 'string-len-supplementary',
+        family: 'value',
+        expectedRejection: true,
+        source: '---- MODULE Differential ----\n' +
+          'EXTENDS Integers, Sequences, FiniteSets\n' +
+          'VARIABLE x\n' +
+          'Init == x = (Len("😀"))\n' +
+          'Next == UNCHANGED x\n' +
+          'Prop == x # x\n' +
+          '====',
+        config: 'INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE'
+      },
+      classification: 'rejected-input',
+      ours: {
+        error: {
+          phase: 'compile',
+          code: 'unsupported',
+          message: 'Unsupported TLA input: TLC 1.7.4 string literal contains a character outside the byte range'
+        }
+      },
+      native: undefined,
+      reference: {
+        status: 'input-error',
+        states: null,
+        generated: null,
+        exit: 150
+      },
+      differences: []
+    },
+    {
+      input: {
+        name: 'string-tail-prefix',
+        family: 'value',
+        expectedRejection: true,
+        source: '---- MODULE Differential ----\n' +
+          'EXTENDS Integers, Sequences, FiniteSets\n' +
+          'VARIABLE x\n' +
+          'Init == x = (Tail("a😀"))\n' +
+          'Next == UNCHANGED x\n' +
+          'Prop == x # x\n' +
+          '====',
+        config: 'INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE'
+      },
+      classification: 'rejected-input',
+      ours: {
+        error: {
+          phase: 'compile',
+          code: 'unsupported',
+          message: 'Unsupported TLA input: TLC 1.7.4 string literal contains a character outside the byte range'
+        }
+      },
+      native: undefined,
+      reference: {
+        status: 'input-error',
+        states: null,
+        generated: null,
+        exit: 150
+      },
+      differences: []
+    }
+  ],
+  expected: [
+    {
+      input: {
+        name: 'string-len-supplementary',
+        family: 'value',
+        expectedRejection: true,
+        source: '---- MODULE Differential ----\n' +
+          'EXTENDS Integers, Sequences, FiniteSets\n' +
+          'VARIABLE x\n' +
+          'Init == x = (Len("😀"))\n' +
+          'Next == UNCHANGED x\n' +
+          'Prop == x # x\n' +
+          '====',
+        config: 'INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE'
+      },
+      classification: 'rejected-input',
+      ours: {
+        error: {
+          phase: 'compile',
+          code: 'unsupported',
+          message: 'Unsupported TLA input: TLC 1.7.4 string literal contains a character outside the byte range'
+        }
+      },
+      reference: {
+        status: 'input-error',
+        states: null,
+        generated: null,
+        exit: 150
+      },
+      differences: []
+    },
+    {
+      input: {
+        name: 'string-tail-prefix',
+        family: 'value',
+        expectedRejection: true,
+        source: '---- MODULE Differential ----\n' +
+          'EXTENDS Integers, Sequences, FiniteSets\n' +
+          'VARIABLE x\n' +
+          'Init == x = (Tail("a😀"))\n' +
+          'Next == UNCHANGED x\n' +
+          'Prop == x # x\n' +
+          '====',
+        config: 'INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE'
+      },
+      classification: 'rejected-input',
+      ours: {
+        error: {
+          phase: 'compile',
+          code: 'unsupported',
+          message: 'Unsupported TLA input: TLC 1.7.4 string literal contains a character outside the byte range'
+        }
+      },
+      reference: {
+        status: 'input-error',
+        states: null,
+        generated: null,
+        exit: 150
+      },
+      differences: []
+    }
+  ],
+  operator: 'deepStrictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.22.2
+error: Recipe `tlc-diff-replay` failed on line 152 with exit code 1

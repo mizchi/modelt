@@ -1,0 +1,19 @@
+{
+  "status": "complete",
+  "paths": [
+    "/private/var/folders/_h/_rf455xj4h3_3g6z86pg244c0000gn/T/modelt-tlc-3sXhPQ/Naturals.tla",
+    "/private/var/folders/_h/_rf455xj4h3_3g6z86pg244c0000gn/T/modelt-tlc-QTeWQE/Naturals.tla"
+  ],
+  "results": [
+    {
+      "status": "complete",
+      "states": 1,
+      "generated": 2
+    },
+    {
+      "status": "complete",
+      "states": 1,
+      "generated": 2
+    }
+  ]
+}

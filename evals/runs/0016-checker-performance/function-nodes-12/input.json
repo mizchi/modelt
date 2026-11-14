@@ -1,0 +1,7 @@
+{
+  "name": "function-nodes-12",
+  "states": 4096,
+  "source": "---- MODULE Nodes ----\nEXTENDS Naturals\nVARIABLE nodes\nInit == nodes = [node \\in 1..12 |-> 0]\nNext == \\E node \\in 1..12: nodes' = [nodes EXCEPT ![node] = 1]\nSafe == nodes \\in [1..12 -> 0..1]\n====",
+  "config": "INIT Init\nNEXT Next\nINVARIANT Safe",
+  "generated": 49153
+}

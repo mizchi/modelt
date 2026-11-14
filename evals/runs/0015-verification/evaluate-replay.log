@@ -1,0 +1,15 @@
+pnpm evaluate:replay
+
+> @mizchi/modelt@0.1.0-alpha.0 evaluate:replay /Users/mz/ghq/github.com/mizchi/modelt
+> pnpm build && node dist/evals/harness/replay.js
+
+
+> @mizchi/modelt@0.1.0-alpha.0 build /Users/mz/ghq/github.com/mizchi/modelt
+> tsc -p tsconfig.build.json
+
+persistence: reproduced at step 7; fixed implementation passed
+deduplication: reproduced at step 4; fixed implementation passed
+late-retry: reproduced at step 7; fixed implementation passed
+fifo-only: reproduced at step 8; fixed implementation passed
+drop-ignored: reproduced at step 6; fixed implementation passed
+6 schedules replayed; fixed implementation passed

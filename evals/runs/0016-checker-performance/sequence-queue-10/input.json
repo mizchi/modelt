@@ -1,0 +1,7 @@
+{
+  "name": "sequence-queue-10",
+  "states": 2047,
+  "source": "---- MODULE Queue ----\nEXTENDS Naturals, Sequences\nVARIABLE queue\nInit == queue = <<>>\nNext == IF Len(queue) < 10 THEN \\E message \\in {0,1}: queue' = Append(queue,message) ELSE queue' = Tail(queue)\nSafe == queue \\in Seq(0..1) /\\ Len(queue) <= 10\n====",
+  "config": "INIT Init\nNEXT Next\nINVARIANT Safe",
+  "generated": 3071
+}
