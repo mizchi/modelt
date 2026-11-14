@@ -2,6 +2,7 @@ import { readFile } from "node:fs/promises";
 import { createServer, type Server } from "node:http";
 import { expect, test } from "@playwright/test";
 import { build } from "esbuild";
+import { compileTlaSafety } from "../src/tla-safety.js";
 
 let server: Server | undefined;
 let origin: string;
@@ -19,6 +20,13 @@ test.beforeAll(async () => {
   const wasm = await readFile(
     "crates/modelt-core/target/wasm32-unknown-unknown/release/modelt_core.wasm",
   );
+  const safety = JSON.stringify(
+    compileTlaSafety({
+      source:
+        "---- MODULE BrowserSafety ----\nEXTENDS Naturals\nVARIABLE x\nInit == x = 0\nNext == x' = x + 1\nSafe == x < 3\n====",
+      config: "INIT Init\nNEXT Next\nINVARIANT Safe",
+    }),
+  );
   server = createServer((request, response) => {
     response.setHeader(
       "Content-Type",
@@ -26,14 +34,18 @@ test.beforeAll(async () => {
         ? "application/wasm"
         : request.url === "/bundle.js"
           ? "text/javascript"
-          : "text/html",
+          : request.url === "/safety.json"
+            ? "application/json"
+            : "text/html",
     );
     response.end(
       request.url === "/core.wasm"
         ? wasm
         : request.url === "/bundle.js"
           ? output.contents
-          : '<!doctype html><title>modelt portable core</title><script src="/bundle.js"></script>',
+          : request.url === "/safety.json"
+            ? safety
+            : '<!doctype html><title>modelt portable core</title><script src="/bundle.js"></script>',
     );
   });
   await new Promise<void>((resolve) => server?.listen(0, "127.0.0.1", resolve));

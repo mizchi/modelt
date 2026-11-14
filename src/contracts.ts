@@ -113,6 +113,11 @@ export type PortableEffect =
 export interface PortableCommand {
   readonly version: 1;
   readonly request:
+    | {
+        readonly kind: "check-safety";
+        readonly program: SafetyProgram;
+        readonly bounds: SafetyBounds;
+      }
     | { readonly kind: "load-model"; readonly model: FiniteModel }
     | { readonly kind: "release-model"; readonly handle: number }
     | {
@@ -159,6 +164,7 @@ export interface PortableCommand {
 }
 
 export type PortableOutput =
+  | { readonly kind: "safety"; readonly result: SafetyResult }
   | { readonly kind: "loaded"; readonly handle: number }
   | { readonly kind: "released" }
   | { readonly kind: "history"; readonly result: ConcurrentResult }
@@ -171,6 +177,114 @@ export type PortableOutput =
 
 export interface PortableCore {
   readonly request: (command: PortableCommand) => PortableOutput;
+}
+
+export type SafetyScalar =
+  | { readonly type: "int"; readonly value: string }
+  | { readonly type: "bool"; readonly value: boolean };
+
+export type SafetyExpression =
+  | { readonly op: "literal"; readonly value: SafetyScalar }
+  | { readonly op: "read"; readonly slot: number; readonly next: boolean }
+  | { readonly op: "not" | "neg"; readonly argument: SafetyExpression }
+  | {
+      readonly op:
+        | "add"
+        | "sub"
+        | "mul"
+        | "eq"
+        | "ne"
+        | "lt"
+        | "le"
+        | "gt"
+        | "ge"
+        | "and"
+        | "or"
+        | "implies";
+      readonly left: SafetyExpression;
+      readonly right: SafetyExpression;
+    }
+  | {
+      readonly op: "if";
+      readonly condition: SafetyExpression;
+      readonly consequent: SafetyExpression;
+      readonly alternative: SafetyExpression;
+    }
+  | {
+      readonly op: "in";
+      readonly value: SafetyExpression;
+      readonly domain: SafetyDomain;
+    };
+
+export type SafetyDomain =
+  | {
+      readonly kind: "range";
+      readonly lower: SafetyExpression;
+      readonly upper: SafetyExpression;
+    }
+  | { readonly kind: "set"; readonly values: readonly SafetyExpression[] };
+
+export type SafetyStep =
+  | { readonly kind: "guard"; readonly expression: SafetyExpression }
+  | {
+      readonly kind: "assign";
+      readonly slot: number;
+      readonly value: SafetyExpression;
+    }
+  | {
+      readonly kind: "choose";
+      readonly slot: number;
+      readonly domain: SafetyDomain;
+    };
+
+export interface SafetyBranch {
+  readonly name: string;
+  readonly steps: readonly SafetyStep[];
+}
+
+export interface SafetyPredicate {
+  readonly name: string;
+  readonly expression: SafetyExpression;
+}
+
+export interface SafetyProgram {
+  readonly format: "modelt.safety-program";
+  readonly version: 1;
+  readonly name: string;
+  readonly variables: readonly string[];
+  readonly initial: readonly SafetyBranch[];
+  readonly next: readonly SafetyBranch[];
+  readonly invariants: readonly SafetyPredicate[];
+  readonly assumptions: readonly SafetyPredicate[];
+  readonly checkDeadlock: boolean;
+}
+
+export interface SafetyBounds {
+  readonly maxDepth: number;
+  readonly maxStates: number;
+  readonly maxWork: number;
+}
+
+export interface SafetyResult {
+  readonly status:
+    | "complete"
+    | "bounded"
+    | "empty"
+    | "invariant-violation"
+    | "deadlock"
+    | "assumption-violation";
+  readonly reason: "depth" | "states" | "work" | null;
+  readonly states: number;
+  readonly generated: number;
+  readonly depth: number;
+  readonly work: number;
+  readonly violation: {
+    readonly name: string;
+    readonly trace: readonly {
+      readonly action: string | null;
+      readonly values: readonly SafetyScalar[];
+    }[];
+  } | null;
 }
 
 export interface PortableEncoding<State, Action, Observation> {

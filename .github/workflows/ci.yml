@@ -24,6 +24,9 @@ jobs:
       - run: cargo fmt --manifest-path crates/modelt-core/Cargo.toml -- --check
       - run: cargo clippy --all-targets --locked --manifest-path crates/modelt-core/Cargo.toml -- -D warnings
       - run: pnpm portable:build
+      - run: node --test dist/evals/rust-safety/contract-test.js
+      - run: node dist/evals/rust-safety/evaluate.js .artifacts/rust-safety
+      - run: node dist/evals/rust-safety/replay.js .artifacts/rust-safety
       - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
         with:
           go-version: 1.25.x
@@ -82,4 +85,5 @@ jobs:
             .artifacts/go
             .artifacts/shared-oracle
             .artifacts/async-tuning
+            .artifacts/rust-safety
           if-no-files-found: warn

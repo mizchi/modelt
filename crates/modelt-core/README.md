@@ -2,6 +2,8 @@
 
 Rust native / Wasm core for finite state models, conformance checking, trace replay, and failure-preserving sequence shrinking.
 
+`SafetyProgram::check()` evaluates a versioned scalar transition program and performs BFS, invariant/deadlock checking, and shortest counterexample reconstruction inside Rust. It generates successors during exploration rather than accepting a precomputed graph. This is a limited integer/boolean safety IR, not a complete TLA+ interpreter. TypeScript can compile a supported TLA+ fragment with `compileTlaSafety`; the executing native/Wasm core has no parser or solver dependency. See [the supported fragment and limits](https://github.com/mizchi/modelt/blob/main/docs/rust-safety.md).
+
 `Session::new()` and `Session::replay()` return effects. The caller performs model evaluation or I/O and returns responses with the pending effect ID. `FiniteModel` loads a versioned, observation-bearing transition table without a model-language runtime. `FiniteModel::check_history()` validates saved observations against that table. No threads, clocks or host imports are required by the Wasm library.
 
 See the [repository](https://github.com/mizchi/modelt) for TypeScript bindings, the shared value format, examples, and evaluations. The `modelt-core` binary accepts the same versioned JSON commands over stdin/stdout, one JSON object per line.

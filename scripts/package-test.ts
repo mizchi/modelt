@@ -3,6 +3,7 @@ import { execFileSync, spawnSync } from "node:child_process";
 import { mkdtemp, readdir, readFile, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
+import { compileTlaSafety } from "../src/tla-safety.js";
 
 const directory = resolve(process.argv[2] ?? ".artifacts/packages");
 const files = await readdir(directory);
@@ -61,6 +62,22 @@ const history = {
 };
 await writeFile(join(consumer, "model.json"), JSON.stringify(artifact));
 await writeFile(join(consumer, "history.json"), JSON.stringify(history));
+const safety = compileTlaSafety({
+  source:
+    "---- MODULE PackageSafety ----\nEXTENDS Naturals\nVARIABLE x\nInit == x = 0\nNext == x' = x + 1\nSafe == x < 3\n====",
+  config: "INIT Init\nNEXT Next\nINVARIANT Safe",
+});
+await writeFile(
+  join(consumer, "safety-request.json"),
+  JSON.stringify({
+    version: 1,
+    request: {
+      kind: "check-safety",
+      program: safety,
+      bounds: { maxDepth: 4, maxStates: 5, maxWork: 100 },
+    },
+  }),
+);
 await writeFile(
   join(consumer, "request.json"),
   JSON.stringify({
@@ -72,7 +89,7 @@ await writeFile(
   join(consumer, "consumer.mjs"),
   `import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
-import {createPortableWasm,checkFiniteHistories,decodePortableTrace,loadFiniteModel} from '@mizchi/modelt/portable';
+import {createPortableWasm,checkFiniteHistories,decodePortableTrace,loadFiniteModel,checkSafety} from '@mizchi/modelt/portable';
 import {createHistoryRecorder} from '@mizchi/modelt/history';
 import {parseFiniteModel} from '@mizchi/modelt/finite';
 import {createSimulationHost} from '@mizchi/modelt/host';
@@ -85,6 +102,8 @@ const recorded=createHistoryRecorder(model.name,trace.initial);
 recorded.invoke('tick',trace.steps[0].action);recorded.returned('tick',trace.steps[0].observation);
 assert.equal(loaded.checkHistory(recorded.snapshot(),100).status,'linearizable');loaded.release();
 assert.equal(createSimulationHost().now(),0);
+const safety=JSON.parse(await readFile('safety-request.json','utf8')).request;
+assert.equal(checkSafety(core,safety.program,safety.bounds).violation.trace.length,4);
 for(const name of ['z3-solver','tla-ts','fast-check'])assert.throws(()=>import.meta.resolve(name));
 console.log('packaged TS/Wasm consumer matched without solvers');
 `,
@@ -173,7 +192,7 @@ await writeFile(
 await writeFile(
   join(consumer, "consumer.rs"),
   `use modelt_core::{Engine,Message,Status};
-fn main(){let bytes=std::fs::read("request.json").unwrap();let response=Engine::default().dispatch(&bytes);match response{Message::Results{results}=>assert_eq!(results[0].status,Status::Matched),_=>panic!("unexpected result")}println!("packaged Rust consumer matched");}
+fn main(){let bytes=std::fs::read("request.json").unwrap();let response=Engine::default().dispatch(&bytes);match response{Message::Results{results}=>assert_eq!(results[0].status,Status::Matched),_=>panic!("unexpected result")};let bytes=std::fs::read("safety-request.json").unwrap();match Engine::default().dispatch(&bytes){Message::Safety{result}=>{assert_eq!(result.status,"invariant-violation");assert_eq!(result.violation.unwrap().trace.len(),4)},_=>panic!("missing safety result")};println!("packaged Rust consumer matched");}
 `,
 );
 const rust = execFileSync(

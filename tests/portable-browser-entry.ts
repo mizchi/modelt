@@ -1,12 +1,14 @@
 import { counterModel } from "../examples/counter-model.js";
 import { createCounter, isCounterAction } from "../examples/durable-counter.js";
 import { checkConformance } from "../src/conformance.js";
+import type { SafetyProgram } from "../src/contracts.js";
 import { compileFiniteModel } from "../src/finite.js";
 import { createSimulationHost } from "../src/host.js";
 import {
   checkFiniteHistories,
   checkPortableConformance,
   checkPortableTrace,
+  checkSafety,
   coreDeletionCandidates,
   createHistoryRecorder,
   createPortableWasm,
@@ -26,6 +28,17 @@ export const run = async (): Promise<Record<string, unknown>> => {
     { type: "crash" },
     { type: "restart" },
   ] as const;
+  const program: SafetyProgram = await (await fetch("/safety.json")).json();
+  const safety = checkSafety(core, program, {
+    maxDepth: 4,
+    maxStates: 5,
+    maxWork: 100,
+  });
+  if (
+    safety.status !== "invariant-violation" ||
+    safety.violation?.trace.length !== 4
+  )
+    throw new Error("Browser safety backend differs");
   const reference = await checkConformance(
     counterModel,
     createCounter(),

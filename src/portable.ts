@@ -16,6 +16,9 @@ export type {
   PortableResult,
   PortableTrace,
   PortableValue,
+  SafetyBounds,
+  SafetyProgram,
+  SafetyResult,
   ShrinkResult,
   ShrinkVerdict,
 } from "./contracts.js";
@@ -49,4 +52,5 @@ export {
   toPortableTrace,
   verifyHostTape,
 } from "./portable-wasm.js";
+export { checkSafety } from "./safety.js";
 export { deletionCandidates, shrinkCounterexample } from "./shrink.js";

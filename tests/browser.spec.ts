@@ -35,6 +35,15 @@ test.beforeAll(async () => {
   if (!output) throw new Error("Browser bundle was empty");
   const z3 = dirname(createRequire(import.meta.url).resolve("z3-solver"));
   const assets = new Map([
+    [
+      "/core.wasm",
+      {
+        body: await readFile(
+          "crates/modelt-core/target/wasm32-unknown-unknown/release/modelt_core.wasm",
+        ),
+        type: "application/wasm",
+      },
+    ],
     ["/bundle.js", { body: output.contents, type: "text/javascript" }],
     [
       "/z3-built.js",

@@ -8,6 +8,7 @@ import { registerEvaluationContract } from "./evaluation-contract.js";
 import { registerIntegrationContract } from "./integration-contract.js";
 import { registerPortableContract } from "./portable-contract.js";
 import { registerPropertyContract } from "./property-contract.js";
+import { registerSafetyContract } from "./safety-contract.js";
 import { registerShardingContract } from "./sharding-contract.js";
 import { registerUsableContract } from "./usable-contract.js";
 
@@ -42,5 +43,8 @@ registerUsableContract((name, run) => {
   test(name, run);
 });
 registerAsyncContract((name, run) => {
+  test(name, run);
+});
+registerSafetyContract((name, run) => {
   test(name, run);
 });

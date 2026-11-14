@@ -6,9 +6,10 @@ import {
   createCounter,
 } from "../examples/durable-counter.js";
 import { checkConformance, checkModel, checkTrace } from "../src/index.js";
+import { checkSafety, createPortableWasm } from "../src/portable.js";
 import { checkProperty } from "../src/property.js";
 import { createSmtOracle } from "../src/smt.js";
-import { generateTlaOracle } from "../src/tla.js";
+import { compileTlaSafety, generateTlaOracle } from "../src/tla.js";
 
 export const run = async (): Promise<Record<string, unknown>> => {
   const model = checkModel(counterModel, { maxDepth: 2, maxStates: 100 });
@@ -41,6 +42,23 @@ export const run = async (): Promise<Record<string, unknown>> => {
     },
   );
   const api = await init({ locateFile: (path) => `/${path}` });
+  const rust = await createPortableWasm(
+    new Uint8Array(await (await fetch("/core.wasm")).arrayBuffer()),
+  );
+  const safety = checkSafety(
+    rust,
+    compileTlaSafety({
+      source:
+        "---- MODULE BrowserSafety ----\nEXTENDS Naturals\nVARIABLE x\nInit == x = 0\nNext == x' = x + 1\nSafe == x < 3\n====",
+      config: "INIT Init\nNEXT Next\nINVARIANT Safe",
+    }),
+    { maxDepth: 4, maxStates: 5, maxWork: 100 },
+  );
+  if (
+    safety.status !== "invariant-violation" ||
+    safety.violation?.trace.length !== 4
+  )
+    throw new Error("Browser TLA compiler and Rust backend differ");
   const smt = await createSmtOracle(api).solve(
     "(declare-const value Int) (assert (= value 7))",
     ["value"],
