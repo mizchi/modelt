@@ -93,7 +93,7 @@ export const runTlc = async (
 };
 
 export const traceInput = (
-  input: Case,
+  input: Pick<Case, "source" | "config">,
   program: SafetyProgram,
   result: SafetyResult,
   negate = true,

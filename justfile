@@ -143,3 +143,10 @@ complex-replay run:
 complex-tlc-replay java jar run:
   pnpm build
   node dist/evals/collections-temporal/tlc-replay.js {{quote(java)}} {{quote(jar)}} {{quote(run)}}
+
+
+tlc-diff java jar phase run: safety-build
+  node dist/evals/tlc-differential/run.js {{quote(java)}} {{quote(jar)}} {{quote(phase)}} {{quote(run)}}
+
+tlc-diff-replay java jar saved run: safety-build
+  node dist/evals/tlc-differential/run.js {{quote(java)}} {{quote(jar)}} replay {{quote(run)}} {{quote(saved)}}
