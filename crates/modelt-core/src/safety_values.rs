@@ -190,6 +190,9 @@ impl Arena {
         if self.rank(left) != self.rank(right) {
             return Err(CoreError::protocol("Incomparable TLA values"));
         }
+        if matches!(left, Scalar::Int(_) | Scalar::Bool(_)) {
+            return Ok(());
+        }
         let pairs: Vec<(Scalar, Scalar)> = match (self.cell(left), self.cell(right)) {
             (Ok(Cell::Set(left)), Ok(Cell::Set(right))) if left.len() == right.len() => {
                 left.iter().copied().zip(right.iter().copied()).collect()
@@ -221,6 +224,9 @@ impl Arena {
         }
         if self.rank(left) != self.rank(right) {
             return Err(CoreError::protocol("Incomparable TLA values"));
+        }
+        if matches!(left, Scalar::Int(_) | Scalar::Bool(_)) {
+            return Ok(false);
         }
         match (self.cell(left), self.cell(right)) {
             (Ok(Cell::Function(left)), Ok(Cell::Function(right))) => {

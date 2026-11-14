@@ -50,9 +50,10 @@ try {
   assert.equal(reports.length, result.cases);
   assert.deepEqual(
     reports.map((report) => report.name),
-    benchmarkCases(manifest.plan === "0012-collections-temporal").map(
-      (input) => input.name,
-    ),
+    benchmarkCases(
+      manifest.plan === "0012-collections-temporal" ||
+        manifest.plan === "0013-scalar-comparison",
+    ).map((input) => input.name),
   );
   for (const report of reports) {
     assert.ok(

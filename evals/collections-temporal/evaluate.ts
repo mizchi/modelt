@@ -8,10 +8,15 @@ import { fingerprint } from "../rust-safety/provenance.js";
 import { startNative } from "../usable/native.js";
 import { digest } from "../usable/provenance.js";
 import { cases } from "./cases.js";
+import { readEvidence } from "./evidence.js";
 import { traceInput } from "./tlc.js";
 import { type Report, verify } from "./verify.js";
 
 const directory = process.argv[2];
+const parentDirectory = process.argv[3];
+const parent = parentDirectory
+  ? await readEvidence(parentDirectory)
+  : undefined;
 assert.ok(directory, "Pass a new output directory");
 await mkdir(dirname(directory), { recursive: true });
 await mkdir(directory, { recursive: false });
@@ -25,6 +30,15 @@ const write = (path: string, value: unknown) =>
   });
 await write("manifest.json", {
   plan: "0012-collections-temporal",
+  ...(parent && parentDirectory
+    ? {
+        parent: {
+          directory: parentDirectory,
+          sha256: parent.sha256,
+          sourceVersion: parent.sourceVersion,
+        },
+      }
+    : {}),
   ...source,
   wasmSha256: digest(bytes),
   node: process.version,
@@ -38,6 +52,12 @@ const native = startNative();
 const reports: Report[] = [];
 try {
   for (const input of cases) reports.push(await verify(input, core, native));
+  if (parent)
+    assert.deepEqual(
+      reports,
+      parent.reports,
+      "Optimization changed saved inputs, verdicts or witnesses",
+    );
   const normal = reports.find(
     (report) => report.input.name === "eventually-always-WF",
   );
@@ -98,6 +118,10 @@ try {
     message: String(error),
     reports,
   });
+  await appendFile(
+    "evals/runs/ledger.jsonl",
+    `${JSON.stringify({ runId: basename(directory), kind: "collections-temporal", status: "error", sourceVersion: source.sourceVersion, plan: "0012-collections-temporal" })}\n`,
+  );
   throw error;
 } finally {
   await native.close();

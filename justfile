@@ -62,8 +62,8 @@ safety-build: portable-build
 safety-test: safety-build
   node --test dist/evals/rust-safety/contract-test.js dist/evals/collections-temporal/contract-test.js
 
-safety-eval run: safety-build
-  node dist/evals/rust-safety/evaluate.js {{quote(run)}}
+safety-eval run plan="0013-scalar-comparison": safety-build
+  node dist/evals/rust-safety/evaluate.js {{quote(run)}} {{quote(plan)}}
 
 safety-replay run:
   pnpm build
@@ -133,8 +133,8 @@ package:
 complex-tlc java jar run: safety-build
   node dist/evals/collections-temporal/tlc-check.js {{quote(java)}} {{quote(jar)}} {{quote(run)}}
 
-complex-eval run: safety-build
-  node dist/evals/collections-temporal/evaluate.js {{quote(run)}}
+complex-eval run parent="": safety-build
+  node dist/evals/collections-temporal/evaluate.js {{quote(run)}} {{quote(parent)}}
 
 complex-replay run:
   pnpm build

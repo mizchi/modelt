@@ -18,6 +18,7 @@ export const fingerprint = async () => {
     "evals/collections-temporal",
     "evals/fixtures/channel",
     "evals/plans/0012-collections-temporal.md",
+    "evals/plans/0013-scalar-comparison.md",
     "evals/fixtures/die-hard",
     "evals/plans/0009-rust-safety.md",
     "evals/plans/0010-rust-safety-storage.md",

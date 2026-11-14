@@ -63,12 +63,13 @@ const runNative = (
 
 const directory = process.argv[2];
 assert.ok(directory, "Pass a new output directory");
-const plan = process.argv[3] ?? "0012-collections-temporal";
+const plan = process.argv[3] ?? "0013-scalar-comparison";
 assert.ok(
   plan === "0009-rust-safety" ||
     plan === "0010-rust-safety-storage" ||
     plan === "0011-rust-safety-arena" ||
-    plan === "0012-collections-temporal",
+    plan === "0012-collections-temporal" ||
+    plan === "0013-scalar-comparison",
 );
 await mkdir(dirname(directory), { recursive: true });
 await mkdir(directory, { recursive: false });
@@ -101,7 +102,9 @@ await write("manifest.json", {
 });
 const reports: Report[] = [];
 try {
-  for (const input of benchmarkCases(plan === "0012-collections-temporal")) {
+  for (const input of benchmarkCases(
+    plan === "0012-collections-temporal" || plan === "0013-scalar-comparison",
+  )) {
     const program = compileTlaSafety(input);
     const bounds = { maxDepth: 1000000, maxStates: 1000000, maxWork: 10000000 };
     const samples: Sample[] = [];

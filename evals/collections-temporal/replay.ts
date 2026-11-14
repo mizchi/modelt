@@ -7,6 +7,7 @@ import { fingerprint } from "../rust-safety/provenance.js";
 import { startNative } from "../usable/native.js";
 import { digest } from "../usable/provenance.js";
 import { cases } from "./cases.js";
+import { readEvidence } from "./evidence.js";
 import { type Report, verify } from "./verify.js";
 
 const directory = process.argv[2];
@@ -34,6 +35,12 @@ const bytes = await readFile(
 assert.equal(manifest.wasmSha256, digest(bytes));
 // Digests and the source fingerprint authenticate this experiment's saved schema.
 const reports: Report[] = await read("checks.json");
+if (manifest.parent) {
+  const parent = await readEvidence(manifest.parent.directory);
+  assert.equal(parent.sha256, manifest.parent.sha256);
+  assert.equal(parent.sourceVersion, manifest.parent.sourceVersion);
+  assert.deepEqual(reports, parent.reports);
+}
 assert.deepEqual(
   reports.map((report) => report.input.name),
   cases.map((input) => input.name),
