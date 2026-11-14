@@ -82,3 +82,5 @@ just complex-tlc-replay /path/to/java /path/to/tla2tools.jar .artifacts/complex-
 [測定・差分検査・採用判断](../evals/iterations/0009-rust-safety.md) に、初回の改善不足、profile、literal decode と状態の連続格納の結果を記録している。
 
 複合値・temporal の条件は [0012 の計画](../evals/plans/0012-collections-temporal.md)。検査は native / Wasm / tla-ts / TLC で比較し、反例の state と loop を固定した別の仕様で再生する。強制した遷移が元の Next または stuttering であること、全 trace state が到達すること、fairness と性質の違反を確認する。誤った性質を要求する対照は違反する必要がある。原文の [Channel](../evals/fixtures/channel/Channel.tla) も検査する。
+
+[0012〜0014 の評価結果](../evals/iterations/0012-collections-temporal.md) に、対応検査と性能の改善・未達条件を記録している。`safety-eval` の既定 plan は0014で、任意の既存 plan を第2引数に指定できる。

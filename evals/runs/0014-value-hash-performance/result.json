@@ -1,0 +1,17 @@
+{
+  "status": "complete",
+  "plan": "0014-value-hash",
+  "sourceVersion": "53d7adcdbfe8fc0029af08106dbfeb9a7152ba02fed17a44c52582938169acd3",
+  "files": [
+    {
+      "path": "manifest.json",
+      "sha256": "febf87b89d47ef5dfa7b18fe6b4fba6d996308e636ffaf5819e9f95974908bea"
+    },
+    {
+      "path": "benchmark.json",
+      "sha256": "3118d06f53ade29de2cf41601887bfd9eb3dd89681f26cc839af70136301ee87"
+    }
+  ],
+  "cases": 10,
+  "samples": 280
+}

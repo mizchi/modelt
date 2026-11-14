@@ -1,0 +1,12 @@
+TLC2 Version 2.19 of 08 August 2024 (rev: 5a47802)
+Running breadth-first search Model-Checking with fp 84 and seed -205239598268676267 with 1 worker on 10 cores with 7282MB heap and 64MB offheap memory [pid: 6022] (Mac OS X 26.6.2 aarch64, Eclipse Adoptium 21.0.13 x86_64, MSBDiskFPSet, DiskStateQueue).
+Parsing file /Users/mz/ghq/github.com/mizchi/modelt/evals/runs/0012-collections-tlc/initial-property-implication/Toggle.tla
+Parsing file /private/var/folders/_h/_rf455xj4h3_3g6z86pg244c0000gn/T/Naturals.tla
+Semantic processing of module Naturals
+Semantic processing of module Toggle
+Starting... (2026-11-14 17:01:20)
+Computing initial states...
+Error: Property Prop is violated by the initial state:
+x = 0
+
+Finished in 00s at (2026-11-14 17:01:20)

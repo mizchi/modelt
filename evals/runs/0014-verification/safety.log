@@ -1,0 +1,74 @@
+pnpm portable:build
+
+> @mizchi/modelt@0.1.0-alpha.0 portable:build /Users/mz/ghq/github.com/mizchi/modelt
+> cargo build --release --locked --manifest-path crates/modelt-core/Cargo.toml && cargo build --release --locked --lib --target wasm32-unknown-unknown --manifest-path crates/modelt-core/Cargo.toml
+
+   Compiling modelt-core v0.1.0-alpha.0 (/Users/mz/ghq/github.com/mizchi/modelt/crates/modelt-core)
+    Finished `release` profile [optimized] target(s) in 18.29s
+   Compiling modelt-core v0.1.0-alpha.0 (/Users/mz/ghq/github.com/mizchi/modelt/crates/modelt-core)
+    Finished `release` profile [optimized] target(s) in 9.19s
+pnpm build
+
+> @mizchi/modelt@0.1.0-alpha.0 build /Users/mz/ghq/github.com/mizchi/modelt
+> tsc -p tsconfig.build.json
+
+node --test dist/evals/rust-safety/contract-test.js dist/evals/collections-temporal/contract-test.js
+✔ set-delivery (370.6665ms)
+✔ set-fault (16.186125ms)
+✔ tuple-function-equality (6.510417ms)
+✔ record-function-equality (7.738458ms)
+✔ function-updates (7.406292ms)
+✔ record-updates (5.371709ms)
+✔ except-sequential-at (8.682416ms)
+✔ except-missing-skips-rhs (6.460417ms)
+✔ sequence-queue (7.205542ms)
+✔ sequence-concat-subseq (5.786ms)
+✔ filter-map-powerset (5.166792ms)
+✔ function-set-enumeration (5.203666ms)
+✔ record-set-enumeration (3.87325ms)
+✔ empty-function-domain (3.743209ms)
+✔ function-multi-argument (3.45425ms)
+✔ tuple-pattern (4.242167ms)
+✔ independent-existentials (3.44675ms)
+✔ let-lexical-scope (3.62775ms)
+✔ invalid-tuple-pattern-arity (4.5705ms)
+✔ invalid-sequence-membership (4.873666ms)
+✔ invalid-sequence-domain (3.587625ms)
+✔ invalid-sequence-index (4.885084ms)
+✔ invalid-head (2.8375ms)
+✔ invalid-tail (3.044833ms)
+✔ mixed-set-types (3.103125ms)
+✔ collection-work-cut (2.748ms)
+✔ function-domain-before-range (3.267416ms)
+✔ initial-property-failure (4.429583ms)
+✔ initial-property-boolean (4.700917ms)
+✔ initial-property-implication (4.138333ms)
+✔ action-property (4.302917ms)
+✔ upstream-channel (6.640792ms)
+✔ initial-property-only (3.044375ms)
+✔ always-state (4.278833ms)
+✔ eventually-stuttering (5.6295ms)
+✔ eventually-WF (3.58375ms)
+✔ always-eventually-WF (3.488458ms)
+✔ eventually-always-WF (5.424208ms)
+✔ leads-to-WF (3.401625ms)
+✔ multiple-eventualities (5.481375ms)
+✔ temporal-negation (6.056042ms)
+✔ WF-intermittent (8.030667ms)
+✔ SF-intermittent (4.293708ms)
+✔ temporal-node-cut (2.195958ms)
+✔ terminal-stuttering (4.875958ms)
+✔ deadlock-before-temporal (3.113917ms)
+✔ multiple-initial-temporal (5.578417ms)
+✔ empty-before-temporal (2.326458ms)
+✔ growing-state-nesting (2.483417ms)
+✔ Rust generates TLA states and checks safety in native and Wasm without a materialized graph (423.180916ms)
+✔ the unmodified upstream DieHard model finds the same shortest solution (10.889583ms)
+ℹ tests 51
+ℹ suites 0
+ℹ pass 51
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 759.012375

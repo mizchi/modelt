@@ -1,0 +1,7 @@
+pnpm build
+
+> @mizchi/modelt@0.1.0-alpha.0 build /Users/mz/ghq/github.com/mizchi/modelt
+> tsc -p tsconfig.build.json
+
+node dist/evals/collections-temporal/tlc-replay.js '.artifacts/tlc/jdk-21.0.13+9-jre/Contents/Home/bin/java' '.artifacts/tlc/tla2tools.jar' 'evals/runs/0014-value-hash-tlc'
+{"reports":46,"witnesses":14,"output":"/Users/mz/ghq/github.com/mizchi/modelt/.artifacts/tlc-replay-SADtxk"}

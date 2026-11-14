@@ -1,0 +1,18 @@
+TLC2 Version 2.19 of 08 August 2024 (rev: 5a47802)
+Running breadth-first search Model-Checking with fp 42 and seed -3318906531403313721 with 1 worker on 10 cores with 7282MB heap and 64MB offheap memory [pid: 16506] (Mac OS X 26.6.2 aarch64, Eclipse Adoptium 21.0.13 x86_64, MSBDiskFPSet, DiskStateQueue).
+Parsing file /Users/mz/ghq/github.com/mizchi/modelt/evals/runs/0014-value-hash-tlc/empty-before-temporal/Empty.tla
+Semantic processing of module Empty
+Starting... (2026-11-14 17:14:17)
+Implied-temporal checking--satisfiability problem has 1 branches.
+Computing initial states...
+Finished computing initial states: 0 distinct states generated at 2026-11-14 17:14:17.
+Progress(1) at 2026-11-14 17:14:17: 0 states generated, 0 distinct states found, 0 states left on queue.
+Checking temporal properties for the complete state space with 0 total distinct states at (2026-11-14 17:14:17)
+Finished checking temporal properties in 00s at 2026-11-14 17:14:17
+Model checking completed. No error has been found.
+  Estimates of the probability that TLC did not check all reachable states
+  because two distinct states had the same fingerprint:
+  calculated (optimistic):  val = 0.0
+0 states generated, 0 distinct states found, 0 states left on queue.
+The depth of the complete state graph search is 1.
+Finished in 00s at (2026-11-14 17:14:17)
