@@ -26,6 +26,8 @@ just browser
 
 時間・メモリから worker 数と探索深さを選ぶ `./budget`、独立 task の分割・集約を行う `./sharding` を追加した。[実行時間・Rust・cloud sharding の評価](evals/runtime/README.md) と [測定結果](evals/iterations/0003-runtime.md) を参照。Rust/Wasm は実験用カーネルとして分離している。
 
+独立した検査の配置と常駐workerへの配布は `./scheduling`。[予算・費用順配置・batch化のガイド](docs/scheduling.md) と [TLA検査の1/2/4/8-worker評価](evals/iterations/0017-parallel-safety.md) を参照。共通APIはNodeやsolverに依存せず、Node / browserのTLA adapterは評価用の試作として分離している。
+
 ## モデルと実装の比較
 
 TS / Rust の共通コアは `./portable`。同じ Rust ソースを native と Wasm で使い、適合性照合とトレース再生を行う。[Go adapter](docs/go-adapter.md) は CGO 不要で同じ Wasm に接続する。[値・effect protocol・使用例](docs/portable-core.md) を参照。`just portable-build` / `just portable-test` で Rust と Node・実ブラウザ、`just go-test` で Go の照合と単独 consumer を検査する。

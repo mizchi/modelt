@@ -1,0 +1,131 @@
+pnpm test:mutation
+
+> @mizchi/modelt@0.1.0-alpha.0 test:mutation /Users/mz/ghq/github.com/mizchi/modelt
+> mutator --runner vitest --config vitest.mutation.config.ts --reporter text --reporter json
+
+config: /Users/mz/ghq/github.com/mizchi/modelt/mutator.config.json
+runner: vitest
+dry run: 1/1 test files, 2 source files
+dry run finished in 0.2s
+typecheck (TypeScript 7.0.2): 242 mutants in 1.3s
+242 mutants, 109 to run (133 do not type-check)
+[1/109] Survived examples/durable-counter.ts:22 true -> false
+[2/109] Survived examples/durable-counter.ts:30 running -> true
+[3/109] Killed   examples/durable-counter.ts:30 running -> false
+[4/109] Killed   examples/durable-counter.ts:32 { if (!running || (options.deduplicate !== false && seen.ha… -> {}
+[5/109] Killed   examples/durable-counter.ts:33 !running || (options.deduplicate !== false && seen.has(requ… -> true
+[6/109] Killed   examples/durable-counter.ts:33 !running || (options.deduplicate !== false && seen.has(requ… -> false
+[7/109] Killed   examples/durable-counter.ts:33 !running || (options.deduplicate !== false && seen.has(requ… -> (!running && (options.deduplicate !== false && seen.has(req…
+[8/109] Killed   examples/durable-counter.ts:33 !running -> running
+[9/109] Killed   examples/durable-counter.ts:33 options.deduplicate !== false && seen.has(request.id) -> false
+[10/109] Killed   examples/durable-counter.ts:33 options.deduplicate !== false && seen.has(request.id) -> (options.deduplicate !== false || seen.has(request.id))
+[11/109] Killed   examples/durable-counter.ts:33 options.deduplicate !== false -> true
+[12/109] Killed   examples/durable-counter.ts:33 options.deduplicate !== false -> options.deduplicate === false
+[13/109] Killed   examples/durable-counter.ts:33 false -> true
+[14/109] Killed   examples/durable-counter.ts:35 value += request.amount -> value -= request.amount
+[15/109] Killed   examples/durable-counter.ts:36 seen.add(request.id); -> ;
+[16/109] Killed   examples/durable-counter.ts:37 options.persist !== false -> true
+[17/109] Killed   examples/durable-counter.ts:37 options.persist !== false -> false
+[18/109] Killed   examples/durable-counter.ts:37 options.persist !== false -> options.persist === false
+[19/109] Killed   examples/durable-counter.ts:37 false -> true
+[20/109] Killed   examples/durable-counter.ts:37 { durableValue = value; durableSeen = new Set(seen); } -> {}
+[21/109] Killed   examples/durable-counter.ts:44 true -> false
+[22/109] Killed   examples/durable-counter.ts:47 seen.clear(); -> ;
+[23/109] Killed   examples/durable-counter.ts:48 durableSeen.clear(); -> ;
+[24/109] Killed   examples/durable-counter.ts:55 apply(action); -> ;
+[25/109] Killed   examples/durable-counter.ts:60 { const request = pending.splice(action.index, 1)[0]; if (r… -> {}
+[26/109] Killed   examples/durable-counter.ts:66 pending.splice(action.index, 1); -> ;
+[27/109] Killed   examples/durable-counter.ts:69 false -> true
+[28/109] Survived examples/durable-counter.ts:71 seen.clear(); -> ;
+[29/109] Killed   examples/durable-counter.ts:74 running -> true
+[30/109] Killed   examples/durable-counter.ts:74 running -> false
+[31/109] Killed   examples/durable-counter.ts:75 true -> false
+[32/109] Killed   examples/durable-counter.ts:85 { if (typeof value !== "object" || value === null || !("typ… -> { return true; }
+[33/109] Killed   examples/durable-counter.ts:85 { if (typeof value !== "object" || value === null || !("typ… -> { return false; }
+[34/109] Killed   examples/durable-counter.ts:87 false -> true
+[35/109] Killed   examples/durable-counter.ts:88 value.type === "crash" || value.type === "restart" -> false
+[36/109] Killed   examples/durable-counter.ts:88 value.type === "crash" -> false
+[37/109] Killed   examples/durable-counter.ts:88 "crash" -> ""
+[38/109] Killed   examples/durable-counter.ts:88 value.type === "restart" -> false
+[39/109] Killed   examples/durable-counter.ts:88 "restart" -> ""
+[40/109] Killed   examples/durable-counter.ts:88 true -> false
+[41/109] Killed   examples/durable-counter.ts:89 value.type === "deliver" -> false
+[42/109] Killed   examples/durable-counter.ts:89 "deliver" -> ""
+[43/109] Killed   examples/durable-counter.ts:89 value.type === "drop" -> false
+[44/109] Killed   examples/durable-counter.ts:89 "drop" -> ""
+[45/109] Killed   examples/durable-counter.ts:91 "index" in value && typeof value.index === "number" && Numb… -> true
+[46/109] Killed   examples/durable-counter.ts:91 "index" in value && typeof value.index === "number" && Numb… -> false
+[47/109] Killed   examples/durable-counter.ts:94 value.index >= 0 -> true
+[48/109] Killed   examples/durable-counter.ts:94 value.index >= 0 -> value.index > 0
+[49/109] Killed   examples/durable-counter.ts:94 value.index >= 0 -> value.index < 0
+[50/109] Killed   examples/durable-counter.ts:97 (value.type === "add" || value.type === "send") && "id" in … -> true
+[51/109] Killed   examples/durable-counter.ts:97 (value.type === "add" || value.type === "send") && "id" in … -> false
+[52/109] Killed   examples/durable-counter.ts:97 (value.type === "add" || value.type === "send") && "id" in … -> true
+[53/109] Killed   examples/durable-counter.ts:97 value.type === "add" || value.type === "send" -> true
+[54/109] Killed   examples/durable-counter.ts:97 value.type === "add" -> false
+[55/109] Killed   examples/durable-counter.ts:97 "add" -> ""
+[56/109] Killed   examples/durable-counter.ts:97 value.type === "send" -> false
+[57/109] Killed   examples/durable-counter.ts:97 value.type === "send" -> value.type !== "send"
+[58/109] Killed   examples/durable-counter.ts:97 "send" -> ""
+[59/109] Killed   examples/durable-counter.ts:99 typeof value.id === "string" -> true
+[60/109] Killed   examples/durable-counter.ts:99 typeof value.id === "string" -> typeof value.id !== "string"
+[61/109] Survived examples/durable-counter.ts:101 typeof value.amount === "number" -> true
+[62/109] Killed   examples/durable-counter.ts:101 typeof value.amount === "number" -> typeof value.amount !== "number"
+[63/109] Killed   examples/durable-counter.ts:109 typeof value === "object" && value !== null && "running" in… -> true
+[64/109] Killed   examples/durable-counter.ts:109 typeof value === "object" && value !== null && "running" in… -> false
+[65/109] Killed   examples/durable-counter.ts:112 typeof value.running === "boolean" -> true
+[66/109] Killed   examples/durable-counter.ts:112 typeof value.running === "boolean" -> typeof value.running !== "boolean"
+[67/109] Survived examples/durable-counter.ts:114 typeof value.value === "number" -> true
+[68/109] Killed   examples/durable-counter.ts:114 typeof value.value === "number" -> typeof value.value !== "number"
+[69/109] Killed   src/conformance.ts:27 initial .filter((entry) => equal(entry.observation, actualI… -> initial
+[70/109] Killed   src/conformance.ts:28 equal(entry.observation, actualInitial) -> undefined
+[71/109] Killed   src/conformance.ts:31 candidates.size === 0 -> true
+[72/109] Killed   src/conformance.ts:31 candidates.size === 0 -> false
+[73/109] Killed   src/conformance.ts:31 candidates.size === 0 -> candidates.size !== 0
+[74/109] Killed   src/conformance.ts:31 { return { status: initial.length === 0 ? "invalid" : "mism… -> {}
+[75/109] Killed   src/conformance.ts:33 initial.length === 0 -> true
+[76/109] Killed   src/conformance.ts:33 initial.length === 0 -> false
+[77/109] Killed   src/conformance.ts:33 initial.length === 0 -> initial.length !== 0
+[78/109] Killed   src/conformance.ts:43 [...steps] -> []
+[79/109] Killed   src/conformance.ts:46 { const successors = Array.from(candidates.values()).flatMa… -> {}
+[80/109] Killed   src/conformance.ts:50 successors.length === 0 -> true
+[81/109] Killed   src/conformance.ts:50 successors.length === 0 -> false
+[82/109] Killed   src/conformance.ts:50 successors.length === 0 -> successors.length !== 0
+[83/109] Killed   src/conformance.ts:50 { return { status: "invalid", checkedSteps: steps.length, a… -> {}
+[84/109] Killed   src/conformance.ts:61 candidates.clear(); -> ;
+[85/109] Killed   src/conformance.ts:62 { if (equal(entry.observation, actual)) candidates.set(mode… -> {}
+[86/109] Killed   src/conformance.ts:63 equal(entry.observation, actual) -> true
+[87/109] Killed   src/conformance.ts:63 equal(entry.observation, actual) -> false
+[88/109] Killed   src/conformance.ts:66 candidates.size === 0 -> true
+[89/109] Killed   src/conformance.ts:66 candidates.size === 0 -> false
+[90/109] Killed   src/conformance.ts:66 candidates.size === 0 -> candidates.size !== 0
+[91/109] Killed   src/conformance.ts:66 { return { status: "mismatch", checkedSteps: steps.length, … -> {}
+[92/109] Killed   src/conformance.ts:80 [actual] -> []
+[93/109] Killed   src/conformance.ts:83 { await driver.dispose?.(); } -> {}
+[94/109] Killed   src/conformance.ts:104 [...steps] -> []
+[95/109] Killed   src/conformance.ts:106 !equal(trace.initial, initial) -> equal(trace.initial, initial)
+[96/109] Killed   src/conformance.ts:106 !equal(trace.initial, initial) -> true
+[97/109] Killed   src/conformance.ts:106 !equal(trace.initial, initial) -> false
+[98/109] Killed   src/conformance.ts:106 { return { status: "mismatch", checkedSteps: 0, actual: ini… -> {}
+[99/109] Killed   src/conformance.ts:111 [trace.initial] -> []
+[100/109] Killed   src/conformance.ts:116 { actual = await driver.step(step.action); steps.push({ act… -> {}
+[101/109] Killed   src/conformance.ts:119 !equal(step.observation, actual) -> equal(step.observation, actual)
+[102/109] Killed   src/conformance.ts:119 !equal(step.observation, actual) -> true
+[103/109] Killed   src/conformance.ts:119 !equal(step.observation, actual) -> false
+[104/109] Killed   src/conformance.ts:119 { return { status: "mismatch", checkedSteps: steps.length, … -> {}
+[105/109] Killed   src/conformance.ts:124 [step.observation] -> []
+[106/109] Killed   src/conformance.ts:133 [actual] -> []
+[107/109] Killed   src/conformance.ts:136 { await driver.dispose?.(); } -> {}
+[108/109] Killed   src/conformance.ts:153 "differential" -> ""
+[109/109] Killed   src/conformance.ts:154 { await reference.dispose?.(); } -> {}
+mutants: 242 (executed 109, reused 0)
+Killed 104 · Survived 5 · CompileError 133
+score: 95.4% [high]  (7.6s)
+
+not detected - tests run it, but none fails:
+  examples/durable-counter.ts:22:17  Survived   true -> false
+  examples/durable-counter.ts:30:12  Survived   running -> true
+  examples/durable-counter.ts:71:11  Survived   seen.clear(); -> ;
+  examples/durable-counter.ts:101:5  Survived   typeof value.amount === "number" -> true
+  examples/durable-counter.ts:114:3  Survived   typeof value.value === "number" -> true
+report written to /Users/mz/ghq/github.com/mizchi/modelt/.mutator/report

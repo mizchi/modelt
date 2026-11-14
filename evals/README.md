@@ -61,3 +61,5 @@ pnpm eval:replay evals/runs/my-run-confirmation
 [TLC直接比較の結果](iterations/0015-tlc-differential.md) は、境界値と seed 固定の小さい有限モデルを TLC / Rust native / Wasm へ渡す差分検査。`just tlc-diff` / `tlc-diff-replay` で判定・計数・返却値・反例を確認する。TLCを拒否対照、モデル評価エラー、実行基盤の失敗と分け、JVMごとに標準モジュールの展開先を隔離する。
 
 [速度比較の結果](iterations/0016-checker-benchmark.md) は、同じ11モデルを tla-ts / TLC / modelt native / Wasm で完全探索した測定。`checker-bench` / `checker-bench-replay` で起動込みとAPI再利用時を分け、source解析を含む時間・状態数・生成数・生ログを保存する。
+
+[常駐poolの評価](iterations/0017-parallel-safety.md) は、独立したTLA検査を1/2/4/8 workerへ配る。`parallel-safety-test` / `parallel-safety-eval` / `parallel-safety-replay` で、予算によるworker数の選択、費用順配置、batch化、結果と反例の一致を確認する。1モデル内部のBFS並列化とは区別する。

@@ -1,0 +1,79 @@
+{
+  "status": "complete",
+  "sourceVersion": "803bb50b961378b28e04820f642fdedebe82a897376d3d2a43eb27ab25b59769",
+  "commit": "e0b1cd4aad5e9d095ff24a780bbf862717b33faa",
+  "checks": [
+    {
+      "command": "pnpm build (before scheduling implementation)",
+      "exit": 2,
+      "path": "red.log",
+      "sha256": "d819ef79ad6d3fa145df0625d4ad3d2e8e809f7e2866b6745a0cf88439270e88"
+    },
+    {
+      "command": "just check",
+      "exit": 0,
+      "path": "check-final.log",
+      "sha256": "55343200c02d5987362e7b4cb8581355eff1b0c52477c7b23b526562b0d92326"
+    },
+    {
+      "command": "just parallel-safety-test",
+      "exit": 0,
+      "path": "parallel-test.log",
+      "sha256": "30307803b0f0a3ba088dbe3c8bbecb56f02abe18e82f36730fee176bbf5d306f"
+    },
+    {
+      "command": "just safety-test",
+      "exit": 0,
+      "path": "safety-test.log",
+      "sha256": "6b7c696182bb47241598a47d87ce2d691e562123bf9bcbc8babd556bd42c065f"
+    },
+    {
+      "command": "just browser",
+      "exit": 0,
+      "path": "browser-final.log",
+      "sha256": "0932b5a56e218a0bf5f53663ba5b274882dd1f36d5f830781de92f8bc6756582"
+    },
+    {
+      "command": "just runtime-build && just runtime-test",
+      "exit": 0,
+      "path": "runtime.log",
+      "sha256": "3b4a189225397ace257ab55591e38c815bb7846bc1b5980f538978a8f4341576"
+    },
+    {
+      "command": "just mutation",
+      "exit": 0,
+      "path": "mutation.log",
+      "sha256": "f586353ea046d41f0268f87969ec713b0930325c32e876ae6e038ecf127f824a"
+    },
+    {
+      "command": "just evaluate && just replay-evaluation",
+      "exit": 0,
+      "path": "evaluate.log",
+      "sha256": "f8844014a69439369c119c62d0426a0eec880a5b5b9e287127b12a102b438424"
+    },
+    {
+      "command": "just package",
+      "exit": 0,
+      "path": "package-final.log",
+      "sha256": "a5929a04638d864e0006f09760045375d239c7fb5504f9e6547a810090570312"
+    },
+    {
+      "command": "just parallel-safety-eval evals/runs/0017-parallel-safety",
+      "exit": 0,
+      "path": "benchmark.log",
+      "sha256": "66160190d477cf122dfe7b194f5be4f8b87ee9ab1cf72b3262e295d63e470d17"
+    },
+    {
+      "command": "just parallel-safety-replay evals/runs/0017-parallel-safety evals/runs/0017-parallel-replay",
+      "exit": 0,
+      "path": "replay.log",
+      "sha256": "7c8ce4a8ccbed5109ffcc3c8013abea66ca10ca97f1245ffd1f2c44f78c5fcd4"
+    },
+    {
+      "command": "pnpm check",
+      "exit": 0,
+      "path": "doc-check.log",
+      "sha256": "c73edf70be4abff0c15c19330a5a08ead0abe292e2259599188bed0c41a02d6f"
+    }
+  ]
+}

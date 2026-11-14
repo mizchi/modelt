@@ -1,0 +1,23 @@
+pnpm portable:build
+
+> @mizchi/modelt@0.1.0-alpha.0 portable:build /Users/mz/ghq/github.com/mizchi/modelt
+> cargo build --release --locked --manifest-path crates/modelt-core/Cargo.toml && cargo build --release --locked --lib --target wasm32-unknown-unknown --manifest-path crates/modelt-core/Cargo.toml
+
+    Finished `release` profile [optimized] target(s) in 0.10s
+    Finished `release` profile [optimized] target(s) in 0.01s
+pnpm test:browser
+
+> @mizchi/modelt@0.1.0-alpha.0 test:browser /Users/mz/ghq/github.com/mizchi/modelt
+> playwright test
+
+
+Running 2 tests using 2 workers
+
+(node:64212) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:64211) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  2 tests/scheduling-browser.spec.ts:104:1 › reuses two Wasm workers without cross-origin isolation (95ms)
+  ✓  1 tests/browser.spec.ts:87:1 › runs core, shrinking, TLA+ and Z3 Wasm in a real browser (275ms)
+
+  2 passed (947ms)
