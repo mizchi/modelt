@@ -1,5 +1,7 @@
 # 次の評価
 
+0009〜0011では [TLA safety の Rust backend](iterations/0009-rust-safety.md) を追加した。初回は大きいモデルで改善がなく、profile に基づく literal decode と状態の連続格納で、ring10万状態は同時測定の tla-ts に対し native 約2.9倍 / Wasm 約2.2倍となった。次は state の function / record / sequence と実仕様の対応範囲を広げる。generic TS Model の BFS や全 TLA+ の移植は未完了。
+
 0008では [非同期履歴と再利用・探索](iterations/0008-async-tuning.md) を検査した。未確定操作を含む履歴、反復利用向け handle、trace buffer、optional な preflight / 依存縮小を採用する。feedback は drop の検出が増えたが fifo が後退し、生成費用も増えたため実験のまま残す。次の確認用 seed は261以降とする。
 
 0005では [実バグ・有限モデル・縮小・ホスト・配布](iterations/0005-usable-core.md) を検査した。async-mutex の過去バグ1件で追加価値を確認した。batch の利用を採用し、既定 TS は維持する。次は別の実対象、Driver の作業時間、モデルを保持する handle / cache の費用を測る。

@@ -1,0 +1,8 @@
+{
+  "repository": "https://github.com/tlaplus/Examples",
+  "commit": "334c3983a2f44ac78fce89d1d20aa79ceb3e6987",
+  "path": "specifications/DieHard/DieHard.tla",
+  "sha256": "295495de6509d86a82b88757835b95e3f91fad8691d764ece4d98886dcf42b66",
+  "license": "MIT",
+  "licenseFile": "LICENSE.md"
+}

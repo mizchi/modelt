@@ -1,0 +1,17 @@
+{
+  "status": "complete",
+  "plan": "0009-rust-safety",
+  "sourceVersion": "ad8dcd22df63262762458a5018ead73ea5b4b6c73316cef45ff85b5ee3ca0375",
+  "files": [
+    {
+      "path": "manifest.json",
+      "sha256": "d40f5deba773ca45938991fe900ab8646cf52f591f264cc494b1fc12e806b852"
+    },
+    {
+      "path": "benchmark.json",
+      "sha256": "e601dede4085aa0679c33b90522c821d5eac2beef28586c621a7de005e3048b3"
+    }
+  ],
+  "cases": 6,
+  "samples": 168
+}

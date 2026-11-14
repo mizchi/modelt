@@ -8,7 +8,7 @@ TypeScript のモデルと実装を比較する試作ライブラリ。モデル
 
 観測付きの有限モデルを TS / Rust で共有する方法、反例の縮小、時計・通信・永続化の注入は [利用ガイド](docs/using-models.md) を参照。`just package` で solver を必須にしない npm/Cargo/Wasm archive と CLI を作り、別 consumer で検証できる。[公開手順と CI の分割](docs/releasing.md) は別途記載している。
 
-Node.js 24+、pnpm、just を使う。npm には未公開。
+Node.js 24+、pnpm、just を使う。リポジトリで Rust backend とブラウザの開発検査を実行する場合は Rust と `wasm32-unknown-unknown` target も必要。配布 Wasm の利用側で Rust をビルドする必要はない。npm には未公開。
 
 ```sh
 pnpm install --frozen-lockfile
@@ -16,6 +16,7 @@ just check
 just demo
 just mutation
 pnpm exec playwright install chromium
+rustup target add wasm32-unknown-unknown
 just browser
 ```
 
@@ -32,6 +33,8 @@ TS / Rust の共通コアは `./portable`。同じ Rust ソースを native と 
 [共通オラクルで3言語の実装を動かす評価](docs/shared-oracle.md) は `just cross-test`。同じ有限モデルと保存 trace を使い、正常版・故障版の TS / Rust / Go を直接操作して比較する。
 
 [非同期履歴とモデル再利用](docs/async-history.md) は `./history` と `loadFiniteModel`。未完了・結果不明の操作を含む照合、索引付き handle、依存関係を使う縮小と探索 feedback の評価は `just async-test` から実行できる。
+
+[TLA+ safety の Rust backend](docs/rust-safety.md) は `compileTlaSafety` と `checkSafety`。整数・真偽値の Init / Next / INVARIANT を IR に変換し、状態生成から BFS・反例復元まで native / Wasm 内で実行する。全 TLA+ 互換ではなく、対応外のモデルは既存の tla-ts を使う。
 
 ```ts
 import { checkConformance, checkModel, checkTrace } from "./src/index.js";

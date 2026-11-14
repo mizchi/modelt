@@ -1,4 +1,6 @@
 mod finite;
+mod safety;
+pub use safety::{SafetyBounds, SafetyProgram, SafetyResult};
 mod history;
 pub use history::{ConcurrentHistory, ConcurrentResult, ConcurrentStatus, HistoryEvent};
 mod host;
@@ -112,6 +114,10 @@ pub enum Response {
 #[derive(Clone, Debug, Serialize, Deserialize)]
 #[serde(tag = "kind", rename_all = "kebab-case", deny_unknown_fields)]
 pub enum Request {
+    CheckSafety {
+        program: SafetyProgram,
+        bounds: SafetyBounds,
+    },
     LoadModel {
         model: FiniteModel,
     },
@@ -173,6 +179,7 @@ pub struct Command {
 #[derive(Clone, Debug, Serialize, Deserialize)]
 #[serde(tag = "kind", rename_all = "kebab-case", deny_unknown_fields)]
 pub enum Message {
+    Safety { result: SafetyResult },
     Loaded { handle: u32 },
     Released,
     History { result: ConcurrentResult },
@@ -421,6 +428,9 @@ impl Engine {
             return Err(CoreError::protocol("Unsupported protocol version"));
         }
         match command.request {
+            Request::CheckSafety { program, bounds } => Ok(Message::Safety {
+                result: program.check(bounds)?,
+            }),
             Request::LoadModel { model } => {
                 let model = Arc::new(model.prepare()?);
                 let next = self

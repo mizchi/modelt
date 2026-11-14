@@ -1,0 +1,28 @@
+{
+  "status": "complete",
+  "plan": "0011-rust-safety-arena",
+  "sourceVersion": "059980d213156e5ad177e9b4092172a1a8d47f42bf6d6e6cfbe064cb4a6f2aac",
+  "commit": "4b56d51ebaf8696e3f0d7f89f1a771a10efd1fee",
+  "baselineCommit": "23c81f71d96ede35594757a5a93814019d1df18b",
+  "executables": [
+    {
+      "path": ".artifacts/safety-profile/release/modelt-core",
+      "sha256": "de068865b53a4d8ca80effeea84c43250eabc7890ed1ff0cba3e55b943506496"
+    },
+    {
+      "path": "crates/modelt-core/target/release/modelt-core",
+      "sha256": "569b15d793c88e471eebf4a46f74c3b150e38f4967d592b1007e5f6e6d328b4a"
+    }
+  ],
+  "comparison": "Full successful result equality including work, depth and witness; errors compare kind/code and preserve diagnostic text separately.",
+  "profile": {
+    "source": "0009-rust-safety",
+    "flags": "CARGO_PROFILE_RELEASE_STRIP=false RUSTFLAGS=-C force-frame-pointers=yes -C debuginfo=1",
+    "tool": "/usr/bin/sample",
+    "seconds": 2,
+    "requestedChecks": 1000,
+    "completion": "Profiling child terminated after sampling; not counted as correctness checks."
+  },
+  "checks": 35,
+  "tlcChecks": 30
+}

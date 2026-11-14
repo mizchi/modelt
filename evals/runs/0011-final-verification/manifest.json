@@ -1,0 +1,24 @@
+{
+  "status": "complete",
+  "plan": "0011-rust-safety-arena",
+  "sourceVersion": "7d2df9d7e6d9214489371d148a0aeafe696a1719035613e50b513794ce8d27de",
+  "commit": "fa2523c416aeaab696f17dca2eea9b15b0266270",
+  "sourcesVerified": 92,
+  "preservedInputs": 35,
+  "intentionalCorrections": [
+    "false-constant-invariant",
+    "false-constant-empty"
+  ],
+  "tlcChecks": 32,
+  "baselineProfileRun": "0011-safety-verification",
+  "executables": [
+    {
+      "path": ".artifacts/safety-profile/release/modelt-core",
+      "sha256": "de068865b53a4d8ca80effeea84c43250eabc7890ed1ff0cba3e55b943506496"
+    },
+    {
+      "path": "crates/modelt-core/target/release/modelt-core",
+      "sha256": "a89569a7101b556826b3d5350b3201728093b71c806335a9f00af77b37695db4"
+    }
+  ]
+}

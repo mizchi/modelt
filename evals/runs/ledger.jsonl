@@ -13,3 +13,10 @@
 {"runId":"0007-shared-confirmation","kind":"shared-oracle","phase":"confirmation","status":"complete","sourceVersion":"9877f526a4bd0eb8f221974e7f19bb34eb416b9a05bb92f1fe06831dea0e80a3","plan":"0007-shared-oracle"}
 {"runId":"0008-async-development","kind":"async-tuning","phase":"development","status":"complete","sourceVersion":"20de57252d473544011e9fc17ebf87be2c4bfcfd624f7e65f865518c913ca4df","plan":"0008-async-tuning"}
 {"runId":"0008-async-confirmation","kind":"async-tuning","phase":"confirmation","status":"complete","sourceVersion":"20de57252d473544011e9fc17ebf87be2c4bfcfd624f7e65f865518c913ca4df","plan":"0008-async-tuning"}
+{"runId":"0009-rust-safety","kind":"rust-safety","status":"complete","sourceVersion":"ad8dcd22df63262762458a5018ead73ea5b4b6c73316cef45ff85b5ee3ca0375","plan":"0009-rust-safety"}
+{"runId":"0009-tlc-comparison","kind":"tlc-reference","plan":"0009-rust-safety","status":"complete","sourceVersion":"ad8dcd22df63262762458a5018ead73ea5b4b6c73316cef45ff85b5ee3ca0375"}
+{"runId":"0010-rust-safety-literals","kind":"rust-safety","status":"complete","sourceVersion":"ff3badd7c6697dd2e8e666d0ee8ac4066d482b3ea8286bdf57b6e465290e19a7","plan":"0010-rust-safety-storage"}
+{"runId":"0011-rust-safety-arena","kind":"rust-safety","status":"complete","sourceVersion":"059980d213156e5ad177e9b4092172a1a8d47f42bf6d6e6cfbe064cb4a6f2aac","plan":"0011-rust-safety-arena"}
+{"runId":"0011-safety-verification","kind":"safety-regression","status":"complete","sourceVersion":"059980d213156e5ad177e9b4092172a1a8d47f42bf6d6e6cfbe064cb4a6f2aac","plan":"0011-rust-safety-arena"}
+{"runId":"0011-rust-safety-final","kind":"rust-safety","status":"complete","sourceVersion":"7d2df9d7e6d9214489371d148a0aeafe696a1719035613e50b513794ce8d27de","plan":"0011-rust-safety-arena"}
+{"runId":"0011-final-verification","kind":"safety-regression","status":"complete","sourceVersion":"7d2df9d7e6d9214489371d148a0aeafe696a1719035613e50b513794ce8d27de","plan":"0011-rust-safety-arena"}

@@ -15,7 +15,7 @@ test:
 mutation:
   pnpm test:mutation
 
-browser:
+browser: portable-build
   pnpm test:browser
 
 demo:
@@ -55,6 +55,22 @@ portable-eval:
 
 portable-replay run:
   pnpm portable:replay {{quote(run)}}
+
+safety-build: portable-build
+  pnpm build
+
+safety-test: safety-build
+  node --test dist/evals/rust-safety/contract-test.js
+
+safety-eval run: safety-build
+  node dist/evals/rust-safety/evaluate.js {{quote(run)}}
+
+safety-replay run:
+  pnpm build
+  node dist/evals/rust-safety/replay.js {{quote(run)}}
+
+safety-tlc java jar: safety-build
+  node dist/evals/rust-safety/tlc-check.js {{quote(java)}} {{quote(jar)}}
 
 go-test: portable-build
   pnpm build

@@ -21,3 +21,4 @@
 - Go adapter は `adapters/go` の独立 module。変更時は `just go-test` で CGO 無効・race・vet・TS fixture・別 module の consumer を検査する。照合の意味論は Wasm コアに任せる。
 - 3言語の実 SUT と共通 oracle の比較は `just cross-test`。実験時は `cross-eval` / `cross-replay` で保存したモデル・oracle・反例を使い、SUT の観測を期待値へ転用しない。
 - 非同期履歴・model handle・feedback は `just async-test` と `async-eval` / `async-replay` で検査する。unknown / cancel は未確定の marker、return / fail は確定結果。node budget 切れを linearizable にしない。
+- TLA safety backend は `just safety-test` と `safety-eval` / `safety-replay`。TLC の意味が曖昧なら `safety-tlc` で実行比較する。対応 fragment・empty・予算切れ・型エラーを全 TLA+ 互換や合格へ読み替えない。
