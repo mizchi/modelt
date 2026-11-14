@@ -160,3 +160,12 @@ checker-bench java jar archive run: safety-build
 
 checker-bench-replay java jar archive saved run: safety-build
   node dist/evals/checker-benchmark/replay.js {{quote(java)}} {{quote(jar)}} {{quote(archive)}} {{quote(saved)}} {{quote(run)}}
+
+parallel-safety-test: safety-build
+  node --test dist/evals/parallel-safety/contract-test.js
+
+parallel-safety-eval run: safety-build
+  node dist/evals/parallel-safety/evaluate.js {{quote(run)}}
+
+parallel-safety-replay saved run: safety-build
+  node dist/evals/parallel-safety/replay.js {{quote(saved)}} {{quote(run)}}

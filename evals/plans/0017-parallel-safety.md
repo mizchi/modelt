@@ -8,6 +8,8 @@
 
 各backend、worker数1/2/4/8、配置方式FIFO/費用順batchについて、pool起動・登録を別に測り、2回ウォームアップ後7回を測定する。経路順は反復ごとに巡回させ、測定を直列実行する。起動込みと再利用時を区別し、wall time、task/s、taskのqueue待ちp95、batch数、worker別task数、Node全体のRSS snapshot、native子プロセスのRSSを保存する。RSSは測定時点の観測値であり、OSによる強制上限や厳密なpeakとは扱わない。
 
+測定前の具体化: poolを同時に保持せず、worker数1/2/4/8の順に入れ替える。backend順はworker数ごとに反転し、同じpool内でworkloadと配置方式の順序を巡回する。queue待ちは各taskが親の待ち行列からbatchとして配布されるまでの時間とする。batch内の前のtaskを待つ時間はこの指標に含めない。native/WasmともworkerのTS層にIRを登録するが、Rust ABIのprogram handleは追加せず、各checkでは現行ABIのIR decode費用が残る。
+
 各モデルの費用はbackendごとにIRを使う逐次実行で2回warmup後5回の中央値を求める。メモリ見積りはworkerあたり固定128 MiBに、taskあたり32 MiB + scalar状態128 bytes / 複合値状態512 bytesを保守的な初期値として使う。これは保証値ではなく、観測RSSとの差も記録する。worker数別profileの費用倍率は校正batchの実行時間から求め、時間・メモリ予算で並列度が変わることを別の計画テストで確認する。未知profileはuncalibrated、全taskを推定予算に収められない場合はinsufficient-budgetとする。wall timeによる深さの自動変更やhard timeoutは追加しない。
 
 planを先にコミットし、実装・テストを通したsourceを測定前に固定する。source/binaryのdigest、commit、dirty paths、入力manifest、全サンプル、校正値、配置ログ、例外を新規runに保存する。replayでは保存した入力・計画・結果とdigestを検査し、両backendでtaskの判定・計数・反例を再現する。replayを独立の性能測定に加えない。1/2/4/8で速くなることを前提にせず、後退した条件もiterationに残す。

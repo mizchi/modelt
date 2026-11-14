@@ -9,6 +9,10 @@
     "node": ">=24"
   },
   "exports": {
+    "./scheduling": {
+      "types": "./dist/src/scheduling.d.ts",
+      "default": "./dist/src/scheduling.js"
+    },
     "./portable": {
       "types": "./dist/src/portable.d.ts",
       "default": "./dist/src/portable.js"
