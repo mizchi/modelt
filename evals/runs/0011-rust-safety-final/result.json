@@ -1,0 +1,17 @@
+{
+  "status": "complete",
+  "plan": "0011-rust-safety-arena",
+  "sourceVersion": "7d2df9d7e6d9214489371d148a0aeafe696a1719035613e50b513794ce8d27de",
+  "files": [
+    {
+      "path": "manifest.json",
+      "sha256": "17bab1955db87f69cec312de13d987058ab7d51fcd5607c30828e4e5bb74e0e0"
+    },
+    {
+      "path": "benchmark.json",
+      "sha256": "cdcd60c8d0139b2656b11e3f4f9b84d64d766dc7b9bed51f415b34f8a90414bc"
+    }
+  ],
+  "cases": 6,
+  "samples": 168
+}

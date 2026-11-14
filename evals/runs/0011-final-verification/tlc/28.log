@@ -1,0 +1,9 @@
+TLC2 Version 2.19 of 08 August 2024 (rev: 5a47802)
+Running breadth-first search Model-Checking with fp 89 and seed 6468973658543391119 with 1 worker on 10 cores with 7282MB heap and 64MB offheap memory [pid: 12555] (Mac OS X 26.6.2 aarch64, Eclipse Adoptium 21.0.13 x86_64, MSBDiskFPSet, DiskStateQueue).
+Parsing file /Users/mz/ghq/github.com/mizchi/modelt/.artifacts/tlc-compare-DtoRFn/Test.tla
+Parsing file /private/var/folders/_h/_rf455xj4h3_3g6z86pg244c0000gn/T/Naturals.tla
+Semantic processing of module Naturals
+Semantic processing of module Test
+Starting... (2026-11-14 15:31:45)
+Error: Assumption line 3, col 8 to line 3, col 12 of module Test is false.
+Finished in 00s at (2026-11-14 15:31:45)

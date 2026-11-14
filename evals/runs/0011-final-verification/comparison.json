@@ -1,0 +1,5034 @@
+{
+  "inputs": [
+    {
+      "name": "false-constant-invariant",
+      "source": "---- MODULE Test ----\nEXTENDS Naturals\nVARIABLE x\nInit == x = 0\nNext == UNCHANGED x\nSafe == FALSE\n====",
+      "expected": "error",
+      "config": "INIT Init\nNEXT Next\nINVARIANT Safe\n",
+      "bounds": {
+        "maxDepth": 100,
+        "maxStates": 1000,
+        "maxWork": 100000
+      },
+      "program": {
+        "format": "modelt.safety-program",
+        "version": 1,
+        "name": "Test",
+        "variables": [
+          "x"
+        ],
+        "initial": [
+          {
+            "name": "Init",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "0"
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "next": [
+          {
+            "name": "Next",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "read",
+                  "slot": 0,
+                  "next": false
+                }
+              }
+            ]
+          }
+        ],
+        "invariants": [
+          {
+            "name": "Safe",
+            "expression": {
+              "op": "literal",
+              "value": {
+                "type": "bool",
+                "value": false
+              }
+            }
+          }
+        ],
+        "assumptions": [],
+        "checkDeadlock": true
+      }
+    },
+    {
+      "name": "false-constant-empty",
+      "source": "---- MODULE Test ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {}\nNext == UNCHANGED x\nSafe == FALSE\n====",
+      "expected": "error",
+      "config": "INIT Init\nNEXT Next\nINVARIANT Safe\n",
+      "bounds": {
+        "maxDepth": 100,
+        "maxStates": 1000,
+        "maxWork": 100000
+      },
+      "program": {
+        "format": "modelt.safety-program",
+        "version": 1,
+        "name": "Test",
+        "variables": [
+          "x"
+        ],
+        "initial": [
+          {
+            "name": "Init",
+            "steps": [
+              {
+                "kind": "choose",
+                "slot": 0,
+                "domain": {
+                  "kind": "set",
+                  "values": []
+                }
+              }
+            ]
+          }
+        ],
+        "next": [
+          {
+            "name": "Next",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "read",
+                  "slot": 0,
+                  "next": false
+                }
+              }
+            ]
+          }
+        ],
+        "invariants": [
+          {
+            "name": "Safe",
+            "expression": {
+              "op": "literal",
+              "value": {
+                "type": "bool",
+                "value": false
+              }
+            }
+          }
+        ],
+        "assumptions": [],
+        "checkDeadlock": true
+      }
+    },
+    {
+      "name": "mixed-equality",
+      "source": "---- MODULE Test ----\nEXTENDS Naturals\nVARIABLE x\nInit == x = 0\nNext == UNCHANGED x\nSafe == x = TRUE\n====",
+      "expected": "error",
+      "config": "INIT Init\nNEXT Next\nINVARIANT Safe\n",
+      "bounds": {
+        "maxDepth": 100,
+        "maxStates": 1000,
+        "maxWork": 100000
+      },
+      "program": {
+        "format": "modelt.safety-program",
+        "version": 1,
+        "name": "Test",
+        "variables": [
+          "x"
+        ],
+        "initial": [
+          {
+            "name": "Init",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "0"
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "next": [
+          {
+            "name": "Next",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "read",
+                  "slot": 0,
+                  "next": false
+                }
+              }
+            ]
+          }
+        ],
+        "invariants": [
+          {
+            "name": "Safe",
+            "expression": {
+              "op": "eq",
+              "left": {
+                "op": "read",
+                "slot": 0,
+                "next": false
+              },
+              "right": {
+                "op": "literal",
+                "value": {
+                  "type": "bool",
+                  "value": true
+                }
+              }
+            }
+          }
+        ],
+        "assumptions": [],
+        "checkDeadlock": true
+      }
+    },
+    {
+      "name": "mixed-membership",
+      "source": "---- MODULE Test ----\nEXTENDS Naturals\nVARIABLE x\nInit == x = 0\nNext == UNCHANGED x\nSafe == x \\in BOOLEAN\n====",
+      "expected": "error",
+      "config": "INIT Init\nNEXT Next\nINVARIANT Safe\n",
+      "bounds": {
+        "maxDepth": 100,
+        "maxStates": 1000,
+        "maxWork": 100000
+      },
+      "program": {
+        "format": "modelt.safety-program",
+        "version": 1,
+        "name": "Test",
+        "variables": [
+          "x"
+        ],
+        "initial": [
+          {
+            "name": "Init",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "0"
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "next": [
+          {
+            "name": "Next",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "read",
+                  "slot": 0,
+                  "next": false
+                }
+              }
+            ]
+          }
+        ],
+        "invariants": [
+          {
+            "name": "Safe",
+            "expression": {
+              "op": "in",
+              "value": {
+                "op": "read",
+                "slot": 0,
+                "next": false
+              },
+              "domain": {
+                "kind": "set",
+                "values": [
+                  {
+                    "op": "literal",
+                    "value": {
+                      "type": "bool",
+                      "value": false
+                    }
+                  },
+                  {
+                    "op": "literal",
+                    "value": {
+                      "type": "bool",
+                      "value": true
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "assumptions": [],
+        "checkDeadlock": true
+      }
+    },
+    {
+      "name": "mixed-range-membership",
+      "source": "---- MODULE Test ----\nEXTENDS Naturals\nVARIABLE x\nInit == x = TRUE\nNext == UNCHANGED x\nSafe == x \\in 0..3\n====",
+      "expected": "error",
+      "config": "INIT Init\nNEXT Next\nINVARIANT Safe\n",
+      "bounds": {
+        "maxDepth": 100,
+        "maxStates": 1000,
+        "maxWork": 100000
+      },
+      "program": {
+        "format": "modelt.safety-program",
+        "version": 1,
+        "name": "Test",
+        "variables": [
+          "x"
+        ],
+        "initial": [
+          {
+            "name": "Init",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "literal",
+                  "value": {
+                    "type": "bool",
+                    "value": true
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "next": [
+          {
+            "name": "Next",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "read",
+                  "slot": 0,
+                  "next": false
+                }
+              }
+            ]
+          }
+        ],
+        "invariants": [
+          {
+            "name": "Safe",
+            "expression": {
+              "op": "in",
+              "value": {
+                "op": "read",
+                "slot": 0,
+                "next": false
+              },
+              "domain": {
+                "kind": "range",
+                "lower": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "0"
+                  }
+                },
+                "upper": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "3"
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "assumptions": [],
+        "checkDeadlock": true
+      }
+    },
+    {
+      "name": "mixed-assignment",
+      "source": "---- MODULE Test ----\nEXTENDS Naturals\nVARIABLE x\nInit == x = 0\nNext == /\\ x' = TRUE\n        /\\ x' = 1\nSafe == TRUE\n====",
+      "expected": "error",
+      "config": "INIT Init\nNEXT Next\nINVARIANT Safe\n",
+      "bounds": {
+        "maxDepth": 100,
+        "maxStates": 1000,
+        "maxWork": 100000
+      },
+      "program": {
+        "format": "modelt.safety-program",
+        "version": 1,
+        "name": "Test",
+        "variables": [
+          "x"
+        ],
+        "initial": [
+          {
+            "name": "Init",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "0"
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "next": [
+          {
+            "name": "Next",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "literal",
+                  "value": {
+                    "type": "bool",
+                    "value": true
+                  }
+                }
+              },
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "1"
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "invariants": [
+          {
+            "name": "Safe",
+            "expression": {
+              "op": "literal",
+              "value": {
+                "type": "bool",
+                "value": true
+              }
+            }
+          }
+        ],
+        "assumptions": [],
+        "checkDeadlock": true
+      }
+    },
+    {
+      "name": "strict-set-elements",
+      "source": "---- MODULE Test ----\nEXTENDS Naturals\nVARIABLE x\nInit == x = 0\nNext == UNCHANGED x\nSafe == x \\in {0, 2147483647 + 1}\n====",
+      "expected": "error",
+      "config": "INIT Init\nNEXT Next\nINVARIANT Safe\n",
+      "bounds": {
+        "maxDepth": 100,
+        "maxStates": 1000,
+        "maxWork": 100000
+      },
+      "program": {
+        "format": "modelt.safety-program",
+        "version": 1,
+        "name": "Test",
+        "variables": [
+          "x"
+        ],
+        "initial": [
+          {
+            "name": "Init",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "0"
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "next": [
+          {
+            "name": "Next",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "read",
+                  "slot": 0,
+                  "next": false
+                }
+              }
+            ]
+          }
+        ],
+        "invariants": [
+          {
+            "name": "Safe",
+            "expression": {
+              "op": "in",
+              "value": {
+                "op": "read",
+                "slot": 0,
+                "next": false
+              },
+              "domain": {
+                "kind": "set",
+                "values": [
+                  {
+                    "op": "literal",
+                    "value": {
+                      "type": "int",
+                      "value": "0"
+                    }
+                  },
+                  {
+                    "op": "add",
+                    "left": {
+                      "op": "literal",
+                      "value": {
+                        "type": "int",
+                        "value": "2147483647"
+                      }
+                    },
+                    "right": {
+                      "op": "literal",
+                      "value": {
+                        "type": "int",
+                        "value": "1"
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "assumptions": [],
+        "checkDeadlock": true
+      }
+    },
+    {
+      "name": "cycle",
+      "source": "---- MODULE Test ----\nEXTENDS Naturals\nVARIABLE x\nInit == x = 0\nNext == x' = IF x < 3 THEN x + 1 ELSE 0\nSafe == x \\in 0..3\n====",
+      "expected": "complete",
+      "config": "INIT Init\nNEXT Next\nINVARIANT Safe\n",
+      "bounds": {
+        "maxDepth": 100,
+        "maxStates": 1000,
+        "maxWork": 100000
+      },
+      "program": {
+        "format": "modelt.safety-program",
+        "version": 1,
+        "name": "Test",
+        "variables": [
+          "x"
+        ],
+        "initial": [
+          {
+            "name": "Init",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "0"
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "next": [
+          {
+            "name": "Next",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "if",
+                  "condition": {
+                    "op": "lt",
+                    "left": {
+                      "op": "read",
+                      "slot": 0,
+                      "next": false
+                    },
+                    "right": {
+                      "op": "literal",
+                      "value": {
+                        "type": "int",
+                        "value": "3"
+                      }
+                    }
+                  },
+                  "consequent": {
+                    "op": "add",
+                    "left": {
+                      "op": "read",
+                      "slot": 0,
+                      "next": false
+                    },
+                    "right": {
+                      "op": "literal",
+                      "value": {
+                        "type": "int",
+                        "value": "1"
+                      }
+                    }
+                  },
+                  "alternative": {
+                    "op": "literal",
+                    "value": {
+                      "type": "int",
+                      "value": "0"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "invariants": [
+          {
+            "name": "Safe",
+            "expression": {
+              "op": "in",
+              "value": {
+                "op": "read",
+                "slot": 0,
+                "next": false
+              },
+              "domain": {
+                "kind": "range",
+                "lower": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "0"
+                  }
+                },
+                "upper": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "3"
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "assumptions": [],
+        "checkDeadlock": true
+      }
+    },
+    {
+      "name": "violation",
+      "source": "---- MODULE Test ----\nEXTENDS Naturals\nVARIABLE x\nInit == x = 0\nNext == x' = x + 1\nSafe == x < 3\n====",
+      "expected": "invariant-violation",
+      "config": "INIT Init\nNEXT Next\nINVARIANT Safe\n",
+      "bounds": {
+        "maxDepth": 100,
+        "maxStates": 1000,
+        "maxWork": 100000
+      },
+      "program": {
+        "format": "modelt.safety-program",
+        "version": 1,
+        "name": "Test",
+        "variables": [
+          "x"
+        ],
+        "initial": [
+          {
+            "name": "Init",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "0"
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "next": [
+          {
+            "name": "Next",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "add",
+                  "left": {
+                    "op": "read",
+                    "slot": 0,
+                    "next": false
+                  },
+                  "right": {
+                    "op": "literal",
+                    "value": {
+                      "type": "int",
+                      "value": "1"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "invariants": [
+          {
+            "name": "Safe",
+            "expression": {
+              "op": "lt",
+              "left": {
+                "op": "read",
+                "slot": 0,
+                "next": false
+              },
+              "right": {
+                "op": "literal",
+                "value": {
+                  "type": "int",
+                  "value": "3"
+                }
+              }
+            }
+          }
+        ],
+        "assumptions": [],
+        "checkDeadlock": true
+      }
+    },
+    {
+      "name": "initial-violation",
+      "source": "---- MODULE Test ----\nEXTENDS Naturals\nVARIABLE x\nInit == x = 0\nNext == UNCHANGED x\nSafe == x > 0\n====",
+      "expected": "invariant-violation",
+      "config": "INIT Init\nNEXT Next\nINVARIANT Safe\n",
+      "bounds": {
+        "maxDepth": 100,
+        "maxStates": 1000,
+        "maxWork": 100000
+      },
+      "program": {
+        "format": "modelt.safety-program",
+        "version": 1,
+        "name": "Test",
+        "variables": [
+          "x"
+        ],
+        "initial": [
+          {
+            "name": "Init",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "0"
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "next": [
+          {
+            "name": "Next",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "read",
+                  "slot": 0,
+                  "next": false
+                }
+              }
+            ]
+          }
+        ],
+        "invariants": [
+          {
+            "name": "Safe",
+            "expression": {
+              "op": "gt",
+              "left": {
+                "op": "read",
+                "slot": 0,
+                "next": false
+              },
+              "right": {
+                "op": "literal",
+                "value": {
+                  "type": "int",
+                  "value": "0"
+                }
+              }
+            }
+          }
+        ],
+        "assumptions": [],
+        "checkDeadlock": true
+      }
+    },
+    {
+      "name": "deadlock",
+      "source": "---- MODULE Test ----\nEXTENDS Naturals\nVARIABLE x\nInit == x = 0\nNext == /\\ x < 2\n        /\\ x' = x + 1\nSafe == TRUE\n====",
+      "expected": "deadlock",
+      "config": "INIT Init\nNEXT Next\nINVARIANT Safe\n",
+      "bounds": {
+        "maxDepth": 100,
+        "maxStates": 1000,
+        "maxWork": 100000
+      },
+      "program": {
+        "format": "modelt.safety-program",
+        "version": 1,
+        "name": "Test",
+        "variables": [
+          "x"
+        ],
+        "initial": [
+          {
+            "name": "Init",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "0"
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "next": [
+          {
+            "name": "Next",
+            "steps": [
+              {
+                "kind": "guard",
+                "expression": {
+                  "op": "lt",
+                  "left": {
+                    "op": "read",
+                    "slot": 0,
+                    "next": false
+                  },
+                  "right": {
+                    "op": "literal",
+                    "value": {
+                      "type": "int",
+                      "value": "2"
+                    }
+                  }
+                }
+              },
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "add",
+                  "left": {
+                    "op": "read",
+                    "slot": 0,
+                    "next": false
+                  },
+                  "right": {
+                    "op": "literal",
+                    "value": {
+                      "type": "int",
+                      "value": "1"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "invariants": [
+          {
+            "name": "Safe",
+            "expression": {
+              "op": "literal",
+              "value": {
+                "type": "bool",
+                "value": true
+              }
+            }
+          }
+        ],
+        "assumptions": [],
+        "checkDeadlock": true
+      }
+    },
+    {
+      "name": "termination",
+      "source": "---- MODULE Test ----\nEXTENDS Naturals\nVARIABLE x\nInit == x = 0\nNext == /\\ FALSE\n        /\\ UNCHANGED x\nSafe == TRUE\n====",
+      "config": "INIT Init\nNEXT Next\nINVARIANT Safe\nCHECK_DEADLOCK FALSE",
+      "expected": "complete",
+      "bounds": {
+        "maxDepth": 100,
+        "maxStates": 1000,
+        "maxWork": 100000
+      },
+      "program": {
+        "format": "modelt.safety-program",
+        "version": 1,
+        "name": "Test",
+        "variables": [
+          "x"
+        ],
+        "initial": [
+          {
+            "name": "Init",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "0"
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "next": [
+          {
+            "name": "Next",
+            "steps": [
+              {
+                "kind": "guard",
+                "expression": {
+                  "op": "literal",
+                  "value": {
+                    "type": "bool",
+                    "value": false
+                  }
+                }
+              },
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "read",
+                  "slot": 0,
+                  "next": false
+                }
+              }
+            ]
+          }
+        ],
+        "invariants": [
+          {
+            "name": "Safe",
+            "expression": {
+              "op": "literal",
+              "value": {
+                "type": "bool",
+                "value": true
+              }
+            }
+          }
+        ],
+        "assumptions": [],
+        "checkDeadlock": false
+      }
+    },
+    {
+      "name": "self-loop",
+      "source": "---- MODULE Test ----\nEXTENDS Naturals\nVARIABLE x\nInit == x = 0\nNext == UNCHANGED x\nSafe == TRUE\n====",
+      "expected": "complete",
+      "config": "INIT Init\nNEXT Next\nINVARIANT Safe\n",
+      "bounds": {
+        "maxDepth": 100,
+        "maxStates": 1000,
+        "maxWork": 100000
+      },
+      "program": {
+        "format": "modelt.safety-program",
+        "version": 1,
+        "name": "Test",
+        "variables": [
+          "x"
+        ],
+        "initial": [
+          {
+            "name": "Init",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "0"
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "next": [
+          {
+            "name": "Next",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "read",
+                  "slot": 0,
+                  "next": false
+                }
+              }
+            ]
+          }
+        ],
+        "invariants": [
+          {
+            "name": "Safe",
+            "expression": {
+              "op": "literal",
+              "value": {
+                "type": "bool",
+                "value": true
+              }
+            }
+          }
+        ],
+        "assumptions": [],
+        "checkDeadlock": true
+      }
+    },
+    {
+      "name": "empty",
+      "source": "---- MODULE Test ----\nEXTENDS Naturals\nVARIABLE x\nInit == /\\ x \\in {}\nNext == UNCHANGED x\nSafe == TRUE\n====",
+      "expected": "empty",
+      "config": "INIT Init\nNEXT Next\nINVARIANT Safe\n",
+      "bounds": {
+        "maxDepth": 100,
+        "maxStates": 1000,
+        "maxWork": 100000
+      },
+      "program": {
+        "format": "modelt.safety-program",
+        "version": 1,
+        "name": "Test",
+        "variables": [
+          "x"
+        ],
+        "initial": [
+          {
+            "name": "Init",
+            "steps": [
+              {
+                "kind": "choose",
+                "slot": 0,
+                "domain": {
+                  "kind": "set",
+                  "values": []
+                }
+              }
+            ]
+          }
+        ],
+        "next": [
+          {
+            "name": "Next",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "read",
+                  "slot": 0,
+                  "next": false
+                }
+              }
+            ]
+          }
+        ],
+        "invariants": [
+          {
+            "name": "Safe",
+            "expression": {
+              "op": "literal",
+              "value": {
+                "type": "bool",
+                "value": true
+              }
+            }
+          }
+        ],
+        "assumptions": [],
+        "checkDeadlock": true
+      }
+    },
+    {
+      "name": "multiple-initial",
+      "source": "---- MODULE Test ----\nEXTENDS Naturals\nVARIABLES x, y\nInit == /\\ x \\in {2, 0, 2, 1}\n        /\\ y = x\nNext == UNCHANGED <<x, y>>\nSafe == x = y\n====",
+      "expected": "complete",
+      "config": "INIT Init\nNEXT Next\nINVARIANT Safe\n",
+      "bounds": {
+        "maxDepth": 100,
+        "maxStates": 1000,
+        "maxWork": 100000
+      },
+      "program": {
+        "format": "modelt.safety-program",
+        "version": 1,
+        "name": "Test",
+        "variables": [
+          "x",
+          "y"
+        ],
+        "initial": [
+          {
+            "name": "Init",
+            "steps": [
+              {
+                "kind": "choose",
+                "slot": 0,
+                "domain": {
+                  "kind": "set",
+                  "values": [
+                    {
+                      "op": "literal",
+                      "value": {
+                        "type": "int",
+                        "value": "2"
+                      }
+                    },
+                    {
+                      "op": "literal",
+                      "value": {
+                        "type": "int",
+                        "value": "0"
+                      }
+                    },
+                    {
+                      "op": "literal",
+                      "value": {
+                        "type": "int",
+                        "value": "2"
+                      }
+                    },
+                    {
+                      "op": "literal",
+                      "value": {
+                        "type": "int",
+                        "value": "1"
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "kind": "assign",
+                "slot": 1,
+                "value": {
+                  "op": "read",
+                  "slot": 0,
+                  "next": true
+                }
+              }
+            ]
+          }
+        ],
+        "next": [
+          {
+            "name": "Next",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "read",
+                  "slot": 0,
+                  "next": false
+                }
+              },
+              {
+                "kind": "assign",
+                "slot": 1,
+                "value": {
+                  "op": "read",
+                  "slot": 1,
+                  "next": false
+                }
+              }
+            ]
+          }
+        ],
+        "invariants": [
+          {
+            "name": "Safe",
+            "expression": {
+              "op": "eq",
+              "left": {
+                "op": "read",
+                "slot": 0,
+                "next": false
+              },
+              "right": {
+                "op": "read",
+                "slot": 1,
+                "next": false
+              }
+            }
+          }
+        ],
+        "assumptions": [],
+        "checkDeadlock": true
+      }
+    },
+    {
+      "name": "boolean",
+      "source": "---- MODULE Test ----\nEXTENDS Naturals\nVARIABLE flag\nInit == flag \\in BOOLEAN\nNext == flag' = ~flag\nSafe == flag \\in BOOLEAN\n====",
+      "expected": "complete",
+      "config": "INIT Init\nNEXT Next\nINVARIANT Safe\n",
+      "bounds": {
+        "maxDepth": 100,
+        "maxStates": 1000,
+        "maxWork": 100000
+      },
+      "program": {
+        "format": "modelt.safety-program",
+        "version": 1,
+        "name": "Test",
+        "variables": [
+          "flag"
+        ],
+        "initial": [
+          {
+            "name": "Init",
+            "steps": [
+              {
+                "kind": "choose",
+                "slot": 0,
+                "domain": {
+                  "kind": "set",
+                  "values": [
+                    {
+                      "op": "literal",
+                      "value": {
+                        "type": "bool",
+                        "value": false
+                      }
+                    },
+                    {
+                      "op": "literal",
+                      "value": {
+                        "type": "bool",
+                        "value": true
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ],
+        "next": [
+          {
+            "name": "Next",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "not",
+                  "argument": {
+                    "op": "read",
+                    "slot": 0,
+                    "next": false
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "invariants": [
+          {
+            "name": "Safe",
+            "expression": {
+              "op": "in",
+              "value": {
+                "op": "read",
+                "slot": 0,
+                "next": false
+              },
+              "domain": {
+                "kind": "set",
+                "values": [
+                  {
+                    "op": "literal",
+                    "value": {
+                      "type": "bool",
+                      "value": false
+                    }
+                  },
+                  {
+                    "op": "literal",
+                    "value": {
+                      "type": "bool",
+                      "value": true
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "assumptions": [],
+        "checkDeadlock": true
+      }
+    },
+    {
+      "name": "nondeterminism",
+      "source": "---- MODULE Test ----\nEXTENDS Naturals\nVARIABLE x\nInit == x = 0\nNext == x' \\in 0..2\nSafe == x <= 2\n====",
+      "expected": "complete",
+      "config": "INIT Init\nNEXT Next\nINVARIANT Safe\n",
+      "bounds": {
+        "maxDepth": 100,
+        "maxStates": 1000,
+        "maxWork": 100000
+      },
+      "program": {
+        "format": "modelt.safety-program",
+        "version": 1,
+        "name": "Test",
+        "variables": [
+          "x"
+        ],
+        "initial": [
+          {
+            "name": "Init",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "0"
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "next": [
+          {
+            "name": "Next",
+            "steps": [
+              {
+                "kind": "choose",
+                "slot": 0,
+                "domain": {
+                  "kind": "range",
+                  "lower": {
+                    "op": "literal",
+                    "value": {
+                      "type": "int",
+                      "value": "0"
+                    }
+                  },
+                  "upper": {
+                    "op": "literal",
+                    "value": {
+                      "type": "int",
+                      "value": "2"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "invariants": [
+          {
+            "name": "Safe",
+            "expression": {
+              "op": "le",
+              "left": {
+                "op": "read",
+                "slot": 0,
+                "next": false
+              },
+              "right": {
+                "op": "literal",
+                "value": {
+                  "type": "int",
+                  "value": "2"
+                }
+              }
+            }
+          }
+        ],
+        "assumptions": [],
+        "checkDeadlock": true
+      }
+    },
+    {
+      "name": "contradiction",
+      "source": "---- MODULE Test ----\nEXTENDS Naturals\nVARIABLE x\nInit == x = 0\nNext == /\\ x' = 1\n        /\\ x' = 2\nSafe == TRUE\n====",
+      "expected": "deadlock",
+      "config": "INIT Init\nNEXT Next\nINVARIANT Safe\n",
+      "bounds": {
+        "maxDepth": 100,
+        "maxStates": 1000,
+        "maxWork": 100000
+      },
+      "program": {
+        "format": "modelt.safety-program",
+        "version": 1,
+        "name": "Test",
+        "variables": [
+          "x"
+        ],
+        "initial": [
+          {
+            "name": "Init",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "0"
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "next": [
+          {
+            "name": "Next",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "1"
+                  }
+                }
+              },
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "2"
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "invariants": [
+          {
+            "name": "Safe",
+            "expression": {
+              "op": "literal",
+              "value": {
+                "type": "bool",
+                "value": true
+              }
+            }
+          }
+        ],
+        "assumptions": [],
+        "checkDeadlock": true
+      }
+    },
+    {
+      "name": "matching-assignment",
+      "source": "---- MODULE Test ----\nEXTENDS Naturals\nVARIABLE x\nInit == x = 0\nNext == /\\ x' = 1\n        /\\ x' = 1\nSafe == TRUE\n====",
+      "expected": "complete",
+      "config": "INIT Init\nNEXT Next\nINVARIANT Safe\n",
+      "bounds": {
+        "maxDepth": 100,
+        "maxStates": 1000,
+        "maxWork": 100000
+      },
+      "program": {
+        "format": "modelt.safety-program",
+        "version": 1,
+        "name": "Test",
+        "variables": [
+          "x"
+        ],
+        "initial": [
+          {
+            "name": "Init",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "0"
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "next": [
+          {
+            "name": "Next",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "1"
+                  }
+                }
+              },
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "1"
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "invariants": [
+          {
+            "name": "Safe",
+            "expression": {
+              "op": "literal",
+              "value": {
+                "type": "bool",
+                "value": true
+              }
+            }
+          }
+        ],
+        "assumptions": [],
+        "checkDeadlock": true
+      }
+    },
+    {
+      "name": "primed-read",
+      "source": "---- MODULE Test ----\nEXTENDS Naturals\nVARIABLES x, y\nInit == /\\ x = 0\n        /\\ y = 0\nNext == /\\ x' = 1\n        /\\ y' = x'\nSafe == x = y\n====",
+      "expected": "complete",
+      "config": "INIT Init\nNEXT Next\nINVARIANT Safe\n",
+      "bounds": {
+        "maxDepth": 100,
+        "maxStates": 1000,
+        "maxWork": 100000
+      },
+      "program": {
+        "format": "modelt.safety-program",
+        "version": 1,
+        "name": "Test",
+        "variables": [
+          "x",
+          "y"
+        ],
+        "initial": [
+          {
+            "name": "Init",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "0"
+                  }
+                }
+              },
+              {
+                "kind": "assign",
+                "slot": 1,
+                "value": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "0"
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "next": [
+          {
+            "name": "Next",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "1"
+                  }
+                }
+              },
+              {
+                "kind": "assign",
+                "slot": 1,
+                "value": {
+                  "op": "read",
+                  "slot": 0,
+                  "next": true
+                }
+              }
+            ]
+          }
+        ],
+        "invariants": [
+          {
+            "name": "Safe",
+            "expression": {
+              "op": "eq",
+              "left": {
+                "op": "read",
+                "slot": 0,
+                "next": false
+              },
+              "right": {
+                "op": "read",
+                "slot": 1,
+                "next": false
+              }
+            }
+          }
+        ],
+        "assumptions": [],
+        "checkDeadlock": true
+      }
+    },
+    {
+      "name": "incomplete",
+      "source": "---- MODULE Test ----\nEXTENDS Naturals\nVARIABLES x, y\nInit == /\\ x = 0\n        /\\ y = 0\nNext == x' = 1\nSafe == TRUE\n====",
+      "expected": "error",
+      "config": "INIT Init\nNEXT Next\nINVARIANT Safe\n",
+      "bounds": {
+        "maxDepth": 100,
+        "maxStates": 1000,
+        "maxWork": 100000
+      },
+      "program": {
+        "format": "modelt.safety-program",
+        "version": 1,
+        "name": "Test",
+        "variables": [
+          "x",
+          "y"
+        ],
+        "initial": [
+          {
+            "name": "Init",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "0"
+                  }
+                }
+              },
+              {
+                "kind": "assign",
+                "slot": 1,
+                "value": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "0"
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "next": [
+          {
+            "name": "Next",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "1"
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "invariants": [
+          {
+            "name": "Safe",
+            "expression": {
+              "op": "literal",
+              "value": {
+                "type": "bool",
+                "value": true
+              }
+            }
+          }
+        ],
+        "assumptions": [],
+        "checkDeadlock": true
+      }
+    },
+    {
+      "name": "unassigned-read",
+      "source": "---- MODULE Test ----\nEXTENDS Naturals\nVARIABLES x, y\nInit == /\\ x = 0\n        /\\ y = 0\nNext == /\\ y' = x'\n        /\\ x' = 1\nSafe == TRUE\n====",
+      "expected": "error",
+      "config": "INIT Init\nNEXT Next\nINVARIANT Safe\n",
+      "bounds": {
+        "maxDepth": 100,
+        "maxStates": 1000,
+        "maxWork": 100000
+      },
+      "program": {
+        "format": "modelt.safety-program",
+        "version": 1,
+        "name": "Test",
+        "variables": [
+          "x",
+          "y"
+        ],
+        "initial": [
+          {
+            "name": "Init",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "0"
+                  }
+                }
+              },
+              {
+                "kind": "assign",
+                "slot": 1,
+                "value": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "0"
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "next": [
+          {
+            "name": "Next",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 1,
+                "value": {
+                  "op": "read",
+                  "slot": 0,
+                  "next": true
+                }
+              },
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "1"
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "invariants": [
+          {
+            "name": "Safe",
+            "expression": {
+              "op": "literal",
+              "value": {
+                "type": "bool",
+                "value": true
+              }
+            }
+          }
+        ],
+        "assumptions": [],
+        "checkDeadlock": true
+      }
+    },
+    {
+      "name": "overflow",
+      "source": "---- MODULE Test ----\nEXTENDS Naturals\nVARIABLE x\nInit == x = 2147483647\nNext == x' = x + 1\nSafe == TRUE\n====",
+      "expected": "error",
+      "config": "INIT Init\nNEXT Next\nINVARIANT Safe\n",
+      "bounds": {
+        "maxDepth": 100,
+        "maxStates": 1000,
+        "maxWork": 100000
+      },
+      "program": {
+        "format": "modelt.safety-program",
+        "version": 1,
+        "name": "Test",
+        "variables": [
+          "x"
+        ],
+        "initial": [
+          {
+            "name": "Init",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "2147483647"
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "next": [
+          {
+            "name": "Next",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "add",
+                  "left": {
+                    "op": "read",
+                    "slot": 0,
+                    "next": false
+                  },
+                  "right": {
+                    "op": "literal",
+                    "value": {
+                      "type": "int",
+                      "value": "1"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "invariants": [
+          {
+            "name": "Safe",
+            "expression": {
+              "op": "literal",
+              "value": {
+                "type": "bool",
+                "value": true
+              }
+            }
+          }
+        ],
+        "assumptions": [],
+        "checkDeadlock": true
+      }
+    },
+    {
+      "name": "type-error",
+      "source": "---- MODULE Test ----\nEXTENDS Naturals\nVARIABLE x\nInit == x = TRUE\nNext == x' = x + 1\nSafe == TRUE\n====",
+      "expected": "error",
+      "config": "INIT Init\nNEXT Next\nINVARIANT Safe\n",
+      "bounds": {
+        "maxDepth": 100,
+        "maxStates": 1000,
+        "maxWork": 100000
+      },
+      "program": {
+        "format": "modelt.safety-program",
+        "version": 1,
+        "name": "Test",
+        "variables": [
+          "x"
+        ],
+        "initial": [
+          {
+            "name": "Init",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "literal",
+                  "value": {
+                    "type": "bool",
+                    "value": true
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "next": [
+          {
+            "name": "Next",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "add",
+                  "left": {
+                    "op": "read",
+                    "slot": 0,
+                    "next": false
+                  },
+                  "right": {
+                    "op": "literal",
+                    "value": {
+                      "type": "int",
+                      "value": "1"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "invariants": [
+          {
+            "name": "Safe",
+            "expression": {
+              "op": "literal",
+              "value": {
+                "type": "bool",
+                "value": true
+              }
+            }
+          }
+        ],
+        "assumptions": [],
+        "checkDeadlock": true
+      }
+    },
+    {
+      "name": "nonboolean-invariant",
+      "source": "---- MODULE Test ----\nEXTENDS Naturals\nVARIABLE x\nInit == x = 0\nNext == UNCHANGED x\nSafe == x + 1\n====",
+      "expected": "error",
+      "config": "INIT Init\nNEXT Next\nINVARIANT Safe\n",
+      "bounds": {
+        "maxDepth": 100,
+        "maxStates": 1000,
+        "maxWork": 100000
+      },
+      "program": {
+        "format": "modelt.safety-program",
+        "version": 1,
+        "name": "Test",
+        "variables": [
+          "x"
+        ],
+        "initial": [
+          {
+            "name": "Init",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "0"
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "next": [
+          {
+            "name": "Next",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "read",
+                  "slot": 0,
+                  "next": false
+                }
+              }
+            ]
+          }
+        ],
+        "invariants": [
+          {
+            "name": "Safe",
+            "expression": {
+              "op": "add",
+              "left": {
+                "op": "read",
+                "slot": 0,
+                "next": false
+              },
+              "right": {
+                "op": "literal",
+                "value": {
+                  "type": "int",
+                  "value": "1"
+                }
+              }
+            }
+          }
+        ],
+        "assumptions": [],
+        "checkDeadlock": true
+      }
+    },
+    {
+      "name": "lazy-if",
+      "source": "---- MODULE Test ----\nEXTENDS Naturals\nVARIABLE x\nInit == x = 0\nNext == x' = IF TRUE THEN 0 ELSE 2147483647 + 1\nSafe == TRUE\n====",
+      "expected": "complete",
+      "config": "INIT Init\nNEXT Next\nINVARIANT Safe\n",
+      "bounds": {
+        "maxDepth": 100,
+        "maxStates": 1000,
+        "maxWork": 100000
+      },
+      "program": {
+        "format": "modelt.safety-program",
+        "version": 1,
+        "name": "Test",
+        "variables": [
+          "x"
+        ],
+        "initial": [
+          {
+            "name": "Init",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "0"
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "next": [
+          {
+            "name": "Next",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "if",
+                  "condition": {
+                    "op": "literal",
+                    "value": {
+                      "type": "bool",
+                      "value": true
+                    }
+                  },
+                  "consequent": {
+                    "op": "literal",
+                    "value": {
+                      "type": "int",
+                      "value": "0"
+                    }
+                  },
+                  "alternative": {
+                    "op": "add",
+                    "left": {
+                      "op": "literal",
+                      "value": {
+                        "type": "int",
+                        "value": "2147483647"
+                      }
+                    },
+                    "right": {
+                      "op": "literal",
+                      "value": {
+                        "type": "int",
+                        "value": "1"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "invariants": [
+          {
+            "name": "Safe",
+            "expression": {
+              "op": "literal",
+              "value": {
+                "type": "bool",
+                "value": true
+              }
+            }
+          }
+        ],
+        "assumptions": [],
+        "checkDeadlock": true
+      }
+    },
+    {
+      "name": "action-if",
+      "source": "---- MODULE Test ----\nEXTENDS Naturals\nVARIABLE x\nInit == x = 0\nNext == IF x = 0 THEN x' = 1 ELSE x' = 0\nSafe == x <= 1\n====",
+      "expected": "complete",
+      "config": "INIT Init\nNEXT Next\nINVARIANT Safe\n",
+      "bounds": {
+        "maxDepth": 100,
+        "maxStates": 1000,
+        "maxWork": 100000
+      },
+      "program": {
+        "format": "modelt.safety-program",
+        "version": 1,
+        "name": "Test",
+        "variables": [
+          "x"
+        ],
+        "initial": [
+          {
+            "name": "Init",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "0"
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "next": [
+          {
+            "name": "Next",
+            "steps": [
+              {
+                "kind": "guard",
+                "expression": {
+                  "op": "eq",
+                  "left": {
+                    "op": "read",
+                    "slot": 0,
+                    "next": false
+                  },
+                  "right": {
+                    "op": "literal",
+                    "value": {
+                      "type": "int",
+                      "value": "0"
+                    }
+                  }
+                }
+              },
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "1"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "Next",
+            "steps": [
+              {
+                "kind": "guard",
+                "expression": {
+                  "op": "not",
+                  "argument": {
+                    "op": "eq",
+                    "left": {
+                      "op": "read",
+                      "slot": 0,
+                      "next": false
+                    },
+                    "right": {
+                      "op": "literal",
+                      "value": {
+                        "type": "int",
+                        "value": "0"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "0"
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "invariants": [
+          {
+            "name": "Safe",
+            "expression": {
+              "op": "le",
+              "left": {
+                "op": "read",
+                "slot": 0,
+                "next": false
+              },
+              "right": {
+                "op": "literal",
+                "value": {
+                  "type": "int",
+                  "value": "1"
+                }
+              }
+            }
+          }
+        ],
+        "assumptions": [],
+        "checkDeadlock": true
+      }
+    },
+    {
+      "name": "scoped-parameters",
+      "source": "---- MODULE Test ----\nEXTENDS Naturals\nVARIABLES x, y\nG(z) == y + z\nF(parameter) == G(parameter)\nInit == /\\ x = 0\n        /\\ y = 2\nNext == /\\ x' = F(1)\n        /\\ UNCHANGED y\nSafe == x = 0 \\/ x = 3\n====",
+      "expected": "complete",
+      "config": "INIT Init\nNEXT Next\nINVARIANT Safe\n",
+      "bounds": {
+        "maxDepth": 100,
+        "maxStates": 1000,
+        "maxWork": 100000
+      },
+      "program": {
+        "format": "modelt.safety-program",
+        "version": 1,
+        "name": "Test",
+        "variables": [
+          "x",
+          "y"
+        ],
+        "initial": [
+          {
+            "name": "Init",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "0"
+                  }
+                }
+              },
+              {
+                "kind": "assign",
+                "slot": 1,
+                "value": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "2"
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "next": [
+          {
+            "name": "Next",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "add",
+                  "left": {
+                    "op": "read",
+                    "slot": 1,
+                    "next": false
+                  },
+                  "right": {
+                    "op": "literal",
+                    "value": {
+                      "type": "int",
+                      "value": "1"
+                    }
+                  }
+                }
+              },
+              {
+                "kind": "assign",
+                "slot": 1,
+                "value": {
+                  "op": "read",
+                  "slot": 1,
+                  "next": false
+                }
+              }
+            ]
+          }
+        ],
+        "invariants": [
+          {
+            "name": "Safe",
+            "expression": {
+              "op": "or",
+              "left": {
+                "op": "or",
+                "left": {
+                  "op": "literal",
+                  "value": {
+                    "type": "bool",
+                    "value": false
+                  }
+                },
+                "right": {
+                  "op": "eq",
+                  "left": {
+                    "op": "read",
+                    "slot": 0,
+                    "next": false
+                  },
+                  "right": {
+                    "op": "literal",
+                    "value": {
+                      "type": "int",
+                      "value": "0"
+                    }
+                  }
+                }
+              },
+              "right": {
+                "op": "eq",
+                "left": {
+                  "op": "read",
+                  "slot": 0,
+                  "next": false
+                },
+                "right": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "3"
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "assumptions": [],
+        "checkDeadlock": true
+      }
+    },
+    {
+      "name": "assumption",
+      "source": "---- MODULE Test ----\nEXTENDS Naturals\nASSUME FALSE\nVARIABLE x\nInit == x = 0\nNext == UNCHANGED x\nSafe == TRUE\n====",
+      "expected": "assumption-violation",
+      "config": "INIT Init\nNEXT Next\nINVARIANT Safe\n",
+      "bounds": {
+        "maxDepth": 100,
+        "maxStates": 1000,
+        "maxWork": 100000
+      },
+      "program": {
+        "format": "modelt.safety-program",
+        "version": 1,
+        "name": "Test",
+        "variables": [
+          "x"
+        ],
+        "initial": [
+          {
+            "name": "Init",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "0"
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "next": [
+          {
+            "name": "Next",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "read",
+                  "slot": 0,
+                  "next": false
+                }
+              }
+            ]
+          }
+        ],
+        "invariants": [
+          {
+            "name": "Safe",
+            "expression": {
+              "op": "literal",
+              "value": {
+                "type": "bool",
+                "value": true
+              }
+            }
+          }
+        ],
+        "assumptions": [
+          {
+            "name": "ASSUME 1",
+            "expression": {
+              "op": "literal",
+              "value": {
+                "type": "bool",
+                "value": false
+              }
+            }
+          }
+        ],
+        "checkDeadlock": true
+      }
+    },
+    {
+      "name": "constants",
+      "source": "---- MODULE Test ----\nEXTENDS Naturals\nCONSTANT N\nVARIABLE x\nInit == x = 0\nNext == x' = IF x < N THEN x + 1 ELSE 0\nSafe == x <= N\n====",
+      "config": "INIT Init\nNEXT Next\nINVARIANT Safe\nCONSTANT N = 3",
+      "expected": "complete",
+      "bounds": {
+        "maxDepth": 100,
+        "maxStates": 1000,
+        "maxWork": 100000
+      },
+      "program": {
+        "format": "modelt.safety-program",
+        "version": 1,
+        "name": "Test",
+        "variables": [
+          "x"
+        ],
+        "initial": [
+          {
+            "name": "Init",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "0"
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "next": [
+          {
+            "name": "Next",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "if",
+                  "condition": {
+                    "op": "lt",
+                    "left": {
+                      "op": "read",
+                      "slot": 0,
+                      "next": false
+                    },
+                    "right": {
+                      "op": "literal",
+                      "value": {
+                        "type": "int",
+                        "value": "3"
+                      }
+                    }
+                  },
+                  "consequent": {
+                    "op": "add",
+                    "left": {
+                      "op": "read",
+                      "slot": 0,
+                      "next": false
+                    },
+                    "right": {
+                      "op": "literal",
+                      "value": {
+                        "type": "int",
+                        "value": "1"
+                      }
+                    }
+                  },
+                  "alternative": {
+                    "op": "literal",
+                    "value": {
+                      "type": "int",
+                      "value": "0"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "invariants": [
+          {
+            "name": "Safe",
+            "expression": {
+              "op": "le",
+              "left": {
+                "op": "read",
+                "slot": 0,
+                "next": false
+              },
+              "right": {
+                "op": "literal",
+                "value": {
+                  "type": "int",
+                  "value": "3"
+                }
+              }
+            }
+          }
+        ],
+        "assumptions": [],
+        "checkDeadlock": true
+      }
+    },
+    {
+      "name": "depth-cut",
+      "source": "---- MODULE Test ----\nEXTENDS Naturals\nVARIABLE x\nInit == x = 0\nNext == x' = IF x < 3 THEN x + 1 ELSE 0\nSafe == TRUE\n====",
+      "expected": "bounded",
+      "bounds": {
+        "maxDepth": 2,
+        "maxStates": 1000,
+        "maxWork": 100000
+      },
+      "config": "INIT Init\nNEXT Next\nINVARIANT Safe\n",
+      "program": {
+        "format": "modelt.safety-program",
+        "version": 1,
+        "name": "Test",
+        "variables": [
+          "x"
+        ],
+        "initial": [
+          {
+            "name": "Init",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "0"
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "next": [
+          {
+            "name": "Next",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "if",
+                  "condition": {
+                    "op": "lt",
+                    "left": {
+                      "op": "read",
+                      "slot": 0,
+                      "next": false
+                    },
+                    "right": {
+                      "op": "literal",
+                      "value": {
+                        "type": "int",
+                        "value": "3"
+                      }
+                    }
+                  },
+                  "consequent": {
+                    "op": "add",
+                    "left": {
+                      "op": "read",
+                      "slot": 0,
+                      "next": false
+                    },
+                    "right": {
+                      "op": "literal",
+                      "value": {
+                        "type": "int",
+                        "value": "1"
+                      }
+                    }
+                  },
+                  "alternative": {
+                    "op": "literal",
+                    "value": {
+                      "type": "int",
+                      "value": "0"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "invariants": [
+          {
+            "name": "Safe",
+            "expression": {
+              "op": "literal",
+              "value": {
+                "type": "bool",
+                "value": true
+              }
+            }
+          }
+        ],
+        "assumptions": [],
+        "checkDeadlock": true
+      }
+    },
+    {
+      "name": "closed-at-depth",
+      "source": "---- MODULE Test ----\nEXTENDS Naturals\nVARIABLE x\nInit == x = 0\nNext == x' = IF x < 3 THEN x + 1 ELSE 0\nSafe == TRUE\n====",
+      "expected": "complete",
+      "bounds": {
+        "maxDepth": 3,
+        "maxStates": 1000,
+        "maxWork": 100000
+      },
+      "config": "INIT Init\nNEXT Next\nINVARIANT Safe\n",
+      "program": {
+        "format": "modelt.safety-program",
+        "version": 1,
+        "name": "Test",
+        "variables": [
+          "x"
+        ],
+        "initial": [
+          {
+            "name": "Init",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "0"
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "next": [
+          {
+            "name": "Next",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "if",
+                  "condition": {
+                    "op": "lt",
+                    "left": {
+                      "op": "read",
+                      "slot": 0,
+                      "next": false
+                    },
+                    "right": {
+                      "op": "literal",
+                      "value": {
+                        "type": "int",
+                        "value": "3"
+                      }
+                    }
+                  },
+                  "consequent": {
+                    "op": "add",
+                    "left": {
+                      "op": "read",
+                      "slot": 0,
+                      "next": false
+                    },
+                    "right": {
+                      "op": "literal",
+                      "value": {
+                        "type": "int",
+                        "value": "1"
+                      }
+                    }
+                  },
+                  "alternative": {
+                    "op": "literal",
+                    "value": {
+                      "type": "int",
+                      "value": "0"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "invariants": [
+          {
+            "name": "Safe",
+            "expression": {
+              "op": "literal",
+              "value": {
+                "type": "bool",
+                "value": true
+              }
+            }
+          }
+        ],
+        "assumptions": [],
+        "checkDeadlock": true
+      }
+    },
+    {
+      "name": "state-cut",
+      "source": "---- MODULE Test ----\nEXTENDS Naturals\nVARIABLE x\nInit == x = 0\nNext == x' = IF x < 3 THEN x + 1 ELSE 0\nSafe == TRUE\n====",
+      "expected": "bounded",
+      "bounds": {
+        "maxDepth": 100,
+        "maxStates": 3,
+        "maxWork": 100000
+      },
+      "config": "INIT Init\nNEXT Next\nINVARIANT Safe\n",
+      "program": {
+        "format": "modelt.safety-program",
+        "version": 1,
+        "name": "Test",
+        "variables": [
+          "x"
+        ],
+        "initial": [
+          {
+            "name": "Init",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "0"
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "next": [
+          {
+            "name": "Next",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "if",
+                  "condition": {
+                    "op": "lt",
+                    "left": {
+                      "op": "read",
+                      "slot": 0,
+                      "next": false
+                    },
+                    "right": {
+                      "op": "literal",
+                      "value": {
+                        "type": "int",
+                        "value": "3"
+                      }
+                    }
+                  },
+                  "consequent": {
+                    "op": "add",
+                    "left": {
+                      "op": "read",
+                      "slot": 0,
+                      "next": false
+                    },
+                    "right": {
+                      "op": "literal",
+                      "value": {
+                        "type": "int",
+                        "value": "1"
+                      }
+                    }
+                  },
+                  "alternative": {
+                    "op": "literal",
+                    "value": {
+                      "type": "int",
+                      "value": "0"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "invariants": [
+          {
+            "name": "Safe",
+            "expression": {
+              "op": "literal",
+              "value": {
+                "type": "bool",
+                "value": true
+              }
+            }
+          }
+        ],
+        "assumptions": [],
+        "checkDeadlock": true
+      }
+    },
+    {
+      "name": "work-cut",
+      "source": "---- MODULE Test ----\nEXTENDS Naturals\nVARIABLE x\nInit == x = 0\nNext == x' = x + 1\nSafe == TRUE\n====",
+      "expected": "bounded",
+      "bounds": {
+        "maxDepth": 100,
+        "maxStates": 1000,
+        "maxWork": 1
+      },
+      "config": "INIT Init\nNEXT Next\nINVARIANT Safe\n",
+      "program": {
+        "format": "modelt.safety-program",
+        "version": 1,
+        "name": "Test",
+        "variables": [
+          "x"
+        ],
+        "initial": [
+          {
+            "name": "Init",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "0"
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "next": [
+          {
+            "name": "Next",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "add",
+                  "left": {
+                    "op": "read",
+                    "slot": 0,
+                    "next": false
+                  },
+                  "right": {
+                    "op": "literal",
+                    "value": {
+                      "type": "int",
+                      "value": "1"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "invariants": [
+          {
+            "name": "Safe",
+            "expression": {
+              "op": "literal",
+              "value": {
+                "type": "bool",
+                "value": true
+              }
+            }
+          }
+        ],
+        "assumptions": [],
+        "checkDeadlock": true
+      }
+    },
+    {
+      "name": "huge-choice-budget",
+      "source": "---- MODULE Test ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in 0..2147483647\nNext == UNCHANGED x\nSafe == TRUE\n====",
+      "expected": "bounded",
+      "bounds": {
+        "maxDepth": 100,
+        "maxStates": 1000,
+        "maxWork": 8
+      },
+      "config": "INIT Init\nNEXT Next\nINVARIANT Safe\n",
+      "program": {
+        "format": "modelt.safety-program",
+        "version": 1,
+        "name": "Test",
+        "variables": [
+          "x"
+        ],
+        "initial": [
+          {
+            "name": "Init",
+            "steps": [
+              {
+                "kind": "choose",
+                "slot": 0,
+                "domain": {
+                  "kind": "range",
+                  "lower": {
+                    "op": "literal",
+                    "value": {
+                      "type": "int",
+                      "value": "0"
+                    }
+                  },
+                  "upper": {
+                    "op": "literal",
+                    "value": {
+                      "type": "int",
+                      "value": "2147483647"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "next": [
+          {
+            "name": "Next",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "read",
+                  "slot": 0,
+                  "next": false
+                }
+              }
+            ]
+          }
+        ],
+        "invariants": [
+          {
+            "name": "Safe",
+            "expression": {
+              "op": "literal",
+              "value": {
+                "type": "bool",
+                "value": true
+              }
+            }
+          }
+        ],
+        "assumptions": [],
+        "checkDeadlock": true
+      }
+    },
+    {
+      "name": "DieHard TypeOK",
+      "source": "------------------------------ MODULE DieHard ------------------------------- \n(***************************************************************************)\n(* In the movie Die Hard 3, the heroes must obtain exactly 4 gallons of     *)\n(* water using a 5 gallon jug, a 3 gallon jug, and a water faucet.  Our    *)\n(* goal: to get TLC to solve the problem for us.                           *)\n(*                                                                         *)\n(* First, we write a spec that describes all allowable behaviors of our    *)\n(* heroes.                                                                  *)\n(***************************************************************************)\nEXTENDS Naturals\n  (*************************************************************************)\n  (* This statement imports the definitions of the ordinary operators on   *)\n  (* natural numbers, such as +.                                           *)\n  (*************************************************************************)\n  \n(***************************************************************************)\n(* We next declare the specification's variables.                          *)\n(***************************************************************************)\nVARIABLES big,   \\* The number of gallons of water in the 5 gallon jug.\n          small  \\* The number of gallons of water in the 3 gallon jug.\n\n\n(***************************************************************************)\n(* We now define TypeOK to be the type invariant, asserting that the value *)\n(* of each variable is an element of the appropriate set.  A type          *)\n(* invariant like this is not part of the specification, but it's          *)\n(* generally a good idea to include it because it helps the reader         *)\n(* understand the spec.  Moreover, having TLC check that it is an          *)\n(* invariant of the spec catches errors that, in a typed language, are     *)\n(* caught by type checking.                                                *)\n(*                                                                         *)\n(* Note: TLA+ uses the convention that a list of formulas bulleted by /\\   *)\n(* or \\/ denotes the conjunction or disjunction of those formulas.         *)\n(* Indentation of subitems is significant, allowing one to eliminate lots  *)\n(* of parentheses.  This makes a large formula much easier to read.        *)\n(* However, it does mean that you have to be careful with your indentation.*)\n(***************************************************************************)\nTypeOK == /\\ small \\in 0..3 \n          /\\ big   \\in 0..5\n\n\n(***************************************************************************)\n(* Now we define of the initial predicate, that specifies the initial      *)\n(* values of the variables.  I like to name this predicate Init, but the   *)\n(* name doesn't matter.                                                    *)\n(***************************************************************************)\nInit == /\\ big = 0 \n        /\\ small = 0\n\n(***************************************************************************)\n(* Now we define the actions that our hero can perform.  There are three   *)\n(* things they can do:                                                     *)\n(*                                                                         *)\n(*   - Pour water from the faucet into a jug.                              *)\n(*                                                                         *)\n(*   - Pour water from a jug onto the ground.                              *)\n(*                                                                         *)\n(*   - Pour water from one jug into another                                *)\n(*                                                                         *)\n(* We now consider the first two.  Since the jugs are not calibrated,      *)\n(* partially filling or partially emptying a jug accomplishes nothing.     *)\n(* So, the first two possibilities yield the following four possible       *)\n(* actions.                                                                *)\n(***************************************************************************)\nFillSmallJug  == /\\ small' = 3 \n                 /\\ big' = big\n\nFillBigJug    == /\\ big' = 5 \n                 /\\ small' = small\n\nEmptySmallJug == /\\ small' = 0 \n                 /\\ big' = big\n\nEmptyBigJug   == /\\ big' = 0 \n                 /\\ small' = small\n\n(***************************************************************************)\n(* We now consider pouring water from one jug into another.  Again, since  *)\n(* the jugs are not calibrated, when pouring from jug A to jug B, it      *)\n(* makes sense only to either fill B or empty A. And there's no point in   *)\n(* emptying A if this will cause B to overflow, since that could be        *)\n(* accomplished by the two actions of first filling B and then emptying A. *)\n(* So, pouring water from A to B leaves B with the lesser of (i) the water *)\n(* contained in both jugs and (ii) the volume of B. To express this        *)\n(* mathematically, we first define Min(m,n) to equal the minimum of the    *)\n(* numbers m and n.                                                        *)\n(***************************************************************************)\nMin(m,n) == IF m < n THEN m ELSE n\n\n(***************************************************************************)\n(* Now we define the last two pouring actions.  From the observation       *)\n(* above, these definitions should be clear.                               *)\n(***************************************************************************)\nSmallToBig == /\\ big'   = Min(big + small, 5)\n              /\\ small' = small - (big' - big)\n\nBigToSmall == /\\ small' = Min(big + small, 3) \n              /\\ big'   = big - (small' - small)\n\n(***************************************************************************)\n(* We define the next-state relation, which I like to call Next.  A Next   *)\n(* step is a step of one of the six actions defined above.  Hence, Next is *)\n(* the disjunction of those actions.                                       *)\n(***************************************************************************)\nNext ==  \\/ FillSmallJug \n         \\/ FillBigJug    \n         \\/ EmptySmallJug \n         \\/ EmptyBigJug    \n         \\/ SmallToBig    \n         \\/ BigToSmall    \n\n(***************************************************************************)\n(* We define the formula Spec to be the complete specification, asserting  *)\n(* of a behavior that it begins in a state satisfying Init, and that every *)\n(* step either satisfies Next or else leaves the pair <<big, small>>       *)\n(* unchanged.                                                              *)\n(***************************************************************************)\nSpec == Init /\\ [][Next]_<<big, small>> \n-----------------------------------------------------------------------------\n\n(***************************************************************************)\n(* Remember that our heroes must measure out 4 gallons of water.            *)\n(* Obviously, those 4 gallons must be in the 5 gallon jug.  So, they have  *)\n(* solved their problem when they reach a state with big = 4.  So, we      *)\n(* define NotSolved to be the predicate asserting that big # 4.            *)\n(***************************************************************************)\nNotSolved == big # 4\n\n(***************************************************************************)\n(* We find a solution by having TLC check if NotSolved is an invariant,    *)\n(* which will cause it to print out an \"error trace\" consisting of a       *)\n(* behavior ending in a states where NotSolved is false.  Such a           *)\n(* behavior is the desired solution.  (Because TLC uses a breadth-first    *)\n(* search, it will find the shortest solution.)                            *)\n(***************************************************************************)\n=============================================================================\n",
+      "config": "INIT Init\nNEXT Next\nINVARIANT TypeOK",
+      "bounds": {
+        "maxDepth": 100,
+        "maxStates": 1000,
+        "maxWork": 100000
+      },
+      "program": {
+        "format": "modelt.safety-program",
+        "version": 1,
+        "name": "DieHard",
+        "variables": [
+          "big",
+          "small"
+        ],
+        "initial": [
+          {
+            "name": "Init",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "0"
+                  }
+                }
+              },
+              {
+                "kind": "assign",
+                "slot": 1,
+                "value": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "0"
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "next": [
+          {
+            "name": "FillSmallJug",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 1,
+                "value": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "3"
+                  }
+                }
+              },
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "read",
+                  "slot": 0,
+                  "next": false
+                }
+              }
+            ]
+          },
+          {
+            "name": "FillBigJug",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "5"
+                  }
+                }
+              },
+              {
+                "kind": "assign",
+                "slot": 1,
+                "value": {
+                  "op": "read",
+                  "slot": 1,
+                  "next": false
+                }
+              }
+            ]
+          },
+          {
+            "name": "EmptySmallJug",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 1,
+                "value": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "0"
+                  }
+                }
+              },
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "read",
+                  "slot": 0,
+                  "next": false
+                }
+              }
+            ]
+          },
+          {
+            "name": "EmptyBigJug",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "0"
+                  }
+                }
+              },
+              {
+                "kind": "assign",
+                "slot": 1,
+                "value": {
+                  "op": "read",
+                  "slot": 1,
+                  "next": false
+                }
+              }
+            ]
+          },
+          {
+            "name": "SmallToBig",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "if",
+                  "condition": {
+                    "op": "lt",
+                    "left": {
+                      "op": "add",
+                      "left": {
+                        "op": "read",
+                        "slot": 0,
+                        "next": false
+                      },
+                      "right": {
+                        "op": "read",
+                        "slot": 1,
+                        "next": false
+                      }
+                    },
+                    "right": {
+                      "op": "literal",
+                      "value": {
+                        "type": "int",
+                        "value": "5"
+                      }
+                    }
+                  },
+                  "consequent": {
+                    "op": "add",
+                    "left": {
+                      "op": "read",
+                      "slot": 0,
+                      "next": false
+                    },
+                    "right": {
+                      "op": "read",
+                      "slot": 1,
+                      "next": false
+                    }
+                  },
+                  "alternative": {
+                    "op": "literal",
+                    "value": {
+                      "type": "int",
+                      "value": "5"
+                    }
+                  }
+                }
+              },
+              {
+                "kind": "assign",
+                "slot": 1,
+                "value": {
+                  "op": "sub",
+                  "left": {
+                    "op": "read",
+                    "slot": 1,
+                    "next": false
+                  },
+                  "right": {
+                    "op": "sub",
+                    "left": {
+                      "op": "read",
+                      "slot": 0,
+                      "next": true
+                    },
+                    "right": {
+                      "op": "read",
+                      "slot": 0,
+                      "next": false
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "BigToSmall",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 1,
+                "value": {
+                  "op": "if",
+                  "condition": {
+                    "op": "lt",
+                    "left": {
+                      "op": "add",
+                      "left": {
+                        "op": "read",
+                        "slot": 0,
+                        "next": false
+                      },
+                      "right": {
+                        "op": "read",
+                        "slot": 1,
+                        "next": false
+                      }
+                    },
+                    "right": {
+                      "op": "literal",
+                      "value": {
+                        "type": "int",
+                        "value": "3"
+                      }
+                    }
+                  },
+                  "consequent": {
+                    "op": "add",
+                    "left": {
+                      "op": "read",
+                      "slot": 0,
+                      "next": false
+                    },
+                    "right": {
+                      "op": "read",
+                      "slot": 1,
+                      "next": false
+                    }
+                  },
+                  "alternative": {
+                    "op": "literal",
+                    "value": {
+                      "type": "int",
+                      "value": "3"
+                    }
+                  }
+                }
+              },
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "sub",
+                  "left": {
+                    "op": "read",
+                    "slot": 0,
+                    "next": false
+                  },
+                  "right": {
+                    "op": "sub",
+                    "left": {
+                      "op": "read",
+                      "slot": 1,
+                      "next": true
+                    },
+                    "right": {
+                      "op": "read",
+                      "slot": 1,
+                      "next": false
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "invariants": [
+          {
+            "name": "TypeOK",
+            "expression": {
+              "op": "and",
+              "left": {
+                "op": "and",
+                "left": {
+                  "op": "literal",
+                  "value": {
+                    "type": "bool",
+                    "value": true
+                  }
+                },
+                "right": {
+                  "op": "in",
+                  "value": {
+                    "op": "read",
+                    "slot": 1,
+                    "next": false
+                  },
+                  "domain": {
+                    "kind": "range",
+                    "lower": {
+                      "op": "literal",
+                      "value": {
+                        "type": "int",
+                        "value": "0"
+                      }
+                    },
+                    "upper": {
+                      "op": "literal",
+                      "value": {
+                        "type": "int",
+                        "value": "3"
+                      }
+                    }
+                  }
+                }
+              },
+              "right": {
+                "op": "in",
+                "value": {
+                  "op": "read",
+                  "slot": 0,
+                  "next": false
+                },
+                "domain": {
+                  "kind": "range",
+                  "lower": {
+                    "op": "literal",
+                    "value": {
+                      "type": "int",
+                      "value": "0"
+                    }
+                  },
+                  "upper": {
+                    "op": "literal",
+                    "value": {
+                      "type": "int",
+                      "value": "5"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "assumptions": [],
+        "checkDeadlock": true
+      }
+    },
+    {
+      "name": "DieHard TypeOK NotSolved",
+      "source": "------------------------------ MODULE DieHard ------------------------------- \n(***************************************************************************)\n(* In the movie Die Hard 3, the heroes must obtain exactly 4 gallons of     *)\n(* water using a 5 gallon jug, a 3 gallon jug, and a water faucet.  Our    *)\n(* goal: to get TLC to solve the problem for us.                           *)\n(*                                                                         *)\n(* First, we write a spec that describes all allowable behaviors of our    *)\n(* heroes.                                                                  *)\n(***************************************************************************)\nEXTENDS Naturals\n  (*************************************************************************)\n  (* This statement imports the definitions of the ordinary operators on   *)\n  (* natural numbers, such as +.                                           *)\n  (*************************************************************************)\n  \n(***************************************************************************)\n(* We next declare the specification's variables.                          *)\n(***************************************************************************)\nVARIABLES big,   \\* The number of gallons of water in the 5 gallon jug.\n          small  \\* The number of gallons of water in the 3 gallon jug.\n\n\n(***************************************************************************)\n(* We now define TypeOK to be the type invariant, asserting that the value *)\n(* of each variable is an element of the appropriate set.  A type          *)\n(* invariant like this is not part of the specification, but it's          *)\n(* generally a good idea to include it because it helps the reader         *)\n(* understand the spec.  Moreover, having TLC check that it is an          *)\n(* invariant of the spec catches errors that, in a typed language, are     *)\n(* caught by type checking.                                                *)\n(*                                                                         *)\n(* Note: TLA+ uses the convention that a list of formulas bulleted by /\\   *)\n(* or \\/ denotes the conjunction or disjunction of those formulas.         *)\n(* Indentation of subitems is significant, allowing one to eliminate lots  *)\n(* of parentheses.  This makes a large formula much easier to read.        *)\n(* However, it does mean that you have to be careful with your indentation.*)\n(***************************************************************************)\nTypeOK == /\\ small \\in 0..3 \n          /\\ big   \\in 0..5\n\n\n(***************************************************************************)\n(* Now we define of the initial predicate, that specifies the initial      *)\n(* values of the variables.  I like to name this predicate Init, but the   *)\n(* name doesn't matter.                                                    *)\n(***************************************************************************)\nInit == /\\ big = 0 \n        /\\ small = 0\n\n(***************************************************************************)\n(* Now we define the actions that our hero can perform.  There are three   *)\n(* things they can do:                                                     *)\n(*                                                                         *)\n(*   - Pour water from the faucet into a jug.                              *)\n(*                                                                         *)\n(*   - Pour water from a jug onto the ground.                              *)\n(*                                                                         *)\n(*   - Pour water from one jug into another                                *)\n(*                                                                         *)\n(* We now consider the first two.  Since the jugs are not calibrated,      *)\n(* partially filling or partially emptying a jug accomplishes nothing.     *)\n(* So, the first two possibilities yield the following four possible       *)\n(* actions.                                                                *)\n(***************************************************************************)\nFillSmallJug  == /\\ small' = 3 \n                 /\\ big' = big\n\nFillBigJug    == /\\ big' = 5 \n                 /\\ small' = small\n\nEmptySmallJug == /\\ small' = 0 \n                 /\\ big' = big\n\nEmptyBigJug   == /\\ big' = 0 \n                 /\\ small' = small\n\n(***************************************************************************)\n(* We now consider pouring water from one jug into another.  Again, since  *)\n(* the jugs are not calibrated, when pouring from jug A to jug B, it      *)\n(* makes sense only to either fill B or empty A. And there's no point in   *)\n(* emptying A if this will cause B to overflow, since that could be        *)\n(* accomplished by the two actions of first filling B and then emptying A. *)\n(* So, pouring water from A to B leaves B with the lesser of (i) the water *)\n(* contained in both jugs and (ii) the volume of B. To express this        *)\n(* mathematically, we first define Min(m,n) to equal the minimum of the    *)\n(* numbers m and n.                                                        *)\n(***************************************************************************)\nMin(m,n) == IF m < n THEN m ELSE n\n\n(***************************************************************************)\n(* Now we define the last two pouring actions.  From the observation       *)\n(* above, these definitions should be clear.                               *)\n(***************************************************************************)\nSmallToBig == /\\ big'   = Min(big + small, 5)\n              /\\ small' = small - (big' - big)\n\nBigToSmall == /\\ small' = Min(big + small, 3) \n              /\\ big'   = big - (small' - small)\n\n(***************************************************************************)\n(* We define the next-state relation, which I like to call Next.  A Next   *)\n(* step is a step of one of the six actions defined above.  Hence, Next is *)\n(* the disjunction of those actions.                                       *)\n(***************************************************************************)\nNext ==  \\/ FillSmallJug \n         \\/ FillBigJug    \n         \\/ EmptySmallJug \n         \\/ EmptyBigJug    \n         \\/ SmallToBig    \n         \\/ BigToSmall    \n\n(***************************************************************************)\n(* We define the formula Spec to be the complete specification, asserting  *)\n(* of a behavior that it begins in a state satisfying Init, and that every *)\n(* step either satisfies Next or else leaves the pair <<big, small>>       *)\n(* unchanged.                                                              *)\n(***************************************************************************)\nSpec == Init /\\ [][Next]_<<big, small>> \n-----------------------------------------------------------------------------\n\n(***************************************************************************)\n(* Remember that our heroes must measure out 4 gallons of water.            *)\n(* Obviously, those 4 gallons must be in the 5 gallon jug.  So, they have  *)\n(* solved their problem when they reach a state with big = 4.  So, we      *)\n(* define NotSolved to be the predicate asserting that big # 4.            *)\n(***************************************************************************)\nNotSolved == big # 4\n\n(***************************************************************************)\n(* We find a solution by having TLC check if NotSolved is an invariant,    *)\n(* which will cause it to print out an \"error trace\" consisting of a       *)\n(* behavior ending in a states where NotSolved is false.  Such a           *)\n(* behavior is the desired solution.  (Because TLC uses a breadth-first    *)\n(* search, it will find the shortest solution.)                            *)\n(***************************************************************************)\n=============================================================================\n",
+      "config": "INIT Init\nNEXT Next\nINVARIANT TypeOK NotSolved",
+      "bounds": {
+        "maxDepth": 100,
+        "maxStates": 1000,
+        "maxWork": 100000
+      },
+      "program": {
+        "format": "modelt.safety-program",
+        "version": 1,
+        "name": "DieHard",
+        "variables": [
+          "big",
+          "small"
+        ],
+        "initial": [
+          {
+            "name": "Init",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "0"
+                  }
+                }
+              },
+              {
+                "kind": "assign",
+                "slot": 1,
+                "value": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "0"
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "next": [
+          {
+            "name": "FillSmallJug",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 1,
+                "value": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "3"
+                  }
+                }
+              },
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "read",
+                  "slot": 0,
+                  "next": false
+                }
+              }
+            ]
+          },
+          {
+            "name": "FillBigJug",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "5"
+                  }
+                }
+              },
+              {
+                "kind": "assign",
+                "slot": 1,
+                "value": {
+                  "op": "read",
+                  "slot": 1,
+                  "next": false
+                }
+              }
+            ]
+          },
+          {
+            "name": "EmptySmallJug",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 1,
+                "value": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "0"
+                  }
+                }
+              },
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "read",
+                  "slot": 0,
+                  "next": false
+                }
+              }
+            ]
+          },
+          {
+            "name": "EmptyBigJug",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "literal",
+                  "value": {
+                    "type": "int",
+                    "value": "0"
+                  }
+                }
+              },
+              {
+                "kind": "assign",
+                "slot": 1,
+                "value": {
+                  "op": "read",
+                  "slot": 1,
+                  "next": false
+                }
+              }
+            ]
+          },
+          {
+            "name": "SmallToBig",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "if",
+                  "condition": {
+                    "op": "lt",
+                    "left": {
+                      "op": "add",
+                      "left": {
+                        "op": "read",
+                        "slot": 0,
+                        "next": false
+                      },
+                      "right": {
+                        "op": "read",
+                        "slot": 1,
+                        "next": false
+                      }
+                    },
+                    "right": {
+                      "op": "literal",
+                      "value": {
+                        "type": "int",
+                        "value": "5"
+                      }
+                    }
+                  },
+                  "consequent": {
+                    "op": "add",
+                    "left": {
+                      "op": "read",
+                      "slot": 0,
+                      "next": false
+                    },
+                    "right": {
+                      "op": "read",
+                      "slot": 1,
+                      "next": false
+                    }
+                  },
+                  "alternative": {
+                    "op": "literal",
+                    "value": {
+                      "type": "int",
+                      "value": "5"
+                    }
+                  }
+                }
+              },
+              {
+                "kind": "assign",
+                "slot": 1,
+                "value": {
+                  "op": "sub",
+                  "left": {
+                    "op": "read",
+                    "slot": 1,
+                    "next": false
+                  },
+                  "right": {
+                    "op": "sub",
+                    "left": {
+                      "op": "read",
+                      "slot": 0,
+                      "next": true
+                    },
+                    "right": {
+                      "op": "read",
+                      "slot": 0,
+                      "next": false
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "BigToSmall",
+            "steps": [
+              {
+                "kind": "assign",
+                "slot": 1,
+                "value": {
+                  "op": "if",
+                  "condition": {
+                    "op": "lt",
+                    "left": {
+                      "op": "add",
+                      "left": {
+                        "op": "read",
+                        "slot": 0,
+                        "next": false
+                      },
+                      "right": {
+                        "op": "read",
+                        "slot": 1,
+                        "next": false
+                      }
+                    },
+                    "right": {
+                      "op": "literal",
+                      "value": {
+                        "type": "int",
+                        "value": "3"
+                      }
+                    }
+                  },
+                  "consequent": {
+                    "op": "add",
+                    "left": {
+                      "op": "read",
+                      "slot": 0,
+                      "next": false
+                    },
+                    "right": {
+                      "op": "read",
+                      "slot": 1,
+                      "next": false
+                    }
+                  },
+                  "alternative": {
+                    "op": "literal",
+                    "value": {
+                      "type": "int",
+                      "value": "3"
+                    }
+                  }
+                }
+              },
+              {
+                "kind": "assign",
+                "slot": 0,
+                "value": {
+                  "op": "sub",
+                  "left": {
+                    "op": "read",
+                    "slot": 0,
+                    "next": false
+                  },
+                  "right": {
+                    "op": "sub",
+                    "left": {
+                      "op": "read",
+                      "slot": 1,
+                      "next": true
+                    },
+                    "right": {
+                      "op": "read",
+                      "slot": 1,
+                      "next": false
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "invariants": [
+          {
+            "name": "TypeOK",
+            "expression": {
+              "op": "and",
+              "left": {
+                "op": "and",
+                "left": {
+                  "op": "literal",
+                  "value": {
+                    "type": "bool",
+                    "value": true
+                  }
+                },
+                "right": {
+                  "op": "in",
+                  "value": {
+                    "op": "read",
+                    "slot": 1,
+                    "next": false
+                  },
+                  "domain": {
+                    "kind": "range",
+                    "lower": {
+                      "op": "literal",
+                      "value": {
+                        "type": "int",
+                        "value": "0"
+                      }
+                    },
+                    "upper": {
+                      "op": "literal",
+                      "value": {
+                        "type": "int",
+                        "value": "3"
+                      }
+                    }
+                  }
+                }
+              },
+              "right": {
+                "op": "in",
+                "value": {
+                  "op": "read",
+                  "slot": 0,
+                  "next": false
+                },
+                "domain": {
+                  "kind": "range",
+                  "lower": {
+                    "op": "literal",
+                    "value": {
+                      "type": "int",
+                      "value": "0"
+                    }
+                  },
+                  "upper": {
+                    "op": "literal",
+                    "value": {
+                      "type": "int",
+                      "value": "5"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "name": "NotSolved",
+            "expression": {
+              "op": "ne",
+              "left": {
+                "op": "read",
+                "slot": 0,
+                "next": false
+              },
+              "right": {
+                "op": "literal",
+                "value": {
+                  "type": "int",
+                  "value": "4"
+                }
+              }
+            }
+          }
+        ],
+        "assumptions": [],
+        "checkDeadlock": true
+      }
+    }
+  ],
+  "before": [
+    {
+      "kind": "safety",
+      "result": {
+        "status": "invariant-violation",
+        "reason": null,
+        "states": 1,
+        "generated": 1,
+        "depth": 0,
+        "work": 2,
+        "violation": {
+          "name": "Safe",
+          "trace": [
+            {
+              "action": null,
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "kind": "safety",
+      "result": {
+        "status": "empty",
+        "reason": null,
+        "states": 0,
+        "generated": 0,
+        "depth": 0,
+        "work": 1,
+        "violation": null
+      }
+    },
+    {
+      "kind": "error",
+      "code": "protocol",
+      "message": "Incomparable safety values"
+    },
+    {
+      "kind": "error",
+      "code": "protocol",
+      "message": "Incomparable safety values"
+    },
+    {
+      "kind": "error",
+      "code": "protocol",
+      "message": "Expected an integer"
+    },
+    {
+      "kind": "error",
+      "code": "protocol",
+      "message": "Incomparable safety values"
+    },
+    {
+      "kind": "error",
+      "code": "protocol",
+      "message": "Safety integer overflow"
+    },
+    {
+      "kind": "safety",
+      "result": {
+        "status": "complete",
+        "reason": null,
+        "states": 4,
+        "generated": 5,
+        "depth": 3,
+        "work": 10,
+        "violation": null
+      }
+    },
+    {
+      "kind": "safety",
+      "result": {
+        "status": "invariant-violation",
+        "reason": null,
+        "states": 4,
+        "generated": 4,
+        "depth": 3,
+        "work": 8,
+        "violation": {
+          "name": "Safe",
+          "trace": [
+            {
+              "action": null,
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "Next",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "action": "Next",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "2"
+                }
+              ]
+            },
+            {
+              "action": "Next",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "3"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "kind": "safety",
+      "result": {
+        "status": "invariant-violation",
+        "reason": null,
+        "states": 1,
+        "generated": 1,
+        "depth": 0,
+        "work": 2,
+        "violation": {
+          "name": "Safe",
+          "trace": [
+            {
+              "action": null,
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "kind": "safety",
+      "result": {
+        "status": "deadlock",
+        "reason": null,
+        "states": 3,
+        "generated": 3,
+        "depth": 2,
+        "work": 9,
+        "violation": {
+          "name": "deadlock",
+          "trace": [
+            {
+              "action": null,
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "Next",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "action": "Next",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "2"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "kind": "safety",
+      "result": {
+        "status": "complete",
+        "reason": null,
+        "states": 1,
+        "generated": 1,
+        "depth": 0,
+        "work": 3,
+        "violation": null
+      }
+    },
+    {
+      "kind": "safety",
+      "result": {
+        "status": "complete",
+        "reason": null,
+        "states": 1,
+        "generated": 2,
+        "depth": 0,
+        "work": 4,
+        "violation": null
+      }
+    },
+    {
+      "kind": "safety",
+      "result": {
+        "status": "empty",
+        "reason": null,
+        "states": 0,
+        "generated": 0,
+        "depth": 0,
+        "work": 1,
+        "violation": null
+      }
+    },
+    {
+      "kind": "safety",
+      "result": {
+        "status": "complete",
+        "reason": null,
+        "states": 3,
+        "generated": 6,
+        "depth": 0,
+        "work": 16,
+        "violation": null
+      }
+    },
+    {
+      "kind": "safety",
+      "result": {
+        "status": "complete",
+        "reason": null,
+        "states": 2,
+        "generated": 4,
+        "depth": 0,
+        "work": 7,
+        "violation": null
+      }
+    },
+    {
+      "kind": "safety",
+      "result": {
+        "status": "complete",
+        "reason": null,
+        "states": 3,
+        "generated": 10,
+        "depth": 1,
+        "work": 14,
+        "violation": null
+      }
+    },
+    {
+      "kind": "safety",
+      "result": {
+        "status": "deadlock",
+        "reason": null,
+        "states": 1,
+        "generated": 1,
+        "depth": 0,
+        "work": 4,
+        "violation": {
+          "name": "deadlock",
+          "trace": [
+            {
+              "action": null,
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "kind": "safety",
+      "result": {
+        "status": "complete",
+        "reason": null,
+        "states": 2,
+        "generated": 3,
+        "depth": 1,
+        "work": 8,
+        "violation": null
+      }
+    },
+    {
+      "kind": "safety",
+      "result": {
+        "status": "complete",
+        "reason": null,
+        "states": 2,
+        "generated": 3,
+        "depth": 1,
+        "work": 9,
+        "violation": null
+      }
+    },
+    {
+      "kind": "error",
+      "code": "protocol",
+      "message": "Incomplete safety state"
+    },
+    {
+      "kind": "error",
+      "code": "protocol",
+      "message": "Read of an unassigned next variable"
+    },
+    {
+      "kind": "error",
+      "code": "protocol",
+      "message": "Safety integer overflow"
+    },
+    {
+      "kind": "error",
+      "code": "protocol",
+      "message": "Expected an integer"
+    },
+    {
+      "kind": "error",
+      "code": "protocol",
+      "message": "Expected a boolean"
+    },
+    {
+      "kind": "safety",
+      "result": {
+        "status": "complete",
+        "reason": null,
+        "states": 1,
+        "generated": 2,
+        "depth": 0,
+        "work": 4,
+        "violation": null
+      }
+    },
+    {
+      "kind": "safety",
+      "result": {
+        "status": "complete",
+        "reason": null,
+        "states": 2,
+        "generated": 3,
+        "depth": 1,
+        "work": 10,
+        "violation": null
+      }
+    },
+    {
+      "kind": "safety",
+      "result": {
+        "status": "complete",
+        "reason": null,
+        "states": 2,
+        "generated": 3,
+        "depth": 1,
+        "work": 9,
+        "violation": null
+      }
+    },
+    {
+      "kind": "safety",
+      "result": {
+        "status": "assumption-violation",
+        "reason": null,
+        "states": 0,
+        "generated": 0,
+        "depth": 0,
+        "work": 0,
+        "violation": {
+          "name": "ASSUME 1",
+          "trace": []
+        }
+      }
+    },
+    {
+      "kind": "safety",
+      "result": {
+        "status": "complete",
+        "reason": null,
+        "states": 4,
+        "generated": 5,
+        "depth": 3,
+        "work": 10,
+        "violation": null
+      }
+    },
+    {
+      "kind": "safety",
+      "result": {
+        "status": "bounded",
+        "reason": "depth",
+        "states": 3,
+        "generated": 4,
+        "depth": 2,
+        "work": 8,
+        "violation": null
+      }
+    },
+    {
+      "kind": "safety",
+      "result": {
+        "status": "complete",
+        "reason": null,
+        "states": 4,
+        "generated": 5,
+        "depth": 3,
+        "work": 10,
+        "violation": null
+      }
+    },
+    {
+      "kind": "safety",
+      "result": {
+        "status": "bounded",
+        "reason": "states",
+        "states": 3,
+        "generated": 4,
+        "depth": 2,
+        "work": 8,
+        "violation": null
+      }
+    },
+    {
+      "kind": "safety",
+      "result": {
+        "status": "bounded",
+        "reason": "work",
+        "states": 0,
+        "generated": 0,
+        "depth": 0,
+        "work": 1,
+        "violation": null
+      }
+    },
+    {
+      "kind": "safety",
+      "result": {
+        "status": "bounded",
+        "reason": "work",
+        "states": 7,
+        "generated": 7,
+        "depth": 0,
+        "work": 8,
+        "violation": null
+      }
+    },
+    {
+      "kind": "safety",
+      "result": {
+        "status": "complete",
+        "reason": null,
+        "states": 16,
+        "generated": 97,
+        "depth": 7,
+        "work": 291,
+        "violation": null
+      }
+    },
+    {
+      "kind": "safety",
+      "result": {
+        "status": "invariant-violation",
+        "reason": null,
+        "states": 14,
+        "generated": 73,
+        "depth": 6,
+        "work": 219,
+        "violation": {
+          "name": "NotSolved",
+          "trace": [
+            {
+              "action": null,
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                },
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "FillBigJug",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "5"
+                },
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "BigToSmall",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "2"
+                },
+                {
+                  "type": "int",
+                  "value": "3"
+                }
+              ]
+            },
+            {
+              "action": "EmptySmallJug",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "2"
+                },
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "BigToSmall",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                },
+                {
+                  "type": "int",
+                  "value": "2"
+                }
+              ]
+            },
+            {
+              "action": "FillBigJug",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "5"
+                },
+                {
+                  "type": "int",
+                  "value": "2"
+                }
+              ]
+            },
+            {
+              "action": "BigToSmall",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "4"
+                },
+                {
+                  "type": "int",
+                  "value": "3"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "after": [
+    {
+      "kind": "error",
+      "code": "protocol",
+      "message": "Constant invariant is false"
+    },
+    {
+      "kind": "error",
+      "code": "protocol",
+      "message": "Constant invariant is false"
+    },
+    {
+      "kind": "error",
+      "code": "protocol",
+      "message": "Incomparable safety values"
+    },
+    {
+      "kind": "error",
+      "code": "protocol",
+      "message": "Incomparable safety values"
+    },
+    {
+      "kind": "error",
+      "code": "protocol",
+      "message": "Expected an integer"
+    },
+    {
+      "kind": "error",
+      "code": "protocol",
+      "message": "Incomparable safety values"
+    },
+    {
+      "kind": "error",
+      "code": "protocol",
+      "message": "Safety integer overflow"
+    },
+    {
+      "kind": "safety",
+      "result": {
+        "status": "complete",
+        "reason": null,
+        "states": 4,
+        "generated": 5,
+        "depth": 3,
+        "work": 10,
+        "violation": null
+      }
+    },
+    {
+      "kind": "safety",
+      "result": {
+        "status": "invariant-violation",
+        "reason": null,
+        "states": 4,
+        "generated": 4,
+        "depth": 3,
+        "work": 8,
+        "violation": {
+          "name": "Safe",
+          "trace": [
+            {
+              "action": null,
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "Next",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "action": "Next",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "2"
+                }
+              ]
+            },
+            {
+              "action": "Next",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "3"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "kind": "safety",
+      "result": {
+        "status": "invariant-violation",
+        "reason": null,
+        "states": 1,
+        "generated": 1,
+        "depth": 0,
+        "work": 2,
+        "violation": {
+          "name": "Safe",
+          "trace": [
+            {
+              "action": null,
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "kind": "safety",
+      "result": {
+        "status": "deadlock",
+        "reason": null,
+        "states": 3,
+        "generated": 3,
+        "depth": 2,
+        "work": 9,
+        "violation": {
+          "name": "deadlock",
+          "trace": [
+            {
+              "action": null,
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "Next",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "action": "Next",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "2"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "kind": "safety",
+      "result": {
+        "status": "complete",
+        "reason": null,
+        "states": 1,
+        "generated": 1,
+        "depth": 0,
+        "work": 3,
+        "violation": null
+      }
+    },
+    {
+      "kind": "safety",
+      "result": {
+        "status": "complete",
+        "reason": null,
+        "states": 1,
+        "generated": 2,
+        "depth": 0,
+        "work": 4,
+        "violation": null
+      }
+    },
+    {
+      "kind": "safety",
+      "result": {
+        "status": "empty",
+        "reason": null,
+        "states": 0,
+        "generated": 0,
+        "depth": 0,
+        "work": 1,
+        "violation": null
+      }
+    },
+    {
+      "kind": "safety",
+      "result": {
+        "status": "complete",
+        "reason": null,
+        "states": 3,
+        "generated": 6,
+        "depth": 0,
+        "work": 16,
+        "violation": null
+      }
+    },
+    {
+      "kind": "safety",
+      "result": {
+        "status": "complete",
+        "reason": null,
+        "states": 2,
+        "generated": 4,
+        "depth": 0,
+        "work": 7,
+        "violation": null
+      }
+    },
+    {
+      "kind": "safety",
+      "result": {
+        "status": "complete",
+        "reason": null,
+        "states": 3,
+        "generated": 10,
+        "depth": 1,
+        "work": 14,
+        "violation": null
+      }
+    },
+    {
+      "kind": "safety",
+      "result": {
+        "status": "deadlock",
+        "reason": null,
+        "states": 1,
+        "generated": 1,
+        "depth": 0,
+        "work": 4,
+        "violation": {
+          "name": "deadlock",
+          "trace": [
+            {
+              "action": null,
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "kind": "safety",
+      "result": {
+        "status": "complete",
+        "reason": null,
+        "states": 2,
+        "generated": 3,
+        "depth": 1,
+        "work": 8,
+        "violation": null
+      }
+    },
+    {
+      "kind": "safety",
+      "result": {
+        "status": "complete",
+        "reason": null,
+        "states": 2,
+        "generated": 3,
+        "depth": 1,
+        "work": 9,
+        "violation": null
+      }
+    },
+    {
+      "kind": "error",
+      "code": "protocol",
+      "message": "Incomplete safety state"
+    },
+    {
+      "kind": "error",
+      "code": "protocol",
+      "message": "Read of an unassigned next variable"
+    },
+    {
+      "kind": "error",
+      "code": "protocol",
+      "message": "Safety integer overflow"
+    },
+    {
+      "kind": "error",
+      "code": "protocol",
+      "message": "Expected an integer"
+    },
+    {
+      "kind": "error",
+      "code": "protocol",
+      "message": "Expected a boolean"
+    },
+    {
+      "kind": "safety",
+      "result": {
+        "status": "complete",
+        "reason": null,
+        "states": 1,
+        "generated": 2,
+        "depth": 0,
+        "work": 4,
+        "violation": null
+      }
+    },
+    {
+      "kind": "safety",
+      "result": {
+        "status": "complete",
+        "reason": null,
+        "states": 2,
+        "generated": 3,
+        "depth": 1,
+        "work": 10,
+        "violation": null
+      }
+    },
+    {
+      "kind": "safety",
+      "result": {
+        "status": "complete",
+        "reason": null,
+        "states": 2,
+        "generated": 3,
+        "depth": 1,
+        "work": 9,
+        "violation": null
+      }
+    },
+    {
+      "kind": "safety",
+      "result": {
+        "status": "assumption-violation",
+        "reason": null,
+        "states": 0,
+        "generated": 0,
+        "depth": 0,
+        "work": 0,
+        "violation": {
+          "name": "ASSUME 1",
+          "trace": []
+        }
+      }
+    },
+    {
+      "kind": "safety",
+      "result": {
+        "status": "complete",
+        "reason": null,
+        "states": 4,
+        "generated": 5,
+        "depth": 3,
+        "work": 10,
+        "violation": null
+      }
+    },
+    {
+      "kind": "safety",
+      "result": {
+        "status": "bounded",
+        "reason": "depth",
+        "states": 3,
+        "generated": 4,
+        "depth": 2,
+        "work": 8,
+        "violation": null
+      }
+    },
+    {
+      "kind": "safety",
+      "result": {
+        "status": "complete",
+        "reason": null,
+        "states": 4,
+        "generated": 5,
+        "depth": 3,
+        "work": 10,
+        "violation": null
+      }
+    },
+    {
+      "kind": "safety",
+      "result": {
+        "status": "bounded",
+        "reason": "states",
+        "states": 3,
+        "generated": 4,
+        "depth": 2,
+        "work": 8,
+        "violation": null
+      }
+    },
+    {
+      "kind": "safety",
+      "result": {
+        "status": "bounded",
+        "reason": "work",
+        "states": 0,
+        "generated": 0,
+        "depth": 0,
+        "work": 1,
+        "violation": null
+      }
+    },
+    {
+      "kind": "safety",
+      "result": {
+        "status": "bounded",
+        "reason": "work",
+        "states": 7,
+        "generated": 7,
+        "depth": 0,
+        "work": 8,
+        "violation": null
+      }
+    },
+    {
+      "kind": "safety",
+      "result": {
+        "status": "complete",
+        "reason": null,
+        "states": 16,
+        "generated": 97,
+        "depth": 7,
+        "work": 291,
+        "violation": null
+      }
+    },
+    {
+      "kind": "safety",
+      "result": {
+        "status": "invariant-violation",
+        "reason": null,
+        "states": 14,
+        "generated": 73,
+        "depth": 6,
+        "work": 219,
+        "violation": {
+          "name": "NotSolved",
+          "trace": [
+            {
+              "action": null,
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                },
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "FillBigJug",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "5"
+                },
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "BigToSmall",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "2"
+                },
+                {
+                  "type": "int",
+                  "value": "3"
+                }
+              ]
+            },
+            {
+              "action": "EmptySmallJug",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "2"
+                },
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "action": "BigToSmall",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "0"
+                },
+                {
+                  "type": "int",
+                  "value": "2"
+                }
+              ]
+            },
+            {
+              "action": "FillBigJug",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "5"
+                },
+                {
+                  "type": "int",
+                  "value": "2"
+                }
+              ]
+            },
+            {
+              "action": "BigToSmall",
+              "values": [
+                {
+                  "type": "int",
+                  "value": "4"
+                },
+                {
+                  "type": "int",
+                  "value": "3"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

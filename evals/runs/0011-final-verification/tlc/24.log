@@ -1,0 +1,19 @@
+TLC2 Version 2.19 of 08 August 2024 (rev: 5a47802)
+Running breadth-first search Model-Checking with fp 4 and seed -1001058373878304030 with 1 worker on 10 cores with 7282MB heap and 64MB offheap memory [pid: 12535] (Mac OS X 26.6.2 aarch64, Eclipse Adoptium 21.0.13 x86_64, MSBDiskFPSet, DiskStateQueue).
+Parsing file /Users/mz/ghq/github.com/mizchi/modelt/.artifacts/tlc-compare-DtoRFn/Test.tla
+Parsing file /private/var/folders/_h/_rf455xj4h3_3g6z86pg244c0000gn/T/Naturals.tla
+Semantic processing of module Naturals
+Semantic processing of module Test
+Starting... (2026-11-14 15:31:42)
+Computing initial states...
+Error: TLC expected a boolean value, but did not find one. line 6, col 9 to line 6, col 13 of module Test
+While working on the initial state:
+x = 0
+
+Error: The error occurred when TLC was evaluating the nested
+expressions at the following positions:
+0. Line 4, column 9 to line 4, column 13 in Test
+
+
+1 states generated, 1 distinct states found, 1 states left on queue.
+Finished in 00s at (2026-11-14 15:31:42)

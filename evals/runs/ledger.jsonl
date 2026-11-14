@@ -18,3 +18,5 @@
 {"runId":"0010-rust-safety-literals","kind":"rust-safety","status":"complete","sourceVersion":"ff3badd7c6697dd2e8e666d0ee8ac4066d482b3ea8286bdf57b6e465290e19a7","plan":"0010-rust-safety-storage"}
 {"runId":"0011-rust-safety-arena","kind":"rust-safety","status":"complete","sourceVersion":"059980d213156e5ad177e9b4092172a1a8d47f42bf6d6e6cfbe064cb4a6f2aac","plan":"0011-rust-safety-arena"}
 {"runId":"0011-safety-verification","kind":"safety-regression","status":"complete","sourceVersion":"059980d213156e5ad177e9b4092172a1a8d47f42bf6d6e6cfbe064cb4a6f2aac","plan":"0011-rust-safety-arena"}
+{"runId":"0011-rust-safety-final","kind":"rust-safety","status":"complete","sourceVersion":"7d2df9d7e6d9214489371d148a0aeafe696a1719035613e50b513794ce8d27de","plan":"0011-rust-safety-arena"}
+{"runId":"0011-final-verification","kind":"safety-regression","status":"complete","sourceVersion":"7d2df9d7e6d9214489371d148a0aeafe696a1719035613e50b513794ce8d27de","plan":"0011-rust-safety-arena"}
