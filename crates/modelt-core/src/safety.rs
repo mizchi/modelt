@@ -6,7 +6,7 @@ use std::collections::{HashMap, HashSet};
 #[serde(tag = "op", rename_all = "kebab-case", deny_unknown_fields)]
 pub enum Expression {
     Literal {
-        value: Value,
+        value: Scalar,
     },
     Read {
         slot: usize,
@@ -159,10 +159,24 @@ pub struct SafetyResult {
     pub violation: Option<SafetyViolation>,
 }
 
-#[derive(Clone, Copy, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
-enum Scalar {
+#[derive(Clone, Copy, Debug, PartialEq, Eq, PartialOrd, Ord, Hash, Serialize, Deserialize)]
+#[serde(try_from = "Value", into = "Value")]
+pub enum Scalar {
     Bool(bool),
     Int(i32),
+}
+
+impl TryFrom<Value> for Scalar {
+    type Error = CoreError;
+    fn try_from(value: Value) -> Result<Self, Self::Error> {
+        Self::parse(&value)
+    }
+}
+
+impl From<Scalar> for Value {
+    fn from(value: Scalar) -> Self {
+        value.portable()
+    }
 }
 
 impl Scalar {
@@ -216,9 +230,7 @@ impl Expression {
         }
         let child = |value: &Self| value.validate(variables, phase, depth + 1);
         match self {
-            Self::Literal { value } => {
-                Scalar::parse(value)?;
-            }
+            Self::Literal { .. } => {}
             Self::Read { slot, next } => {
                 if *slot >= variables
                     || (phase == 0 && !next)
@@ -268,7 +280,7 @@ impl Expression {
                 .ok_or_else(|| CoreError::protocol("Safety integer overflow"))
         };
         Ok(match self {
-            Self::Literal { value } => Scalar::parse(value)?,
+            Self::Literal { value } => *value,
             Self::Read { slot, next: true } => next
                 .get(*slot)
                 .copied()

@@ -70,3 +70,14 @@ fn malformed_ir_is_rejected_before_search() {
     assert_eq!(check(ring(3), 3, 0, 1000)["kind"], "error");
     assert_eq!(check(ring(3), 3, 4, 0)["kind"], "error");
 }
+
+#[test]
+fn prepared_literals_preserve_the_wire_format_and_validate_unreachable_values() {
+    let input = ring(3);
+    let program: modelt_core::SafetyProgram = serde_json::from_value(input.clone()).unwrap();
+    assert_eq!(serde_json::to_value(program).unwrap(), input);
+    let mut invalid = ring(3);
+    invalid["initial"][0]["steps"] = json!([{"kind":"guard","expression":{"op":"literal","value":{"type":"bool","value":false}}}]);
+    invalid["next"][0]["steps"][0]["value"]["alternative"]["value"]["value"] = json!("2147483648");
+    assert_eq!(check(invalid, 3, 4, 1000)["kind"], "error");
+}

@@ -63,6 +63,8 @@ const runNative = (
 
 const directory = process.argv[2];
 assert.ok(directory, "Pass a new output directory");
+const plan = process.argv[3] ?? "0010-rust-safety-storage";
+assert.ok(plan === "0009-rust-safety" || plan === "0010-rust-safety-storage");
 await mkdir(dirname(directory), { recursive: true });
 await mkdir(directory, { recursive: false });
 const write = (name: string, value: unknown) =>
@@ -77,7 +79,7 @@ const started = performance.now();
 const core = await createPortableWasm(bytes);
 const startupMs = performance.now() - started;
 await write("manifest.json", {
-  plan: "0009-rust-safety",
+  plan,
   ...source,
   commit: execFileSync("git", ["rev-parse", "HEAD"]).toString().trim(),
   dirtyPaths: execFileSync("git", ["status", "--short"]).toString().trim(),
@@ -188,7 +190,7 @@ try {
   );
   await write("result.json", {
     status: "complete",
-    plan: "0009-rust-safety",
+    plan,
     sourceVersion: source.sourceVersion,
     files,
     cases: reports.length,
@@ -196,7 +198,7 @@ try {
   });
   await appendFile(
     "evals/runs/ledger.jsonl",
-    `${JSON.stringify({ runId: basename(directory), kind: "rust-safety", status: "complete", sourceVersion: source.sourceVersion, plan: "0009-rust-safety" })}\n`,
+    `${JSON.stringify({ runId: basename(directory), kind: "rust-safety", status: "complete", sourceVersion: source.sourceVersion, plan })}\n`,
   );
 } catch (error) {
   await write("error.json", {
@@ -206,7 +208,7 @@ try {
   });
   await appendFile(
     "evals/runs/ledger.jsonl",
-    `${JSON.stringify({ runId: basename(directory), kind: "rust-safety", status: "error", sourceVersion: source.sourceVersion, plan: "0009-rust-safety" })}\n`,
+    `${JSON.stringify({ runId: basename(directory), kind: "rust-safety", status: "error", sourceVersion: source.sourceVersion, plan })}\n`,
   );
   throw error;
 }

@@ -17,6 +17,7 @@ export const fingerprint = async () => {
     "evals/rust-safety",
     "evals/fixtures/die-hard",
     "evals/plans/0009-rust-safety.md",
+    "evals/plans/0010-rust-safety-storage.md",
     "justfile",
     "package.json",
     "pnpm-lock.yaml",
