@@ -73,6 +73,17 @@ export const run = async (): Promise<Record<string, unknown>> => {
     live.violation?.loopStart === undefined
   )
     throw new Error("Browser temporal compilation differs");
+  const text = checkSafety(
+    rust,
+    compileTlaSafety({
+      source:
+        '---- MODULE BrowserString ----\nEXTENDS Naturals, Sequences\nVARIABLE x\nInit == x = "abc"\nNext == x\' = IF Len(x) > 1 THEN Tail(x) ELSE "abc"\nProp == Len(x) <= 3\n====',
+      config: "INIT Init\nNEXT Next\nINVARIANT Prop",
+    }),
+    { maxDepth: 10, maxStates: 10, maxWork: 1000 },
+  );
+  if (text.status !== "complete" || text.states !== 3)
+    throw new Error("Browser string operations differ");
   const smt = await createSmtOracle(api).solve(
     "(declare-const value Int) (assert (= value 7))",
     ["value"],

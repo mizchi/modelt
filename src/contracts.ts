@@ -215,6 +215,7 @@ export type SafetyExpression =
     }
   | {
       readonly op:
+        | "sequence-set"
         | "domain"
         | "cardinality"
         | "len"

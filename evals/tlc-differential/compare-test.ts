@@ -39,7 +39,7 @@ test("TLC differences reject count mismatches and incomplete checking", () => {
         ...reference,
         status: "error",
         exit: 255,
-        log: reference.log + "Error: evaluation",
+        log: `${reference.log}Error: evaluation`,
       },
     ),
     ["unsupported"],
@@ -65,9 +65,9 @@ test("JVM and syntax failures cannot count as matching model errors", () => {
       ...reference,
       status: "error",
       exit: 150,
-      log: reference.log + "Semantic errors",
+      log: `${reference.log}Semantic errors`,
     }),
-    "infrastructure-error",
+    "input-error",
   );
   assert.deepEqual(
     differences({ error }, { ...reference, status: "error", exit: null }),
@@ -88,5 +88,32 @@ test("development and confirmation graphs have distinct fixed inputs", () => {
   assert.equal(
     new Set(boundaries().map((input) => input.name)).size,
     boundaries().length,
+  );
+});
+
+test("initial invariant failures remain valid when TLC omits aggregate counts", () => {
+  const reference = {
+    status: "invariant-violation",
+    exit: 12,
+    states: null,
+    generated: null,
+    log: "TLC2 Version\nStarting...\nError: Invariant Prop is violated by the initial state:\nx = 1\n",
+  };
+  assert.equal(classifyTlc(reference), "invariant-violation");
+  assert.deepEqual(
+    differences(
+      {
+        result: {
+          ...result,
+          status: "invariant-violation",
+          violation: {
+            name: "Prop",
+            trace: [{ action: null, values: [{ type: "int", value: "1" }] }],
+          },
+        },
+      },
+      reference,
+    ),
+    [],
   );
 });

@@ -113,6 +113,9 @@ impl Domain {
             Self::Range { lower, upper } => {
                 let lower = lower.eval(ctx, arena)?.integer()?;
                 let upper = upper.eval(ctx, arena)?.integer()?;
+                if lower > upper {
+                    return Ok(false);
+                }
                 let value = value.integer()?;
                 Ok(lower <= value && value <= upper)
             }
@@ -195,6 +198,7 @@ impl Expression {
             | Self::Neg { argument }
             | Self::Domain { argument }
             | Self::Cardinality { argument }
+            | Self::SequenceSet { argument }
             | Self::Len { argument }
             | Self::Head { argument }
             | Self::Tail { argument }
@@ -558,6 +562,27 @@ impl Expression {
             }
             Self::Len { argument } | Self::Head { argument } | Self::Tail { argument } => {
                 let value = argument.eval(ctx, arena)?;
+                if let Some(text) = arena.text(value) {
+                    let units = text.encode_utf16().collect::<Vec<_>>();
+                    return Ok(match self {
+                        Self::Len { .. } => Scalar::Int(
+                            i32::try_from(units.len())
+                                .map_err(|_| CoreError::protocol("String length overflow"))?,
+                        ),
+                        Self::Head { .. } => {
+                            let first = units
+                                .first()
+                                .ok_or_else(|| CoreError::protocol("Head of an empty string"))?;
+                            arena.string_utf16(&[*first])?
+                        }
+                        _ => {
+                            if units.is_empty() {
+                                return Err(CoreError::protocol("Tail of an empty string"));
+                            }
+                            arena.string_utf16(&units[1..])?
+                        }
+                    });
+                }
                 let mut values = arena.sequence(value)?;
                 match self {
                     Self::Len { .. } => Scalar::Int(values.len() as i32),
@@ -576,11 +601,29 @@ impl Expression {
             Self::Append { left, right } | Self::Concat { left, right } => {
                 let left = left.eval(ctx, arena)?;
                 let right = right.eval(ctx, arena)?;
-                let mut values = arena.sequence(left)?;
+                if let Some(text) = arena.text(left) {
+                    let suffix = arena.text(right).ok_or_else(|| {
+                        CoreError::protocol("String concatenation requires strings")
+                    })?;
+                    let size = text
+                        .len()
+                        .checked_add(suffix.len())
+                        .ok_or_else(|| CoreError::protocol("String length overflow"))?;
+                    arena.consume(size)?;
+                    let text = arena
+                        .text(left)
+                        .ok_or_else(|| CoreError::protocol("Expected a string"))?;
+                    let suffix = arena
+                        .text(right)
+                        .ok_or_else(|| CoreError::protocol("Expected a string"))?;
+                    let value = format!("{text}{suffix}");
+                    return arena.string(value);
+                }
+                let mut values = arena.sequence_values(left)?;
                 if matches!(self, Self::Append { .. }) {
                     values.push(right);
                 } else {
-                    values.extend(arena.sequence(right)?);
+                    values.extend(arena.sequence_values(right)?);
                 }
                 arena.tuple(values)?
             }
@@ -588,6 +631,16 @@ impl Expression {
                 let sequence = sequence.eval(ctx, arena)?;
                 let from = from.eval(ctx, arena)?.integer()?;
                 let to = to.eval(ctx, arena)?.integer()?;
+                if let Some(text) = arena.text(sequence) {
+                    let units = text.encode_utf16().collect::<Vec<_>>();
+                    if from > to {
+                        return arena.string(String::new());
+                    }
+                    if from < 1 || to as usize > units.len() {
+                        return Err(CoreError::protocol("SubSeq bounds are outside the string"));
+                    }
+                    return arena.string_utf16(&units[(from - 1) as usize..to as usize]);
+                }
                 let values = arena.sequence(sequence)?;
                 if from > to {
                     arena.tuple(vec![])?
@@ -607,11 +660,12 @@ impl Expression {
                 let left = left.eval(ctx, arena)?;
                 let right = right.eval(ctx, arena)?;
                 let mut result = vec![];
-                let mut subset = true;
                 for value in arena.members(left)? {
                     arena.tick()?;
                     let contains = arena.contains(value, right)?;
-                    subset &= contains;
+                    if matches!(self, Self::SubsetEq { .. }) && !contains {
+                        return Ok(Scalar::Bool(false));
+                    }
                     if matches!(self, Self::Cup { .. })
                         || (matches!(self, Self::Cap { .. }) && contains)
                         || (matches!(self, Self::Difference { .. }) && !contains)
@@ -620,7 +674,7 @@ impl Expression {
                     }
                 }
                 if matches!(self, Self::SubsetEq { .. }) {
-                    Scalar::Bool(subset)
+                    Scalar::Bool(true)
                 } else {
                     if matches!(self, Self::Cup { .. }) {
                         result.extend(arena.members(right)?);
@@ -685,59 +739,18 @@ impl Expression {
                 arena.set(functions)?
             }
             Self::FunctionIn { left, right } => {
-                let function = left.eval(ctx, arena)?;
-                let entries = arena.entries(function)?;
-                let mut valid = true;
-                match right.as_ref() {
-                    Self::FunctionSet { left, right } => {
-                        let domain = left.eval(ctx, arena)?;
-                        let range = right.eval(ctx, arena)?;
-                        let actual = arena.domain(function)?;
-                        valid = arena.equal(actual, domain)?;
-                        if valid {
-                            for (_, value) in entries {
-                                arena.tick()?;
-                                if !arena.contains(value, range)? {
-                                    valid = false;
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                    Self::RecordSet { fields } => {
-                        if entries.len() != fields.len() {
-                            valid = false;
-                        } else {
-                            for (name, set) in fields {
-                                let name = arena.string(name.clone())?;
-                                let Some(value) = arena.select(function, name)? else {
-                                    valid = false;
-                                    break;
-                                };
-                                let set = set.eval(ctx, arena)?;
-                                if !arena.contains(value, set)? {
-                                    valid = false;
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                    _ => return Err(CoreError::protocol("Invalid function membership domain")),
-                };
-                Scalar::Bool(valid)
+                let value = left.eval(ctx, arena)?;
+                let set = MembershipSet::eval(right, ctx, arena)?;
+                Scalar::Bool(set.contains(value, arena)?)
             }
             Self::SequenceIn { left, right } => {
-                let sequence = left.eval(ctx, arena)?;
-                let set = right.eval(ctx, arena)?;
-                let mut valid = true;
-                for value in arena.sequence(sequence)? {
-                    arena.tick()?;
-                    if !arena.contains(value, set)? {
-                        valid = false;
-                        break;
-                    }
-                }
-                Scalar::Bool(valid)
+                let value = left.eval(ctx, arena)?;
+                let set =
+                    MembershipSet::Sequences(Box::new(MembershipSet::eval(right, ctx, arena)?));
+                Scalar::Bool(set.contains(value, arena)?)
+            }
+            Self::SequenceSet { .. } => {
+                return Err(CoreError::protocol("Sequence sets cannot be enumerated"));
             }
             Self::Enabled {
                 branches,
@@ -799,6 +812,101 @@ impl Expression {
                 Scalar::Bool(enabled)
             }
         })
+    }
+}
+
+enum MembershipSet {
+    Finite(Scalar),
+    Sequences(Box<Self>),
+    Functions { domain: Scalar, range: Box<Self> },
+    Records(Vec<(Scalar, Self)>),
+    Subsets(Scalar),
+}
+impl MembershipSet {
+    fn eval(
+        expression: &Expression,
+        ctx: EvalContext<'_>,
+        arena: &mut Arena,
+    ) -> Result<Self, CoreError> {
+        Ok(match expression {
+            Expression::SequenceSet { argument } => {
+                Self::Sequences(Box::new(Self::eval(argument, ctx, arena)?))
+            }
+            Expression::FunctionSet { left, right } => Self::Functions {
+                domain: left.eval(ctx, arena)?,
+                range: Box::new(Self::eval(right, ctx, arena)?),
+            },
+            Expression::RecordSet { fields } => {
+                let mut values = vec![];
+                for (name, set) in fields {
+                    let name = arena.string(name.clone())?;
+                    let set = Self::eval(set, ctx, arena)?;
+                    values.push((name, set));
+                }
+                values.sort_by(|left, right| arena.total(left.0, right.0));
+                Self::Records(values)
+            }
+            Expression::Powerset { argument } => Self::Subsets(argument.eval(ctx, arena)?),
+            _ => Self::Finite(expression.eval(ctx, arena)?),
+        })
+    }
+    fn contains(&self, value: Scalar, arena: &mut Arena) -> Result<bool, CoreError> {
+        match self {
+            Self::Finite(set) => arena.contains(value, *set),
+            Self::Subsets(set) => {
+                for element in arena.members(value)? {
+                    arena.tick()?;
+                    if !arena.contains(element, *set)? {
+                        return Ok(false);
+                    }
+                }
+                Ok(true)
+            }
+            Self::Sequences(set) => {
+                for element in arena.sequence_values(value)? {
+                    arena.tick()?;
+                    if !set.contains(element, arena)? {
+                        return Ok(false);
+                    }
+                }
+                Ok(true)
+            }
+            Self::Functions { domain, range } => {
+                let entries = arena.entries(value)?;
+                let actual = arena.domain(value)?;
+                if !arena.equal(*domain, actual)? {
+                    return Ok(false);
+                }
+                for (_, element) in entries {
+                    arena.tick()?;
+                    if !range.contains(element, arena)? {
+                        return Ok(false);
+                    }
+                }
+                Ok(true)
+            }
+            Self::Records(fields) => {
+                let entries = arena.entries(value)?;
+                if entries.iter().any(|(key, _)| arena.text(*key).is_none()) {
+                    return Err(CoreError::protocol(
+                        "Record membership requires string keys",
+                    ));
+                }
+                if entries.len() != fields.len() {
+                    return Ok(false);
+                }
+                for (key, set) in fields {
+                    let Some(element) = arena.select(value, *key)? else {
+                        return Ok(false);
+                    };
+                    arena.tick()?;
+                    if !set.contains(element, arena)? {
+                        return Ok(false);
+                    }
+                }
+                Ok(true)
+            }
+        }
     }
 }
 

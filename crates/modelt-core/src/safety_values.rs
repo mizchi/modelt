@@ -73,6 +73,42 @@ impl Arena {
         self.work += 1;
         Ok(())
     }
+    pub fn consume(&mut self, count: usize) -> Result<(), CoreError> {
+        if count > (self.maximum - self.work) as usize {
+            self.work = self.maximum;
+            return Err(CoreError {
+                code: "budget",
+                message: "Safety work budget exhausted".into(),
+            });
+        }
+        self.work += count as u32;
+        Ok(())
+    }
+    pub fn text(&self, value: Scalar) -> Option<&str> {
+        if let Scalar::Ref(index) = value
+            && let Some(Cell::String(text)) = self.cells.get(index as usize)
+        {
+            return Some(text);
+        }
+        None
+    }
+    pub fn string_utf16(&mut self, units: &[u16]) -> Result<Scalar, CoreError> {
+        self.consume(units.len())?;
+        let text = String::from_utf16(units).map_err(|_| {
+            CoreError::protocol("UTF-16 slice cannot be represented as Unicode scalar text")
+        })?;
+        self.string(text)
+    }
+    pub fn sequence_values(&mut self, value: Scalar) -> Result<Vec<Scalar>, CoreError> {
+        if let Some(text) = self.text(value) {
+            let units = text.encode_utf16().collect::<Vec<_>>();
+            return units
+                .into_iter()
+                .map(|unit| self.string_utf16(&[unit]))
+                .collect();
+        }
+        self.sequence(value)
+    }
     fn cell(&self, value: Scalar) -> Result<&Cell, CoreError> {
         match value {
             Scalar::Ref(index) => self
@@ -171,7 +207,7 @@ impl Arena {
             },
         }
     }
-    fn total(&self, left: Scalar, right: Scalar) -> Ordering {
+    pub fn total(&self, left: Scalar, right: Scalar) -> Ordering {
         let rank = self.rank(left).cmp(&self.rank(right));
         if rank != Ordering::Equal {
             return rank;

@@ -9,3 +9,5 @@
 native と Wasm は結果・trace・work を完全比較する。TLC とは API 名の差を正規化した判定、complete / empty の状態数・生成数を比較する。有限な小グラフでは liveness 判定時の数も照合する。反例は TLC に強制再生し、全 state の到達・元の遷移・fairness と違反を確認する。有限反例の長さも照合する。TLC の構文・設定・JVM エラーをモデル評価エラーとして合格させない。明示的なエラー対照を残し、error 一致数を complete 数へ加えない。
 
 差分は打ち切らず入力・両結果・生ログ・分類を保存し、mismatch / incomplete / infrastructure-error を結果に残す。TLC と source / Wasm / native binary の digest、revision、seed と toolchain を固定する。最初の mismatch は Red として保存し、TLC ソースと実行で原因を確認してから修正する。修正後も旧 run を変更しない。CI は新しい境界ケースと native / Wasm / tla-ts の回帰検査を行い、TLC の手動 run / replay も justfile に登録する。全 TLA+ 互換や未知の実システムのバグ検出とは扱わない。
+
+開発 run の補足: TLC v1.7.4 (`5a47802b5c391f59ecdd44117981f4ff8c0656ba`) の SANY は非BMP文字を含む2つの入力を字句エラーで拒否した。原入力は残し、同じ2入力を明示的な拒否対照にする。Rust frontend も拒否することを検査し、モデルの一致件数には加えない。初期 invariant violation では集計数を出さないため、出力のある数だけ照合し、欠測を0と解釈しない。TLC master と v1.7.4 は String の Head / Append / toTuple の扱いが違うため、jar と同じ tag のソースで修正する。確認 seed は未実行のまま維持する。

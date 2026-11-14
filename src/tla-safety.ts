@@ -367,6 +367,15 @@ export const compileTlaSafety = (options: {
     context: Context,
   ): SafetyExpression => {
     const child = nested(context);
+    if (
+      value.kind === "String" &&
+      [...value.value].some(
+        (character) => (character.codePointAt(0) ?? 0) > 255,
+      )
+    )
+      return unsupported(
+        "TLC 1.7.4 string literal contains a character outside the byte range",
+      );
     if (value.kind === "Number" || value.kind === "String")
       return literal(value);
     if (value.kind === "Identifier") {
@@ -662,6 +671,44 @@ export const compileTlaSafety = (options: {
       `expression ${value.kind}${value.kind === "Apply" ? ` ${value.operator}` : ""}`,
     );
   };
+  const membershipSet = (
+    value: Expression,
+    context: Context,
+  ): SafetyExpression => {
+    if (
+      value.kind === "Identifier" &&
+      context.scope.entries.has(value.name) &&
+      !context.locals.has(value.name)
+    ) {
+      const expanded = call(value.name, [], context);
+      return membershipSet(expanded.body, expanded.context);
+    }
+    if (
+      value.kind === "Apply" &&
+      value.operator === "Seq" &&
+      value.args[0] &&
+      module.extends.includes("Sequences")
+    )
+      return {
+        op: "sequence-set",
+        argument: membershipSet(value.args[0], nested(context)),
+      };
+    if (value.kind === "FunctionSet")
+      return {
+        op: "function-set",
+        left: expression(value.domain, nested(context)),
+        right: membershipSet(value.range, nested(context)),
+      };
+    if (value.kind === "RecordSet")
+      return {
+        op: "record-set",
+        fields: value.fields.map((field) => [
+          field.name,
+          membershipSet(field.value, nested(context)),
+        ]),
+      };
+    return expression(value, context);
+  };
   const getMembership = (
     left: SafetyExpression,
     value: Expression,
@@ -684,48 +731,14 @@ export const compileTlaSafety = (options: {
       return {
         op: "sequence-in",
         left,
-        right: expression(value.args[0], context),
+        right: membershipSet(value.args[0], nested(context)),
       };
-    if (value.kind === "RecordSet")
-      return value.fields.reduce<SafetyExpression>(
-        (leftPredicate, field) => ({
-          op: "and",
-          left: leftPredicate,
-          right: getMembership(
-            { op: "at", target: left, key: string(field.name) },
-            field.value,
-            context,
-          ),
-        }),
-        {
-          op: "eq",
-          left: { op: "domain", argument: left },
-          right: {
-            op: "set",
-            values: value.fields.map((field) => string(field.name)),
-          },
-        },
-      );
-    if (value.kind === "FunctionSet") {
-      const slot = context.bound;
+    if (value.kind === "RecordSet" || value.kind === "FunctionSet")
       return {
-        op: "and",
-        left: {
-          op: "eq",
-          left: { op: "domain", argument: left },
-          right: expression(value.domain, context),
-        },
-        right: {
-          op: "forall",
-          bounds: [{ slot, domain: domain(value.domain, context, true) }],
-          body: getMembership(
-            { op: "at", target: left, key: { op: "bound", slot } },
-            value.range,
-            { ...nested(context), bound: slot + 1 },
-          ),
-        },
+        op: "function-in",
+        left,
+        right: membershipSet(value, nested(context)),
       };
-    }
     if (value.kind === "Apply" && value.operator === "SUBSET" && value.args[0])
       return {
         op: "subset-eq",

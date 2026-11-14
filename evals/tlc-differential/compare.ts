@@ -11,20 +11,23 @@ export interface Observation {
 export const classifyTlc = (
   reference: Awaited<ReturnType<typeof runTlc>>,
 ): string => {
+  if (reference.exit === null || !reference.log.includes("TLC2 Version"))
+    return "infrastructure-error";
   if (
-    reference.exit === null ||
-    !reference.log.includes("TLC2 Version") ||
     /Semantic errors|Lexical error|Parsing or semantic analysis failed|Fatal errors/.test(
       reference.log,
     )
   )
-    return "infrastructure-error";
+    return "input-error";
   if (reference.status === "error")
     return reference.log.includes("Starting...") &&
       reference.log.includes("Error:")
       ? "model-error"
       : "infrastructure-error";
-  if (reference.states === null || reference.generated === null)
+  if (
+    ["complete", "empty"].includes(reference.status) &&
+    (reference.states === null || reference.generated === null)
+  )
     return "infrastructure-error";
   return reference.status;
 };
@@ -45,9 +48,12 @@ export const differences = (
   if (actual !== expected) return [`verdict: ${actual} != ${expected}`];
   if (!ours.result) return [];
   const result: string[] = [];
-  if (ours.result.states !== reference.states)
+  if (reference.states !== null && ours.result.states !== reference.states)
     result.push(`states: ${ours.result.states} != ${reference.states}`);
-  if (ours.result.generated !== reference.generated)
+  if (
+    reference.generated !== null &&
+    ours.result.generated !== reference.generated
+  )
     result.push(
       `generated: ${ours.result.generated} != ${reference.generated}`,
     );

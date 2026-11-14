@@ -75,7 +75,12 @@ export const differential = async (
     input,
     "Differential",
   );
-  const mismatches = [...differences(ours, reference)];
+  const rejected =
+    input.expectedRejection === true &&
+    ours.error?.phase === "compile" &&
+    /TLC 1.7.4 string literal/.test(ours.error.message) &&
+    classifyTlc(reference) === "input-error";
+  const mismatches = rejected ? [] : [...differences(ours, reference)];
   if (nativeResult && !isDeepStrictEqual(ours, nativeResult))
     mismatches.push("native-wasm");
   if (
@@ -134,6 +139,7 @@ export const differential = async (
   }
   return {
     input,
+    classification: rejected ? "rejected-input" : "compared",
     ours,
     native: nativeResult,
     reference: {

@@ -4,11 +4,15 @@ export interface Input {
   readonly source: string;
   readonly config: string;
   readonly seed?: number;
+  readonly expectedRejection?: true;
 }
 export const seeds = { development: 0x15a1, confirmation: 0x15b2 } as const;
 const value = (name: string, expression: string): Input => ({
   name,
   family: "value",
+  ...(["string-len-supplementary", "string-tail-prefix"].includes(name)
+    ? { expectedRejection: true }
+    : {}),
   source: `---- MODULE Differential ----\nEXTENDS Integers, Sequences, FiniteSets\nVARIABLE x\nInit == x = (${expression})\nNext == UNCHANGED x\nProp == x # x\n====`,
   config: "INIT Init\nNEXT Next\nINVARIANT Prop\nCHECK_DEADLOCK FALSE",
 });

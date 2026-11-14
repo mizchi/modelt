@@ -133,7 +133,21 @@ try {
         }
     }
   const mismatches = reports.filter((report) => report.differences.length > 0);
-  const status = mismatches.length ? "mismatch" : "complete";
+  const infrastructureErrors = reports.filter((report) =>
+    report.differences.includes("infrastructure-error"),
+  ).length;
+  const incomplete = reports.filter((report) =>
+    report.differences.some(
+      (difference) => difference === "bounded" || difference === "unsupported",
+    ),
+  ).length;
+  const status = infrastructureErrors
+    ? "infrastructure-error"
+    : incomplete
+      ? "incomplete"
+      : mismatches.length
+        ? "mismatch"
+        : "complete";
   const result = {
     status,
     plan: "0015-tlc-differential",
@@ -141,7 +155,15 @@ try {
     phase,
     files,
     cases: reports.length,
-    matched: reports.length - mismatches.length,
+    matched: reports.filter(
+      (report) =>
+        report.differences.length === 0 && report.classification === "compared",
+    ).length,
+    rejectedInputs: reports.filter(
+      (report) => report.classification === "rejected-input",
+    ).length,
+    infrastructureErrors,
+    incomplete,
     modelErrors: reports.filter(
       (report) => report.reference.status === "model-error",
     ).length,

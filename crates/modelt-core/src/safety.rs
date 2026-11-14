@@ -64,6 +64,9 @@ pub enum Expression {
     Cardinality {
         argument: Box<Self>,
     },
+    SequenceSet {
+        argument: Box<Self>,
+    },
     Len {
         argument: Box<Self>,
     },
