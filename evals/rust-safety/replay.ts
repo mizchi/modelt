@@ -50,7 +50,9 @@ try {
   assert.equal(reports.length, result.cases);
   assert.deepEqual(
     reports.map((report) => report.name),
-    benchmarkCases().map((input) => input.name),
+    benchmarkCases(manifest.plan === "0012-collections-temporal").map(
+      (input) => input.name,
+    ),
   );
   for (const report of reports) {
     assert.ok(
@@ -75,6 +77,7 @@ try {
       source: report.input.source,
       config: report.input.config,
       workers: 1,
+      livenessCheck: "final",
     });
     assert.equal(reference.status, "success");
     assert.equal(actual.status, "complete");

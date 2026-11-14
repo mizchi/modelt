@@ -1,6 +1,6 @@
 # 次の評価
 
-0009〜0011では [TLA safety の Rust backend](iterations/0009-rust-safety.md) を追加した。初回は大きいモデルで改善がなく、profile に基づく literal decode と状態の連続格納で、ring10万状態は同時測定の tla-ts に対し native 約2.9倍 / Wasm 約2.2倍となった。次は state の function / record / sequence と実仕様の対応範囲を広げる。generic TS Model の BFS や全 TLA+ の移植は未完了。
+0009〜0011では [TLA safety の Rust backend](iterations/0009-rust-safety.md) を追加した。初回は大きいモデルで改善がなく、profile に基づく literal decode と状態の連続格納で、ring10万状態は同時測定の tla-ts に対し native 約2.9倍 / Wasm 約2.2倍となった。0012 では state の set / function / record / sequence、有限量化、liveness / fairness を追加し、原文の Channel でも検査する。次の性能判断は [0012 の計画](plans/0012-collections-temporal.md) の固定入力で記録する。generic TS Model の BFS や全 TLA+ の移植は未完了。
 
 0008では [非同期履歴と再利用・探索](iterations/0008-async-tuning.md) を検査した。未確定操作を含む履歴、反復利用向け handle、trace buffer、optional な preflight / 依存縮小を採用する。feedback は drop の検出が増えたが fifo が後退し、生成費用も増えたため実験のまま残す。次の確認用 seed は261以降とする。
 

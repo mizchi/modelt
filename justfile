@@ -60,7 +60,7 @@ safety-build: portable-build
   pnpm build
 
 safety-test: safety-build
-  node --test dist/evals/rust-safety/contract-test.js
+  node --test dist/evals/rust-safety/contract-test.js dist/evals/collections-temporal/contract-test.js
 
 safety-eval run: safety-build
   node dist/evals/rust-safety/evaluate.js {{quote(run)}}
@@ -129,3 +129,17 @@ usable-benchmark input output:
 package:
   pnpm package:prepare
   pnpm package:test
+
+complex-tlc java jar run: safety-build
+  node dist/evals/collections-temporal/tlc-check.js {{quote(java)}} {{quote(jar)}} {{quote(run)}}
+
+complex-eval run: safety-build
+  node dist/evals/collections-temporal/evaluate.js {{quote(run)}}
+
+complex-replay run:
+  pnpm build
+  node dist/evals/collections-temporal/replay.js {{quote(run)}}
+
+complex-tlc-replay java jar run:
+  pnpm build
+  node dist/evals/collections-temporal/tlc-replay.js {{quote(java)}} {{quote(jar)}} {{quote(run)}}

@@ -1,0 +1,8 @@
+{
+  "repository": "https://github.com/tlaplus/Examples",
+  "commit": "334c3983a2f44ac78fce89d1d20aa79ceb3e6987",
+  "path": "specifications/SpecifyingSystems/AsynchronousInterface/Channel.tla",
+  "sha256": "8b2cbd4533a157ae0760e3117e3c008fb9a31dc3673005fc8b537d3879de1bfc",
+  "license": "MIT",
+  "licenseFile": "LICENSE.md"
+}

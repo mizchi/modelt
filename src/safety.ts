@@ -3,7 +3,6 @@ import type {
   SafetyBounds,
   SafetyProgram,
   SafetyResult,
-  SafetyScalar,
 } from "./contracts.js";
 import { normalizePortableValue, PortableCoreError } from "./portable-value.js";
 import { isRecord } from "./trace.js";
@@ -41,24 +40,34 @@ export const decodeSafetyResult = (input: unknown): SafetyResult => {
       value.status !== "bounded" &&
       value.status !== "empty" &&
       value.status !== "invariant-violation" &&
+      value.status !== "property-violation" &&
+      value.status !== "liveness-violation" &&
       value.status !== "deadlock" &&
       value.status !== "assumption-violation") ||
     (value.reason !== null &&
       value.reason !== "depth" &&
       value.reason !== "states" &&
-      value.reason !== "work") ||
+      value.reason !== "work" &&
+      value.reason !== "temporal") ||
     (value.status === "bounded") !== (value.reason !== null)
   )
     throw new PortableCoreError("protocol", "Invalid safety status");
   const violation =
     value.violation === null
       ? null
-      : fields(value.violation, ["name", "trace"]);
+      : fields(
+          value.violation,
+          value.status === "liveness-violation"
+            ? ["name", "trace", "loopStart", "loopAction"]
+            : ["name", "trace"],
+        );
   if (
     (violation &&
       (typeof violation.name !== "string" ||
         !Array.isArray(violation.trace))) ||
     (value.status === "invariant-violation" ||
+      value.status === "property-violation" ||
+      value.status === "liveness-violation" ||
       value.status === "deadlock" ||
       value.status === "assumption-violation") !==
       (violation !== null)
@@ -77,20 +86,23 @@ export const decodeSafetyResult = (input: unknown): SafetyResult => {
               throw new PortableCoreError("protocol", "Invalid safety trace");
             return {
               action: step.action,
-              values: step.values.map((entry: unknown): SafetyScalar => {
-                const scalar = normalizePortableValue(entry);
-                if (scalar.type !== "int" && scalar.type !== "bool")
-                  throw new PortableCoreError(
-                    "protocol",
-                    "Invalid safety scalar",
-                  );
-                return scalar.type === "bool"
-                  ? scalar
-                  : { type: "int", value: scalar.value };
-              }),
+              values: step.values.map((entry: unknown) =>
+                normalizePortableValue(entry),
+              ),
             };
           },
         );
+  const loopStart =
+    value.status === "liveness-violation" && violation
+      ? integer(violation.loopStart)
+      : undefined;
+  if (
+    loopStart !== undefined &&
+    (loopStart >= trace.length ||
+      !violation ||
+      typeof violation.loopAction !== "string")
+  )
+    throw new PortableCoreError("protocol", "Invalid liveness loop");
   return {
     status: value.status,
     reason: value.reason,
@@ -99,7 +111,15 @@ export const decodeSafetyResult = (input: unknown): SafetyResult => {
     depth: integer(value.depth),
     work: integer(value.work),
     violation:
-      violation === null ? null : { name: String(violation.name), trace },
+      violation === null
+        ? null
+        : {
+            name: String(violation.name),
+            trace,
+            ...(loopStart === undefined
+              ? {}
+              : { loopStart, loopAction: String(violation.loopAction) }),
+          },
   };
 };
 

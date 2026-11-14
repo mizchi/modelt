@@ -85,4 +85,4 @@ TS SDK は state / action / observation の encoding を差し替えられる。
 
 ## 初版の範囲
 
-Rust は値・適合性・再生に加え、観測付きの有限表を読み、縮小と HostTape を検査できる。Go SDK は同じ Wasm を駆動し、Go の Driver とモデル callback を接続する。BFS、モデル合成、fast-check による生成、TLA+、SMT、budget/sharding は既存 TS 経路を使う。任意の TS 関数の変換や汎用の言語 IR は含まない。配布 archive と単独 consumer を検証し、registry の初回公開はユーザー操作として残している。[0004](../evals/plans/0004-portable-core.md)、[0005](../evals/plans/0005-usable-core.md)、[Go の計画](../evals/plans/0006-go-adapter.md) を参照。
+Rust は値・適合性・再生に加え、観測付きの有限表を読み、縮小と HostTape を検査できる。Go SDK は同じ Wasm を駆動し、Go の Driver とモデル callback を接続する。汎用 TS Model の BFS、モデル合成、fast-check による生成、SMT、budget/sharding は既存 TS 経路を使う。有限の TLA+ fragment は [専用の Rust backend](rust-safety.md) で状態生成・BFS・temporal property の検査を行える。任意の TS 関数の変換や汎用の言語 IR は含まない。配布 archive と単独 consumer を検証し、registry の初回公開はユーザー操作として残している。[0004](../evals/plans/0004-portable-core.md)、[0005](../evals/plans/0005-usable-core.md)、[Go の計画](../evals/plans/0006-go-adapter.md) を参照。

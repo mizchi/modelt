@@ -59,6 +59,20 @@ export const run = async (): Promise<Record<string, unknown>> => {
     safety.violation?.trace.length !== 4
   )
     throw new Error("Browser TLA compiler and Rust backend differ");
+  const live = checkSafety(
+    rust,
+    compileTlaSafety({
+      source:
+        "---- MODULE BrowserLive ----\nEXTENDS Naturals, Sequences\nVARIABLE q\nInit == q = <<0>>\nNext == q' = <<1 - Head(q)>>\nSpec == Init /\\ [][Next]_q /\\ WF_q(Next)\nP == <>[](Head(q) = 1)\n====",
+      config: "SPECIFICATION Spec\nPROPERTY P",
+    }),
+    { maxDepth: 4, maxStates: 10, maxWork: 10000, maxTemporalNodes: 100 },
+  );
+  if (
+    live.status !== "liveness-violation" ||
+    live.violation?.loopStart === undefined
+  )
+    throw new Error("Browser temporal compilation differs");
   const smt = await createSmtOracle(api).solve(
     "(declare-const value Int) (assert (= value 7))",
     ["value"],

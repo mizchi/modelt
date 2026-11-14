@@ -2,6 +2,7 @@ import { readFile } from "node:fs/promises";
 import { createServer, type Server } from "node:http";
 import { expect, test } from "@playwright/test";
 import { build } from "esbuild";
+import { cases } from "../evals/collections-temporal/cases.js";
 import { compileTlaSafety } from "../src/tla-safety.js";
 
 let server: Server | undefined;
@@ -27,6 +28,24 @@ test.beforeAll(async () => {
       config: "INIT Init\nNEXT Next\nINVARIANT Safe",
     }),
   );
+  const complex = JSON.stringify(
+    cases
+      .filter((input) =>
+        [
+          "set-fault",
+          "function-updates",
+          "sequence-queue",
+          "multiple-eventualities",
+          "SF-intermittent",
+          "temporal-node-cut",
+        ].includes(input.name),
+      )
+      .map((input) => ({
+        program: compileTlaSafety(input),
+        bounds: input.bounds,
+        expected: input.expected,
+      })),
+  );
   server = createServer((request, response) => {
     response.setHeader(
       "Content-Type",
@@ -34,7 +53,7 @@ test.beforeAll(async () => {
         ? "application/wasm"
         : request.url === "/bundle.js"
           ? "text/javascript"
-          : request.url === "/safety.json"
+          : request.url === "/safety.json" || request.url === "/complex.json"
             ? "application/json"
             : "text/html",
     );
@@ -45,7 +64,9 @@ test.beforeAll(async () => {
           ? output.contents
           : request.url === "/safety.json"
             ? safety
-            : '<!doctype html><title>modelt portable core</title><script src="/bundle.js"></script>',
+            : request.url === "/complex.json"
+              ? complex
+              : '<!doctype html><title>modelt portable core</title><script src="/bundle.js"></script>',
     );
   });
   await new Promise<void>((resolve) => server?.listen(0, "127.0.0.1", resolve));

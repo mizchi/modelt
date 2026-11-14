@@ -1,3 +1,6 @@
+use crate::safety_expressions::{EvalContext, validate_branches};
+use crate::safety_values::Arena;
+use crate::temporal::{GraphEdge, TemporalFormula, TemporalProperty};
 use crate::{CoreError, Value};
 use serde::{Deserialize, Serialize};
 use std::collections::{HashMap, HashSet};
@@ -5,6 +8,123 @@ use std::collections::{HashMap, HashSet};
 #[derive(Clone, Debug, Serialize, Deserialize)]
 #[serde(tag = "op", rename_all = "kebab-case", deny_unknown_fields)]
 pub enum Expression {
+    Prime {
+        argument: Box<Self>,
+    },
+    Data {
+        value: Value,
+    },
+    Bound {
+        slot: usize,
+    },
+    Old,
+    Set {
+        values: Vec<Self>,
+    },
+    Tuple {
+        values: Vec<Self>,
+    },
+    Record {
+        fields: Vec<(String, Self)>,
+    },
+    RecordSet {
+        fields: Vec<(String, Self)>,
+    },
+    At {
+        target: Box<Self>,
+        key: Box<Self>,
+    },
+    Update {
+        target: Box<Self>,
+        updates: Vec<Update>,
+    },
+    Forall {
+        bounds: Vec<Binding>,
+        body: Box<Self>,
+    },
+    Exists {
+        bounds: Vec<Binding>,
+        body: Box<Self>,
+    },
+    Function {
+        bounds: Vec<Binding>,
+        body: Box<Self>,
+    },
+    Filter {
+        bounds: Vec<Binding>,
+        body: Box<Self>,
+    },
+    MapSet {
+        bounds: Vec<Binding>,
+        body: Box<Self>,
+    },
+    Domain {
+        argument: Box<Self>,
+    },
+    Cardinality {
+        argument: Box<Self>,
+    },
+    Len {
+        argument: Box<Self>,
+    },
+    Head {
+        argument: Box<Self>,
+    },
+    Tail {
+        argument: Box<Self>,
+    },
+    Powerset {
+        argument: Box<Self>,
+    },
+    Union {
+        argument: Box<Self>,
+    },
+    Cup {
+        left: Box<Self>,
+        right: Box<Self>,
+    },
+    Cap {
+        left: Box<Self>,
+        right: Box<Self>,
+    },
+    Difference {
+        left: Box<Self>,
+        right: Box<Self>,
+    },
+    SubsetEq {
+        left: Box<Self>,
+        right: Box<Self>,
+    },
+    Append {
+        left: Box<Self>,
+        right: Box<Self>,
+    },
+    Concat {
+        left: Box<Self>,
+        right: Box<Self>,
+    },
+    FunctionSet {
+        left: Box<Self>,
+        right: Box<Self>,
+    },
+    FunctionIn {
+        left: Box<Self>,
+        right: Box<Self>,
+    },
+    SequenceIn {
+        left: Box<Self>,
+        right: Box<Self>,
+    },
+    Subseq {
+        sequence: Box<Self>,
+        from: Box<Self>,
+        to: Box<Self>,
+    },
+    Enabled {
+        branches: Vec<Branch>,
+        #[serde(default)]
+        subscript: Option<Box<Self>>,
+    },
     Literal {
         value: Scalar,
     },
@@ -80,6 +200,9 @@ pub enum Expression {
 #[derive(Clone, Debug, Serialize, Deserialize)]
 #[serde(tag = "kind", rename_all = "kebab-case", deny_unknown_fields)]
 pub enum Domain {
+    Value {
+        value: Box<Expression>,
+    },
     Range {
         lower: Box<Expression>,
         upper: Box<Expression>,
@@ -92,9 +215,39 @@ pub enum Domain {
 #[derive(Clone, Debug, Serialize, Deserialize)]
 #[serde(tag = "kind", rename_all = "kebab-case", deny_unknown_fields)]
 pub enum Step {
-    Guard { expression: Expression },
-    Assign { slot: usize, value: Expression },
-    Choose { slot: usize, domain: Domain },
+    Bind {
+        slot: usize,
+        domain: Domain,
+        #[serde(rename = "tupleSize", default, skip_serializing_if = "Option::is_none")]
+        tuple_size: Option<usize>,
+    },
+    Guard {
+        expression: Expression,
+    },
+    Assign {
+        slot: usize,
+        value: Expression,
+    },
+    Choose {
+        slot: usize,
+        domain: Domain,
+    },
+}
+
+#[derive(Clone, Debug, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct Binding {
+    #[serde(rename = "tupleSize", default, skip_serializing_if = "Option::is_none")]
+    pub tuple_size: Option<usize>,
+    pub slot: usize,
+    pub domain: Domain,
+}
+
+#[derive(Clone, Debug, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct Update {
+    pub path: Vec<Expression>,
+    pub value: Expression,
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
@@ -123,6 +276,14 @@ pub struct SafetyProgram {
     pub invariants: Vec<Predicate>,
     pub assumptions: Vec<Predicate>,
     pub check_deadlock: bool,
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub initial_properties: Vec<Predicate>,
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub action_properties: Vec<Predicate>,
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub properties: Vec<TemporalProperty>,
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub fairness: Vec<TemporalFormula>,
 }
 
 #[derive(Clone, Copy, Debug, Serialize, Deserialize)]
@@ -131,6 +292,8 @@ pub struct SafetyBounds {
     pub max_depth: u32,
     pub max_states: u32,
     pub max_work: u32,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub max_temporal_nodes: Option<u32>,
 }
 
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
@@ -145,6 +308,14 @@ pub struct SafetyTraceStep {
 pub struct SafetyViolation {
     pub name: String,
     pub trace: Vec<SafetyTraceStep>,
+    #[serde(default, skip_serializing_if = "Option::is_none", rename = "loopStart")]
+    pub loop_start: Option<usize>,
+    #[serde(
+        default,
+        skip_serializing_if = "Option::is_none",
+        rename = "loopAction"
+    )]
+    pub loop_action: Option<String>,
 }
 
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
@@ -159,11 +330,12 @@ pub struct SafetyResult {
     pub violation: Option<SafetyViolation>,
 }
 
-#[derive(Clone, Copy, Debug, PartialEq, Eq, PartialOrd, Ord, Hash, Serialize, Deserialize)]
-#[serde(try_from = "Value", into = "Value")]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, PartialOrd, Ord, Hash, Deserialize)]
+#[serde(try_from = "Value")]
 pub enum Scalar {
     Bool(bool),
     Int(i32),
+    Ref(u32),
 }
 
 impl TryFrom<Value> for Scalar {
@@ -173,14 +345,19 @@ impl TryFrom<Value> for Scalar {
     }
 }
 
-impl From<Scalar> for Value {
-    fn from(value: Scalar) -> Self {
-        value.portable()
+impl Serialize for Scalar {
+    fn serialize<S: serde::Serializer>(&self, serializer: S) -> Result<S::Ok, S::Error> {
+        let value = match self {
+            Self::Bool(value) => Value::Bool(*value),
+            Self::Int(value) => Value::Int(value.to_string()),
+            Self::Ref(_) => return Err(serde::ser::Error::custom("Internal value reference")),
+        };
+        value.serialize(serializer)
     }
 }
 
 impl Scalar {
-    fn parse(value: &Value) -> Result<Self, CoreError> {
+    pub(crate) fn parse(value: &Value) -> Result<Self, CoreError> {
         match value {
             Value::Bool(value) => Ok(Self::Bool(*value)),
             Value::Int(value) => {
@@ -197,240 +374,18 @@ impl Scalar {
             )),
         }
     }
-    fn integer(self) -> Result<i32, CoreError> {
+    pub(crate) fn integer(self) -> Result<i32, CoreError> {
         match self {
             Self::Int(value) => Ok(value),
             _ => Err(CoreError::protocol("Expected an integer")),
         }
     }
-    fn boolean(self) -> Result<bool, CoreError> {
+    pub(crate) fn boolean(self) -> Result<bool, CoreError> {
         match self {
             Self::Bool(value) => Ok(value),
             _ => Err(CoreError::protocol("Expected a boolean")),
         }
     }
-    fn equal(self, other: Self) -> Result<bool, CoreError> {
-        if std::mem::discriminant(&self) != std::mem::discriminant(&other) {
-            return Err(CoreError::protocol("Incomparable safety values"));
-        }
-        Ok(self == other)
-    }
-    fn portable(self) -> Value {
-        match self {
-            Self::Bool(value) => Value::Bool(value),
-            Self::Int(value) => Value::Int(value.to_string()),
-        }
-    }
-}
-
-impl Expression {
-    fn is_constant(&self) -> bool {
-        match self {
-            Self::Literal { .. } => true,
-            Self::Read { .. } => false,
-            Self::Not { argument } | Self::Neg { argument } => argument.is_constant(),
-            Self::If {
-                condition,
-                consequent,
-                alternative,
-            } => condition.is_constant() && consequent.is_constant() && alternative.is_constant(),
-            Self::In { value, domain } => {
-                value.is_constant()
-                    && match domain {
-                        Domain::Range { lower, upper } => {
-                            lower.is_constant() && upper.is_constant()
-                        }
-                        Domain::Set { values } => values.iter().all(Self::is_constant),
-                    }
-            }
-            Self::Add { left, right }
-            | Self::Sub { left, right }
-            | Self::Mul { left, right }
-            | Self::Eq { left, right }
-            | Self::Ne { left, right }
-            | Self::Lt { left, right }
-            | Self::Le { left, right }
-            | Self::Gt { left, right }
-            | Self::Ge { left, right }
-            | Self::And { left, right }
-            | Self::Or { left, right }
-            | Self::Implies { left, right } => left.is_constant() && right.is_constant(),
-        }
-    }
-    fn validate(&self, variables: usize, phase: u8, depth: usize) -> Result<(), CoreError> {
-        if depth > 48 {
-            return Err(CoreError::protocol("Safety expression nesting exceeds 48"));
-        }
-        let child = |value: &Self| value.validate(variables, phase, depth + 1);
-        match self {
-            Self::Literal { .. } => {}
-            Self::Read { slot, next } => {
-                if *slot >= variables
-                    || (phase == 0 && !next)
-                    || (phase == 2 && *next)
-                    || phase == 3
-                {
-                    return Err(CoreError::protocol("Invalid safety variable read"));
-                }
-            }
-            Self::Not { argument } | Self::Neg { argument } => child(argument)?,
-            Self::If {
-                condition,
-                consequent,
-                alternative,
-            } => {
-                child(condition)?;
-                child(consequent)?;
-                child(alternative)?;
-            }
-            Self::In { value, domain } => {
-                child(value)?;
-                domain.validate(variables, phase, depth + 1)?;
-            }
-            Self::Add { left, right }
-            | Self::Sub { left, right }
-            | Self::Mul { left, right }
-            | Self::Eq { left, right }
-            | Self::Ne { left, right }
-            | Self::Lt { left, right }
-            | Self::Le { left, right }
-            | Self::Gt { left, right }
-            | Self::Ge { left, right }
-            | Self::And { left, right }
-            | Self::Or { left, right }
-            | Self::Implies { left, right } => {
-                child(left)?;
-                child(right)?;
-            }
-        }
-        Ok(())
-    }
-    fn eval(&self, current: &[Scalar], next: &[Option<Scalar>]) -> Result<Scalar, CoreError> {
-        let eval = |value: &Self| value.eval(current, next);
-        let arithmetic = |left: &Self, right: &Self, operation: fn(i32, i32) -> Option<i32>| {
-            operation(eval(left)?.integer()?, eval(right)?.integer()?)
-                .map(Scalar::Int)
-                .ok_or_else(|| CoreError::protocol("Safety integer overflow"))
-        };
-        Ok(match self {
-            Self::Literal { value } => *value,
-            Self::Read { slot, next: true } => next
-                .get(*slot)
-                .copied()
-                .flatten()
-                .ok_or_else(|| CoreError::protocol("Read of an unassigned next variable"))?,
-            Self::Read { slot, next: false } => *current
-                .get(*slot)
-                .ok_or_else(|| CoreError::protocol("Read of a missing current variable"))?,
-            Self::Not { argument } => Scalar::Bool(!eval(argument)?.boolean()?),
-            Self::Neg { argument } => Scalar::Int(
-                eval(argument)?
-                    .integer()?
-                    .checked_neg()
-                    .ok_or_else(|| CoreError::protocol("Safety integer overflow"))?,
-            ),
-            Self::Add { left, right } => arithmetic(left, right, i32::checked_add)?,
-            Self::Sub { left, right } => arithmetic(left, right, i32::checked_sub)?,
-            Self::Mul { left, right } => arithmetic(left, right, i32::checked_mul)?,
-            Self::Eq { left, right } | Self::Ne { left, right } => {
-                let left = eval(left)?;
-                let right = eval(right)?;
-                if std::mem::discriminant(&left) != std::mem::discriminant(&right) {
-                    return Err(CoreError::protocol("Incomparable safety values"));
-                }
-                Scalar::Bool((left == right) == matches!(self, Self::Eq { .. }))
-            }
-            Self::Lt { left, right } => {
-                Scalar::Bool(eval(left)?.integer()? < eval(right)?.integer()?)
-            }
-            Self::Le { left, right } => {
-                Scalar::Bool(eval(left)?.integer()? <= eval(right)?.integer()?)
-            }
-            Self::Gt { left, right } => {
-                Scalar::Bool(eval(left)?.integer()? > eval(right)?.integer()?)
-            }
-            Self::Ge { left, right } => {
-                Scalar::Bool(eval(left)?.integer()? >= eval(right)?.integer()?)
-            }
-            Self::And { left, right } => {
-                Scalar::Bool(eval(left)?.boolean()? && eval(right)?.boolean()?)
-            }
-            Self::Or { left, right } => {
-                Scalar::Bool(eval(left)?.boolean()? || eval(right)?.boolean()?)
-            }
-            Self::Implies { left, right } => {
-                Scalar::Bool(!eval(left)?.boolean()? || eval(right)?.boolean()?)
-            }
-            Self::If {
-                condition,
-                consequent,
-                alternative,
-            } => eval(if eval(condition)?.boolean()? {
-                consequent
-            } else {
-                alternative
-            })?,
-            Self::In { value, domain } => {
-                Scalar::Bool(domain.contains(eval(value)?, current, next)?)
-            }
-        })
-    }
-}
-
-impl Domain {
-    fn validate(&self, variables: usize, phase: u8, depth: usize) -> Result<(), CoreError> {
-        match self {
-            Self::Range { lower, upper } => {
-                lower.validate(variables, phase, depth)?;
-                upper.validate(variables, phase, depth)?;
-            }
-            Self::Set { values } => {
-                for value in values {
-                    value.validate(variables, phase, depth)?;
-                }
-            }
-        }
-        Ok(())
-    }
-    fn contains(
-        &self,
-        value: Scalar,
-        current: &[Scalar],
-        next: &[Option<Scalar>],
-    ) -> Result<bool, CoreError> {
-        match self {
-            Self::Range { lower, upper } => {
-                let lower = lower.eval(current, next)?.integer()?;
-                let upper = upper.eval(current, next)?.integer()?;
-                let value = value.integer()?;
-                Ok(lower <= value && value <= upper)
-            }
-            Self::Set { values } => {
-                let values = set_values(values, current, next)?;
-                if let Some(first) = values.first() {
-                    first.equal(value)?;
-                }
-                Ok(values.contains(&value))
-            }
-        }
-    }
-}
-
-fn set_values(
-    values: &[Expression],
-    current: &[Scalar],
-    next: &[Option<Scalar>],
-) -> Result<Vec<Scalar>, CoreError> {
-    let mut evaluated = values
-        .iter()
-        .map(|value| value.eval(current, next))
-        .collect::<Result<Vec<_>, _>>()?;
-    for pair in evaluated.windows(2) {
-        pair[0].equal(pair[1])?;
-    }
-    evaluated.sort();
-    evaluated.dedup();
-    Ok(evaluated)
 }
 
 struct Node {
@@ -500,6 +455,7 @@ fn get_hash(values: &[Option<Scalar>]) -> Result<u64, CoreError> {
             let bits = match value.ok_or_else(|| CoreError::protocol("Incomplete safety state"))? {
                 Scalar::Int(value) => u64::from(value as u32) << 1,
                 Scalar::Bool(value) => (u64::from(value) << 1) | 1,
+                Scalar::Ref(value) => u64::from(value) ^ 0x9e37_79b9_7f4a_7c15,
             };
             Ok(hash.wrapping_mul(0x0000_0100_0000_01b3) ^ bits)
         })
@@ -511,6 +467,9 @@ struct Search<'a> {
     nodes: Vec<Node>,
     store: StateStore,
     result: SafetyResult,
+    arena: Arena,
+    graph: Option<Vec<Vec<GraphEdge>>>,
+    roots: Vec<usize>,
 }
 
 impl SafetyProgram {
@@ -527,57 +486,13 @@ impl SafetyProgram {
         {
             return Err(CoreError::protocol("Invalid safety program or bounds"));
         }
-        for (phase, branches) in [(0, &self.initial), (1, &self.next)] {
-            for branch in branches {
-                if branch.steps.len() > 256 {
-                    return Err(CoreError::protocol("Safety branch exceeds 256 steps"));
-                }
-                for step in &branch.steps {
-                    match step {
-                        Step::Guard { expression } => {
-                            expression.validate(self.variables.len(), phase, 0)?
-                        }
-                        Step::Assign { slot, value } => {
-                            self.slot(*slot)?;
-                            value.validate(self.variables.len(), phase, 0)?;
-                        }
-                        Step::Choose { slot, domain } => {
-                            self.slot(*slot)?;
-                            domain.validate(self.variables.len(), phase, 0)?;
-                        }
-                    }
-                }
-            }
-        }
-        for predicate in &self.invariants {
-            predicate.expression.validate(self.variables.len(), 2, 0)?;
-            if predicate.expression.is_constant()
-                && !predicate.expression.eval(&[], &[])?.boolean()?
-            {
-                return Err(CoreError::protocol("Constant invariant is false"));
-            }
-        }
-        for predicate in &self.assumptions {
-            predicate.expression.validate(self.variables.len(), 3, 0)?;
-            if !predicate.expression.eval(&[], &[])?.boolean()? {
-                return Ok(SafetyResult {
-                    status: "assumption-violation".into(),
-                    reason: None,
-                    states: 0,
-                    generated: 0,
-                    depth: 0,
-                    work: 0,
-                    violation: Some(SafetyViolation {
-                        name: predicate.name.clone(),
-                        trace: vec![],
-                    }),
-                });
-            }
-        }
         let mut search = Search {
             program: self,
             bounds,
             nodes: vec![],
+            arena: Arena::new(bounds.max_work),
+            graph: (!self.properties.is_empty()).then(Vec::new),
+            roots: vec![],
             store: StateStore::new(self.variables.len()),
             result: SafetyResult {
                 status: "complete".into(),
@@ -589,89 +504,173 @@ impl SafetyProgram {
                 violation: None,
             },
         };
-        let mut next = vec![None; self.variables.len()];
-        for (index, branch) in self.initial.iter().enumerate() {
-            search.walk(
+        let outcome = search.run();
+        if let Err(error) = outcome {
+            if error.code != "budget" && error.code != "temporal-budget" {
+                return Err(error);
+            }
+            search.result.status = "bounded".into();
+            search.result.reason = Some(
+                if error.code == "temporal-budget" {
+                    "temporal"
+                } else {
+                    "work"
+                }
+                .into(),
+            );
+        }
+        search.result.work = search.arena.work;
+        Ok(search.result)
+    }
+}
+
+impl Search<'_> {
+    fn run(&mut self) -> Result<(), CoreError> {
+        let program = self.program;
+        validate_branches(&program.initial, program.variables.len(), 0, 0)?;
+        validate_branches(&program.next, program.variables.len(), 1, 0)?;
+        for predicate in program.invariants.iter().chain(&program.initial_properties) {
+            predicate
+                .expression
+                .validate(program.variables.len(), 2, 0)?;
+            if predicate.expression.is_constant()
+                && !predicate
+                    .expression
+                    .eval(EvalContext::new(&[], &[]), &mut self.arena)?
+                    .boolean()?
+            {
+                return Err(CoreError::protocol(
+                    "Constant invariant or property is false",
+                ));
+            }
+        }
+        for predicate in &program.action_properties {
+            predicate
+                .expression
+                .validate(program.variables.len(), 1, 0)?;
+        }
+        for property in &program.properties {
+            property.formula.validate(program.variables.len(), 0)?;
+        }
+        for fairness in &program.fairness {
+            fairness.validate(program.variables.len(), 0)?;
+        }
+        for predicate in &program.assumptions {
+            predicate
+                .expression
+                .validate(program.variables.len(), 3, 0)?;
+            if !predicate
+                .expression
+                .eval(EvalContext::new(&[], &[]), &mut self.arena)?
+                .boolean()?
+            {
+                self.result.status = "assumption-violation".into();
+                self.result.violation = Some(SafetyViolation {
+                    name: predicate.name.clone(),
+                    trace: vec![],
+                    loop_start: None,
+                    loop_action: None,
+                });
+                return Ok(());
+            }
+        }
+        let mut next = vec![None; program.variables.len()];
+        for (index, branch) in program.initial.iter().enumerate() {
+            self.walk(
                 BranchCursor {
                     definition: branch,
                     index,
                 },
                 0,
-                &[],
+                EvalContext::new(&[], &[]),
                 &mut next,
                 None,
                 &mut false,
             )?;
-            if search.stopped() {
-                return Ok(search.result);
+            if self.stopped() {
+                return Ok(());
             }
         }
-        if search.nodes.is_empty() {
-            search.result.status = "empty".into();
-            return Ok(search.result);
+        if self.nodes.is_empty() {
+            self.result.status = "empty".into();
+            return Ok(());
         }
         let mut index = 0;
-        let mut current = vec![Scalar::Int(0); self.variables.len()];
-        while index < search.nodes.len() {
-            current.copy_from_slice(search.store.state(index));
+        let mut current = vec![Scalar::Int(0); program.variables.len()];
+        while index < self.nodes.len() {
+            current.copy_from_slice(self.store.state(index));
             let mut enabled = false;
-            for (branch_index, branch) in self.next.iter().enumerate() {
-                search.walk(
+            for (branch_index, branch) in program.next.iter().enumerate() {
+                self.walk(
                     BranchCursor {
                         definition: branch,
                         index: branch_index,
                     },
                     0,
-                    &current,
+                    EvalContext::new(&current, &[]),
                     &mut next,
                     Some(index),
                     &mut enabled,
                 )?;
-                if search.stopped() {
-                    return Ok(search.result);
+                if self.stopped() {
+                    return Ok(());
                 }
             }
-            if !enabled && self.check_deadlock {
-                search.result.status = "deadlock".into();
-                search.result.reason = None;
-                search.result.violation = Some(SafetyViolation {
+            if !enabled && program.check_deadlock {
+                self.result.status = "deadlock".into();
+                self.result.reason = None;
+                self.result.violation = Some(SafetyViolation {
                     name: "deadlock".into(),
-                    trace: search.trace(index),
+                    trace: self.trace(index)?,
+                    loop_start: None,
+                    loop_action: None,
                 });
-                return Ok(search.result);
+                return Ok(());
             }
             index += 1;
         }
-        Ok(search.result)
-    }
-    fn slot(&self, slot: usize) -> Result<(), CoreError> {
-        if slot >= self.variables.len() {
-            return Err(CoreError::protocol("Invalid safety assignment slot"));
+        if self.result.status == "complete"
+            && let Some(graph) = &mut self.graph
+        {
+            for (index, edges) in graph.iter_mut().enumerate() {
+                edges.push(GraphEdge {
+                    target: index,
+                    action: None,
+                });
+            }
+            if let Some(violation) = crate::temporal::check(
+                program,
+                self.bounds,
+                &self.store.values,
+                self.store.width,
+                graph,
+                &self.roots,
+                &mut self.arena,
+            )? {
+                self.result.status = "liveness-violation".into();
+                self.result.violation = Some(violation);
+            }
         }
         Ok(())
     }
-}
-
-impl Search<'_> {
     fn stopped(&self) -> bool {
         self.result.violation.is_some()
             || self.result.reason.as_deref() == Some("work")
             || self.result.reason.as_deref() == Some("states")
     }
     fn tick(&mut self) -> bool {
-        if self.result.work == self.bounds.max_work {
+        if self.arena.tick().is_err() {
             self.result.status = "bounded".into();
             self.result.reason = Some("work".into());
             return false;
         }
-        self.result.work += 1;
         true
     }
     fn walk(
         &mut self,
         branch: BranchCursor<'_>,
         position: usize,
-        current: &[Scalar],
+        context: EvalContext<'_>,
         next: &mut [Option<Scalar>],
         parent: Option<usize>,
         enabled: &mut bool,
@@ -684,56 +683,71 @@ impl Search<'_> {
             self.accept(next, parent, branch.index)?;
             return Ok(());
         };
+        let ctx = EvalContext { next, ..context };
         match step {
             Step::Guard { expression } => {
-                if expression.eval(current, next)?.boolean()? {
-                    self.walk(branch, position + 1, current, next, parent, enabled)?;
+                if expression.eval(ctx, &mut self.arena)?.boolean()? {
+                    self.walk(branch, position + 1, context, next, parent, enabled)?;
                 }
             }
             Step::Assign { slot, value } => {
-                let value = value.eval(current, next)?;
+                let value = value.eval(ctx, &mut self.arena)?;
                 let previous = next[*slot];
                 if previous
-                    .map(|previous| previous.equal(value))
+                    .map(|previous| self.arena.equal(previous, value))
                     .transpose()?
                     .unwrap_or(true)
                 {
                     next[*slot] = Some(value);
-                    self.walk(branch, position + 1, current, next, parent, enabled)?;
+                    self.walk(branch, position + 1, context, next, parent, enabled)?;
                     next[*slot] = previous;
                 }
             }
             Step::Choose { slot, domain } => {
                 if let Some(value) = next[*slot] {
-                    if domain.contains(value, current, next)? {
-                        self.walk(branch, position + 1, current, next, parent, enabled)?;
+                    if domain.contains(value, ctx, &mut self.arena)? {
+                        self.walk(branch, position + 1, context, next, parent, enabled)?;
                     }
                     return Ok(());
                 }
-                match domain {
-                    Domain::Range { lower, upper } => {
-                        let lower = lower.eval(current, next)?.integer()?;
-                        let upper = upper.eval(current, next)?.integer()?;
-                        for value in lower..=upper {
-                            next[*slot] = Some(Scalar::Int(value));
-                            self.walk(branch, position + 1, current, next, parent, enabled)?;
-                            if self.stopped() {
-                                break;
-                            }
-                        }
-                    }
-                    Domain::Set { values } => {
-                        let values = set_values(values, current, next)?;
-                        for value in values {
-                            next[*slot] = Some(value);
-                            self.walk(branch, position + 1, current, next, parent, enabled)?;
-                            if self.stopped() {
-                                break;
-                            }
-                        }
+                for value in domain.values(ctx, &mut self.arena)? {
+                    next[*slot] = Some(value);
+                    self.walk(branch, position + 1, context, next, parent, enabled)?;
+                    if self.stopped() {
+                        break;
                     }
                 }
                 next[*slot] = None;
+            }
+            Step::Bind {
+                slot,
+                domain,
+                tuple_size,
+            } => {
+                let values = domain.values(ctx, &mut self.arena)?;
+                let mut locals = context.locals.to_vec();
+                if *slot != locals.len() {
+                    return Err(CoreError::protocol("Invalid bound slot"));
+                }
+                for value in values {
+                    self.arena.check_tuple(value, *tuple_size)?;
+                    locals.push(value);
+                    self.walk(
+                        branch,
+                        position + 1,
+                        EvalContext {
+                            locals: &locals,
+                            ..context
+                        },
+                        next,
+                        parent,
+                        enabled,
+                    )?;
+                    locals.pop();
+                    if self.stopped() {
+                        break;
+                    }
+                }
             }
         }
         Ok(())
@@ -746,46 +760,124 @@ impl Search<'_> {
     ) -> Result<(), CoreError> {
         let hash = get_hash(values)?;
         self.result.generated += 1;
-        if self.store.find(hash, values).is_some() {
-            return Ok(());
-        }
-        let depth = parent.map_or(0, |index| self.nodes[index].depth + 1);
-        if depth > self.bounds.max_depth {
-            self.result.status = "bounded".into();
-            self.result.reason = Some("depth".into());
-            return Ok(());
-        }
-        if self.nodes.len() == self.bounds.max_states as usize {
-            self.result.status = "bounded".into();
-            self.result.reason = Some("states".into());
-            return Ok(());
-        }
-        let index = self.store.push(hash, values)?;
-        self.nodes.push(Node {
-            parent,
-            action: parent.map(|_| action),
-            depth,
-        });
-        self.result.states = self.nodes.len();
-        self.result.depth = self.result.depth.max(depth);
-        for predicate in &self.program.invariants {
-            if !predicate
-                .expression
-                .eval(self.store.state(index), &[])?
-                .boolean()?
-            {
-                self.result.status = "invariant-violation".into();
-                self.result.reason = None;
-                self.result.violation = Some(SafetyViolation {
-                    name: predicate.name.clone(),
-                    trace: self.trace(index),
+        let existing = self.store.find(hash, values);
+        let index = if let Some(index) = existing {
+            index
+        } else {
+            let depth = parent.map_or(0, |index| self.nodes[index].depth + 1);
+            if depth > self.bounds.max_depth {
+                self.result.status = "bounded".into();
+                self.result.reason = Some("depth".into());
+                return Ok(());
+            }
+            if self.nodes.len() == self.bounds.max_states as usize {
+                self.result.status = "bounded".into();
+                self.result.reason = Some("states".into());
+                return Ok(());
+            }
+            let index = self.store.push(hash, values)?;
+            self.nodes.push(Node {
+                parent,
+                action: parent.map(|_| action),
+                depth,
+            });
+            if let Some(graph) = &mut self.graph {
+                graph.push(vec![]);
+            }
+            self.result.states = self.nodes.len();
+            self.result.depth = self.result.depth.max(depth);
+            index
+        };
+        if let Some(parent) = parent {
+            if let Some(graph) = &mut self.graph {
+                graph[parent].push(GraphEdge {
+                    target: index,
+                    action: Some(action),
                 });
-                break;
+            }
+        } else if !self.roots.contains(&index) {
+            self.roots.push(index);
+        }
+        if existing.is_none() {
+            for predicate in &self.program.invariants {
+                if !predicate
+                    .expression
+                    .eval(
+                        EvalContext::new(self.store.state(index), &[]),
+                        &mut self.arena,
+                    )?
+                    .boolean()?
+                {
+                    self.result.status = "invariant-violation".into();
+                    self.result.reason = None;
+                    self.result.violation = Some(SafetyViolation {
+                        name: predicate.name.clone(),
+                        trace: self.trace(index)?,
+                        loop_start: None,
+                        loop_action: None,
+                    });
+                    return Ok(());
+                }
+            }
+        }
+        if let Some(parent) = parent {
+            for predicate in &self.program.action_properties {
+                if !predicate
+                    .expression
+                    .eval(
+                        EvalContext::new(self.store.state(parent), values),
+                        &mut self.arena,
+                    )?
+                    .boolean()?
+                {
+                    let mut trace = self.trace(parent)?;
+                    trace.push(SafetyTraceStep {
+                        action: Some(self.program.next[action].name.clone()),
+                        values: self.portable(index)?,
+                    });
+                    self.result.status = "property-violation".into();
+                    self.result.reason = None;
+                    self.result.violation = Some(SafetyViolation {
+                        name: predicate.name.clone(),
+                        trace,
+                        loop_start: None,
+                        loop_action: None,
+                    });
+                    return Ok(());
+                }
+            }
+        } else {
+            for predicate in &self.program.initial_properties {
+                if !predicate
+                    .expression
+                    .eval(
+                        EvalContext::new(self.store.state(index), &[]),
+                        &mut self.arena,
+                    )?
+                    .boolean()?
+                {
+                    self.result.status = "property-violation".into();
+                    self.result.reason = None;
+                    self.result.violation = Some(SafetyViolation {
+                        name: predicate.name.clone(),
+                        trace: self.trace(index)?,
+                        loop_start: None,
+                        loop_action: None,
+                    });
+                    return Ok(());
+                }
             }
         }
         Ok(())
     }
-    fn trace(&self, mut index: usize) -> Vec<SafetyTraceStep> {
+    fn portable(&self, index: usize) -> Result<Vec<Value>, CoreError> {
+        self.store
+            .state(index)
+            .iter()
+            .map(|value| self.arena.portable(*value))
+            .collect()
+    }
+    fn trace(&self, mut index: usize) -> Result<Vec<SafetyTraceStep>, CoreError> {
         let mut trace = vec![];
         loop {
             let node = &self.nodes[index];
@@ -793,12 +885,7 @@ impl Search<'_> {
                 action: node
                     .action
                     .map(|index| self.program.next[index].name.clone()),
-                values: self
-                    .store
-                    .state(index)
-                    .iter()
-                    .map(|value| value.portable())
-                    .collect(),
+                values: self.portable(index)?,
             });
             match node.parent {
                 Some(parent) => index = parent,
@@ -806,7 +893,7 @@ impl Search<'_> {
             }
         }
         trace.reverse();
-        trace
+        Ok(trace)
     }
 }
 

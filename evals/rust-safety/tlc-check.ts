@@ -125,7 +125,9 @@ for (const [index, input] of inputs.entries()) {
     assert.deepEqual(
       ours.violation.trace.map((step) =>
         step.values.map((value) =>
-          value.type === "bool" ? value.value : Number(value.value),
+          value.type === "bool"
+            ? value.value
+            : Number(value.type === "int" ? value.value : NaN),
         ),
       ),
       actualTrace,

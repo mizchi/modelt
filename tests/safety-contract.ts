@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { decodeSafetyResult } from "../src/safety.js";
 import { compileTlaSafety } from "../src/tla-safety.js";
 
 export const registerSafetyContract = (
@@ -15,9 +16,8 @@ export const registerSafetyContract = (
     assert.ok(JSON.stringify(program).length < 1000);
     assert.equal(program.invariants[0]?.name, "Safe");
   });
-  test("safety compilation rejects temporal and unsupported configuration instead of ignoring it", () => {
+  test("safety compilation rejects unsupported configuration instead of ignoring it", () => {
     for (const suffix of [
-      "PROPERTY Safe",
       "CONSTRAINT Safe",
       "ACTION_CONSTRAINT Next",
       "VIEW x",
@@ -30,17 +30,24 @@ export const registerSafetyContract = (
     assert.throws(() =>
       compileTlaSafety({ source, config: "SPECIFICATION Spec" }),
     );
-    assert.throws(() =>
+    assert.equal(
+      compileTlaSafety({ source, config: `${config}\nPROPERTY Safe` })
+        .initialProperties?.[0]?.name,
+      "Safe",
+    );
+    assert.equal(
       compileTlaSafety({
         source: source.replace("Naturals", "Sequences"),
         config,
-      }),
+      }).next.length,
+      1,
     );
-    assert.throws(() =>
+    assert.equal(
       compileTlaSafety({
         source: source.replace("x' = x + 1", "x' = <<x>>"),
         config,
-      }),
+      }).next[0]?.steps[0]?.kind,
+      "assign",
     );
   });
   test("safety compilation rejects missing arithmetic imports and constant NEXT", () => {
@@ -78,6 +85,39 @@ export const registerSafetyContract = (
         source: source.replace("Safe == x < 3", "Safe == x' < 3"),
         config,
       }),
+    );
+  });
+  test("safety result validates lasso boundaries and preserves compound snapshots", () => {
+    const result = {
+      status: "liveness-violation",
+      reason: null,
+      states: 1,
+      generated: 2,
+      depth: 0,
+      work: 10,
+      violation: {
+        name: "P",
+        trace: [
+          {
+            action: null,
+            values: [{ type: "list", value: [{ type: "int", value: "1" }] }],
+          },
+        ],
+        loopStart: 0,
+        loopAction: "<stuttering>",
+      },
+    };
+    assert.deepEqual(decodeSafetyResult(result), result);
+    for (const violation of [
+      { ...result.violation, loopStart: 1 },
+      { ...result.violation, loopStart: -1 },
+      { ...result.violation, loopStart: "0" },
+      { ...result.violation, loopAction: null },
+      { name: "P", trace: result.violation.trace },
+    ])
+      assert.throws(() => decodeSafetyResult({ ...result, violation }));
+    assert.throws(() =>
+      decodeSafetyResult({ ...result, status: "invariant-violation" }),
     );
   });
 };
