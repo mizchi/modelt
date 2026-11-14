@@ -39,3 +39,4 @@
 {"runId":"tlc-development-replay-isolated-0015","kind":"tlc-differential","status":"complete","phase":"replay","sourceVersion":"15aaba23e4cb706285dd6a884aba0175ea617ac1d3cde1e7241eaa51bf023214","plan":"0015-tlc-differential"}
 {"runId":"tlc-confirmation-replay-isolated-0015","kind":"tlc-differential","status":"complete","phase":"replay","sourceVersion":"15aaba23e4cb706285dd6a884aba0175ea617ac1d3cde1e7241eaa51bf023214","plan":"0015-tlc-differential"}
 {"runId":"0015-regression-performance","kind":"rust-safety","status":"complete","sourceVersion":"15aaba23e4cb706285dd6a884aba0175ea617ac1d3cde1e7241eaa51bf023214","plan":"0014-value-hash"}
+{"runId":"0016-checker-performance","kind":"checker-benchmark","status":"complete","sourceVersion":"0403ee47712888033bcac794c563965d31df5bfb00ce00cfee552cf89218049d"}

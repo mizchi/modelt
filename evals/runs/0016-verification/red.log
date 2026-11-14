@@ -1,0 +1,8 @@
+
+> @mizchi/modelt@0.1.0-alpha.0 build /Users/mz/ghq/github.com/mizchi/modelt
+> tsc -p tsconfig.build.json
+
+evals/checker-benchmark/contract-test.ts(3,49): error TS2307: Cannot find module './protocol.js' or its corresponding type declarations.
+evals/checker-benchmark/contract-test.ts(30,36): error TS7006: Parameter 'input' implicitly has an 'any' type.
+evals/checker-benchmark/contract-test.ts(31,32): error TS7006: Parameter 'input' implicitly has an 'any' type.
+ ELIFECYCLE  Command failed with exit code 2.

@@ -1,0 +1,14 @@
+pnpm portable:build
+
+> @mizchi/modelt@0.1.0-alpha.0 portable:build /Users/mz/ghq/github.com/mizchi/modelt
+> cargo build --release --locked --manifest-path crates/modelt-core/Cargo.toml && cargo build --release --locked --lib --target wasm32-unknown-unknown --manifest-path crates/modelt-core/Cargo.toml
+
+    Finished `release` profile [optimized] target(s) in 0.06s
+    Finished `release` profile [optimized] target(s) in 0.02s
+pnpm build
+
+> @mizchi/modelt@0.1.0-alpha.0 build /Users/mz/ghq/github.com/mizchi/modelt
+> tsc -p tsconfig.build.json
+
+node dist/evals/checker-benchmark/replay.js '.artifacts/tlc/arm64/jdk-21.0.13+9-jre/Contents/Home/bin/java' '.artifacts/tlc/tla2tools.jar' '.artifacts/tlc/arm64/jre-arm64.tar.gz' 'evals/runs/0016-checker-performance' 'evals/runs/0016-checker-replay'
+11 models, 77 checks reproduced; timing is not an independent sample

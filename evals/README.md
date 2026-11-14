@@ -59,3 +59,5 @@ pnpm eval:replay evals/runs/my-run-confirmation
 [0012〜0014 の結果](iterations/0012-collections-temporal.md) に、複合値・temporal の対応、49入力・TLC46入力・反例14件、整数比較と intern table の改善、一律の高速化には至らない条件を記録した。
 
 [TLC直接比較の結果](iterations/0015-tlc-differential.md) は、境界値と seed 固定の小さい有限モデルを TLC / Rust native / Wasm へ渡す差分検査。`just tlc-diff` / `tlc-diff-replay` で判定・計数・返却値・反例を確認する。TLCを拒否対照、モデル評価エラー、実行基盤の失敗と分け、JVMごとに標準モジュールの展開先を隔離する。
+
+[速度比較の結果](iterations/0016-checker-benchmark.md) は、同じ11モデルを tla-ts / TLC / modelt native / Wasm で完全探索した測定。`checker-bench` / `checker-bench-replay` で起動込みとAPI再利用時を分け、source解析を含む時間・状態数・生成数・生ログを保存する。

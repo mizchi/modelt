@@ -1,0 +1,7 @@
+{
+  "name": "set-delivery-12",
+  "states": 4096,
+  "source": "---- MODULE Delivery ----\nEXTENDS Naturals, FiniteSets\nVARIABLE delivered\nInit == delivered = {}\nNext == \\E node \\in 1..12: delivered' = delivered \\cup {node}\nSafe == delivered \\subseteq 1..12\n====",
+  "config": "INIT Init\nNEXT Next\nINVARIANT Safe",
+  "generated": 49153
+}

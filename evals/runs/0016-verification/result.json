@@ -1,0 +1,49 @@
+{
+  "status": "complete",
+  "sourceVersion": "0403ee47712888033bcac794c563965d31df5bfb00ce00cfee552cf89218049d",
+  "commit": "719d6748f9ec62f5576cc03da10edfeb01c33b6d",
+  "checks": [
+    {
+      "command": "just safety-test",
+      "exit": 0,
+      "path": "safety-test.log",
+      "sha256": "097c6b259c50075220dd44da909253cd2a9a37ebeeb0b33a45f2c10b728bcf03"
+    },
+    {
+      "command": "just check && just checker-bench-test",
+      "exit": 0,
+      "path": "check.log",
+      "sha256": "8129db8e436fe05ca85846141ef5438ae6305b59c93acce500342ef47a26778c"
+    },
+    {
+      "command": "just browser",
+      "exit": 0,
+      "path": "browser.log",
+      "sha256": "a99205070257d5a27e03115b937522a899f09bcee012854c8b77b9255683dd55"
+    },
+    {
+      "command": "just evaluate && just replay-evaluation",
+      "exit": 0,
+      "path": "evaluate.log",
+      "sha256": "d5418b0a18869779c89b15e48c746d868a26318af1c09d4136db865567913fa4"
+    },
+    {
+      "command": "just checker-bench <java> <jar> <archive> evals/runs/0016-checker-performance",
+      "exit": 0,
+      "path": "benchmark.log",
+      "sha256": "e8325f806321fd4b6403c767b980b6453d38bf5853aa837feee1e79632103238"
+    },
+    {
+      "command": "just checker-bench-replay <java> <jar> <archive> evals/runs/0016-checker-performance evals/runs/0016-checker-replay",
+      "exit": 0,
+      "path": "benchmark-replay.log",
+      "sha256": "78b86a99f48c82a600128ab30b0987ffbb121d691f2fb21d4b17570d5a915a98"
+    },
+    {
+      "command": "pnpm build (before protocol implementation)",
+      "exit": 2,
+      "path": "red.log",
+      "sha256": "ecf1d8ccd15adffc8f9ae733cbc0c2c4a99b538493b55c6d62dcdedeab74bb1e"
+    }
+  ]
+}
