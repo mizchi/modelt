@@ -1,0 +1,116 @@
+pnpm portable:test
+
+> @mizchi/modelt@0.1.0-alpha.0 portable:test /Users/mz/ghq/github.com/mizchi/modelt
+> pnpm build && cargo test --all-targets --locked --manifest-path crates/modelt-core/Cargo.toml && node --test dist/evals/portable/contract-test.js
+
+
+> @mizchi/modelt@0.1.0-alpha.0 build /Users/mz/ghq/github.com/mizchi/modelt
+> tsc -p tsconfig.build.json
+
+   Compiling modelt-core v0.1.0-alpha.0 (/Users/mz/ghq/github.com/mizchi/modelt/crates/modelt-core)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 4.78s
+     Running unittests src/lib.rs (crates/modelt-core/target/debug/deps/modelt_core-d800920e530469ed)
+
+running 2 tests
+test safety::tests::colliding_hashes_keep_distinct_typed_states ... ok
+test safety_values::tests::colliding_function_hashes_keep_distinct_values ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/main.rs (crates/modelt-core/target/debug/deps/modelt_core-e0c2efc885123ea5)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/collections.rs (crates/modelt-core/target/debug/deps/collections-436960fa04d41577)
+
+running 1 test
+test tuple_and_finite_function_states_are_semantically_equal ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/contract.rs (crates/modelt-core/target/debug/deps/contract-0e1c05290ff4e295)
+
+running 2 tests
+test protocol_rejects_wrong_versions_and_out_of_order_responses ... ok
+test shared_values_have_identical_canonical_bytes ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/finite.rs (crates/modelt-core/target/debug/deps/finite-f16878e052a9cee1)
+
+running 1 test
+test finite_model_runs_without_a_model_host_and_rejects_bad_targets ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/host.rs (crates/modelt-core/target/debug/deps/host-77d5ad86c6357a36)
+
+running 2 tests
+test host_rejects_invalid_choices_without_accepting_a_divergent_replay ... ok
+test host_replay_preserves_choices_messages_and_recovery ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/loaded.rs (crates/modelt-core/target/debug/deps/loaded-cb9c46fee40a11d3)
+
+running 1 test
+test loaded_models_reject_stale_handles_and_keep_live_sessions ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/safety.rs (crates/modelt-core/target/debug/deps/safety-dbccfc94db9aee02)
+
+running 6 tests
+test safety_backend_generates_and_closes_a_cycle_without_a_finite_graph ... ok
+test shortest_counterexample_is_reconstructed_from_parents ... ok
+test cuts_never_report_complete_but_closed_frontiers_can ... ok
+test prepared_literals_preserve_the_wire_format_and_validate_unreachable_values ... ok
+test false_constant_invariant_is_rejected_before_even_an_empty_initial_set ... ok
+test malformed_ir_is_rejected_before_search ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+     Running tests/shrink.rs (crates/modelt-core/target/debug/deps/shrink-a1b400eb30334e5b)
+
+running 1 test
+test native_shrinking_preserves_the_same_failure_and_budget ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests examples/counter.rs (crates/modelt-core/target/debug/examples/counter-4e0d94c044e5b0d0)
+
+running 1 test
+test native_rust_model_and_driver_reproduce_the_saved_oracle ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+✔ independent native and Wasm instances have matching protocol lifetimes (196.262709ms)
+✔ Rust native and Wasm process the same conformance transcripts as the original TS checker (651.316417ms)
+✔ portable replay uses the saved oracle and reproduces a persistence fault (11.6385ms)
+✔ candidate histories remain consistent and invalid input never executes a driver step (6.605ms)
+✔ the Wasm codec follows the shared fixtures and protocol rejects stale replies (15.419958ms)
+✔ driver exceptions dispose the implementation and release the core session (2.435833ms)
+✔ encoding errors clean up and lossy state encodings are rejected (36.372542ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 991.745042
+pnpm portable:browser
+
+> @mizchi/modelt@0.1.0-alpha.0 portable:browser /Users/mz/ghq/github.com/mizchi/modelt
+> playwright test --config portable-playwright.config.ts
+
+
+Running 1 test using 1 worker
+
+(node:94803) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/portable.browser.spec.ts:84:1 › runs the shared Rust core in Chromium without host imports or cross-origin isolation (290ms)
+
+  1 passed (3.1s)

@@ -1,0 +1,46 @@
+pnpm portable:build
+
+> @mizchi/modelt@0.1.0-alpha.0 portable:build /Users/mz/ghq/github.com/mizchi/modelt
+> cargo build --release --locked --manifest-path crates/modelt-core/Cargo.toml && cargo build --release --locked --lib --target wasm32-unknown-unknown --manifest-path crates/modelt-core/Cargo.toml
+
+    Finished `release` profile [optimized] target(s) in 0.01s
+    Finished `release` profile [optimized] target(s) in 0.01s
+pnpm build
+
+> @mizchi/modelt@0.1.0-alpha.0 build /Users/mz/ghq/github.com/mizchi/modelt
+> tsc -p tsconfig.build.json
+
+node dist/evals/tlc-differential/run.js '.artifacts/tlc/jdk-21.0.13+9-jre/Contents/Home/bin/java' '.artifacts/tlc/tla2tools.jar' 'confirmation' 'evals/runs/0015-confirmation-isolated'
+graph-15c3-0 matched complete
+graph-15c3-1 matched liveness-violation
+graph-15c3-2 matched liveness-violation
+graph-15c3-3 matched deadlock
+graph-15c3-4 matched complete
+graph-15c3-5 matched liveness-violation
+graph-15c3-6 matched liveness-violation
+graph-15c3-7 matched liveness-violation
+graph-15c3-8 matched complete
+graph-15c3-9 matched liveness-violation
+graph-15c3-10 matched liveness-violation
+graph-15c3-11 matched liveness-violation
+graph-15c3-12 matched complete
+graph-15c3-13 matched liveness-violation
+graph-15c3-14 matched liveness-violation
+graph-15c3-15 matched liveness-violation
+graph-15c3-16 matched complete
+graph-15c3-17 matched complete
+graph-15c3-18 matched complete
+graph-15c3-19 matched liveness-violation
+graph-15c3-20 matched complete
+graph-15c3-21 matched deadlock
+graph-15c3-22 matched complete
+graph-15c3-23 matched liveness-violation
+graph-15c3-24 matched complete
+graph-15c3-25 matched liveness-violation
+graph-15c3-26 matched liveness-violation
+graph-15c3-27 matched liveness-violation
+graph-15c3-28 matched complete
+graph-15c3-29 matched liveness-violation
+graph-15c3-30 matched complete
+graph-15c3-31 matched complete
+{"directory":"evals/runs/0015-confirmation-isolated","status":"complete","cases":32,"matched":32,"mismatches":0}

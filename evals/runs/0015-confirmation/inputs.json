@@ -1,0 +1,226 @@
+[
+  {
+    "name": "graph-15b2-0",
+    "family": "graph",
+    "seed": 5554,
+    "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0,1}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 1 /\\ x' = 2\nNext == A0 \\/ A1\nSpec == Init /\\ [][Next]_x\nProp == [](x < 3)\n====",
+    "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "graph-15b2-1",
+    "family": "graph",
+    "seed": 5554,
+    "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 0 /\\ x' = 2\nA2 == x = 0 /\\ x' = 0\nA3 == x = 1 /\\ x' = 1\nA4 == x = 1 /\\ x' = 2\nNext == A0 \\/ A1 \\/ A2 \\/ A3 \\/ A4\nSpec == Init /\\ [][Next]_x\nProp == <>(x = 1)\n====",
+    "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK TRUE"
+  },
+  {
+    "name": "graph-15b2-2",
+    "family": "graph",
+    "seed": 5554,
+    "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 1 /\\ x' = 2\nA2 == x = 2 /\\ x' = 1\nA3 == x = 0 /\\ x' = 0\nA4 == x = 0 /\\ x' = 1\nA5 == x = 0 /\\ x' = 1\nNext == A0 \\/ A1 \\/ A2 \\/ A3 \\/ A4 \\/ A5\nSpec == Init /\\ [][Next]_x\nProp == []<>(x = 0)\n====",
+    "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "graph-15b2-3",
+    "family": "graph",
+    "seed": 5554,
+    "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0,1}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 1 /\\ x' = 0\nA2 == x = 0 /\\ x' = 2\nA3 == x = 0 /\\ x' = 1\nA4 == x = 1 /\\ x' = 2\nA5 == x = 0 /\\ x' = 1\nA6 == x = 2 /\\ x' = 2\nNext == A0 \\/ A1 \\/ A2 \\/ A3 \\/ A4 \\/ A5 \\/ A6\nSpec == Init /\\ [][Next]_x\nProp == <>[](x = 0)\n====",
+    "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK TRUE"
+  },
+  {
+    "name": "graph-15b2-4",
+    "family": "graph",
+    "seed": 5554,
+    "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 3 /\\ x' = 2\nNext == A0 \\/ A1\nSpec == Init /\\ [][Next]_x\nProp == (x = 0) ~> (x = 1)\n====",
+    "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "graph-15b2-5",
+    "family": "graph",
+    "seed": 5554,
+    "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 2 /\\ x' = 0\nA2 == x = 0 /\\ x' = 0\nA3 == x = 2 /\\ x' = 2\nA4 == x = 1 /\\ x' = 0\nNext == A0 \\/ A1 \\/ A2 \\/ A3 \\/ A4\nSpec == Init /\\ [][Next]_x\nProp == <>[](x = 0) \\/ <>[](x = 0)\n====",
+    "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK TRUE"
+  },
+  {
+    "name": "graph-15b2-6",
+    "family": "graph",
+    "seed": 5554,
+    "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0,1}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 1 /\\ x' = 0\nNext == A0 \\/ A1\nSpec == Init /\\ [][Next]_x\nProp == ~([]<>(x = 1))\n====",
+    "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "graph-15b2-7",
+    "family": "graph",
+    "seed": 5554,
+    "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 0 /\\ x' = 0\nA2 == x = 2 /\\ x' = 0\nA3 == x = 0 /\\ x' = 0\nA4 == x = 1 /\\ x' = 2\nA5 == x = 2 /\\ x' = 1\nA6 == x = 2 /\\ x' = 1\nNext == A0 \\/ A1 \\/ A2 \\/ A3 \\/ A4 \\/ A5 \\/ A6\nSpec == Init /\\ [][Next]_x\nProp == ([]<>(x = 0)) /\\ ([]<>(x = 0))\n====",
+    "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK TRUE"
+  },
+  {
+    "name": "graph-15b2-8",
+    "family": "graph",
+    "seed": 5554,
+    "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 1 /\\ x' = 2\nA2 == x = 0 /\\ x' = 2\nA3 == x = 1 /\\ x' = 1\nNext == A0 \\/ A1 \\/ A2 \\/ A3\nSpec == Init /\\ [][Next]_x /\\ WF_x(Next)\nProp == [](x < 3)\n====",
+    "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "graph-15b2-9",
+    "family": "graph",
+    "seed": 5554,
+    "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0,1}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 0 /\\ x' = 1\nA2 == x = 0 /\\ x' = 1\nA3 == x = 0 /\\ x' = 1\nA4 == x = 0 /\\ x' = 1\nNext == A0 \\/ A1 \\/ A2 \\/ A3 \\/ A4\nSpec == Init /\\ [][Next]_x /\\ WF_x(Next)\nProp == <>(x = 0)\n====",
+    "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK TRUE"
+  },
+  {
+    "name": "graph-15b2-10",
+    "family": "graph",
+    "seed": 5554,
+    "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 3 /\\ x' = 2\nNext == A0 \\/ A1\nSpec == Init /\\ [][Next]_x /\\ WF_x(Next)\nProp == []<>(x = 1)\n====",
+    "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "graph-15b2-11",
+    "family": "graph",
+    "seed": 5554,
+    "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 1 /\\ x' = 1\nA2 == x = 2 /\\ x' = 0\nA3 == x = 1 /\\ x' = 0\nA4 == x = 1 /\\ x' = 2\nNext == A0 \\/ A1 \\/ A2 \\/ A3 \\/ A4\nSpec == Init /\\ [][Next]_x /\\ WF_x(Next)\nProp == <>[](x = 1)\n====",
+    "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK TRUE"
+  },
+  {
+    "name": "graph-15b2-12",
+    "family": "graph",
+    "seed": 5554,
+    "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0,1}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 1 /\\ x' = 2\nNext == A0 \\/ A1\nSpec == Init /\\ [][Next]_x /\\ WF_x(Next)\nProp == (x = 0) ~> (x = 1)\n====",
+    "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "graph-15b2-13",
+    "family": "graph",
+    "seed": 5554,
+    "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 2 /\\ x' = 1\nA2 == x = 0 /\\ x' = 3\nA3 == x = 2 /\\ x' = 1\nA4 == x = 0 /\\ x' = 3\nNext == A0 \\/ A1 \\/ A2 \\/ A3 \\/ A4\nSpec == Init /\\ [][Next]_x /\\ WF_x(Next)\nProp == <>[](x = 0) \\/ <>[](x = 2)\n====",
+    "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK TRUE"
+  },
+  {
+    "name": "graph-15b2-14",
+    "family": "graph",
+    "seed": 5554,
+    "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 3 /\\ x' = 2\nNext == A0 \\/ A1\nSpec == Init /\\ [][Next]_x /\\ WF_x(Next)\nProp == ~([]<>(x = 1))\n====",
+    "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "graph-15b2-15",
+    "family": "graph",
+    "seed": 5554,
+    "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0,1}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 1 /\\ x' = 1\nA2 == x = 2 /\\ x' = 1\nA3 == x = 2 /\\ x' = 0\nA4 == x = 1 /\\ x' = 0\nNext == A0 \\/ A1 \\/ A2 \\/ A3 \\/ A4\nSpec == Init /\\ [][Next]_x /\\ WF_x(Next)\nProp == ([]<>(x = 0)) /\\ ([]<>(x = 1))\n====",
+    "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK TRUE"
+  },
+  {
+    "name": "graph-15b2-16",
+    "family": "graph",
+    "seed": 5554,
+    "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 1 /\\ x' = 0\nNext == A0 \\/ A1\nSpec == Init /\\ [][Next]_x /\\ SF_x(A0)\nProp == [](x < 2)\n====",
+    "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "graph-15b2-17",
+    "family": "graph",
+    "seed": 5554,
+    "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 0 /\\ x' = 2\nA2 == x = 2 /\\ x' = 0\nA3 == x = 0 /\\ x' = 1\nA4 == x = 1 /\\ x' = 0\nA5 == x = 0 /\\ x' = 2\nA6 == x = 2 /\\ x' = 1\nNext == A0 \\/ A1 \\/ A2 \\/ A3 \\/ A4 \\/ A5 \\/ A6\nSpec == Init /\\ [][Next]_x /\\ SF_x(A0)\nProp == <>(x = 0)\n====",
+    "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK TRUE"
+  },
+  {
+    "name": "graph-15b2-18",
+    "family": "graph",
+    "seed": 5554,
+    "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0,1}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 1 /\\ x' = 0\nNext == A0 \\/ A1\nSpec == Init /\\ [][Next]_x /\\ SF_x(A0)\nProp == []<>(x = 1)\n====",
+    "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "graph-15b2-19",
+    "family": "graph",
+    "seed": 5554,
+    "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 2 /\\ x' = 0\nA2 == x = 0 /\\ x' = 0\nA3 == x = 0 /\\ x' = 2\nA4 == x = 0 /\\ x' = 1\nA5 == x = 2 /\\ x' = 1\nA6 == x = 2 /\\ x' = 1\nNext == A0 \\/ A1 \\/ A2 \\/ A3 \\/ A4 \\/ A5 \\/ A6\nSpec == Init /\\ [][Next]_x /\\ SF_x(A0)\nProp == <>[](x = 1)\n====",
+    "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK TRUE"
+  },
+  {
+    "name": "graph-15b2-20",
+    "family": "graph",
+    "seed": 5554,
+    "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 1 /\\ x' = 2\nA2 == x = 2 /\\ x' = 0\nA3 == x = 2 /\\ x' = 1\nA4 == x = 1 /\\ x' = 1\nA5 == x = 0 /\\ x' = 0\nNext == A0 \\/ A1 \\/ A2 \\/ A3 \\/ A4 \\/ A5\nSpec == Init /\\ [][Next]_x /\\ SF_x(A0)\nProp == (x = 0) ~> (x = 0)\n====",
+    "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "graph-15b2-21",
+    "family": "graph",
+    "seed": 5554,
+    "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0,1}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 2 /\\ x' = 1\nA2 == x = 0 /\\ x' = 3\nA3 == x = 2 /\\ x' = 1\nA4 == x = 0 /\\ x' = 3\nNext == A0 \\/ A1 \\/ A2 \\/ A3 \\/ A4\nSpec == Init /\\ [][Next]_x /\\ SF_x(A0)\nProp == <>[](x = 0) \\/ <>[](x = 2)\n====",
+    "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK TRUE"
+  },
+  {
+    "name": "graph-15b2-22",
+    "family": "graph",
+    "seed": 5554,
+    "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 1 /\\ x' = 0\nNext == A0 \\/ A1\nSpec == Init /\\ [][Next]_x /\\ SF_x(A0)\nProp == ~([]<>(x = 1))\n====",
+    "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "graph-15b2-23",
+    "family": "graph",
+    "seed": 5554,
+    "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 2 /\\ x' = 1\nA2 == x = 0 /\\ x' = 3\nA3 == x = 2 /\\ x' = 1\nA4 == x = 0 /\\ x' = 3\nNext == A0 \\/ A1 \\/ A2 \\/ A3 \\/ A4\nSpec == Init /\\ [][Next]_x /\\ SF_x(A0)\nProp == ([]<>(x = 0)) /\\ ([]<>(x = 2))\n====",
+    "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK TRUE"
+  },
+  {
+    "name": "graph-15b2-24",
+    "family": "graph",
+    "seed": 5554,
+    "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0,1}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 2 /\\ x' = 0\nNext == A0 \\/ A1\nSpec == Init /\\ [][Next]_x /\\ WF_x(Next) /\\ SF_x(A0)\nProp == [](x < 3)\n====",
+    "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "graph-15b2-25",
+    "family": "graph",
+    "seed": 5554,
+    "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 2 /\\ x' = 1\nA2 == x = 0 /\\ x' = 3\nA3 == x = 2 /\\ x' = 1\nA4 == x = 0 /\\ x' = 3\nNext == A0 \\/ A1 \\/ A2 \\/ A3 \\/ A4\nSpec == Init /\\ [][Next]_x /\\ WF_x(Next) /\\ SF_x(A0)\nProp == <>(x = 2)\n====",
+    "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK TRUE"
+  },
+  {
+    "name": "graph-15b2-26",
+    "family": "graph",
+    "seed": 5554,
+    "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 1 /\\ x' = 0\nNext == A0 \\/ A1\nSpec == Init /\\ [][Next]_x /\\ WF_x(Next) /\\ SF_x(A0)\nProp == []<>(x = 1)\n====",
+    "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "graph-15b2-27",
+    "family": "graph",
+    "seed": 5554,
+    "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0,1}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 0 /\\ x' = 1\nA2 == x = 0 /\\ x' = 1\nA3 == x = 0 /\\ x' = 1\nA4 == x = 0 /\\ x' = 1\nNext == A0 \\/ A1 \\/ A2 \\/ A3 \\/ A4\nSpec == Init /\\ [][Next]_x /\\ WF_x(Next) /\\ SF_x(A0)\nProp == <>[](x = 0)\n====",
+    "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK TRUE"
+  },
+  {
+    "name": "graph-15b2-28",
+    "family": "graph",
+    "seed": 5554,
+    "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 1 /\\ x' = 0\nNext == A0 \\/ A1\nSpec == Init /\\ [][Next]_x /\\ WF_x(Next) /\\ SF_x(A0)\nProp == (x = 0) ~> (x = 1)\n====",
+    "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "graph-15b2-29",
+    "family": "graph",
+    "seed": 5554,
+    "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 0 /\\ x' = 1\nA2 == x = 0 /\\ x' = 1\nA3 == x = 0 /\\ x' = 1\nA4 == x = 0 /\\ x' = 1\nNext == A0 \\/ A1 \\/ A2 \\/ A3 \\/ A4\nSpec == Init /\\ [][Next]_x /\\ WF_x(Next) /\\ SF_x(A0)\nProp == <>[](x = 0) \\/ <>[](x = 0)\n====",
+    "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK TRUE"
+  },
+  {
+    "name": "graph-15b2-30",
+    "family": "graph",
+    "seed": 5554,
+    "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0,1}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 3 /\\ x' = 2\nNext == A0 \\/ A1\nSpec == Init /\\ [][Next]_x /\\ WF_x(Next) /\\ SF_x(A0)\nProp == ~([]<>(x = 1))\n====",
+    "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK FALSE"
+  },
+  {
+    "name": "graph-15b2-31",
+    "family": "graph",
+    "seed": 5554,
+    "source": "---- MODULE Differential ----\nEXTENDS Naturals\nVARIABLE x\nInit == x \\in {0}\nA0 == x = 0 /\\ x' = 1\nA1 == x = 2 /\\ x' = 2\nA2 == x = 2 /\\ x' = 2\nNext == A0 \\/ A1 \\/ A2\nSpec == Init /\\ [][Next]_x /\\ WF_x(Next) /\\ SF_x(A0)\nProp == ([]<>(x = 0)) /\\ ([]<>(x = 2))\n====",
+    "config": "SPECIFICATION Spec\nPROPERTY Prop\nCHECK_DEADLOCK TRUE"
+  }
+]

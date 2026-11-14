@@ -1,0 +1,13 @@
+---- MODULE Differential ----
+EXTENDS Integers, Sequences, FiniteSets
+VARIABLE x
+Init == x = (0 \in (0..0))
+Next == UNCHANGED x
+Prop == x # x
+
+VARIABLE __position
+__TraceInit == Init /\ __position = 0 /\ (x = TRUE)
+__TraceNext == ((__position = 0 /\ __position' = 0 /\ (x' = TRUE))) /\ (Next \/ UNCHANGED <<x>>)
+__TraceSpec == __TraceInit /\ [][__TraceNext]_<<x,__position>> /\ WF_<<x,__position>>(__TraceNext)
+__Expected == <>(~(Prop))
+====

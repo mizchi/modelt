@@ -1,0 +1,18 @@
+TLC2 Version 2.19 of 08 August 2024 (rev: 5a47802)
+Running breadth-first search Model-Checking with fp 11 and seed -5654501082594715884 with 1 worker on 10 cores with 7282MB heap and 64MB offheap memory [pid: 85624] (Mac OS X 26.6.2 aarch64, Eclipse Adoptium 21.0.13 x86_64, MSBDiskFPSet, DiskStateQueue).
+Parsing file /Users/mz/ghq/github.com/mizchi/modelt/evals/runs/0015-development-green/string-tail-prefix/model/Differential.tla
+Lexical error at line 4, column 21.  Encountered: "\ud83d" (55357), after : "\"a"
+
+Fatal errors while parsing TLA+ spec in file Differential
+
+tla2sany.semantic.AbortException
+*** Abort messages: 1
+
+In module Differential
+
+Could not parse module Differential from file Differential.tla
+
+
+Starting... (2026-11-14 23:12:16)
+Error: Parsing or semantic analysis failed.
+Finished in 00s at (2026-11-14 23:12:16)

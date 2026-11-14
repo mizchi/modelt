@@ -29,7 +29,7 @@ const result = checkSafety(core, program, {
 
 ## 対応範囲
 
-state は signed 32 bit 整数、真偽値、文字列、有限集合、有限関数を扱う。tuple / sequence は1始まりの有限関数、record は文字列をキーにする有限関数として等価性を判定する。値は immutable な arena に intern し、state はその ID を保持する。hash が衝突しても、型付き値の完全一致で重複排除する。
+基準は TLC v1.7.4 (`5a47802`)。state は signed 32 bit 整数、真偽値、文字列、有限集合、有限関数を扱う。tuple / sequence は1始まりの有限関数、record は文字列をキーにする有限関数として等価性を判定する。値は immutable な arena に intern し、state はその ID を保持する。hash が衝突しても、型付き値の完全一致で重複排除する。
 
 主な演算は次の通り。
 
@@ -84,3 +84,5 @@ just complex-tlc-replay /path/to/java /path/to/tla2tools.jar .artifacts/complex-
 複合値・temporal の条件は [0012 の計画](../evals/plans/0012-collections-temporal.md)。検査は native / Wasm / tla-ts / TLC で比較し、反例の state と loop を固定した別の仕様で再生する。強制した遷移が元の Next または stuttering であること、全 trace state が到達すること、fairness と性質の違反を確認する。誤った性質を要求する対照は違反する必要がある。原文の [Channel](../evals/fixtures/channel/Channel.tla) も検査する。
 
 [0012〜0014 の評価結果](../evals/iterations/0012-collections-temporal.md) に、対応検査と性能の改善・未達条件を記録している。`safety-eval` の既定 plan は0014で、任意の既存 plan を第2引数に指定できる。
+
+[TLCとの直接差分検査](../evals/iterations/0015-tlc-differential.md) で、空区間の所属、部分集合の短絡、型集合の評価順、文字列演算を修正した。文字列の Head / Append はこの TLC version の動作に従う。TLA+ source の文字列 literal はこの版の字句範囲に限定し、範囲外の文字は frontend が拒否する。UTF-16 の途中で surrogate pair を分割する結果は portable string として表現せずエラーにする。

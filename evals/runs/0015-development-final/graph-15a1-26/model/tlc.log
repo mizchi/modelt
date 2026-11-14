@@ -1,0 +1,26 @@
+TLC2 Version 2.19 of 08 August 2024 (rev: 5a47802)
+Running breadth-first search Model-Checking with fp 129 and seed -3556065896533019377 with 1 worker on 10 cores with 7282MB heap and 64MB offheap memory [pid: 90397] (Mac OS X 26.6.2 aarch64, Eclipse Adoptium 21.0.13 x86_64, MSBDiskFPSet, DiskStateQueue).
+Parsing file /Users/mz/ghq/github.com/mizchi/modelt/evals/runs/0015-development-final/graph-15a1-26/model/Differential.tla
+Parsing file /private/var/folders/_h/_rf455xj4h3_3g6z86pg244c0000gn/T/Naturals.tla
+Semantic processing of module Naturals
+Semantic processing of module Differential
+Starting... (2026-11-14 23:20:08)
+Implied-temporal checking--satisfiability problem has 1 branches.
+Computing initial states...
+Finished computing initial states: 1 distinct state generated at 2026-11-14 23:20:08.
+Progress(2) at 2026-11-14 23:20:08: 6 states generated, 2 distinct states found, 0 states left on queue.
+Checking temporal properties for the complete state space with 2 total distinct states at (2026-11-14 23:20:08)
+Error: Temporal properties were violated.
+
+Error: The following behavior constitutes a counter-example:
+
+State 1: <Initial predicate>
+x = 0
+
+State 2: <A0 line 5, col 7 to line 5, col 21 of module Differential>
+x = 1
+
+State 3: Stuttering
+Finished checking temporal properties in 00s at 2026-11-14 23:20:08
+6 states generated, 2 distinct states found, 0 states left on queue.
+Finished in 00s at (2026-11-14 23:20:08)

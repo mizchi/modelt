@@ -1,0 +1,129 @@
+pnpm portable:build
+
+> @mizchi/modelt@0.1.0-alpha.0 portable:build /Users/mz/ghq/github.com/mizchi/modelt
+> cargo build --release --locked --manifest-path crates/modelt-core/Cargo.toml && cargo build --release --locked --lib --target wasm32-unknown-unknown --manifest-path crates/modelt-core/Cargo.toml
+
+    Finished `release` profile [optimized] target(s) in 0.05s
+    Finished `release` profile [optimized] target(s) in 0.01s
+pnpm build
+
+> @mizchi/modelt@0.1.0-alpha.0 build /Users/mz/ghq/github.com/mizchi/modelt
+> tsc -p tsconfig.build.json
+
+node dist/evals/tlc-differential/run.js '.artifacts/tlc/jdk-21.0.13+9-jre/Contents/Home/bin/java' '.artifacts/tlc/tla2tools.jar' 'development' 'evals/runs/0015-development-isolated'
+subseq-0-0 matched model-error
+subseq-0-1 matched invariant-violation
+subseq-0-2 matched model-error
+subseq-0-3 matched invariant-violation
+subseq-0-4 matched model-error
+subseq-0-5 matched model-error
+subseq-0-6 matched invariant-violation
+subseq-0-7 matched model-error
+subseq-1-0 matched model-error
+subseq-1-1 matched invariant-violation
+subseq-1-2 matched model-error
+subseq-1-3 matched invariant-violation
+subseq-1-4 matched invariant-violation
+subseq-1-5 matched model-error
+subseq-1-6 matched invariant-violation
+subseq-1-7 matched model-error
+subseq-2-0 matched model-error
+subseq-2-1 matched invariant-violation
+subseq-2-2 matched model-error
+subseq-2-3 matched invariant-violation
+subseq-2-4 matched invariant-violation
+subseq-2-5 matched invariant-violation
+subseq-2-6 matched invariant-violation
+subseq-2-7 matched model-error
+membership-0-0 matched invariant-violation
+membership-0-1 matched model-error
+membership-0-2 matched model-error
+membership-0-3 matched invariant-violation
+membership-1-0 matched invariant-violation
+membership-1-1 matched model-error
+membership-1-2 matched model-error
+membership-1-3 matched invariant-violation
+membership-2-0 matched invariant-violation
+membership-2-1 matched model-error
+membership-2-2 matched model-error
+membership-2-3 matched invariant-violation
+membership-3-0 matched invariant-violation
+membership-3-1 matched invariant-violation
+membership-3-2 matched invariant-violation
+membership-3-3 matched invariant-violation
+membership-4-0 matched invariant-violation
+membership-4-1 matched invariant-violation
+membership-4-2 matched invariant-violation
+membership-4-3 matched invariant-violation
+membership-5-0 matched invariant-violation
+membership-5-1 matched invariant-violation
+membership-5-2 matched invariant-violation
+membership-5-3 matched invariant-violation
+subset-short-circuit matched invariant-violation
+subset-short-circuit-negated matched invariant-violation
+subset-empty matched invariant-violation
+cap-empty matched invariant-violation
+difference-empty matched invariant-violation
+function-empty-range-error matched model-error
+function-domain-range-error matched model-error
+record-domain-range-error matched model-error
+record-later-field-error matched model-error
+nested-seq-membership matched invariant-violation
+nested-function-membership matched invariant-violation
+empty-seq-range matched invariant-violation
+seq-range-error matched model-error
+record-domain-mismatch matched invariant-violation
+function-domain-mismatch matched invariant-violation
+record-equality-domain matched invariant-violation
+record-equality-short-circuit matched invariant-violation
+except-missing-field matched invariant-violation
+except-nested-old matched invariant-violation
+string-len-empty matched invariant-violation
+string-len-ascii matched invariant-violation
+string-len-supplementary matched input-error
+string-tail matched invariant-violation
+string-tail-prefix matched input-error
+string-tail-empty matched model-error
+string-head-error matched invariant-violation
+string-append-error matched invariant-violation
+string-concat matched invariant-violation
+string-subseq matched invariant-violation
+string-subseq-empty matched invariant-violation
+empty-quantifier matched invariant-violation
+empty-existential matched invariant-violation
+quantifier-short-circuit matched invariant-violation
+positive-control matched complete
+error-control matched model-error
+graph-15a1-0 matched complete
+graph-15a1-1 matched deadlock
+graph-15a1-2 matched liveness-violation
+graph-15a1-3 matched liveness-violation
+graph-15a1-4 matched liveness-violation
+graph-15a1-5 matched liveness-violation
+graph-15a1-6 matched complete
+graph-15a1-7 matched deadlock
+graph-15a1-8 matched complete
+graph-15a1-9 matched complete
+graph-15a1-10 matched liveness-violation
+graph-15a1-11 matched liveness-violation
+graph-15a1-12 matched liveness-violation
+graph-15a1-13 matched liveness-violation
+graph-15a1-14 matched complete
+graph-15a1-15 matched deadlock
+graph-15a1-16 matched complete
+graph-15a1-17 matched complete
+graph-15a1-18 matched liveness-violation
+graph-15a1-19 matched liveness-violation
+graph-15a1-20 matched liveness-violation
+graph-15a1-21 matched liveness-violation
+graph-15a1-22 matched liveness-violation
+graph-15a1-23 matched liveness-violation
+graph-15a1-24 matched complete
+graph-15a1-25 matched deadlock
+graph-15a1-26 matched liveness-violation
+graph-15a1-27 matched deadlock
+graph-15a1-28 matched complete
+graph-15a1-29 matched liveness-violation
+graph-15a1-30 matched complete
+graph-15a1-31 matched deadlock
+{"directory":"evals/runs/0015-development-isolated","status":"complete","cases":115,"matched":113,"mismatches":0}

@@ -1,0 +1,38 @@
+✔ TLC differences reject count mismatches and incomplete checking (0.659709ms)
+✔ JVM and syntax failures cannot count as matching model errors (0.322ms)
+✔ development and confirmation graphs have distinct fixed inputs (0.933292ms)
+✖ initial invariant failures remain valid when TLC omits aggregate counts (0.405ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 3
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 34.497167
+
+✖ failing tests:
+
+test at dist/evals/tlc-differential/compare-test.js:62:1
+✖ initial invariant failures remain valid when TLC omits aggregate counts (0.405ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'infrastructure-error'
+  - 'invariant-violation'
+       ^
+  
+      at TestContext.<anonymous> (file:///Users/mz/ghq/github.com/mizchi/modelt/dist/evals/tlc-differential/compare-test.js:64:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'infrastructure-error',
+    expected: 'invariant-violation',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
