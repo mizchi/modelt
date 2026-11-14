@@ -15,3 +15,4 @@
 {"runId":"0008-async-confirmation","kind":"async-tuning","phase":"confirmation","status":"complete","sourceVersion":"20de57252d473544011e9fc17ebf87be2c4bfcfd624f7e65f865518c913ca4df","plan":"0008-async-tuning"}
 {"runId":"0009-rust-safety","kind":"rust-safety","status":"complete","sourceVersion":"ad8dcd22df63262762458a5018ead73ea5b4b6c73316cef45ff85b5ee3ca0375","plan":"0009-rust-safety"}
 {"runId":"0009-tlc-comparison","kind":"tlc-reference","plan":"0009-rust-safety","status":"complete","sourceVersion":"ad8dcd22df63262762458a5018ead73ea5b4b6c73316cef45ff85b5ee3ca0375"}
+{"runId":"0010-rust-safety-literals","kind":"rust-safety","status":"complete","sourceVersion":"ff3badd7c6697dd2e8e666d0ee8ac4066d482b3ea8286bdf57b6e465290e19a7","plan":"0010-rust-safety-storage"}

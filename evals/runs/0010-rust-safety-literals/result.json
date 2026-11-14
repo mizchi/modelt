@@ -1,0 +1,17 @@
+{
+  "status": "complete",
+  "plan": "0010-rust-safety-storage",
+  "sourceVersion": "ff3badd7c6697dd2e8e666d0ee8ac4066d482b3ea8286bdf57b6e465290e19a7",
+  "files": [
+    {
+      "path": "manifest.json",
+      "sha256": "e1af1fd27af14b75e31ed29526111d9df3ef218464873be02fb9a30f7ced73f0"
+    },
+    {
+      "path": "benchmark.json",
+      "sha256": "d0105b446188e20cdd10b5e74b1ac841cd47d05f8fe48a919c9c087ab527fde2"
+    }
+  ],
+  "cases": 6,
+  "samples": 168
+}
