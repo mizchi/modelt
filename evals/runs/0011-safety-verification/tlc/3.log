@@ -1,0 +1,28 @@
+TLC2 Version 2.19 of 08 August 2024 (rev: 5a47802)
+Running breadth-first search Model-Checking with fp 84 and seed -2478737153160704529 with 1 worker on 10 cores with 7282MB heap and 64MB offheap memory [pid: 52196] (Mac OS X 26.6.2 aarch64, Eclipse Adoptium 21.0.13 x86_64, MSBDiskFPSet, DiskStateQueue).
+Parsing file /Users/mz/ghq/github.com/mizchi/modelt/.artifacts/tlc-compare-Q87tRb/Test.tla
+Parsing file /private/var/folders/_h/_rf455xj4h3_3g6z86pg244c0000gn/T/Naturals.tla
+Semantic processing of module Naturals
+Semantic processing of module Test
+Starting... (2026-11-14 15:06:55)
+Computing initial states...
+Finished computing initial states: 1 distinct state generated at 2026-11-14 15:06:55.
+Error: TLC threw an unexpected exception.
+This was probably caused by an error in the spec or model.
+See the User Output or TLC Console for clues to what happened.
+The exception was a java.lang.RuntimeException
+: Attempted to compare equality of boolean TRUE with non-boolean:
+1
+Error: The behavior up to this point is:
+State 1: <Initial predicate>
+x = 0
+
+Error: The error occurred when TLC was evaluating the nested
+expressions at the following positions:
+0. Line 5, column 9 to line 6, column 17 in Test
+1. Line 5, column 12 to line 5, column 20 in Test
+2. Line 6, column 12 to line 6, column 17 in Test
+
+
+1 states generated, 1 distinct states found, 0 states left on queue.
+Finished in 00s at (2026-11-14 15:06:55)

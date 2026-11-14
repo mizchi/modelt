@@ -51,3 +51,5 @@ just safety-replay .artifacts/rust-safety-run
 ```
 
 [0009 の計画](../evals/plans/0009-rust-safety.md) に判定比較と性能条件を記録する。tla-ts 全体との性能比は、同じ仕様を扱う今回の fragment の範囲で解釈する。frontend・Wasm 起動・native process 起動を分けて測る。
+
+[測定・差分検査・採用判断](../evals/iterations/0009-rust-safety.md) に、初回の改善不足、profile、literal decode と状態の連続格納の結果を記録している。

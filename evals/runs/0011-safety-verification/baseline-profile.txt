@@ -1,0 +1,517 @@
+Analysis of sampling modelt-core (pid 26500) every 1 millisecond
+Process:         modelt-core [26500]
+Path:            /Users/USER/*/modelt-core
+Load Address:    0x102f3c000
+Identifier:      modelt-core
+Version:         ???
+Code Type:       ARM64
+Parent Process:  node [26498]
+Target Type:     live task
+
+Date/Time:       2026-11-14 14:55:51.839 +0900
+Launch Time:     2026-11-14 14:55:51.802 +0900
+OS Version:      macOS 26.6.2 (25G83)
+Report Version:  7
+Analysis Tool:   /usr/bin/sample
+
+Physical footprint:         7408K
+Physical footprint (peak):  15.2M
+Idle exit:                  untracked
+----
+
+Call graph:
+    340 Thread_40925875: Main Thread
+    + 337 _dyld_start  (in dyld) + 0  [0x1030f09c0]
+    + 2 start  (in dyld) + 6904  [0x18741448c]
+    + ! 2 dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const  (in dyld) + 320  [0x187414b30]
+    + !   1 dyld4::prepare(dyld4::APIs&, mach_o::UnsafeHeader const*)  (in dyld) + 2216  [0x1874153f4]
+    + !   : 1 dyld4::Loader::adjustFunctionVariantsInDyldCache(dyld4::RuntimeState&)  (in dyld) + 184  [0x187440750]
+    + !   :   1 DyldSharedCache::forEachFunctionVariantPatchLocation(void (void const*, dyld3::MachOFile::PointerMetaData, mach_o::FunctionVariants const&, mach_o::UnsafeHeader const*, int, bool&) block_pointer) const  (in dyld) + 224  [0x187446db4]
+    + !   :     1 invocation function for block in dyld4::Loader::adjustFunctionVariantsInDyldCache(dyld4::RuntimeState&)  (in dyld) + 292  [0x1874408a8]
+    + !   :       1 dyld4::ProcessConfig::DyldCache::makeDataConstWritable(dyld4::ProcessConfig::Logging const&, dyld4::SyscallDelegate const&, bool) const  (in dyld) + 124  [0x18741a4cc]
+    + !   :         1 DyldSharedCache::forEachCache(void (DyldSharedCache const*, bool&) block_pointer) const  (in dyld) + 168  [0x1874452b8]
+    + !   :           1 invocation function for block in dyld4::ProcessConfig::DyldCache::makeDataConstWritable(dyld4::ProcessConfig::Logging const&, dyld4::SyscallDelegate const&, bool) const  (in dyld) + 124  [0x18741ab20]
+    + !   :             1 DyldSharedCache::forEachRegion(void (void const*, unsigned long long, unsigned long long, unsigned int, unsigned int, unsigned long long, unsigned long long, bool&) block_pointer) const  (in dyld) + 244  [0x1874451d4]
+    + !   1 dyld4::prepare(dyld4::APIs&, mach_o::UnsafeHeader const*)  (in dyld) + 3996  [0x187415ae8]
+    + !     1 dyld4::RuntimeState::notifyDebuggerLoad(std::span<dyld4::Loader const*, 18446744073709551615ul> const&)  (in dyld) + 528  [0x187424c8c]
+    + !       1 dyld4::ExternallyViewableState::addImages(lsl::Allocator&, lsl::Allocator&, std::span<dyld4::ExternallyViewableState::ImageInfo, 18446744073709551615ul> const&)  (in dyld) + 1084  [0x18742fc80]
+    + !         1 dyld4::ExternallyViewableState::triggerNotifications(dyld_image_mode, unsigned int, dyld_image_info const*)  (in dyld) + 296  [0x18742f524]
+    + !           1 dyld4::RemoteNotificationResponder::blockOnSynchronousEvent(unsigned int)  (in dyld) + 48  [0x187475c90]
+    + !             1 dyld4::RemoteNotificationResponder::sendMessage(int, unsigned int, mach_msg_header_t*)  (in dyld) + 244  [0x187475904]
+    + !               1 mach_msg_overwrite  (in dyld) + 244  [0x18748f18c]
+    + !                 1 mach_msg2_internal  (in dyld) + 76  [0x18748efe4]
+    + !                   1 mach_msg2_trap  (in dyld) + 8  [0x1873f572c]
+    + 1 start  (in dyld) + 6008  [0x10310c10c]
+    +   1 dyld4::ExternallyViewableState::createMinimalInfo(lsl::Allocator&, unsigned long long, char const*, unsigned long long, char const*, DyldSharedCache const*)  (in dyld) + 2116  [0x103126c54]
+    +     1 dyld4::ExternallyViewableState::triggerNotifications(dyld_image_mode, unsigned int, dyld_image_info const*)  (in dyld) + 296  [0x103127524]
+    +       1 dyld4::RemoteNotificationResponder::blockOnSynchronousEvent(unsigned int)  (in dyld) + 48  [0x10316dc90]
+    +         1 dyld4::RemoteNotificationResponder::sendMessage(int, unsigned int, mach_msg_header_t*)  (in dyld) + 244  [0x10316d904]
+    +           1 mach_msg_overwrite  (in dyld) + 244  [0x10318718c]
+    +             1 mach_msg2_internal  (in dyld) + 76  [0x103186fe4]
+    +               1 mach_msg2_trap  (in dyld) + 8  [0x1030ed72c]
+    1318 Thread_40925875   DispatchQueue_1: com.apple.main-thread  (serial)
+      1318 start  (in dyld) + 6992  [0x1874144e4]
+        1318 main  (in modelt-core) + 864  [0x102f430f0]
+          1318 _RINvNtNtCs7mRY9FNn263_3std3sys9backtrace28___rust_begin_short_backtraceFEINtNtCslWxY2MhVcag_4core6result6ResultuNtNtNtB1e_2io5error5ErrorEB19_ECsf4EFg6QQ45k_11modelt_core  (in modelt-core) + 12  [0x102f3cdfc]  backtrace.rs:166
+            1315 _RNvCsf4EFg6QQ45k_11modelt_core4main  (in modelt-core) + 3660  [0x102f420d8]  main.rs:9
+            ! 1044 _RNvMs1_Cshywt5GRcJlV_11modelt_coreNtB5_6Engine6handle  (in modelt-core) + 11492  [0x102f58950]  lib.rs:418
+            ! : 729 _RNvMs2_NtCshywt5GRcJlV_11modelt_core6safetyNtB5_6Search4walk  (in modelt-core) + 1444  [0x102f62a34]  safety.rs:583
+            ! : | 403 _RNvMs2_NtCshywt5GRcJlV_11modelt_core6safetyNtB5_6Search4walk  (in modelt-core) + 3740  [0x102f6332c]  safety.rs:565
+            ! : | + 382 _RNvMs_NtCshywt5GRcJlV_11modelt_core6safetyNtB4_10Expression4eval  (in modelt-core) + 1296  [0x102f61dcc]  safety.rs:329
+            ! : | + ! 292 _RNvMs0_NtCshywt5GRcJlV_11modelt_core6safetyNtB5_6Domain8contains  (in modelt-core) + 288  [0x102f63f64]  safety.rs:359
+            ! : | + ! : 183 _RNvMs_NtCshywt5GRcJlV_11modelt_core6safetyNtB4_10Expression4eval  (in modelt-core) + 1416  [0x102f61e44]  safety.rs:288
+            ! : | + ! : | 177 _RNvMs_NtCshywt5GRcJlV_11modelt_core6safetyNtB4_10Expression4eval  (in modelt-core) + 1108  [0x102f61d10]  safety.rs:271
+            ! : | + ! : | + 133 _RNvMNtCshywt5GRcJlV_11modelt_core6safetyNtB2_6Scalar5parse  (in modelt-core) + 720  [0x102f64990]  safety.rs:176
+            ! : | + ! : | + ! 105 _malloc_zone_malloc  (in libsystem_malloc.dylib) + 100,92,...  [0x18760b120,0x18760b118,...]
+            ! : | + ! : | + ! 11 _xzm_xzone_malloc_tiny  (in libsystem_malloc.dylib) + 256,12,...  [0x18760103c,0x187600f48,...]
+            ! : | + ! : | + ! 9 xzm_malloc_zone_malloc_type_malloc  (in libsystem_malloc.dylib) + 0,4  [0x187607184,0x187607188]
+            ! : | + ! : | + ! 5 <deduplicated_symbol>  (in libsystem_malloc.dylib) + 112,0,...  [0x1875fb1cc,0x1875fb15c,...]
+            ! : | + ! : | + ! 2 _xzm_xzone_malloc  (in libsystem_malloc.dylib) + 8,180  [0x1875fb958,0x1875fba04]
+            ! : | + ! : | + ! 1 DYLD-STUB$$malloc  (in modelt-core) + 4  [0x102fd6a64]
+            ! : | + ! : | + 22 _RNvMNtCshywt5GRcJlV_11modelt_core6safetyNtB2_6Scalar5parse  (in modelt-core) + 1244  [0x102f64b9c]  safety.rs:176
+            ! : | + ! : | + ! 18 _xzm_free  (in libsystem_malloc.dylib) + 0,996,...  [0x1875fc118,0x1875fc4fc,...]
+            ! : | + ! : | + ! 4 _free  (in libsystem_malloc.dylib) + 36,0,...  [0x18760bcf4,0x18760bcd0,...]
+            ! : | + ! : | + 6 _RNvMNtCshywt5GRcJlV_11modelt_core6safetyNtB2_6Scalar5parse  (in modelt-core) + 1172  [0x102f64b54]  safety.rs:176
+            ! : | + ! : | + ! 5 _platform_memcmp  (in libsystem_platform.dylib) + 140,272,...  [0x1877e6f9c,0x1877e7020,...]
+            ! : | + ! : | + ! 1 DYLD-STUB$$memcmp  (in modelt-core) + 4  [0x102fd6a70]
+            ! : | + ! : | + 4 _RNvMNtCshywt5GRcJlV_11modelt_core6safetyNtB2_6Scalar5parse  (in modelt-core) + 60,104,...  [0x102f646fc,0x102f64728,...]  safety.rs:173
+            ! : | + ! : | + 3 _RNvMNtCshywt5GRcJlV_11modelt_core6safetyNtB2_6Scalar5parse  (in modelt-core) + 32  [0x102f646e0]  safety.rs:170
+            ! : | + ! : | + 3 _RNvMNtCshywt5GRcJlV_11modelt_core6safetyNtB2_6Scalar5parse  (in modelt-core) + 932,1000,...  [0x102f64a64,0x102f64aa8,...]  safety.rs:176
+            ! : | + ! : | + 3 _xzm_free  (in libsystem_malloc.dylib) + 1568  [0x1875fc738]
+            ! : | + ! : | + 2 _RNvMNtCshywt5GRcJlV_11modelt_core6safetyNtB2_6Scalar5parse  (in modelt-core) + 1132  [0x102f64b2c]  safety.rs:176
+            ! : | + ! : | + ! 2 _platform_memmove  (in libsystem_platform.dylib) + 436,460  [0x1877e9514,0x1877e952c]
+            ! : | + ! : | + 1 _RNvMNtCshywt5GRcJlV_11modelt_core6safetyNtB2_6Scalar5parse  (in modelt-core) + 704  [0x102f64980]  safety.rs:0
+            ! : | + ! : | 2 _RNvMNtCshywt5GRcJlV_11modelt_core6safetyNtB2_6Scalar5parse  (in modelt-core) + 664  [0x102f64958]  safety.rs:185
+            ! : | + ! : | 2 _RNvMs_NtCshywt5GRcJlV_11modelt_core6safetyNtB4_10Expression4eval  (in modelt-core) + 64  [0x102f618fc]  safety.rs:270
+            ! : | + ! : | 1 _RNvMs_NtCshywt5GRcJlV_11modelt_core6safetyNtB4_10Expression4eval  (in modelt-core) + 20  [0x102f618d0]  safety.rs:263
+            ! : | + ! : | 1 _RNvMs_NtCshywt5GRcJlV_11modelt_core6safetyNtB4_10Expression4eval  (in modelt-core) + 2552  [0x102f622b4]  safety.rs:332
+            ! : | + ! : 101 _RNvMs_NtCshywt5GRcJlV_11modelt_core6safetyNtB4_10Expression4eval  (in modelt-core) + 1372  [0x102f61e18]  safety.rs:288
+            ! : | + ! : | 96 _RNvMs_NtCshywt5GRcJlV_11modelt_core6safetyNtB4_10Expression4eval  (in modelt-core) + 1108  [0x102f61d10]  safety.rs:271
+            ! : | + ! : | + 32 _RNvMNtCshywt5GRcJlV_11modelt_core6safetyNtB2_6Scalar5parse  (in modelt-core) + 720  [0x102f64990]  safety.rs:176
+            ! : | + ! : | + ! 17 _xzm_xzone_malloc_tiny  (in libsystem_malloc.dylib) + 88,92,...  [0x187600f94,0x187600f98,...]
+            ! : | + ! : | + ! 8 <deduplicated_symbol>  (in libsystem_malloc.dylib) + 112,212,...  [0x1875fb1cc,0x1875fb230,...]
+            ! : | + ! : | + ! 4 _xzm_xzone_malloc  (in libsystem_malloc.dylib) + 192,8,...  [0x1875fba10,0x1875fb958,...]
+            ! : | + ! : | + ! 2 _malloc_zone_malloc  (in libsystem_malloc.dylib) + 12,120  [0x18760b0c8,0x18760b134]
+            ! : | + ! : | + ! 1 DYLD-STUB$$malloc  (in modelt-core) + 4  [0x102fd6a64]
+            ! : | + ! : | + 25 _RNvMNtCshywt5GRcJlV_11modelt_core6safetyNtB2_6Scalar5parse  (in modelt-core) + 1244  [0x102f64b9c]  safety.rs:176
+            ! : | + ! : | + ! 20 _xzm_free  (in libsystem_malloc.dylib) + 996,0,...  [0x1875fc4fc,0x1875fc118,...]
+            ! : | + ! : | + ! 4 _free  (in libsystem_malloc.dylib) + 76,0,...  [0x18760bd1c,0x18760bcd0,...]
+            ! : | + ! : | + ! 1 DYLD-STUB$$free  (in modelt-core) + 4  [0x102fd6a34]
+            ! : | + ! : | + 12 _RNvMNtCshywt5GRcJlV_11modelt_core6safetyNtB2_6Scalar5parse  (in modelt-core) + 164,120,...  [0x102f64764,0x102f64738,...]  safety.rs:173
+            ! : | + ! : | + 11 _RNvMNtCshywt5GRcJlV_11modelt_core6safetyNtB2_6Scalar5parse  (in modelt-core) + 760,840,...  [0x102f649b8,0x102f64a08,...]  safety.rs:176
+            ! : | + ! : | + 8 _RNvMNtCshywt5GRcJlV_11modelt_core6safetyNtB2_6Scalar5parse  (in modelt-core) + 1132  [0x102f64b2c]  safety.rs:176
+            ! : | + ! : | + ! 8 _platform_memmove  (in libsystem_platform.dylib) + 452,436,...  [0x1877e9524,0x1877e9514,...]
+            ! : | + ! : | + 5 _RNvMNtCshywt5GRcJlV_11modelt_core6safetyNtB2_6Scalar5parse  (in modelt-core) + 1172  [0x102f64b54]  safety.rs:176
+            ! : | + ! : | + ! 5 _platform_memcmp  (in libsystem_platform.dylib) + 168,272,...  [0x1877e6fb8,0x1877e7020,...]
+            ! : | + ! : | + 2 _RNvMNtCshywt5GRcJlV_11modelt_core6safetyNtB2_6Scalar5parse  (in modelt-core) + 32  [0x102f646e0]  safety.rs:170
+            ! : | + ! : | + 1 _xzm_free  (in libsystem_malloc.dylib) + 1568  [0x1875fc738]
+            ! : | + ! : | 3 _RNvMs_NtCshywt5GRcJlV_11modelt_core6safetyNtB4_10Expression4eval  (in modelt-core) + 28,64  [0x102f618d8,0x102f618fc]  safety.rs:270
+            ! : | + ! : | 2 _RNvMNtCshywt5GRcJlV_11modelt_core6safetyNtB2_6Scalar5parse  (in modelt-core) + 664,668  [0x102f64958,0x102f6495c]  safety.rs:185
+            ! : | + ! : 4 _RNvMs_NtCshywt5GRcJlV_11modelt_core6safetyNtB4_10Expression4eval  (in modelt-core) + 64,72  [0x102f618fc,0x102f61904]  safety.rs:270
+            ! : | + ! : 3 _RNvMs_NtCshywt5GRcJlV_11modelt_core6safetyNtB4_10Expression4eval  (in modelt-core) + 2568  [0x102f622c4]  safety.rs:332
+            ! : | + ! : 1 _RNvMs_NtCshywt5GRcJlV_11modelt_core6safetyNtB4_10Expression4eval  (in modelt-core) + 1432  [0x102f61e54]  safety.rs:288
+            ! : | + ! 80 _RNvMs0_NtCshywt5GRcJlV_11modelt_core6safetyNtB5_6Domain8contains  (in modelt-core) + 148  [0x102f63ed8]  safety.rs:358
+            ! : | + ! : 75 _RNvMs_NtCshywt5GRcJlV_11modelt_core6safetyNtB4_10Expression4eval  (in modelt-core) + 1108  [0x102f61d10]  safety.rs:271
+            ! : | + ! : | 28 _RNvMNtCshywt5GRcJlV_11modelt_core6safetyNtB2_6Scalar5parse  (in modelt-core) + 720  [0x102f64990]  safety.rs:176
+            ! : | + ! : | + 15 _xzm_xzone_malloc_tiny  (in libsystem_malloc.dylib) + 88,104,...  [0x187600f94,0x187600fa4,...]
+            ! : | + ! : | + 5 <deduplicated_symbol>  (in libsystem_malloc.dylib) + 112,0,...  [0x1875fb1cc,0x1875fb15c,...]
+            ! : | + ! : | + 4 _xzm_xzone_malloc  (in libsystem_malloc.dylib) + 8,24,...  [0x1875fb958,0x1875fb968,...]
+            ! : | + ! : | + 4 _xzm_xzone_malloc_freelist_outlined  (in libsystem_malloc.dylib) + 756  [0x187602994]
+            ! : | + ! : | 27 _RNvMNtCshywt5GRcJlV_11modelt_core6safetyNtB2_6Scalar5parse  (in modelt-core) + 1244  [0x102f64b9c]  safety.rs:176
+            ! : | + ! : | + 25 _xzm_free  (in libsystem_malloc.dylib) + 28,996,...  [0x1875fc134,0x1875fc4fc,...]
+            ! : | + ! : | + 1 DYLD-STUB$$free  (in modelt-core) + 4  [0x102fd6a34]
+            ! : | + ! : | + 1 _free  (in libsystem_malloc.dylib) + 12  [0x18760bcdc]
+            ! : | + ! : | 7 _RNvMNtCshywt5GRcJlV_11modelt_core6safetyNtB2_6Scalar5parse  (in modelt-core) + 1132  [0x102f64b2c]  safety.rs:176
+            ! : | + ! : | + 4 DYLD-STUB$$memcpy  (in modelt-core) + 4  [0x102fd6a7c]
+            ! : | + ! : | + 3 _platform_memmove  (in libsystem_platform.dylib) + 12  [0x1877e936c]
+            ! : | + ! : | 6 _RNvMNtCshywt5GRcJlV_11modelt_core6safetyNtB2_6Scalar5parse  (in modelt-core) + 932,720,...  [0x102f64a64,0x102f64990,...]  safety.rs:176
+            ! : | + ! : | 3 _RNvMNtCshywt5GRcJlV_11modelt_core6safetyNtB2_6Scalar5parse  (in modelt-core) + 1172  [0x102f64b54]  safety.rs:176
+            ! : | + ! : | + 2 _platform_memcmp  (in libsystem_platform.dylib) + 140,272  [0x1877e6f9c,0x1877e7020]
+            ! : | + ! : | + 1 DYLD-STUB$$memcmp  (in modelt-core) + 4  [0x102fd6a70]
+            ! : | + ! : | 2 _RNvMNtCshywt5GRcJlV_11modelt_core6safetyNtB2_6Scalar5parse  (in modelt-core) + 56,72  [0x102f646f8,0x102f64708]  safety.rs:173
+            ! : | + ! : | 1 _RNvMNtCshywt5GRcJlV_11modelt_core6safetyNtB2_6Scalar5parse  (in modelt-core) + 704  [0x102f64980]  safety.rs:0
+            ! : | + ! : | 1 _xzm_free  (in libsystem_malloc.dylib) + 1568  [0x1875fc738]
+            ! : | + ! : 2 _RNvMs_NtCshywt5GRcJlV_11modelt_core6safetyNtB4_10Expression4eval  (in modelt-core) + 64  [0x102f618fc]  safety.rs:270
+            ! : | + ! : 1 _RNvMNtCshywt5GRcJlV_11modelt_core6safetyNtB2_6Scalar5parse  (in modelt-core) + 668  [0x102f6495c]  safety.rs:185
+            ! : | + ! : 1 _RNvMs_NtCshywt5GRcJlV_11modelt_core6safetyNtB4_10Expression4eval  (in modelt-core) + 20  [0x102f618d0]  safety.rs:263
+            ! : | + ! : 1 _RNvMs_NtCshywt5GRcJlV_11modelt_core6safetyNtB4_10Expression4eval  (in modelt-core) + 2552  [0x102f622b4]  safety.rs:332
+            ! : | + ! 3 _RNvMs0_NtCshywt5GRcJlV_11modelt_core6safetyNtB5_6Domain8contains  (in modelt-core) + 132,256  [0x102f63ec8,0x102f63f44]  safety.rs:358
+            ! : | + ! 3 _RNvMs_NtCshywt5GRcJlV_11modelt_core6safetyNtB4_10Expression4eval  (in modelt-core) + 2568,2560  [0x102f622c4,0x102f622bc]  safety.rs:332
+            ! : | + ! 2 _RNvMs0_NtCshywt5GRcJlV_11modelt_core6safetyNtB5_6Domain8contains  (in modelt-core) + 580  [0x102f64088]  safety.rs:360
+            ! : | + ! : 2 _RNvMNtCshywt5GRcJlV_11modelt_core6safetyNtB2_6Scalar7integer  (in modelt-core) + 4  [0x102f64500]  safety.rs:186
+            ! : | + ! 1 _RNvMs0_NtCshywt5GRcJlV_11modelt_core6safetyNtB5_6Domain8contains  (in modelt-core) + 20  [0x102f63e58]  safety.rs:350
+            ! : | + ! 1 _RNvMs0_NtCshywt5GRcJlV_11modelt_core6safetyNtB5_6Domain8contains  (in modelt-core) + 36  [0x102f63e68]  safety.rs:356
+            ! : | + 8 _RNvMs_NtCshywt5GRcJlV_11modelt_core6safetyNtB4_10Expression4eval  (in modelt-core) + 1252  [0x102f61da0]  safety.rs:329
+            ! : | + ! 5 _RNvMs_NtCshywt5GRcJlV_11modelt_core6safetyNtB4_10Expression4eval  (in modelt-core) + 64,1136,...  [0x102f618fc,0x102f61d2c,...]  safety.rs:270
+            ! : | + ! 2 _RNvMs_NtCshywt5GRcJlV_11modelt_core6safetyNtB4_10Expression4eval  (in modelt-core) + 1696  [0x102f61f5c]  safety.rs:279
+            ! : | + ! 1 _RNvMs_NtCshywt5GRcJlV_11modelt_core6safetyNtB4_10Expression4eval  (in modelt-core) + 2552  [0x102f622b4]  safety.rs:332
+            ! : | + 4 _RNvMs_NtCshywt5GRcJlV_11modelt_core6safetyNtB4_10Expression4eval  (in modelt-core) + 1252,1292  [0x102f61da0,0x102f61dc8]  safety.rs:329
+            ! : | + 4 _RNvMs_NtCshywt5GRcJlV_11modelt_core6safetyNtB4_10Expression4eval  (in modelt-core) + 2568,2572  [0x102f622c4,0x102f622c8]  safety.rs:332
+            ! : | + 2 _RNvMs_NtCshywt5GRcJlV_11modelt_core6safetyNtB4_10Expression4eval  (in modelt-core) + 12,20  [0x102f618c8,0x102f618d0]  safety.rs:263
+            ! : | + 2 _RNvMs_NtCshywt5GRcJlV_11modelt_core6safetyNtB4_10Expression4eval  (in modelt-core) + 28,64  [0x102f618d8,0x102f618fc]  safety.rs:270
+            ! : | + 1 _RNvMs0_NtCshywt5GRcJlV_11modelt_core6safetyNtB5_6Domain8contains  (in modelt-core) + 756  [0x102f64138]  safety.rs:371
+            ! : | 78 _RNvMs2_NtCshywt5GRcJlV_11modelt_core6safetyNtB5_6Search4walk  (in modelt-core) + 4052  [0x102f63464]  safety.rs:565
+            ! : | + 38 _RINvMs6_NtCs7oNAfGD06J0_9hashbrown3rawINtB6_8RawTableTINtNtCs6KVRSXc8uZF_5alloc3vec3VecNtNtCshywt5GRcJlV_11modelt_core6safety6ScalarEjEE14reserve_rehashNCINvNtB8_3map11make_hasherBQ_jNtNtNtCs7mRY9FNn263_3std4hash6random11RandomStateE0EB1r_  (in modelt-core) + 236  [0x102fc8f18]  raw.rs:962
+            ! : | + ! 12 _RINvYNtNtNtCs7mRY9FNn263_3std4hash6random11RandomStateNtNtCslWxY2MhVcag_4core4hash11BuildHasher8hash_oneRINtNtCs6KVRSXc8uZF_5alloc3vec3VecNtNtCshywt5GRcJlV_11modelt_core6safety6ScalarEEB2g_  (in modelt-core) + 352,304,...  [0x102f49178,0x102f49148,...]  mod.rs:701
+            ! : | + ! 11 _RINvYNtNtNtCs7mRY9FNn263_3std4hash6random11RandomStateNtNtCslWxY2MhVcag_4core4hash11BuildHasher8hash_oneRINtNtCs6KVRSXc8uZF_5alloc3vec3VecNtNtCshywt5GRcJlV_11modelt_core6safety6ScalarEEB2g_  (in modelt-core) + 172  [0x102f490c4]  mod.rs:700
+            ! : | + ! : 4 _RNvXs3_NtNtCslWxY2MhVcag_4core4hash3sipINtB5_6HasherNtB5_11Sip13RoundsENtB7_6Hasher5writeCshywt5GRcJlV_11modelt_core  (in modelt-core) + 376,400  [0x102f49334,0x102f4934c]  sip.rs:289
+            ! : | + ! : 3 _RNvXs3_NtNtCslWxY2MhVcag_4core4hash3sipINtB5_6HasherNtB5_11Sip13RoundsENtB7_6Hasher5writeCshywt5GRcJlV_11modelt_core  (in modelt-core) + 76  [0x102f49208]  sip.rs:0
+            ! : | + ! : 2 _RNvXs3_NtNtCslWxY2MhVcag_4core4hash3sipINtB5_6HasherNtB5_11Sip13RoundsENtB7_6Hasher5writeCshywt5GRcJlV_11modelt_core  (in modelt-core) + 20  [0x102f491d0]  sip.rs:262
+            ! : | + ! : 1 _RNvXs3_NtNtCslWxY2MhVcag_4core4hash3sipINtB5_6HasherNtB5_11Sip13RoundsENtB7_6Hasher5writeCshywt5GRcJlV_11modelt_core  (in modelt-core) + 8  [0x102f491c4]  sip.rs:258
+            ! : | + ! : 1 _RNvXs3_NtNtCslWxY2MhVcag_4core4hash3sipINtB5_6HasherNtB5_11Sip13RoundsENtB7_6Hasher5writeCshywt5GRcJlV_11modelt_core  (in modelt-core) + 488  [0x102f493a4]  sip.rs:300
+            ! : | + ! 8 _RINvYNtNtNtCs7mRY9FNn263_3std4hash6random11RandomStateNtNtCslWxY2MhVcag_4core4hash11BuildHasher8hash_oneRINtNtCs6KVRSXc8uZF_5alloc3vec3VecNtNtCshywt5GRcJlV_11modelt_core6safety6ScalarEEB2g_  (in modelt-core) + 96  [0x102f49078]  mod.rs:700
+            ! : | + ! : 2 _RNvXs3_NtNtCslWxY2MhVcag_4core4hash3sipINtB5_6HasherNtB5_11Sip13RoundsENtB7_6Hasher5writeCshywt5GRcJlV_11modelt_core  (in modelt-core) + 0  [0x102f491bc]  sip.rs:256
+            ! : | + ! : 2 _RNvXs3_NtNtCslWxY2MhVcag_4core4hash3sipINtB5_6HasherNtB5_11Sip13RoundsENtB7_6Hasher5writeCshywt5GRcJlV_11modelt_core  (in modelt-core) + 388  [0x102f49340]  sip.rs:282
+            ! : | + ! : 2 _RNvXs3_NtNtCslWxY2MhVcag_4core4hash3sipINtB5_6HasherNtB5_11Sip13RoundsENtB7_6Hasher5writeCshywt5GRcJlV_11modelt_core  (in modelt-core) + 412,420  [0x102f49358,0x102f49360]  sip.rs:298
+            ! : | + ! : 1 _RNvXs3_NtNtCslWxY2MhVcag_4core4hash3sipINtB5_6HasherNtB5_11Sip13RoundsENtB7_6Hasher5writeCshywt5GRcJlV_11modelt_core  (in modelt-core) + 396  [0x102f49348]  sip.rs:0
+            ! : | + ! : 1 _RNvXs3_NtNtCslWxY2MhVcag_4core4hash3sipINtB5_6HasherNtB5_11Sip13RoundsENtB7_6Hasher5writeCshywt5GRcJlV_11modelt_core  (in modelt-core) + 16  [0x102f491cc]  sip.rs:258
+            ! : | + ! 6 _RINvYNtNtNtCs7mRY9FNn263_3std4hash6random11RandomStateNtNtCslWxY2MhVcag_4core4hash11BuildHasher8hash_oneRINtNtCs6KVRSXc8uZF_5alloc3vec3VecNtNtCshywt5GRcJlV_11modelt_core6safety6ScalarEEB2g_  (in modelt-core) + 136  [0x102f490a0]  mod.rs:700
+            ! : | + ! : 5 _RNvXs3_NtNtCslWxY2MhVcag_4core4hash3sipINtB5_6HasherNtB5_11Sip13RoundsENtB7_6Hasher5writeCshywt5GRcJlV_11modelt_core  (in modelt-core) + 100,108,...  [0x102f49220,0x102f49228,...]  sip.rs:298
+            ! : | + ! : 1 _RNvXs3_NtNtCslWxY2MhVcag_4core4hash3sipINtB5_6HasherNtB5_11Sip13RoundsENtB7_6Hasher5writeCshywt5GRcJlV_11modelt_core  (in modelt-core) + 76  [0x102f49208]  sip.rs:0
+            ! : | + ! 1 _RINvYNtNtNtCs7mRY9FNn263_3std4hash6random11RandomStateNtNtCslWxY2MhVcag_4core4hash11BuildHasher8hash_oneRINtNtCs6KVRSXc8uZF_5alloc3vec3VecNtNtCshywt5GRcJlV_11modelt_core6safety6ScalarEEB2g_  (in modelt-core) + 92  [0x102f49074]  mod.rs:700
+            ! : | + 36 _RINvMs6_NtCs7oNAfGD06J0_9hashbrown3rawINtB6_8RawTableTINtNtCs6KVRSXc8uZF_5alloc3vec3VecNtNtCshywt5GRcJlV_11modelt_core6safety6ScalarEjEE14reserve_rehashNCINvNtB8_3map11make_hasherBQ_jNtNtNtCs7mRY9FNn263_3std4hash6random11RandomStateE0EB1r_  (in modelt-core) + 332,180,...  [0x102fc8f78,0x102fc8ee0,...]  raw.rs:962
+            ! : | + 2 _RINvMs6_NtCs7oNAfGD06J0_9hashbrown3rawINtB6_8RawTableTINtNtCs6KVRSXc8uZF_5alloc3vec3VecNtNtCshywt5GRcJlV_11modelt_core6safety6ScalarEjEE14reserve_rehashNCINvNtB8_3map11make_hasherBQ_jNtNtNtCs7mRY9FNn263_3std4hash6random11RandomStateE0EB1r_  (in modelt-core) + 880  [0x102fc919c]  raw.rs:962
+            ! : | + ! 1 _xzm_segment_group_segment_deallocate  (in libsystem_malloc.dylib) + 68  [0x1875e7200]
+            ! : | + ! : 1 mvm_deallocate_plat  (in libsystem_malloc.dylib) + 60  [0x1875eeaa0]
+            ! : | + ! :   1 mach_vm_deallocate  (in libsystem_kernel.dylib) + 88  [0x18779d804]
+            ! : | + ! :     1 _kernelrpc_mach_vm_deallocate_trap  (in libsystem_kernel.dylib) + 8  [0x18779baa8]
+            ! : | + ! 1 xzm_segment_group_free_chunk  (in libsystem_malloc.dylib) + 572  [0x1875e537c]
+            ! : | + !   1 <deduplicated_symbol>  (in libsystem_malloc.dylib) + 16  [0x1875eebc8]
+            ! : | + !     1 madvise  (in libsystem_kernel.dylib) + 8  [0x18779e9b0]
+            ! : | + 2 _RINvYNtNtNtCs7mRY9FNn263_3std4hash6random11RandomStateNtNtCslWxY2MhVcag_4core4hash11BuildHasher8hash_oneRINtNtCs6KVRSXc8uZF_5alloc3vec3VecNtNtCshywt5GRcJlV_11modelt_core6safety6ScalarEEB2g_  (in modelt-core) + 408  [0x102f491b0]  mod.rs:702
+            ! : | 63 _RNvMs2_NtCshywt5GRcJlV_11modelt_core6safetyNtB5_6Search4walk  (in modelt-core) + 1140,1000,...  [0x102f62904,0x102f62878,...]  safety.rs:565
+            ! : | 44 _RNvMs2_NtCshywt5GRcJlV_11modelt_core6safetyNtB5_6Search4walk  (in modelt-core) + 3548  [0x102f6326c]  safety.rs:565
+            ! : | + 26 _xzm_xzone_malloc_tiny  (in libsystem_malloc.dylib) + 420,88,...  [0x1876010e0,0x187600f94,...]
+            ! : | + 6 <deduplicated_symbol>  (in libsystem_malloc.dylib) + 212,0,...  [0x1875fb230,0x1875fb15c,...]
+            ! : | + 5 _xzm_xzone_malloc  (in libsystem_malloc.dylib) + 192,8,...  [0x1875fba10,0x1875fb958,...]
+            ! : | + 4 _malloc_zone_malloc  (in libsystem_malloc.dylib) + 44,12,...  [0x18760b0e8,0x18760b0c8,...]
+            ! : | + 2 _RNvCs6rREvFdRhLb_7___rustc12___rust_alloc  (in modelt-core) + 0  [0x102f43f88]
+            ! : | + 1 DYLD-STUB$$malloc  (in modelt-core) + 4  [0x102fd6a64]
+            ! : | 38 _RNvMs2_NtCshywt5GRcJlV_11modelt_core6safetyNtB5_6Search4walk  (in modelt-core) + 716  [0x102f6275c]  safety.rs:563
+            ! : | + 22 _xzm_xzone_malloc_tiny  (in libsystem_malloc.dylib) + 420,672,...  [0x1876010e0,0x1876011dc,...]
+            ! : | + 8 <deduplicated_symbol>  (in libsystem_malloc.dylib) + 112,136,...  [0x1875fb1cc,0x1875fb1e4,...]
+            ! : | + 5 _xzm_xzone_malloc_freelist_outlined  (in libsystem_malloc.dylib) + 756  [0x187602994]
+            ! : | + 2 _xzm_xzone_malloc  (in libsystem_malloc.dylib) + 184,192  [0x1875fba08,0x1875fba10]
+            ! : | + 1 DYLD-STUB$$malloc  (in modelt-core) + 4  [0x102fd6a64]
+            ! : | 25 _RNvMs2_NtCshywt5GRcJlV_11modelt_core6safetyNtB5_6Search4walk  (in modelt-core) + 2936  [0x102f63008]  safety.rs:565
+            ! : | + 12 _xzm_xzone_malloc_tiny  (in libsystem_malloc.dylib) + 88,276,...  [0x187600f94,0x187601050,...]
+            ! : | + 3 <deduplicated_symbol>  (in libsystem_malloc.dylib) + 0,112  [0x1875fb15c,0x1875fb1cc]
+            ! : | + 3 _malloc_zone_malloc  (in libsystem_malloc.dylib) + 120,12  [0x18760b134,0x18760b0c8]
+            ! : | + 3 _xzm_xzone_malloc  (in libsystem_malloc.dylib) + 184,336  [0x1875fba08,0x1875fbaa0]
+            ! : | + 2 _xzm_xzone_malloc_freelist_outlined  (in libsystem_malloc.dylib) + 756  [0x187602994]
+            ! : | + 1 DYLD-STUB$$malloc  (in modelt-core) + 4  [0x102fd6a64]
+            ! : | + 1 _RNvCs6rREvFdRhLb_7___rustc12___rust_alloc  (in modelt-core) + 0  [0x102f43f88]
+            ! : | 20 _RNvMs2_NtCshywt5GRcJlV_11modelt_core6safetyNtB5_6Search4walk  (in modelt-core) + 2988  [0x102f6303c]  safety.rs:565
+            ! : | + 9 _RINvYNtNtNtCs7mRY9FNn263_3std4hash6random11RandomStateNtNtCslWxY2MhVcag_4core4hash11BuildHasher8hash_oneRINtNtCs6KVRSXc8uZF_5alloc3vec3VecNtNtCshywt5GRcJlV_11modelt_core6safety6ScalarEEB2g_  (in modelt-core) + 172  [0x102f490c4]  mod.rs:700
+            ! : | + ! 6 _RNvXs3_NtNtCslWxY2MhVcag_4core4hash3sipINtB5_6HasherNtB5_11Sip13RoundsENtB7_6Hasher5writeCshywt5GRcJlV_11modelt_core  (in modelt-core) + 368,400  [0x102f4932c,0x102f4934c]  sip.rs:289
+            ! : | + ! 2 _RNvXs3_NtNtCslWxY2MhVcag_4core4hash3sipINtB5_6HasherNtB5_11Sip13RoundsENtB7_6Hasher5writeCshywt5GRcJlV_11modelt_core  (in modelt-core) + 20  [0x102f491d0]  sip.rs:262
+            ! : | + ! 1 _RNvXs3_NtNtCslWxY2MhVcag_4core4hash3sipINtB5_6HasherNtB5_11Sip13RoundsENtB7_6Hasher5writeCshywt5GRcJlV_11modelt_core  (in modelt-core) + 388  [0x102f49340]  sip.rs:282
+            ! : | + 5 _RINvYNtNtNtCs7mRY9FNn263_3std4hash6random11RandomStateNtNtCslWxY2MhVcag_4core4hash11BuildHasher8hash_oneRINtNtCs6KVRSXc8uZF_5alloc3vec3VecNtNtCshywt5GRcJlV_11modelt_core6safety6ScalarEEB2g_  (in modelt-core) + 96  [0x102f49078]  mod.rs:700
+            ! : | + ! 2 _RNvXs3_NtNtCslWxY2MhVcag_4core4hash3sipINtB5_6HasherNtB5_11Sip13RoundsENtB7_6Hasher5writeCshywt5GRcJlV_11modelt_core  (in modelt-core) + 388  [0x102f49340]  sip.rs:282
+            ! : | + ! 1 _RNvXs3_NtNtCslWxY2MhVcag_4core4hash3sipINtB5_6HasherNtB5_11Sip13RoundsENtB7_6Hasher5writeCshywt5GRcJlV_11modelt_core  (in modelt-core) + 20  [0x102f491d0]  sip.rs:262
+            ! : | + ! 1 _RNvXs3_NtNtCslWxY2MhVcag_4core4hash3sipINtB5_6HasherNtB5_11Sip13RoundsENtB7_6Hasher5writeCshywt5GRcJlV_11modelt_core  (in modelt-core) + 404  [0x102f49350]  sip.rs:298
+            ! : | + ! 1 _RNvXs3_NtNtCslWxY2MhVcag_4core4hash3sipINtB5_6HasherNtB5_11Sip13RoundsENtB7_6Hasher5writeCshywt5GRcJlV_11modelt_core  (in modelt-core) + 488  [0x102f493a4]  sip.rs:300
+            ! : | + 3 _RINvYNtNtNtCs7mRY9FNn263_3std4hash6random11RandomStateNtNtCslWxY2MhVcag_4core4hash11BuildHasher8hash_oneRINtNtCs6KVRSXc8uZF_5alloc3vec3VecNtNtCshywt5GRcJlV_11modelt_core6safety6ScalarEEB2g_  (in modelt-core) + 304,364  [0x102f49148,0x102f49184]  mod.rs:701
+            ! : | + 1 _RINvYNtNtNtCs7mRY9FNn263_3std4hash6random11RandomStateNtNtCslWxY2MhVcag_4core4hash11BuildHasher8hash_oneRINtNtCs6KVRSXc8uZF_5alloc3vec3VecNtNtCshywt5GRcJlV_11modelt_core6safety6ScalarEEB2g_  (in modelt-core) + 36  [0x102f4903c]  mod.rs:699
+            ! : | + 1 _RINvYNtNtNtCs7mRY9FNn263_3std4hash6random11RandomStateNtNtCslWxY2MhVcag_4core4hash11BuildHasher8hash_oneRINtNtCs6KVRSXc8uZF_5alloc3vec3VecNtNtCshywt5GRcJlV_11modelt_core6safety6ScalarEEB2g_  (in modelt-core) + 136  [0x102f490a0]  mod.rs:700
+            ! : | + ! 1 _RNvXs3_NtNtCslWxY2MhVcag_4core4hash3sipINtB5_6HasherNtB5_11Sip13RoundsENtB7_6Hasher5writeCshywt5GRcJlV_11modelt_core  (in modelt-core) + 100  [0x102f49220]  sip.rs:298
+            ! : | + 1 _RINvYNtNtNtCs7mRY9FNn263_3std4hash6random11RandomStateNtNtCslWxY2MhVcag_4core4hash11BuildHasher8hash_oneRINtNtCs6KVRSXc8uZF_5alloc3vec3VecNtNtCshywt5GRcJlV_11modelt_core6safety6ScalarEEB2g_  (in modelt-core) + 400  [0x102f491a8]  mod.rs:702
+            ! : | 17 _RNvMs2_NtCshywt5GRcJlV_11modelt_core6safetyNtB5_6Search4walk  (in modelt-core) + 952  [0x102f62848]  safety.rs:565
+            ! : | + 5 _RINvYNtNtNtCs7mRY9FNn263_3std4hash6random11RandomStateNtNtCslWxY2MhVcag_4core4hash11BuildHasher8hash_oneRINtNtCs6KVRSXc8uZF_5alloc3vec3VecNtNtCshywt5GRcJlV_11modelt_core6safety6ScalarEEB2g_  (in modelt-core) + 136  [0x102f490a0]  mod.rs:700
+            ! : | + ! 4 _RNvXs3_NtNtCslWxY2MhVcag_4core4hash3sipINtB5_6HasherNtB5_11Sip13RoundsENtB7_6Hasher5writeCshywt5GRcJlV_11modelt_core  (in modelt-core) + 20  [0x102f491d0]  sip.rs:262
+            ! : | + ! 1 _RNvXs3_NtNtCslWxY2MhVcag_4core4hash3sipINtB5_6HasherNtB5_11Sip13RoundsENtB7_6Hasher5writeCshywt5GRcJlV_11modelt_core  (in modelt-core) + 108  [0x102f49228]  sip.rs:298
+            ! : | + 4 _RINvYNtNtNtCs7mRY9FNn263_3std4hash6random11RandomStateNtNtCslWxY2MhVcag_4core4hash11BuildHasher8hash_oneRINtNtCs6KVRSXc8uZF_5alloc3vec3VecNtNtCshywt5GRcJlV_11modelt_core6safety6ScalarEEB2g_  (in modelt-core) + 96  [0x102f49078]  mod.rs:700
+            ! : | + ! 2 _RNvXs3_NtNtCslWxY2MhVcag_4core4hash3sipINtB5_6HasherNtB5_11Sip13RoundsENtB7_6Hasher5writeCshywt5GRcJlV_11modelt_core  (in modelt-core) + 8  [0x102f491c4]  sip.rs:258
+            ! : | + ! 1 _RNvXs3_NtNtCslWxY2MhVcag_4core4hash3sipINtB5_6HasherNtB5_11Sip13RoundsENtB7_6Hasher5writeCshywt5GRcJlV_11modelt_core  (in modelt-core) + 20  [0x102f491d0]  sip.rs:262
+            ! : | + ! 1 _RNvXs3_NtNtCslWxY2MhVcag_4core4hash3sipINtB5_6HasherNtB5_11Sip13RoundsENtB7_6Hasher5writeCshywt5GRcJlV_11modelt_core  (in modelt-core) + 400  [0x102f4934c]  sip.rs:289
+            ! : | + 4 _RINvYNtNtNtCs7mRY9FNn263_3std4hash6random11RandomStateNtNtCslWxY2MhVcag_4core4hash11BuildHasher8hash_oneRINtNtCs6KVRSXc8uZF_5alloc3vec3VecNtNtCshywt5GRcJlV_11modelt_core6safety6ScalarEEB2g_  (in modelt-core) + 172  [0x102f490c4]  mod.rs:700
+            ! : | + ! 1 _RNvXs3_NtNtCslWxY2MhVcag_4core4hash3sipINtB5_6HasherNtB5_11Sip13RoundsENtB7_6Hasher5writeCshywt5GRcJlV_11modelt_core  (in modelt-core) + 20  [0x102f491d0]  sip.rs:262
+            ! : | + ! 1 _RNvXs3_NtNtCslWxY2MhVcag_4core4hash3sipINtB5_6HasherNtB5_11Sip13RoundsENtB7_6Hasher5writeCshywt5GRcJlV_11modelt_core  (in modelt-core) + 388  [0x102f49340]  sip.rs:282
+            ! : | + ! 1 _RNvXs3_NtNtCslWxY2MhVcag_4core4hash3sipINtB5_6HasherNtB5_11Sip13RoundsENtB7_6Hasher5writeCshywt5GRcJlV_11modelt_core  (in modelt-core) + 412  [0x102f49358]  sip.rs:298
+            ! : | + ! 1 _RNvXs3_NtNtCslWxY2MhVcag_4core4hash3sipINtB5_6HasherNtB5_11Sip13RoundsENtB7_6Hasher5writeCshywt5GRcJlV_11modelt_core  (in modelt-core) + 488  [0x102f493a4]  sip.rs:300
+            ! : | + 3 _RINvYNtNtNtCs7mRY9FNn263_3std4hash6random11RandomStateNtNtCslWxY2MhVcag_4core4hash11BuildHasher8hash_oneRINtNtCs6KVRSXc8uZF_5alloc3vec3VecNtNtCshywt5GRcJlV_11modelt_core6safety6ScalarEEB2g_  (in modelt-core) + 304,272  [0x102f49148,0x102f49128]  mod.rs:701
+            ! : | + 1 _RINvYNtNtNtCs7mRY9FNn263_3std4hash6random11RandomStateNtNtCslWxY2MhVcag_4core4hash11BuildHasher8hash_oneRINtNtCs6KVRSXc8uZF_5alloc3vec3VecNtNtCshywt5GRcJlV_11modelt_core6safety6ScalarEEB2g_  (in modelt-core) + 400  [0x102f491a8]  mod.rs:702
+            ! : | 13 _RNvMs2_NtCshywt5GRcJlV_11modelt_core6safetyNtB5_6Search4walk  (in modelt-core) + 3568  [0x102f63280]  safety.rs:565
+            ! : | + 12 _platform_memmove  (in libsystem_platform.dylib) + 0,452,...  [0x1877e9360,0x1877e9524,...]
+            ! : | + 1 DYLD-STUB$$memcpy  (in modelt-core) + 4  [0x102fd6a7c]
+            ! : | 11 _RNvMs2_NtCshywt5GRcJlV_11modelt_core6safetyNtB5_6Search4walk  (in modelt-core) + 4036  [0x102f63454]  safety.rs:565
+            ! : | + 11 _RNvMs4_NtCs6KVRSXc8uZF_5alloc7raw_vecINtB5_6RawVecNtNtCshywt5GRcJlV_11modelt_core6finite11FiniteStateE8grow_oneBQ_  (in modelt-core) + 60  [0x102fcbd28]  mod.rs:188
+            ! : | +   11 _RNvMs5_NtCs6KVRSXc8uZF_5alloc7raw_vecNtB5_11RawVecInner11finish_growCshywt5GRcJlV_11modelt_core  (in modelt-core) + 228  [0x102fc9754]  mod.rs:557
+            ! : | +     11 _realloc  (in libsystem_malloc.dylib) + 452  [0x18760bf14]
+            ! : | +       11 _malloc_zone_realloc  (in libsystem_malloc.dylib) + 148  [0x18760b6f8]
+            ! : | +         8 xzm_realloc  (in libsystem_malloc.dylib) + 880  [0x1875fbef4]
+            ! : | +         ! 8 _platform_memmove  (in libsystem_platform.dylib) + 88,76  [0x1877e93b8,0x1877e93ac]
+            ! : | +         2 xzm_realloc  (in libsystem_malloc.dylib) + 904  [0x1875fbf0c]
+            ! : | +         ! 1 _xzm_segment_group_segment_deallocate  (in libsystem_malloc.dylib) + 68  [0x1875e7200]
+            ! : | +         ! : 1 mvm_deallocate_plat  (in libsystem_malloc.dylib) + 60  [0x1875eeaa0]
+            ! : | +         ! :   1 mach_vm_deallocate  (in libsystem_kernel.dylib) + 88  [0x18779d804]
+            ! : | +         ! :     1 _kernelrpc_mach_vm_deallocate_trap  (in libsystem_kernel.dylib) + 8  [0x18779baa8]
+            ! : | +         ! 1 xzm_segment_group_free_chunk  (in libsystem_malloc.dylib) + 572  [0x1875e537c]
+            ! : | +         !   1 <deduplicated_symbol>  (in libsystem_malloc.dylib) + 16  [0x1875eebc8]
+            ! : | +         !     1 madvise  (in libsystem_kernel.dylib) + 8  [0x18779e9b0]
+            ! : | +         1 xzm_realloc  (in libsystem_malloc.dylib) + 808  [0x1875fbeac]
+            ! : | +           1 _xzm_xzone_malloc_freelist_outlined  (in libsystem_malloc.dylib) + 756  [0x187602994]
+            ! : | 9 _RINvYNtNtNtCs7mRY9FNn263_3std4hash6random11RandomStateNtNtCslWxY2MhVcag_4core4hash11BuildHasher8hash_oneRINtNtCs6KVRSXc8uZF_5alloc3vec3VecNtNtCshywt5GRcJlV_11modelt_core6safety6ScalarEEB2g_  (in modelt-core) + 408  [0x102f491b0]  mod.rs:702
+            ! : | 4 _RNvMs2_NtCshywt5GRcJlV_11modelt_core6safetyNtB5_6Search4walk  (in modelt-core) + 716,696,...  [0x102f6275c,0x102f62748,...]  safety.rs:563
+            ! : | 2 _RNvMs2_NtCshywt5GRcJlV_11modelt_core6safetyNtB5_6Search4walk  (in modelt-core) + 44  [0x102f624bc]  safety.rs:556
+            ! : | 2 _RNvMs2_NtCshywt5GRcJlV_11modelt_core6safetyNtB5_6Search4walk  (in modelt-core) + 2956  [0x102f6301c]  safety.rs:565
+            ! : |   2 _platform_memmove  (in libsystem_platform.dylib) + 0,428  [0x1877e9360,0x1877e950c]
+            ! : 304 _RNvMs2_NtCshywt5GRcJlV_11modelt_core6safetyNtB5_6Search4walk  (in modelt-core) + 356  [0x102f625f4]  safety.rs:575
+            ! : | 225 _RNvMs_NtCshywt5GRcJlV_11modelt_core6safetyNtB4_10Expression4eval  (in modelt-core) + 268  [0x102f619c8]  safety.rs:323
+            ! : | + 202 _RNvMs_NtCshywt5GRcJlV_11modelt_core6safetyNtB4_10Expression4eval  (in modelt-core) + 852  [0x102f61c10]  safety.rs:299
+            ! : | + ! 101 _RNvMs_NtCshywt5GRcJlV_11modelt_core6safetyNtB4_10Expression4eval  (in modelt-core) + 1416  [0x102f61e44]  safety.rs:288
+            ! : | + ! : 93 _RNvMs_NtCshywt5GRcJlV_11modelt_core6safetyNtB4_10Expression4eval  (in modelt-core) + 1108  [0x102f61d10]  safety.rs:271
+            ! : | + ! : | 40 _RNvMNtCshywt5GRcJlV_11modelt_core6safetyNtB2_6Scalar5parse  (in modelt-core) + 720  [0x102f64990]  safety.rs:176
+            ! : | + ! : | + 15 _xzm_xzone_malloc_tiny  (in libsystem_malloc.dylib) + 764,24,...  [0x187601238,0x187600f54,...]
+            ! : | + ! : | + 12 _malloc_zone_malloc  (in libsystem_malloc.dylib) + 12,64,...  [0x18760b0c8,0x18760b0fc,...]
+            ! : | + ! : | + 7 <deduplicated_symbol>  (in libsystem_malloc.dylib) + 112,212,...  [0x1875fb1cc,0x1875fb230,...]
+            ! : | + ! : | + 5 _xzm_xzone_malloc  (in libsystem_malloc.dylib) + 8,28,...  [0x1875fb958,0x1875fb96c,...]
+            ! : | + ! : | + 1 DYLD-STUB$$malloc  (in modelt-core) + 4  [0x102fd6a64]
+            ! : | + ! : | 33 _RNvMNtCshywt5GRcJlV_11modelt_core6safetyNtB2_6Scalar5parse  (in modelt-core) + 1244  [0x102f64b9c]  safety.rs:176
+            ! : | + ! : | + 31 _xzm_free  (in libsystem_malloc.dylib) + 28,0,...  [0x1875fc134,0x1875fc118,...]
+            ! : | + ! : | + 1 DYLD-STUB$$free  (in modelt-core) + 4  [0x102fd6a34]
+            ! : | + ! : | + 1 _free  (in libsystem_malloc.dylib) + 36  [0x18760bcf4]
+            ! : | + ! : | 8 _RNvMNtCshywt5GRcJlV_11modelt_core6safetyNtB2_6Scalar5parse  (in modelt-core) + 1172  [0x102f64b54]  safety.rs:176
+            ! : | + ! : | + 7 _platform_memcmp  (in libsystem_platform.dylib) + 272,140,...  [0x1877e7020,0x1877e6f9c,...]
+            ! : | + ! : | + 1 DYLD-STUB$$memcmp  (in modelt-core) + 4  [0x102fd6a70]
+            ! : | + ! : | 5 _RNvMNtCshywt5GRcJlV_11modelt_core6safetyNtB2_6Scalar5parse  (in modelt-core) + 1132  [0x102f64b2c]  safety.rs:176
+            ! : | + ! : | + 4 _platform_memmove  (in libsystem_platform.dylib) + 0,12,...  [0x1877e9360,0x1877e936c,...]
+            ! : | + ! : | + 1 DYLD-STUB$$memcpy  (in modelt-core) + 4  [0x102fd6a7c]
+            ! : | + ! : | 3 _RNvMNtCshywt5GRcJlV_11modelt_core6safetyNtB2_6Scalar5parse  (in modelt-core) + 60,104,...  [0x102f646fc,0x102f64728,...]  safety.rs:173
+            ! : | + ! : | 3 _RNvMNtCshywt5GRcJlV_11modelt_core6safetyNtB2_6Scalar5parse  (in modelt-core) + 932,1048,...  [0x102f64a64,0x102f64ad8,...]  safety.rs:176
+            ! : | + ! : | 1 _RNvMNtCshywt5GRcJlV_11modelt_core6safetyNtB2_6Scalar5parse  (in modelt-core) + 32  [0x102f646e0]  safety.rs:170
+            ! : | + ! : 4 _RNvMs_NtCshywt5GRcJlV_11modelt_core6safetyNtB4_10Expression4eval  (in modelt-core) + 2552  [0x102f622b4]  safety.rs:332
+            ! : | + ! : 3 _RNvMs_NtCshywt5GRcJlV_11modelt_core6safetyNtB4_10Expression4eval  (in modelt-core) + 68,52  [0x102f61900,0x102f618f0]  safety.rs:270
+            ! : | + ! : 1 _RNvMNtCshywt5GRcJlV_11modelt_core6safetyNtB2_6Scalar5parse  (in modelt-core) + 668  [0x102f6495c]  safety.rs:185
+            ! : | + ! 95 _RNvMs_NtCshywt5GRcJlV_11modelt_core6safetyNtB4_10Expression4eval  (in modelt-core) + 1372  [0x102f61e18]  safety.rs:288
+            ! : | + ! : 85 _RNvMs_NtCshywt5GRcJlV_11modelt_core6safetyNtB4_10Expression4eval  (in modelt-core) + 1108  [0x102f61d10]  safety.rs:271
+            ! : | + ! : | 25 _RNvMNtCshywt5GRcJlV_11modelt_core6safetyNtB2_6Scalar5parse  (in modelt-core) + 720  [0x102f64990]  safety.rs:176
+            ! : | + ! : | + 10 _xzm_xzone_malloc_tiny  (in libsystem_malloc.dylib) + 256,764,...  [0x18760103c,0x187601238,...]
+            ! : | + ! : | + 8 _xzm_xzone_malloc  (in libsystem_malloc.dylib) + 324,8,...  [0x1875fba94,0x1875fb958,...]
+            ! : | + ! : | + 3 <deduplicated_symbol>  (in libsystem_malloc.dylib) + 100,136,...  [0x1875fb1c0,0x1875fb1e4,...]
+            ! : | + ! : | + 2 DYLD-STUB$$malloc  (in modelt-core) + 4  [0x102fd6a64]
+            ! : | + ! : | + 2 _malloc_zone_malloc  (in libsystem_malloc.dylib) + 12,44  [0x18760b0c8,0x18760b0e8]
+            ! : | + ! : | 25 _RNvMNtCshywt5GRcJlV_11modelt_core6safetyNtB2_6Scalar5parse  (in modelt-core) + 1244  [0x102f64b9c]  safety.rs:176
+            ! : | + ! : | + 22 _xzm_free  (in libsystem_malloc.dylib) + 0,996,...  [0x1875fc118,0x1875fc4fc,...]
+            ! : | + ! : | + 2 _free  (in libsystem_malloc.dylib) + 0,12  [0x18760bcd0,0x18760bcdc]
+            ! : | + ! : | + 1 DYLD-STUB$$free  (in modelt-core) + 4  [0x102fd6a34]
+            ! : | + ! : | 9 _RNvMNtCshywt5GRcJlV_11modelt_core6safetyNtB2_6Scalar5parse  (in modelt-core) + 852,836,...  [0x102f64a14,0x102f64a04,...]  safety.rs:176
+            ! : | + ! : | 8 _RNvMNtCshywt5GRcJlV_11modelt_core6safetyNtB2_6Scalar5parse  (in modelt-core) + 164,376,...  [0x102f64764,0x102f64838,...]  safety.rs:173
+            ! : | + ! : | 7 _RNvMNtCshywt5GRcJlV_11modelt_core6safetyNtB2_6Scalar5parse  (in modelt-core) + 1132  [0x102f64b2c]  safety.rs:176
+            ! : | + ! : | + 7 _platform_memmove  (in libsystem_platform.dylib) + 436,452,...  [0x1877e9514,0x1877e9524,...]
+            ! : | + ! : | 7 _RNvMNtCshywt5GRcJlV_11modelt_core6safetyNtB2_6Scalar5parse  (in modelt-core) + 1172  [0x102f64b54]  safety.rs:176
+            ! : | + ! : | + 6 _platform_memcmp  (in libsystem_platform.dylib) + 272,0,...  [0x1877e7020,0x1877e6f10,...]
+            ! : | + ! : | + 1 DYLD-STUB$$memcmp  (in modelt-core) + 4  [0x102fd6a70]
+            ! : | + ! : | 2 _RNvMNtCshywt5GRcJlV_11modelt_core6safetyNtB2_6Scalar5parse  (in modelt-core) + 32,36  [0x102f646e0,0x102f646e4]  safety.rs:170
+            ! : | + ! : | 2 _xzm_free  (in libsystem_malloc.dylib) + 1568  [0x1875fc738]
+            ! : | + ! : 5 _RNvMs_NtCshywt5GRcJlV_11modelt_core6safetyNtB4_10Expression4eval  (in modelt-core) + 64,28  [0x102f618fc,0x102f618d8]  safety.rs:270
+            ! : | + ! : 4 _RNvMNtCshywt5GRcJlV_11modelt_core6safetyNtB2_6Scalar5parse  (in modelt-core) + 664,668  [0x102f64958,0x102f6495c]  safety.rs:185
+            ! : | + ! : 1 _RNvMs_NtCshywt5GRcJlV_11modelt_core6safetyNtB4_10Expression4eval  (in modelt-core) + 20  [0x102f618d0]  safety.rs:263
+            ! : | + ! 3 _RNvMs_NtCshywt5GRcJlV_11modelt_core6safetyNtB4_10Expression4eval  (in modelt-core) + 1432,1416  [0x102f61e54,0x102f61e44]  safety.rs:288
+            ! : | + ! 2 _RNvMs_NtCshywt5GRcJlV_11modelt_core6safetyNtB4_10Expression4eval  (in modelt-core) + 2568  [0x102f622c4]  safety.rs:332
+            ! : | + ! 1 _RNvMs_NtCshywt5GRcJlV_11modelt_core6safetyNtB4_10Expression4eval  (in modelt-core) + 64  [0x102f618fc]  safety.rs:270
+            ! : | + 8 _RNvMs_NtCshywt5GRcJlV_11modelt_core6safetyNtB4_10Expression4eval  (in modelt-core) + 808  [0x102f61be4]  safety.rs:299
+            ! : | + ! 3 _RNvMs_NtCshywt5GRcJlV_11modelt_core6safetyNtB4_10Expression4eval  (in modelt-core) + 1140  [0x102f61d30]  safety.rs:0
+            ! : | + ! 3 _RNvMs_NtCshywt5GRcJlV_11modelt_core6safetyNtB4_10Expression4eval  (in modelt-core) + 64  [0x102f618fc]  safety.rs:270
+            ! : | + ! 2 _RNvMs_NtCshywt5GRcJlV_11modelt_core6safetyNtB4_10Expression4eval  (in modelt-core) + 1668  [0x102f61f40]  safety.rs:278
+            ! : | + 4 _RNvMs_NtCshywt5GRcJlV_11modelt_core6safetyNtB4_10Expression4eval  (in modelt-core) + 2568,2556,...  [0x102f622c4,0x102f622b8,...]  safety.rs:332
+            ! : | + 3 _RNvMs_NtCshywt5GRcJlV_11modelt_core6safetyNtB4_10Expression4eval  (in modelt-core) + 28,64  [0x102f618d8,0x102f618fc]  safety.rs:270
+            ! : | + 3 _RNvMs_NtCshywt5GRcJlV_11modelt_core6safetyNtB4_10Expression4eval  (in modelt-core) + 872  [0x102f61c24]  safety.rs:299
+            ! : | + ! 3 _RNvMNtCshywt5GRcJlV_11modelt_core6safetyNtB2_6Scalar7integer  (in modelt-core) + 4  [0x102f64500]  safety.rs:186
+            ! : | + 3 _RNvMs_NtCshywt5GRcJlV_11modelt_core6safetyNtB4_10Expression4eval  (in modelt-core) + 808,820,...  [0x102f61be4,0x102f61bf0,...]  safety.rs:299
+            ! : | + 2 _RNvMNtCshywt5GRcJlV_11modelt_core6safetyNtB2_6Scalar7integer  (in modelt-core) + 40  [0x102f64524]  safety.rs:191
+            ! : | 75 _RNvMs_NtCshywt5GRcJlV_11modelt_core6safetyNtB4_10Expression4eval  (in modelt-core) + 2156  [0x102f62128]  safety.rs:323
+            ! : | + 65 _RNvMs_NtCshywt5GRcJlV_11modelt_core6safetyNtB4_10Expression4eval  (in modelt-core) + 576  [0x102f61afc]  safety.rs:287
+            ! : | + ! 59 _RNvMs_NtCshywt5GRcJlV_11modelt_core6safetyNtB4_10Expression4eval  (in modelt-core) + 1108  [0x102f61d10]  safety.rs:271
+            ! : | + ! : 23 _RNvMNtCshywt5GRcJlV_11modelt_core6safetyNtB2_6Scalar5parse  (in modelt-core) + 720  [0x102f64990]  safety.rs:176
+            ! : | + ! : | 12 _xzm_xzone_malloc_tiny  (in libsystem_malloc.dylib) + 824,284,...  [0x187601274,0x187601058,...]
+            ! : | + ! : | 6 _xzm_xzone_malloc  (in libsystem_malloc.dylib) + 184,8,...  [0x1875fba08,0x1875fb958,...]
+            ! : | + ! : | 3 <deduplicated_symbol>  (in libsystem_malloc.dylib) + 112,100  [0x1875fb1cc,0x1875fb1c0]
+            ! : | + ! : | 2 _malloc_zone_malloc  (in libsystem_malloc.dylib) + 80,120  [0x18760b10c,0x18760b134]
+            ! : | + ! : 19 _RNvMNtCshywt5GRcJlV_11modelt_core6safetyNtB2_6Scalar5parse  (in modelt-core) + 1244  [0x102f64b9c]  safety.rs:176
+            ! : | + ! : | 14 _xzm_free  (in libsystem_malloc.dylib) + 996,0,...  [0x1875fc4fc,0x1875fc118,...]
+            ! : | + ! : | 5 _free  (in libsystem_malloc.dylib) + 56,36,...  [0x18760bd08,0x18760bcf4,...]
+            ! : | + ! : 6 _RNvMNtCshywt5GRcJlV_11modelt_core6safetyNtB2_6Scalar5parse  (in modelt-core) + 1172  [0x102f64b54]  safety.rs:176
+            ! : | + ! : | 3 DYLD-STUB$$memcmp  (in modelt-core) + 4  [0x102fd6a70]
+            ! : | + ! : | 3 _platform_memcmp  (in libsystem_platform.dylib) + 140,272,...  [0x1877e6f9c,0x1877e7020,...]
+            ! : | + ! : 4 _RNvMNtCshywt5GRcJlV_11modelt_core6safetyNtB2_6Scalar5parse  (in modelt-core) + 932,1048,...  [0x102f64a64,0x102f64ad8,...]  safety.rs:176
+            ! : | + ! : 3 _RNvMNtCshywt5GRcJlV_11modelt_core6safetyNtB2_6Scalar5parse  (in modelt-core) + 32  [0x102f646e0]  safety.rs:170
+            ! : | + ! : 2 _RNvMNtCshywt5GRcJlV_11modelt_core6safetyNtB2_6Scalar5parse  (in modelt-core) + 100,120  [0x102f64724,0x102f64738]  safety.rs:173
+            ! : | + ! : 2 _RNvMNtCshywt5GRcJlV_11modelt_core6safetyNtB2_6Scalar5parse  (in modelt-core) + 1132  [0x102f64b2c]  safety.rs:176
+            ! : | + ! :   1 DYLD-STUB$$memcpy  (in modelt-core) + 4  [0x102fd6a7c]
+            ! : | + ! :   1 _platform_memmove  (in libsystem_platform.dylib) + 460  [0x1877e952c]
+            ! : | + ! 3 _RNvMNtCshywt5GRcJlV_11modelt_core6safetyNtB2_6Scalar5parse  (in modelt-core) + 664,668  [0x102f64958,0x102f6495c]  safety.rs:185
+            ! : | + ! 3 _RNvMs_NtCshywt5GRcJlV_11modelt_core6safetyNtB4_10Expression4eval  (in modelt-core) + 64,28  [0x102f618fc,0x102f618d8]  safety.rs:270
+            ! : | + 4 _RNvMs_NtCshywt5GRcJlV_11modelt_core6safetyNtB4_10Expression4eval  (in modelt-core) + 2568,2552  [0x102f622c4,0x102f622b4]  safety.rs:332
+            ! : | + 3 _RNvMs_NtCshywt5GRcJlV_11modelt_core6safetyNtB4_10Expression4eval  (in modelt-core) + 72,64  [0x102f61904,0x102f618fc]  safety.rs:270
+            ! : | + 2 _RNvMs_NtCshywt5GRcJlV_11modelt_core6safetyNtB4_10Expression4eval  (in modelt-core) + 532  [0x102f61ad0]  safety.rs:287
+            ! : | + ! 1 _RNvMs_NtCshywt5GRcJlV_11modelt_core6safetyNtB4_10Expression4eval  (in modelt-core) + 1140  [0x102f61d30]  safety.rs:0
+            ! : | + ! 1 _RNvMs_NtCshywt5GRcJlV_11modelt_core6safetyNtB4_10Expression4eval  (in modelt-core) + 2444  [0x102f62248]  safety.rs:270
+            ! : | + 1 _RNvMs_NtCshywt5GRcJlV_11modelt_core6safetyNtB4_10Expression4eval  (in modelt-core) + 20  [0x102f618d0]  safety.rs:263
+            ! : | 2 _RNvMs_NtCshywt5GRcJlV_11modelt_core6safetyNtB4_10Expression4eval  (in modelt-core) + 28,64  [0x102f618d8,0x102f618fc]  safety.rs:270
+            ! : | 1 _RNvMs_NtCshywt5GRcJlV_11modelt_core6safetyNtB4_10Expression4eval  (in modelt-core) + 1700  [0x102f61f60]  safety.rs:323
+            ! : | 1 _RNvMs_NtCshywt5GRcJlV_11modelt_core6safetyNtB4_10Expression4eval  (in modelt-core) + 2568  [0x102f622c4]  safety.rs:332
+            ! : 3 _RNvMs2_NtCshywt5GRcJlV_11modelt_core6safetyNtB5_6Search4walk  (in modelt-core) + 200,212  [0x102f62558,0x102f62564]  safety.rs:621
+            ! : 2 _RNvMs2_NtCshywt5GRcJlV_11modelt_core6safetyNtB5_6Search4walk  (in modelt-core) + 16  [0x102f624a0]  safety.rs:547
+            ! : 2 _RNvMs2_NtCshywt5GRcJlV_11modelt_core6safetyNtB5_6Search4walk  (in modelt-core) + 1460  [0x102f62a44]  safety.rs:584
+            ! : 2 _RNvMs_NtCshywt5GRcJlV_11modelt_core6safetyNtB4_10Expression4eval  (in modelt-core) + 2568  [0x102f622c4]  safety.rs:332
+            ! : 1 _RNvMs2_NtCshywt5GRcJlV_11modelt_core6safetyNtB5_6Search4walk  (in modelt-core) + 300  [0x102f625bc]  safety.rs:568
+            ! : 1 _RNvMs2_NtCshywt5GRcJlV_11modelt_core6safetyNtB5_6Search4walk  (in modelt-core) + 1380  [0x102f629f4]  safety.rs:578
+            ! 85 _RNvMs1_Cshywt5GRcJlV_11modelt_coreNtB5_6Engine6handle  (in modelt-core) + 12072  [0x102f58b94]  lib.rs:418
+            ! : 42 _RINvNtCslWxY2MhVcag_4core3ptr9drop_glueINtNtCs6KVRSXc8uZF_5alloc3vec3VecNtNtCshywt5GRcJlV_11modelt_core6safety4NodeEEB1c_  (in modelt-core) + 64  [0x102f63658]  mod.rs:823
+            ! : | 17 _xzm_free  (in libsystem_malloc.dylib) + 684,28,...  [0x1875fc3c4,0x1875fc134,...]
+            ! : | 14 _xzm_free  (in libsystem_malloc.dylib) + 352  [0x1875fc278]
+            ! : | + 7 __bzero  (in libsystem_platform.dylib) + 0  [0x1877e9030]
+            ! : | + 6 _platform_memset  (in libsystem_platform.dylib) + 180,188,...  [0x1877e9144,0x1877e914c,...]
+            ! : | + 1 DYLD-STUB$$_platform_bzero  (in libsystem_malloc.dylib) + 12  [0x18761387c]
+            ! : | 6 _xzm_xzone_madvise_freelist_chunk  (in libsystem_malloc.dylib) + 92  [0x18760493c]
+            ! : | + 6 <deduplicated_symbol>  (in libsystem_malloc.dylib) + 16  [0x1875eebc8]
+            ! : | +   6 madvise  (in libsystem_kernel.dylib) + 8  [0x18779e9b0]
+            ! : | 4 _free  (in libsystem_malloc.dylib) + 12,36,...  [0x18760bcdc,0x18760bcf4,...]
+            ! : | 1 DYLD-STUB$$free  (in modelt-core) + 4  [0x102fd6a34]
+            ! : 29 _RINvNtCslWxY2MhVcag_4core3ptr9drop_glueINtNtCs6KVRSXc8uZF_5alloc3vec3VecNtNtCshywt5GRcJlV_11modelt_core6safety4NodeEEB1c_  (in modelt-core) + 84  [0x102f6366c]  mod.rs:823
+            ! : | 19 _xzm_free  (in libsystem_malloc.dylib) + 692,996,...  [0x1875fc3cc,0x1875fc4fc,...]
+            ! : | 5 _free  (in libsystem_malloc.dylib) + 36,0,...  [0x18760bcf4,0x18760bcd0,...]
+            ! : | 3 _xzm_xzone_madvise_freelist_chunk  (in libsystem_malloc.dylib) + 92  [0x18760493c]
+            ! : | + 3 <deduplicated_symbol>  (in libsystem_malloc.dylib) + 16  [0x1875eebc8]
+            ! : | +   3 madvise  (in libsystem_kernel.dylib) + 8  [0x18779e9b0]
+            ! : | 2 DYLD-STUB$$free  (in modelt-core) + 4  [0x102fd6a34]
+            ! : 9 _RINvNtCslWxY2MhVcag_4core3ptr9drop_glueINtNtCs6KVRSXc8uZF_5alloc3vec3VecNtNtCshywt5GRcJlV_11modelt_core6safety4NodeEEB1c_  (in modelt-core) + 48,64,...  [0x102f63648,0x102f63658,...]  mod.rs:823
+            ! : 5 _xzm_segment_group_segment_deallocate  (in libsystem_malloc.dylib) + 68  [0x1875e7200]
+            ! :   5 mvm_deallocate_plat  (in libsystem_malloc.dylib) + 60  [0x1875eeaa0]
+            ! :     5 mach_vm_deallocate  (in libsystem_kernel.dylib) + 88  [0x18779d804]
+            ! :       5 _kernelrpc_mach_vm_deallocate_trap  (in libsystem_kernel.dylib) + 8  [0x18779baa8]
+            ! 47 _RNvMs1_Cshywt5GRcJlV_11modelt_coreNtB5_6Engine6handle  (in modelt-core) + 12080  [0x102f58b9c]  lib.rs:418
+            ! : 40 _RINvNtCslWxY2MhVcag_4core3ptr9drop_glueINtNtNtNtCs7mRY9FNn263_3std11collections4hash3map7HashMapINtNtCs6KVRSXc8uZF_5alloc3vec3VecNtNtCshywt5GRcJlV_11modelt_core6safety6ScalarEjEEB27_  (in modelt-core) + 148  [0x102f63730]  mod.rs:823
+            ! : | 32 _xzm_free  (in libsystem_malloc.dylib) + 120,172,...  [0x1875fc190,0x1875fc1c4,...]
+            ! : | 4 _xzm_xzone_madvise_freelist_chunk  (in libsystem_malloc.dylib) + 92  [0x18760493c]
+            ! : | + 4 <deduplicated_symbol>  (in libsystem_malloc.dylib) + 16  [0x1875eebc8]
+            ! : | +   4 madvise  (in libsystem_kernel.dylib) + 8  [0x18779e9b0]
+            ! : | 3 _free  (in libsystem_malloc.dylib) + 12,76  [0x18760bcdc,0x18760bd1c]
+            ! : | 1 DYLD-STUB$$free  (in modelt-core) + 4  [0x102fd6a34]
+            ! : 4 _RINvNtCslWxY2MhVcag_4core3ptr9drop_glueINtNtNtNtCs7mRY9FNn263_3std11collections4hash3map7HashMapINtNtCs6KVRSXc8uZF_5alloc3vec3VecNtNtCshywt5GRcJlV_11modelt_core6safety6ScalarEjEEB27_  (in modelt-core) + 68,88,...  [0x102f636e0,0x102f636f4,...]  mod.rs:823
+            ! : 3 _xzm_segment_group_segment_deallocate  (in libsystem_malloc.dylib) + 68  [0x1875e7200]
+            ! :   3 mvm_deallocate_plat  (in libsystem_malloc.dylib) + 60  [0x1875eeaa0]
+            ! :     3 mach_vm_deallocate  (in libsystem_kernel.dylib) + 88  [0x18779d804]
+            ! :       3 _kernelrpc_mach_vm_deallocate_trap  (in libsystem_kernel.dylib) + 8  [0x18779baa8]
+            ! 42 _RNvMs1_Cshywt5GRcJlV_11modelt_coreNtB5_6Engine6handle  (in modelt-core) + 11440  [0x102f5891c]  lib.rs:418
+            ! : 38 _RINvXNtNtCs6KVRSXc8uZF_5alloc3vec14spec_from_elemINtNtCslWxY2MhVcag_4core6option6OptionNtNtCshywt5GRcJlV_11modelt_core6safety6ScalarENtB3_12SpecFromElem9from_elemNtNtB7_5alloc6GlobalEB1r_  (in modelt-core) + 40  [0x102f62408]  spec_from_elem.rs:14
+            ! : | 22 _xzm_xzone_malloc_tiny  (in libsystem_malloc.dylib) + 420,516,...  [0x1876010e0,0x187601140,...]
+            ! : | 7 _malloc_zone_malloc  (in libsystem_malloc.dylib) + 80,12,...  [0x18760b10c,0x18760b0c8,...]
+            ! : | 5 <deduplicated_symbol>  (in libsystem_malloc.dylib) + 100,112,...  [0x1875fb1c0,0x1875fb1cc,...]
+            ! : | 4 _xzm_xzone_malloc  (in libsystem_malloc.dylib) + 180,8,...  [0x1875fba04,0x1875fb958,...]
+            ! : 2 _RINvXNtNtCs6KVRSXc8uZF_5alloc3vec14spec_from_elemINtNtCslWxY2MhVcag_4core6option6OptionNtNtCshywt5GRcJlV_11modelt_core6safety6ScalarENtB3_12SpecFromElem9from_elemNtNtB7_5alloc6GlobalEB1r_  (in modelt-core) + 4,8  [0x102f623e4,0x102f623e8]  spec_from_elem.rs:13
+            ! : 1 _RINvXNtNtCs6KVRSXc8uZF_5alloc3vec14spec_from_elemINtNtCslWxY2MhVcag_4core6option6OptionNtNtCshywt5GRcJlV_11modelt_core6safety6ScalarENtB3_12SpecFromElem9from_elemNtNtB7_5alloc6GlobalEB1r_  (in modelt-core) + 40  [0x102f62408]  spec_from_elem.rs:14
+            ! : 1 _RINvXNtNtCs6KVRSXc8uZF_5alloc3vec14spec_from_elemINtNtCslWxY2MhVcag_4core6option6OptionNtNtCshywt5GRcJlV_11modelt_core6safety6ScalarENtB3_12SpecFromElem9from_elemNtNtB7_5alloc6GlobalEB1r_  (in modelt-core) + 136  [0x102f62468]  spec_from_elem.rs:15
+            ! 34 _RNvMs1_Cshywt5GRcJlV_11modelt_coreNtB5_6Engine6handle  (in modelt-core) + 11384  [0x102f588e4]  lib.rs:418
+            ! : 30 _RNvXsa_NtCs6KVRSXc8uZF_5alloc3vecINtB5_3VecNtNtCshywt5GRcJlV_11modelt_core6safety6ScalarENtNtCslWxY2MhVcag_4core5clone5Clone5cloneBJ_  (in modelt-core) + 44  [0x102f6388c]  mod.rs:3823
+            ! : | 14 _xzm_xzone_malloc_tiny  (in libsystem_malloc.dylib) + 88,420,...  [0x187600f94,0x1876010e0,...]
+            ! : | 9 _xzm_xzone_malloc  (in libsystem_malloc.dylib) + 180,184,...  [0x1875fba04,0x1875fba08,...]
+            ! : | 5 <deduplicated_symbol>  (in libsystem_malloc.dylib) + 112,0,...  [0x1875fb1cc,0x1875fb15c,...]
+            ! : | 2 _malloc_zone_malloc  (in libsystem_malloc.dylib) + 44  [0x18760b0e8]
+            ! : 4 _RNvXsa_NtCs6KVRSXc8uZF_5alloc3vecINtB5_3VecNtNtCshywt5GRcJlV_11modelt_core6safety6ScalarENtNtCslWxY2MhVcag_4core5clone5Clone5cloneBJ_  (in modelt-core) + 64  [0x102f638a0]  mod.rs:3823
+            ! :   2 DYLD-STUB$$memcpy  (in modelt-core) + 4  [0x102fd6a7c]
+            ! :   2 _platform_memmove  (in libsystem_platform.dylib) + 12,460  [0x1877e936c,0x1877e952c]
+            ! 29 _RNvMs1_Cshywt5GRcJlV_11modelt_coreNtB5_6Engine6handle  (in modelt-core) + 11556  [0x102f58990]  lib.rs:418
+            ! : 25 _xzm_free  (in libsystem_malloc.dylib) + 0,28,...  [0x1875fc118,0x1875fc134,...]
+            ! : 3 _free  (in libsystem_malloc.dylib) + 0,76,...  [0x18760bcd0,0x18760bd1c,...]
+            ! : 1 DYLD-STUB$$free  (in modelt-core) + 4  [0x102fd6a34]
+            ! 20 _RNvMs1_Cshywt5GRcJlV_11modelt_coreNtB5_6Engine6handle  (in modelt-core) + 11520  [0x102f5896c]  lib.rs:418
+            ! : 18 _xzm_free  (in libsystem_malloc.dylib) + 28,64,...  [0x1875fc134,0x1875fc158,...]
+            ! : 1 DYLD-STUB$$free  (in modelt-core) + 4  [0x102fd6a34]
+            ! : 1 _free  (in libsystem_malloc.dylib) + 76  [0x18760bd1c]
+            ! 4 _RINvXNtNtCs6KVRSXc8uZF_5alloc3vec14spec_from_elemINtNtCslWxY2MhVcag_4core6option6OptionNtNtCshywt5GRcJlV_11modelt_core6safety6ScalarENtB3_12SpecFromElem9from_elemNtNtB7_5alloc6GlobalEB1r_  (in modelt-core) + 152,156  [0x102f62478,0x102f6247c]  spec_from_elem.rs:17
+            ! 3 _RNvMs1_Cshywt5GRcJlV_11modelt_coreNtB5_6Engine6handle  (in modelt-core) + 11416,11524  [0x102f58904,0x102f58970]  lib.rs:418
+            ! 3 _xzm_free  (in libsystem_malloc.dylib) + 1568  [0x1875fc738]
+            ! 1 _RNvMs1_Cshywt5GRcJlV_11modelt_coreNtB5_6Engine6handle  (in modelt-core) + 11416  [0x102f58904]  lib.rs:418
+            ! : 1 _RNvMs2_NtCshywt5GRcJlV_11modelt_core6safetyNtB5_6Search7stopped  (in modelt-core) + 32  [0x102f635a0]  safety.rs:535
+            ! 1 _RNvMs1_Cshywt5GRcJlV_11modelt_coreNtB5_6Engine6handle  (in modelt-core) + 12788  [0x102f58e60]  lib.rs:418
+            ! : 1 _RINvYNtNtNtCs7mRY9FNn263_3std4hash6random11RandomStateNtNtCslWxY2MhVcag_4core4hash11BuildHasher8hash_oneRRNtNtCs6KVRSXc8uZF_5alloc6string6StringECshywt5GRcJlV_11modelt_core  (in modelt-core) + 212  [0x102f49480]  mod.rs:701
+            ! 1 _RNvMs2_NtCshywt5GRcJlV_11modelt_core6safetyNtB5_6Search4walk  (in modelt-core) + 212  [0x102f62564]  safety.rs:621
+            ! 1 _RNvXsa_NtCs6KVRSXc8uZF_5alloc3vecINtB5_3VecNtNtCshywt5GRcJlV_11modelt_core6safety6ScalarENtNtCslWxY2MhVcag_4core5clone5Clone5cloneBJ_  (in modelt-core) + 76  [0x102f638ac]  mod.rs:3824
+            2 _RNvCsf4EFg6QQ45k_11modelt_core4main  (in modelt-core) + 1916  [0x102f41a08]  main.rs:9
+            ! 2 _RINvXs3_NtCs4CNpzAHlheQ_10serde_core2deINtNtCslWxY2MhVcag_4core6marker11PhantomDataNtCshywt5GRcJlV_11modelt_core7RequestENtB6_15DeserializeSeed11deserializeQINtNtCsbnRKlDQRkIT_10serde_json2de12DeserializerNtNtB2A_4read9SliceReadEEB1l_  (in modelt-core) + 1920  [0x102f65848]  mod.rs:825
+            !   2 _RINvXsr_NtNtNtCsdIHxjAokTiP_5serde7private2de7contentINtB6_19ContentDeserializerNtNtCsbnRKlDQRkIT_10serde_json5error5ErrorENtNtCs4CNpzAHlheQ_10serde_core2de12Deserializer15deserialize_anyNtNvXNvCshywt5GRcJlV_11modelt_coresf_1__NtB36_7RequestNtB1Z_11Deserialize11deserialize9___VisitorEB36_  (in modelt-core) + 1112  [0x102f67cac]  de.rs:1152
+            !     2 _RINvXs3_NtCs4CNpzAHlheQ_10serde_core2deINtNtCslWxY2MhVcag_4core6marker11PhantomDataNtNtCshywt5GRcJlV_11modelt_core6safety13SafetyProgramENtB6_15DeserializeSeed11deserializeINtNtNtNtCsdIHxjAokTiP_5serde7private2de7content19ContentDeserializerNtNtCsbnRKlDQRkIT_10serde_json5error5ErrorEEB1n_  (in modelt-core) + 1776  [0x102f87988]  mod.rs:825
+            !       2 _RINvXs3_NtCs4CNpzAHlheQ_10serde_core2deINtNtCslWxY2MhVcag_4core6marker11PhantomDataINtNtCs6KVRSXc8uZF_5alloc3vec3VecNtNtCshywt5GRcJlV_11modelt_core6safety6BranchEENtB6_15DeserializeSeed11deserializeINtNtNtNtCsdIHxjAokTiP_5serde7private2de7content19ContentDeserializerNtNtCsbnRKlDQRkIT_10serde_json5error5ErrorEEB1U_  (in modelt-core) + 880  [0x102f89a40]  mod.rs:825
+            !         2 _RINvXs3_NtCs4CNpzAHlheQ_10serde_core2deINtNtCslWxY2MhVcag_4core6marker11PhantomDataINtNtCs6KVRSXc8uZF_5alloc3vec3VecNtNtCshywt5GRcJlV_11modelt_core6safety4StepEENtB6_15DeserializeSeed11deserializeINtNtNtNtCsdIHxjAokTiP_5serde7private2de7content19ContentDeserializerNtNtCsbnRKlDQRkIT_10serde_json5error5ErrorEEB1U_  (in modelt-core) + 212  [0x102f9ac28]  mod.rs:825
+            !           1 _RINvXNvNtCshywt5GRcJlV_11modelt_core6safetys3_1__NtB5_4StepNtNtCs4CNpzAHlheQ_10serde_core2de11Deserialize11deserializeINtNtNtNtCsdIHxjAokTiP_5serde7private2de7content19ContentDeserializerNtNtCsbnRKlDQRkIT_10serde_json5error5ErrorEEB7_  (in modelt-core) + 3188  [0x102f9bc64]  safety.rs:92
+            !           : 1 _RINvXNvNtCshywt5GRcJlV_11modelt_core6safetys_1__NtB5_10ExpressionNtNtCs4CNpzAHlheQ_10serde_core2de11Deserialize11deserializeINtNtNtNtCsdIHxjAokTiP_5serde7private2de7content19ContentDeserializerNtNtCsbnRKlDQRkIT_10serde_json5error5ErrorEEB7_  (in modelt-core) + 1968  [0x102f8c04c]  safety.rs:5
+            !           :   1 _RINvXsr_NtNtNtCsdIHxjAokTiP_5serde7private2de7contentINtB6_19ContentDeserializerNtNtCsbnRKlDQRkIT_10serde_json5error5ErrorENtNtCs4CNpzAHlheQ_10serde_core2de12Deserializer15deserialize_anyNtNvXNvNtCshywt5GRcJlV_11modelt_core6safetys_1__NtB36_10ExpressionNtB1Z_11Deserialize11deserializese_9___VisitorEB38_  (in modelt-core) + 1428  [0x102f966c0]  de.rs:1152
+            !           :     1 _RINvXNvNtCshywt5GRcJlV_11modelt_core6safetys_1__NtB5_10ExpressionNtNtCs4CNpzAHlheQ_10serde_core2de11Deserialize11deserializeINtNtNtNtCsdIHxjAokTiP_5serde7private2de7content19ContentDeserializerNtNtCsbnRKlDQRkIT_10serde_json5error5ErrorEEB7_  (in modelt-core) + 2048  [0x102f8c09c]  safety.rs:5
+            !           :       1 _RINvXsr_NtNtNtCsdIHxjAokTiP_5serde7private2de7contentINtB6_19ContentDeserializerNtNtCsbnRKlDQRkIT_10serde_json5error5ErrorENtNtCs4CNpzAHlheQ_10serde_core2de12Deserializer15deserialize_anyNtNvXNvNtCshywt5GRcJlV_11modelt_core6safetys_1__NtB36_10ExpressionNtB1Z_11Deserialize11deserializes7_9___VisitorEB38_  (in modelt-core) + 1080  [0x102f91d18]  de.rs:1152
+            !           :         1 _RINvXNvNtCshywt5GRcJlV_11modelt_core6safetys_1__NtB5_10ExpressionNtNtCs4CNpzAHlheQ_10serde_core2de11Deserialize11deserializeINtNtNtNtCsdIHxjAokTiP_5serde7private2de7content19ContentDeserializerNtNtCsbnRKlDQRkIT_10serde_json5error5ErrorEEB7_  (in modelt-core) + 2884  [0x102f8c3e0]  safety.rs:5
+            !           :           1 _RINvXsr_NtNtNtCsdIHxjAokTiP_5serde7private2de7contentINtB6_19ContentDeserializerNtNtCsbnRKlDQRkIT_10serde_json5error5ErrorENtNtCs4CNpzAHlheQ_10serde_core2de12Deserializer15deserialize_anyNtNvXNvNtCshywt5GRcJlV_11modelt_core6safetys_1__NtB36_10ExpressionNtB1Z_11Deserialize11deserializes3_9___VisitorEB38_  (in modelt-core) + 1208  [0x102f8f448]  de.rs:1152
+            !           :             1 _RINvXNvNtCshywt5GRcJlV_11modelt_core6safetys_1__NtB5_10ExpressionNtNtCs4CNpzAHlheQ_10serde_core2de11Deserialize11deserializeINtNtNtNtCsdIHxjAokTiP_5serde7private2de7content19ContentDeserializerNtNtCsbnRKlDQRkIT_10serde_json5error5ErrorEEB7_  (in modelt-core) + 5084  [0x102f8cc78]  safety.rs:5
+            !           :               1 _RINvXs3_NtCs4CNpzAHlheQ_10serde_core2deINtNtCslWxY2MhVcag_4core6marker11PhantomDataNtNtCshywt5GRcJlV_11modelt_core5value5ValueENtB6_15DeserializeSeed11deserializeINtNtNtNtCsdIHxjAokTiP_5serde7private2de7content19ContentDeserializerNtNtCsbnRKlDQRkIT_10serde_json5error5ErrorEEB1n_  (in modelt-core) + 268  [0x102f74a94]  mod.rs:825
+            !           :                 1 _RINvXs3_NtCs4CNpzAHlheQ_10serde_core2deINtNtCslWxY2MhVcag_4core6marker11PhantomDataNtNtCs6KVRSXc8uZF_5alloc6string6StringENtB6_15DeserializeSeed11deserializeINtNtNtNtCsdIHxjAokTiP_5serde7private2de7content19ContentDeserializerNtNtCsbnRKlDQRkIT_10serde_json5error5ErrorEECshywt5GRcJlV_11modelt_core  (in modelt-core) + 84  [0x102f74788]  mod.rs:825
+            !           1 _RINvXNvNtCshywt5GRcJlV_11modelt_core6safetys3_1__NtB5_4StepNtNtCs4CNpzAHlheQ_10serde_core2de11Deserialize11deserializeINtNtNtNtCsdIHxjAokTiP_5serde7private2de7content19ContentDeserializerNtNtCsbnRKlDQRkIT_10serde_json5error5ErrorEEB7_  (in modelt-core) + 5712  [0x102f9c640]  safety.rs:92
+            !             1 _RNvMs6_NtNtNtCsdIHxjAokTiP_5serde7private2de7contentINtB5_15MapDeserializerNtNtCsbnRKlDQRkIT_10serde_json5error5ErrorE3endCshywt5GRcJlV_11modelt_core  (in modelt-core) + 100  [0x102f71150]  de.rs:1623
+            !               1 _xzm_free  (in libsystem_malloc.dylib) + 352  [0x1875fc278]
+            !                 1 _platform_memset  (in libsystem_platform.dylib) + 160  [0x1877e9130]
+            1 _RNvCsf4EFg6QQ45k_11modelt_core4main  (in modelt-core) + 368  [0x102f413fc]  main.rs:6
+              1 read  (in libsystem_kernel.dylib) + 8  [0x18779c91c]
+
+Total number in stack (recursive counted multiple, when >=5):
+        16       _xzm_free  (in libsystem_malloc.dylib) + 0  [0x1875fc118]
+        15       _RNvMs_NtCshywt5GRcJlV_11modelt_core6safetyNtB4_10Expression4eval  (in modelt-core) + 0  [0x102f618bc]  safety.rs:270
+        12       _RNvMs_NtCshywt5GRcJlV_11modelt_core6safetyNtB4_10Expression4eval  (in modelt-core) + 0  [0x102f618bc]  safety.rs:332
+        11       <deduplicated_symbol>  (in libsystem_malloc.dylib) + 0  [0x1875fb15c]
+        11       _free  (in libsystem_malloc.dylib) + 0  [0x18760bcd0]
+        11       _xzm_xzone_malloc  (in libsystem_malloc.dylib) + 0  [0x1875fb950]
+        11       _xzm_xzone_malloc_tiny  (in libsystem_malloc.dylib) + 0  [0x187600f3c]
+        10       _platform_memmove  (in libsystem_platform.dylib) + 0  [0x1877e9360]
+        9       DYLD-STUB$$free  (in modelt-core) + 0  [0x102fd6a30]
+        9       _malloc_zone_malloc  (in libsystem_malloc.dylib) + 0  [0x18760b0bc]
+        7       DYLD-STUB$$malloc  (in modelt-core) + 0  [0x102fd6a60]
+        6       _RNvMNtCshywt5GRcJlV_11modelt_core6safetyNtB2_6Scalar5parse  (in modelt-core) + 0  [0x102f646c0]  safety.rs:173
+        6       _RNvMNtCshywt5GRcJlV_11modelt_core6safetyNtB2_6Scalar5parse  (in modelt-core) + 0  [0x102f646c0]  safety.rs:176
+        6       _RNvMNtCshywt5GRcJlV_11modelt_core6safetyNtB2_6Scalar5parse  (in modelt-core) + 0  [0x102f646c0]  safety.rs:185
+        6       _RNvMNtCshywt5GRcJlV_11modelt_core6safetyNtB2_6Scalar5parse  (in modelt-core) + 1132  [0x102f64b2c]  safety.rs:176
+        6       _RNvMNtCshywt5GRcJlV_11modelt_core6safetyNtB2_6Scalar5parse  (in modelt-core) + 1172  [0x102f64b54]  safety.rs:176
+        6       _RNvMNtCshywt5GRcJlV_11modelt_core6safetyNtB2_6Scalar5parse  (in modelt-core) + 1244  [0x102f64b9c]  safety.rs:176
+        6       _RNvMNtCshywt5GRcJlV_11modelt_core6safetyNtB2_6Scalar5parse  (in modelt-core) + 720  [0x102f64990]  safety.rs:176
+        6       _RNvMs_NtCshywt5GRcJlV_11modelt_core6safetyNtB4_10Expression4eval  (in modelt-core) + 1108  [0x102f61d10]  safety.rs:271
+        6       _RNvXs3_NtNtCslWxY2MhVcag_4core4hash3sipINtB5_6HasherNtB5_11Sip13RoundsENtB7_6Hasher5writeCshywt5GRcJlV_11modelt_core  (in modelt-core) + 0  [0x102f491bc]  sip.rs:262
+        6       _RNvXs3_NtNtCslWxY2MhVcag_4core4hash3sipINtB5_6HasherNtB5_11Sip13RoundsENtB7_6Hasher5writeCshywt5GRcJlV_11modelt_core  (in modelt-core) + 0  [0x102f491bc]  sip.rs:298
+        6       _platform_memcmp  (in libsystem_platform.dylib) + 0  [0x1877e6f10]
+        5       <deduplicated_symbol>  (in libsystem_malloc.dylib) + 16  [0x1875eebc8]
+        5       DYLD-STUB$$memcmp  (in modelt-core) + 0  [0x102fd6a6c]
+        5       DYLD-STUB$$memcpy  (in modelt-core) + 0  [0x102fd6a78]
+        5       _RNvMNtCshywt5GRcJlV_11modelt_core6safetyNtB2_6Scalar5parse  (in modelt-core) + 0  [0x102f646c0]  safety.rs:170
+        5       _RNvMs_NtCshywt5GRcJlV_11modelt_core6safetyNtB4_10Expression4eval  (in modelt-core) + 0  [0x102f618bc]  safety.rs:263
+        5       madvise  (in libsystem_kernel.dylib) + 0  [0x18779e9a8]
+
+Sort by top of stack, same collapsed (when >= 5):
+        _dyld_start  (in dyld)        337
+        _xzm_free  (in libsystem_malloc.dylib)        251
+        _xzm_xzone_malloc_tiny  (in libsystem_malloc.dylib)        176
+        _malloc_zone_malloc  (in libsystem_malloc.dylib)        139
+        _RNvMs_NtCshywt5GRcJlV_11modelt_core6safetyNtB4_10Expression4eval  (in modelt-core)        98
+        _RNvMNtCshywt5GRcJlV_11modelt_core6safetyNtB2_6Scalar5parse  (in modelt-core)        93
+        _RNvMs2_NtCshywt5GRcJlV_11modelt_core6safetyNtB5_6Search4walk  (in modelt-core)        79
+        <deduplicated_symbol>  (in libsystem_malloc.dylib)        58
+        _RNvXs3_NtNtCslWxY2MhVcag_4core4hash3sipINtB5_6HasherNtB5_11Sip13RoundsENtB7_6Hasher5writeCshywt5GRcJlV_11modelt_core  (in modelt-core)        53
+        _xzm_xzone_malloc  (in libsystem_malloc.dylib)        52
+        _platform_memmove  (in libsystem_platform.dylib)        49
+        _RINvMs6_NtCs7oNAfGD06J0_9hashbrown3rawINtB6_8RawTableTINtNtCs6KVRSXc8uZF_5alloc3vec3VecNtNtCshywt5GRcJlV_11modelt_core6safety6ScalarEjEE14reserve_rehashNCINvNtB8_3map11make_hasherBQ_jNtNtNtCs7mRY9FNn263_3std4hash6random11RandomStateE0EB1r_  (in modelt-core)        36
+        _RINvYNtNtNtCs7mRY9FNn263_3std4hash6random11RandomStateNtNtCslWxY2MhVcag_4core4hash11BuildHasher8hash_oneRINtNtCs6KVRSXc8uZF_5alloc3vec3VecNtNtCshywt5GRcJlV_11modelt_core6safety6ScalarEEB2g_  (in modelt-core)        33
+        _free  (in libsystem_malloc.dylib)        33
+        _platform_memcmp  (in libsystem_platform.dylib)        28
+        madvise  (in libsystem_kernel.dylib)        15
+        _xzm_xzone_malloc_freelist_outlined  (in libsystem_malloc.dylib)        12
+        DYLD-STUB$$free  (in modelt-core)        10
+        _kernelrpc_mach_vm_deallocate_trap  (in libsystem_kernel.dylib)        10
+        DYLD-STUB$$memcpy  (in modelt-core)        9
+        _RINvNtCslWxY2MhVcag_4core3ptr9drop_glueINtNtCs6KVRSXc8uZF_5alloc3vec3VecNtNtCshywt5GRcJlV_11modelt_core6safety4NodeEEB1c_  (in modelt-core)        9
+        xzm_malloc_zone_malloc_type_malloc  (in libsystem_malloc.dylib)        9
+        DYLD-STUB$$malloc  (in modelt-core)        8
+        _RINvXNtNtCs6KVRSXc8uZF_5alloc3vec14spec_from_elemINtNtCslWxY2MhVcag_4core6option6OptionNtNtCshywt5GRcJlV_11modelt_core6safety6ScalarENtB3_12SpecFromElem9from_elemNtNtB7_5alloc6GlobalEB1r_  (in modelt-core)        8
+        DYLD-STUB$$memcmp  (in modelt-core)        7
+        _RNvMNtCshywt5GRcJlV_11modelt_core6safetyNtB2_6Scalar7integer  (in modelt-core)        7
+        __bzero  (in libsystem_platform.dylib)        7
+        _platform_memset  (in libsystem_platform.dylib)        7
+        _RNvMs0_NtCshywt5GRcJlV_11modelt_core6safetyNtB5_6Domain8contains  (in modelt-core)        6
+
+Binary images description not available
+
