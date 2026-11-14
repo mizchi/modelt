@@ -1,0 +1,43 @@
+TLC2 Version 2.19 of 08 August 2024 (rev: 5a47802)
+Running breadth-first search Model-Checking with fp 129 and seed -7294481006551347237 with 1 worker on 10 cores with 7282MB heap and 64MB offheap memory [pid: 23556] (Mac OS X 26.6.2 aarch64, Eclipse Adoptium 21.0.13 x86_64, MSBDiskFPSet, DiskStateQueue).
+Parsing file /Users/mz/ghq/github.com/mizchi/modelt/.artifacts/tlc-compare-GBjLzU/DieHard.tla
+Parsing file /private/var/folders/_h/_rf455xj4h3_3g6z86pg244c0000gn/T/Naturals.tla
+Semantic processing of module Naturals
+Semantic processing of module DieHard
+Starting... (2026-11-14 14:52:14)
+Computing initial states...
+Finished computing initial states: 1 distinct state generated at 2026-11-14 14:52:14.
+Error: Invariant NotSolved is violated.
+Error: The behavior up to this point is:
+State 1: <Initial predicate>
+/\ big = 0
+/\ small = 0
+
+State 2: <FillBigJug line 68, col 18 to line 69, col 34 of module DieHard>
+/\ big = 5
+/\ small = 0
+
+State 3: <BigToSmall line 97, col 15 to line 98, col 48 of module DieHard>
+/\ big = 2
+/\ small = 3
+
+State 4: <EmptySmallJug line 71, col 18 to line 72, col 30 of module DieHard>
+/\ big = 2
+/\ small = 0
+
+State 5: <BigToSmall line 97, col 15 to line 98, col 48 of module DieHard>
+/\ big = 0
+/\ small = 2
+
+State 6: <FillBigJug line 68, col 18 to line 69, col 34 of module DieHard>
+/\ big = 5
+/\ small = 2
+
+State 7: <BigToSmall line 97, col 15 to line 98, col 48 of module DieHard>
+/\ big = 4
+/\ small = 3
+
+73 states generated, 14 distinct states found, 1 states left on queue.
+The depth of the complete state graph search is 7.
+The average outdegree of the complete state graph is 1 (minimum is 0, the maximum 2 and the 95th percentile is 2).
+Finished in 00s at (2026-11-14 14:52:14)

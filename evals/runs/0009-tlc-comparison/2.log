@@ -1,0 +1,22 @@
+TLC2 Version 2.19 of 08 August 2024 (rev: 5a47802)
+Running breadth-first search Model-Checking with fp 82 and seed -4030800550052498092 with 1 worker on 10 cores with 7282MB heap and 64MB offheap memory [pid: 23368] (Mac OS X 26.6.2 aarch64, Eclipse Adoptium 21.0.13 x86_64, MSBDiskFPSet, DiskStateQueue).
+Parsing file /Users/mz/ghq/github.com/mizchi/modelt/.artifacts/tlc-compare-GBjLzU/Test.tla
+Parsing file /private/var/folders/_h/_rf455xj4h3_3g6z86pg244c0000gn/T/Naturals.tla
+Semantic processing of module Naturals
+Semantic processing of module Test
+Starting... (2026-11-14 14:51:58)
+Computing initial states...
+Error: Attempted to check if the value:
+TRUE
+is in the integer interval 0..3
+While working on the initial state:
+x = TRUE
+
+Error: The error occurred when TLC was evaluating the nested
+expressions at the following positions:
+0. Line 4, column 9 to line 4, column 16 in Test
+1. Line 6, column 9 to line 6, column 18 in Test
+
+
+1 states generated, 1 distinct states found, 1 states left on queue.
+Finished in 00s at (2026-11-14 14:51:58)

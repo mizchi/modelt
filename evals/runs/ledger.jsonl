@@ -13,3 +13,5 @@
 {"runId":"0007-shared-confirmation","kind":"shared-oracle","phase":"confirmation","status":"complete","sourceVersion":"9877f526a4bd0eb8f221974e7f19bb34eb416b9a05bb92f1fe06831dea0e80a3","plan":"0007-shared-oracle"}
 {"runId":"0008-async-development","kind":"async-tuning","phase":"development","status":"complete","sourceVersion":"20de57252d473544011e9fc17ebf87be2c4bfcfd624f7e65f865518c913ca4df","plan":"0008-async-tuning"}
 {"runId":"0008-async-confirmation","kind":"async-tuning","phase":"confirmation","status":"complete","sourceVersion":"20de57252d473544011e9fc17ebf87be2c4bfcfd624f7e65f865518c913ca4df","plan":"0008-async-tuning"}
+{"runId":"0009-rust-safety","kind":"rust-safety","status":"complete","sourceVersion":"ad8dcd22df63262762458a5018ead73ea5b4b6c73316cef45ff85b5ee3ca0375","plan":"0009-rust-safety"}
+{"runId":"0009-tlc-comparison","kind":"tlc-reference","plan":"0009-rust-safety","status":"complete","sourceVersion":"ad8dcd22df63262762458a5018ead73ea5b4b6c73316cef45ff85b5ee3ca0375"}
