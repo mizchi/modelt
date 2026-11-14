@@ -1,0 +1,322 @@
+[
+  {
+    "backend": "wasm",
+    "workers": 1,
+    "workload": "mixed",
+    "policy": "cost",
+    "startupMs": 17.599458000000595,
+    "costScale": 1.000214934765171,
+    "fixedMemoryBytes": 134217728,
+    "calibrationOnly": true
+  },
+  {
+    "backend": "wasm",
+    "workers": 1,
+    "workload": "tiny",
+    "policy": "fifo",
+    "startupMs": 17.599458000000595,
+    "costScale": 1.1027096667925633,
+    "fixedMemoryBytes": 134217728,
+    "calibrationOnly": true
+  },
+  {
+    "backend": "wasm",
+    "workers": 1,
+    "workload": "tiny",
+    "policy": "cost",
+    "startupMs": 17.599458000000595,
+    "costScale": 0.9808972138557901,
+    "fixedMemoryBytes": 134217728,
+    "calibrationOnly": true
+  },
+  {
+    "backend": "wasm",
+    "workers": 1,
+    "workload": "mixed",
+    "policy": "fifo",
+    "startupMs": 17.599458000000595,
+    "costScale": 1.0063892112822994,
+    "fixedMemoryBytes": 134217728,
+    "calibrationOnly": true
+  },
+  {
+    "backend": "native",
+    "workers": 1,
+    "workload": "mixed",
+    "policy": "cost",
+    "startupMs": 17.44729200000438,
+    "costScale": 1.007809048638257,
+    "fixedMemoryBytes": 134217728,
+    "calibrationOnly": true
+  },
+  {
+    "backend": "native",
+    "workers": 1,
+    "workload": "tiny",
+    "policy": "fifo",
+    "startupMs": 17.44729200000438,
+    "costScale": 0.963517343374922,
+    "fixedMemoryBytes": 134217728,
+    "calibrationOnly": true
+  },
+  {
+    "backend": "native",
+    "workers": 1,
+    "workload": "tiny",
+    "policy": "cost",
+    "startupMs": 17.44729200000438,
+    "costScale": 0.9046516172512368,
+    "fixedMemoryBytes": 134217728,
+    "calibrationOnly": true
+  },
+  {
+    "backend": "native",
+    "workers": 1,
+    "workload": "mixed",
+    "policy": "fifo",
+    "startupMs": 17.44729200000438,
+    "costScale": 1.0091585223160178,
+    "fixedMemoryBytes": 134217728,
+    "calibrationOnly": true
+  },
+  {
+    "backend": "native",
+    "workers": 2,
+    "workload": "mixed",
+    "policy": "cost",
+    "startupMs": 19.03362499999639,
+    "costScale": 1.0530483420723633,
+    "fixedMemoryBytes": 268435456,
+    "calibrationOnly": true
+  },
+  {
+    "backend": "native",
+    "workers": 2,
+    "workload": "tiny",
+    "policy": "fifo",
+    "startupMs": 19.03362499999639,
+    "costScale": 1.2068115487134046,
+    "fixedMemoryBytes": 268435456,
+    "calibrationOnly": true
+  },
+  {
+    "backend": "native",
+    "workers": 2,
+    "workload": "tiny",
+    "policy": "cost",
+    "startupMs": 19.03362499999639,
+    "costScale": 1.0506891682768074,
+    "fixedMemoryBytes": 268435456,
+    "calibrationOnly": true
+  },
+  {
+    "backend": "native",
+    "workers": 2,
+    "workload": "mixed",
+    "policy": "fifo",
+    "startupMs": 19.03362499999639,
+    "costScale": 1.1096235340263012,
+    "fixedMemoryBytes": 268435456,
+    "calibrationOnly": true
+  },
+  {
+    "backend": "wasm",
+    "workers": 2,
+    "workload": "mixed",
+    "policy": "cost",
+    "startupMs": 18.19070799999463,
+    "costScale": 1.1019597711422775,
+    "fixedMemoryBytes": 268435456,
+    "calibrationOnly": true
+  },
+  {
+    "backend": "wasm",
+    "workers": 2,
+    "workload": "tiny",
+    "policy": "fifo",
+    "startupMs": 18.19070799999463,
+    "costScale": 1.2092785203322174,
+    "fixedMemoryBytes": 268435456,
+    "calibrationOnly": true
+  },
+  {
+    "backend": "wasm",
+    "workers": 2,
+    "workload": "tiny",
+    "policy": "cost",
+    "startupMs": 18.19070799999463,
+    "costScale": 1.038501694277743,
+    "fixedMemoryBytes": 268435456,
+    "calibrationOnly": true
+  },
+  {
+    "backend": "wasm",
+    "workers": 2,
+    "workload": "mixed",
+    "policy": "fifo",
+    "startupMs": 18.19070799999463,
+    "costScale": 1.083651432810599,
+    "fixedMemoryBytes": 268435456,
+    "calibrationOnly": true
+  },
+  {
+    "backend": "wasm",
+    "workers": 4,
+    "workload": "mixed",
+    "policy": "cost",
+    "startupMs": 20.977333000002545,
+    "costScale": 1.2155853094186027,
+    "fixedMemoryBytes": 536870912,
+    "calibrationOnly": true
+  },
+  {
+    "backend": "wasm",
+    "workers": 4,
+    "workload": "tiny",
+    "policy": "fifo",
+    "startupMs": 20.977333000002545,
+    "costScale": 1.3894406061753453,
+    "fixedMemoryBytes": 536870912,
+    "calibrationOnly": true
+  },
+  {
+    "backend": "wasm",
+    "workers": 4,
+    "workload": "tiny",
+    "policy": "cost",
+    "startupMs": 20.977333000002545,
+    "costScale": 1.155999058735295,
+    "fixedMemoryBytes": 536870912,
+    "calibrationOnly": true
+  },
+  {
+    "backend": "wasm",
+    "workers": 4,
+    "workload": "mixed",
+    "policy": "fifo",
+    "startupMs": 20.977333000002545,
+    "costScale": 1.1849961463731629,
+    "fixedMemoryBytes": 536870912,
+    "calibrationOnly": true
+  },
+  {
+    "backend": "native",
+    "workers": 4,
+    "workload": "mixed",
+    "policy": "cost",
+    "startupMs": 24.00137499999255,
+    "costScale": 1.3764278278346784,
+    "fixedMemoryBytes": 536870912,
+    "calibrationOnly": true
+  },
+  {
+    "backend": "native",
+    "workers": 4,
+    "workload": "tiny",
+    "policy": "fifo",
+    "startupMs": 24.00137499999255,
+    "costScale": 2.1128803820866247,
+    "fixedMemoryBytes": 536870912,
+    "calibrationOnly": true
+  },
+  {
+    "backend": "native",
+    "workers": 4,
+    "workload": "tiny",
+    "policy": "cost",
+    "startupMs": 24.00137499999255,
+    "costScale": 1.7129500667778694,
+    "fixedMemoryBytes": 536870912,
+    "calibrationOnly": true
+  },
+  {
+    "backend": "native",
+    "workers": 4,
+    "workload": "mixed",
+    "policy": "fifo",
+    "startupMs": 24.00137499999255,
+    "costScale": 1.6283666463750415,
+    "fixedMemoryBytes": 536870912,
+    "calibrationOnly": true
+  },
+  {
+    "backend": "native",
+    "workers": 8,
+    "workload": "mixed",
+    "policy": "cost",
+    "startupMs": 35.68741699999373,
+    "costScale": 1.7794267124744814,
+    "fixedMemoryBytes": 1073741824,
+    "calibrationOnly": true
+  },
+  {
+    "backend": "native",
+    "workers": 8,
+    "workload": "tiny",
+    "policy": "fifo",
+    "startupMs": 35.68741699999373,
+    "costScale": 2.0981176764494682,
+    "fixedMemoryBytes": 1073741824,
+    "calibrationOnly": true
+  },
+  {
+    "backend": "native",
+    "workers": 8,
+    "workload": "tiny",
+    "policy": "cost",
+    "startupMs": 35.68741699999373,
+    "costScale": 1.8281393621582975,
+    "fixedMemoryBytes": 1073741824,
+    "calibrationOnly": true
+  },
+  {
+    "backend": "native",
+    "workers": 8,
+    "workload": "mixed",
+    "policy": "fifo",
+    "startupMs": 35.68741699999373,
+    "costScale": 1.5040041029253766,
+    "fixedMemoryBytes": 1073741824,
+    "calibrationOnly": true
+  },
+  {
+    "backend": "wasm",
+    "workers": 8,
+    "workload": "mixed",
+    "policy": "cost",
+    "startupMs": 32.45637500000885,
+    "costScale": 1.770702470944406,
+    "fixedMemoryBytes": 1073741824,
+    "calibrationOnly": true
+  },
+  {
+    "backend": "wasm",
+    "workers": 8,
+    "workload": "tiny",
+    "policy": "fifo",
+    "startupMs": 32.45637500000885,
+    "costScale": 2.0755052710893453,
+    "fixedMemoryBytes": 1073741824,
+    "calibrationOnly": true
+  },
+  {
+    "backend": "wasm",
+    "workers": 8,
+    "workload": "tiny",
+    "policy": "cost",
+    "startupMs": 32.45637500000885,
+    "costScale": 2.091279179213153,
+    "fixedMemoryBytes": 1073741824,
+    "calibrationOnly": true
+  },
+  {
+    "backend": "wasm",
+    "workers": 8,
+    "workload": "mixed",
+    "policy": "fifo",
+    "startupMs": 32.45637500000885,
+    "costScale": 1.6114447146785889,
+    "fixedMemoryBytes": 1073741824,
+    "calibrationOnly": true
+  }
+]

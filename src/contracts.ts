@@ -524,3 +524,59 @@ export interface SimulationHost {
   readonly trace: () => HostTape;
   readonly finish: () => void;
 }
+
+export interface SchedulingJob {
+  readonly id: string;
+  readonly estimatedMs: number;
+  readonly memoryBytes: number;
+}
+export interface SchedulingProfile {
+  readonly id: string;
+  readonly workers: number;
+  readonly startupMs: number;
+  readonly costScale: number;
+  readonly fixedMemoryBytes: number;
+}
+export interface SchedulingBudget {
+  readonly durationMs: number;
+  readonly memoryBytes: number;
+  readonly maxWorkers: number;
+}
+export interface SchedulingOptions {
+  readonly policy: "fifo" | "cost";
+  readonly batchTargetMs: number;
+  readonly maxBatchSize: number;
+}
+export interface SchedulePlan {
+  readonly status: "planned" | "empty" | "uncalibrated" | "insufficient-budget";
+  readonly profile: string | null;
+  readonly workers: number;
+  readonly estimatedMs: number;
+  readonly estimatedMemoryBytes: number;
+  readonly startupMs: number;
+  readonly durationMs: number;
+  readonly jobs: readonly SchedulingJob[];
+  readonly batches: readonly (readonly string[])[];
+}
+export interface ScheduledCompletion<Result> {
+  readonly id: string;
+  readonly result: Result;
+}
+export interface ScheduledExecutor<Result> {
+  readonly execute: (
+    ids: readonly string[],
+  ) => Promise<readonly ScheduledCompletion<Result>[]>;
+}
+export interface ScheduledRun<Result> {
+  readonly executionStatus: "complete" | "partial";
+  readonly completed: readonly ScheduledCompletion<Result>[];
+  readonly remaining: readonly string[];
+  readonly elapsedMs: number;
+  readonly dispatches: readonly {
+    readonly worker: number;
+    readonly ids: readonly string[];
+    readonly queuedMs: number;
+    readonly elapsedMs: number;
+    readonly error: string | null;
+  }[];
+}

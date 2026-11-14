@@ -93,6 +93,7 @@ import {createPortableWasm,checkFiniteHistories,decodePortableTrace,loadFiniteMo
 import {createHistoryRecorder} from '@mizchi/modelt/history';
 import {parseFiniteModel} from '@mizchi/modelt/finite';
 import {createSimulationHost} from '@mizchi/modelt/host';
+import {planSchedule,runSchedule} from '@mizchi/modelt/scheduling';
 const core=await createPortableWasm(await readFile(new URL(import.meta.resolve('@mizchi/modelt/core.wasm'))));
 const model=parseFiniteModel(JSON.parse(await readFile('model.json','utf8')));
 const trace=decodePortableTrace(await readFile('history.json','utf8'));
@@ -104,6 +105,9 @@ assert.equal(loaded.checkHistory(recorded.snapshot(),100).status,'linearizable')
 assert.equal(createSimulationHost().now(),0);
 const safety=JSON.parse(await readFile('safety-request.json','utf8')).request;
 assert.equal(checkSafety(core,safety.program,safety.bounds).violation.trace.length,4);
+const planned=planSchedule([{id:'safety',estimatedMs:1,memoryBytes:1}],[{id:'serial',workers:1,startupMs:0,costScale:1,fixedMemoryBytes:0}],{maxWorkers:1,durationMs:10000,memoryBytes:1024},{policy:'cost',batchTargetMs:4,maxBatchSize:16});
+const scheduled=await runSchedule(planned,[{execute:async ids=>ids.map(id=>({id,result:checkSafety(core,safety.program,safety.bounds)}))}]);
+assert.equal(scheduled.executionStatus,'complete');assert.equal(scheduled.completed[0].result.status,'invariant-violation');
 for(const name of ['z3-solver','tla-ts','fast-check'])assert.throws(()=>import.meta.resolve(name));
 console.log('packaged TS/Wasm consumer matched without solvers');
 `,
@@ -119,12 +123,14 @@ await writeFile(
 import {compileFiniteModel,createFiniteModel} from '@mizchi/modelt/finite';
 import {createSimulationHost} from '@mizchi/modelt/host';
 import {createPortableWasm} from '@mizchi/modelt/portable';
+import {planSchedule} from '@mizchi/modelt/scheduling';
 import {createHistoryRecorder,checkConcurrentHistory} from '@mizchi/modelt/history';
 const model:Model<number,'tick',number>={name:'typed',initial:()=>[{state:0,observation:0}],actions:()=>['tick'],step:()=>[{state:0,observation:0}],key:String};
 const compiled=compileFiniteModel(model,{maxDepth:1,maxStates:1});
 if(compiled.model){createFiniteModel(compiled.model);checkConcurrentHistory(compiled.model,createHistoryRecorder(model.name,{type:'int',value:'0'}).snapshot(),100);}
 createSimulationHost({seed:1});
 void createPortableWasm;
+void planSchedule;
 `,
 );
 execFileSync(

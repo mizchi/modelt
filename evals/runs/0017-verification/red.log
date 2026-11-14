@@ -1,0 +1,6 @@
+
+> @mizchi/modelt@0.1.0-alpha.0 build /Users/mz/ghq/github.com/mizchi/modelt
+> tsc -p tsconfig.build.json
+
+tests/scheduling-contract.ts(2,30): error TS2307: Cannot find module '../src/scheduling.js' or its corresponding type declarations.
+ ELIFECYCLE  Command failed with exit code 2.

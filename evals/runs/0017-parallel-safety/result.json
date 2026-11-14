@@ -1,0 +1,37 @@
+{
+  "status": "complete",
+  "sourceVersion": "803bb50b961378b28e04820f642fdedebe82a897376d3d2a43eb27ab25b59769",
+  "tasks": 344,
+  "samples": 288,
+  "measurements": 224,
+  "files": [
+    {
+      "path": "manifest.json",
+      "sha256": "2bf2eefd549f3c617a0f4b51951c6739320a624c0c9f7b0d96dc5faaad42fc4a"
+    },
+    {
+      "path": "inputs.json",
+      "sha256": "40b445186814aff6c0ed2b2d9b878ab573ef5e332d2a7a928ff5409f49852a83"
+    },
+    {
+      "path": "calibration.json",
+      "sha256": "fe07d6a226b7cae1c8d05ca92fe3036f383e7a1f24b9eebd00da7f9d24441fcf"
+    },
+    {
+      "path": "expected.json",
+      "sha256": "ac9649e15c44c065be6a70cf548ef6eb2a3c34e7992536ed8385eedccb5db761"
+    },
+    {
+      "path": "samples.jsonl",
+      "sha256": "78da7b35f7991150827fe5bc015a445412432ae08458e23a35dc33d392635a92"
+    },
+    {
+      "path": "profiles.json",
+      "sha256": "5d72aca2d1b053a8783a9a5688dd7abf270a984947a86588c157c7de3f9b08d7"
+    },
+    {
+      "path": "adaptive.json",
+      "sha256": "684ef36e54b09457f735dd72fa3b3b382dedc86e2fa46f07740c3d4839c0f447"
+    }
+  ]
+}
