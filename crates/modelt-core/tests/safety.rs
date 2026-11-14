@@ -81,3 +81,13 @@ fn prepared_literals_preserve_the_wire_format_and_validate_unreachable_values() 
     invalid["next"][0]["steps"][0]["value"]["alternative"]["value"]["value"] = json!("2147483648");
     assert_eq!(check(invalid, 3, 4, 1000)["kind"], "error");
 }
+
+#[test]
+fn false_constant_invariant_is_rejected_before_even_an_empty_initial_set() {
+    let mut program = ring(3);
+    program["invariants"][0]["expression"] =
+        json!({"op":"literal","value":{"type":"bool","value":false}});
+    assert_eq!(check(program.clone(), 3, 4, 1000)["kind"], "error");
+    program["initial"][0]["steps"] = json!([{"kind":"guard","expression":{"op":"literal","value":{"type":"bool","value":false}}}]);
+    assert_eq!(check(program, 3, 4, 1000)["kind"], "error");
+}

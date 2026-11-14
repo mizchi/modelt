@@ -37,7 +37,7 @@ state は signed 32 bit 整数・真偽値。定数、非再帰 operator、加�
 
 ## 結果と予算
 
-`complete` は指定したモデルの reachable graph が閉じ、検査対象の不変条件と deadlock 検査に違反がないこと。`bounded` は深さ・状態数・work の上限に達したこと、`empty` は初期状態がないこと。いずれも成功へ読み替えない。`invariant-violation` / `deadlock` / `assumption-violation` は違反名と反例を返す。不完全な状態、型違い、overflow、不正 IR は例外となる。
+`complete` は指定したモデルの reachable graph が閉じ、検査対象の不変条件と deadlock 検査に違反がないこと。`bounded` は深さ・状態数・work の上限に達したこと、`empty` は初期状態がないこと。いずれも成功へ読み替えない。`invariant-violation` / `deadlock` / `assumption-violation` は違反名と反例を返す。不完全な状態、型違い、overflow、不正 IR は例外となる。不変条件が定数 FALSE の場合も TLC に合わせて探索前のエラーとし、初期集合が空でも拒否する。
 
 maxWork は分岐の guard / assign / choose / 終端を処理する回数。巨大な有限区間の列挙も途中で止めるための上限で、式ごとの命令数や wall time の上限ではない。自動 timeout は追加しない。maxDepth の境界でも successor が既訪問状態だけなら complete にできる。
 

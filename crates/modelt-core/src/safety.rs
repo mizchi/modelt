@@ -224,6 +224,39 @@ impl Scalar {
 }
 
 impl Expression {
+    fn is_constant(&self) -> bool {
+        match self {
+            Self::Literal { .. } => true,
+            Self::Read { .. } => false,
+            Self::Not { argument } | Self::Neg { argument } => argument.is_constant(),
+            Self::If {
+                condition,
+                consequent,
+                alternative,
+            } => condition.is_constant() && consequent.is_constant() && alternative.is_constant(),
+            Self::In { value, domain } => {
+                value.is_constant()
+                    && match domain {
+                        Domain::Range { lower, upper } => {
+                            lower.is_constant() && upper.is_constant()
+                        }
+                        Domain::Set { values } => values.iter().all(Self::is_constant),
+                    }
+            }
+            Self::Add { left, right }
+            | Self::Sub { left, right }
+            | Self::Mul { left, right }
+            | Self::Eq { left, right }
+            | Self::Ne { left, right }
+            | Self::Lt { left, right }
+            | Self::Le { left, right }
+            | Self::Gt { left, right }
+            | Self::Ge { left, right }
+            | Self::And { left, right }
+            | Self::Or { left, right }
+            | Self::Implies { left, right } => left.is_constant() && right.is_constant(),
+        }
+    }
     fn validate(&self, variables: usize, phase: u8, depth: usize) -> Result<(), CoreError> {
         if depth > 48 {
             return Err(CoreError::protocol("Safety expression nesting exceeds 48"));
@@ -518,6 +551,11 @@ impl SafetyProgram {
         }
         for predicate in &self.invariants {
             predicate.expression.validate(self.variables.len(), 2, 0)?;
+            if predicate.expression.is_constant()
+                && !predicate.expression.eval(&[], &[])?.boolean()?
+            {
+                return Err(CoreError::protocol("Constant invariant is false"));
+            }
         }
         for predicate in &self.assumptions {
             predicate.expression.validate(self.variables.len(), 3, 0)?;

@@ -16,6 +16,16 @@ export const bounds: SafetyBounds = {
 
 export const cases: readonly SafetyCase[] = [
   {
+    name: "false-constant-invariant",
+    source: "VARIABLE x\nInit == x = 0\nNext == UNCHANGED x\nSafe == FALSE",
+    expected: "error",
+  },
+  {
+    name: "false-constant-empty",
+    source: "VARIABLE x\nInit == x \\in {}\nNext == UNCHANGED x\nSafe == FALSE",
+    expected: "error",
+  },
+  {
     name: "mixed-equality",
     source: "VARIABLE x\nInit == x = 0\nNext == UNCHANGED x\nSafe == x = TRUE",
     expected: "error",

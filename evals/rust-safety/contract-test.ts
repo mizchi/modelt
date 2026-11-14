@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { test } from "node:test";
-import { check } from "tla-ts";
+import { check, TlaError } from "tla-ts";
 import { createPortableWasm } from "../../src/portable-wasm.js";
 import { checkSafety, decodeSafetyResult } from "../../src/safety.js";
 import { compileTlaSafety } from "../../src/tla-safety.js";
@@ -43,7 +43,12 @@ test("Rust generates TLA states and checks safety in native and Wasm without a m
         assert.equal(result.status, entry.expected, entry.name);
       }
       if (entry.bounds || entry.name === "empty") continue;
-      const reference = await check(entry);
+      const reference = await check(entry).catch((error: unknown) => {
+        if (entry.expected !== "error") throw error;
+        assert.ok(error instanceof TlaError);
+        return undefined;
+      });
+      if (!reference) continue;
       assert.equal(
         reference.status,
         entry.expected === "complete" ? "success" : entry.expected,
