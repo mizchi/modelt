@@ -2,7 +2,84 @@ use crate::{
     ConformanceResult, CoreError, Effect, Response, Session, State, Trace, Transition, Value,
 };
 use serde::{Deserialize, Serialize};
-use std::collections::BTreeSet;
+use std::collections::{BTreeMap, BTreeSet};
+
+pub struct PreparedFiniteModel {
+    pub(crate) model: FiniteModel,
+    edges: BTreeMap<String, BTreeMap<String, Vec<Transition>>>,
+}
+
+impl PreparedFiniteModel {
+    pub fn name(&self) -> &str {
+        &self.model.name
+    }
+    pub(crate) fn successors(&self, key: &str, action: &Value) -> Result<&[Transition], CoreError> {
+        let edges = self
+            .edges
+            .get(key)
+            .ok_or_else(|| CoreError::protocol("Unknown finite state"))?;
+        Ok(edges
+            .get(&serde_json::to_string(action).expect("serializable action"))
+            .map_or(&[], Vec::as_slice))
+    }
+    pub fn response(&self, effect: &Effect) -> Result<Option<Response>, CoreError> {
+        match effect {
+            Effect::ModelInitial { .. } => self.model.response(effect),
+            Effect::ModelStep { states, action, .. } => {
+                let mut transitions = vec![];
+                for state in states {
+                    transitions.extend_from_slice(self.successors(&state.key, action)?);
+                }
+                Ok(Some(Response::Transitions { transitions }))
+            }
+            _ => Ok(None),
+        }
+    }
+    pub fn check_history(&self, trace: Trace) -> Result<ConformanceResult, CoreError> {
+        let trace = trace.normalize()?;
+        if trace.model != self.model.name {
+            return Err(CoreError::protocol("Finite history model differs"));
+        }
+        let mut session = Session::new(
+            trace.model.clone(),
+            trace.steps.iter().map(|step| step.action.clone()).collect(),
+        )?;
+        let mut position = 0;
+        loop {
+            let effect = session.effect();
+            if let Some(response) = self.response(&effect)? {
+                let id = match effect {
+                    Effect::ModelInitial { id } | Effect::ModelStep { id, .. } => id,
+                    _ => unreachable!(),
+                };
+                session.resume(id, response)?;
+                continue;
+            }
+            match effect {
+                Effect::Done { result } => return Ok(result),
+                Effect::DriverReset { id } => {
+                    session.resume(
+                        id,
+                        Response::Observation {
+                            observation: trace.initial.clone(),
+                        },
+                    )?;
+                }
+                Effect::DriverStep { id, .. } => {
+                    let observation = trace
+                        .steps
+                        .get(position)
+                        .ok_or_else(|| CoreError::protocol("Missing finite history step"))?
+                        .observation
+                        .clone();
+                    position += 1;
+                    session.resume(id, Response::Observation { observation })?;
+                }
+                _ => unreachable!(),
+            }
+        }
+    }
+}
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
 #[serde(deny_unknown_fields)]
@@ -35,6 +112,25 @@ pub struct FiniteModel {
 }
 
 impl FiniteModel {
+    pub fn prepare(self) -> Result<PreparedFiniteModel, CoreError> {
+        let model = self.normalize()?;
+        let mut edges = BTreeMap::new();
+        for state in &model.states {
+            let mut actions = BTreeMap::<String, Vec<Transition>>::new();
+            for edge in &state.transitions {
+                actions
+                    .entry(serde_json::to_string(&edge.action).expect("serializable action"))
+                    .or_default()
+                    .push(Transition {
+                        key: edge.target.clone(),
+                        state: Value::String(edge.target.clone()),
+                        observation: edge.observation.clone(),
+                    });
+            }
+            edges.insert(state.key.clone(), actions);
+        }
+        Ok(PreparedFiniteModel { model, edges })
+    }
     pub fn normalize(self) -> Result<Self, CoreError> {
         if self.format != "modelt.finite-model" || self.version != 1 {
             return Err(CoreError::protocol("Unsupported finite model"));

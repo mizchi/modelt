@@ -1,8 +1,10 @@
 import type {
+  ConcurrentResult,
   DeletionRange,
   Driver,
   FiniteModel,
   HostTape,
+  LoadedFiniteModel,
   Model,
   PortableCommand,
   PortableCore,
@@ -15,6 +17,8 @@ import type {
   PortableValue,
   Trace,
 } from "./contracts.js";
+import { parseFiniteModel } from "./finite.js";
+import { parseConcurrentHistory } from "./history.js";
 import {
   normalizePortableValue,
   PortableCoreError,
@@ -180,6 +184,53 @@ export const createPortableWasm = async (
       if (output.kind === "cancelled") {
         fields(output, ["kind"]);
         return { kind: "cancelled" };
+      }
+      if (output.kind === "loaded") {
+        fields(output, ["kind", "handle"]);
+        return { kind: "loaded", handle: requestId(output.handle) };
+      }
+      if (output.kind === "released") {
+        fields(output, ["kind"]);
+        return { kind: "released" };
+      }
+      if (output.kind === "history") {
+        fields(output, ["kind", "result"]);
+        const result = fields(output.result, [
+          "status",
+          "explored",
+          "order",
+          "omitted",
+          "pending",
+        ]);
+        if (
+          (result.status !== "linearizable" &&
+            result.status !== "not-linearizable" &&
+            result.status !== "inconclusive" &&
+            result.status !== "empty") ||
+          typeof result.explored !== "number" ||
+          !Number.isSafeInteger(result.explored) ||
+          result.explored < 0
+        )
+          throw new PortableCoreError("protocol", "Invalid concurrent result");
+        const strings = (values: unknown): readonly string[] => {
+          if (
+            !Array.isArray(values) ||
+            values.some((value) => typeof value !== "string")
+          )
+            throw new PortableCoreError(
+              "protocol",
+              "Invalid history operation ids",
+            );
+          return values.map((value: string) => value);
+        };
+        const history: ConcurrentResult = {
+          status: result.status,
+          explored: result.explored,
+          order: strings(result.order),
+          omitted: strings(result.omitted),
+          pending: strings(result.pending),
+        };
+        return { kind: "history", result: history };
       }
       if (output.kind === "value") {
         fields(output, ["kind", "value"]);
@@ -456,6 +507,96 @@ export const checkFiniteHistories = (
   if (result.kind !== "results")
     throw new PortableCoreError("protocol", "Expected finite results");
   return result.results;
+};
+
+export const loadFiniteModel = (
+  core: PortableCore,
+  artifact: FiniteModel,
+): LoadedFiniteModel => {
+  const loaded = core.request({
+    version: 1,
+    request: { kind: "load-model", model: parseFiniteModel(artifact) },
+  });
+  if (loaded.kind !== "loaded")
+    throw new PortableCoreError("protocol", "Expected model handle");
+  let released = false;
+  const active = () => {
+    if (released)
+      throw new PortableCoreError("protocol", "Released model handle");
+  };
+  return {
+    checkHistories: (traces) => {
+      active();
+      const output = core.request({
+        version: 1,
+        request: { kind: "check-loaded", handle: loaded.handle, traces },
+      });
+      if (output.kind !== "results")
+        throw new PortableCoreError("protocol", "Expected finite results");
+      return output.results;
+    },
+    checkHistory: (history, maxNodes) => {
+      active();
+      if (
+        !Number.isSafeInteger(maxNodes) ||
+        maxNodes < 1 ||
+        maxNodes > 0xffff_ffff
+      )
+        throw new PortableCoreError("protocol", "Invalid history node budget");
+      const output = core.request({
+        version: 1,
+        request: {
+          kind: "check-history",
+          handle: loaded.handle,
+          history: parseConcurrentHistory(history),
+          maxNodes,
+        },
+      });
+      if (output.kind !== "history")
+        throw new PortableCoreError("protocol", "Expected concurrent result");
+      return output.result;
+    },
+    checkConformance: (driver, actions) =>
+      runEffects(
+        core,
+        () => {
+          active();
+          return {
+            version: 1,
+            request: { kind: "start-loaded", handle: loaded.handle, actions },
+          };
+        },
+        async (effect) => {
+          if (effect.kind === "driver-reset")
+            return {
+              kind: "observation",
+              observation: normalizePortableValue(await driver.reset()),
+            };
+          if (effect.kind === "driver-step")
+            return {
+              kind: "observation",
+              observation: normalizePortableValue(
+                await driver.step(effect.action),
+              ),
+            };
+          throw new PortableCoreError(
+            "protocol",
+            "Loaded model requested model host",
+          );
+        },
+        () => driver.dispose?.(),
+      ),
+    release: () => {
+      active();
+      const output = core.request({
+        version: 1,
+        request: { kind: "release-model", handle: loaded.handle },
+      });
+      if (output.kind !== "released")
+        throw new PortableCoreError("protocol", "Expected model release");
+      released = true;
+    },
+  };
 };
 
 export const coreDeletionCandidates = (

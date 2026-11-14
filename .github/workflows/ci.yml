@@ -45,6 +45,13 @@ jobs:
       - run: node --test dist/evals/cross-language/contract-test.js
       - run: node dist/evals/cross-language/evaluate.js regression .artifacts/shared-oracle
       - run: node dist/evals/cross-language/replay.js .artifacts/shared-oracle
+      - run: CGO_ENABLED=0 go build -o ../../.artifacts/go/history-check ./cmd/history-check
+        working-directory: adapters/go
+      - run: CGO_ENABLED=0 go build -o ../../.artifacts/go/finite-bench ./cmd/finite-bench
+        working-directory: adapters/go
+      - run: node --test dist/evals/async-tuning/contract-test.js
+      - run: node dist/evals/async-tuning/evaluate.js regression .artifacts/async-tuning
+      - run: node dist/evals/async-tuning/replay.js .artifacts/async-tuning
       - run: pnpm portable:test
       - run: pnpm usable:test
       - run: pnpm runtime:build
@@ -74,4 +81,5 @@ jobs:
             .artifacts/packages
             .artifacts/go
             .artifacts/shared-oracle
+            .artifacts/async-tuning
           if-no-files-found: warn

@@ -8,8 +8,10 @@ import {
   checkPortableConformance,
   checkPortableTrace,
   coreDeletionCandidates,
+  createHistoryRecorder,
   createPortableWasm,
   fromPortableValue,
+  loadFiniteModel,
   toPortableTrace,
   toPortableValue,
   verifyHostTape,
@@ -78,6 +80,22 @@ export const run = async (): Promise<Record<string, unknown>> => {
     throw new Error("Browser finite artifact differs");
   if (!coreDeletionCandidates(core, 3).some((range) => range.count === 1))
     throw new Error("Missing browser shrink candidates");
+  const loaded = loadFiniteModel(core, finite.model);
+  const history = createHistoryRecorder(
+    counterModel.name,
+    toPortableValue(reference.trace.initial),
+  );
+  for (const [index, step] of reference.trace.steps.entries()) {
+    history.invoke(String(index), toPortableValue(step.action));
+    history.returned(String(index), toPortableValue(step.observation));
+  }
+  if (
+    loaded.checkHistory(history.snapshot(), 100).status !== "linearizable" ||
+    loaded.checkHistories([toPortableTrace(reference.trace)])[0]?.status !==
+      "matched"
+  )
+    throw new Error("Browser loaded history differs");
+  loaded.release();
   const host = createSimulationHost({ seed: 3 });
   host.write("value", 1);
   host.persist();

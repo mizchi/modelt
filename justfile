@@ -83,6 +83,20 @@ cross-replay run:
   pnpm build
   node dist/evals/cross-language/replay.js {{quote(run)}}
 
+async-build: cross-build
+  cd adapters/go && CGO_ENABLED=0 go build -o ../../.artifacts/go/history-check ./cmd/history-check
+  cd adapters/go && CGO_ENABLED=0 go build -o ../../.artifacts/go/finite-bench ./cmd/finite-bench
+
+async-test: async-build
+  node --test dist/evals/async-tuning/contract-test.js
+
+async-eval phase run parent="": async-build
+  node dist/evals/async-tuning/evaluate.js {{quote(phase)}} {{quote(run)}} {{quote(parent)}}
+
+async-replay run:
+  pnpm build
+  node dist/evals/async-tuning/replay.js {{quote(run)}}
+
 usable-test:
   pnpm usable:test
 

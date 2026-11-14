@@ -1,7 +1,12 @@
 export type {
+  ConcurrentHistory,
+  ConcurrentResult,
   DeletionRange,
   FiniteModel,
+  HistoryEvent,
+  HistoryRecorder,
   HostTape,
+  LoadedFiniteModel,
   PortableCommand,
   PortableCore,
   PortableEffect,
@@ -21,6 +26,11 @@ export {
   parseFiniteModel,
 } from "./finite.js";
 export {
+  checkConcurrentHistory,
+  createHistoryRecorder,
+  parseConcurrentHistory,
+} from "./history.js";
+export {
   decodePortableTrace,
   encodePortableTrace,
   fromPortableValue,
@@ -35,6 +45,7 @@ export {
   checkPortableTrace,
   coreDeletionCandidates,
   createPortableWasm,
+  loadFiniteModel,
   toPortableTrace,
   verifyHostTape,
 } from "./portable-wasm.js";

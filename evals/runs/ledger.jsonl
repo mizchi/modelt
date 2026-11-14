@@ -11,3 +11,5 @@
 {"runId":"0005-fixed-history","kind":"fixed-history-performance","status":"complete","sourceVersion":"fad49e37808e55efa93a308701a5ae2e20181b24ffb49e5c0d0d521fd2b405f9","plan":"0005-usable-core"}
 {"runId":"0007-shared-development","kind":"shared-oracle","phase":"development","status":"complete","sourceVersion":"9877f526a4bd0eb8f221974e7f19bb34eb416b9a05bb92f1fe06831dea0e80a3","plan":"0007-shared-oracle"}
 {"runId":"0007-shared-confirmation","kind":"shared-oracle","phase":"confirmation","status":"complete","sourceVersion":"9877f526a4bd0eb8f221974e7f19bb34eb416b9a05bb92f1fe06831dea0e80a3","plan":"0007-shared-oracle"}
+{"runId":"0008-async-development","kind":"async-tuning","phase":"development","status":"complete","sourceVersion":"20de57252d473544011e9fc17ebf87be2c4bfcfd624f7e65f865518c913ca4df","plan":"0008-async-tuning"}
+{"runId":"0008-async-confirmation","kind":"async-tuning","phase":"confirmation","status":"complete","sourceVersion":"20de57252d473544011e9fc17ebf87be2c4bfcfd624f7e65f865518c913ca4df","plan":"0008-async-tuning"}

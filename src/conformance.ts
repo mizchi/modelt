@@ -37,7 +37,11 @@ export const checkConformance = async <State, Action, Observation>(
         trace,
       };
     }
-    let currentTrace = trace;
+    const steps: { action: Action; observation: Observation }[] = [];
+    const getTrace = (): Trace<Action, Observation> => ({
+      ...trace,
+      steps: [...steps],
+    });
     let actual = actualInitial;
     for (const action of actions) {
       const successors = Array.from(candidates.values()).flatMap((state) =>
@@ -46,17 +50,14 @@ export const checkConformance = async <State, Action, Observation>(
       if (successors.length === 0) {
         return {
           status: "invalid",
-          checkedSteps: currentTrace.steps.length,
+          checkedSteps: steps.length,
           actual,
           expected: [],
-          trace: currentTrace,
+          trace: getTrace(),
         };
       }
       actual = await driver.step(action);
-      currentTrace = {
-        ...currentTrace,
-        steps: [...currentTrace.steps, { action, observation: actual }],
-      };
+      steps.push({ action, observation: actual });
       candidates.clear();
       for (const entry of successors) {
         if (equal(entry.observation, actual))
@@ -65,19 +66,19 @@ export const checkConformance = async <State, Action, Observation>(
       if (candidates.size === 0) {
         return {
           status: "mismatch",
-          checkedSteps: currentTrace.steps.length,
+          checkedSteps: steps.length,
           actual,
           expected: successors.map((entry) => entry.observation),
-          trace: currentTrace,
+          trace: getTrace(),
         };
       }
     }
     return {
       status: "matched",
-      checkedSteps: currentTrace.steps.length,
+      checkedSteps: steps.length,
       actual,
       expected: [actual],
-      trace: currentTrace,
+      trace: getTrace(),
     };
   } finally {
     await driver.dispose?.();
@@ -92,11 +93,16 @@ export const checkTrace = async <Action, Observation>(
   const equal = comparison.equal ?? equalValues;
   try {
     const initial = await driver.reset();
-    let actualTrace: Trace<Action, Observation> = {
+    const actualTrace: Trace<Action, Observation> = {
       ...trace,
       initial,
       steps: [],
     };
+    const steps: { action: Action; observation: Observation }[] = [];
+    const getTrace = (): Trace<Action, Observation> => ({
+      ...actualTrace,
+      steps: [...steps],
+    });
     if (!equal(trace.initial, initial)) {
       return {
         status: "mismatch",
@@ -109,20 +115,14 @@ export const checkTrace = async <Action, Observation>(
     let actual = initial;
     for (const step of trace.steps) {
       actual = await driver.step(step.action);
-      actualTrace = {
-        ...actualTrace,
-        steps: [
-          ...actualTrace.steps,
-          { action: step.action, observation: actual },
-        ],
-      };
+      steps.push({ action: step.action, observation: actual });
       if (!equal(step.observation, actual)) {
         return {
           status: "mismatch",
-          checkedSteps: actualTrace.steps.length,
+          checkedSteps: steps.length,
           actual,
           expected: [step.observation],
-          trace: actualTrace,
+          trace: getTrace(),
         };
       }
     }
@@ -131,7 +131,7 @@ export const checkTrace = async <Action, Observation>(
       checkedSteps: trace.steps.length,
       actual,
       expected: [actual],
-      trace: actualTrace,
+      trace: getTrace(),
     };
   } finally {
     await driver.dispose?.();

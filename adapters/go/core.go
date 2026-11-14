@@ -76,14 +76,16 @@ type effect struct {
 }
 
 type message struct {
-	Kind     string          `json:"kind"`
-	Code     string          `json:"code"`
-	Message  string          `json:"message"`
-	Value    Value           `json:"value"`
-	Effect   effect          `json:"effect"`
-	Results  []Result        `json:"results"`
-	Ranges   []DeletionRange `json:"ranges"`
-	Snapshot Value           `json:"snapshot"`
+	Kind     string           `json:"kind"`
+	Code     string           `json:"code"`
+	Message  string           `json:"message"`
+	Value    Value            `json:"value"`
+	Effect   effect           `json:"effect"`
+	Results  []Result         `json:"results"`
+	Ranges   []DeletionRange  `json:"ranges"`
+	Snapshot Value            `json:"snapshot"`
+	Handle   uint32           `json:"handle"`
+	Result   ConcurrentResult `json:"result"`
 }
 
 func (core *Core) call(ctx context.Context, name string, arguments ...uint64) (uint32, error) {

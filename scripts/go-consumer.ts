@@ -78,6 +78,15 @@ func TestStandalone(t *testing.T) {
   if string(actual) != string(input) { t.Fatalf("lost integer precision: %s", actual) }
   ranges, err := core.DeletionCandidates(ctx, 3)
   if err != nil || len(ranges) == 0 { t.Fatalf("no shrink candidates: %v", err) }
+  loaded, err := core.LoadModel(ctx, model)
+  if err != nil { t.Fatal(err) }
+  defer loaded.Close(ctx)
+  initial, _ := modelt.ValueOf(false)
+  toggle, _ := modelt.ValueOf("toggle")
+  observed, _ := modelt.ValueOf(true)
+  history := modelt.ConcurrentHistory{Format:"modelt.concurrent-history",Version:1,Model:"toggle",Initial:initial,Events:[]modelt.HistoryEvent{{Kind:"invoke",ID:"a",Action:toggle},{Kind:"return",ID:"a",Observation:observed}}}
+  checked, err := loaded.CheckHistory(ctx,history,100)
+  if err != nil || checked.Status != "linearizable" { t.Fatalf("loaded history: %+v %v",checked,err) }
 }
 `,
 );

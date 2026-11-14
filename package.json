@@ -45,6 +45,10 @@
       "types": "./dist/src/host.d.ts",
       "default": "./dist/src/host.js"
     },
+    "./history": {
+      "types": "./dist/src/history.d.ts",
+      "default": "./dist/src/history.js"
+    },
     "./shrink": {
       "types": "./dist/src/shrink.d.ts",
       "default": "./dist/src/shrink.js"

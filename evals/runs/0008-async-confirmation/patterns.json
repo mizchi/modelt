@@ -1,0 +1,2230 @@
+{
+  "creditModel": {
+    "format": "modelt.finite-model",
+    "version": 1,
+    "name": "credit",
+    "initial": [
+      {
+        "key": "[1,0]",
+        "observation": {
+          "type": "int",
+          "value": "0"
+        }
+      }
+    ],
+    "states": [
+      {
+        "key": "[1,0]",
+        "violations": [],
+        "transitions": [
+          {
+            "action": {
+              "type": "string",
+              "value": "credit:1"
+            },
+            "target": "[1,1]",
+            "observation": {
+              "type": "int",
+              "value": "1"
+            }
+          },
+          {
+            "action": {
+              "type": "string",
+              "value": "read"
+            },
+            "target": "[1,0]",
+            "observation": {
+              "type": "int",
+              "value": "0"
+            }
+          },
+          {
+            "action": {
+              "type": "string",
+              "value": "crash"
+            },
+            "target": "[2,0]",
+            "observation": {
+              "type": "null"
+            }
+          }
+        ]
+      },
+      {
+        "key": "[1,1]",
+        "violations": [],
+        "transitions": [
+          {
+            "action": {
+              "type": "string",
+              "value": "credit:1"
+            },
+            "target": "[1,1]",
+            "observation": {
+              "type": "int",
+              "value": "1"
+            }
+          },
+          {
+            "action": {
+              "type": "string",
+              "value": "read"
+            },
+            "target": "[1,1]",
+            "observation": {
+              "type": "int",
+              "value": "1"
+            }
+          },
+          {
+            "action": {
+              "type": "string",
+              "value": "crash"
+            },
+            "target": "[2,1]",
+            "observation": {
+              "type": "null"
+            }
+          }
+        ]
+      },
+      {
+        "key": "[2,0]",
+        "violations": [],
+        "transitions": [
+          {
+            "action": {
+              "type": "string",
+              "value": "credit:2"
+            },
+            "target": "[2,1]",
+            "observation": {
+              "type": "int",
+              "value": "1"
+            }
+          },
+          {
+            "action": {
+              "type": "string",
+              "value": "read"
+            },
+            "target": "[2,0]",
+            "observation": {
+              "type": "int",
+              "value": "0"
+            }
+          }
+        ]
+      },
+      {
+        "key": "[2,1]",
+        "violations": [],
+        "transitions": [
+          {
+            "action": {
+              "type": "string",
+              "value": "credit:2"
+            },
+            "target": "[2,1]",
+            "observation": {
+              "type": "int",
+              "value": "1"
+            }
+          },
+          {
+            "action": {
+              "type": "string",
+              "value": "read"
+            },
+            "target": "[2,1]",
+            "observation": {
+              "type": "int",
+              "value": "1"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "crash": [
+    {
+      "cut": "before",
+      "split": false,
+      "result": {
+        "status": "linearizable",
+        "explored": 5,
+        "order": [
+          "fault",
+          "read",
+          "retry"
+        ],
+        "omitted": [
+          "first"
+        ],
+        "pending": [
+          "first"
+        ]
+      },
+      "history": {
+        "format": "modelt.concurrent-history",
+        "version": 1,
+        "model": "credit",
+        "initial": {
+          "type": "int",
+          "value": "0"
+        },
+        "events": [
+          {
+            "kind": "invoke",
+            "id": "first",
+            "action": {
+              "type": "string",
+              "value": "credit:1"
+            }
+          },
+          {
+            "kind": "unknown",
+            "id": "first"
+          },
+          {
+            "kind": "invoke",
+            "id": "fault",
+            "action": {
+              "type": "string",
+              "value": "crash"
+            }
+          },
+          {
+            "kind": "return",
+            "id": "fault",
+            "observation": {
+              "type": "null"
+            }
+          },
+          {
+            "kind": "invoke",
+            "id": "read",
+            "action": {
+              "type": "string",
+              "value": "read"
+            }
+          },
+          {
+            "kind": "return",
+            "id": "read",
+            "observation": {
+              "type": "int",
+              "value": "0"
+            }
+          },
+          {
+            "kind": "invoke",
+            "id": "retry",
+            "action": {
+              "type": "string",
+              "value": "credit:2"
+            }
+          },
+          {
+            "kind": "return",
+            "id": "retry",
+            "observation": {
+              "type": "int",
+              "value": "1"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "cut": "before",
+      "split": true,
+      "result": {
+        "status": "linearizable",
+        "explored": 5,
+        "order": [
+          "fault",
+          "read",
+          "retry"
+        ],
+        "omitted": [
+          "first"
+        ],
+        "pending": [
+          "first"
+        ]
+      },
+      "history": {
+        "format": "modelt.concurrent-history",
+        "version": 1,
+        "model": "credit",
+        "initial": {
+          "type": "int",
+          "value": "0"
+        },
+        "events": [
+          {
+            "kind": "invoke",
+            "id": "first",
+            "action": {
+              "type": "string",
+              "value": "credit:1"
+            }
+          },
+          {
+            "kind": "unknown",
+            "id": "first"
+          },
+          {
+            "kind": "invoke",
+            "id": "fault",
+            "action": {
+              "type": "string",
+              "value": "crash"
+            }
+          },
+          {
+            "kind": "return",
+            "id": "fault",
+            "observation": {
+              "type": "null"
+            }
+          },
+          {
+            "kind": "invoke",
+            "id": "read",
+            "action": {
+              "type": "string",
+              "value": "read"
+            }
+          },
+          {
+            "kind": "return",
+            "id": "read",
+            "observation": {
+              "type": "int",
+              "value": "0"
+            }
+          },
+          {
+            "kind": "invoke",
+            "id": "retry",
+            "action": {
+              "type": "string",
+              "value": "credit:2"
+            }
+          },
+          {
+            "kind": "return",
+            "id": "retry",
+            "observation": {
+              "type": "int",
+              "value": "1"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "cut": "value-only",
+      "split": false,
+      "result": {
+        "status": "linearizable",
+        "explored": 4,
+        "order": [
+          "first",
+          "fault",
+          "read",
+          "retry"
+        ],
+        "omitted": [],
+        "pending": [
+          "first"
+        ]
+      },
+      "history": {
+        "format": "modelt.concurrent-history",
+        "version": 1,
+        "model": "credit",
+        "initial": {
+          "type": "int",
+          "value": "0"
+        },
+        "events": [
+          {
+            "kind": "invoke",
+            "id": "first",
+            "action": {
+              "type": "string",
+              "value": "credit:1"
+            }
+          },
+          {
+            "kind": "unknown",
+            "id": "first"
+          },
+          {
+            "kind": "invoke",
+            "id": "fault",
+            "action": {
+              "type": "string",
+              "value": "crash"
+            }
+          },
+          {
+            "kind": "return",
+            "id": "fault",
+            "observation": {
+              "type": "null"
+            }
+          },
+          {
+            "kind": "invoke",
+            "id": "read",
+            "action": {
+              "type": "string",
+              "value": "read"
+            }
+          },
+          {
+            "kind": "return",
+            "id": "read",
+            "observation": {
+              "type": "int",
+              "value": "1"
+            }
+          },
+          {
+            "kind": "invoke",
+            "id": "retry",
+            "action": {
+              "type": "string",
+              "value": "credit:2"
+            }
+          },
+          {
+            "kind": "return",
+            "id": "retry",
+            "observation": {
+              "type": "int",
+              "value": "1"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "cut": "value-only",
+      "split": true,
+      "result": {
+        "explored": 5,
+        "order": [],
+        "omitted": [],
+        "pending": [
+          "first"
+        ],
+        "status": "not-linearizable"
+      },
+      "history": {
+        "format": "modelt.concurrent-history",
+        "version": 1,
+        "model": "credit",
+        "initial": {
+          "type": "int",
+          "value": "0"
+        },
+        "events": [
+          {
+            "kind": "invoke",
+            "id": "first",
+            "action": {
+              "type": "string",
+              "value": "credit:1"
+            }
+          },
+          {
+            "kind": "unknown",
+            "id": "first"
+          },
+          {
+            "kind": "invoke",
+            "id": "fault",
+            "action": {
+              "type": "string",
+              "value": "crash"
+            }
+          },
+          {
+            "kind": "return",
+            "id": "fault",
+            "observation": {
+              "type": "null"
+            }
+          },
+          {
+            "kind": "invoke",
+            "id": "read",
+            "action": {
+              "type": "string",
+              "value": "read"
+            }
+          },
+          {
+            "kind": "return",
+            "id": "read",
+            "observation": {
+              "type": "int",
+              "value": "1"
+            }
+          },
+          {
+            "kind": "invoke",
+            "id": "retry",
+            "action": {
+              "type": "string",
+              "value": "credit:2"
+            }
+          },
+          {
+            "kind": "return",
+            "id": "retry",
+            "observation": {
+              "type": "int",
+              "value": "2"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "cut": "seen-only",
+      "split": false,
+      "result": {
+        "status": "linearizable",
+        "explored": 4,
+        "order": [
+          "first",
+          "fault",
+          "read",
+          "retry"
+        ],
+        "omitted": [],
+        "pending": [
+          "first"
+        ]
+      },
+      "history": {
+        "format": "modelt.concurrent-history",
+        "version": 1,
+        "model": "credit",
+        "initial": {
+          "type": "int",
+          "value": "0"
+        },
+        "events": [
+          {
+            "kind": "invoke",
+            "id": "first",
+            "action": {
+              "type": "string",
+              "value": "credit:1"
+            }
+          },
+          {
+            "kind": "unknown",
+            "id": "first"
+          },
+          {
+            "kind": "invoke",
+            "id": "fault",
+            "action": {
+              "type": "string",
+              "value": "crash"
+            }
+          },
+          {
+            "kind": "return",
+            "id": "fault",
+            "observation": {
+              "type": "null"
+            }
+          },
+          {
+            "kind": "invoke",
+            "id": "read",
+            "action": {
+              "type": "string",
+              "value": "read"
+            }
+          },
+          {
+            "kind": "return",
+            "id": "read",
+            "observation": {
+              "type": "int",
+              "value": "1"
+            }
+          },
+          {
+            "kind": "invoke",
+            "id": "retry",
+            "action": {
+              "type": "string",
+              "value": "credit:2"
+            }
+          },
+          {
+            "kind": "return",
+            "id": "retry",
+            "observation": {
+              "type": "int",
+              "value": "1"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "cut": "seen-only",
+      "split": true,
+      "result": {
+        "explored": 5,
+        "order": [],
+        "omitted": [],
+        "pending": [
+          "first"
+        ],
+        "status": "not-linearizable"
+      },
+      "history": {
+        "format": "modelt.concurrent-history",
+        "version": 1,
+        "model": "credit",
+        "initial": {
+          "type": "int",
+          "value": "0"
+        },
+        "events": [
+          {
+            "kind": "invoke",
+            "id": "first",
+            "action": {
+              "type": "string",
+              "value": "credit:1"
+            }
+          },
+          {
+            "kind": "unknown",
+            "id": "first"
+          },
+          {
+            "kind": "invoke",
+            "id": "fault",
+            "action": {
+              "type": "string",
+              "value": "crash"
+            }
+          },
+          {
+            "kind": "return",
+            "id": "fault",
+            "observation": {
+              "type": "null"
+            }
+          },
+          {
+            "kind": "invoke",
+            "id": "read",
+            "action": {
+              "type": "string",
+              "value": "read"
+            }
+          },
+          {
+            "kind": "return",
+            "id": "read",
+            "observation": {
+              "type": "int",
+              "value": "0"
+            }
+          },
+          {
+            "kind": "invoke",
+            "id": "retry",
+            "action": {
+              "type": "string",
+              "value": "credit:2"
+            }
+          },
+          {
+            "kind": "return",
+            "id": "retry",
+            "observation": {
+              "type": "int",
+              "value": "0"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "cut": "committed",
+      "split": false,
+      "result": {
+        "status": "linearizable",
+        "explored": 4,
+        "order": [
+          "first",
+          "fault",
+          "read",
+          "retry"
+        ],
+        "omitted": [],
+        "pending": [
+          "first"
+        ]
+      },
+      "history": {
+        "format": "modelt.concurrent-history",
+        "version": 1,
+        "model": "credit",
+        "initial": {
+          "type": "int",
+          "value": "0"
+        },
+        "events": [
+          {
+            "kind": "invoke",
+            "id": "first",
+            "action": {
+              "type": "string",
+              "value": "credit:1"
+            }
+          },
+          {
+            "kind": "unknown",
+            "id": "first"
+          },
+          {
+            "kind": "invoke",
+            "id": "fault",
+            "action": {
+              "type": "string",
+              "value": "crash"
+            }
+          },
+          {
+            "kind": "return",
+            "id": "fault",
+            "observation": {
+              "type": "null"
+            }
+          },
+          {
+            "kind": "invoke",
+            "id": "read",
+            "action": {
+              "type": "string",
+              "value": "read"
+            }
+          },
+          {
+            "kind": "return",
+            "id": "read",
+            "observation": {
+              "type": "int",
+              "value": "1"
+            }
+          },
+          {
+            "kind": "invoke",
+            "id": "retry",
+            "action": {
+              "type": "string",
+              "value": "credit:2"
+            }
+          },
+          {
+            "kind": "return",
+            "id": "retry",
+            "observation": {
+              "type": "int",
+              "value": "1"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "cut": "committed",
+      "split": true,
+      "result": {
+        "status": "linearizable",
+        "explored": 4,
+        "order": [
+          "first",
+          "fault",
+          "read",
+          "retry"
+        ],
+        "omitted": [],
+        "pending": [
+          "first"
+        ]
+      },
+      "history": {
+        "format": "modelt.concurrent-history",
+        "version": 1,
+        "model": "credit",
+        "initial": {
+          "type": "int",
+          "value": "0"
+        },
+        "events": [
+          {
+            "kind": "invoke",
+            "id": "first",
+            "action": {
+              "type": "string",
+              "value": "credit:1"
+            }
+          },
+          {
+            "kind": "unknown",
+            "id": "first"
+          },
+          {
+            "kind": "invoke",
+            "id": "fault",
+            "action": {
+              "type": "string",
+              "value": "crash"
+            }
+          },
+          {
+            "kind": "return",
+            "id": "fault",
+            "observation": {
+              "type": "null"
+            }
+          },
+          {
+            "kind": "invoke",
+            "id": "read",
+            "action": {
+              "type": "string",
+              "value": "read"
+            }
+          },
+          {
+            "kind": "return",
+            "id": "read",
+            "observation": {
+              "type": "int",
+              "value": "1"
+            }
+          },
+          {
+            "kind": "invoke",
+            "id": "retry",
+            "action": {
+              "type": "string",
+              "value": "credit:2"
+            }
+          },
+          {
+            "kind": "return",
+            "id": "retry",
+            "observation": {
+              "type": "int",
+              "value": "1"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "cut": "ack-before-persist",
+      "split": false,
+      "result": {
+        "status": "linearizable",
+        "explored": 3,
+        "order": [
+          "first",
+          "fault",
+          "read"
+        ],
+        "omitted": [],
+        "pending": []
+      },
+      "history": {
+        "format": "modelt.concurrent-history",
+        "version": 1,
+        "model": "credit",
+        "initial": {
+          "type": "int",
+          "value": "0"
+        },
+        "events": [
+          {
+            "kind": "invoke",
+            "id": "first",
+            "action": {
+              "type": "string",
+              "value": "credit:1"
+            }
+          },
+          {
+            "kind": "return",
+            "id": "first",
+            "observation": {
+              "type": "int",
+              "value": "1"
+            }
+          },
+          {
+            "kind": "invoke",
+            "id": "fault",
+            "action": {
+              "type": "string",
+              "value": "crash"
+            }
+          },
+          {
+            "kind": "return",
+            "id": "fault",
+            "observation": {
+              "type": "null"
+            }
+          },
+          {
+            "kind": "invoke",
+            "id": "read",
+            "action": {
+              "type": "string",
+              "value": "read"
+            }
+          },
+          {
+            "kind": "return",
+            "id": "read",
+            "observation": {
+              "type": "int",
+              "value": "1"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "cut": "ack-before-persist",
+      "split": true,
+      "result": {
+        "explored": 3,
+        "order": [],
+        "omitted": [],
+        "pending": [],
+        "status": "not-linearizable"
+      },
+      "history": {
+        "format": "modelt.concurrent-history",
+        "version": 1,
+        "model": "credit",
+        "initial": {
+          "type": "int",
+          "value": "0"
+        },
+        "events": [
+          {
+            "kind": "invoke",
+            "id": "first",
+            "action": {
+              "type": "string",
+              "value": "credit:1"
+            }
+          },
+          {
+            "kind": "return",
+            "id": "first",
+            "observation": {
+              "type": "int",
+              "value": "1"
+            }
+          },
+          {
+            "kind": "invoke",
+            "id": "fault",
+            "action": {
+              "type": "string",
+              "value": "crash"
+            }
+          },
+          {
+            "kind": "return",
+            "id": "fault",
+            "observation": {
+              "type": "null"
+            }
+          },
+          {
+            "kind": "invoke",
+            "id": "read",
+            "action": {
+              "type": "string",
+              "value": "read"
+            }
+          },
+          {
+            "kind": "return",
+            "id": "read",
+            "observation": {
+              "type": "int",
+              "value": "0"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "fencing": [
+    {
+      "broken": false,
+      "result": {
+        "status": "matched",
+        "checkedSteps": 2,
+        "actual": {
+          "epoch": 2,
+          "accepted": false
+        },
+        "expected": [
+          {
+            "epoch": 2,
+            "accepted": false
+          }
+        ],
+        "trace": {
+          "version": 1,
+          "model": "fencing",
+          "initial": {
+            "epoch": 1,
+            "accepted": null
+          },
+          "steps": [
+            {
+              "action": "rotate",
+              "observation": {
+                "epoch": 2,
+                "accepted": null
+              }
+            },
+            {
+              "action": "old-write",
+              "observation": {
+                "epoch": 2,
+                "accepted": false
+              }
+            }
+          ]
+        }
+      },
+      "tape": {
+        "format": "modelt.host-tape",
+        "version": 1,
+        "events": [
+          {
+            "operation": "send",
+            "input": {
+              "type": "record",
+              "value": [
+                [
+                  "from",
+                  {
+                    "type": "string",
+                    "value": "old-leader"
+                  }
+                ],
+                [
+                  "payload",
+                  {
+                    "type": "record",
+                    "value": [
+                      [
+                        "epoch",
+                        {
+                          "type": "int",
+                          "value": "1"
+                        }
+                      ]
+                    ]
+                  }
+                ],
+                [
+                  "to",
+                  {
+                    "type": "string",
+                    "value": "storage"
+                  }
+                ]
+              ]
+            },
+            "output": {
+              "type": "int",
+              "value": "1"
+            }
+          },
+          {
+            "operation": "advance",
+            "input": {
+              "type": "int",
+              "value": "6"
+            },
+            "output": {
+              "type": "int",
+              "value": "6"
+            }
+          },
+          {
+            "operation": "deliver",
+            "input": {
+              "type": "record",
+              "value": [
+                [
+                  "id",
+                  {
+                    "type": "int",
+                    "value": "1"
+                  }
+                ],
+                [
+                  "index",
+                  {
+                    "type": "int",
+                    "value": "0"
+                  }
+                ]
+              ]
+            },
+            "output": {
+              "type": "record",
+              "value": [
+                [
+                  "from",
+                  {
+                    "type": "string",
+                    "value": "old-leader"
+                  }
+                ],
+                [
+                  "id",
+                  {
+                    "type": "int",
+                    "value": "1"
+                  }
+                ],
+                [
+                  "payload",
+                  {
+                    "type": "record",
+                    "value": [
+                      [
+                        "epoch",
+                        {
+                          "type": "int",
+                          "value": "1"
+                        }
+                      ]
+                    ]
+                  }
+                ],
+                [
+                  "to",
+                  {
+                    "type": "string",
+                    "value": "storage"
+                  }
+                ]
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "broken": true,
+      "result": {
+        "status": "mismatch",
+        "checkedSteps": 2,
+        "actual": {
+          "epoch": 2,
+          "accepted": true
+        },
+        "expected": [
+          {
+            "epoch": 2,
+            "accepted": false
+          }
+        ],
+        "trace": {
+          "version": 1,
+          "model": "fencing",
+          "initial": {
+            "epoch": 1,
+            "accepted": null
+          },
+          "steps": [
+            {
+              "action": "rotate",
+              "observation": {
+                "epoch": 2,
+                "accepted": null
+              }
+            },
+            {
+              "action": "old-write",
+              "observation": {
+                "epoch": 2,
+                "accepted": true
+              }
+            }
+          ]
+        }
+      },
+      "tape": {
+        "format": "modelt.host-tape",
+        "version": 1,
+        "events": [
+          {
+            "operation": "send",
+            "input": {
+              "type": "record",
+              "value": [
+                [
+                  "from",
+                  {
+                    "type": "string",
+                    "value": "old-leader"
+                  }
+                ],
+                [
+                  "payload",
+                  {
+                    "type": "record",
+                    "value": [
+                      [
+                        "epoch",
+                        {
+                          "type": "int",
+                          "value": "1"
+                        }
+                      ]
+                    ]
+                  }
+                ],
+                [
+                  "to",
+                  {
+                    "type": "string",
+                    "value": "storage"
+                  }
+                ]
+              ]
+            },
+            "output": {
+              "type": "int",
+              "value": "1"
+            }
+          },
+          {
+            "operation": "advance",
+            "input": {
+              "type": "int",
+              "value": "6"
+            },
+            "output": {
+              "type": "int",
+              "value": "6"
+            }
+          },
+          {
+            "operation": "deliver",
+            "input": {
+              "type": "record",
+              "value": [
+                [
+                  "id",
+                  {
+                    "type": "int",
+                    "value": "1"
+                  }
+                ],
+                [
+                  "index",
+                  {
+                    "type": "int",
+                    "value": "0"
+                  }
+                ]
+              ]
+            },
+            "output": {
+              "type": "record",
+              "value": [
+                [
+                  "from",
+                  {
+                    "type": "string",
+                    "value": "old-leader"
+                  }
+                ],
+                [
+                  "id",
+                  {
+                    "type": "int",
+                    "value": "1"
+                  }
+                ],
+                [
+                  "payload",
+                  {
+                    "type": "record",
+                    "value": [
+                      [
+                        "epoch",
+                        {
+                          "type": "int",
+                          "value": "1"
+                        }
+                      ]
+                    ]
+                  }
+                ],
+                [
+                  "to",
+                  {
+                    "type": "string",
+                    "value": "storage"
+                  }
+                ]
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "recovery": [
+    {
+      "stalled": false,
+      "status": "recovered",
+      "tape": {
+        "format": "modelt.host-tape",
+        "version": 1,
+        "events": [
+          {
+            "operation": "send",
+            "input": {
+              "type": "record",
+              "value": [
+                [
+                  "from",
+                  {
+                    "type": "string",
+                    "value": "a"
+                  }
+                ],
+                [
+                  "payload",
+                  {
+                    "type": "string",
+                    "value": "work"
+                  }
+                ],
+                [
+                  "to",
+                  {
+                    "type": "string",
+                    "value": "b"
+                  }
+                ]
+              ]
+            },
+            "output": {
+              "type": "int",
+              "value": "1"
+            }
+          },
+          {
+            "operation": "advance",
+            "input": {
+              "type": "int",
+              "value": "1"
+            },
+            "output": {
+              "type": "int",
+              "value": "1"
+            }
+          },
+          {
+            "operation": "deliver",
+            "input": {
+              "type": "record",
+              "value": [
+                [
+                  "id",
+                  {
+                    "type": "int",
+                    "value": "1"
+                  }
+                ],
+                [
+                  "index",
+                  {
+                    "type": "int",
+                    "value": "0"
+                  }
+                ]
+              ]
+            },
+            "output": {
+              "type": "record",
+              "value": [
+                [
+                  "from",
+                  {
+                    "type": "string",
+                    "value": "a"
+                  }
+                ],
+                [
+                  "id",
+                  {
+                    "type": "int",
+                    "value": "1"
+                  }
+                ],
+                [
+                  "payload",
+                  {
+                    "type": "string",
+                    "value": "work"
+                  }
+                ],
+                [
+                  "to",
+                  {
+                    "type": "string",
+                    "value": "b"
+                  }
+                ]
+              ]
+            }
+          },
+          {
+            "operation": "advance",
+            "input": {
+              "type": "int",
+              "value": "1"
+            },
+            "output": {
+              "type": "int",
+              "value": "2"
+            }
+          },
+          {
+            "operation": "advance",
+            "input": {
+              "type": "int",
+              "value": "1"
+            },
+            "output": {
+              "type": "int",
+              "value": "3"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "stalled": true,
+      "status": "inconclusive",
+      "tape": {
+        "format": "modelt.host-tape",
+        "version": 1,
+        "events": [
+          {
+            "operation": "send",
+            "input": {
+              "type": "record",
+              "value": [
+                [
+                  "from",
+                  {
+                    "type": "string",
+                    "value": "a"
+                  }
+                ],
+                [
+                  "payload",
+                  {
+                    "type": "string",
+                    "value": "work"
+                  }
+                ],
+                [
+                  "to",
+                  {
+                    "type": "string",
+                    "value": "b"
+                  }
+                ]
+              ]
+            },
+            "output": {
+              "type": "int",
+              "value": "1"
+            }
+          },
+          {
+            "operation": "advance",
+            "input": {
+              "type": "int",
+              "value": "1"
+            },
+            "output": {
+              "type": "int",
+              "value": "1"
+            }
+          },
+          {
+            "operation": "advance",
+            "input": {
+              "type": "int",
+              "value": "1"
+            },
+            "output": {
+              "type": "int",
+              "value": "2"
+            }
+          },
+          {
+            "operation": "advance",
+            "input": {
+              "type": "int",
+              "value": "1"
+            },
+            "output": {
+              "type": "int",
+              "value": "3"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "leases": [
+    {
+      "time": 4,
+      "broken": false,
+      "result": {
+        "status": "matched",
+        "checkedSteps": 2,
+        "actual": true,
+        "expected": [
+          true
+        ],
+        "trace": {
+          "version": 1,
+          "model": "lease",
+          "initial": null,
+          "steps": [
+            {
+              "action": {
+                "kind": "advance",
+                "amount": 4
+              },
+              "observation": null
+            },
+            {
+              "action": {
+                "kind": "write"
+              },
+              "observation": true
+            }
+          ]
+        }
+      },
+      "tape": {
+        "format": "modelt.host-tape",
+        "version": 1,
+        "events": [
+          {
+            "operation": "advance",
+            "input": {
+              "type": "int",
+              "value": "4"
+            },
+            "output": {
+              "type": "int",
+              "value": "4"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "time": 4,
+      "broken": true,
+      "result": {
+        "status": "matched",
+        "checkedSteps": 2,
+        "actual": true,
+        "expected": [
+          true
+        ],
+        "trace": {
+          "version": 1,
+          "model": "lease",
+          "initial": null,
+          "steps": [
+            {
+              "action": {
+                "kind": "advance",
+                "amount": 4
+              },
+              "observation": null
+            },
+            {
+              "action": {
+                "kind": "write"
+              },
+              "observation": true
+            }
+          ]
+        }
+      },
+      "tape": {
+        "format": "modelt.host-tape",
+        "version": 1,
+        "events": [
+          {
+            "operation": "advance",
+            "input": {
+              "type": "int",
+              "value": "4"
+            },
+            "output": {
+              "type": "int",
+              "value": "4"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "time": 5,
+      "broken": false,
+      "result": {
+        "status": "matched",
+        "checkedSteps": 2,
+        "actual": false,
+        "expected": [
+          false
+        ],
+        "trace": {
+          "version": 1,
+          "model": "lease",
+          "initial": null,
+          "steps": [
+            {
+              "action": {
+                "kind": "advance",
+                "amount": 5
+              },
+              "observation": null
+            },
+            {
+              "action": {
+                "kind": "write"
+              },
+              "observation": false
+            }
+          ]
+        }
+      },
+      "tape": {
+        "format": "modelt.host-tape",
+        "version": 1,
+        "events": [
+          {
+            "operation": "advance",
+            "input": {
+              "type": "int",
+              "value": "5"
+            },
+            "output": {
+              "type": "int",
+              "value": "5"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "time": 5,
+      "broken": true,
+      "result": {
+        "status": "mismatch",
+        "checkedSteps": 2,
+        "actual": true,
+        "expected": [
+          false
+        ],
+        "trace": {
+          "version": 1,
+          "model": "lease",
+          "initial": null,
+          "steps": [
+            {
+              "action": {
+                "kind": "advance",
+                "amount": 5
+              },
+              "observation": null
+            },
+            {
+              "action": {
+                "kind": "write"
+              },
+              "observation": true
+            }
+          ]
+        }
+      },
+      "tape": {
+        "format": "modelt.host-tape",
+        "version": 1,
+        "events": [
+          {
+            "operation": "advance",
+            "input": {
+              "type": "int",
+              "value": "5"
+            },
+            "output": {
+              "type": "int",
+              "value": "5"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "time": 6,
+      "broken": false,
+      "result": {
+        "status": "matched",
+        "checkedSteps": 2,
+        "actual": false,
+        "expected": [
+          false
+        ],
+        "trace": {
+          "version": 1,
+          "model": "lease",
+          "initial": null,
+          "steps": [
+            {
+              "action": {
+                "kind": "advance",
+                "amount": 6
+              },
+              "observation": null
+            },
+            {
+              "action": {
+                "kind": "write"
+              },
+              "observation": false
+            }
+          ]
+        }
+      },
+      "tape": {
+        "format": "modelt.host-tape",
+        "version": 1,
+        "events": [
+          {
+            "operation": "advance",
+            "input": {
+              "type": "int",
+              "value": "6"
+            },
+            "output": {
+              "type": "int",
+              "value": "6"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "time": 6,
+      "broken": true,
+      "result": {
+        "status": "matched",
+        "checkedSteps": 2,
+        "actual": false,
+        "expected": [
+          false
+        ],
+        "trace": {
+          "version": 1,
+          "model": "lease",
+          "initial": null,
+          "steps": [
+            {
+              "action": {
+                "kind": "advance",
+                "amount": 6
+              },
+              "observation": null
+            },
+            {
+              "action": {
+                "kind": "write"
+              },
+              "observation": false
+            }
+          ]
+        }
+      },
+      "tape": {
+        "format": "modelt.host-tape",
+        "version": 1,
+        "events": [
+          {
+            "operation": "advance",
+            "input": {
+              "type": "int",
+              "value": "6"
+            },
+            "output": {
+              "type": "int",
+              "value": "6"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "composition": {
+    "status": "violation",
+    "states": 3,
+    "edges": 3,
+    "traces": [
+      {
+        "version": 1,
+        "model": "cross-resource",
+        "initial": {
+          "left": 0,
+          "right": 0
+        },
+        "steps": []
+      },
+      {
+        "version": 1,
+        "model": "cross-resource",
+        "initial": {
+          "left": 0,
+          "right": 0
+        },
+        "steps": [
+          {
+            "action": {
+              "target": "left",
+              "action": 1
+            },
+            "observation": {
+              "left": 1,
+              "right": 0
+            }
+          }
+        ]
+      },
+      {
+        "version": 1,
+        "model": "cross-resource",
+        "initial": {
+          "left": 0,
+          "right": 0
+        },
+        "steps": [
+          {
+            "action": {
+              "target": "right",
+              "action": 1
+            },
+            "observation": {
+              "left": 0,
+              "right": 1
+            }
+          }
+        ]
+      },
+      {
+        "version": 1,
+        "model": "cross-resource",
+        "initial": {
+          "left": 0,
+          "right": 0
+        },
+        "steps": [
+          {
+            "action": {
+              "target": "left",
+              "action": 1
+            },
+            "observation": {
+              "left": 1,
+              "right": 0
+            }
+          },
+          {
+            "action": {
+              "target": "right",
+              "action": 1
+            },
+            "observation": {
+              "left": 1,
+              "right": 1
+            }
+          }
+        ]
+      }
+    ],
+    "violation": {
+      "invariant": "shared-capacity",
+      "trace": {
+        "version": 1,
+        "model": "cross-resource",
+        "initial": {
+          "left": 0,
+          "right": 0
+        },
+        "steps": [
+          {
+            "action": {
+              "target": "left",
+              "action": 1
+            },
+            "observation": {
+              "left": 1,
+              "right": 0
+            }
+          },
+          {
+            "action": {
+              "target": "right",
+              "action": 1
+            },
+            "observation": {
+              "left": 1,
+              "right": 1
+            }
+          }
+        ]
+      }
+    }
+  },
+  "queueStorage": [
+    {
+      "duplicate": false,
+      "result": {
+        "status": "matched",
+        "checkedSteps": 4,
+        "actual": {
+          "left": {
+            "pending": 0,
+            "delivered": true
+          },
+          "right": 1
+        },
+        "expected": [
+          {
+            "left": {
+              "pending": 0,
+              "delivered": true
+            },
+            "right": 1
+          }
+        ],
+        "trace": {
+          "version": 1,
+          "model": "queue-storage",
+          "initial": {
+            "left": {
+              "pending": 0,
+              "delivered": false
+            },
+            "right": 0
+          },
+          "steps": [
+            {
+              "action": {
+                "target": "left",
+                "action": "send"
+              },
+              "observation": {
+                "left": {
+                  "pending": 1,
+                  "delivered": false
+                },
+                "right": 0
+              }
+            },
+            {
+              "action": {
+                "target": "left",
+                "action": "send"
+              },
+              "observation": {
+                "left": {
+                  "pending": 2,
+                  "delivered": false
+                },
+                "right": 0
+              }
+            },
+            {
+              "action": {
+                "target": "both",
+                "left": "deliver",
+                "right": "a"
+              },
+              "observation": {
+                "left": {
+                  "pending": 1,
+                  "delivered": true
+                },
+                "right": 1
+              }
+            },
+            {
+              "action": {
+                "target": "both",
+                "left": "deliver",
+                "right": "a"
+              },
+              "observation": {
+                "left": {
+                  "pending": 0,
+                  "delivered": true
+                },
+                "right": 1
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "duplicate": true,
+      "result": {
+        "status": "mismatch",
+        "checkedSteps": 4,
+        "actual": {
+          "left": {
+            "pending": 0,
+            "delivered": true
+          },
+          "right": 2
+        },
+        "expected": [
+          {
+            "left": {
+              "pending": 0,
+              "delivered": true
+            },
+            "right": 1
+          }
+        ],
+        "trace": {
+          "version": 1,
+          "model": "queue-storage",
+          "initial": {
+            "left": {
+              "pending": 0,
+              "delivered": false
+            },
+            "right": 0
+          },
+          "steps": [
+            {
+              "action": {
+                "target": "left",
+                "action": "send"
+              },
+              "observation": {
+                "left": {
+                  "pending": 1,
+                  "delivered": false
+                },
+                "right": 0
+              }
+            },
+            {
+              "action": {
+                "target": "left",
+                "action": "send"
+              },
+              "observation": {
+                "left": {
+                  "pending": 2,
+                  "delivered": false
+                },
+                "right": 0
+              }
+            },
+            {
+              "action": {
+                "target": "both",
+                "left": "deliver",
+                "right": "a"
+              },
+              "observation": {
+                "left": {
+                  "pending": 1,
+                  "delivered": true
+                },
+                "right": 1
+              }
+            },
+            {
+              "action": {
+                "target": "both",
+                "left": "deliver",
+                "right": "a"
+              },
+              "observation": {
+                "left": {
+                  "pending": 0,
+                  "delivered": true
+                },
+                "right": 2
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "metamorphic": 2,
+  "weakModelAcceptedBug": true,
+  "modelAdequacy": {
+    "actions": [
+      {
+        "type": "add",
+        "id": "a",
+        "amount": 1
+      },
+      {
+        "type": "add",
+        "id": "a",
+        "amount": 1
+      }
+    ],
+    "strong": {
+      "status": "mismatch",
+      "checkedSteps": 2,
+      "actual": {
+        "running": true,
+        "value": 2
+      },
+      "expected": [
+        {
+          "running": true,
+          "value": 1
+        }
+      ],
+      "trace": {
+        "version": 1,
+        "model": "durable-counter",
+        "initial": {
+          "running": true,
+          "value": 0
+        },
+        "steps": [
+          {
+            "action": {
+              "type": "add",
+              "id": "a",
+              "amount": 1
+            },
+            "observation": {
+              "running": true,
+              "value": 1
+            }
+          },
+          {
+            "action": {
+              "type": "add",
+              "id": "a",
+              "amount": 1
+            },
+            "observation": {
+              "running": true,
+              "value": 2
+            }
+          }
+        ]
+      }
+    },
+    "permissive": {
+      "status": "matched",
+      "checkedSteps": 2,
+      "actual": {
+        "running": true,
+        "value": 2
+      },
+      "expected": [
+        {
+          "running": true,
+          "value": 2
+        }
+      ],
+      "trace": {
+        "version": 1,
+        "model": "durable-counter",
+        "initial": {
+          "running": true,
+          "value": 0
+        },
+        "steps": [
+          {
+            "action": {
+              "type": "add",
+              "id": "a",
+              "amount": 1
+            },
+            "observation": {
+              "running": true,
+              "value": 1
+            }
+          },
+          {
+            "action": {
+              "type": "add",
+              "id": "a",
+              "amount": 1
+            },
+            "observation": {
+              "running": true,
+              "value": 2
+            }
+          }
+        ]
+      }
+    }
+  }
+}

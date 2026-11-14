@@ -1,0 +1,66 @@
+[
+  {
+    "mode": "deletion",
+    "result": {
+      "status": "minimal",
+      "actions": [
+        {
+          "amount": 1,
+          "id": "a",
+          "type": "send"
+        },
+        {
+          "amount": 1,
+          "id": "b",
+          "type": "send"
+        },
+        {
+          "index": 1,
+          "type": "deliver"
+        },
+        {
+          "amount": 1,
+          "id": "a",
+          "type": "add"
+        }
+      ],
+      "checks": 19
+    },
+    "sutOperations": 58,
+    "invalid": 7,
+    "preflights": 0,
+    "elapsedMs": 0.45687500000030923
+  },
+  {
+    "mode": "causal",
+    "result": {
+      "status": "minimal",
+      "actions": [
+        {
+          "amount": 1,
+          "id": "a",
+          "type": "send"
+        },
+        {
+          "amount": 1,
+          "id": "b",
+          "type": "send"
+        },
+        {
+          "index": 1,
+          "type": "deliver"
+        },
+        {
+          "amount": 1,
+          "id": "a",
+          "type": "add"
+        }
+      ],
+      "checks": 16
+    },
+    "sutOperations": 58,
+    "invalid": 0,
+    "preflights": 24,
+    "elapsedMs": 0.2595000000001164
+  }
+]

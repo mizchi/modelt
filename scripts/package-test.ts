@@ -72,13 +72,18 @@ await writeFile(
   join(consumer, "consumer.mjs"),
   `import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
-import {createPortableWasm,checkFiniteHistories,decodePortableTrace} from '@mizchi/modelt/portable';
+import {createPortableWasm,checkFiniteHistories,decodePortableTrace,loadFiniteModel} from '@mizchi/modelt/portable';
+import {createHistoryRecorder} from '@mizchi/modelt/history';
 import {parseFiniteModel} from '@mizchi/modelt/finite';
 import {createSimulationHost} from '@mizchi/modelt/host';
 const core=await createPortableWasm(await readFile(new URL(import.meta.resolve('@mizchi/modelt/core.wasm'))));
 const model=parseFiniteModel(JSON.parse(await readFile('model.json','utf8')));
 const trace=decodePortableTrace(await readFile('history.json','utf8'));
 assert.equal(checkFiniteHistories(core,model,[trace])[0].status,'matched');
+const loaded=loadFiniteModel(core,model);
+const recorded=createHistoryRecorder(model.name,trace.initial);
+recorded.invoke('tick',trace.steps[0].action);recorded.returned('tick',trace.steps[0].observation);
+assert.equal(loaded.checkHistory(recorded.snapshot(),100).status,'linearizable');loaded.release();
 assert.equal(createSimulationHost().now(),0);
 for(const name of ['z3-solver','tla-ts','fast-check'])assert.throws(()=>import.meta.resolve(name));
 console.log('packaged TS/Wasm consumer matched without solvers');
@@ -95,9 +100,10 @@ await writeFile(
 import {compileFiniteModel,createFiniteModel} from '@mizchi/modelt/finite';
 import {createSimulationHost} from '@mizchi/modelt/host';
 import {createPortableWasm} from '@mizchi/modelt/portable';
+import {createHistoryRecorder,checkConcurrentHistory} from '@mizchi/modelt/history';
 const model:Model<number,'tick',number>={name:'typed',initial:()=>[{state:0,observation:0}],actions:()=>['tick'],step:()=>[{state:0,observation:0}],key:String};
 const compiled=compileFiniteModel(model,{maxDepth:1,maxStates:1});
-if(compiled.model)createFiniteModel(compiled.model);
+if(compiled.model){createFiniteModel(compiled.model);checkConcurrentHistory(compiled.model,createHistoryRecorder(model.name,{type:'int',value:'0'}).snapshot(),100);}
 createSimulationHost({seed:1});
 void createPortableWasm;
 `,
