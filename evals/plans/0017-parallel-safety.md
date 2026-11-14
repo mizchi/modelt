@@ -1,0 +1,15 @@
+# TLA検査の常駐poolと予算付きスケジューリング
+
+0016の1 worker測定を受け、独立したTLA検査をNode worker_threadsへ配置する。workerごとにRust Wasm instance、または常駐native子プロセスを持つ。1モデル内部のBFS・Arena・temporal処理は変更しない。compilerは親で一度実行し、IRをworkerへ初期登録する。検査結果のキャッシュは作らず、各taskを毎回探索する。ブラウザは独立Wasm instanceとmessage passingを使い、SharedArrayBufferを要求しない。
+
+共通schedulerはNodeやsolverへ依存せず、taskの推定費用・メモリ・worker数別profileと時間/メモリ/worker予算から計画を作る。FIFOの1 task/messageを基準に、推定費用が長い順の配置と小taskのbatch化を比較する。batch目標4 ms、最大16 taskを初期条件とする。明示された時間予算はdispatch時のsoft budgetとし、進行中batchを強制終了しない。未配布・worker異常・不完全な応答を完了にしない。task IDの重複や応答の欠落・混入を拒否する。輸送上の完了と、個々のモデルのcomplete / bounded / empty / violation / errorを区別する。
+
+性能入力は0016の11モデルを8巡した88 taskの混合batchと、grid-20を256回検査する小task batch。巡回順・task ID・source/config/boundsを固定する。同じモデルの反復はthroughput測定であり、追加の探索coverageとして数えない。全taskのresultを逐次cached-IR実行と完全比較する。bounded・empty・invariant/property/liveness violation・モデル評価エラーと、worker故障・不正応答の対照は性能taskと別に検査する。native/Wasmの違反traceも比較し、既存のTLC差分回帰で意味を維持する。
+
+各backend、worker数1/2/4/8、配置方式FIFO/費用順batchについて、pool起動・登録を別に測り、2回ウォームアップ後7回を測定する。経路順は反復ごとに巡回させ、測定を直列実行する。起動込みと再利用時を区別し、wall time、task/s、taskのqueue待ちp95、batch数、worker別task数、Node全体のRSS snapshot、native子プロセスのRSSを保存する。RSSは測定時点の観測値であり、OSによる強制上限や厳密なpeakとは扱わない。
+
+各モデルの費用はbackendごとにIRを使う逐次実行で2回warmup後5回の中央値を求める。メモリ見積りはworkerあたり固定128 MiBに、taskあたり32 MiB + scalar状態128 bytes / 複合値状態512 bytesを保守的な初期値として使う。これは保証値ではなく、観測RSSとの差も記録する。worker数別profileの費用倍率は校正batchの実行時間から求め、時間・メモリ予算で並列度が変わることを別の計画テストで確認する。未知profileはuncalibrated、全taskを推定予算に収められない場合はinsufficient-budgetとする。wall timeによる深さの自動変更やhard timeoutは追加しない。
+
+planを先にコミットし、実装・テストを通したsourceを測定前に固定する。source/binaryのdigest、commit、dirty paths、入力manifest、全サンプル、校正値、配置ログ、例外を新規runに保存する。replayでは保存した入力・計画・結果とdigestを検査し、両backendでtaskの判定・計数・反例を再現する。replayを独立の性能測定に加えない。1/2/4/8で速くなることを前提にせず、後退した条件もiterationに残す。
+
+採用判断は、逐次結果と一致すること、ブラウザで共有メモリなしに動くこと、予算切れと故障を隠さないことを前提にする。混合batchの全件完了時間と小taskの通信費用が改善するかを評価する。共通の計画・実行APIだけを独立entryとして公開し、backend adapterはまずevals内の試作として扱う。
