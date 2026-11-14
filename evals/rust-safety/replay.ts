@@ -52,7 +52,8 @@ try {
     reports.map((report) => report.name),
     benchmarkCases(
       manifest.plan === "0012-collections-temporal" ||
-        manifest.plan === "0013-scalar-comparison",
+        manifest.plan === "0013-scalar-comparison" ||
+        manifest.plan === "0014-value-hash",
     ).map((input) => input.name),
   );
   for (const report of reports) {

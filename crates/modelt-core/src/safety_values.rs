@@ -2,6 +2,7 @@ use crate::safety::Scalar;
 use crate::{CoreError, Value};
 use std::cmp::Ordering;
 use std::collections::HashMap;
+use std::hash::{BuildHasherDefault, Hasher};
 
 #[derive(Clone, Debug, PartialEq, Eq, Hash)]
 enum Cell {
@@ -10,10 +11,42 @@ enum Cell {
     Function(Vec<(Scalar, Scalar)>),
 }
 
+struct ValueHasher(u64);
+impl Default for ValueHasher {
+    fn default() -> Self {
+        Self(0xcbf2_9ce4_8422_2325)
+    }
+}
+impl Hasher for ValueHasher {
+    fn finish(&self) -> u64 {
+        self.0
+    }
+    fn write(&mut self, bytes: &[u8]) {
+        for byte in bytes {
+            self.write_u64(u64::from(*byte));
+        }
+    }
+    fn write_u64(&mut self, value: u64) {
+        self.0 = self.0.wrapping_mul(0x0000_0100_0000_01b3) ^ value;
+    }
+    fn write_u32(&mut self, value: u32) {
+        self.write_u64(u64::from(value));
+    }
+    fn write_usize(&mut self, value: usize) {
+        self.write_u64(value as u64);
+    }
+    fn write_i32(&mut self, value: i32) {
+        self.write_u32(value as u32);
+    }
+    fn write_isize(&mut self, value: isize) {
+        self.write_u64(value as u64);
+    }
+}
+
 pub(crate) struct Arena {
     cells: Vec<Cell>,
     depths: Vec<u8>,
-    index: HashMap<Cell, u32>,
+    index: HashMap<Cell, u32, BuildHasherDefault<ValueHasher>>,
     data: HashMap<Value, Scalar>,
     pub work: u32,
     maximum: u32,
@@ -24,7 +57,7 @@ impl Arena {
         Self {
             cells: vec![],
             depths: vec![],
-            index: HashMap::new(),
+            index: HashMap::default(),
             data: HashMap::new(),
             work: 0,
             maximum,
@@ -437,5 +470,38 @@ impl Arena {
                 }
             },
         })
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::{Arena, Cell, ValueHasher};
+    use crate::safety::Scalar;
+    use std::hash::{Hash, Hasher};
+
+    #[test]
+    fn colliding_function_hashes_keep_distinct_values() {
+        let first = vec![
+            (Scalar::Int(0), Scalar::Int(-1_370_170_012)),
+            (Scalar::Int(95_947_124), Scalar::Int(0)),
+        ];
+        let second = vec![
+            (Scalar::Int(0), Scalar::Int(803_057_848)),
+            (Scalar::Int(1_091_714_232), Scalar::Int(-1_935_938_920)),
+        ];
+        let hash = |entries: Vec<(Scalar, Scalar)>| {
+            let mut hasher = ValueHasher::default();
+            Cell::Function(entries).hash(&mut hasher);
+            hasher.finish()
+        };
+        assert_eq!(hash(first.clone()), hash(second.clone()));
+        let mut arena = Arena::new(100);
+        let first_id = arena.function(first.clone()).unwrap();
+        let second_id = arena.function(second.clone()).unwrap();
+        assert_ne!(first_id, second_id);
+        assert_eq!(arena.function(first.clone()).unwrap(), first_id);
+        assert_eq!(arena.function(second.clone()).unwrap(), second_id);
+        assert_eq!(arena.entries(first_id).unwrap(), first);
+        assert_eq!(arena.entries(second_id).unwrap(), second);
     }
 }

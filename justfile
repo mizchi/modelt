@@ -62,7 +62,7 @@ safety-build: portable-build
 safety-test: safety-build
   node --test dist/evals/rust-safety/contract-test.js dist/evals/collections-temporal/contract-test.js
 
-safety-eval run plan="0013-scalar-comparison": safety-build
+safety-eval run plan="0014-value-hash": safety-build
   node dist/evals/rust-safety/evaluate.js {{quote(run)}} {{quote(plan)}}
 
 safety-replay run:
